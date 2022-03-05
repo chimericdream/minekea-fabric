@@ -1,4 +1,4 @@
-# Fabric Example Mod
+# Shelf Storage (Fabric)
 
 ## Setup
 
