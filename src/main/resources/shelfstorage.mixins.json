@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "EnchantingTableBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

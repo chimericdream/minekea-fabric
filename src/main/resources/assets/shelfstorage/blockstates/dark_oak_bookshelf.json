@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "": [
+            { "model": "shelfstorage:block/bookshelves/dark_oak/shelf0" },
+			{ "model": "shelfstorage:block/bookshelves/dark_oak/shelf1" },
+			{ "model": "shelfstorage:block/bookshelves/dark_oak/shelf2" },
+			{ "model": "shelfstorage:block/bookshelves/dark_oak/shelf3" },
+			{ "model": "shelfstorage:block/bookshelves/dark_oak/shelf4" },
+			{ "model": "shelfstorage:block/bookshelves/dark_oak/shelf5" },
+			{ "model": "shelfstorage:block/bookshelves/dark_oak/shelf6" }
+        ]
+    }
+}
