@@ -7,6 +7,8 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -34,6 +36,11 @@ public class SpruceStorageShelf extends AbstractStorageShelf implements BlockEnt
     }
 
     @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, Bookshelves.SPRUCE_STORAGE_SHELF_BLOCK_ENTITY, SpruceStorageShelfBlockEntity::tick);
+    }
+
+    @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new SpruceStorageShelfBlockEntity(pos, state);
     }
@@ -46,19 +53,22 @@ public class SpruceStorageShelf extends AbstractStorageShelf implements BlockEnt
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient) {
-            //This will call the createScreenHandlerFactory method from BlockWithEntity, which will return our blockEntity casted to
-            //a namedScreenHandlerFactory. If your block class does not extend BlockWithEntity, it needs to implement createScreenHandlerFactory.
-            NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
-
-            if (screenHandlerFactory != null) {
-                //With this call the server will request the client to open the appropriate Screenhandler
-                player.openHandledScreen(screenHandlerFactory);
-            }
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
         }
-        return ActionResult.SUCCESS;
-    }
 
+        // This will call the createScreenHandlerFactory method from BlockWithEntity, which will return our blockEntity casted to
+        // a namedScreenHandlerFactory. If your block class does not extend BlockWithEntity, it needs to implement createScreenHandlerFactory.
+        NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
+
+        if (screenHandlerFactory != null) {
+            // With this call the server will request the client to open the appropriate Screenhandler
+            player.openHandledScreen(screenHandlerFactory);
+            return ActionResult.CONSUME;
+        }
+
+        return ActionResult.FAIL;
+    }
 
     // This method will drop all items onto the ground when the block is broken
     @Override
@@ -68,7 +78,7 @@ public class SpruceStorageShelf extends AbstractStorageShelf implements BlockEnt
             if (blockEntity instanceof SpruceStorageShelfBlockEntity) {
                 ItemScatterer.spawn(world, pos, (SpruceStorageShelfBlockEntity) blockEntity);
                 // update comparators
-                world.updateComparators(pos,this);
+                world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
         }

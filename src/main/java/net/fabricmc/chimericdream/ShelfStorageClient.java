@@ -16,9 +16,8 @@ public class ShelfStorageClient implements ClientModInitializer {
         ScreenRegistry.register(Bookshelves.CRIMSON_STORAGE_SHELF_SCREEN_HANDLER, CrimsonStorageShelfScreen::new);
         ScreenRegistry.register(Bookshelves.DARK_OAK_STORAGE_SHELF_SCREEN_HANDLER, DarkOakStorageShelfScreen::new);
         ScreenRegistry.register(Bookshelves.JUNGLE_STORAGE_SHELF_SCREEN_HANDLER, JungleStorageShelfScreen::new);
+        ScreenRegistry.register(Bookshelves.OAK_STORAGE_SHELF_SCREEN_HANDLER, OakStorageShelfScreen::new);
         ScreenRegistry.register(Bookshelves.SPRUCE_STORAGE_SHELF_SCREEN_HANDLER, SpruceStorageShelfScreen::new);
         ScreenRegistry.register(Bookshelves.WARPED_STORAGE_SHELF_SCREEN_HANDLER, WarpedStorageShelfScreen::new);
-
-//        ModelLoadingRegistry.INSTANCE.registerResourceProvider(rm -> new AcaciaStorageShelfModelProvider());
     }
 }

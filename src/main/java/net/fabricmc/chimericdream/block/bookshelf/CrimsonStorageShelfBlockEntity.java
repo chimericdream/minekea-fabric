@@ -15,6 +15,9 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+import static net.fabricmc.chimericdream.block.bookshelf.AbstractStorageShelf.FILL_LEVEL;
 
 public class CrimsonStorageShelfBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(9, ItemStack.EMPTY);
@@ -33,6 +36,19 @@ public class CrimsonStorageShelfBlockEntity extends BlockEntity implements Named
         //We provide *this* to the screenHandler as our class Implements Inventory
         //Only the Server has the Inventory at the start, this will be synced to the client in the ScreenHandler
         return new CrimsonStorageShelfScreenHandler(syncId, playerInventory, this);
+    }
+
+    public static void tick(World world, BlockPos pos, BlockState state, CrimsonStorageShelfBlockEntity entity) {
+        if (world.isClient()) {
+            return;
+        }
+
+        int fillLevel = AbstractStorageShelf.getFillLevel(entity.getItems().stream().filter(item -> item.getCount() > 0).count());
+        if (fillLevel != state.get(FILL_LEVEL)) {
+            state = state.with(FILL_LEVEL, fillLevel);
+            world.setBlockState(pos, state);
+            markDirty(world, pos, state);
+        }
     }
 
     @Override

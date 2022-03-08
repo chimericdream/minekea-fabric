@@ -15,8 +15,9 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-import static net.fabricmc.chimericdream.block.bookshelf.AcaciaStorageShelf.SLOTS_USED;
+import static net.fabricmc.chimericdream.block.bookshelf.AcaciaStorageShelf.FILL_LEVEL;
 
 public class AcaciaStorageShelfBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(9, ItemStack.EMPTY);
@@ -32,9 +33,22 @@ public class AcaciaStorageShelfBlockEntity extends BlockEntity implements NamedS
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        //We provide *this* to the screenHandler as our class Implements Inventory
-        //Only the Server has the Inventory at the start, this will be synced to the client in the ScreenHandler
+        // We provide *this* to the screenHandler as our class Implements Inventory
+        // Only the Server has the Inventory at the start, this will be synced to the client in the ScreenHandler
         return new AcaciaStorageShelfScreenHandler(syncId, playerInventory, this);
+    }
+
+    public static void tick(World world, BlockPos pos, BlockState state, AcaciaStorageShelfBlockEntity entity) {
+        if (world.isClient()) {
+            return;
+        }
+
+        int fillLevel = AbstractStorageShelf.getFillLevel(entity.getItems().stream().filter(item -> item.getCount() > 0).count());
+        if (fillLevel != state.get(FILL_LEVEL)) {
+            state = state.with(FILL_LEVEL, fillLevel);
+            world.setBlockState(pos, state);
+            markDirty(world, pos, state);
+        }
     }
 
     @Override
@@ -52,19 +66,6 @@ public class AcaciaStorageShelfBlockEntity extends BlockEntity implements NamedS
     @Override
     public void writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
-
-        BlockState state = null;
-
-        try {
-            state = this.getWorld().getBlockState(this.pos);
-
-            if (state != null) {
-                long slots = items.stream().filter(item -> item.getCount() > 0).count();
-                this.getWorld().setBlockState(this.pos, state.with(SLOTS_USED, (int) slots));
-            }
-        } catch (Exception e) {
-            // swallow
-        }
 
         super.writeNbt(nbt);
     }

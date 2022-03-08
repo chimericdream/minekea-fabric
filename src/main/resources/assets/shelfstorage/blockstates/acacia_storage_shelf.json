@@ -1,54 +1,9 @@
 {
     "variants": {
-        "slots_used=0": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/empty_shelf"
-            }
-        ],
-        "slots_used=1": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/one_quarter_shelf"
-            }
-        ],
-        "slots_used=2": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/one_quarter_shelf"
-            }
-        ],
-        "slots_used=3": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/one_quarter_shelf"
-            }
-        ],
-        "slots_used=4": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/one_half_shelf"
-            }
-        ],
-        "slots_used=5": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/one_half_shelf"
-            }
-        ],
-        "slots_used=6": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/one_half_shelf"
-            }
-        ],
-        "slots_used=7": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/three_quarters_shelf"
-            }
-        ],
-        "slots_used=8": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/three_quarters_shelf"
-            }
-        ],
-        "slots_used=9": [
-            {
-                "model": "shelfstorage:block/bookshelves/acacia/shelf0"
-            }
-        ]
+        "fill_level=0": [{"model": "shelfstorage:block/bookshelves/acacia/empty_shelf"}],
+        "fill_level=1": [{"model": "shelfstorage:block/bookshelves/acacia/one_quarter_shelf"}],
+        "fill_level=2": [{"model": "shelfstorage:block/bookshelves/acacia/one_half_shelf"}],
+        "fill_level=3": [{"model": "shelfstorage:block/bookshelves/acacia/three_quarters_shelf"}],
+        "fill_level=4": [{"model": "shelfstorage:block/bookshelves/acacia/shelf0"}]
     }
 }
