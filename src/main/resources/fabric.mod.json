@@ -18,6 +18,9 @@
   "entrypoints": {
     "main": [
       "net.fabricmc.chimericdream.ShelfStorageMod"
+    ],
+    "client": [
+      "net.fabricmc.chimericdream.ShelfStorageClient"
     ]
   },
   "mixins": [

@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "shelfstorage:block/bookshelves/acacia/storage_shelf"
+            }
+        ]
+    }
+}

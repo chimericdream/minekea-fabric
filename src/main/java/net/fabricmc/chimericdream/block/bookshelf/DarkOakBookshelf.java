@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class DarkOakBookshelf extends AbstractBookshelf {
-    public final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "dark_oak_bookshelf");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "dark_oak_bookshelf");
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);

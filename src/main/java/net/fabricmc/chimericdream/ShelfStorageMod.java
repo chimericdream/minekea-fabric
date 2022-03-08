@@ -7,9 +7,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ShelfStorageMod implements ModInitializer {
-	public static final Logger LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
+	public static final Logger LOGGER;
 
-	public static final Bookshelves BOOKSHELVES = new Bookshelves();
+	public static final Bookshelves BOOKSHELVES;
+
+	static {
+		LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
+		BOOKSHELVES = new Bookshelves();
+	}
 
 	/*
 	 * Inspiration:
