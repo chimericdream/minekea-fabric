@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "minecraft:block/spruce_planks",
+        "side": "shelfstorage:block/bookshelves/spruce/three_quarters_shelf"
+    }
+}

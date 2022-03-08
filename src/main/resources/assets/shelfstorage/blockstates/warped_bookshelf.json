@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "": [
+            { "model": "shelfstorage:block/bookshelves/warped/shelf0" },
+			{ "model": "shelfstorage:block/bookshelves/warped/shelf1" },
+			{ "model": "shelfstorage:block/bookshelves/warped/shelf2" },
+			{ "model": "shelfstorage:block/bookshelves/warped/shelf3" },
+			{ "model": "shelfstorage:block/bookshelves/warped/shelf4" },
+			{ "model": "shelfstorage:block/bookshelves/warped/shelf5" },
+			{ "model": "shelfstorage:block/bookshelves/warped/shelf6" }
+        ]
+    }
+}
