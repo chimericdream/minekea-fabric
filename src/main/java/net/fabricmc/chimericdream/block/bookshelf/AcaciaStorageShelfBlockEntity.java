@@ -1,6 +1,5 @@
 package net.fabricmc.chimericdream.block.bookshelf;
 
-import net.fabricmc.chimericdream.ShelfStorageMod;
 import net.fabricmc.chimericdream.screen.AcaciaStorageShelfScreenHandler;
 import net.fabricmc.chimericdream.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -16,6 +15,8 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+
+import static net.fabricmc.chimericdream.block.bookshelf.AcaciaStorageShelf.SLOTS_USED;
 
 public class AcaciaStorageShelfBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(9, ItemStack.EMPTY);
@@ -50,13 +51,20 @@ public class AcaciaStorageShelfBlockEntity extends BlockEntity implements NamedS
 
     @Override
     public void writeNbt(NbtCompound nbt) {
-        ShelfStorageMod.LOGGER.info("writing nbt...");
         Inventories.writeNbt(nbt, items);
 
-        items.forEach(item -> {
-            ShelfStorageMod.LOGGER.info(String.format("item name: %s", item.getName()));
-            ShelfStorageMod.LOGGER.info(String.format("item count: %d", item.getCount()));
-        });
+        BlockState state = null;
+
+        try {
+            state = this.getWorld().getBlockState(this.pos);
+
+            if (state != null) {
+                long slots = items.stream().filter(item -> item.getCount() > 0).count();
+                this.getWorld().setBlockState(this.pos, state.with(SLOTS_USED, (int) slots));
+            }
+        } catch (Exception e) {
+            // swallow
+        }
 
         super.writeNbt(nbt);
     }

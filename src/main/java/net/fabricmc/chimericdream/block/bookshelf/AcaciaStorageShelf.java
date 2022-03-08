@@ -3,6 +3,7 @@ package net.fabricmc.chimericdream.block.bookshelf;
 import net.fabricmc.chimericdream.ModInfo;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -13,6 +14,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -24,6 +27,17 @@ import net.minecraft.world.World;
 
 public class AcaciaStorageShelf extends AbstractStorageShelf implements BlockEntityProvider {
     public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "acacia_storage_shelf");
+    public static final IntProperty SLOTS_USED = IntProperty.of("slots_used", 0, 9);
+
+    AcaciaStorageShelf() {
+        super();
+        setDefaultState(getStateManager().getDefaultState().with(SLOTS_USED, 0));
+    }
+
+    AcaciaStorageShelf(Settings settings) {
+        super(settings);
+        setDefaultState(getStateManager().getDefaultState().with(SLOTS_USED, 0));
+    }
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
@@ -31,6 +45,11 @@ public class AcaciaStorageShelf extends AbstractStorageShelf implements BlockEnt
 
         FuelRegistry.INSTANCE.add(this, 300);
         FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
+        stateManager.add(SLOTS_USED);
     }
 
     @Override
