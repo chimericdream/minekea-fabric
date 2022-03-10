@@ -28,8 +28,8 @@ public class ShelfStorageMod implements ModInitializer {
 	 * [ ] iron shelves
 	 * [x] variant bookshelves
 	 * [x]   - works for enchanting
-	 * [ ] empty bookshelves in all wood types (no storage, just shelves without books)
-	 * [ ] storage version of all bookshelves
+	 * [x] storage version of all bookshelves
+	 * [x]   - works for enchanting
 	 * [ ]   - works for enchanting (variable power based on contents)
 	 * [ ] crates in all wood types
 	 * [ ] variant barrels
@@ -38,11 +38,26 @@ public class ShelfStorageMod implements ModInitializer {
 	 * [ ] fake bookshelves in all wood types (look like bookshelf, tooltip says bookshelf, functions like a door)
 	 * [ ] bookshelves in non-wood varieties
 	 * [ ]   - quartz
+	 * [ ]   - smooth quartz
+	 * [ ]   - smooth stone
+	 * [ ]   - polished granite
+	 * [ ]   - polished andesite
+	 * [ ]   - polished diorite
+	 * [ ]   - polished blackstone
+	 * [ ]   - polished blackstone bricks
+	 * [ ]   - polished deepslate
+	 * [ ]   - polished basalt
 	 * [ ]   - stone bricks
-	 * [ ]   - polished stones
+	 * [ ]   - deepslate bricks
+	 * [ ]   - endstone bricks
+	 * [ ]   - nether bricks
+	 * [ ]   - red nether bricks
+	 * [ ]   - prismarine bricks
+	 * [ ]   - quartz bricks
 	 * [ ]   - purpur
 	 * [ ]   - bone
-	 * [ ]   - prismarine & dark prismarine
+	 * [ ]   - prismarine
+	 * [ ]   - dark prismarine
 	 */
 
 	@Override
