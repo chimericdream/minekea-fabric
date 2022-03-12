@@ -1,6 +1,7 @@
 package net.fabricmc.chimericdream;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.chimericdream.block.IronShelf;
 import net.fabricmc.chimericdream.block.bookshelf.*;
 import net.fabricmc.chimericdream.tag.ShelfStorageTags;
 import org.slf4j.Logger;
@@ -10,10 +11,12 @@ public class ShelfStorageMod implements ModInitializer {
 	public static final Logger LOGGER;
 
 	public static final Bookshelves BOOKSHELVES;
+	public static final IronShelf IRON_SHELF;
 
 	static {
 		LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
 		BOOKSHELVES = new Bookshelves();
+		IRON_SHELF = new IronShelf();
 	}
 
 	/*
@@ -67,5 +70,6 @@ public class ShelfStorageMod implements ModInitializer {
 
 		LOGGER.info("Registering blocks for Shelf Storage");
 		BOOKSHELVES.register();
+		IRON_SHELF.register();
 	}
 }
