@@ -1,7 +1,7 @@
 {
     "variants": {
         "": [
-            { "model": "shelfstorage:block/iron_shelf" }
+            {"model": "shelfstorage:block/iron_shelf"}
         ]
     }
 }

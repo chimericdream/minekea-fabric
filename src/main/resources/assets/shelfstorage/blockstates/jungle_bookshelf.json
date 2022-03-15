@@ -1,13 +1,13 @@
 {
     "variants": {
         "": [
-            { "model": "shelfstorage:block/bookshelves/jungle/shelf0" },
-			{ "model": "shelfstorage:block/bookshelves/jungle/shelf1" },
-			{ "model": "shelfstorage:block/bookshelves/jungle/shelf2" },
-			{ "model": "shelfstorage:block/bookshelves/jungle/shelf3" },
-			{ "model": "shelfstorage:block/bookshelves/jungle/shelf4" },
-			{ "model": "shelfstorage:block/bookshelves/jungle/shelf5" },
-			{ "model": "shelfstorage:block/bookshelves/jungle/shelf6" }
+            {"model": "shelfstorage:block/bookshelves/jungle/shelf0"},
+            {"model": "shelfstorage:block/bookshelves/jungle/shelf1"},
+            {"model": "shelfstorage:block/bookshelves/jungle/shelf2"},
+            {"model": "shelfstorage:block/bookshelves/jungle/shelf3"},
+            {"model": "shelfstorage:block/bookshelves/jungle/shelf4"},
+            {"model": "shelfstorage:block/bookshelves/jungle/shelf5"},
+            {"model": "shelfstorage:block/bookshelves/jungle/shelf6"}
         ]
     }
 }

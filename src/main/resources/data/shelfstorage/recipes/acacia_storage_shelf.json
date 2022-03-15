@@ -1,10 +1,10 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {"item": "shelfstorage:acacia_bookshelf"},
-    {"item": "minecraft:chest"}
-  ],
-  "result": {
-    "item": "shelfstorage:acacia_storage_shelf"
-  }
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {"item": "shelfstorage:acacia_bookshelf"},
+        {"item": "minecraft:chest"}
+    ],
+    "result": {
+        "item": "shelfstorage:acacia_storage_shelf"
+    }
 }
