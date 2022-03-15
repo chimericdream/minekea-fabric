@@ -1,10 +1,10 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {"item": "shelfstorage:spruce_bookshelf"},
-    {"item": "minecraft:chest"}
-  ],
-  "result": {
-    "item": "shelfstorage:spruce_storage_shelf"
-  }
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {"item": "shelfstorage:spruce_bookshelf"},
+        {"item": "minecraft:chest"}
+    ],
+    "result": {
+        "item": "shelfstorage:spruce_storage_shelf"
+    }
 }

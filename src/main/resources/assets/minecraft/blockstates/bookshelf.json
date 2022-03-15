@@ -1,13 +1,13 @@
 {
     "variants": {
         "": [
-            { "model": "shelfstorage:block/bookshelves/oak/shelf0" },
-			{ "model": "shelfstorage:block/bookshelves/oak/shelf1" },
-			{ "model": "shelfstorage:block/bookshelves/oak/shelf2" },
-			{ "model": "shelfstorage:block/bookshelves/oak/shelf3" },
-			{ "model": "shelfstorage:block/bookshelves/oak/shelf4" },
-			{ "model": "shelfstorage:block/bookshelves/oak/shelf5" },
-			{ "model": "shelfstorage:block/bookshelves/oak/shelf6" }
+            {"model": "shelfstorage:block/bookshelves/oak/shelf0"},
+            {"model": "shelfstorage:block/bookshelves/oak/shelf1"},
+            {"model": "shelfstorage:block/bookshelves/oak/shelf2"},
+            {"model": "shelfstorage:block/bookshelves/oak/shelf3"},
+            {"model": "shelfstorage:block/bookshelves/oak/shelf4"},
+            {"model": "shelfstorage:block/bookshelves/oak/shelf5"},
+            {"model": "shelfstorage:block/bookshelves/oak/shelf6"}
         ]
     }
 }

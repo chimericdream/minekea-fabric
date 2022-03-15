@@ -13,12 +13,12 @@ import java.util.Arrays;
 
 @Mixin(EnchantingTableBlock.class)
 public class EnchantingTableBlockMixin {
-	@Redirect(
-		method = "canAccessBookshelf",
-		at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z")
-	)
-	private static boolean isBookshelf(BlockState blockState, Block block) {
-		return blockState.getBlock().equals(Blocks.BOOKSHELF)
-			|| Arrays.stream(Bookshelves.getShelvesForEnchanting()).anyMatch(shelf -> blockState.getBlock().equals(shelf));
-	}
+    @Redirect(
+        method = "canAccessBookshelf",
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z")
+    )
+    private static boolean isBookshelf(BlockState blockState, Block block) {
+        return blockState.getBlock().equals(Blocks.BOOKSHELF)
+            || Arrays.stream(Bookshelves.getShelvesForEnchanting()).anyMatch(shelf -> blockState.getBlock().equals(shelf));
+    }
 }
