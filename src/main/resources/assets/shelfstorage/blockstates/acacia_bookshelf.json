@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "": [
+            {"model": "shelfstorage:block/bookshelves/acacia/shelf0"},
+            {"model": "shelfstorage:block/bookshelves/acacia/shelf1"},
+            {"model": "shelfstorage:block/bookshelves/acacia/shelf2"},
+            {"model": "shelfstorage:block/bookshelves/acacia/shelf3"},
+            {"model": "shelfstorage:block/bookshelves/acacia/shelf4"},
+            {"model": "shelfstorage:block/bookshelves/acacia/shelf5"},
+            {"model": "shelfstorage:block/bookshelves/acacia/shelf6"}
+        ]
+    }
+}

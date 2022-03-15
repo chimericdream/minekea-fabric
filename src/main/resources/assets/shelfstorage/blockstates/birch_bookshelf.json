@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "": [
+            {"model": "shelfstorage:block/bookshelves/birch/shelf0"},
+            {"model": "shelfstorage:block/bookshelves/birch/shelf1"},
+            {"model": "shelfstorage:block/bookshelves/birch/shelf2"},
+            {"model": "shelfstorage:block/bookshelves/birch/shelf3"},
+            {"model": "shelfstorage:block/bookshelves/birch/shelf4"},
+            {"model": "shelfstorage:block/bookshelves/birch/shelf5"},
+            {"model": "shelfstorage:block/bookshelves/birch/shelf6"}
+        ]
+    }
+}
