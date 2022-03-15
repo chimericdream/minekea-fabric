@@ -5,9 +5,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.chimericdream.block.bookshelf.Bookshelves;
 import net.fabricmc.chimericdream.screen.*;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
-import net.minecraft.client.render.RenderLayer;
 
 @Environment(EnvType.CLIENT)
 public class ShelfStorageClient implements ClientModInitializer {
@@ -22,6 +20,6 @@ public class ShelfStorageClient implements ClientModInitializer {
         ScreenRegistry.register(Bookshelves.SPRUCE_STORAGE_SHELF_SCREEN_HANDLER, SpruceStorageShelfScreen::new);
         ScreenRegistry.register(Bookshelves.WARPED_STORAGE_SHELF_SCREEN_HANDLER, WarpedStorageShelfScreen::new);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(ShelfStorageMod.IRON_SHELF, RenderLayer.getCutout());
+        // BlockRenderLayerMap.INSTANCE.putBlock(ShelfStorageMod.IRON_SHELF, RenderLayer.getCutout());
     }
 }
