@@ -5,9 +5,7 @@
     "compatibilityLevel": "JAVA_17",
     "mixins": [
     ],
-    "client": [
-        "EnchantingTableBlockMixin"
-    ],
+    "client": [],
     "injectors": {
         "defaultRequire": 1
     }

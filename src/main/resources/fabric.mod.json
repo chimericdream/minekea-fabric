@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "id": "modid",
+    "id": "shelfstorage",
     "version": "${version}",
     "name": "Shelf Storage",
     "description": "",
@@ -9,7 +9,7 @@
         "homepage": "https://fabricmc.net/",
         "sources": "https://github.com/chimericdream/shelf-storage"
     },
-    "license": "CC0-1.0",
+    "license": "MIT",
     "icon": "assets/shelfstorage/icon.png",
     "environment": "*",
     "entrypoints": {
@@ -24,12 +24,9 @@
         "shelfstorage.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.13.3",
+        "fabricloader": ">=0.12.12",
         "fabric": "*",
-        "minecraft": "1.18.2",
+        "minecraft": "1.18.1",
         "java": ">=17"
-    },
-    "suggests": {
-        "another-mod": "*"
     }
 }
