@@ -1,0 +1,20 @@
+{
+    "replace": false,
+    "values": [
+        "shelfstorage:acacia_bookshelf",
+        "shelfstorage:acacia_storage_shelf",
+        "shelfstorage:birch_bookshelf",
+        "shelfstorage:birch_storage_shelf",
+        "shelfstorage:crimson_bookshelf",
+        "shelfstorage:crimson_storage_shelf",
+        "shelfstorage:dark_oak_bookshelf",
+        "shelfstorage:dark_oak_storage_shelf",
+        "shelfstorage:jungle_bookshelf",
+        "shelfstorage:jungle_storage_shelf",
+        "shelfstorage:spruce_bookshelf",
+        "shelfstorage:spruce_storage_shelf",
+        "shelfstorage:warped_bookshelf",
+        "shelfstorage:warped_storage_shelf",
+        "shelfstorage:oak_storage_shelf"
+    ]
+}
