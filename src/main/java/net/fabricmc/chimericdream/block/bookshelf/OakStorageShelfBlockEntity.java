@@ -64,9 +64,9 @@ public class OakStorageShelfBlockEntity extends BlockEntity implements NamedScre
     }
 
     @Override
-    public void writeNbt(NbtCompound nbt) {
+    public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
 
-        super.writeNbt(nbt);
+        return super.writeNbt(nbt);
     }
 }
