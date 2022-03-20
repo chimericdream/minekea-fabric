@@ -7,18 +7,21 @@
 This mod contains a variety of functional and decorative shelving units for use in your Minecraft world
 
 ### Versions
+
 * 1.18.x: supported
 * 1.17.x: planned
 * < 1.17: not planned
 
 ### Current Features
+
 * Variant bookshelves in all wood types
 * Storage bookshelves in all wood types
 * Variant and storage bookshelves work with enchanting table (1.18.2 only at the moment)
+* Secret doors and trapdoors in all bookshelf types
 
 ### Planned/Possible Features
+
 * Iron shelves which display their contents (in progress)
-* Secret doors disguised as bookshelves
 * More varieties of bookshelves
 * Display cases
 * Variant barrels in all wood types
