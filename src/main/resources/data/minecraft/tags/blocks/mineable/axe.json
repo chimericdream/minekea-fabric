@@ -15,6 +15,22 @@
         "shelfstorage:spruce_storage_shelf",
         "shelfstorage:warped_bookshelf",
         "shelfstorage:warped_storage_shelf",
-        "shelfstorage:oak_storage_shelf"
+        "shelfstorage:oak_storage_shelf",
+        "shelfstorage:acacia_bookshelf_door",
+        "shelfstorage:acacia_bookshelf_trapdoor",
+        "shelfstorage:birch_bookshelf_door",
+        "shelfstorage:birch_bookshelf_trapdoor",
+        "shelfstorage:crimson_bookshelf_door",
+        "shelfstorage:crimson_bookshelf_trapdoor",
+        "shelfstorage:dark_oak_bookshelf_door",
+        "shelfstorage:dark_oak_bookshelf_trapdoor",
+        "shelfstorage:jungle_bookshelf_door",
+        "shelfstorage:jungle_bookshelf_trapdoor",
+        "shelfstorage:oak_bookshelf_door",
+        "shelfstorage:oak_bookshelf_trapdoor",
+        "shelfstorage:spruce_bookshelf_door",
+        "shelfstorage:spruce_bookshelf_trapdoor",
+        "shelfstorage:warped_bookshelf_door",
+        "shelfstorage:warped_bookshelf_trapdoor"
     ]
 }

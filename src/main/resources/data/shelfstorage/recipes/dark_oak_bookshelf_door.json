@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "#",
+        "#"
+    ],
+    "key": {
+        "#": {"item": "shelfstorage:dark_oak_bookshelf"}
+    },
+    "result": {
+        "item": "shelfstorage:dark_oak_bookshelf_door",
+        "count": "3"
+    }
+}
