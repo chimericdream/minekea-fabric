@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {"item": "minecraft:bookshelf"}
+    },
+    "result": {
+        "item": "shelfstorage:oak_bookshelf_trapdoor",
+        "count": "12"
+    }
+}
