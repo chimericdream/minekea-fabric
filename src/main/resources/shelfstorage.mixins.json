@@ -5,7 +5,9 @@
     "compatibilityLevel": "JAVA_16",
     "mixins": [
     ],
-    "client": [],
+    "client": [
+        "EnchantmentScreenHandlerMixin"
+    ],
     "injectors": {
         "defaultRequire": 1
     }
