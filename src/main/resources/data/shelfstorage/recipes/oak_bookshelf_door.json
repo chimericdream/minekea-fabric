@@ -6,7 +6,7 @@
         "##"
     ],
     "key": {
-        "#": {"item": "shelfstorage:oak_bookshelf"}
+        "#": {"item": "minecraft:bookshelf"}
     },
     "result": {
         "item": "shelfstorage:oak_bookshelf_door",
