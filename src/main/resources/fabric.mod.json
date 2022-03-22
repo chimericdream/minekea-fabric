@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "id": "modid",
+    "id": "shelfstorage",
     "version": "${version}",
     "name": "Shelf Storage",
     "description": "",
