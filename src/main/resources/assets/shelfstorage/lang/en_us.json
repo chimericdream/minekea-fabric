@@ -13,5 +13,21 @@
     "block.shelfstorage.spruce_bookshelf": "Spruce Bookshelf",
     "block.shelfstorage.spruce_storage_shelf": "Spruce Storage Bookshelf",
     "block.shelfstorage.warped_bookshelf": "Warped Bookshelf",
-    "block.shelfstorage.warped_storage_shelf": "Warped Storage Bookshelf"
+    "block.shelfstorage.warped_storage_shelf": "Warped Storage Bookshelf",
+    "block.shelfstorage.acacia_bookshelf_door": "Acacia Bookshelf Secret Door",
+    "block.shelfstorage.birch_bookshelf_door": "Birch Bookshelf Secret Door",
+    "block.shelfstorage.crimson_bookshelf_door": "Crimson Bookshelf Secret Door",
+    "block.shelfstorage.dark_oak_bookshelf_door": "Dark Oak Bookshelf Secret Door",
+    "block.shelfstorage.jungle_bookshelf_door": "Jungle Bookshelf Secret Door",
+    "block.shelfstorage.oak_bookshelf_door": "Oak Bookshelf Secret Door",
+    "block.shelfstorage.spruce_bookshelf_door": "Spruce Bookshelf Secret Door",
+    "block.shelfstorage.warped_bookshelf_door": "Warped Bookshelf Secret Door",
+    "block.shelfstorage.acacia_bookshelf_trapdoor": "Acacia Bookshelf Trapdoor",
+    "block.shelfstorage.birch_bookshelf_trapdoor": "Birch Bookshelf Trapdoor",
+    "block.shelfstorage.crimson_bookshelf_trapdoor": "Crimson Bookshelf Trapdoor",
+    "block.shelfstorage.dark_oak_bookshelf_trapdoor": "Dark Oak Bookshelf Trapdoor",
+    "block.shelfstorage.jungle_bookshelf_trapdoor": "Jungle Bookshelf Trapdoor",
+    "block.shelfstorage.oak_bookshelf_trapdoor": "Oak Bookshelf Trapdoor",
+    "block.shelfstorage.spruce_bookshelf_trapdoor": "Spruce Bookshelf Trapdoor",
+    "block.shelfstorage.warped_bookshelf_trapdoor": "Warped Bookshelf Trapdoor"
 }

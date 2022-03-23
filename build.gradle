@@ -49,6 +49,8 @@ java {
 }
 
 jar {
+	archivesBaseName += "-${project.minecraft_version}"
+
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}
 	}

@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {"item": "shelfstorage:birch_bookshelf"}
+    },
+    "result": {
+        "item": "shelfstorage:birch_bookshelf_trapdoor",
+        "count": 12
+    }
+}

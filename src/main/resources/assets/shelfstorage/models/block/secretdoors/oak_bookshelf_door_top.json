@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/door_top",
+    "textures": {
+        "top": "shelfstorage:block/bookshelves/oak/shelf1",
+        "bottom": "shelfstorage:block/bookshelves/oak/shelf1"
+    }
+}
