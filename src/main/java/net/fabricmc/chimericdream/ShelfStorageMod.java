@@ -2,6 +2,7 @@ package net.fabricmc.chimericdream;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.chimericdream.block.bookshelf.Bookshelves;
+import net.fabricmc.chimericdream.block.crate.Crates;
 import net.fabricmc.chimericdream.block.secretdoor.SecretDoors;
 import net.fabricmc.chimericdream.tag.ShelfStorageTags;
 import org.slf4j.Logger;
@@ -12,12 +13,14 @@ public class ShelfStorageMod implements ModInitializer {
 
     public static final Bookshelves BOOKSHELVES;
     public static final SecretDoors SECRET_DOORS;
+    public static final Crates CRATES;
     // public static final IronShelf IRON_SHELF;
 
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
         BOOKSHELVES = new Bookshelves();
         SECRET_DOORS = new SecretDoors();
+        CRATES = new Crates();
         // IRON_SHELF = new IronShelf();
     }
 
@@ -74,6 +77,7 @@ public class ShelfStorageMod implements ModInitializer {
         LOGGER.info("Registering blocks for Shelf Storage");
         BOOKSHELVES.register();
         SECRET_DOORS.register();
+        CRATES.register();
         // IRON_SHELF.register();
     }
 }

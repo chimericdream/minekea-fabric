@@ -4,7 +4,9 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.chimericdream.block.bookshelf.Bookshelves;
+import net.fabricmc.chimericdream.block.crate.Crates;
 import net.fabricmc.chimericdream.screen.*;
+import net.fabricmc.chimericdream.screen.crate.*;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 
 @Environment(EnvType.CLIENT)
@@ -20,6 +22,14 @@ public class ShelfStorageClient implements ClientModInitializer {
         ScreenRegistry.register(Bookshelves.SPRUCE_STORAGE_SHELF_SCREEN_HANDLER, SpruceStorageShelfScreen::new);
         ScreenRegistry.register(Bookshelves.WARPED_STORAGE_SHELF_SCREEN_HANDLER, WarpedStorageShelfScreen::new);
 
+        ScreenRegistry.register(Crates.ACACIA_CRATE_SCREEN_HANDLER, AcaciaCrateScreen::new);
+        ScreenRegistry.register(Crates.BIRCH_CRATE_SCREEN_HANDLER, BirchCrateScreen::new);
+        ScreenRegistry.register(Crates.CRIMSON_CRATE_SCREEN_HANDLER, CrimsonCrateScreen::new);
+        ScreenRegistry.register(Crates.DARK_OAK_CRATE_SCREEN_HANDLER, DarkOakCrateScreen::new);
+        ScreenRegistry.register(Crates.JUNGLE_CRATE_SCREEN_HANDLER, JungleCrateScreen::new);
+        ScreenRegistry.register(Crates.OAK_CRATE_SCREEN_HANDLER, OakCrateScreen::new);
+        ScreenRegistry.register(Crates.SPRUCE_CRATE_SCREEN_HANDLER, SpruceCrateScreen::new);
+        ScreenRegistry.register(Crates.WARPED_CRATE_SCREEN_HANDLER, WarpedCrateScreen::new);
         // BlockRenderLayerMap.INSTANCE.putBlock(ShelfStorageMod.IRON_SHELF, RenderLayer.getCutout());
     }
 }
