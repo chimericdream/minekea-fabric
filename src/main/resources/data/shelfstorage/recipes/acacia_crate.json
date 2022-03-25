@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#X#",
+        "XXX",
+        "#X#"
+    ],
+    "key": {
+        "X": {"item": "minecraft:acacia_planks"},
+        "#": {"item": "minecraft:acacia_log"}
+    },
+    "result": {
+        "item": "shelfstorage:acacia_crate"
+    }
+}

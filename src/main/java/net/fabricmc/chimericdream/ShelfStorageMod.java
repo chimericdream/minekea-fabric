@@ -2,6 +2,7 @@ package net.fabricmc.chimericdream;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.chimericdream.block.bookshelf.Bookshelves;
+import net.fabricmc.chimericdream.block.crate.Crates;
 import net.fabricmc.chimericdream.block.secretdoor.SecretDoors;
 import net.fabricmc.chimericdream.tag.ShelfStorageTags;
 import org.slf4j.Logger;
@@ -12,12 +13,14 @@ public class ShelfStorageMod implements ModInitializer {
 
     public static final Bookshelves BOOKSHELVES;
     public static final SecretDoors SECRET_DOORS;
+    public static final Crates CRATES;
     // public static final IronShelf IRON_SHELF;
 
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
         BOOKSHELVES = new Bookshelves();
         SECRET_DOORS = new SecretDoors();
+        CRATES = new Crates();
         // IRON_SHELF = new IronShelf();
     }
 
@@ -36,12 +39,11 @@ public class ShelfStorageMod implements ModInitializer {
      * [x] storage version of all bookshelves
      * [x]   - works for enchanting
      * [ ]   - works for enchanting (variable power based on contents)
-     * [ ] secret door bookshelves in all wood types
-     * [ ] crates in all wood types
+     * [x] secret door bookshelves in all wood types
+     * [x] crates in all wood types
      * [ ] variant barrels
      * [ ] variant crafting tables
      * [ ] variant ladders
-     * [ ] fake bookshelves in all wood types (look like bookshelf, tooltip says bookshelf, functions like a door)
      * [ ] bookshelves in non-wood varieties
      * [ ]   - quartz
      * [ ]   - smooth quartz
@@ -74,6 +76,7 @@ public class ShelfStorageMod implements ModInitializer {
         LOGGER.info("Registering blocks for Shelf Storage");
         BOOKSHELVES.register();
         SECRET_DOORS.register();
+        CRATES.register();
         // IRON_SHELF.register();
     }
 }

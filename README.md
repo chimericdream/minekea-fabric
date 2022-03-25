@@ -18,6 +18,7 @@ This mod contains a variety of functional and decorative shelving units for use 
 * Storage bookshelves in all wood types
 * Variant and storage bookshelves work with enchanting table
 * Secret doors and trapdoors in all bookshelf types
+* Storage crates in all wood types which can store as much as a double chest
 
 ### Planned/Possible Features
 

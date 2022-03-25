@@ -29,5 +29,13 @@
     "block.shelfstorage.jungle_bookshelf_trapdoor": "Jungle Bookshelf Trapdoor",
     "block.shelfstorage.oak_bookshelf_trapdoor": "Oak Bookshelf Trapdoor",
     "block.shelfstorage.spruce_bookshelf_trapdoor": "Spruce Bookshelf Trapdoor",
-    "block.shelfstorage.warped_bookshelf_trapdoor": "Warped Bookshelf Trapdoor"
+    "block.shelfstorage.warped_bookshelf_trapdoor": "Warped Bookshelf Trapdoor",
+    "block.shelfstorage.acacia_crate": "Acacia Crate",
+    "block.shelfstorage.birch_crate": "Birch Crate",
+    "block.shelfstorage.crimson_crate": "Crimson Crate",
+    "block.shelfstorage.dark_oak_crate": "Dark Oak Crate",
+    "block.shelfstorage.jungle_crate": "Jungle Crate",
+    "block.shelfstorage.oak_crate": "Oak Crate",
+    "block.shelfstorage.spruce_crate": "Spruce Crate",
+    "block.shelfstorage.warped_crate": "Warped Crate"
 }
