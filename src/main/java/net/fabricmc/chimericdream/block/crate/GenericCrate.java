@@ -4,7 +4,10 @@ import net.fabricmc.chimericdream.ModInfo;
 import net.fabricmc.chimericdream.block.crate.entity.GenericCrateBlockEntity;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
@@ -26,7 +29,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class GenericCrate extends BlockWithEntity {
-    public static final Integer INVENTORY_SIZE = 27;
+    public static final Integer INVENTORY_SIZE = 54;
     public static final EnumProperty<Axis> AXIS;
 
     private String woodType = "";
@@ -36,8 +39,8 @@ public class GenericCrate extends BlockWithEntity {
         AXIS = Properties.AXIS;
     }
 
-    GenericCrate(String woodType) {
-        super(Settings.copy(Blocks.OAK_PLANKS));
+    GenericCrate(String woodType, Settings settings) {
+        super(settings);
 
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
         this.woodType = woodType;

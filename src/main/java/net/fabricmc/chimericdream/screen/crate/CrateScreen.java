@@ -13,7 +13,7 @@ public class CrateScreen extends HandledScreen<CrateScreenHandler> {
 
     public CrateScreen(CrateScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
-        this.backgroundHeight = 114 + 3 * 18;
+        this.backgroundHeight = 114 + 6 * 18;
         this.playerInventoryTitleY = this.backgroundHeight - 94;
     }
 
@@ -31,7 +31,7 @@ public class CrateScreen extends HandledScreen<CrateScreenHandler> {
         RenderSystem.setShaderTexture(0, TEXTURE);
         int i = (this.width - this.backgroundWidth) / 2;
         int j = (this.height - this.backgroundHeight) / 2;
-        this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, 3 * 18 + 17);
-        this.drawTexture(matrices, i, j + 3 * 18 + 17, 0, 126, this.backgroundWidth, 96);
+        this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, 6 * 18 + 17);
+        this.drawTexture(matrices, i, j + 6 * 18 + 17, 0, 126, this.backgroundWidth, 96);
     }
 }

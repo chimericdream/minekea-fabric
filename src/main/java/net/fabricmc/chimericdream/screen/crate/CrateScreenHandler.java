@@ -30,7 +30,7 @@ public class CrateScreenHandler extends ScreenHandler {
         inventory.onOpen(playerInventory.player);
 
         int i = -18, j, k;
-        for (j = 0; j < 3; ++j) {
+        for (j = 0; j < 6; ++j) {
             for (k = 0; k < 9; ++k) {
                 this.addSlot(new Slot(inventory, k + j * 9, 8 + k * 18, 18 + j * 18));
             }
@@ -38,12 +38,12 @@ public class CrateScreenHandler extends ScreenHandler {
 
         for (j = 0; j < 3; ++j) {
             for (k = 0; k < 9; ++k) {
-                this.addSlot(new Slot(playerInventory, k + j * 9 + 9, 8 + k * 18, 103 + j * 18 + i));
+                this.addSlot(new Slot(playerInventory, k + j * 9 + 9, 8 + k * 18, 157 + j * 18 + i));
             }
         }
 
         for (j = 0; j < 9; ++j) {
-            this.addSlot(new Slot(playerInventory, j, 8 + j * 18, 161 + i));
+            this.addSlot(new Slot(playerInventory, j, 8 + j * 18, 215 + i));
         }
     }
 
