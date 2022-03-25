@@ -1,8 +1,9 @@
 package com.chimericdream.shelfstorage;
 
-import com.chimericdream.shelfstorage.block.bookshelf.Bookshelves;
-import com.chimericdream.shelfstorage.block.crate.Crates;
-import com.chimericdream.shelfstorage.block.secretdoor.SecretDoors;
+import com.chimericdream.shelfstorage.block.bookshelves.Bookshelves;
+import com.chimericdream.shelfstorage.block.crates.Crates;
+import com.chimericdream.shelfstorage.block.doors.Doors;
+import com.chimericdream.shelfstorage.block.trapdoors.Trapdoors;
 import com.chimericdream.shelfstorage.tag.ShelfStorageTags;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -12,14 +13,16 @@ public class ShelfStorageMod implements ModInitializer {
     public static final Logger LOGGER;
 
     public static final Bookshelves BOOKSHELVES;
-    public static final SecretDoors SECRET_DOORS;
+    public static final Doors DOORS;
+    public static final Trapdoors TRAPDOORS;
     public static final Crates CRATES;
     // public static final IronShelf IRON_SHELF;
 
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
         BOOKSHELVES = new Bookshelves();
-        SECRET_DOORS = new SecretDoors();
+        DOORS = new Doors();
+        TRAPDOORS = new Trapdoors();
         CRATES = new Crates();
         // IRON_SHELF = new IronShelf();
     }
@@ -75,7 +78,8 @@ public class ShelfStorageMod implements ModInitializer {
 
         LOGGER.info("Registering blocks for Shelf Storage");
         BOOKSHELVES.register();
-        SECRET_DOORS.register();
+        DOORS.register();
+        TRAPDOORS.register();
         CRATES.register();
         // IRON_SHELF.register();
     }

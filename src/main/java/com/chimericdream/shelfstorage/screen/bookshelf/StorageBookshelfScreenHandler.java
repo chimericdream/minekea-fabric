@@ -1,5 +1,6 @@
 package com.chimericdream.shelfstorage.screen.bookshelf;
 
+import com.chimericdream.shelfstorage.block.bookshelves.storage.GenericStorageBookshelf;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -13,26 +14,24 @@ public class StorageBookshelfScreenHandler extends ScreenHandler {
     private final Inventory inventory;
 
     public StorageBookshelfScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(null, syncId, playerInventory, new SimpleInventory(9));
+        this(null, syncId, playerInventory, new SimpleInventory(GenericStorageBookshelf.INVENTORY_SIZE));
     }
 
     public StorageBookshelfScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory) {
-        this(type, syncId, playerInventory, new SimpleInventory(9));
+        this(type, syncId, playerInventory, new SimpleInventory(GenericStorageBookshelf.INVENTORY_SIZE));
     }
 
     public StorageBookshelfScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, Inventory inventory) {
         super(type, syncId);
-        checkSize(inventory, 9);
+        checkSize(inventory, GenericStorageBookshelf.INVENTORY_SIZE);
 
         this.inventory = inventory;
 
         inventory.onOpen(playerInventory.player);
 
         int i = -18, j, k;
-        for (j = 0; j < 1; ++j) {
-            for (k = 0; k < 9; ++k) {
-                this.addSlot(new Slot(inventory, k + j * 9, 8 + k * 18, 18 + j * 18));
-            }
+        for (k = 0; k < 9; ++k) {
+            this.addSlot(new Slot(inventory, k, 8 + k * 18, 18));
         }
 
         for (j = 0; j < 3; ++j) {

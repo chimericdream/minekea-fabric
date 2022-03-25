@@ -1,7 +1,7 @@
 package com.chimericdream.shelfstorage;
 
-import com.chimericdream.shelfstorage.block.bookshelf.Bookshelves;
-import com.chimericdream.shelfstorage.block.crate.Crates;
+import com.chimericdream.shelfstorage.block.bookshelves.Bookshelves;
+import com.chimericdream.shelfstorage.block.crates.Crates;
 import com.chimericdream.shelfstorage.screen.bookshelf.StorageBookshelfScreen;
 import com.chimericdream.shelfstorage.screen.crate.CrateScreen;
 import net.fabricmc.api.ClientModInitializer;

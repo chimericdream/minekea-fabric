@@ -1,6 +1,6 @@
 package com.chimericdream.shelfstorage.mixin;
 
-import com.chimericdream.shelfstorage.block.bookshelf.Bookshelves;
+import com.chimericdream.shelfstorage.block.bookshelves.Bookshelves;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

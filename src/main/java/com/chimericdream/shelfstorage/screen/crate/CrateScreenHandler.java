@@ -1,6 +1,6 @@
 package com.chimericdream.shelfstorage.screen.crate;
 
-import com.chimericdream.shelfstorage.block.crate.GenericCrate;
+import com.chimericdream.shelfstorage.block.crates.GenericCrate;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
