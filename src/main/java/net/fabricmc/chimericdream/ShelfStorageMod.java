@@ -39,12 +39,11 @@ public class ShelfStorageMod implements ModInitializer {
      * [x] storage version of all bookshelves
      * [x]   - works for enchanting
      * [ ]   - works for enchanting (variable power based on contents)
-     * [ ] secret door bookshelves in all wood types
-     * [ ] crates in all wood types
+     * [x] secret door bookshelves in all wood types
+     * [x] crates in all wood types
      * [ ] variant barrels
      * [ ] variant crafting tables
      * [ ] variant ladders
-     * [ ] fake bookshelves in all wood types (look like bookshelf, tooltip says bookshelf, functions like a door)
      * [ ] bookshelves in non-wood varieties
      * [ ]   - quartz
      * [ ]   - smooth quartz
