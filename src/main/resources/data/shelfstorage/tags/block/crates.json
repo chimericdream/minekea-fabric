@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "shelfstorage:acacia_crate",
+        "shelfstorage:birch_crate",
+        "shelfstorage:crimson_crate",
+        "shelfstorage:dark_oak_crate",
+        "shelfstorage:jungle_crate",
+        "shelfstorage:oak_crate",
+        "shelfstorage:spruce_crate",
+        "shelfstorage:warped_crate"
+    ]
+}

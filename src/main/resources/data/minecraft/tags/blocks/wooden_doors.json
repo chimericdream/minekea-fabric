@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "shelfstorage:acacia_bookshelf_door",
+        "shelfstorage:birch_bookshelf_door",
+        "shelfstorage:crimson_bookshelf_door",
+        "shelfstorage:dark_oak_bookshelf_door",
+        "shelfstorage:jungle_bookshelf_door",
+        "shelfstorage:oak_bookshelf_door",
+        "shelfstorage:spruce_bookshelf_door",
+        "shelfstorage:warped_bookshelf_door"
+    ]
+}
