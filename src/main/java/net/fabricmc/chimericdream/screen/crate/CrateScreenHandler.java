@@ -1,23 +1,29 @@
 package net.fabricmc.chimericdream.screen.crate;
 
-import net.fabricmc.chimericdream.block.crate.AbstractCrate;
+import net.fabricmc.chimericdream.block.crate.GenericCrate;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
-abstract public class AbstractCrateScreenHandler extends ScreenHandler {
-    private Inventory inventory;
+public class CrateScreenHandler extends ScreenHandler {
+    private final Inventory inventory;
 
-    public AbstractCrateScreenHandler(ScreenHandlerType<?> handler, int syncId) {
-        super(handler, syncId);
+    public CrateScreenHandler(int syncId, PlayerInventory playerInventory) {
+        this(null, syncId, playerInventory, new SimpleInventory(GenericCrate.INVENTORY_SIZE));
     }
 
-    public void init(PlayerInventory playerInventory, Inventory inventory) {
-        checkSize(inventory, AbstractCrate.INVENTORY_SIZE);
+    public CrateScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory) {
+        this(type, syncId, playerInventory, new SimpleInventory(GenericCrate.INVENTORY_SIZE));
+    }
+
+    public CrateScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, Inventory inventory) {
+        super(type, syncId);
+        checkSize(inventory, GenericCrate.INVENTORY_SIZE);
 
         this.inventory = inventory;
 

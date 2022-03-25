@@ -5,14 +5,13 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public abstract class AbstractCrateScreen<T extends ScreenHandler> extends HandledScreen<T> {
+public class CrateScreen extends HandledScreen<CrateScreenHandler> {
     private static final Identifier TEXTURE = new Identifier("minecraft", "textures/gui/container/generic_54.png");
 
-    public AbstractCrateScreen(T handler, PlayerInventory inventory, Text title) {
+    public CrateScreen(CrateScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
         this.backgroundHeight = 114 + 3 * 18;
         this.playerInventoryTitleY = this.backgroundHeight - 94;

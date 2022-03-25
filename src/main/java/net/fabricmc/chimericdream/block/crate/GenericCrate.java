@@ -1,9 +1,15 @@
 package net.fabricmc.chimericdream.block.crate;
 
-import net.fabricmc.chimericdream.block.crate.entity.AcaciaCrateBlockEntity;
+import net.fabricmc.chimericdream.ModInfo;
+import net.fabricmc.chimericdream.block.crate.entity.GenericCrateBlockEntity;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
@@ -11,26 +17,49 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Direction.Axis;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
-abstract public class AbstractCrate extends BlockWithEntity {
+public class GenericCrate extends BlockWithEntity {
     public static final Integer INVENTORY_SIZE = 27;
+    public static final EnumProperty<Axis> AXIS;
 
-    AbstractCrate(AbstractBlock.Settings settings) {
-        super(settings);
-        this.setDefaultState((BlockState) this.getDefaultState().with(AXIS, Axis.Y));
+    private String woodType = "";
+    private final Identifier BLOCK_ID;
+
+    static {
+        AXIS = Properties.AXIS;
     }
 
-    abstract public void register();
+    GenericCrate(String woodType) {
+        super(Settings.copy(Blocks.OAK_PLANKS));
 
-    public static final EnumProperty<Axis> AXIS;
+        this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
+        this.woodType = woodType;
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("%s_crate", woodType));
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new GenericCrateBlockEntity(pos, state);
+    }
+
+    public Identifier getBlockID() {
+        return BLOCK_ID;
+    }
+
+    public void register() {
+        Registry.register(Registry.BLOCK, BLOCK_ID, this);
+        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+
+        FuelRegistry.INSTANCE.add(this, 300);
+        FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+    }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
         return changeRotation(state, rotation);
@@ -91,8 +120,8 @@ abstract public class AbstractCrate extends BlockWithEntity {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof AcaciaCrateBlockEntity) {
-                ItemScatterer.spawn(world, pos, (AcaciaCrateBlockEntity) blockEntity);
+            if (blockEntity instanceof GenericCrateBlockEntity) {
+                ItemScatterer.spawn(world, pos, (GenericCrateBlockEntity) blockEntity);
                 // update comparators
                 world.updateComparators(pos, this);
             }
@@ -108,9 +137,5 @@ abstract public class AbstractCrate extends BlockWithEntity {
     @Override
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
-    }
-
-    static {
-        AXIS = Properties.AXIS;
     }
 }
