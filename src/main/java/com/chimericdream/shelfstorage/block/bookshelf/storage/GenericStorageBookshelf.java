@@ -1,49 +1,40 @@
-package com.chimericdream.shelfstorage.block.bookshelf;
+package com.chimericdream.shelfstorage.block.bookshelf.storage;
 
-import com.chimericdream.shelfstorage.ModInfo;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
+import com.chimericdream.shelfstorage.block.bookshelf.storage.entity.GenericStorageBookshelfBlockEntity;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
-public class WarpedStorageShelf extends AbstractStorageShelf implements BlockEntityProvider {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "warped_storage_shelf");
+public abstract class GenericStorageBookshelf extends BlockWithEntity {
+    public static final Integer INVENTORY_SIZE = 9;
+    public static final IntProperty FILL_LEVEL = IntProperty.of("fill_level", 0, 4);
 
-    public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+    GenericStorageBookshelf() {
+        super(Settings.copy(Blocks.CHEST));
+        setDefaultState(getStateManager().getDefaultState().with(FILL_LEVEL, 0));
+    }
 
-        FuelRegistry.INSTANCE.add(this, 300);
-        FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+    GenericStorageBookshelf(Settings settings) {
+        super(settings);
+        setDefaultState(getStateManager().getDefaultState().with(FILL_LEVEL, 0));
     }
 
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, Bookshelves.WARPED_STORAGE_SHELF_BLOCK_ENTITY, WarpedStorageShelfBlockEntity::tick);
+    protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
+        stateManager.add(FILL_LEVEL);
     }
 
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new WarpedStorageShelfBlockEntity(pos, state);
-    }
+    abstract public void register();
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {
@@ -70,8 +61,8 @@ public class WarpedStorageShelf extends AbstractStorageShelf implements BlockEnt
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof WarpedStorageShelfBlockEntity) {
-                ItemScatterer.spawn(world, pos, (WarpedStorageShelfBlockEntity) blockEntity);
+            if (blockEntity instanceof GenericStorageBookshelfBlockEntity) {
+                ItemScatterer.spawn(world, pos, (GenericStorageBookshelfBlockEntity) blockEntity);
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -86,5 +77,25 @@ public class WarpedStorageShelf extends AbstractStorageShelf implements BlockEnt
     @Override
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
+    }
+
+    public static int getFillLevel(long slots) {
+        if (slots == 0) {
+            return 0;
+        }
+
+        if (slots == 9) {
+            return 4;
+        }
+
+        if (slots > 7) {
+            return 3;
+        }
+
+        if (slots > 3) {
+            return 2;
+        }
+
+        return 1;
     }
 }

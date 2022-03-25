@@ -1,6 +1,8 @@
-package com.chimericdream.shelfstorage.block.bookshelf;
+package com.chimericdream.shelfstorage.block.bookshelf.storage;
 
 import com.chimericdream.shelfstorage.ModInfo;
+import com.chimericdream.shelfstorage.block.bookshelf.Bookshelves;
+import com.chimericdream.shelfstorage.block.bookshelf.storage.entity.BirchStorageBookshelfBlockEntity;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockEntityProvider;
@@ -24,7 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
-public class BirchStorageShelf extends AbstractStorageShelf implements BlockEntityProvider {
+public class BirchStorageBookshelf extends GenericStorageBookshelf implements BlockEntityProvider {
     public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "birch_storage_shelf");
 
     public void register() {
@@ -37,12 +39,12 @@ public class BirchStorageShelf extends AbstractStorageShelf implements BlockEnti
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, Bookshelves.BIRCH_STORAGE_SHELF_BLOCK_ENTITY, BirchStorageShelfBlockEntity::tick);
+        return checkType(type, Bookshelves.BIRCH_STORAGE_SHELF_BLOCK_ENTITY, BirchStorageBookshelfBlockEntity::tick);
     }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new BirchStorageShelfBlockEntity(pos, state);
+        return new BirchStorageBookshelfBlockEntity(pos, state);
     }
 
     @Override
@@ -70,8 +72,8 @@ public class BirchStorageShelf extends AbstractStorageShelf implements BlockEnti
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof BirchStorageShelfBlockEntity) {
-                ItemScatterer.spawn(world, pos, (BirchStorageShelfBlockEntity) blockEntity);
+            if (blockEntity instanceof BirchStorageBookshelfBlockEntity) {
+                ItemScatterer.spawn(world, pos, (BirchStorageBookshelfBlockEntity) blockEntity);
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);

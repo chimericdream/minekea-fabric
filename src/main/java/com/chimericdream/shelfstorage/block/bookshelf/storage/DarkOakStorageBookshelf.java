@@ -1,6 +1,8 @@
-package com.chimericdream.shelfstorage.block.bookshelf;
+package com.chimericdream.shelfstorage.block.bookshelf.storage;
 
 import com.chimericdream.shelfstorage.ModInfo;
+import com.chimericdream.shelfstorage.block.bookshelf.Bookshelves;
+import com.chimericdream.shelfstorage.block.bookshelf.storage.entity.DarkOakStorageBookshelfBlockEntity;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockEntityProvider;
@@ -24,8 +26,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
-public class AcaciaStorageShelf extends AbstractStorageShelf implements BlockEntityProvider {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "acacia_storage_shelf");
+public class DarkOakStorageBookshelf extends GenericStorageBookshelf implements BlockEntityProvider {
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "dark_oak_storage_shelf");
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
@@ -37,12 +39,12 @@ public class AcaciaStorageShelf extends AbstractStorageShelf implements BlockEnt
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, Bookshelves.ACACIA_STORAGE_SHELF_BLOCK_ENTITY, AcaciaStorageShelfBlockEntity::tick);
+        return checkType(type, Bookshelves.DARK_OAK_STORAGE_SHELF_BLOCK_ENTITY, DarkOakStorageBookshelfBlockEntity::tick);
     }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AcaciaStorageShelfBlockEntity(pos, state);
+        return new DarkOakStorageBookshelfBlockEntity(pos, state);
     }
 
     @Override
@@ -70,8 +72,8 @@ public class AcaciaStorageShelf extends AbstractStorageShelf implements BlockEnt
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof AcaciaStorageShelfBlockEntity) {
-                ItemScatterer.spawn(world, pos, (AcaciaStorageShelfBlockEntity) blockEntity);
+            if (blockEntity instanceof DarkOakStorageBookshelfBlockEntity) {
+                ItemScatterer.spawn(world, pos, (DarkOakStorageBookshelfBlockEntity) blockEntity);
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);

@@ -1,49 +1,48 @@
-package com.chimericdream.shelfstorage.screen;
+package com.chimericdream.shelfstorage.screen.bookshelf;
 
-import com.chimericdream.shelfstorage.block.bookshelf.Bookshelves;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
-public class DarkOakStorageShelfScreenHandler extends ScreenHandler {
+public class StorageBookshelfScreenHandler extends ScreenHandler {
     private final Inventory inventory;
 
-    public DarkOakStorageShelfScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new SimpleInventory(9));
+    public StorageBookshelfScreenHandler(int syncId, PlayerInventory playerInventory) {
+        this(null, syncId, playerInventory, new SimpleInventory(9));
     }
 
-    public DarkOakStorageShelfScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
-        super(Bookshelves.DARK_OAK_STORAGE_SHELF_SCREEN_HANDLER, syncId);
+    public StorageBookshelfScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory) {
+        this(type, syncId, playerInventory, new SimpleInventory(9));
+    }
 
+    public StorageBookshelfScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, Inventory inventory) {
+        super(type, syncId);
         checkSize(inventory, 9);
 
         this.inventory = inventory;
 
         inventory.onOpen(playerInventory.player);
 
-        int m, l;
-
-        // Our inventory
-        for (m = 0; m < 3; ++m) {
-            for (l = 0; l < 3; ++l) {
-                this.addSlot(new Slot(inventory, l + m * 3, 62 + l * 18, 17 + m * 18));
+        int i = -18, j, k;
+        for (j = 0; j < 1; ++j) {
+            for (k = 0; k < 9; ++k) {
+                this.addSlot(new Slot(inventory, k + j * 9, 8 + k * 18, 18 + j * 18));
             }
         }
 
-        // The player inventory
-        for (m = 0; m < 3; ++m) {
-            for (l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + m * 9 + 9, 8 + l * 18, 84 + m * 18));
+        for (j = 0; j < 3; ++j) {
+            for (k = 0; k < 9; ++k) {
+                this.addSlot(new Slot(playerInventory, k + j * 9 + 9, 8 + k * 18, 67 + j * 18 + i));
             }
         }
 
-        // The player Hotbar
-        for (m = 0; m < 9; ++m) {
-            this.addSlot(new Slot(playerInventory, m, 8 + m * 18, 142));
+        for (j = 0; j < 9; ++j) {
+            this.addSlot(new Slot(playerInventory, j, 8 + j * 18, 125 + i));
         }
     }
 
