@@ -1,11 +1,11 @@
 package com.chimericdream.shelfstorage.block.crate.entity;
 
-import com.chimericdream.shelfstorage.block.crate.Crates;
 import com.chimericdream.shelfstorage.block.crate.GenericCrate;
 import com.chimericdream.shelfstorage.screen.crate.CrateScreenHandler;
 import com.chimericdream.shelfstorage.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -20,15 +20,9 @@ import net.minecraft.util.math.BlockPos;
 
 public class GenericCrateBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(GenericCrate.INVENTORY_SIZE, ItemStack.EMPTY);
-    private final String woodType;
 
-    public GenericCrateBlockEntity(BlockPos pos, BlockState state) {
-        this(pos, state, "oak");
-    }
-
-    public GenericCrateBlockEntity(BlockPos pos, BlockState state, String woodType) {
-        super(Crates.CRATE_BLOCK_ENTITY, pos, state);
-        this.woodType = woodType;
+    public GenericCrateBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
     @Override

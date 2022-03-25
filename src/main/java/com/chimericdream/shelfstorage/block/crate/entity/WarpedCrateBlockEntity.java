@@ -10,13 +10,13 @@ import net.minecraft.util.math.BlockPos;
 
 public class WarpedCrateBlockEntity extends GenericCrateBlockEntity {
     public WarpedCrateBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, "warped");
+        super(Crates.WARPED_CRATE_BLOCK_ENTITY, pos, state);
     }
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         // We provide *this* to the screenHandler as our class Implements Inventory
         // Only the Server has the Inventory at the start, this will be synced to the client in the ScreenHandler
-        return new CrateScreenHandler(Crates.ACACIA_CRATE_SCREEN_HANDLER, syncId, playerInventory, this);
+        return new CrateScreenHandler(Crates.WARPED_CRATE_SCREEN_HANDLER, syncId, playerInventory, this);
     }
 }

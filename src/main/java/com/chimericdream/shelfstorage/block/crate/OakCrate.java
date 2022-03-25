@@ -1,6 +1,6 @@
 package com.chimericdream.shelfstorage.block.crate;
 
-import com.chimericdream.shelfstorage.block.crate.entity.AcaciaCrateBlockEntity;
+import com.chimericdream.shelfstorage.block.crate.entity.OakCrateBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -14,6 +14,6 @@ public class OakCrate extends GenericCrate {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AcaciaCrateBlockEntity(pos, state);
+        return new OakCrateBlockEntity(pos, state);
     }
 }

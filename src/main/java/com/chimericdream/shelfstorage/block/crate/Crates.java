@@ -1,6 +1,6 @@
 package com.chimericdream.shelfstorage.block.crate;
 
-import com.chimericdream.shelfstorage.block.crate.entity.GenericCrateBlockEntity;
+import com.chimericdream.shelfstorage.block.crate.entity.*;
 import com.chimericdream.shelfstorage.screen.crate.CrateScreenHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
@@ -18,7 +18,14 @@ public class Crates {
     public static final GenericCrate SPRUCE_CRATE;
     public static final GenericCrate WARPED_CRATE;
 
-    public static BlockEntityType<GenericCrateBlockEntity> CRATE_BLOCK_ENTITY;
+    public static BlockEntityType<AcaciaCrateBlockEntity> ACACIA_CRATE_BLOCK_ENTITY;
+    public static BlockEntityType<BirchCrateBlockEntity> BIRCH_CRATE_BLOCK_ENTITY;
+    public static BlockEntityType<CrimsonCrateBlockEntity> CRIMSON_CRATE_BLOCK_ENTITY;
+    public static BlockEntityType<DarkOakCrateBlockEntity> DARK_OAK_CRATE_BLOCK_ENTITY;
+    public static BlockEntityType<JungleCrateBlockEntity> JUNGLE_CRATE_BLOCK_ENTITY;
+    public static BlockEntityType<OakCrateBlockEntity> OAK_CRATE_BLOCK_ENTITY;
+    public static BlockEntityType<SpruceCrateBlockEntity> SPRUCE_CRATE_BLOCK_ENTITY;
+    public static BlockEntityType<WarpedCrateBlockEntity> WARPED_CRATE_BLOCK_ENTITY;
 
     public static ScreenHandlerType<CrateScreenHandler> ACACIA_CRATE_SCREEN_HANDLER;
     public static ScreenHandlerType<CrateScreenHandler> BIRCH_CRATE_SCREEN_HANDLER;
@@ -59,10 +66,13 @@ public class Crates {
         SPRUCE_CRATE.register();
         WARPED_CRATE.register();
 
-        CRATE_BLOCK_ENTITY = Registry.register(
-            Registry.BLOCK_ENTITY_TYPE,
-            "shelfstorage:crate_block_entity",
-            FabricBlockEntityTypeBuilder.create(GenericCrateBlockEntity::new, BIRCH_CRATE, CRIMSON_CRATE, DARK_OAK_CRATE, JUNGLE_CRATE, OAK_CRATE, SPRUCE_CRATE, WARPED_CRATE).build(null)
-        );
+        ACACIA_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "shelfstorage:acacia_crate_block_entity", FabricBlockEntityTypeBuilder.create(AcaciaCrateBlockEntity::new, ACACIA_CRATE).build(null));
+        BIRCH_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "shelfstorage:birch_crate_block_entity", FabricBlockEntityTypeBuilder.create(BirchCrateBlockEntity::new, BIRCH_CRATE).build(null));
+        CRIMSON_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "shelfstorage:crimson_crate_block_entity", FabricBlockEntityTypeBuilder.create(CrimsonCrateBlockEntity::new, CRIMSON_CRATE).build(null));
+        DARK_OAK_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "shelfstorage:dark_oak_crate_block_entity", FabricBlockEntityTypeBuilder.create(DarkOakCrateBlockEntity::new, DARK_OAK_CRATE).build(null));
+        JUNGLE_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "shelfstorage:jungle_crate_block_entity", FabricBlockEntityTypeBuilder.create(JungleCrateBlockEntity::new, JUNGLE_CRATE).build(null));
+        OAK_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "shelfstorage:oak_crate_block_entity", FabricBlockEntityTypeBuilder.create(OakCrateBlockEntity::new, OAK_CRATE).build(null));
+        SPRUCE_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "shelfstorage:spruce_crate_block_entity", FabricBlockEntityTypeBuilder.create(SpruceCrateBlockEntity::new, SPRUCE_CRATE).build(null));
+        WARPED_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "shelfstorage:warped_crate_block_entity", FabricBlockEntityTypeBuilder.create(WarpedCrateBlockEntity::new, WARPED_CRATE).build(null));
     }
 }

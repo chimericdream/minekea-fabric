@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class AcaciaCrateBlockEntity extends GenericCrateBlockEntity {
     public AcaciaCrateBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, "acacia");
+        super(Crates.ACACIA_CRATE_BLOCK_ENTITY, pos, state);
     }
 
     @Override

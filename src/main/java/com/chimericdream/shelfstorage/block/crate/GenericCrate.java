@@ -32,7 +32,6 @@ public class GenericCrate extends BlockWithEntity {
     public static final Integer INVENTORY_SIZE = 54;
     public static final EnumProperty<Axis> AXIS;
 
-    private String woodType = "";
     private final Identifier BLOCK_ID;
 
     static {
@@ -43,13 +42,12 @@ public class GenericCrate extends BlockWithEntity {
         super(settings);
 
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
-        this.woodType = woodType;
         BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("%s_crate", woodType));
     }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new GenericCrateBlockEntity(pos, state);
+        return new GenericCrateBlockEntity(Crates.OAK_CRATE_BLOCK_ENTITY, pos, state);
     }
 
     public Identifier getBlockID() {
