@@ -33,8 +33,6 @@ public class OakStorageShelfBlockEntity extends BlockEntity implements NamedScre
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        //We provide *this* to the screenHandler as our class Implements Inventory
-        //Only the Server has the Inventory at the start, this will be synced to the client in the ScreenHandler
         return new OakStorageShelfScreenHandler(syncId, playerInventory, this);
     }
 

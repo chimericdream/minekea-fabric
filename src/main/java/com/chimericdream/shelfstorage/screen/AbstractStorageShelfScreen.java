@@ -10,7 +10,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public abstract class AbstractStorageShelfScreen<T extends ScreenHandler> extends HandledScreen<T> {
-    // A path to the gui texture. In this example we use the texture from the dispenser
     private static final Identifier TEXTURE = new Identifier("minecraft", "textures/gui/container/dispenser.png");
 
     public AbstractStorageShelfScreen(T handler, PlayerInventory inventory, Text title) {
