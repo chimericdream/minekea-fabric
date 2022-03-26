@@ -59,6 +59,10 @@ public class SimpleInventoryScreenHandler extends ScreenHandler {
         }
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
     @Override
     public boolean canUse(PlayerEntity player) {
         return this.inventory.canPlayerUse(player);

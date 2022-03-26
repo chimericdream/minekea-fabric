@@ -17,9 +17,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
+import net.minecraft.state.property.*;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -30,18 +28,23 @@ import net.minecraft.world.World;
 
 public class GenericCrate extends BlockWithEntity {
     public static final Integer ROW_COUNT = 6;
+
     public static final EnumProperty<Axis> AXIS;
+    public static final DirectionProperty FACING;
+    public static final BooleanProperty OPEN;
 
     private final Identifier BLOCK_ID;
 
     static {
         AXIS = Properties.AXIS;
+        FACING = Properties.FACING;
+        OPEN = Properties.OPEN;
     }
 
     GenericCrate(String woodType, Settings settings) {
         super(settings);
 
-        this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
+        this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y).with(FACING, Direction.NORTH).with(OPEN, false));
         BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("%s_crate", woodType));
     }
 
@@ -63,7 +66,11 @@ public class GenericCrate extends BlockWithEntity {
     }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return changeRotation(state, rotation);
+        return (BlockState) state.with(FACING, rotation.rotate((Direction) state.get(FACING)));
+    }
+
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation((Direction) state.get(FACING)));
     }
 
     public static BlockState changeRotation(BlockState state, BlockRotation rotation) {
@@ -84,11 +91,11 @@ public class GenericCrate extends BlockWithEntity {
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{AXIS});
+        builder.add(new Property[]{AXIS, FACING, OPEN});
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
+        return (BlockState) this.getDefaultState().with(AXIS, ctx.getSide().getAxis()).with(FACING, ctx.getPlayerLookDirection().getOpposite());
     }
 
     @Override
