@@ -1,5 +1,6 @@
 package com.chimericdream.shelfstorage.screen;
 
+import com.chimericdream.shelfstorage.util.ScreenHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
@@ -17,7 +18,7 @@ public class SimpleInventoryScreen<Handler extends ScreenHandler> extends Handle
         super(handler, inventory, title);
         this.numRows = numRows;
         this.passEvents = false;
-        this.backgroundHeight = 114 + this.numRows * 18;
+        this.backgroundHeight = 114 + this.numRows * ScreenHelpers.ROW_HEIGHT;
         this.playerInventoryTitleY = this.backgroundHeight - 94;
     }
 
@@ -35,7 +36,7 @@ public class SimpleInventoryScreen<Handler extends ScreenHandler> extends Handle
         RenderSystem.setShaderTexture(0, TEXTURE);
         int i = (this.width - this.backgroundWidth) / 2;
         int j = (this.height - this.backgroundHeight) / 2;
-        this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.numRows * 18 + 17);
-        this.drawTexture(matrices, i, j + this.numRows * 18 + 17, 0, 126, this.backgroundWidth, 96);
+        this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.numRows * ScreenHelpers.ROW_HEIGHT + 17);
+        this.drawTexture(matrices, i, j + this.numRows * ScreenHelpers.ROW_HEIGHT + 17, 0, 126, this.backgroundWidth, 96);
     }
 }

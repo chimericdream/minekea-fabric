@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import static com.chimericdream.shelfstorage.block.bookshelves.storage.AcaciaStorageBookshelf.FILL_LEVEL;
 
 public class GenericStorageBookshelfBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(9, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(GenericStorageBookshelf.ROW_COUNT * 9, ItemStack.EMPTY);
 
     public GenericStorageBookshelfBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);

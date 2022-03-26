@@ -29,7 +29,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class GenericCrate extends BlockWithEntity {
-    public static final Integer INVENTORY_SIZE = 54;
+    public static final Integer ROW_COUNT = 6;
     public static final EnumProperty<Axis> AXIS;
 
     private final Identifier BLOCK_ID;

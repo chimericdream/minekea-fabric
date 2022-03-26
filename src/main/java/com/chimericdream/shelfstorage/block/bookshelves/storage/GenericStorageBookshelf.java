@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public abstract class GenericStorageBookshelf extends BlockWithEntity {
-    public static final Integer INVENTORY_SIZE = 9;
+    public static final Integer ROW_COUNT = 1;
     public static final IntProperty FILL_LEVEL = IntProperty.of("fill_level", 0, 4);
 
     GenericStorageBookshelf() {
