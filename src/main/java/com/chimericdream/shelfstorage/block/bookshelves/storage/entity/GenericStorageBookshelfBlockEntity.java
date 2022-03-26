@@ -6,26 +6,59 @@ import com.chimericdream.shelfstorage.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.ViewerCountManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 import static com.chimericdream.shelfstorage.block.bookshelves.storage.AcaciaStorageBookshelf.FILL_LEVEL;
 
 public class GenericStorageBookshelfBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(GenericStorageBookshelf.ROW_COUNT * 9, ItemStack.EMPTY);
+    private final ViewerCountManager stateManager;
 
     public GenericStorageBookshelfBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+
+        this.stateManager = new ViewerCountManager() {
+            protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
+                GenericStorageBookshelfBlockEntity.this.playSound(state, SoundEvents.ITEM_BOOK_PAGE_TURN);
+                GenericStorageBookshelfBlockEntity.this.setOpen(state, true);
+            }
+
+            protected void onContainerClose(World world, BlockPos pos, BlockState state) {
+                GenericStorageBookshelfBlockEntity.this.playSound(state, SoundEvents.ITEM_BOOK_PUT);
+                GenericStorageBookshelfBlockEntity.this.setOpen(state, false);
+            }
+
+            protected void onViewerCountUpdate(World world, BlockPos pos, BlockState state, int oldViewerCount, int newViewerCount) {
+            }
+
+            protected boolean isPlayerViewing(PlayerEntity player) {
+                if (player.currentScreenHandler instanceof StorageBookshelfScreenHandler) {
+                    Inventory inventory = ((StorageBookshelfScreenHandler) player.currentScreenHandler).getInventory();
+
+                    return inventory == GenericStorageBookshelfBlockEntity.this;
+                } else {
+                    return false;
+                }
+            }
+        };
     }
 
     @Override
@@ -38,16 +71,32 @@ public class GenericStorageBookshelfBlockEntity extends BlockEntity implements N
         return new StorageBookshelfScreenHandler(null, syncId, playerInventory, this);
     }
 
+    public void onOpen(PlayerEntity player) {
+        if (!this.removed && !player.isSpectator()) {
+            this.stateManager.openContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
+        }
+    }
+
+    public void onClose(PlayerEntity player) {
+        if (!this.removed && !player.isSpectator()) {
+            this.stateManager.closeContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
+        }
+    }
+
     public static void tick(World world, BlockPos pos, BlockState state, GenericStorageBookshelfBlockEntity entity) {
         if (world.isClient()) {
             return;
         }
 
-        int fillLevel = GenericStorageBookshelf.getFillLevel(entity.getItems().stream().filter(item -> item.getCount() > 0).count());
-        if (fillLevel != state.get(FILL_LEVEL)) {
-            state = state.with(FILL_LEVEL, fillLevel);
-            world.setBlockState(pos, state);
-            markDirty(world, pos, state);
+        if (!entity.removed) {
+            int fillLevel = GenericStorageBookshelf.getFillLevel(entity.getItems().stream().filter(item -> item.getCount() > 0).count());
+            if (fillLevel != state.get(FILL_LEVEL)) {
+                state = state.with(FILL_LEVEL, fillLevel);
+                world.setBlockState(pos, state);
+                markDirty(world, pos, state);
+            }
+
+            entity.stateManager.updateViewerCount(world, pos, state);
         }
     }
 
@@ -68,5 +117,19 @@ public class GenericStorageBookshelfBlockEntity extends BlockEntity implements N
         Inventories.writeNbt(nbt, items);
 
         super.writeNbt(nbt);
+    }
+
+    void setOpen(BlockState state, boolean open) {
+        this.world.setBlockState(this.getPos(), (BlockState) state.with(GenericStorageBookshelf.OPEN, open), 3);
+    }
+
+    void playSound(BlockState state, SoundEvent soundEvent) {
+        Vec3i vec3i = ((Direction) state.get(GenericStorageBookshelf.FACING)).getVector();
+
+        double d = (double) this.pos.getX() + 0.5 + (double) vec3i.getX() / 2.0;
+        double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;
+        double f = (double) this.pos.getZ() + 0.5 + (double) vec3i.getZ() / 2.0;
+
+        this.world.playSound((PlayerEntity) null, d, e, f, soundEvent, SoundCategory.BLOCKS, 1.0F, 1.0F);
     }
 }
