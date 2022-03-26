@@ -14,10 +14,10 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "net.fabricmc.chimericdream.ShelfStorageMod"
+            "com.chimericdream.shelfstorage.ShelfStorageMod"
         ],
         "client": [
-            "net.fabricmc.chimericdream.ShelfStorageClient"
+            "com.chimericdream.shelfstorage.ShelfStorageClient"
         ]
     },
     "mixins": [
