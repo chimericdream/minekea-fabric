@@ -74,10 +74,10 @@ public class ShelfStorageMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Registering tags for Shelf Storage");
+        LOGGER.info("Registering tags for Minekea");
         ShelfStorageTags.init();
 
-        LOGGER.info("Registering blocks for Shelf Storage");
+        LOGGER.info("Registering blocks for Minekea");
         BOOKSHELVES.register();
         DOORS.register();
         TRAPDOORS.register();

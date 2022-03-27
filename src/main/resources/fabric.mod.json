@@ -2,8 +2,8 @@
     "schemaVersion": 1,
     "id": "shelfstorage",
     "version": "${version}",
-    "name": "Shelf Storage",
-    "description": "",
+    "name": "Minekea",
+    "description": "Simple, functional, decorative blocks for all your building and storage needs (some assembly required)",
     "authors": ["chimericdream"],
     "contact": {
         "homepage": "https://fabricmc.net/",
