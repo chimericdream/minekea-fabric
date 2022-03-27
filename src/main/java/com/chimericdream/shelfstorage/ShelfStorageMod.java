@@ -1,5 +1,6 @@
 package com.chimericdream.shelfstorage;
 
+import com.chimericdream.shelfstorage.block.barrels.Barrels;
 import com.chimericdream.shelfstorage.block.bookshelves.Bookshelves;
 import com.chimericdream.shelfstorage.block.crates.Crates;
 import com.chimericdream.shelfstorage.block.doors.Doors;
@@ -16,7 +17,7 @@ public class ShelfStorageMod implements ModInitializer {
     public static final Doors DOORS;
     public static final Trapdoors TRAPDOORS;
     public static final Crates CRATES;
-    // public static final IronShelf IRON_SHELF;
+    public static final Barrels BARRELS;
 
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
@@ -24,7 +25,7 @@ public class ShelfStorageMod implements ModInitializer {
         DOORS = new Doors();
         TRAPDOORS = new Trapdoors();
         CRATES = new Crates();
-        // IRON_SHELF = new IronShelf();
+        BARRELS = new Barrels();
     }
 
     /*
@@ -44,7 +45,7 @@ public class ShelfStorageMod implements ModInitializer {
      * [ ]   - works for enchanting (variable power based on contents)
      * [x] secret door bookshelves in all wood types
      * [x] crates in all wood types
-     * [ ] variant barrels
+     * [x] variant barrels
      * [ ] variant crafting tables
      * [ ] variant ladders
      * [ ] bookshelves in non-wood varieties
@@ -81,6 +82,6 @@ public class ShelfStorageMod implements ModInitializer {
         DOORS.register();
         TRAPDOORS.register();
         CRATES.register();
-        // IRON_SHELF.register();
+        BARRELS.register();
     }
 }
