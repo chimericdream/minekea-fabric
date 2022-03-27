@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "": [
+            {"model": "minekea:block/bookshelves/dark_oak/shelf0"},
+            {"model": "minekea:block/bookshelves/dark_oak/shelf1"},
+            {"model": "minekea:block/bookshelves/dark_oak/shelf2"},
+            {"model": "minekea:block/bookshelves/dark_oak/shelf3"},
+            {"model": "minekea:block/bookshelves/dark_oak/shelf4"},
+            {"model": "minekea:block/bookshelves/dark_oak/shelf5"},
+            {"model": "minekea:block/bookshelves/dark_oak/shelf6"}
+        ]
+    }
+}

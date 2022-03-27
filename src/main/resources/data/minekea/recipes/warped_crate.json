@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#X#",
+        "XXX",
+        "#X#"
+    ],
+    "key": {
+        "X": {"item": "minecraft:warped_planks"},
+        "#": {"item": "minecraft:warped_stem"}
+    },
+    "result": {
+        "item": "minekea:warped_crate"
+    }
+}

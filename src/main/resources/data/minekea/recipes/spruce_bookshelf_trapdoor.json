@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {"item": "minekea:spruce_bookshelf"}
+    },
+    "result": {
+        "item": "minekea:spruce_bookshelf_trapdoor",
+        "count": 12
+    }
+}

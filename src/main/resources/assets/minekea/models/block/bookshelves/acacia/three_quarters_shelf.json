@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "minecraft:block/acacia_planks",
+        "side": "minekea:block/bookshelves/acacia/three_quarters_shelf"
+    }
+}

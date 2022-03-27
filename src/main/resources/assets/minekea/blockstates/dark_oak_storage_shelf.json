@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "fill_level=0": [{"model": "minekea:block/bookshelves/dark_oak/empty_shelf"}],
+        "fill_level=1": [{"model": "minekea:block/bookshelves/dark_oak/one_quarter_shelf"}],
+        "fill_level=2": [{"model": "minekea:block/bookshelves/dark_oak/one_half_shelf"}],
+        "fill_level=3": [{"model": "minekea:block/bookshelves/dark_oak/three_quarters_shelf"}],
+        "fill_level=4": [{"model": "minekea:block/bookshelves/dark_oak/shelf0"}]
+    }
+}

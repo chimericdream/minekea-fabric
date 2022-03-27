@@ -1,7 +1,0 @@
-{
-    "parent": "minecraft:block/door_top",
-    "textures": {
-        "top": "shelfstorage:block/bookshelves/warped/shelf1",
-        "bottom": "shelfstorage:block/bookshelves/warped/shelf1"
-    }
-}

@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:bookshelf",
+        "minekea:acacia_bookshelf",
+        "minekea:birch_bookshelf",
+        "minekea:crimson_bookshelf",
+        "minekea:dark_oak_bookshelf",
+        "minekea:jungle_bookshelf",
+        "minekea:spruce_bookshelf",
+        "minekea:warped_bookshelf"
+    ]
+}

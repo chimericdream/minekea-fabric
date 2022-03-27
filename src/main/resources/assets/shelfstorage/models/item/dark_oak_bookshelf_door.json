@@ -1,6 +1,0 @@
-{
-    "parent": "minecraft:item/generated",
-    "textures": {
-        "layer0": "shelfstorage:item/secretdoors/dark_oak_bookshelf_door"
-    }
-}
