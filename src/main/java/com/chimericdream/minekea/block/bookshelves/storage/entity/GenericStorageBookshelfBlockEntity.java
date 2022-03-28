@@ -113,10 +113,10 @@ public class GenericStorageBookshelfBlockEntity extends BlockEntity implements N
     }
 
     @Override
-    public void writeNbt(NbtCompound nbt) {
+    public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
 
-        super.writeNbt(nbt);
+        return super.writeNbt(nbt);
     }
 
     void setOpen(BlockState state, boolean open) {
