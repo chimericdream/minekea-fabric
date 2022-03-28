@@ -1,27 +1,27 @@
 {
     "schemaVersion": 1,
-    "id": "shelfstorage",
+    "id": "minekea",
     "version": "${version}",
-    "name": "Shelf Storage",
-    "description": "",
+    "name": "Minekea",
+    "description": "Simple, functional, decorative blocks for all your building and storage needs (some assembly required)",
     "authors": ["chimericdream"],
     "contact": {
         "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/chimericdream/shelf-storage"
+        "sources": "https://github.com/chimericdream/minekea-fabric"
     },
     "license": "MIT",
-    "icon": "assets/shelfstorage/icon.png",
+    "icon": "assets/minekea/icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-            "com.chimericdream.shelfstorage.ShelfStorageMod"
+            "com.chimericdream.minekea.MinekeaMod"
         ],
         "client": [
-            "com.chimericdream.shelfstorage.ShelfStorageClient"
+            "com.chimericdream.minekea.MinekeaClient"
         ]
     },
     "mixins": [
-        "shelfstorage.mixins.json"
+        "minekea.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=0.13.3",

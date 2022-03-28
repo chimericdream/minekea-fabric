@@ -1,7 +1,0 @@
-{
-    "parent": "minecraft:block/door_bottom_rh",
-    "textures": {
-        "top": "shelfstorage:block/bookshelves/acacia/shelf0",
-        "bottom": "shelfstorage:block/bookshelves/acacia/shelf0"
-    }
-}

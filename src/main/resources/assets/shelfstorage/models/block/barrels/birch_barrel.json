@@ -1,8 +1,0 @@
-{
-    "parent": "minecraft:block/cube_bottom_top",
-    "textures": {
-        "top": "shelfstorage:block/barrels/birch/barrel_top",
-        "bottom": "shelfstorage:block/barrels/birch/barrel_bottom",
-        "side": "shelfstorage:block/barrels/birch/barrel_side"
-    }
-}

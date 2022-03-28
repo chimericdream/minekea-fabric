@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:crates/acacia_crate",
+        "minekea:crates/birch_crate",
+        "minekea:crates/crimson_crate",
+        "minekea:crates/dark_oak_crate",
+        "minekea:crates/jungle_crate",
+        "minekea:crates/oak_crate",
+        "minekea:crates/spruce_crate",
+        "minekea:crates/warped_crate"
+    ]
+}
