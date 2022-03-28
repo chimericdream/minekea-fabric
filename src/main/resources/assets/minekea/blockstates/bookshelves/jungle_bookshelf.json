@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "": [
+            {"model": "minekea:block/bookshelves/jungle/shelf0"},
+            {"model": "minekea:block/bookshelves/jungle/shelf1"},
+            {"model": "minekea:block/bookshelves/jungle/shelf2"},
+            {"model": "minekea:block/bookshelves/jungle/shelf3"},
+            {"model": "minekea:block/bookshelves/jungle/shelf4"},
+            {"model": "minekea:block/bookshelves/jungle/shelf5"},
+            {"model": "minekea:block/bookshelves/jungle/shelf6"}
+        ]
+    }
+}

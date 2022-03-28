@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "minekea:item/secretdoors/jungle_bookshelf_door"
+    }
+}

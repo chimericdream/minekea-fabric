@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "": [
+            {"model": "minekea:block/bookshelves/spruce/shelf0"},
+            {"model": "minekea:block/bookshelves/spruce/shelf1"},
+            {"model": "minekea:block/bookshelves/spruce/shelf2"},
+            {"model": "minekea:block/bookshelves/spruce/shelf3"},
+            {"model": "minekea:block/bookshelves/spruce/shelf4"},
+            {"model": "minekea:block/bookshelves/spruce/shelf5"},
+            {"model": "minekea:block/bookshelves/spruce/shelf6"}
+        ]
+    }
+}
