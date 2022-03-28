@@ -1,9 +1,0 @@
-{
-    "variants": {
-        "fill_level=0": [{"model": "shelfstorage:block/bookshelves/birch/empty_shelf"}],
-        "fill_level=1": [{"model": "shelfstorage:block/bookshelves/birch/one_quarter_shelf"}],
-        "fill_level=2": [{"model": "shelfstorage:block/bookshelves/birch/one_half_shelf"}],
-        "fill_level=3": [{"model": "shelfstorage:block/bookshelves/birch/three_quarters_shelf"}],
-        "fill_level=4": [{"model": "shelfstorage:block/bookshelves/birch/shelf0"}]
-    }
-}

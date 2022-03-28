@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "axis=x": {
+            "model": "minekea:block/crates/birch_crate_horizontal",
+            "x": 90,
+            "y": 90
+        },
+        "axis=y": {
+            "model": "minekea:block/crates/birch_crate"
+        },
+        "axis=z": {
+            "model": "minekea:block/crates/birch_crate_horizontal",
+            "x": 90
+        }
+    }
+}

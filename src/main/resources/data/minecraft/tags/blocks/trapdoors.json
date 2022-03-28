@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:bookshelves/trapdoors/acacia_bookshelf_trapdoor",
+        "minekea:bookshelves/trapdoors/birch_bookshelf_trapdoor",
+        "minekea:bookshelves/trapdoors/crimson_bookshelf_trapdoor",
+        "minekea:bookshelves/trapdoors/dark_oak_bookshelf_trapdoor",
+        "minekea:bookshelves/trapdoors/jungle_bookshelf_trapdoor",
+        "minekea:bookshelves/trapdoors/oak_bookshelf_trapdoor",
+        "minekea:bookshelves/trapdoors/spruce_bookshelf_trapdoor",
+        "minekea:bookshelves/trapdoors/warped_bookshelf_trapdoor"
+    ]
+}
