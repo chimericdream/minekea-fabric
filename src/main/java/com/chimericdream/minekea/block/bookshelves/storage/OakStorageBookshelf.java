@@ -27,7 +27,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class OakStorageBookshelf extends GenericStorageBookshelf implements BlockEntityProvider {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "oak_storage_shelf");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "bookshelves/storage/oak_storage_shelf");
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);

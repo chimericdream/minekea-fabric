@@ -102,7 +102,7 @@ public class GenericStorageBookshelfBlockEntity extends BlockEntity implements N
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
+        return new TranslatableText("container.minekea.storage_bookshelf");
     }
 
     @Override

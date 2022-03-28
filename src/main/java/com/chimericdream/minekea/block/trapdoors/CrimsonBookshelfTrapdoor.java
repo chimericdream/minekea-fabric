@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class CrimsonBookshelfTrapdoor extends PublicTrapdoorBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "crimson_bookshelf_trapdoor");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "bookshelves/trapdoors/crimson_bookshelf_trapdoor");
 
     public CrimsonBookshelfTrapdoor() {
         super(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).sounds(BlockSoundGroup.WOOD));
@@ -19,6 +19,6 @@ public class CrimsonBookshelfTrapdoor extends PublicTrapdoorBlock {
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.REDSTONE)));
     }
 }

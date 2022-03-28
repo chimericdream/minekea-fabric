@@ -1,13 +1,13 @@
 {
     "replace": false,
     "values": [
-        "minecraft:bookshelf",
-        "minekea:acacia_bookshelf",
-        "minekea:birch_bookshelf",
-        "minekea:crimson_bookshelf",
-        "minekea:dark_oak_bookshelf",
-        "minekea:jungle_bookshelf",
-        "minekea:spruce_bookshelf",
-        "minekea:warped_bookshelf"
+        "minekea:bookshelves/storage/acacia_storage_bookshelf",
+        "minekea:bookshelves/storage/birch_storage_bookshelf",
+        "minekea:bookshelves/storage/crimson_storage_bookshelf",
+        "minekea:bookshelves/storage/dark_oak_storage_bookshelf",
+        "minekea:bookshelves/storage/jungle_storage_bookshelf",
+        "minekea:bookshelves/storage/oak_storage_bookshelf",
+        "minekea:bookshelves/storage/spruce_storage_bookshelf",
+        "minekea:bookshelves/storage/warped_storage_bookshelf"
     ]
 }

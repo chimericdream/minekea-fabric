@@ -27,7 +27,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class SpruceStorageBookshelf extends GenericStorageBookshelf implements BlockEntityProvider {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "spruce_storage_shelf");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "bookshelves/storage/spruce_storage_shelf");
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);

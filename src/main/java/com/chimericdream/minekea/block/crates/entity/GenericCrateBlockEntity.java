@@ -71,7 +71,7 @@ public class GenericCrateBlockEntity extends BlockEntity implements NamedScreenH
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
+        return new TranslatableText("container.minekea.crate");
     }
 
     @Override

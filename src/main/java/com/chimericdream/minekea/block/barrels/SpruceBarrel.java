@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class SpruceBarrel extends GenericBarrel {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "spruce_barrel");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "barrels/spruce_barrel");
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);

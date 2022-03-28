@@ -48,7 +48,7 @@ public class GenericCrate extends BlockWithEntity {
         super(settings);
 
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y).with(FACING, Direction.NORTH).with(OPEN, false));
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("%s_crate", woodType));
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("crates/%s_crate", woodType));
     }
 
     @Override

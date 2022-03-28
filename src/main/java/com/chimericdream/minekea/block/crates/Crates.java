@@ -68,13 +68,13 @@ public class Crates {
         SPRUCE_CRATE.register();
         WARPED_CRATE.register();
 
-        ACACIA_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "acacia_crate_block_entity"), FabricBlockEntityTypeBuilder.create(AcaciaCrateBlockEntity::new, ACACIA_CRATE).build(null));
-        BIRCH_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "birch_crate_block_entity"), FabricBlockEntityTypeBuilder.create(BirchCrateBlockEntity::new, BIRCH_CRATE).build(null));
-        CRIMSON_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crimson_crate_block_entity"), FabricBlockEntityTypeBuilder.create(CrimsonCrateBlockEntity::new, CRIMSON_CRATE).build(null));
-        DARK_OAK_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "dark_oak_crate_block_entity"), FabricBlockEntityTypeBuilder.create(DarkOakCrateBlockEntity::new, DARK_OAK_CRATE).build(null));
-        JUNGLE_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "jungle_crate_block_entity"), FabricBlockEntityTypeBuilder.create(JungleCrateBlockEntity::new, JUNGLE_CRATE).build(null));
-        OAK_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "oak_crate_block_entity"), FabricBlockEntityTypeBuilder.create(OakCrateBlockEntity::new, OAK_CRATE).build(null));
-        SPRUCE_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "spruce_crate_block_entity"), FabricBlockEntityTypeBuilder.create(SpruceCrateBlockEntity::new, SPRUCE_CRATE).build(null));
-        WARPED_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "warped_crate_block_entity"), FabricBlockEntityTypeBuilder.create(WarpedCrateBlockEntity::new, WARPED_CRATE).build(null));
+        ACACIA_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crates/acacia_crate_block_entity"), FabricBlockEntityTypeBuilder.create(AcaciaCrateBlockEntity::new, ACACIA_CRATE).build(null));
+        BIRCH_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crates/birch_crate_block_entity"), FabricBlockEntityTypeBuilder.create(BirchCrateBlockEntity::new, BIRCH_CRATE).build(null));
+        CRIMSON_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crates/crimson_crate_block_entity"), FabricBlockEntityTypeBuilder.create(CrimsonCrateBlockEntity::new, CRIMSON_CRATE).build(null));
+        DARK_OAK_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crates/dark_oak_crate_block_entity"), FabricBlockEntityTypeBuilder.create(DarkOakCrateBlockEntity::new, DARK_OAK_CRATE).build(null));
+        JUNGLE_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crates/jungle_crate_block_entity"), FabricBlockEntityTypeBuilder.create(JungleCrateBlockEntity::new, JUNGLE_CRATE).build(null));
+        OAK_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crates/oak_crate_block_entity"), FabricBlockEntityTypeBuilder.create(OakCrateBlockEntity::new, OAK_CRATE).build(null));
+        SPRUCE_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crates/spruce_crate_block_entity"), FabricBlockEntityTypeBuilder.create(SpruceCrateBlockEntity::new, SPRUCE_CRATE).build(null));
+        WARPED_CRATE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "crates/warped_crate_block_entity"), FabricBlockEntityTypeBuilder.create(WarpedCrateBlockEntity::new, WARPED_CRATE).build(null));
     }
 }

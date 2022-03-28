@@ -19,7 +19,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class AcaciaStorageBookshelf extends GenericStorageBookshelf implements BlockEntityProvider {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "acacia_storage_shelf");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "bookshelves/storage/acacia_storage_shelf");
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
