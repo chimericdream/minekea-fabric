@@ -5,6 +5,6 @@
         {"item": "minecraft:chest"}
     ],
     "result": {
-        "item": "minekea:oak_storage_shelf"
+        "item": "minekea:bookshelves/storage/oak_storage_shelf"
     }
 }

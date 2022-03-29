@@ -25,7 +25,7 @@
                                     }
                                 }
                             ],
-                            "name": "minekea:jungle_storage_shelf"
+                            "name": "minekea:bookshelves/storage/jungle_storage_shelf"
                         },
                         {
                             "type": "minecraft:item",

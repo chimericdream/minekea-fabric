@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:jungle_crate"
+                    "name": "minekea:crates/jungle_crate"
                 }
             ],
             "conditions": [

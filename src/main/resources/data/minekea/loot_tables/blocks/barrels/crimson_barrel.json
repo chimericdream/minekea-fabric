@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:crimson_barrel"
+                    "name": "minekea:barrels/crimson_barrel"
                 }
             ],
             "conditions": [

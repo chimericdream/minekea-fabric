@@ -25,7 +25,7 @@
                                     }
                                 }
                             ],
-                            "name": "minekea:acacia_storage_shelf"
+                            "name": "minekea:bookshelves/storage/acacia_storage_shelf"
                         },
                         {
                             "type": "minecraft:item",

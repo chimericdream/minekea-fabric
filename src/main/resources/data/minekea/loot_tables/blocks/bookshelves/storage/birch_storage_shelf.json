@@ -25,7 +25,7 @@
                                     }
                                 }
                             ],
-                            "name": "minekea:birch_storage_shelf"
+                            "name": "minekea:bookshelves/storage/birch_storage_shelf"
                         },
                         {
                             "type": "minecraft:item",

@@ -6,10 +6,10 @@
         "##"
     ],
     "key": {
-        "#": {"item": "minekea:crimson_bookshelf"}
+        "#": {"item": "minekea:bookshelves/crimson_bookshelf"}
     },
     "result": {
-        "item": "minekea:crimson_bookshelf_door",
+        "item": "minekea:bookshelves/doors/crimson_bookshelf_door",
         "count": 3
     }
 }

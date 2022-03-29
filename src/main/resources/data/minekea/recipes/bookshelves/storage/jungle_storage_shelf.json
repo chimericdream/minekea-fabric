@@ -1,10 +1,10 @@
 {
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {"item": "minekea:jungle_bookshelf"},
+        {"item": "minekea:bookshelves/jungle_bookshelf"},
         {"item": "minecraft:chest"}
     ],
     "result": {
-        "item": "minekea:jungle_storage_shelf"
+        "item": "minekea:bookshelves/storage/jungle_storage_shelf"
     }
 }

@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:warped_barrel"
+                    "name": "minekea:barrels/warped_barrel"
                 }
             ],
             "conditions": [

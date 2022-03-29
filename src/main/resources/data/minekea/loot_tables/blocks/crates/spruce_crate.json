@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:spruce_crate"
+                    "name": "minekea:crates/spruce_crate"
                 }
             ],
             "conditions": [

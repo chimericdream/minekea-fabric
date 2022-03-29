@@ -5,10 +5,10 @@
         "###"
     ],
     "key": {
-        "#": {"item": "minekea:warped_bookshelf"}
+        "#": {"item": "minekea:bookshelves/warped_bookshelf"}
     },
     "result": {
-        "item": "minekea:warped_bookshelf_trapdoor",
+        "item": "minekea:bookshelves/trapdoors/warped_bookshelf_trapdoor",
         "count": 12
     }
 }

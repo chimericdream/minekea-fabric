@@ -6,10 +6,10 @@
         "##"
     ],
     "key": {
-        "#": {"item": "minekea:acacia_bookshelf"}
+        "#": {"item": "minekea:bookshelves/acacia_bookshelf"}
     },
     "result": {
-        "item": "minekea:acacia_bookshelf_door",
+        "item": "minekea:bookshelves/doors/acacia_bookshelf_door",
         "count": 3
     }
 }

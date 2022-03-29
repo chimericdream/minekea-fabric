@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:birch_crate"
+                    "name": "minekea:crates/birch_crate"
                 }
             ],
             "conditions": [
