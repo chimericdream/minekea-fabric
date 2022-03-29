@@ -10,13 +10,13 @@
                     "conditions": [
                         {
                             "condition": "minecraft:block_state_property",
-                            "block": "minekea:jungle_bookshelf_door",
+                            "block": "minekea:bookshelves/doors/jungle_bookshelf_door",
                             "properties": {
                                 "half": "lower"
                             }
                         }
                     ],
-                    "name": "minekea:jungle_bookshelf_door"
+                    "name": "minekea:bookshelves/doors/jungle_bookshelf_door"
                 }
             ],
             "conditions": [

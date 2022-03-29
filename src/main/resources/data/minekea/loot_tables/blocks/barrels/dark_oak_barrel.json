@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:dark_oak_barrel"
+                    "name": "minekea:barrels/dark_oak_barrel"
                 }
             ],
             "conditions": [

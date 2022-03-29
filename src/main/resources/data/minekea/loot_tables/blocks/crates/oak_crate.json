@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:oak_crate"
+                    "name": "minekea:crates/oak_crate"
                 }
             ],
             "conditions": [

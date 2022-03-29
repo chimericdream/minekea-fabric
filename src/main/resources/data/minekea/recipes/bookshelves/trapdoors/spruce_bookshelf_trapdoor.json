@@ -5,10 +5,10 @@
         "###"
     ],
     "key": {
-        "#": {"item": "minekea:spruce_bookshelf"}
+        "#": {"item": "minekea:bookshelves/spruce_bookshelf"}
     },
     "result": {
-        "item": "minekea:spruce_bookshelf_trapdoor",
+        "item": "minekea:bookshelves/trapdoors/spruce_bookshelf_trapdoor",
         "count": 12
     }
 }

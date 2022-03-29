@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:spruce_bookshelf_trapdoor"
+                    "name": "minekea:bookshelves/trapdoors/spruce_bookshelf_trapdoor"
                 }
             ],
             "conditions": [

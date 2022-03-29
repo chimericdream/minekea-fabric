@@ -25,7 +25,7 @@
                                     }
                                 }
                             ],
-                            "name": "minekea:warped_storage_shelf"
+                            "name": "minekea:bookshelves/storage/warped_storage_shelf"
                         },
                         {
                             "type": "minecraft:item",

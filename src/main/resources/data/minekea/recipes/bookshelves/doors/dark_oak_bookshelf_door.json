@@ -6,10 +6,10 @@
         "##"
     ],
     "key": {
-        "#": {"item": "minekea:dark_oak_bookshelf"}
+        "#": {"item": "minekea:bookshelves/dark_oak_bookshelf"}
     },
     "result": {
-        "item": "minekea:dark_oak_bookshelf_door",
+        "item": "minekea:bookshelves/doors/dark_oak_bookshelf_door",
         "count": 3
     }
 }

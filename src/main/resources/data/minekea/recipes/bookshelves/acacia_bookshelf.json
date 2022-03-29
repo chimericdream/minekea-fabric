@@ -10,6 +10,6 @@
         "X": {"item": "minecraft:book"}
     },
     "result": {
-        "item": "minekea:acacia_bookshelf"
+        "item": "minekea:bookshelves/acacia_bookshelf"
     }
 }

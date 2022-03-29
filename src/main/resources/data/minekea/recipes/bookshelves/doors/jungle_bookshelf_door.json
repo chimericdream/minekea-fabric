@@ -6,10 +6,10 @@
         "##"
     ],
     "key": {
-        "#": {"item": "minekea:jungle_bookshelf"}
+        "#": {"item": "minekea:bookshelves/jungle_bookshelf"}
     },
     "result": {
-        "item": "minekea:jungle_bookshelf_door",
+        "item": "minekea:bookshelves/doors/jungle_bookshelf_door",
         "count": 3
     }
 }

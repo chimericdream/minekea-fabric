@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:spruce_barrel"
+                    "name": "minekea:barrels/spruce_barrel"
                 }
             ],
             "conditions": [
