@@ -10,6 +10,6 @@
         "#": {"item": "minecraft:acacia_log"}
     },
     "result": {
-        "item": "minekea:acacia_crate"
+        "item": "minekea:crates/acacia_crate"
     }
 }

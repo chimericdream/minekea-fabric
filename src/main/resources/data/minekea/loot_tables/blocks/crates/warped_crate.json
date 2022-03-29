@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:warped_crate"
+                    "name": "minekea:crates/warped_crate"
                 }
             ],
             "conditions": [

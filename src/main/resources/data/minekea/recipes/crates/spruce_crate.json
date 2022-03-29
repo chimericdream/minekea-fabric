@@ -10,6 +10,6 @@
         "#": {"item": "minecraft:spruce_log"}
     },
     "result": {
-        "item": "minekea:spruce_crate"
+        "item": "minekea:crates/spruce_crate"
     }
 }

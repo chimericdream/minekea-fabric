@@ -8,7 +8,7 @@
         "#": {"item": "minecraft:bookshelf"}
     },
     "result": {
-        "item": "minekea:oak_bookshelf_trapdoor",
+        "item": "minekea:bookshelves/trapdoors/oak_bookshelf_trapdoor",
         "count": 12
     }
 }

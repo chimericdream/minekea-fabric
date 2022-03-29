@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:crimson_crate"
+                    "name": "minekea:crates/crimson_crate"
                 }
             ],
             "conditions": [

@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:acacia_barrel"
+                    "name": "minekea:barrels/acacia_barrel"
                 }
             ],
             "conditions": [

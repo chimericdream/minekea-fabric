@@ -10,13 +10,13 @@
                     "conditions": [
                         {
                             "condition": "minecraft:block_state_property",
-                            "block": "minekea:spruce_bookshelf_door",
+                            "block": "minekea:bookshelves/doors/spruce_bookshelf_door",
                             "properties": {
                                 "half": "lower"
                             }
                         }
                     ],
-                    "name": "minekea:spruce_bookshelf_door"
+                    "name": "minekea:bookshelves/doors/spruce_bookshelf_door"
                 }
             ],
             "conditions": [

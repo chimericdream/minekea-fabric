@@ -5,10 +5,10 @@
         "###"
     ],
     "key": {
-        "#": {"item": "minekea:jungle_bookshelf"}
+        "#": {"item": "minekea:bookshelves/jungle_bookshelf"}
     },
     "result": {
-        "item": "minekea:jungle_bookshelf_trapdoor",
+        "item": "minekea:bookshelves/trapdoors/jungle_bookshelf_trapdoor",
         "count": 12
     }
 }

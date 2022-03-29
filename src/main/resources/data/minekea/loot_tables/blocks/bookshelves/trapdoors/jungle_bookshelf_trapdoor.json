@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:jungle_bookshelf_trapdoor"
+                    "name": "minekea:bookshelves/trapdoors/jungle_bookshelf_trapdoor"
                 }
             ],
             "conditions": [

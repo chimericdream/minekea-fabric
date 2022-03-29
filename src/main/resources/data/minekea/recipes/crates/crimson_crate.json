@@ -10,6 +10,6 @@
         "#": {"item": "minecraft:crimson_stem"}
     },
     "result": {
-        "item": "minekea:crimson_crate"
+        "item": "minekea:crates/crimson_crate"
     }
 }

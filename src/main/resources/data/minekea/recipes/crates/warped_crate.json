@@ -10,6 +10,6 @@
         "#": {"item": "minecraft:warped_stem"}
     },
     "result": {
-        "item": "minekea:warped_crate"
+        "item": "minekea:crates/warped_crate"
     }
 }

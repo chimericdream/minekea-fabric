@@ -10,6 +10,6 @@
         "#": {"item": "minecraft:dark_oak_log"}
     },
     "result": {
-        "item": "minekea:dark_oak_crate"
+        "item": "minekea:crates/dark_oak_crate"
     }
 }

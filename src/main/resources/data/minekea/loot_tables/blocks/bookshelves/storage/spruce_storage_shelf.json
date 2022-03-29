@@ -25,7 +25,7 @@
                                     }
                                 }
                             ],
-                            "name": "minekea:spruce_storage_shelf"
+                            "name": "minekea:bookshelves/storage/spruce_storage_shelf"
                         },
                         {
                             "type": "minecraft:item",

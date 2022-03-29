@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minekea:warped_bookshelf_trapdoor"
+                    "name": "minekea:bookshelves/trapdoors/warped_bookshelf_trapdoor"
                 }
             ],
             "conditions": [
