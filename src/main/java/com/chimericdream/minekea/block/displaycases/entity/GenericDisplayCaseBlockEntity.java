@@ -1,9 +1,10 @@
 package com.chimericdream.minekea.block.displaycases.entity;
 
-import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
@@ -18,15 +19,26 @@ import net.minecraft.util.math.Direction;
 import javax.annotation.Nullable;
 
 public class GenericDisplayCaseBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, Blocks.BARRIER.asItem().getDefaultStack());
 
     public GenericDisplayCaseBlockEntity(BlockPos pos, BlockState state) {
-        super(DisplayCases.ACACIA_DISPLAY_CASE_BLOCK_ENTITY, pos, state);
+        this(null, pos, state);
+    }
+
+    public GenericDisplayCaseBlockEntity(BlockEntityType<? extends GenericDisplayCaseBlockEntity> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
     @Override
     public DefaultedList<ItemStack> getItems() {
         return items;
+    }
+
+    public static NbtCompound getNbt(BlockEntity entity) {
+        NbtCompound nbt = new NbtCompound();
+        Inventories.writeNbt(nbt, ((GenericDisplayCaseBlockEntity) entity).items);
+
+        return nbt;
     }
 
     @Override
@@ -45,7 +57,7 @@ public class GenericDisplayCaseBlockEntity extends BlockEntity implements Implem
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
+        return BlockEntityUpdateS2CPacket.create(this, GenericDisplayCaseBlockEntity::getNbt);
     }
 
     @Override
