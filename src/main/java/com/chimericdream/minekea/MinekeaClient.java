@@ -14,8 +14,6 @@ import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegi
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.minecraft.client.render.RenderLayer;
 
-import static com.chimericdream.minekea.block.displaycases.DisplayCases.ACACIA_DISPLAY_CASE_BLOCK_ENTITY;
-
 @Environment(EnvType.CLIENT)
 public class MinekeaClient implements ClientModInitializer {
     @Override
@@ -55,6 +53,21 @@ public class MinekeaClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(DisplayCases.WARPED_DISPLAY_CASE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DisplayCases.STRIPPED_WARPED_DISPLAY_CASE, RenderLayer.getCutout());
 
-        BlockEntityRendererRegistry.INSTANCE.register(ACACIA_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.ACACIA_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.STRIPPED_ACACIA_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.BIRCH_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.STRIPPED_BIRCH_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.CRIMSON_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.STRIPPED_CRIMSON_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.DARK_OAK_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.STRIPPED_DARK_OAK_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.JUNGLE_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.STRIPPED_JUNGLE_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.OAK_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.STRIPPED_OAK_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.SPRUCE_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.STRIPPED_SPRUCE_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.WARPED_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.STRIPPED_WARPED_DISPLAY_CASE_BLOCK_ENTITY, GenericDisplayCaseBlockEntityRenderer::new);
     }
 }
