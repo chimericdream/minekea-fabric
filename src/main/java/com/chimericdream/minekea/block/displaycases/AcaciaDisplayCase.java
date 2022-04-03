@@ -1,8 +1,7 @@
 package com.chimericdream.minekea.block.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.crates.entity.AcaciaCrateBlockEntity;
-import com.chimericdream.minekea.block.displaycases.entity.GenericDisplayCaseBlockEntity;
+import com.chimericdream.minekea.block.displaycases.entity.AcaciaDisplayCaseBlockEntity;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockState;
@@ -16,6 +15,11 @@ import net.minecraft.util.registry.Registry;
 
 public class AcaciaDisplayCase extends GenericDisplayCase {
     public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "displaycases/acacia_display_case");
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new AcaciaDisplayCaseBlockEntity(pos, state);
+    }
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);

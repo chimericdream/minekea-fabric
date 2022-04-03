@@ -5,7 +5,11 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
@@ -17,6 +21,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public abstract class GenericDisplayCase extends BlockWithEntity {
+    public static final BooleanProperty HAS_ITEM = BooleanProperty.of("has_item");
+    public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 8);
+
+    private final Item BARRIER_ITEM = Blocks.BARRIER.asItem();
+    private final ItemStack BARRIER = BARRIER_ITEM.getDefaultStack();
+
     private static final VoxelShape MAIN_SHAPE;
     private static final VoxelShape BASEBOARD_SHAPE;
 
@@ -26,41 +36,63 @@ public abstract class GenericDisplayCase extends BlockWithEntity {
     }
 
     GenericDisplayCase() {
-        super(Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
+        this(Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
     }
 
     GenericDisplayCase(Settings settings) {
         super(settings);
+        setDefaultState(getStateManager().getDefaultState().with(HAS_ITEM, false).with(ROTATION, 0));
     }
 
     abstract public void register();
 
     @Override
-    public ActionResult onUse(BlockState blockState, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult blockHitResult) {
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(HAS_ITEM, ROTATION);
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
         if (world.isClient) return ActionResult.SUCCESS;
 
-        Inventory blockEntity = (Inventory) world.getBlockEntity(blockPos);
+        Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
 
-        if (!player.getStackInHand(hand).isEmpty()) {
-            // If the player is holding something, put it in the case
-            ItemStack toInsert = player.getStackInHand(hand).copy();
-            toInsert.setCount(1);
+        if (player.isInSneakingPose()) {
+            // If the player is sneaking, rotate the item (if any) in the case
+            boolean hasItem = state.get(HAS_ITEM);
 
-            if (blockEntity.getStack(0).isEmpty()) {
-                blockEntity.setStack(0, toInsert);
-                blockEntity.markDirty();
-                player.getStackInHand(hand).decrement(1);
-            } else {
-                System.out.println("The case holds " + blockEntity.getStack(0));
+            if (hasItem) {
+                int rotation = state.get(ROTATION);
+                int newRotation = rotation == 7 ? 0 : rotation + 1;
+
+                world.setBlockState(pos, state.with(ROTATION, newRotation));
             }
         } else {
-            // If the player isn't holding anything, get what's in the case
-            if (!blockEntity.getStack(0).isEmpty()) {
-                player.getInventory().offerOrDrop(blockEntity.getStack(0));
-                blockEntity.removeStack(0);
-                blockEntity.markDirty();
+            if (!player.getStackInHand(hand).isEmpty()) {
+                // If the player is holding something, put it in the case
+                ItemStack toInsert = player.getStackInHand(hand).copy();
+                toInsert.setCount(1);
+
+                if (blockEntity.getStack(0).isOf(BARRIER_ITEM)) {
+                    blockEntity.setStack(0, toInsert);
+                    player.getStackInHand(hand).decrement(1);
+                    world.setBlockState(pos, state.with(HAS_ITEM, true).with(ROTATION, 0));
+                    blockEntity.markDirty();
+                } else {
+                    // System.out.println("The case holds " + blockEntity.getStack(0));
+                }
+            } else {
+                // If the player isn't holding anything or sneaking, get what's in the case
+                if (!blockEntity.getStack(0).isOf(BARRIER_ITEM)) {
+                    player.getInventory().offerOrDrop(blockEntity.getStack(0));
+                    blockEntity.setStack(0, BARRIER);
+                    world.setBlockState(pos, state.with(HAS_ITEM, false).with(ROTATION, 8));
+                    blockEntity.markDirty();
+                }
             }
         }
+
+        world.markDirty(pos);
 
         return ActionResult.SUCCESS;
     }
@@ -69,7 +101,7 @@ public abstract class GenericDisplayCase extends BlockWithEntity {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof GenericDisplayCaseBlockEntity) {
+            if (blockEntity instanceof GenericDisplayCaseBlockEntity && state.get(HAS_ITEM)) {
                 ItemScatterer.spawn(world, pos, (GenericDisplayCaseBlockEntity) blockEntity);
                 world.updateComparators(pos, this);
             }
