@@ -46,6 +46,22 @@
         "minekea:crates/jungle_crate",
         "minekea:crates/oak_crate",
         "minekea:crates/spruce_crate",
-        "minekea:crates/warped_crate"
+        "minekea:crates/warped_crate",
+        "minekea:displaycases/acacia_display_case",
+        "minekea:displaycases/stripped_acacia_display_case",
+        "minekea:displaycases/birch_display_case",
+        "minekea:displaycases/stripped_birch_display_case",
+        "minekea:displaycases/crimson_display_case",
+        "minekea:displaycases/stripped_crimson_display_case",
+        "minekea:displaycases/dark_oak_display_case",
+        "minekea:displaycases/stripped_dark_oak_display_case",
+        "minekea:displaycases/jungle_display_case",
+        "minekea:displaycases/stripped_jungle_display_case",
+        "minekea:displaycases/oak_display_case",
+        "minekea:displaycases/stripped_oak_display_case",
+        "minekea:displaycases/spruce_display_case",
+        "minekea:displaycases/stripped_spruce_display_case",
+        "minekea:displaycases/warped_display_case",
+        "minekea:displaycases/stripped_warped_display_case"
     ]
 }

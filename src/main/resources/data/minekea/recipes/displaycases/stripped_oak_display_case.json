@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " G ",
+        "X X",
+        "###"
+    ],
+    "key": {
+        "G": {"item": "minecraft:glass"},
+        "X": {"item": "minecraft:oak_planks"},
+        "#": {"item": "minecraft:stripped_oak_log"}
+    },
+    "result": {
+        "item": "minekea:displaycases/stripped_oak_display_case",
+        "count": 2
+    }
+}
