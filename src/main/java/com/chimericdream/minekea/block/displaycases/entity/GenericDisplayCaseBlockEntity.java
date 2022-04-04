@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.displaycases.entity;
 
 import com.chimericdream.minekea.util.ImplementedInventory;
+import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -9,16 +10,11 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
-import javax.annotation.Nullable;
-
-public class GenericDisplayCaseBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory {
+public class GenericDisplayCaseBlockEntity extends BlockEntity implements BlockEntityClientSerializable, ImplementedInventory, SidedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, Blocks.BARRIER.asItem().getDefaultStack());
 
     public GenericDisplayCaseBlockEntity(BlockPos pos, BlockState state) {
@@ -48,21 +44,22 @@ public class GenericDisplayCaseBlockEntity extends BlockEntity implements Implem
     }
 
     @Override
-    public void writeNbt(NbtCompound nbt) {
+    public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
         super.writeNbt(nbt);
         markDirty();
-    }
 
-    @Nullable
-    @Override
-    public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this, GenericDisplayCaseBlockEntity::getNbt);
+        return nbt;
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return createNbt();
+    public void fromClientTag(NbtCompound tag) {
+        readNbt(tag);
+    }
+
+    @Override
+    public NbtCompound toClientTag(NbtCompound tag) {
+        return writeNbt(tag);
     }
 
     @Override
