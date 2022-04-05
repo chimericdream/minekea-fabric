@@ -51,7 +51,6 @@ public class GenericDisplayCaseBlockEntity extends BlockEntity implements Implem
     public void writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
         super.writeNbt(nbt);
-        markDirty();
     }
 
     @Nullable
