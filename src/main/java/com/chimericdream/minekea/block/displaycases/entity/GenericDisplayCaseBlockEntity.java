@@ -47,7 +47,6 @@ public class GenericDisplayCaseBlockEntity extends BlockEntity implements BlockE
     public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
         super.writeNbt(nbt);
-        markDirty();
 
         return nbt;
     }
