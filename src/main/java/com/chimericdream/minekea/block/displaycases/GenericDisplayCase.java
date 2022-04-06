@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.block.displaycases;
 
 import com.chimericdream.minekea.block.displaycases.entity.GenericDisplayCaseBlockEntity;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import net.devtech.arrp.json.recipe.*;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,6 +14,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -122,5 +125,19 @@ public abstract class GenericDisplayCase extends BlockWithEntity {
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.union(MAIN_SHAPE, BASEBOARD_SHAPE);
+    }
+
+    protected void setupResources(Identifier id, String[] materials) {
+        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
+            id,
+            JRecipe.shaped(
+                JPattern.pattern(" G ", "X X", "###"),
+                JKeys.keys()
+                    .key("G", JIngredient.ingredient().item("minecraft:glass"))
+                    .key("X", JIngredient.ingredient().item(materials[0]))
+                    .key("#", JIngredient.ingredient().item(materials[1])),
+                JResult.stackedResult(id.toString(), 2)
+            )
+        );
     }
 }

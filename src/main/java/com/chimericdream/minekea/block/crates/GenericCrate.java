@@ -2,6 +2,8 @@ package com.chimericdream.minekea.block.crates;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.crates.entity.GenericCrateBlockEntity;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
@@ -60,12 +62,18 @@ public class GenericCrate extends BlockWithEntity {
         return BLOCK_ID;
     }
 
+    protected String[] getMaterials() {
+        return new String[]{"minecraft:oak_planks", "minecraft:oak_log"};
+    }
+
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
         Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
 
         FuelRegistry.INSTANCE.add(this, 300);
         FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+
+        setupResources();
     }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
@@ -142,5 +150,20 @@ public class GenericCrate extends BlockWithEntity {
     @Override
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
+    }
+
+    protected void setupResources() {
+        String[] materials = getMaterials();
+
+        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
+            BLOCK_ID,
+            JRecipe.shaped(
+                JPattern.pattern("#X#", "XXX", "#X#"),
+                JKeys.keys()
+                    .key("X", JIngredient.ingredient().item(materials[0]))
+                    .key("#", JIngredient.ingredient().item(materials[1])),
+                JResult.result(BLOCK_ID.toString())
+            )
+        );
     }
 }

@@ -24,4 +24,9 @@ public class DarkOakCrate extends GenericCrate {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, Crates.DARK_OAK_CRATE_BLOCK_ENTITY, DarkOakCrateBlockEntity::tick);
     }
+
+    @Override
+    protected String[] getMaterials() {
+        return new String[]{"minecraft:dark_oak_planks", "minecraft:dark_oak_log"};
+    }
 }

@@ -24,4 +24,9 @@ public class AcaciaCrate extends GenericCrate {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, Crates.ACACIA_CRATE_BLOCK_ENTITY, AcaciaCrateBlockEntity::tick);
     }
+
+    @Override
+    protected String[] getMaterials() {
+        return new String[]{"minecraft:acacia_planks", "minecraft:acacia_log"};
+    }
 }

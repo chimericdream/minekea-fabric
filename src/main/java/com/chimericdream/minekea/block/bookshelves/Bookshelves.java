@@ -13,20 +13,20 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class Bookshelves {
-    public static final AbstractBookshelf ACACIA_BOOKSHELF;
+    public static final GenericBookshelf ACACIA_BOOKSHELF;
     public static final GenericStorageBookshelf ACACIA_STORAGE_SHELF;
-    public static final AbstractBookshelf BIRCH_BOOKSHELF;
+    public static final GenericBookshelf BIRCH_BOOKSHELF;
     public static final GenericStorageBookshelf BIRCH_STORAGE_SHELF;
-    public static final AbstractBookshelf CRIMSON_BOOKSHELF;
+    public static final GenericBookshelf CRIMSON_BOOKSHELF;
     public static final GenericStorageBookshelf CRIMSON_STORAGE_SHELF;
-    public static final AbstractBookshelf DARK_OAK_BOOKSHELF;
+    public static final GenericBookshelf DARK_OAK_BOOKSHELF;
     public static final GenericStorageBookshelf DARK_OAK_STORAGE_SHELF;
-    public static final AbstractBookshelf JUNGLE_BOOKSHELF;
+    public static final GenericBookshelf JUNGLE_BOOKSHELF;
     public static final GenericStorageBookshelf JUNGLE_STORAGE_SHELF;
     public static final GenericStorageBookshelf OAK_STORAGE_SHELF;
-    public static final AbstractBookshelf SPRUCE_BOOKSHELF;
+    public static final GenericBookshelf SPRUCE_BOOKSHELF;
     public static final GenericStorageBookshelf SPRUCE_STORAGE_SHELF;
-    public static final AbstractBookshelf WARPED_BOOKSHELF;
+    public static final GenericBookshelf WARPED_BOOKSHELF;
     public static final GenericStorageBookshelf WARPED_STORAGE_SHELF;
 
     public static BlockEntityType<AcaciaStorageBookshelfBlockEntity> ACACIA_STORAGE_SHELF_BLOCK_ENTITY;

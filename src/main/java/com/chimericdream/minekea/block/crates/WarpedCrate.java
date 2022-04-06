@@ -24,4 +24,9 @@ public class WarpedCrate extends GenericCrate {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, Crates.WARPED_CRATE_BLOCK_ENTITY, WarpedCrateBlockEntity::tick);
     }
+
+    @Override
+    protected String[] getMaterials() {
+        return new String[]{"minecraft:warped_planks", "minecraft:warped_stem"};
+    }
 }

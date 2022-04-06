@@ -24,4 +24,9 @@ public class CrimsonCrate extends GenericCrate {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, Crates.CRIMSON_CRATE_BLOCK_ENTITY, CrimsonCrateBlockEntity::tick);
     }
+
+    @Override
+    protected String[] getMaterials() {
+        return new String[]{"minecraft:crimson_planks", "minecraft:crimson_stem"};
+    }
 }

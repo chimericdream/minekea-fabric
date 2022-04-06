@@ -24,4 +24,9 @@ public class BirchCrate extends GenericCrate {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, Crates.BIRCH_CRATE_BLOCK_ENTITY, BirchCrateBlockEntity::tick);
     }
+
+    @Override
+    protected String[] getMaterials() {
+        return new String[]{"minecraft:birch_planks", "minecraft:birch_log"};
+    }
 }

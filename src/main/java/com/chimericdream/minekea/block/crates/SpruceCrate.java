@@ -24,4 +24,9 @@ public class SpruceCrate extends GenericCrate {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, Crates.SPRUCE_CRATE_BLOCK_ENTITY, SpruceCrateBlockEntity::tick);
     }
+
+    @Override
+    protected String[] getMaterials() {
+        return new String[]{"minecraft:spruce_planks", "minecraft:spruce_log"};
+    }
 }

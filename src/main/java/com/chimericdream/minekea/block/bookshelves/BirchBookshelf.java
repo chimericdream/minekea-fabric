@@ -9,8 +9,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class BirchBookshelf extends AbstractBookshelf {
+public class BirchBookshelf extends GenericBookshelf {
     public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "bookshelves/birch_bookshelf");
+    public static final String MATERIAL = "minecraft:birch_planks";
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
@@ -18,5 +19,7 @@ public class BirchBookshelf extends AbstractBookshelf {
 
         FuelRegistry.INSTANCE.add(this, 300);
         FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+
+        setupResources(BLOCK_ID, MATERIAL);
     }
 }

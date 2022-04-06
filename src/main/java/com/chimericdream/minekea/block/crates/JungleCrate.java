@@ -24,4 +24,9 @@ public class JungleCrate extends GenericCrate {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, Crates.JUNGLE_CRATE_BLOCK_ENTITY, JungleCrateBlockEntity::tick);
     }
+
+    @Override
+    protected String[] getMaterials() {
+        return new String[]{"minecraft:jungle_planks", "minecraft:jungle_log"};
+    }
 }

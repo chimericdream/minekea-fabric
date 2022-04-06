@@ -27,5 +27,7 @@ public class DarkOakDisplayCase extends GenericDisplayCase {
 
         FuelRegistry.INSTANCE.add(this, 300);
         FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+
+        setupResources(BLOCK_ID, new String[]{"minecraft:dark_oak_planks", "minecraft:dark_oak_log"});
     }
 }

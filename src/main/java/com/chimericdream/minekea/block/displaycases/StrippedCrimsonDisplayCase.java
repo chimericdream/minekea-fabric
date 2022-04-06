@@ -27,5 +27,7 @@ public class StrippedCrimsonDisplayCase extends GenericDisplayCase {
 
         FuelRegistry.INSTANCE.add(this, 300);
         FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+
+        setupResources(BLOCK_ID, new String[]{"minecraft:crimson_planks", "minecraft:stripped_crimson_stem"});
     }
 }
