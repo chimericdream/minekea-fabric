@@ -10,13 +10,13 @@ public class Barrels {
     public static final GenericBarrel WARPED_BARREL;
 
     static {
-        ACACIA_BARREL = new AcaciaBarrel();
-        BIRCH_BARREL = new BirchBarrel();
-        CRIMSON_BARREL = new CrimsonBarrel();
-        DARK_OAK_BARREL = new DarkOakBarrel();
-        JUNGLE_BARREL = new JungleBarrel();
-        SPRUCE_BARREL = new SpruceBarrel();
-        WARPED_BARREL = new WarpedBarrel();
+        ACACIA_BARREL = new GenericBarrel("acacia");
+        BIRCH_BARREL = new GenericBarrel("birch");
+        CRIMSON_BARREL = new GenericBarrel("crimson");
+        DARK_OAK_BARREL = new GenericBarrel("dark_oak");
+        JUNGLE_BARREL = new GenericBarrel("jungle");
+        SPRUCE_BARREL = new GenericBarrel("spruce");
+        WARPED_BARREL = new GenericBarrel("warped");
     }
 
     public void register() {

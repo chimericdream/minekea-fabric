@@ -21,7 +21,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class GenericBarrel extends BarrelBlock {
-    private String woodType;
+    private final String woodType;
     private final Identifier BLOCK_ID;
 
     public GenericBarrel(String woodType) {
