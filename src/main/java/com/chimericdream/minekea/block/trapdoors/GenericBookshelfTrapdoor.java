@@ -50,7 +50,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock {
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(
-                JPattern.pattern("###", "###", "###"),
+                JPattern.pattern("###", "###"),
                 JKeys.keys().key("#", JIngredient.ingredient().item(BOOKSHELF_TYPE)),
                 JResult.stackedResult(BLOCK_ID.toString(), 12)
             )

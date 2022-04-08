@@ -1,24 +1,24 @@
 package com.chimericdream.minekea.block.doors;
 
 public class Doors {
-    public static final PublicDoorBlock ACACIA_BOOKSHELF_DOOR;
-    public static final PublicDoorBlock BIRCH_BOOKSHELF_DOOR;
-    public static final PublicDoorBlock CRIMSON_BOOKSHELF_DOOR;
-    public static final PublicDoorBlock DARK_OAK_BOOKSHELF_DOOR;
-    public static final PublicDoorBlock JUNGLE_BOOKSHELF_DOOR;
-    public static final PublicDoorBlock OAK_BOOKSHELF_DOOR;
-    public static final PublicDoorBlock SPRUCE_BOOKSHELF_DOOR;
-    public static final PublicDoorBlock WARPED_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor ACACIA_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor BIRCH_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor CRIMSON_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor DARK_OAK_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor JUNGLE_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor OAK_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor SPRUCE_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor WARPED_BOOKSHELF_DOOR;
 
     static {
-        ACACIA_BOOKSHELF_DOOR = new AcaciaBookshelfDoor();
-        BIRCH_BOOKSHELF_DOOR = new BirchBookshelfDoor();
-        CRIMSON_BOOKSHELF_DOOR = new CrimsonBookshelfDoor();
-        DARK_OAK_BOOKSHELF_DOOR = new DarkOakBookshelfDoor();
-        JUNGLE_BOOKSHELF_DOOR = new JungleBookshelfDoor();
-        OAK_BOOKSHELF_DOOR = new OakBookshelfDoor();
-        SPRUCE_BOOKSHELF_DOOR = new SpruceBookshelfDoor();
-        WARPED_BOOKSHELF_DOOR = new WarpedBookshelfDoor();
+        ACACIA_BOOKSHELF_DOOR = new GenericBookshelfDoor("acacia");
+        BIRCH_BOOKSHELF_DOOR = new GenericBookshelfDoor("birch");
+        CRIMSON_BOOKSHELF_DOOR = new GenericBookshelfDoor("crimson");
+        DARK_OAK_BOOKSHELF_DOOR = new GenericBookshelfDoor("dark_oak");
+        JUNGLE_BOOKSHELF_DOOR = new GenericBookshelfDoor("jungle");
+        OAK_BOOKSHELF_DOOR = new GenericBookshelfDoor("oak");
+        SPRUCE_BOOKSHELF_DOOR = new GenericBookshelfDoor("spruce");
+        WARPED_BOOKSHELF_DOOR = new GenericBookshelfDoor("warped");
     }
 
     public void register() {
