@@ -48,20 +48,20 @@ public class Bookshelves {
     public static ScreenHandlerType<StorageBookshelfScreenHandler> WARPED_STORAGE_SHELF_SCREEN_HANDLER;
 
     static {
-        ACACIA_BOOKSHELF = new AcaciaBookshelf();
+        ACACIA_BOOKSHELF = new GenericBookshelf("acacia");
         ACACIA_STORAGE_SHELF = new AcaciaStorageBookshelf();
-        BIRCH_BOOKSHELF = new BirchBookshelf();
+        BIRCH_BOOKSHELF = new GenericBookshelf("birch");
         BIRCH_STORAGE_SHELF = new BirchStorageBookshelf();
-        CRIMSON_BOOKSHELF = new CrimsonBookshelf();
+        CRIMSON_BOOKSHELF = new GenericBookshelf("crimson");
         CRIMSON_STORAGE_SHELF = new CrimsonStorageBookshelf();
-        DARK_OAK_BOOKSHELF = new DarkOakBookshelf();
+        DARK_OAK_BOOKSHELF = new GenericBookshelf("dark_oak");
         DARK_OAK_STORAGE_SHELF = new DarkOakStorageBookshelf();
-        JUNGLE_BOOKSHELF = new JungleBookshelf();
+        JUNGLE_BOOKSHELF = new GenericBookshelf("jungle");
         JUNGLE_STORAGE_SHELF = new JungleStorageBookshelf();
         OAK_STORAGE_SHELF = new OakStorageBookshelf();
-        SPRUCE_BOOKSHELF = new SpruceBookshelf();
+        SPRUCE_BOOKSHELF = new GenericBookshelf("spruce");
         SPRUCE_STORAGE_SHELF = new SpruceStorageBookshelf();
-        WARPED_BOOKSHELF = new WarpedBookshelf();
+        WARPED_BOOKSHELF = new GenericBookshelf("warped");
         WARPED_STORAGE_SHELF = new WarpedStorageBookshelf();
 
         ACACIA_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(AcaciaStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(ACACIA_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
@@ -79,7 +79,7 @@ public class Bookshelves {
         ACACIA_STORAGE_SHELF.register();
         BIRCH_BOOKSHELF.register();
         BIRCH_STORAGE_SHELF.register();
-        CRIMSON_BOOKSHELF.register();
+        CRIMSON_BOOKSHELF.register(false);
         CRIMSON_STORAGE_SHELF.register();
         DARK_OAK_BOOKSHELF.register();
         DARK_OAK_STORAGE_SHELF.register();
@@ -88,7 +88,7 @@ public class Bookshelves {
         OAK_STORAGE_SHELF.register();
         SPRUCE_BOOKSHELF.register();
         SPRUCE_STORAGE_SHELF.register();
-        WARPED_BOOKSHELF.register();
+        WARPED_BOOKSHELF.register(false);
         WARPED_STORAGE_SHELF.register();
 
         ACACIA_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/acacia_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(AcaciaStorageBookshelfBlockEntity::new, ACACIA_STORAGE_SHELF).build(null));
