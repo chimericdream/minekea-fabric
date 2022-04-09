@@ -10,5 +10,6 @@
     ],
     "injectors": {
         "defaultRequire": 1
-    }
+    },
+    "plugin": "com.chimericdream.minekea.mixin.MixinRegistrationHelper"
 }
