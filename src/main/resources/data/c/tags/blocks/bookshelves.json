@@ -1,0 +1,12 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:bookshelves/acacia_bookshelf",
+        "minekea:bookshelves/birch_bookshelf",
+        "minekea:bookshelves/crimson_bookshelf",
+        "minekea:bookshelves/dark_oak_bookshelf",
+        "minekea:bookshelves/jungle_bookshelf",
+        "minekea:bookshelves/spruce_bookshelf",
+        "minekea:bookshelves/warped_bookshelf"
+    ]
+}

@@ -77,10 +77,10 @@ public class MinekeaMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Registering tags for Minekea");
+        LOGGER.info("[minekea] Registering block and item tags");
         MinekeaTags.init();
 
-        LOGGER.info("Registering blocks for Minekea");
+        LOGGER.info("[minekea] Registering blocks");
         BOOKSHELVES.register();
         DOORS.register();
         TRAPDOORS.register();
