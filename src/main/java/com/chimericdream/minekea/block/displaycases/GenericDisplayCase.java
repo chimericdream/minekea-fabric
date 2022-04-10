@@ -3,6 +3,8 @@ package com.chimericdream.minekea.block.displaycases;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import net.devtech.arrp.json.blockstate.JBlockModel;
+import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.*;
 import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -177,7 +179,7 @@ public class GenericDisplayCase extends BlockWithEntity {
             ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/stripped_%s_display_case", woodType));
         } else {
             MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/displaycases/%s_display_case", woodType));
-            ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/stripped_%s_display_case", woodType));
+            ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/%s_display_case", woodType));
         }
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
@@ -207,7 +209,7 @@ public class GenericDisplayCase extends BlockWithEntity {
             .var("5", materials[1].getNamespace() + ":block/" + materials[1].getPath())
             .var("particle", strippedMat);
 
-        JModel model = JModel.model()
+        JModel model = JModel.model("minecraft:block/cube")
             .textures(textures)
             .element(
                 new JElement()
@@ -488,5 +490,10 @@ public class GenericDisplayCase extends BlockWithEntity {
             );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(model, MODEL_ID);
+
+        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
+            JState.state(JState.variant(new JBlockModel(MODEL_ID))),
+            BLOCK_ID
+        );
     }
 }

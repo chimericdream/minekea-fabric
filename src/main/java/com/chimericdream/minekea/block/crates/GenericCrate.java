@@ -3,6 +3,8 @@ package com.chimericdream.minekea.block.crates;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import net.devtech.arrp.json.blockstate.JBlockModel;
+import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.*;
 import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -2025,5 +2027,15 @@ public class GenericCrate extends BlockWithEntity {
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(mainModel, MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(horizontalModel, HORIZONTAL_MODEL_ID);
+
+        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
+            JState.state(
+                JState.variant()
+                    .put("axis=x", new JBlockModel(HORIZONTAL_MODEL_ID).x(90).y(90))
+                    .put("axis=y", new JBlockModel(MODEL_ID))
+                    .put("axis=z", new JBlockModel(HORIZONTAL_MODEL_ID).x(90))
+            ),
+            BLOCK_ID
+        );
     }
 }
