@@ -1,7 +1,0 @@
-{
-    "parent": "minecraft:block/cube_column",
-    "textures": {
-        "end": "minecraft:block/warped_planks",
-        "side": "minekea:block/bookshelves/warped/empty_shelf"
-    }
-}

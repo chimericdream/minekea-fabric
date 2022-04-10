@@ -2,12 +2,17 @@ package com.chimericdream.minekea.resource;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.minecraft.util.Identifier;
 
 /*
  * Inspired by similar utils in the following mod:
  * https://github.com/Azagwen/ATBYW
  */
 public class LootTable {
+    public static Identifier blockID(Identifier blockID) {
+        return new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath());
+    }
+
     public static JsonObject silkTouchPredicate() {
         var level = new JsonObject();
         level.addProperty("min", 1);

@@ -2,6 +2,18 @@ package com.chimericdream.minekea.block.bookshelves.storage;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
+import com.chimericdream.minekea.resource.LootTable;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import net.devtech.arrp.json.loot.JCondition;
+import net.devtech.arrp.json.loot.JEntry;
+import net.devtech.arrp.json.loot.JFunction;
+import net.devtech.arrp.json.loot.JLootTable;
+import net.devtech.arrp.json.models.JModel;
+import net.devtech.arrp.json.models.JTextures;
+import net.devtech.arrp.json.recipe.JIngredient;
+import net.devtech.arrp.json.recipe.JIngredients;
+import net.devtech.arrp.json.recipe.JRecipe;
+import net.devtech.arrp.json.recipe.JResult;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
@@ -76,6 +88,8 @@ public class GenericStorageBookshelf extends BlockWithEntity {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
+
+        setupResources();
     }
 
     @Override
@@ -149,5 +163,121 @@ public class GenericStorageBookshelf extends BlockWithEntity {
         }
 
         return 1;
+    }
+
+    protected void setupResources() {
+        String BOOKSHELF;
+
+        if (this.woodType.equals("oak")) {
+            BOOKSHELF = "minecraft:bookshelf";
+        } else {
+            BOOKSHELF = String.format("minekea:bookshelves/%s_bookshelf", woodType);
+        }
+
+        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
+            BLOCK_ID,
+            JRecipe.shapeless(
+                JIngredients.ingredients()
+                    .add(JIngredient.ingredient().item("minecraft:chest"))
+                    .add(JIngredient.ingredient().item(BOOKSHELF)),
+                JResult.result(BLOCK_ID.toString())
+            )
+        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(
+            LootTable.blockID(BLOCK_ID),
+            JLootTable.loot("minecraft:block")
+                .pool(
+                    JLootTable.pool()
+                        .rolls(1)
+                        .entry(
+                            new JEntry()
+                                .type("minecraft:alternatives")
+                                .child(
+                                    new JEntry()
+                                        .type("minecraft:item")
+                                        .name(BLOCK_ID.toString())
+                                        .condition(
+                                            new JCondition()
+                                                .condition("minecraft:match_tool")
+                                                .parameter("predicate", LootTable.silkTouchPredicate())
+                                        )
+                                )
+                                .child(
+                                    new JEntry()
+                                        .type("minecraft:item")
+                                        .name("minecraft:book")
+                                        .function(
+                                            new JFunction("minecraft:set_count")
+                                                .parameter("count", 3)
+                                                .parameter("add", false)
+                                        )
+                                        .function(new JFunction("minecraft:explosion_decay"))
+                                )
+                        )
+                        .condition(new JCondition().condition("minecraft:survives_explosion"))
+                )
+        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addModel(
+            JModel.model("minecraft:block/cube_column")
+                .textures(
+                    new JTextures()
+                        .var("end", String.format("minecraft:block/%s_planks", woodType))
+                        .var("side", String.format("minekea:block/bookshelves/%s/empty_shelf", woodType))
+                ),
+            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/empty_shelf", woodType))
+        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addModel(
+            JModel.model("minecraft:block/cube_column")
+                .textures(
+                    new JTextures()
+                        .var("end", String.format("minecraft:block/%s_planks", woodType))
+                        .var("side", String.format("minekea:block/bookshelves/%s/one_half_shelf", woodType))
+                ),
+            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/one_half_shelf", woodType))
+        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addModel(
+            JModel.model("minecraft:block/cube_column")
+                .textures(
+                    new JTextures()
+                        .var("end", String.format("minecraft:block/%s_planks", woodType))
+                        .var("side", String.format("minekea:block/bookshelves/%s/one_quarter_shelf", woodType))
+                ),
+            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/one_quarter_shelf", woodType))
+        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addModel(
+            JModel.model("minecraft:block/cube_column")
+                .textures(
+                    new JTextures()
+                        .var("end", String.format("minecraft:block/%s_planks", woodType))
+                        .var("side", String.format("minekea:block/bookshelves/%s/three_quarters_shelf", woodType))
+                ),
+            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/three_quarters_shelf", woodType))
+        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addModel(
+            JModel.model(String.format("minekea:block/bookshelves/%s/empty_shelf", woodType)),
+            new Identifier(ModInfo.MOD_ID, String.format("item/bookshelves/storage/%s_storage_shelf", woodType))
+        );
+
+        // This is bugged in ARRP
+        // See: https://github.com/Devan-Kerman/ARRP/issues/62
+//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
+//            JState.state(
+//                JState.variant()
+//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf0", woodType))))
+//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf1", woodType))))
+//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf2", woodType))))
+//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf3", woodType))))
+//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf4", woodType))))
+//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf5", woodType))))
+//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf6", woodType))))
+//            ),
+//            BLOCK_ID
+//        );
     }
 }
