@@ -74,7 +74,7 @@ public class Crates {
 
         CRATE_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "crates/acacia_crate_block_entity"),
+            new Identifier(ModInfo.MOD_ID, "crates/crate_block_entity"),
             FabricBlockEntityTypeBuilder.create(
                 CrateBlockEntity::new,
                 ACACIA_CRATE,
