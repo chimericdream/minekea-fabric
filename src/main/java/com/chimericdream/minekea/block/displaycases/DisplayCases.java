@@ -28,23 +28,79 @@ public class DisplayCases {
     public static BlockEntityType<DisplayCaseBlockEntity> DISPLAY_CASE_BLOCK_ENTITY;
 
     static {
-        ACACIA_DISPLAY_CASE = new GenericDisplayCase("acacia", new String[]{"minecraft:acacia_planks", "minecraft:acacia_log"});
-        BIRCH_DISPLAY_CASE = new GenericDisplayCase("birch", new String[]{"minecraft:birch_planks", "minecraft:birch_log"});
-        CRIMSON_DISPLAY_CASE = new GenericDisplayCase("crimson", new String[]{"minecraft:crimson_planks", "minecraft:crimson_stem"});
-        DARK_OAK_DISPLAY_CASE = new GenericDisplayCase("dark_oak", new String[]{"minecraft:dark_oak_planks", "minecraft:dark_oak_log"});
-        JUNGLE_DISPLAY_CASE = new GenericDisplayCase("jungle", new String[]{"minecraft:jungle_planks", "minecraft:jungle_log"});
-        OAK_DISPLAY_CASE = new GenericDisplayCase("oak", new String[]{"minecraft:oak_planks", "minecraft:oak_log"});
-        SPRUCE_DISPLAY_CASE = new GenericDisplayCase("spruce", new String[]{"minecraft:spruce_planks", "minecraft:spruce_log"});
-        WARPED_DISPLAY_CASE = new GenericDisplayCase("warped", new String[]{"minecraft:warped_planks", "minecraft:warped_stem"});
+        ACACIA_DISPLAY_CASE = new GenericDisplayCase(
+            "acacia",
+            new Identifier[]{new Identifier("minecraft:acacia_planks"), new Identifier("minecraft:acacia_log")}
+        );
+        BIRCH_DISPLAY_CASE = new GenericDisplayCase(
+            "birch",
+            new Identifier[]{new Identifier("minecraft:birch_planks"), new Identifier("minecraft:birch_log")}
+        );
+        CRIMSON_DISPLAY_CASE = new GenericDisplayCase(
+            "crimson",
+            new Identifier[]{new Identifier("minecraft:crimson_planks"), new Identifier("minecraft:crimson_stem")}
+        );
+        DARK_OAK_DISPLAY_CASE = new GenericDisplayCase(
+            "dark_oak",
+            new Identifier[]{new Identifier("minecraft:dark_oak_planks"), new Identifier("minecraft:dark_oak_log")}
+        );
+        JUNGLE_DISPLAY_CASE = new GenericDisplayCase(
+            "jungle",
+            new Identifier[]{new Identifier("minecraft:jungle_planks"), new Identifier("minecraft:jungle_log")}
+        );
+        OAK_DISPLAY_CASE = new GenericDisplayCase(
+            "oak",
+            new Identifier[]{new Identifier("minecraft:oak_planks"), new Identifier("minecraft:oak_log")}
+        );
+        SPRUCE_DISPLAY_CASE = new GenericDisplayCase(
+            "spruce",
+            new Identifier[]{new Identifier("minecraft:spruce_planks"), new Identifier("minecraft:spruce_log")}
+        );
+        WARPED_DISPLAY_CASE = new GenericDisplayCase(
+            "warped",
+            new Identifier[]{new Identifier("minecraft:warped_planks"), new Identifier("minecraft:warped_stem")}
+        );
 
-        STRIPPED_ACACIA_DISPLAY_CASE = new GenericDisplayCase("acacia", new String[]{"minecraft:acacia_planks", "minecraft:stripped_acacia_log"}, true);
-        STRIPPED_BIRCH_DISPLAY_CASE = new GenericDisplayCase("birch", new String[]{"minecraft:birch_planks", "minecraft:stripped_birch_log"}, true);
-        STRIPPED_CRIMSON_DISPLAY_CASE = new GenericDisplayCase("crimson", new String[]{"minecraft:crimson_planks", "minecraft:stripped_crimson_stem"}, true);
-        STRIPPED_DARK_OAK_DISPLAY_CASE = new GenericDisplayCase("dark_oak", new String[]{"minecraft:dark_oak_planks", "minecraft:stripped_dark_oak_log"}, true);
-        STRIPPED_JUNGLE_DISPLAY_CASE = new GenericDisplayCase("jungle", new String[]{"minecraft:jungle_planks", "minecraft:stripped_jungle_log"}, true);
-        STRIPPED_OAK_DISPLAY_CASE = new GenericDisplayCase("oak", new String[]{"minecraft:oak_planks", "minecraft:stripped_oak_log"}, true);
-        STRIPPED_SPRUCE_DISPLAY_CASE = new GenericDisplayCase("spruce", new String[]{"minecraft:spruce_planks", "minecraft:stripped_spruce_log"}, true);
-        STRIPPED_WARPED_DISPLAY_CASE = new GenericDisplayCase("warped", new String[]{"minecraft:warped_planks", "minecraft:stripped_warped_stem"}, true);
+        STRIPPED_ACACIA_DISPLAY_CASE = new GenericDisplayCase(
+            "acacia",
+            new Identifier[]{new Identifier("minecraft:acacia_planks"), new Identifier("minecraft:stripped_acacia_log")},
+            true
+        );
+        STRIPPED_BIRCH_DISPLAY_CASE = new GenericDisplayCase(
+            "birch",
+            new Identifier[]{new Identifier("minecraft:birch_planks"), new Identifier("minecraft:stripped_birch_log")},
+            true
+        );
+        STRIPPED_CRIMSON_DISPLAY_CASE = new GenericDisplayCase(
+            "crimson",
+            new Identifier[]{new Identifier("minecraft:crimson_planks"), new Identifier("minecraft:stripped_crimson_stem")},
+            true
+        );
+        STRIPPED_DARK_OAK_DISPLAY_CASE = new GenericDisplayCase(
+            "dark_oak",
+            new Identifier[]{new Identifier("minecraft:dark_oak_planks"), new Identifier("minecraft:stripped_dark_oak_log")},
+            true
+        );
+        STRIPPED_JUNGLE_DISPLAY_CASE = new GenericDisplayCase(
+            "jungle",
+            new Identifier[]{new Identifier("minecraft:jungle_planks"), new Identifier("minecraft:stripped_jungle_log")},
+            true
+        );
+        STRIPPED_OAK_DISPLAY_CASE = new GenericDisplayCase(
+            "oak",
+            new Identifier[]{new Identifier("minecraft:oak_planks"), new Identifier("minecraft:stripped_oak_log")},
+            true
+        );
+        STRIPPED_SPRUCE_DISPLAY_CASE = new GenericDisplayCase(
+            "spruce",
+            new Identifier[]{new Identifier("minecraft:spruce_planks"), new Identifier("minecraft:stripped_spruce_log")},
+            true
+        );
+        STRIPPED_WARPED_DISPLAY_CASE = new GenericDisplayCase(
+            "warped",
+            new Identifier[]{new Identifier("minecraft:warped_planks"), new Identifier("minecraft:stripped_warped_stem")},
+            true
+        );
     }
 
     public void register() {
