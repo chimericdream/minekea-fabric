@@ -1,7 +1,6 @@
-package com.chimericdream.minekea.block.bookshelves.storage;
+package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import net.devtech.arrp.json.loot.JCondition;

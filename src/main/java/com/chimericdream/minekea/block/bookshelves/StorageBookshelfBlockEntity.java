@@ -1,6 +1,5 @@
-package com.chimericdream.minekea.block.bookshelves.storage;
+package com.chimericdream.minekea.block.bookshelves;
 
-import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;

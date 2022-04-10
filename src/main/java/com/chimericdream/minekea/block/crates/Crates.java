@@ -23,14 +23,38 @@ public class Crates {
     public static ScreenHandlerType<CrateScreenHandler> CRATE_SCREEN_HANDLER;
 
     static {
-        ACACIA_CRATE = new GenericCrate("acacia", new String[]{"minecraft:acacia_planks", "minecraft:acacia_log"});
-        BIRCH_CRATE = new GenericCrate("birch", new String[]{"minecraft:birch_planks", "minecraft:birch_log"});
-        CRIMSON_CRATE = new GenericCrate("crimson", new String[]{"minecraft:crimson_planks", "minecraft:crimson_stem"});
-        DARK_OAK_CRATE = new GenericCrate("dark_oak", new String[]{"minecraft:dark_oak_planks", "minecraft:dark_oak_log"});
-        JUNGLE_CRATE = new GenericCrate("jungle", new String[]{"minecraft:jungle_planks", "minecraft:jungle_log"});
-        OAK_CRATE = new GenericCrate("oak", new String[]{"minecraft:oak_planks", "minecraft:oak_log"});
-        SPRUCE_CRATE = new GenericCrate("spruce", new String[]{"minecraft:spruce_planks", "minecraft:spruce_log"});
-        WARPED_CRATE = new GenericCrate("warped", new String[]{"minecraft:warped_planks", "minecraft:warped_stem"});
+        ACACIA_CRATE = new GenericCrate(
+            "acacia",
+            new Identifier[]{new Identifier("minecraft:acacia_planks"), new Identifier("minecraft:acacia_log")}
+        );
+        BIRCH_CRATE = new GenericCrate(
+            "birch",
+            new Identifier[]{new Identifier("minecraft:birch_planks"), new Identifier("minecraft:birch_log")}
+        );
+        CRIMSON_CRATE = new GenericCrate(
+            "crimson",
+            new Identifier[]{new Identifier("minecraft:crimson_planks"), new Identifier("minecraft:crimson_stem")}
+        );
+        DARK_OAK_CRATE = new GenericCrate(
+            "dark_oak",
+            new Identifier[]{new Identifier("minecraft:dark_oak_planks"), new Identifier("minecraft:dark_oak_log")}
+        );
+        JUNGLE_CRATE = new GenericCrate(
+            "jungle",
+            new Identifier[]{new Identifier("minecraft:jungle_planks"), new Identifier("minecraft:jungle_log")}
+        );
+        OAK_CRATE = new GenericCrate(
+            "oak",
+            new Identifier[]{new Identifier("minecraft:oak_planks"), new Identifier("minecraft:oak_log")}
+        );
+        SPRUCE_CRATE = new GenericCrate(
+            "spruce",
+            new Identifier[]{new Identifier("minecraft:spruce_planks"), new Identifier("minecraft:spruce_log")}
+        );
+        WARPED_CRATE = new GenericCrate(
+            "warped",
+            new Identifier[]{new Identifier("minecraft:warped_planks"), new Identifier("minecraft:warped_stem")}
+        );
 
         CRATE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(
             ACACIA_CRATE.getBlockID(),

@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.screen.bookshelf;
 
-import com.chimericdream.minekea.block.bookshelves.storage.GenericStorageBookshelf;
+import com.chimericdream.minekea.block.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.screen.SimpleInventoryScreenHandler;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;

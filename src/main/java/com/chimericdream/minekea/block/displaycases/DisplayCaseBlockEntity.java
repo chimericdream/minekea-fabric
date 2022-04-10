@@ -1,6 +1,5 @@
-package com.chimericdream.minekea.block.displaycases.entity;
+package com.chimericdream.minekea.block.displaycases;
 
-import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

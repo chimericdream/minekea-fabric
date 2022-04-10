@@ -1,8 +1,6 @@
 package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.bookshelves.storage.GenericStorageBookshelf;
-import com.chimericdream.minekea.block.bookshelves.storage.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
 import net.devtech.arrp.json.models.JModel;

@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.displaycases.entity.DisplayCaseBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;

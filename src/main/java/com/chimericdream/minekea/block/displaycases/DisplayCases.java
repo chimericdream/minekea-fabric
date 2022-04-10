@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.displaycases.entity.DisplayCaseBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;

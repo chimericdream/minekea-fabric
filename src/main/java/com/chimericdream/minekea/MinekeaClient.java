@@ -2,8 +2,8 @@ package com.chimericdream.minekea;
 
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.crates.Crates;
+import com.chimericdream.minekea.block.displaycases.DisplayCaseBlockEntityRenderer;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
-import com.chimericdream.minekea.block.displaycases.entity.DisplayCaseBlockEntityRenderer;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;
 import com.chimericdream.minekea.screen.crate.CrateScreen;
 import net.fabricmc.api.ClientModInitializer;
