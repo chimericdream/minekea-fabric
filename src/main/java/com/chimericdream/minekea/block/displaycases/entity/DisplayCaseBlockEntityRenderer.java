@@ -21,10 +21,10 @@ import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.registry.Registry;
 
 @Environment(EnvType.CLIENT)
-public class GenericDisplayCaseBlockEntityRenderer<T extends GenericDisplayCaseBlockEntity> implements BlockEntityRenderer<T> {
+public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> implements BlockEntityRenderer<T> {
     private final ItemRenderer renderer = MinecraftClient.getInstance().getItemRenderer();
 
-    public GenericDisplayCaseBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+    public DisplayCaseBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
     }
 
     private boolean isBlockItem(ItemStack stack) {
@@ -33,7 +33,7 @@ public class GenericDisplayCaseBlockEntityRenderer<T extends GenericDisplayCaseB
     }
 
     @Override
-    public void render(GenericDisplayCaseBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    public void render(DisplayCaseBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         ItemStack itemStack = entity.getStack(0);
 
         BlockState state = entity.getCachedState();

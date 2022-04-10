@@ -1,13 +1,18 @@
 package com.chimericdream.minekea.block.displaycases;
 
-import com.chimericdream.minekea.block.displaycases.entity.GenericDisplayCaseBlockEntity;
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.displaycases.entity.DisplayCaseBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import net.devtech.arrp.json.recipe.*;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -18,17 +23,23 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public abstract class GenericDisplayCase extends BlockWithEntity {
+public class GenericDisplayCase extends BlockWithEntity {
     public static final BooleanProperty HAS_ITEM = BooleanProperty.of("has_item");
     public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 8);
 
     private final Item BARRIER_ITEM = Blocks.BARRIER.asItem();
     private final ItemStack BARRIER = BARRIER_ITEM.getDefaultStack();
+
+    private final Identifier BLOCK_ID;
+    private final String woodType;
+    private final String[] materials;
+    private final boolean isStripped;
 
     private static final VoxelShape MAIN_SHAPE;
     private static final VoxelShape BASEBOARD_SHAPE;
@@ -38,16 +49,45 @@ public abstract class GenericDisplayCase extends BlockWithEntity {
         BASEBOARD_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 2.0, 15.0);
     }
 
-    GenericDisplayCase() {
-        this(Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
+    public GenericDisplayCase(String woodType, String[] materials) {
+        this(woodType, materials, false, Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
     }
 
-    GenericDisplayCase(Settings settings) {
+    public GenericDisplayCase(String woodType, String[] materials, boolean isStripped) {
+        this(woodType, materials, isStripped, Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
+    }
+
+    GenericDisplayCase(String woodType, String[] materials, boolean isStripped, Settings settings) {
         super(settings);
+
         setDefaultState(getStateManager().getDefaultState().with(HAS_ITEM, false).with(ROTATION, 0));
+
+        this.isStripped = isStripped;
+        this.woodType = woodType;
+        this.materials = materials;
+
+        if (isStripped) {
+            BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("displaycases/stripped_%s_display_case", woodType));
+        } else {
+            BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("displaycases/%s_display_case", woodType));
+        }
     }
 
-    abstract public void register();
+    public void register() {
+        register(true);
+    }
+
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, BLOCK_ID, this);
+        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
+
+        setupResources();
+    }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -104,8 +144,8 @@ public abstract class GenericDisplayCase extends BlockWithEntity {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof GenericDisplayCaseBlockEntity && state.get(HAS_ITEM)) {
-                ItemScatterer.spawn(world, pos, (GenericDisplayCaseBlockEntity) blockEntity);
+            if (blockEntity instanceof DisplayCaseBlockEntity && state.get(HAS_ITEM)) {
+                ItemScatterer.spawn(world, pos, (DisplayCaseBlockEntity) blockEntity);
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -114,7 +154,7 @@ public abstract class GenericDisplayCase extends BlockWithEntity {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new GenericDisplayCaseBlockEntity(pos, state);
+        return new DisplayCaseBlockEntity(pos, state);
     }
 
     @Override
@@ -127,16 +167,16 @@ public abstract class GenericDisplayCase extends BlockWithEntity {
         return VoxelShapes.union(MAIN_SHAPE, BASEBOARD_SHAPE);
     }
 
-    protected void setupResources(Identifier id, String[] materials) {
+    protected void setupResources() {
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            id,
+            BLOCK_ID,
             JRecipe.shaped(
                 JPattern.pattern(" G ", "X X", "###"),
                 JKeys.keys()
                     .key("G", JIngredient.ingredient().item("minecraft:glass"))
                     .key("X", JIngredient.ingredient().item(materials[0]))
                     .key("#", JIngredient.ingredient().item(materials[1])),
-                JResult.stackedResult(id.toString(), 2)
+                JResult.stackedResult(BLOCK_ID.toString(), 2)
             )
         );
     }
