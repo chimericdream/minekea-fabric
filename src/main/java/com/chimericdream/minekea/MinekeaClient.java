@@ -19,15 +19,7 @@ public class MinekeaClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ScreenRegistry.register(Bookshelves.STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-
-        ScreenRegistry.register(Crates.ACACIA_CRATE_SCREEN_HANDLER, CrateScreen::new);
-        ScreenRegistry.register(Crates.BIRCH_CRATE_SCREEN_HANDLER, CrateScreen::new);
-        ScreenRegistry.register(Crates.CRIMSON_CRATE_SCREEN_HANDLER, CrateScreen::new);
-        ScreenRegistry.register(Crates.DARK_OAK_CRATE_SCREEN_HANDLER, CrateScreen::new);
-        ScreenRegistry.register(Crates.JUNGLE_CRATE_SCREEN_HANDLER, CrateScreen::new);
-        ScreenRegistry.register(Crates.OAK_CRATE_SCREEN_HANDLER, CrateScreen::new);
-        ScreenRegistry.register(Crates.SPRUCE_CRATE_SCREEN_HANDLER, CrateScreen::new);
-        ScreenRegistry.register(Crates.WARPED_CRATE_SCREEN_HANDLER, CrateScreen::new);
+        ScreenRegistry.register(Crates.CRATE_SCREEN_HANDLER, CrateScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(DisplayCases.ACACIA_DISPLAY_CASE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DisplayCases.STRIPPED_ACACIA_DISPLAY_CASE, RenderLayer.getCutout());

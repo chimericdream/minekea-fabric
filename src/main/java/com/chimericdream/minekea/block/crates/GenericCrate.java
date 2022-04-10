@@ -1,16 +1,15 @@
 package com.chimericdream.minekea.block.crates;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.crates.entity.GenericCrateBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import net.devtech.arrp.json.recipe.*;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -39,6 +38,8 @@ public class GenericCrate extends BlockWithEntity {
     public static final BooleanProperty OPEN;
 
     private final Identifier BLOCK_ID;
+    private final String woodType;
+    private final String[] materials;
 
     static {
         AXIS = Properties.AXIS;
@@ -46,24 +47,26 @@ public class GenericCrate extends BlockWithEntity {
         OPEN = Properties.OPEN;
     }
 
-    GenericCrate(String woodType, Settings settings) {
+    GenericCrate(String woodType, String[] materials) {
+        this(woodType, materials, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(3.0F, 4.0F));
+    }
+
+    GenericCrate(String woodType, String[] materials, Settings settings) {
         super(settings);
 
+        this.materials = materials;
+        this.woodType = woodType;
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y).with(FACING, Direction.NORTH).with(OPEN, false));
         BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("crates/%s_crate", woodType));
     }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new GenericCrateBlockEntity(Crates.OAK_CRATE_BLOCK_ENTITY, pos, state);
+        return new CrateBlockEntity(Crates.CRATE_BLOCK_ENTITY, pos, state);
     }
 
     public Identifier getBlockID() {
         return BLOCK_ID;
-    }
-
-    protected String[] getMaterials() {
-        return new String[]{"minecraft:oak_planks", "minecraft:oak_log"};
     }
 
     public void register() {
@@ -74,6 +77,11 @@ public class GenericCrate extends BlockWithEntity {
         FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
 
         setupResources();
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, Crates.CRATE_BLOCK_ENTITY, CrateBlockEntity::tick);
     }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
@@ -134,8 +142,8 @@ public class GenericCrate extends BlockWithEntity {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof GenericCrateBlockEntity) {
-                ItemScatterer.spawn(world, pos, (GenericCrateBlockEntity) blockEntity);
+            if (blockEntity instanceof CrateBlockEntity) {
+                ItemScatterer.spawn(world, pos, (CrateBlockEntity) blockEntity);
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -153,8 +161,6 @@ public class GenericCrate extends BlockWithEntity {
     }
 
     protected void setupResources() {
-        String[] materials = getMaterials();
-
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(

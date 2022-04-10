@@ -1,6 +1,5 @@
-package com.chimericdream.minekea.block.crates.entity;
+package com.chimericdream.minekea.block.crates;
 
-import com.chimericdream.minekea.block.crates.GenericCrate;
 import com.chimericdream.minekea.screen.crate.CrateScreenHandler;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -26,22 +25,27 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class GenericCrateBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+public class CrateBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(GenericCrate.ROW_COUNT * 9, ItemStack.EMPTY);
     private final ViewerCountManager stateManager;
 
-    public GenericCrateBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+    public CrateBlockEntity(BlockPos pos, BlockState state) {
+        this(Crates.CRATE_BLOCK_ENTITY, pos, state);
+    }
+
+
+    public CrateBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
 
         this.stateManager = new ViewerCountManager() {
             protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
-                GenericCrateBlockEntity.this.playSound(state, SoundEvents.BLOCK_BARREL_OPEN);
-                GenericCrateBlockEntity.this.setOpen(state, true);
+                CrateBlockEntity.this.playSound(state, SoundEvents.BLOCK_BARREL_OPEN);
+                CrateBlockEntity.this.setOpen(state, true);
             }
 
             protected void onContainerClose(World world, BlockPos pos, BlockState state) {
-                GenericCrateBlockEntity.this.playSound(state, SoundEvents.BLOCK_BARREL_CLOSE);
-                GenericCrateBlockEntity.this.setOpen(state, false);
+                CrateBlockEntity.this.playSound(state, SoundEvents.BLOCK_BARREL_CLOSE);
+                CrateBlockEntity.this.setOpen(state, false);
             }
 
             protected void onViewerCountUpdate(World world, BlockPos pos, BlockState state, int oldViewerCount, int newViewerCount) {
@@ -51,7 +55,7 @@ public class GenericCrateBlockEntity extends BlockEntity implements NamedScreenH
                 if (player.currentScreenHandler instanceof CrateScreenHandler) {
                     Inventory inventory = ((CrateScreenHandler) player.currentScreenHandler).getInventory();
 
-                    return inventory == GenericCrateBlockEntity.this;
+                    return inventory == CrateBlockEntity.this;
                 } else {
                     return false;
                 }
@@ -66,7 +70,7 @@ public class GenericCrateBlockEntity extends BlockEntity implements NamedScreenH
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new CrateScreenHandler(null, syncId, playerInventory, this);
+        return new CrateScreenHandler(Crates.CRATE_SCREEN_HANDLER, syncId, playerInventory, this);
     }
 
     @Override
@@ -100,7 +104,7 @@ public class GenericCrateBlockEntity extends BlockEntity implements NamedScreenH
         }
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, GenericCrateBlockEntity entity) {
+    public static void tick(World world, BlockPos pos, BlockState state, CrateBlockEntity entity) {
         if (!entity.removed) {
             entity.stateManager.updateViewerCount(world, pos, state);
         }
