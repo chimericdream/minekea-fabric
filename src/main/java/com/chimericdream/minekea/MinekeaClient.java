@@ -18,14 +18,7 @@ import net.minecraft.client.render.RenderLayer;
 public class MinekeaClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        ScreenRegistry.register(Bookshelves.ACACIA_STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-        ScreenRegistry.register(Bookshelves.BIRCH_STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-        ScreenRegistry.register(Bookshelves.CRIMSON_STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-        ScreenRegistry.register(Bookshelves.DARK_OAK_STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-        ScreenRegistry.register(Bookshelves.JUNGLE_STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-        ScreenRegistry.register(Bookshelves.OAK_STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-        ScreenRegistry.register(Bookshelves.SPRUCE_STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-        ScreenRegistry.register(Bookshelves.WARPED_STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
+        ScreenRegistry.register(Bookshelves.STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
 
         ScreenRegistry.register(Crates.ACACIA_CRATE_SCREEN_HANDLER, CrateScreen::new);
         ScreenRegistry.register(Crates.BIRCH_CRATE_SCREEN_HANDLER, CrateScreen::new);

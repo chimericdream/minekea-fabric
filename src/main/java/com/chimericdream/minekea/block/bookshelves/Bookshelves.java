@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.bookshelves.storage.*;
-import com.chimericdream.minekea.block.bookshelves.storage.entity.*;
+import com.chimericdream.minekea.block.bookshelves.storage.GenericStorageBookshelf;
+import com.chimericdream.minekea.block.bookshelves.storage.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
@@ -29,49 +29,30 @@ public class Bookshelves {
     public static final GenericBookshelf WARPED_BOOKSHELF;
     public static final GenericStorageBookshelf WARPED_STORAGE_SHELF;
 
-    public static BlockEntityType<AcaciaStorageBookshelfBlockEntity> ACACIA_STORAGE_SHELF_BLOCK_ENTITY;
-    public static BlockEntityType<BirchStorageBookshelfBlockEntity> BIRCH_STORAGE_SHELF_BLOCK_ENTITY;
-    public static BlockEntityType<CrimsonStorageBookshelfBlockEntity> CRIMSON_STORAGE_SHELF_BLOCK_ENTITY;
-    public static BlockEntityType<DarkOakStorageBookshelfBlockEntity> DARK_OAK_STORAGE_SHELF_BLOCK_ENTITY;
-    public static BlockEntityType<JungleStorageBookshelfBlockEntity> JUNGLE_STORAGE_SHELF_BLOCK_ENTITY;
-    public static BlockEntityType<OakStorageBookshelfBlockEntity> OAK_STORAGE_SHELF_BLOCK_ENTITY;
-    public static BlockEntityType<SpruceStorageBookshelfBlockEntity> SPRUCE_STORAGE_SHELF_BLOCK_ENTITY;
-    public static BlockEntityType<WarpedStorageBookshelfBlockEntity> WARPED_STORAGE_SHELF_BLOCK_ENTITY;
-
-    public static ScreenHandlerType<StorageBookshelfScreenHandler> ACACIA_STORAGE_SHELF_SCREEN_HANDLER;
-    public static ScreenHandlerType<StorageBookshelfScreenHandler> BIRCH_STORAGE_SHELF_SCREEN_HANDLER;
-    public static ScreenHandlerType<StorageBookshelfScreenHandler> CRIMSON_STORAGE_SHELF_SCREEN_HANDLER;
-    public static ScreenHandlerType<StorageBookshelfScreenHandler> DARK_OAK_STORAGE_SHELF_SCREEN_HANDLER;
-    public static ScreenHandlerType<StorageBookshelfScreenHandler> JUNGLE_STORAGE_SHELF_SCREEN_HANDLER;
-    public static ScreenHandlerType<StorageBookshelfScreenHandler> OAK_STORAGE_SHELF_SCREEN_HANDLER;
-    public static ScreenHandlerType<StorageBookshelfScreenHandler> SPRUCE_STORAGE_SHELF_SCREEN_HANDLER;
-    public static ScreenHandlerType<StorageBookshelfScreenHandler> WARPED_STORAGE_SHELF_SCREEN_HANDLER;
+    public static BlockEntityType<StorageBookshelfBlockEntity> STORAGE_SHELF_BLOCK_ENTITY;
+    public static ScreenHandlerType<StorageBookshelfScreenHandler> STORAGE_SHELF_SCREEN_HANDLER;
 
     static {
         ACACIA_BOOKSHELF = new GenericBookshelf("acacia");
-        ACACIA_STORAGE_SHELF = new AcaciaStorageBookshelf();
+        ACACIA_STORAGE_SHELF = new GenericStorageBookshelf("acacia");
         BIRCH_BOOKSHELF = new GenericBookshelf("birch");
-        BIRCH_STORAGE_SHELF = new BirchStorageBookshelf();
+        BIRCH_STORAGE_SHELF = new GenericStorageBookshelf("birch");
         CRIMSON_BOOKSHELF = new GenericBookshelf("crimson");
-        CRIMSON_STORAGE_SHELF = new CrimsonStorageBookshelf();
+        CRIMSON_STORAGE_SHELF = new GenericStorageBookshelf("crimson");
         DARK_OAK_BOOKSHELF = new GenericBookshelf("dark_oak");
-        DARK_OAK_STORAGE_SHELF = new DarkOakStorageBookshelf();
+        DARK_OAK_STORAGE_SHELF = new GenericStorageBookshelf("dark_oak");
         JUNGLE_BOOKSHELF = new GenericBookshelf("jungle");
-        JUNGLE_STORAGE_SHELF = new JungleStorageBookshelf();
-        OAK_STORAGE_SHELF = new OakStorageBookshelf();
+        JUNGLE_STORAGE_SHELF = new GenericStorageBookshelf("jungle");
+        OAK_STORAGE_SHELF = new GenericStorageBookshelf("oak");
         SPRUCE_BOOKSHELF = new GenericBookshelf("spruce");
-        SPRUCE_STORAGE_SHELF = new SpruceStorageBookshelf();
+        SPRUCE_STORAGE_SHELF = new GenericStorageBookshelf("spruce");
         WARPED_BOOKSHELF = new GenericBookshelf("warped");
-        WARPED_STORAGE_SHELF = new WarpedStorageBookshelf();
+        WARPED_STORAGE_SHELF = new GenericStorageBookshelf("warped");
 
-        ACACIA_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(AcaciaStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(ACACIA_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
-        BIRCH_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BirchStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(BIRCH_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
-        CRIMSON_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(CrimsonStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(CRIMSON_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
-        DARK_OAK_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DarkOakStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(DARK_OAK_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
-        OAK_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(OakStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(OAK_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
-        JUNGLE_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(JungleStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(JUNGLE_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
-        SPRUCE_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(SpruceStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(SPRUCE_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
-        WARPED_STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(WarpedStorageBookshelf.BLOCK_ID, (syncId, inventory) -> new StorageBookshelfScreenHandler(WARPED_STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory));
+        STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(
+            new Identifier(ModInfo.MOD_ID, "screens/storage_shelf"),
+            (syncId, inventory) -> new StorageBookshelfScreenHandler(STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory)
+        );
     }
 
     public void register() {
@@ -91,14 +72,21 @@ public class Bookshelves {
         WARPED_BOOKSHELF.register(false);
         WARPED_STORAGE_SHELF.register();
 
-        ACACIA_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/acacia_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(AcaciaStorageBookshelfBlockEntity::new, ACACIA_STORAGE_SHELF).build(null));
-        BIRCH_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/birch_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(BirchStorageBookshelfBlockEntity::new, BIRCH_STORAGE_SHELF).build(null));
-        CRIMSON_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/crimson_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(CrimsonStorageBookshelfBlockEntity::new, CRIMSON_STORAGE_SHELF).build(null));
-        DARK_OAK_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/dark_oak_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(DarkOakStorageBookshelfBlockEntity::new, DARK_OAK_STORAGE_SHELF).build(null));
-        JUNGLE_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/jungle_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(JungleStorageBookshelfBlockEntity::new, JUNGLE_STORAGE_SHELF).build(null));
-        OAK_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/oak_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(OakStorageBookshelfBlockEntity::new, OAK_STORAGE_SHELF).build(null));
-        SPRUCE_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/spruce_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(SpruceStorageBookshelfBlockEntity::new, SPRUCE_STORAGE_SHELF).build(null));
-        WARPED_STORAGE_SHELF_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(ModInfo.MOD_ID, "bookshelves/storage/warped_storage_shelf_block_entity"), FabricBlockEntityTypeBuilder.create(WarpedStorageBookshelfBlockEntity::new, WARPED_STORAGE_SHELF).build(null));
+        STORAGE_SHELF_BLOCK_ENTITY = Registry.register(
+            Registry.BLOCK_ENTITY_TYPE,
+            new Identifier(ModInfo.MOD_ID, "bookshelves/storage/storage_shelf_block_entity"),
+            FabricBlockEntityTypeBuilder.create(
+                StorageBookshelfBlockEntity::new,
+                ACACIA_STORAGE_SHELF,
+                BIRCH_STORAGE_SHELF,
+                CRIMSON_STORAGE_SHELF,
+                DARK_OAK_STORAGE_SHELF,
+                JUNGLE_STORAGE_SHELF,
+                OAK_STORAGE_SHELF,
+                SPRUCE_STORAGE_SHELF,
+                WARPED_STORAGE_SHELF
+            ).build(null)
+        );
     }
 
     public static Block[] getShelvesForEnchanting() {
