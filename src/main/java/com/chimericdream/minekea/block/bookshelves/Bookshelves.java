@@ -118,11 +118,11 @@ public class Bookshelves {
     protected void setupOakBookshelfResources() {
         for (int i = 0; i <= 6; i++) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(
-                JModel.model("minecraft:block/cube_column")
+                JModel.model("minekea:block/bookshelf_variant")
                     .textures(
                         new JTextures()
-                            .var("end", "minecraft:block/oak_planks")
-                            .var("side", String.format("minekea:block/bookshelves/oak/shelf%d", i))
+                            .var("material", "minecraft:block/oak_planks")
+                            .var("shelf", String.format("minekea:block/bookshelves/shelf%d", i))
                     ),
                 new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/oak/shelf%d", i))
             );

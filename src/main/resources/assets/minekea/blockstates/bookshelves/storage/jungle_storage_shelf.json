@@ -1,9 +1,0 @@
-{
-    "variants": {
-        "fill_level=0": [{"model": "minekea:block/bookshelves/jungle/empty_shelf"}],
-        "fill_level=1": [{"model": "minekea:block/bookshelves/jungle/one_quarter_shelf"}],
-        "fill_level=2": [{"model": "minekea:block/bookshelves/jungle/one_half_shelf"}],
-        "fill_level=3": [{"model": "minekea:block/bookshelves/jungle/three_quarters_shelf"}],
-        "fill_level=4": [{"model": "minekea:block/bookshelves/jungle/shelf0"}]
-    }
-}

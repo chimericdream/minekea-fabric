@@ -3,6 +3,8 @@ package com.chimericdream.minekea.block.bookshelves;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import net.devtech.arrp.json.blockstate.JBlockModel;
+import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.loot.JCondition;
 import net.devtech.arrp.json.loot.JEntry;
 import net.devtech.arrp.json.loot.JFunction;
@@ -219,41 +221,41 @@ public class GenericStorageBookshelf extends BlockWithEntity {
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/cube_column")
+            JModel.model("minekea:block/bookshelf_variant")
                 .textures(
                     new JTextures()
-                        .var("end", String.format("minecraft:block/%s_planks", woodType))
-                        .var("side", String.format("minekea:block/bookshelves/%s/empty_shelf", woodType))
+                        .var("material", String.format("minecraft:block/%s_planks", woodType))
+                        .var("shelf", "minekea:block/bookshelves/empty-shelf")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/empty_shelf", woodType))
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/cube_column")
+            JModel.model("minekea:block/bookshelf_variant")
                 .textures(
                     new JTextures()
-                        .var("end", String.format("minecraft:block/%s_planks", woodType))
-                        .var("side", String.format("minekea:block/bookshelves/%s/one_half_shelf", woodType))
+                        .var("material", String.format("minecraft:block/%s_planks", woodType))
+                        .var("shelf", "minekea:block/bookshelves/one-half-shelf")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/one_half_shelf", woodType))
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/cube_column")
+            JModel.model("minekea:block/bookshelf_variant")
                 .textures(
                     new JTextures()
-                        .var("end", String.format("minecraft:block/%s_planks", woodType))
-                        .var("side", String.format("minekea:block/bookshelves/%s/one_quarter_shelf", woodType))
+                        .var("material", String.format("minecraft:block/%s_planks", woodType))
+                        .var("shelf", "minekea:block/bookshelves/one-quarter-shelf")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/one_quarter_shelf", woodType))
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/cube_column")
+            JModel.model("minekea:block/bookshelf_variant")
                 .textures(
                     new JTextures()
-                        .var("end", String.format("minecraft:block/%s_planks", woodType))
-                        .var("side", String.format("minekea:block/bookshelves/%s/three_quarters_shelf", woodType))
+                        .var("material", String.format("minecraft:block/%s_planks", woodType))
+                        .var("shelf", "minekea:block/bookshelves/three-quarters-shelf")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/three_quarters_shelf", woodType))
         );
@@ -263,20 +265,16 @@ public class GenericStorageBookshelf extends BlockWithEntity {
             new Identifier(ModInfo.MOD_ID, String.format("item/bookshelves/storage/%s_storage_shelf", woodType))
         );
 
-        // This is bugged in ARRP
-        // See: https://github.com/Devan-Kerman/ARRP/issues/62
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(
-//                JState.variant()
-//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf0", woodType))))
-//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf1", woodType))))
-//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf2", woodType))))
-//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf3", woodType))))
-//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf4", woodType))))
-//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf5", woodType))))
-//                    .put("", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf6", woodType))))
-//            ),
-//            BLOCK_ID
-//        );
+        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
+            JState.state(
+                JState.variant()
+                    .put("fill_level=0", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/empty_shelf", woodType))))
+                    .put("fill_level=1", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/one_quarter_shelf", woodType))))
+                    .put("fill_level=2", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/one_half_shelf", woodType))))
+                    .put("fill_level=3", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/three_quarters_shelf", woodType))))
+                    .put("fill_level=4", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf0", woodType))))
+            ),
+            BLOCK_ID
+        );
     }
 }

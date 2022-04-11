@@ -3,6 +3,8 @@ package com.chimericdream.minekea.block.bookshelves;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import net.devtech.arrp.json.blockstate.JBlockModel;
+import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.loot.JCondition;
 import net.devtech.arrp.json.loot.JEntry;
 import net.devtech.arrp.json.loot.JFunction;
@@ -97,21 +99,28 @@ public class GenericBookshelf extends Block {
                 )
         );
 
+        // Block model variations
         for (int i = 0; i <= 6; i++) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(
-                JModel.model("minecraft:block/cube_column")
+                JModel.model("minekea:block/bookshelf_variant")
                     .textures(
                         new JTextures()
-                            .var("end", String.format("minecraft:block/%s_planks", woodType))
-                            .var("side", String.format("minekea:block/bookshelves/%s/shelf%d", woodType, i))
+                            .var("material", String.format("minecraft:block/%s_planks", woodType))
+                            .var("shelf", String.format("minekea:block/bookshelves/shelf%d", i))
                     ),
                 new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf%d", woodType, i))
             );
         }
 
+        // Item model
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model(String.format("minekea:block/bookshelves/%s/shelf0", woodType)),
             new Identifier(ModInfo.MOD_ID, String.format("item/bookshelves/%s_bookshelf", woodType))
+        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
+            JState.state(JState.variant(new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf0", woodType))))),
+            BLOCK_ID
         );
 
         // This is bugged in ARRP
