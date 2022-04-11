@@ -71,23 +71,22 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock {
                 )
         );
 
-        JTextures textures = new JTextures().var(
-            "texture",
-            String.format("minekea:block/bookshelves/%s/shelf0", woodType)
-        );
+        JTextures textures = new JTextures()
+            .var("material", String.format("minecraft:block/%s_planks", woodType))
+            .var("shelf", "minekea:block/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/template_orientable_trapdoor_bottom").textures(textures),
+            JModel.model("minekea:block/template_orientable_bookshelf_trapdoor_bottom").textures(textures),
             BOTTOM_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/template_orientable_trapdoor_open").textures(textures),
+            JModel.model("minekea:block/template_orientable_bookshelf_trapdoor_open").textures(textures),
             OPEN_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/template_orientable_trapdoor_top").textures(textures),
+            JModel.model("minekea:block/template_orientable_bookshelf_trapdoor_top").textures(textures),
             TOP_MODEL_ID
         );
 

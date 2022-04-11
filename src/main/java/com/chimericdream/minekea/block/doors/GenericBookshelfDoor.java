@@ -82,31 +82,31 @@ public class GenericBookshelfDoor extends DoorBlock {
                 )
         );
 
-        JTextures shelf0 = new JTextures()
-            .var("top", String.format("minekea:block/bookshelves/%s/shelf0", woodType))
-            .var("bottom", String.format("minekea:block/bookshelves/%s/shelf0", woodType));
+        JTextures doorBottom = new JTextures()
+            .var("material", String.format("minecraft:block/%s_planks", woodType))
+            .var("shelf", "minekea:block/bookshelves/shelf0");
 
-        JTextures shelf1 = new JTextures()
-            .var("top", String.format("minekea:block/bookshelves/%s/shelf1", woodType))
-            .var("bottom", String.format("minekea:block/bookshelves/%s/shelf1", woodType));
+        JTextures doorTop = new JTextures()
+            .var("material", String.format("minecraft:block/%s_planks", woodType))
+            .var("shelf", "minekea:block/bookshelves/shelf1");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/door_bottom").textures(shelf0),
+            JModel.model("minekea:block/bookshelf_door_bottom").textures(doorBottom),
             BOTTOM_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/door_bottom_rh").textures(shelf0),
+            JModel.model("minekea:block/bookshelf_door_bottom_rh").textures(doorBottom),
             BOTTOM_HINGE_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/door_top").textures(shelf1),
+            JModel.model("minekea:block/bookshelf_door_top").textures(doorTop),
             TOP_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/door_top_rh").textures(shelf1),
+            JModel.model("minekea:block/bookshelf_door_top_rh").textures(doorTop),
             TOP_HINGE_MODEL_ID
         );
 
