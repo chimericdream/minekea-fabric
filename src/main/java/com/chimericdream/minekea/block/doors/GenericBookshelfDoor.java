@@ -111,8 +111,7 @@ public class GenericBookshelfDoor extends DoorBlock {
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:item/generated")
-                .textures(new JTextures().layer0("minekea:item/secretdoors/acacia_bookshelf_door")),
+            JModel.model("minekea:item/door_item").textures(doorBottom),
             ITEM_MODEL_ID
         );
 

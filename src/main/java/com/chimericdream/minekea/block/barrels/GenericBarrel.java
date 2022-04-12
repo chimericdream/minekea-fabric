@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.barrels;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Texture;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.loot.JCondition;
@@ -23,11 +24,14 @@ import net.minecraft.util.registry.Registry;
 public class GenericBarrel extends BarrelBlock {
     private final String woodType;
     private final Identifier BLOCK_ID;
+    private final Identifier[] materials;
 
-    public GenericBarrel(String woodType) {
+    public GenericBarrel(String woodType, Identifier[] materials) {
         super(FabricBlockSettings.copyOf(Blocks.BARREL).sounds(BlockSoundGroup.WOOD));
 
         this.woodType = woodType;
+        this.materials = materials;
+
         BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("barrels/%s_barrel", woodType));
     }
 
@@ -39,8 +43,10 @@ public class GenericBarrel extends BarrelBlock {
     }
 
     protected void setupResources() {
-        String PLANK_MATERIAL = String.format("minecraft:%s_planks", woodType);
-        String SLAB_MATERIAL = String.format("minecraft:%s_slab", woodType);
+        String PLANK_MATERIAL = materials[0].toString();
+        String SLAB_MATERIAL = materials[1].toString();
+        String LOG_MATERIAL = materials[2].toString();
+
         Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/barrels/%s_barrel", woodType));
         Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/barrels/%s_barrel", woodType));
         Identifier OPEN_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/barrels/%s_barrel_open", woodType));
@@ -71,25 +77,24 @@ public class GenericBarrel extends BarrelBlock {
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/cube_bottom_top")
+            JModel.model("minekea:block/barrel_variant")
                 .textures(
                     new JTextures()
-                        .var("top", String.format("minekea:block/barrels/%s/barrel_top", woodType))
-                        .var("bottom", String.format("minekea:block/barrels/%s/barrel_bottom", woodType))
-                        .var("side", String.format("minekea:block/barrels/%s/barrel_side", woodType))
+                        .var("face", Texture.getBlockTextureID(LOG_MATERIAL).toString())
+                        .var("sides", Texture.getBlockTextureID(PLANK_MATERIAL).toString())
                 ),
             MODEL_ID
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/cube_bottom_top")
+            JModel.model("minekea:block/barrel_variant_open")
                 .textures(
                     new JTextures()
-                        .var("top", String.format("minekea:block/barrels/%s/barrel_top_open", woodType))
-                        .var("bottom", String.format("minekea:block/barrels/%s/barrel_bottom", woodType))
-                        .var("side", String.format("minekea:block/barrels/%s/barrel_side", woodType))
+                        .var("face", Texture.getBlockTextureID(LOG_MATERIAL).toString())
+                        .var("sides", Texture.getBlockTextureID(PLANK_MATERIAL).toString())
                 ),
             OPEN_MODEL_ID
         );
+
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID.toString()), ITEM_MODEL_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(

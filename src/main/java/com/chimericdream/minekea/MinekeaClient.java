@@ -1,5 +1,6 @@
 package com.chimericdream.minekea;
 
+import com.chimericdream.minekea.block.barrels.Barrels;
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.displaycases.DisplayCaseBlockEntityRenderer;
@@ -12,6 +13,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 
 @Environment(EnvType.CLIENT)
@@ -39,6 +41,18 @@ public class MinekeaClient implements ClientModInitializer {
             DisplayCases.STRIPPED_OAK_DISPLAY_CASE,
             DisplayCases.STRIPPED_SPRUCE_DISPLAY_CASE,
             DisplayCases.STRIPPED_WARPED_DISPLAY_CASE
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getTranslucent(),
+            Blocks.BARREL,
+            Barrels.ACACIA_BARREL,
+            Barrels.BIRCH_BARREL,
+            Barrels.CRIMSON_BARREL,
+            Barrels.DARK_OAK_BARREL,
+            Barrels.JUNGLE_BARREL,
+            Barrels.SPRUCE_BARREL,
+            Barrels.WARPED_BARREL
         );
 
         BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.DISPLAY_CASE_BLOCK_ENTITY, DisplayCaseBlockEntityRenderer::new);
