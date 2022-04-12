@@ -29,43 +29,11 @@
             }
         },
         {
-            "name": "bottom_plank",
-            "from": [1, 0, 1],
-            "to": [15, 1, 15],
-            "faces": {
-                "down": {"uv": [0, 0, 14, 14], "texture": "#sides"}
-            }
-        },
-        {
-            "name": "north",
+            "name": "bottom",
             "from": [0, 0, 0],
-            "to": [16, 1, 1],
-            "faces": {
-                "down": {"uv": [0, 0, 16, 1], "texture": "#face"}
-            }
-        },
-        {
-            "name": "south",
-            "from": [0, 0, 15],
             "to": [16, 1, 16],
             "faces": {
-                "down": {"uv": [0, 0, 16, 1], "texture": "#face"}
-            }
-        },
-        {
-            "name": "east",
-            "from": [15, 0, 1],
-            "to": [16, 1, 15],
-            "faces": {
-                "down": {"uv": [0, 0, 1, 14], "texture": "#face"}
-            }
-        },
-        {
-            "name": "west",
-            "from": [0, 0, 1],
-            "to": [1, 1, 15],
-            "faces": {
-                "down": {"uv": [0, 0, 1, 14], "texture": "#face"}
+                "down": {"uv": [0, 0, 16, 16], "texture": "#face"}
             }
         },
         {
