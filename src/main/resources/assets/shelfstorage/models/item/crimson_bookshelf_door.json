@@ -1,6 +1,0 @@
-{
-    "parent": "minecraft:item/generated",
-    "textures": {
-        "layer0": "shelfstorage:item/secretdoors/crimson_bookshelf_door"
-    }
-}

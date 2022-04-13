@@ -1,9 +1,0 @@
-{
-    "variants": {
-        "fill_level=0": [{"model": "minekea:block/bookshelves/acacia/empty_shelf"}],
-        "fill_level=1": [{"model": "minekea:block/bookshelves/acacia/one_quarter_shelf"}],
-        "fill_level=2": [{"model": "minekea:block/bookshelves/acacia/one_half_shelf"}],
-        "fill_level=3": [{"model": "minekea:block/bookshelves/acacia/three_quarters_shelf"}],
-        "fill_level=4": [{"model": "minekea:block/bookshelves/acacia/shelf0"}]
-    }
-}

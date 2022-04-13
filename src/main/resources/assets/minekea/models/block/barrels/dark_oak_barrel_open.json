@@ -1,8 +1,0 @@
-{
-    "parent": "minecraft:block/cube_bottom_top",
-    "textures": {
-        "top": "minekea:block/barrels/dark_oak/barrel_top_open",
-        "bottom": "minekea:block/barrels/dark_oak/barrel_bottom",
-        "side": "minekea:block/barrels/dark_oak/barrel_side"
-    }
-}
