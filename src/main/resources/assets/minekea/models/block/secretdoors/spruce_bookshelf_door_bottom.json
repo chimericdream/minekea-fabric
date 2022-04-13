@@ -1,7 +1,0 @@
-{
-    "parent": "minecraft:block/door_bottom",
-    "textures": {
-        "top": "minekea:block/bookshelves/spruce/shelf0",
-        "bottom": "minekea:block/bookshelves/spruce/shelf0"
-    }
-}

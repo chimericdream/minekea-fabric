@@ -1,24 +1,24 @@
 package com.chimericdream.minekea.block.trapdoors;
 
 public class Trapdoors {
-    public static final PublicTrapdoorBlock ACACIA_BOOKSHELF_TRAPDOOR;
-    public static final PublicTrapdoorBlock BIRCH_BOOKSHELF_TRAPDOOR;
-    public static final PublicTrapdoorBlock CRIMSON_BOOKSHELF_TRAPDOOR;
-    public static final PublicTrapdoorBlock DARK_OAK_BOOKSHELF_TRAPDOOR;
-    public static final PublicTrapdoorBlock JUNGLE_BOOKSHELF_TRAPDOOR;
-    public static final PublicTrapdoorBlock OAK_BOOKSHELF_TRAPDOOR;
-    public static final PublicTrapdoorBlock SPRUCE_BOOKSHELF_TRAPDOOR;
-    public static final PublicTrapdoorBlock WARPED_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor ACACIA_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor BIRCH_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor CRIMSON_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor DARK_OAK_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor JUNGLE_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor OAK_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor SPRUCE_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor WARPED_BOOKSHELF_TRAPDOOR;
 
     static {
-        ACACIA_BOOKSHELF_TRAPDOOR = new AcaciaBookshelfTrapdoor();
-        BIRCH_BOOKSHELF_TRAPDOOR = new BirchBookshelfTrapdoor();
-        CRIMSON_BOOKSHELF_TRAPDOOR = new CrimsonBookshelfTrapdoor();
-        DARK_OAK_BOOKSHELF_TRAPDOOR = new DarkOakBookshelfTrapdoor();
-        JUNGLE_BOOKSHELF_TRAPDOOR = new JungleBookshelfTrapdoor();
-        OAK_BOOKSHELF_TRAPDOOR = new OakBookshelfTrapdoor();
-        SPRUCE_BOOKSHELF_TRAPDOOR = new SpruceBookshelfTrapdoor();
-        WARPED_BOOKSHELF_TRAPDOOR = new WarpedBookshelfTrapdoor();
+        ACACIA_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("acacia");
+        BIRCH_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("birch");
+        CRIMSON_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("crimson");
+        DARK_OAK_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("dark_oak");
+        JUNGLE_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("jungle");
+        OAK_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("oak");
+        SPRUCE_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("spruce");
+        WARPED_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("warped");
     }
 
     public void register() {

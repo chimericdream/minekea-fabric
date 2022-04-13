@@ -1,7 +1,0 @@
-{
-    "parent": "minecraft:block/cube_column",
-    "textures": {
-        "end": "minecraft:block/oak_planks",
-        "side": "minekea:block/bookshelves/oak/shelf1"
-    }
-}

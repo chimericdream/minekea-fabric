@@ -1,6 +1,0 @@
-{
-    "parent": "minecraft:item/generated",
-    "textures": {
-        "layer0": "minekea:item/secretdoors/birch_bookshelf_door"
-    }
-}
