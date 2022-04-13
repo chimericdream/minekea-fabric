@@ -24,17 +24,17 @@ public class BlockEntityMixin {
     }
 
     private static String convertOldMinekeaIds(String id) {
-//        if (id.matches("^minekea:bookshelves/storage/[_a-z]+storage_shelf_block_entity$")) {
-//            return "minekea:bookshelves/storage/storage_shelf_block_entity";
-//        }
-//
-//        if (id.matches("^minekea:crates/[_a-z]+crate_block_entity$")) {
-//            return "minekea:crates/crate_block_entity";
-//        }
-//
-//        if (id.matches("^minekea:displaycases/[_a-z]+case_block_entity$")) {
-//            return "minekea:displaycases/display_case_block_entity";
-//        }
+        if (id.matches("^minekea:bookshelves/storage/[_a-z]+storage_shelf_block_entity$")) {
+            return "minekea:bookshelves/storage/storage_shelf_block_entity";
+        }
+
+        if (id.matches("^minekea:crates/[_a-z]+crate_block_entity$")) {
+            return "minekea:crates/crate_block_entity";
+        }
+
+        if (id.matches("^minekea:displaycases/[_a-z]+case_block_entity$")) {
+            return "minekea:displaycases/display_case_block_entity";
+        }
 
         return id;
     }
