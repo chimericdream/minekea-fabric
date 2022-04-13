@@ -1,0 +1,98 @@
+{
+    "parent": "minecraft:block/cube",
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "#sides",
+        "bands": "minekea:block/barrels/barrel_bands",
+        "bottom_overlay": "minekea:block/barrels/barrel_bottom_overlay",
+        "side_overlay": "minekea:block/barrels/barrel_side_overlay",
+        "top_overlay": "minekea:block/barrels/barrel_top_open_overlay"
+    },
+    "elements": [
+        {
+            "name": "sides",
+            "from": [0, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "north": {"rotation": 90, "texture": "#sides"},
+                "east": {"rotation": 90, "texture": "#sides"},
+                "south": {"rotation": 90, "texture": "#sides"},
+                "west": {"rotation": 90, "texture": "#sides"}
+            }
+        },
+        {
+            "name": "top",
+            "from": [0, 15, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "up": {"texture": "#face"}
+            }
+        },
+        {
+            "name": "bottom",
+            "from": [0, 0, 0],
+            "to": [16, 1, 16],
+            "faces": {
+                "down": {"uv": [0, 0, 16, 16], "texture": "#face"}
+            }
+        },
+        {
+            "name": "bands",
+            "from": [0, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "north": {
+                    "texture": "#bands"
+                },
+                "south": {
+                    "texture": "#bands"
+                },
+                "east": {
+                    "texture": "#bands"
+                },
+                "west": {
+                    "texture": "#bands"
+                }
+            }
+        },
+        {
+            "name": "top_overlay",
+            "from": [0, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "up": {
+                    "texture": "#top_overlay"
+                }
+            }
+        },
+        {
+            "name": "bottom_overlay",
+            "from": [0, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "down": {
+                    "texture": "#bottom_overlay"
+                }
+            }
+        },
+        {
+            "name": "side_overlay",
+            "from": [0, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "north": {
+                    "texture": "#side_overlay"
+                },
+                "south": {
+                    "texture": "#side_overlay"
+                },
+                "east": {
+                    "texture": "#side_overlay"
+                },
+                "west": {
+                    "texture": "#side_overlay"
+                }
+            }
+        }
+    ]
+}

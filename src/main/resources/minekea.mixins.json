@@ -4,9 +4,10 @@
     "package": "com.chimericdream.minekea.mixin",
     "compatibilityLevel": "JAVA_16",
     "mixins": [
+        "BlockEntityMixin",
+        "EnchantmentScreenHandlerMixin"
     ],
     "client": [
-        "EnchantmentScreenHandlerMixin"
     ],
     "injectors": {
         "defaultRequire": 1
