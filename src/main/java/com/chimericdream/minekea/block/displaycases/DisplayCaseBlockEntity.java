@@ -34,6 +34,13 @@ public class DisplayCaseBlockEntity extends BlockEntity implements ImplementedIn
         return items;
     }
 
+    public static NbtCompound getNbt(BlockEntity entity) {
+        NbtCompound nbt = new NbtCompound();
+        Inventories.writeNbt(nbt, ((DisplayCaseBlockEntity) entity).items);
+
+        return nbt;
+    }
+
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
@@ -49,7 +56,7 @@ public class DisplayCaseBlockEntity extends BlockEntity implements ImplementedIn
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this, GenericDisplayCaseBlockEntity::getNbt);
+        return BlockEntityUpdateS2CPacket.create(this, DisplayCaseBlockEntity::getNbt);
     }
 
     @Override
