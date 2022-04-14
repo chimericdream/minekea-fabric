@@ -32,6 +32,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+import java.util.Map;
+
 public class GenericDisplayCase extends BlockWithEntity {
     public static final BooleanProperty HAS_ITEM = BooleanProperty.of("has_item");
     public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 8);
@@ -40,8 +42,9 @@ public class GenericDisplayCase extends BlockWithEntity {
     private final ItemStack BARRIER = BARRIER_ITEM.getDefaultStack();
 
     private final Identifier BLOCK_ID;
+    private final String modId;
     private final String woodType;
-    private final Identifier[] materials;
+    private final Map<String, Identifier> materials;
     private final boolean isStripped;
 
     private static final VoxelShape MAIN_SHAPE;
@@ -52,27 +55,44 @@ public class GenericDisplayCase extends BlockWithEntity {
         BASEBOARD_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 2.0, 15.0);
     }
 
-    public GenericDisplayCase(String woodType, Identifier[] materials) {
-        this(woodType, materials, false, Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
+    public GenericDisplayCase(String woodType, Map<String, Identifier> materials) {
+        this(woodType, ModInfo.MOD_ID, materials, false);
     }
 
-    public GenericDisplayCase(String woodType, Identifier[] materials, boolean isStripped) {
-        this(woodType, materials, isStripped, Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
+    public GenericDisplayCase(String woodType, Map<String, Identifier> materials, boolean isStripped) {
+        this(woodType, ModInfo.MOD_ID, materials, isStripped);
     }
 
-    GenericDisplayCase(String woodType, Identifier[] materials, boolean isStripped, Settings settings) {
-        super(settings);
+    public GenericDisplayCase(String woodType, String modId, Map<String, Identifier> materials) {
+        this(woodType, modId, materials, false);
+    }
+
+    public GenericDisplayCase(String woodType, String modId, Map<String, Identifier> materials, boolean isStripped) {
+        super(Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
 
         setDefaultState(getStateManager().getDefaultState().with(HAS_ITEM, false).with(ROTATION, 0));
 
+        validateMaterials(materials);
+
         this.isStripped = isStripped;
+        this.modId = modId;
         this.woodType = woodType;
         this.materials = materials;
 
         if (isStripped) {
-            BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("displaycases/stripped_%s_display_case", woodType));
+            BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("displaycases/%sstripped_%s_display_case", ModInfo.getModPrefix(modId), woodType));
         } else {
-            BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("displaycases/%s_display_case", woodType));
+            BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("displaycases/%s%s_display_case", ModInfo.getModPrefix(modId), woodType));
+        }
+    }
+
+    protected void validateMaterials(Map<String, Identifier> materials) {
+        String[] keys = new String[]{"planks", "log"};
+
+        for (String key : keys) {
+            if (!materials.containsKey(key)) {
+                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
+            }
         }
     }
 
@@ -175,11 +195,11 @@ public class GenericDisplayCase extends BlockWithEntity {
         Identifier ITEM_MODEL_ID;
 
         if (isStripped) {
-            MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/displaycases/stripped_%s_display_case", woodType));
-            ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/stripped_%s_display_case", woodType));
+            MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/displaycases/%sstripped_%s_display_case", ModInfo.getModPrefix(modId), woodType));
+            ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/%sstripped_%s_display_case", ModInfo.getModPrefix(modId), woodType));
         } else {
-            MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/displaycases/%s_display_case", woodType));
-            ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/%s_display_case", woodType));
+            MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/displaycases/%s%s_display_case", ModInfo.getModPrefix(modId), woodType));
+            ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/%s%s_display_case", ModInfo.getModPrefix(modId), woodType));
         }
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
@@ -188,8 +208,8 @@ public class GenericDisplayCase extends BlockWithEntity {
                 JPattern.pattern(" G ", "X X", "###"),
                 JKeys.keys()
                     .key("G", JIngredient.ingredient().item("minecraft:glass"))
-                    .key("X", JIngredient.ingredient().item(materials[0].toString()))
-                    .key("#", JIngredient.ingredient().item(materials[1].toString())),
+                    .key("X", JIngredient.ingredient().item(materials.get("planks").toString()))
+                    .key("#", JIngredient.ingredient().item(materials.get("log").toString())),
                 JResult.stackedResult(BLOCK_ID.toString(), 2)
             )
         );
@@ -199,14 +219,14 @@ public class GenericDisplayCase extends BlockWithEntity {
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         String strippedMat = isStripped
-            ? materials[1].getNamespace() + ":block/" + materials[1].getPath()
-            : materials[1].getNamespace() + ":block/stripped_" + materials[1].getPath();
+            ? materials.get("log").getNamespace() + ":block/" + materials.get("log").getPath()
+            : materials.get("log").getNamespace() + ":block/stripped_" + materials.get("log").getPath();
 
         JTextures textures = new JTextures()
             .var("0", strippedMat)
             .var("1", "minecraft:block/item_frame")
             .var("2", "minecraft:block/glass")
-            .var("5", materials[1].getNamespace() + ":block/" + materials[1].getPath())
+            .var("5", materials.get("log").getNamespace() + ":block/" + materials.get("log").getPath())
             .var("particle", strippedMat);
 
         JModel model = JModel.model("minecraft:block/cube")

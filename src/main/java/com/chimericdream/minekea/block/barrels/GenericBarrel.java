@@ -21,18 +21,38 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.Map;
+
 public class GenericBarrel extends BarrelBlock {
+    private final String modId;
     private final String woodType;
     private final Identifier BLOCK_ID;
-    private final Identifier[] materials;
+    private final Map<String, Identifier> materials;
 
-    public GenericBarrel(String woodType, Identifier[] materials) {
+    public GenericBarrel(String woodType, Map<String, Identifier> materials) {
+        this(woodType, ModInfo.MOD_ID, materials);
+    }
+
+    public GenericBarrel(String woodType, String modId, Map<String, Identifier> materials) {
         super(FabricBlockSettings.copyOf(Blocks.BARREL).sounds(BlockSoundGroup.WOOD));
 
+        validateMaterials(materials);
+
+        this.modId = modId;
         this.woodType = woodType;
         this.materials = materials;
 
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("barrels/%s_barrel", woodType));
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("barrels/%s%s_barrel", ModInfo.getModPrefix(modId), woodType));
+    }
+
+    protected void validateMaterials(Map<String, Identifier> materials) {
+        String[] keys = new String[]{"planks", "slab", "log"};
+
+        for (String key : keys) {
+            if (!materials.containsKey(key)) {
+                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
+            }
+        }
     }
 
     public void register() {
@@ -43,13 +63,13 @@ public class GenericBarrel extends BarrelBlock {
     }
 
     protected void setupResources() {
-        String PLANK_MATERIAL = materials[0].toString();
-        String SLAB_MATERIAL = materials[1].toString();
-        String LOG_MATERIAL = materials[2].toString();
+        String PLANK_MATERIAL = materials.get("planks").toString();
+        String SLAB_MATERIAL = materials.get("slab").toString();
+        String LOG_MATERIAL = materials.get("log").toString();
 
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/barrels/%s_barrel", woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/barrels/%s_barrel", woodType));
-        Identifier OPEN_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/barrels/%s_barrel_open", woodType));
+        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/barrels/%s%s_barrel", ModInfo.getModPrefix(modId), woodType));
+        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/barrels/%s%s_barrel", ModInfo.getModPrefix(modId), woodType));
+        Identifier OPEN_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/barrels/%s%s_barrel_open", ModInfo.getModPrefix(modId), woodType));
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,

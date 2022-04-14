@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.trapdoors;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Texture;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.loot.JCondition;
@@ -20,15 +21,56 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.Map;
+
 public class GenericBookshelfTrapdoor extends TrapdoorBlock {
+    private final Map<String, Identifier> materials;
+    private final String modId;
     private final String woodType;
     private final Identifier BLOCK_ID;
 
     public GenericBookshelfTrapdoor(String woodType) {
+        this(woodType, ModInfo.MOD_ID);
+    }
+
+    public GenericBookshelfTrapdoor(String woodType, String modId) {
+        this(
+            woodType,
+            modId,
+            Map.of(
+                "bookshelf", new Identifier(getDefaultBookshelfId(woodType, modId)),
+                "planks", new Identifier(String.format("minecraft:%s_planks", woodType))
+            )
+        );
+    }
+
+    public GenericBookshelfTrapdoor(String woodType, String modId, Map<String, Identifier> materials) {
         super(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).sounds(BlockSoundGroup.WOOD));
 
+        validateMaterials(materials);
+
+        this.materials = materials;
+        this.modId = modId;
         this.woodType = woodType;
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("bookshelves/trapdoors/%s_bookshelf_trapdoor", woodType));
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("bookshelves/trapdoors/%s%s_bookshelf_trapdoor", ModInfo.getModPrefix(modId), woodType));
+    }
+
+    private static String getDefaultBookshelfId(String woodType, String modId) {
+        if (woodType.equals("oak")) {
+            return "minecraft:bookshelf";
+        } else {
+            return String.format("minekea:bookshelves/%s%s_bookshelf", ModInfo.getModPrefix(modId), woodType);
+        }
+    }
+
+    protected void validateMaterials(Map<String, Identifier> materials) {
+        String[] keys = new String[]{"bookshelf", "planks"};
+
+        for (String key : keys) {
+            if (!materials.containsKey(key)) {
+                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
+            }
+        }
     }
 
     public void register() {
@@ -39,8 +81,6 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock {
     }
 
     protected void setupResources() {
-        String BOOKSHELF_TYPE = woodType.equals("oak") ? "minecraft:bookshelf" : String.format("minekea:bookshelves/%s_bookshelf", woodType);
-
         Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/" + BLOCK_ID.getPath(), woodType));
 
         Identifier BOTTOM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/" + BLOCK_ID.getPath() + "_bottom", woodType));
@@ -51,7 +91,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock {
             BLOCK_ID,
             JRecipe.shaped(
                 JPattern.pattern("###", "###"),
-                JKeys.keys().key("#", JIngredient.ingredient().item(BOOKSHELF_TYPE)),
+                JKeys.keys().key("#", JIngredient.ingredient().item(materials.get("bookshelf").toString())),
                 JResult.stackedResult(BLOCK_ID.toString(), 12)
             )
         );
@@ -72,7 +112,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock {
         );
 
         JTextures textures = new JTextures()
-            .var("material", String.format("minecraft:block/%s_planks", woodType))
+            .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
             .var("shelf", "minekea:block/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
