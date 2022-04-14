@@ -117,14 +117,45 @@ public class GenericDisplayCase extends BlockWithEntity {
         builder.add(HAS_ITEM, ROTATION);
     }
 
+    private int getRotationFromPlayerFacing(float yaw) {
+        float absYaw = yaw + 180;
+
+        int rotation = Math.round(absYaw / 45) + 4;
+
+        return rotation >= 8 ? rotation - 8 : rotation;
+    }
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
         if (world.isClient) return ActionResult.SUCCESS;
 
         Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
 
-        if (player.isInSneakingPose()) {
-            // If the player is sneaking, rotate the item (if any) in the case
+        if (blockEntity.getStack(0).isOf(BARRIER_ITEM)) {
+            // If the player is holding something, put it in the case
+            if (!player.getStackInHand(hand).isEmpty()) {
+                ItemStack toInsert = player.getStackInHand(hand).copy();
+                toInsert.setCount(1);
+
+                blockEntity.setStack(0, toInsert);
+
+                if (!player.isCreative()) {
+                    player.getStackInHand(hand).decrement(1);
+                }
+
+                world.setBlockState(pos, state.with(HAS_ITEM, true).with(ROTATION, getRotationFromPlayerFacing(player.getYaw())));
+                blockEntity.markDirty();
+            }
+        } else if (player.isInSneakingPose() && player.getStackInHand(hand).isEmpty()) {
+            // If the player is sneaking and not holding anything, get what's in the case
+            if (!blockEntity.getStack(0).isOf(BARRIER_ITEM)) {
+                player.getInventory().offerOrDrop(blockEntity.getStack(0));
+                blockEntity.setStack(0, BARRIER);
+                world.setBlockState(pos, state.with(HAS_ITEM, false).with(ROTATION, 8));
+                blockEntity.markDirty();
+            }
+        } else {
+            // If the player isn't sneaking, or if they have an item in their hand, rotate the item (if any) in the case
             boolean hasItem = state.get(HAS_ITEM);
 
             if (hasItem) {
@@ -132,29 +163,6 @@ public class GenericDisplayCase extends BlockWithEntity {
                 int newRotation = rotation == 7 ? 0 : rotation + 1;
 
                 world.setBlockState(pos, state.with(ROTATION, newRotation));
-            }
-        } else {
-            if (!player.getStackInHand(hand).isEmpty()) {
-                // If the player is holding something, put it in the case
-                ItemStack toInsert = player.getStackInHand(hand).copy();
-                toInsert.setCount(1);
-
-                if (blockEntity.getStack(0).isOf(BARRIER_ITEM)) {
-                    blockEntity.setStack(0, toInsert);
-                    player.getStackInHand(hand).decrement(1);
-                    world.setBlockState(pos, state.with(HAS_ITEM, true).with(ROTATION, 0));
-                    blockEntity.markDirty();
-                } else {
-                    // System.out.println("The case holds " + blockEntity.getStack(0));
-                }
-            } else {
-                // If the player isn't holding anything or sneaking, get what's in the case
-                if (!blockEntity.getStack(0).isOf(BARRIER_ITEM)) {
-                    player.getInventory().offerOrDrop(blockEntity.getStack(0));
-                    blockEntity.setStack(0, BARRIER);
-                    world.setBlockState(pos, state.with(HAS_ITEM, false).with(ROTATION, 8));
-                    blockEntity.markDirty();
-                }
             }
         }
 
