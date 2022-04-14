@@ -9,6 +9,8 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.Map;
+
 public class Crates {
     public static final GenericCrate ACACIA_CRATE;
     public static final GenericCrate BIRCH_CRATE;
@@ -25,35 +27,35 @@ public class Crates {
     static {
         ACACIA_CRATE = new GenericCrate(
             "acacia",
-            new Identifier[]{new Identifier("minecraft:acacia_planks"), new Identifier("minecraft:acacia_log")}
+            Map.of("planks", new Identifier("minecraft:acacia_planks"), "log", new Identifier("minecraft:acacia_log"))
         );
         BIRCH_CRATE = new GenericCrate(
             "birch",
-            new Identifier[]{new Identifier("minecraft:birch_planks"), new Identifier("minecraft:birch_log")}
+            Map.of("planks", new Identifier("minecraft:birch_planks"), "log", new Identifier("minecraft:birch_log"))
         );
         CRIMSON_CRATE = new GenericCrate(
             "crimson",
-            new Identifier[]{new Identifier("minecraft:crimson_planks"), new Identifier("minecraft:crimson_stem")}
+            Map.of("planks", new Identifier("minecraft:crimson_planks"), "log", new Identifier("minecraft:crimson_stem"))
         );
         DARK_OAK_CRATE = new GenericCrate(
             "dark_oak",
-            new Identifier[]{new Identifier("minecraft:dark_oak_planks"), new Identifier("minecraft:dark_oak_log")}
+            Map.of("planks", new Identifier("minecraft:dark_oak_planks"), "log", new Identifier("minecraft:dark_oak_log"))
         );
         JUNGLE_CRATE = new GenericCrate(
             "jungle",
-            new Identifier[]{new Identifier("minecraft:jungle_planks"), new Identifier("minecraft:jungle_log")}
+            Map.of("planks", new Identifier("minecraft:jungle_planks"), "log", new Identifier("minecraft:jungle_log"))
         );
         OAK_CRATE = new GenericCrate(
             "oak",
-            new Identifier[]{new Identifier("minecraft:oak_planks"), new Identifier("minecraft:oak_log")}
+            Map.of("planks", new Identifier("minecraft:oak_planks"), "log", new Identifier("minecraft:oak_log"))
         );
         SPRUCE_CRATE = new GenericCrate(
             "spruce",
-            new Identifier[]{new Identifier("minecraft:spruce_planks"), new Identifier("minecraft:spruce_log")}
+            Map.of("planks", new Identifier("minecraft:spruce_planks"), "log", new Identifier("minecraft:spruce_log"))
         );
         WARPED_CRATE = new GenericCrate(
             "warped",
-            new Identifier[]{new Identifier("minecraft:warped_planks"), new Identifier("minecraft:warped_stem")}
+            Map.of("planks", new Identifier("minecraft:warped_planks"), "log", new Identifier("minecraft:warped_stem"))
         );
 
         CRATE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(

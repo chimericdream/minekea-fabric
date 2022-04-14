@@ -34,6 +34,8 @@ import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
+import java.util.Map;
+
 public class GenericCrate extends BlockWithEntity {
     public static final Integer ROW_COUNT = 6;
 
@@ -42,8 +44,9 @@ public class GenericCrate extends BlockWithEntity {
     public static final BooleanProperty OPEN;
 
     private final Identifier BLOCK_ID;
+    private final String modId;
     private final String woodType;
-    private final Identifier[] materials;
+    private final Map<String, Identifier> materials;
 
     static {
         AXIS = Properties.AXIS;
@@ -51,17 +54,30 @@ public class GenericCrate extends BlockWithEntity {
         OPEN = Properties.OPEN;
     }
 
-    GenericCrate(String woodType, Identifier[] materials) {
-        this(woodType, materials, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(3.0F, 4.0F));
+    public GenericCrate(String woodType, Map<String, Identifier> materials) {
+        this(woodType, ModInfo.MOD_ID, materials);
     }
 
-    GenericCrate(String woodType, Identifier[] materials, Settings settings) {
-        super(settings);
+    public GenericCrate(String woodType, String modId, Map<String, Identifier> materials) {
+        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(3.0F, 4.0F));
 
+        validateMaterials(materials);
+
+        this.modId = modId;
         this.materials = materials;
         this.woodType = woodType;
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y).with(FACING, Direction.NORTH).with(OPEN, false));
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("crates/%s_crate", woodType));
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
+    }
+
+    protected void validateMaterials(Map<String, Identifier> materials) {
+        String[] keys = new String[]{"planks", "log"};
+
+        for (String key : keys) {
+            if (!materials.containsKey(key)) {
+                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
+            }
+        }
     }
 
     @Override
@@ -165,17 +181,17 @@ public class GenericCrate extends BlockWithEntity {
     }
 
     protected void setupResources() {
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/crates/%s_crate", woodType));
-        Identifier HORIZONTAL_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/crates/%s_crate_horizontal", woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/crates/%s_crate", woodType));
+        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
+        Identifier HORIZONTAL_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/crates/%s%s_crate_horizontal", ModInfo.getModPrefix(modId), woodType));
+        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(
                 JPattern.pattern("#X#", "XXX", "#X#"),
                 JKeys.keys()
-                    .key("X", JIngredient.ingredient().item(materials[0].toString()))
-                    .key("#", JIngredient.ingredient().item(materials[1].toString())),
+                    .key("X", JIngredient.ingredient().item(materials.get("planks").toString()))
+                    .key("#", JIngredient.ingredient().item(materials.get("log").toString())),
                 JResult.result(BLOCK_ID.toString())
             )
         );
@@ -185,9 +201,9 @@ public class GenericCrate extends BlockWithEntity {
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         JTextures textures = new JTextures()
-            .var("0", materials[1].getNamespace() + ":block/stripped_" + materials[1].getPath())
-            .var("1", materials[0].getNamespace() + ":block/" + materials[0].getPath())
-            .var("particle", materials[1].getNamespace() + ":block/stripped_" + materials[1].getPath());
+            .var("0", materials.get("log").getNamespace() + ":block/stripped_" + materials.get("log").getPath())
+            .var("1", materials.get("planks").getNamespace() + ":block/" + materials.get("planks").getPath())
+            .var("particle", materials.get("log").getNamespace() + ":block/stripped_" + materials.get("log").getPath());
 
         JModel mainModel = JModel.model("minecraft:block/cube_column")
             .textures(textures)

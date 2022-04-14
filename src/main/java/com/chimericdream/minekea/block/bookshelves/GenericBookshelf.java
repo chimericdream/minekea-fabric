@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.bookshelves;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Texture;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.loot.JCondition;
@@ -23,15 +24,42 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.Map;
+
 public class GenericBookshelf extends Block {
+    private final String modId;
     private final String woodType;
+    private final Map<String, Identifier> materials;
+
     public final Identifier BLOCK_ID;
 
-    GenericBookshelf(String woodType) {
+    public GenericBookshelf(String woodType) {
+        this(woodType, "minekea");
+    }
+
+    public GenericBookshelf(String woodType, String modId) {
+        this(woodType, modId, Map.of("planks", new Identifier(String.format("minecraft:%s_planks", woodType))));
+    }
+
+    public GenericBookshelf(String woodType, String modId, Map<String, Identifier> materials) {
         super(AbstractBlock.Settings.copy(Blocks.BOOKSHELF));
 
+        validateMaterials(materials);
+
+        this.materials = materials;
+        this.modId = modId;
         this.woodType = woodType;
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("bookshelves/%s_bookshelf", woodType));
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("bookshelves/%s%s_bookshelf", ModInfo.getModPrefix(modId), woodType));
+    }
+
+    protected void validateMaterials(Map<String, Identifier> materials) {
+        String[] keys = new String[]{"planks"};
+
+        for (String key : keys) {
+            if (!materials.containsKey(key)) {
+                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
+            }
+        }
     }
 
     public void register() {
@@ -51,14 +79,12 @@ public class GenericBookshelf extends Block {
     }
 
     protected void setupResources() {
-        String MATERIAL = String.format("minecraft:%s_planks", woodType);
-
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(
                 JPattern.pattern("###", "XXX", "###"),
                 JKeys.keys()
-                    .key("#", JIngredient.ingredient().item(MATERIAL))
+                    .key("#", JIngredient.ingredient().item(materials.get("planks").toString()))
                     .key("X", JIngredient.ingredient().item("minecraft:book")),
                 JResult.result(BLOCK_ID.toString())
             )
@@ -105,21 +131,21 @@ public class GenericBookshelf extends Block {
                 JModel.model("minekea:block/bookshelf_variant")
                     .textures(
                         new JTextures()
-                            .var("material", String.format("minecraft:block/%s_planks", woodType))
+                            .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
                             .var("shelf", String.format("minekea:block/bookshelves/shelf%d", i))
                     ),
-                new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf%d", woodType, i))
+                new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/shelf%d", ModInfo.getModPrefix(modId), woodType, i))
             );
         }
 
         // Item model
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(String.format("minekea:block/bookshelves/%s/shelf0", woodType)),
-            new Identifier(ModInfo.MOD_ID, String.format("item/bookshelves/%s_bookshelf", woodType))
+            JModel.model(String.format("minekea:block/bookshelves/%s%s/shelf0", ModInfo.getModPrefix(modId), woodType)),
+            new Identifier(ModInfo.MOD_ID, String.format("item/bookshelves/%s%s_bookshelf", ModInfo.getModPrefix(modId), woodType))
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-            JState.state(JState.variant(new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s/shelf0", woodType))))),
+            JState.state(JState.variant(new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/shelf0", ModInfo.getModPrefix(modId), woodType))))),
             BLOCK_ID
         );
 
