@@ -1,6 +1,6 @@
 # Minekea (Fabric)
 
-![Version: 2.2.0-alpha.0](https://img.shields.io/badge/version-2.2.0--alpha.0-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFGSURBVDhPY8AHpCVF2M2MNQ9CucQDW0u9azvXT/9jbqx5GCpEHABq/H9i37L/uzbMIE6zjJQoI1Dh7aO7F/7397L7f2Db/P+7NhKh2cJE6+62tdP/3b6w5f+xPYv++3rYQDTjshlkE0jTqQPL/t06vxnsTBAN0uznaft/9cLe/0D5v0DNh6BaIADkvJP7loJtAmGQpuN7l/0/unvJ/1ULe/67Opr9L8pJ+A9UdxasAWgTu7WZzt2T+5eCNcBsAuGb5zb/37NpDkjjP6CGb3BNIAC0/vKcqS3/r5xcD9YI03xsz9L/189s/L96Ue8/S1PtayCvgDBUG9iJh9vqc/+sXNiPohlkE0iTmZHGNahSTICu+cbZjWDngWyCKsENYJpXLeoHBwbITyhOwwdAmlvrcv5am+uAQ49ojSAA1HAIpAnKxQIYGABj4eLruqAJiAAAAABJRU5ErkJggg==) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
+![Version: 2.2.0](https://img.shields.io/badge/version-2.2.0-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFGSURBVDhPY8AHpCVF2M2MNQ9CucQDW0u9azvXT/9jbqx5GCpEHABq/H9i37L/uzbMIE6zjJQoI1Dh7aO7F/7397L7f2Db/P+7NhKh2cJE6+62tdP/3b6w5f+xPYv++3rYQDTjshlkE0jTqQPL/t06vxnsTBAN0uznaft/9cLe/0D5v0DNh6BaIADkvJP7loJtAmGQpuN7l/0/unvJ/1ULe/67Opr9L8pJ+A9UdxasAWgTu7WZzt2T+5eCNcBsAuGb5zb/37NpDkjjP6CGb3BNIAC0/vKcqS3/r5xcD9YI03xsz9L/189s/L96Ue8/S1PtayCvgDBUG9iJh9vqc/+sXNiPohlkE0iTmZHGNahSTICu+cbZjWDngWyCKsENYJpXLeoHBwbITyhOwwdAmlvrcv5am+uAQ49ojSAA1HAIpAnKxQIYGABj4eLruqAJiAAAAABJRU5ErkJggg==) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
 
 _Simple, functional, decorative blocks for all your building and storage needs (some assembly required)_
 
@@ -29,6 +29,10 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 * Iron shelves which display their contents
 * More varieties of bookshelves
 * Other types of hidden or disguised storage
+
+### Mod Support
+
+* Oh, the Biomes You'll Go (1.18.x only)
 
 ### Screenshots
 
