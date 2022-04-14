@@ -1,5 +1,8 @@
 {
     "parent": "minecraft:block/block",
+    "textures": {
+        "particle": "#material"
+    },
     "elements": [
         {
             "from": [1, 9, 0],

@@ -5,6 +5,7 @@ import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.displaycases.DisplayCaseBlockEntityRenderer;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;
 import com.chimericdream.minekea.screen.crate.CrateScreen;
 import net.fabricmc.api.ClientModInitializer;
@@ -56,5 +57,9 @@ public class MinekeaClient implements ClientModInitializer {
         );
 
         BlockEntityRendererRegistry.INSTANCE.register(DisplayCases.DISPLAY_CASE_BLOCK_ENTITY, DisplayCaseBlockEntityRenderer::new);
+
+        for (ModCompatLayer mod : MinekeaMod.OTHER_MODS) {
+            mod.initializeClient();
+        }
     }
 }

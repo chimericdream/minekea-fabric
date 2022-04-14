@@ -6,15 +6,18 @@ import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.doors.Doors;
 import com.chimericdream.minekea.block.trapdoors.Trapdoors;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MinekeaMod implements ModInitializer, PreLaunchEntrypoint {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MinekeaMod implements ModInitializer {
     public static final Logger LOGGER;
 
     public static final Bookshelves BOOKSHELVES;
@@ -24,6 +27,7 @@ public class MinekeaMod implements ModInitializer, PreLaunchEntrypoint {
     public static final Barrels BARRELS;
     public static final DisplayCases DISPLAY_CASES;
     public static final MinekeaResourcePack RESOURCES;
+    public static final List<ModCompatLayer> OTHER_MODS = new ArrayList<>();
 
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
@@ -93,12 +97,11 @@ public class MinekeaMod implements ModInitializer, PreLaunchEntrypoint {
         BARRELS.register();
         DISPLAY_CASES.register();
 
+        for (ModCompatLayer mod : OTHER_MODS) {
+            mod.register();
+        }
+
         // This must be the last thing
         RESOURCES.register();
-    }
-
-    @Override
-    public void onPreLaunch() {
-        FabricLoader loader = FabricLoader.getInstance();
     }
 }
