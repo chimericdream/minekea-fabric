@@ -7,6 +7,7 @@ import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.doors.Doors;
 import com.chimericdream.minekea.block.trapdoors.Trapdoors;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import net.fabricmc.api.ModInitializer;
@@ -38,6 +39,12 @@ public class MinekeaMod implements ModInitializer {
         BARRELS = new Barrels();
         DISPLAY_CASES = new DisplayCases();
         RESOURCES = new MinekeaResourcePack();
+
+        FabricLoader loader = FabricLoader.getInstance();
+
+        if (loader.isModLoaded("byg")) {
+            OTHER_MODS.add(new BygBlocks());
+        }
     }
 
     /*
