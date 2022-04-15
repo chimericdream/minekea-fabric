@@ -69,6 +69,14 @@
     "block.minekea.stairs.oak_bookshelf_stairs": "Oak Bookshelf Stairs",
     "block.minekea.stairs.spruce_bookshelf_stairs": "Spruce Bookshelf Stairs",
     "block.minekea.stairs.warped_bookshelf_stairs": "Warped Bookshelf Stairs",
+    "block.minekea.slabs.acacia_bookshelf_slab": "Acacia Bookshelf Slab",
+    "block.minekea.slabs.birch_bookshelf_slab": "Birch Bookshelf Slab",
+    "block.minekea.slabs.crimson_bookshelf_slab": "Crimson Bookshelf Slab",
+    "block.minekea.slabs.dark_oak_bookshelf_slab": "Dark Oak Bookshelf Slab",
+    "block.minekea.slabs.jungle_bookshelf_slab": "Jungle Bookshelf Slab",
+    "block.minekea.slabs.oak_bookshelf_slab": "Oak Bookshelf Slab",
+    "block.minekea.slabs.spruce_bookshelf_slab": "Spruce Bookshelf Slab",
+    "block.minekea.slabs.warped_bookshelf_slab": "Warped Bookshelf Slab",
     "container.minekea.crate": "Crate",
     "container.minekea.storage_bookshelf": "Storage Bookshelf"
 }
