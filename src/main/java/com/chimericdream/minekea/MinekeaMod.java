@@ -5,6 +5,7 @@ import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.doors.Doors;
+import com.chimericdream.minekea.block.stairs.BookshelfStairs;
 import com.chimericdream.minekea.block.trapdoors.Trapdoors;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
@@ -26,6 +27,8 @@ public class MinekeaMod implements ModInitializer {
     public static final Crates CRATES;
     public static final Barrels BARRELS;
     public static final DisplayCases DISPLAY_CASES;
+    public static final BookshelfStairs BOOKSHELF_STAIRS;
+
     public static final MinekeaResourcePack RESOURCES;
     public static final List<ModCompatLayer> OTHER_MODS = new ArrayList<>();
 
@@ -37,6 +40,8 @@ public class MinekeaMod implements ModInitializer {
         CRATES = new Crates();
         BARRELS = new Barrels();
         DISPLAY_CASES = new DisplayCases();
+        BOOKSHELF_STAIRS = new BookshelfStairs();
+
         RESOURCES = new MinekeaResourcePack();
     }
 
@@ -96,6 +101,7 @@ public class MinekeaMod implements ModInitializer {
         CRATES.register();
         BARRELS.register();
         DISPLAY_CASES.register();
+        BOOKSHELF_STAIRS.register();
 
         for (ModCompatLayer mod : OTHER_MODS) {
             mod.register();
