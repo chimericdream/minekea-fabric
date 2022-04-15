@@ -83,8 +83,6 @@ public class GenericBookshelfDoor extends DoorBlock {
     }
 
     protected void setupResources() {
-        String BOOKSHELF_TYPE = woodType.equals("oak") ? "minecraft:bookshelf" : String.format("minekea:bookshelves/%s%s_bookshelf", ModInfo.getModPrefix(modId), woodType);
-
         Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/" + BLOCK_ID.getPath(), woodType));
 
         Identifier BOTTOM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/" + BLOCK_ID.getPath() + "_bottom", woodType));
