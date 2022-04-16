@@ -1,13 +1,11 @@
 package com.chimericdream.minekea.block.stairs;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
-import net.devtech.arrp.json.loot.JCondition;
-import net.devtech.arrp.json.loot.JEntry;
-import net.devtech.arrp.json.loot.JLootTable;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
@@ -81,20 +79,7 @@ public class GenericBookshelfStairs extends StairsBlock {
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(
-            new Identifier(BLOCK_ID.getNamespace(), "blocks/" + BLOCK_ID.getPath()),
-            JLootTable.loot("minecraft:block")
-                .pool(
-                    JLootTable.pool()
-                        .rolls(1)
-                        .entry(
-                            new JEntry()
-                                .type("minecraft:item")
-                                .name(BLOCK_ID.toString())
-                        )
-                        .condition(new JCondition().condition("minecraft:survives_explosion"))
-                )
-        );
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
 
         JTextures textures = new JTextures()
             .var("planks", Texture.getBlockTextureID(planks).toString())

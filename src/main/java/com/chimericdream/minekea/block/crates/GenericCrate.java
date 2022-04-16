@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.crates;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.*;
@@ -36,7 +37,7 @@ import net.minecraft.world.World;
 
 import java.util.Map;
 
-public class GenericCrate extends BlockWithEntity {
+public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     public static final Integer ROW_COUNT = 6;
 
     public static final EnumProperty<Axis> AXIS;
@@ -70,7 +71,7 @@ public class GenericCrate extends BlockWithEntity {
         BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
     }
 
-    protected void validateMaterials(Map<String, Identifier> materials) {
+    public void validateMaterials(Map<String, Identifier> materials) {
         String[] keys = new String[]{"planks", "log"};
 
         for (String key : keys) {
@@ -180,7 +181,7 @@ public class GenericCrate extends BlockWithEntity {
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
 
-    protected void setupResources() {
+    public void setupResources() {
         Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
         Identifier HORIZONTAL_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/crates/%s%s_crate_horizontal", ModInfo.getModPrefix(modId), woodType));
         Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
