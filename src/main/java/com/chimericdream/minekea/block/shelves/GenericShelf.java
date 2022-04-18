@@ -4,6 +4,7 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.util.ImplementedInventory;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -16,16 +17,10 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.*;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -39,10 +34,6 @@ import java.util.Map;
 
 public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
     public static final DirectionProperty WALL_SIDE;
-    public static final BooleanProperty SLOT_0;
-    public static final BooleanProperty SLOT_1;
-    public static final BooleanProperty SLOT_2;
-    public static final BooleanProperty SLOT_3;
 
     protected final Identifier BLOCK_ID;
     protected final String modId;
@@ -51,10 +42,6 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
 
     static {
         WALL_SIDE = DirectionProperty.of("wall_side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
-        SLOT_0 = BooleanProperty.of("slot0");
-        SLOT_1 = BooleanProperty.of("slot1");
-        SLOT_2 = BooleanProperty.of("slot2");
-        SLOT_3 = BooleanProperty.of("slot3");
     }
 
     protected GenericShelf(String woodType, String modId, Map<String, Identifier> materials, Identifier blockId) {
@@ -68,15 +55,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
         this.woodType = woodType;
         this.materials = materials;
 
-        this.setDefaultState(
-            this.stateManager
-                .getDefaultState()
-                .with(WALL_SIDE, Direction.NORTH)
-                .with(SLOT_0, false)
-                .with(SLOT_1, false)
-                .with(SLOT_2, false)
-                .with(SLOT_3, false)
-        );
+        this.setDefaultState(this.stateManager.getDefaultState().with(WALL_SIDE, Direction.NORTH));
     }
 
     public GenericShelf(String woodType, Map<String, Identifier> materials) {
@@ -97,8 +76,16 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
         this.setDefaultState(this.stateManager.getDefaultState().with(WALL_SIDE, Direction.NORTH));
     }
 
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return (BlockState) state.with(WALL_SIDE, rotation.rotate((Direction) state.get(WALL_SIDE)));
+    }
+
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation((Direction) state.get(WALL_SIDE)));
+    }
+
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(WALL_SIDE, SLOT_0, SLOT_1, SLOT_2, SLOT_3);
+        builder.add(WALL_SIDE);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -185,7 +172,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
             return ActionResult.SUCCESS;
         }
 
-        Inventory entity = (Inventory) world.getBlockEntity(pos);
+        ImplementedInventory entity = (ImplementedInventory) world.getBlockEntity(pos);
 
         // Theoretically, this shouldn't be possible
         if (entity == null) {
@@ -210,14 +197,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
                 return ActionResult.FAIL;
             }
 
-            ItemStack toInsert = player.getStackInHand(hand).copy();
-            toInsert.setCount(1);
-
-            entity.setStack(slot, toInsert);
-
-            if (!player.isCreative()) {
-                player.getStackInHand(hand).decrement(1);
-            }
+            player.setStackInHand(hand, entity.tryInsert(slot, player.getStackInHand(hand)));
         } else if (player.isInSneakingPose() && player.getStackInHand(hand).isEmpty()) {
             // remove an item from the shelf
             int slot = -1;
@@ -236,12 +216,14 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
                 return ActionResult.FAIL;
             }
 
-            player.getInventory().offerOrDrop(entity.getStack(slot));
-            entity.setStack(slot, ItemStack.EMPTY);
+            ItemScatterer.spawn(
+                world,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                entity.removeStack(slot)
+            );
         }
-
-        entity.markDirty();
-        world.markDirty(pos);
 
         return ActionResult.SUCCESS;
     }
@@ -256,16 +238,6 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
             }
             super.onStateReplaced(state, world, pos, newState, moved);
         }
-    }
-
-    @Override
-    public boolean hasComparatorOutput(BlockState state) {
-        return true;
-    }
-
-    @Override
-    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
 
     public void register() {
