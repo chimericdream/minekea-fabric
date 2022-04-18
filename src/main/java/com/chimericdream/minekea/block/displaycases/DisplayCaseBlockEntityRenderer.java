@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -18,10 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Matrix4f;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.*;
 import net.minecraft.util.registry.Registry;
 
 @Environment(EnvType.CLIENT)
@@ -81,8 +79,14 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
         matrices.pop();
     }
 
+    protected Vec3i getCameraPose(Camera cam) {
+        Vec3d cameraPos = cam.getPos();
+
+        return new Vec3i(cameraPos.getX(), cameraPos.getY(), cameraPos.getZ());
+    }
+
     protected double getSquaredDistanceToCamera(DisplayCaseBlockEntity entity) {
-        return entity.getPos().getSquaredDistance(dispatcher.camera.getPos());
+        return entity.getPos().getSquaredDistance(getCameraPose(dispatcher.camera));
     }
 
     protected boolean hasLabel(DisplayCaseBlockEntity entity, ItemStack item) {
@@ -90,7 +94,7 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
         BlockPos targetedPos = new BlockPos(target.getPos());
 
         if (MinecraftClient.isHudEnabled() && item.hasCustomName() && entity.getPos().isWithinDistance(targetedPos, 1.5)) {
-            double d = entity.getPos().getSquaredDistance(dispatcher.camera.getPos());
+            double d = entity.getPos().getSquaredDistance(getCameraPose(dispatcher.camera));
             float f = 32.0F;
             return d < (double) (f * f);
         } else {
