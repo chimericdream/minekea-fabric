@@ -96,6 +96,48 @@ public interface ImplementedInventory extends Inventory {
         return items;
     }
 
+    default boolean isMatchingPartialStack(ItemStack incomingStack, ItemStack existingStack) {
+        if (!existingStack.isStackable()) {
+            return false;
+        }
+
+        if (!existingStack.isItemEqual(incomingStack)) {
+            return false;
+        }
+
+        return existingStack.getCount() < existingStack.getMaxCount();
+    }
+
+    default ItemStack tryInsert(int slot, ItemStack stack) {
+        ItemStack oldStack = getStack(slot);
+
+        if (oldStack.isEmpty()) {
+            getItems().set(slot, stack);
+
+            markDirty();
+
+            return ItemStack.EMPTY;
+        }
+
+        if (isMatchingPartialStack(stack, oldStack)) {
+            int stackDiff = oldStack.getMaxCount() - oldStack.getCount();
+
+            // The new stack will completely fit into the slot
+            if (stack.getCount() <= stackDiff) {
+                oldStack.setCount(oldStack.getCount() + stack.getCount());
+
+                markDirty();
+
+                return ItemStack.EMPTY;
+            }
+
+            stack.setCount(stack.getCount() - stackDiff);
+            oldStack.setCount(oldStack.getMaxCount());
+        }
+
+        return stack;
+    }
+
     /**
      * Replaces the current stack in an inventory slot with the provided stack.
      *

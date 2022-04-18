@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.shelves;
 
 import com.chimericdream.minekea.util.ImplementedInventory;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -19,7 +18,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class ShelfBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(4, ItemStack.EMPTY);
@@ -95,15 +93,6 @@ public class ShelfBlockEntity extends BlockEntity implements ImplementedInventor
     }
 
     protected void markDirtyInWorld(World world, BlockPos pos, BlockState state) {
-        List<ItemStack> items = getItems();
-
-        BlockState newState = state
-            .with(GenericShelf.SLOT_0, !items.get(0).isEmpty())
-            .with(GenericShelf.SLOT_1, !items.get(1).isEmpty())
-            .with(GenericShelf.SLOT_2, !items.get(2).isEmpty())
-            .with(GenericShelf.SLOT_3, !items.get(3).isEmpty());
-
-        world.setBlockState(pos, newState, Block.NOTIFY_NEIGHBORS | Block.SKIP_LIGHTING_UPDATES | Block.FORCE_STATE);
         world.markDirty(pos);
 
         if (!world.isClient()) {
