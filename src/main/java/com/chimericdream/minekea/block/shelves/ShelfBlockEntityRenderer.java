@@ -15,6 +15,14 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
+/*
+ * Much of the code in this file was adapted from similar code in the SimpleShelves mod by Pinaz993. They have my
+ * gratitude for doing such a good job documenting their code! (also for making it open source!!)
+ * Links:
+ * https://github.com/Pinaz993/SimpleShelves/blob/master/src/main/java/net/pinaz993/simpleshelves/client/ShelfEntityRenderer.java
+ * https://www.curseforge.com/minecraft/mc-mods/simple-shelves
+ */
+
 public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements BlockEntityRenderer<T> {
     private final ItemRenderer renderer = MinecraftClient.getInstance().getItemRenderer();
 
@@ -36,16 +44,15 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
             return;
         }
 
-        Quaternion rotationQuaternion; // This defines the rotation we use to make sure the items end up in the right places.
-        Vec3f axis = new Vec3f(0, 1, 0); // Let's define this once, so we don't waste time and memory.
-        switch (world.getBlockState(entity.getPos()).get(GenericShelf.WALL_SIDE)) { // Which direction?
-            case NORTH -> rotationQuaternion = new Quaternion(axis, 180, true);
-            case EAST -> rotationQuaternion = new Quaternion(axis, 90, true);
-            case SOUTH -> rotationQuaternion = new Quaternion(axis, 0, true);
-            case WEST -> rotationQuaternion = new Quaternion(axis, 270, true);
-            default ->
-                throw new IllegalStateException("Shelves cannot face ".concat( // Let's be verbose about what went wrong.
-                    world.getBlockState(entity.getPos()).get(GenericShelf.WALL_SIDE).toString()).concat("."));
+        Quaternion rotation;
+        Vec3f axis = new Vec3f(0, 1, 0);
+        switch (world.getBlockState(entity.getPos()).get(GenericShelf.WALL_SIDE)) {
+            case NORTH -> rotation = new Quaternion(axis, 180, true);
+            case EAST -> rotation = new Quaternion(axis, 90, true);
+            case SOUTH -> rotation = new Quaternion(axis, 0, true);
+            case WEST -> rotation = new Quaternion(axis, 270, true);
+            default -> throw new IllegalStateException("Shelves cannot face ".concat(
+                world.getBlockState(entity.getPos()).get(GenericShelf.WALL_SIDE).toString()).concat("."));
         }
 
         ItemStack stack;
@@ -55,7 +62,7 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
             double xPos = 0.125 + (i * 0.25);
 
             if (!stack.isEmpty()) {
-                renderStack(matrices, vertexConsumers, light, overlay, stack, rotationQuaternion, xPos);
+                renderStack(matrices, vertexConsumers, light, overlay, stack, rotation, xPos);
             }
         }
     }
@@ -66,31 +73,28 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
         int light,
         int overlay,
         ItemStack stack,
-        Quaternion rotationQuaternion,
+        Quaternion rotation,
         double x
     ) {
-        matrices.push(); // Obligatory, for OpenGL calls of any kind. I have only vague ideas of why.
+        matrices.push();
 
-        matrices.translate(0.5, 0.5, 0.5); // Move to the middle of the block before rotating.
+        matrices.translate(0.5, 0.5, 0.5);
 
-        // Rotate to make the stack matches with the direction the shelf is facing.
-        matrices.multiply(rotationQuaternion);
-        matrices.translate(-0.5, -0.5, -0.5); // Move back to 0,0,0.
-        matrices.translate(x, 0.65, 0.25); // Translate to the position this quadrant occupies.
+        matrices.multiply(rotation);
+        matrices.translate(-0.5, -0.5, -0.5);
 
-        // If this is a block that renders as a block:
         if (isBlockItem(stack)) {
-            matrices.scale(0.375f, 0.375f, 0.375f); // Scale to 37.5%.
+            matrices.translate(x, 0.65, 0.25);
+            matrices.scale(0.375f, 0.375f, 0.375f);
         } else {
-            matrices.scale(0.1875f, 0.1875f, 0.1875f); // Otherwise scale to 18.75%
+            matrices.translate(x, 0.7, 0.25);
+            matrices.scale(0.25f, 0.25f, 0.25f);
         }
 
-        // Rotate 180 degrees to make block or item face properly outward.
         matrices.multiply(new Quaternion(new Vec3f(0, 1, 0), 180, true));
 
-        // Actually render the item.
         renderer.renderItem(stack, ModelTransformation.Mode.FIXED, light, overlay, matrices, vertexConsumers, 0);
 
-        matrices.pop(); // We're done with this matrix entry (whatever that entails).
+        matrices.pop();
     }
 }

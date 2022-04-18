@@ -17,13 +17,17 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -166,8 +170,50 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
         return BlockRenderType.MODEL;
     }
 
+    private int getTargetSlot(BlockState state, BlockHitResult hit) {
+        Direction facing = state.get(WALL_SIDE);
+        Vec3d localCoords = hit.getPos().subtract(Vec3d.of(hit.getBlockPos()));
+
+        switch (facing) {
+            case NORTH -> {
+                double x = localCoords.getX();
+                if (x > 0.75) return 0;
+                if (x > 0.50) return 1;
+                if (x > 0.25) return 2;
+
+                return 3;
+            }
+            case EAST -> {
+                double z = localCoords.getZ();
+                if (z > 0.75) return 0;
+                if (z > 0.50) return 1;
+                if (z > 0.25) return 2;
+
+                return 3;
+            }
+            case SOUTH -> {
+                double x = localCoords.getX();
+                if (x > 0.75) return 3;
+                if (x > 0.50) return 2;
+                if (x > 0.25) return 1;
+
+                return 0;
+            }
+            case WEST -> {
+                double z = localCoords.getZ();
+                if (z > 0.75) return 3;
+                if (z > 0.50) return 2;
+                if (z > 0.25) return 1;
+
+                return 0;
+            }
+        }
+
+        return -1;
+    }
+
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ImplementedInventory entity = (ImplementedInventory) world.getBlockEntity(pos);
 
         // Theoretically, this shouldn't be possible
@@ -175,50 +221,24 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
             return ActionResult.FAIL;
         }
 
+        int slot = getTargetSlot(state, hit);
+        if (slot == -1) {
+            throw new IllegalStateException("It should not be possible to target a slot outside of the block");
+        }
+
         if (!player.getStackInHand(hand).isEmpty()) {
-            // insert an item into the shelf
-            int slot = -1;
-            int idxToCheck = 0;
-
-            do {
-                ItemStack stack = entity.getStack(idxToCheck);
-                if (stack == null || stack.isEmpty()) {
-                    slot = idxToCheck;
-                }
-
-                idxToCheck += 1;
-            } while (slot == -1 && idxToCheck <= 3);
-
-            if (slot == -1) {
-                return ActionResult.FAIL;
-            }
-
+            // Try to insert the item in the player's hand into the targeted slot on the shelf
             player.setStackInHand(hand, entity.tryInsert(slot, player.getStackInHand(hand)));
         } else if (player.isSneaking() && player.getStackInHand(hand).isEmpty()) {
-            // remove an item from the shelf
-            int slot = -1;
-            int idxToCheck = 3;
-
-            do {
-                ItemStack stack = entity.getStack(idxToCheck);
-                if (stack != null && !stack.isEmpty()) {
-                    slot = idxToCheck;
-                }
-
-                idxToCheck -= 1;
-            } while (slot == -1 && idxToCheck >= 0);
-
-            if (slot == -1) {
-                return ActionResult.FAIL;
+            if (!entity.getStack(slot).isEmpty()) {
+                ItemScatterer.spawn(
+                    world,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    entity.removeStack(slot)
+                );
             }
-
-            ItemScatterer.spawn(
-                world,
-                player.getX(),
-                player.getY(),
-                player.getZ(),
-                entity.removeStack(slot)
-            );
         }
 
         return ActionResult.SUCCESS;
