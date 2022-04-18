@@ -127,7 +127,9 @@ public class GenericDisplayCase extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
-        if (world.isClient) return ActionResult.SUCCESS;
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        }
 
         Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
 

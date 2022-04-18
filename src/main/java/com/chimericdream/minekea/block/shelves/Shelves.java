@@ -1,6 +1,10 @@
 package com.chimericdream.minekea.block.shelves;
 
+import com.chimericdream.minekea.ModInfo;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
 
@@ -22,6 +26,8 @@ public class Shelves {
     public static final GenericFloatingShelf OAK_FLOATING_SHELF;
     public static final GenericFloatingShelf SPRUCE_FLOATING_SHELF;
     public static final GenericFloatingShelf WARPED_FLOATING_SHELF;
+
+    public static BlockEntityType<ShelfBlockEntity> SHELF_BLOCK_ENTITY;
 
     static {
         ACACIA_SHELF = new GenericShelf("acacia", Map.of("slab", new Identifier("minecraft:acacia_slab"), "planks", new Identifier("minecraft:acacia_planks"), "log", new Identifier("minecraft:stripped_acacia_log")));
@@ -61,5 +67,29 @@ public class Shelves {
         OAK_FLOATING_SHELF.register();
         SPRUCE_FLOATING_SHELF.register();
         WARPED_FLOATING_SHELF.register();
+
+        SHELF_BLOCK_ENTITY = Registry.register(
+            Registry.BLOCK_ENTITY_TYPE,
+            new Identifier(ModInfo.MOD_ID, "shelves/shelf_block_entity"),
+            FabricBlockEntityTypeBuilder.create(
+                ShelfBlockEntity::new,
+                ACACIA_SHELF,
+                BIRCH_SHELF,
+                CRIMSON_SHELF,
+                DARK_OAK_SHELF,
+                JUNGLE_SHELF,
+                OAK_SHELF,
+                SPRUCE_SHELF,
+                WARPED_SHELF,
+                ACACIA_FLOATING_SHELF,
+                BIRCH_FLOATING_SHELF,
+                CRIMSON_FLOATING_SHELF,
+                DARK_OAK_FLOATING_SHELF,
+                JUNGLE_FLOATING_SHELF,
+                OAK_FLOATING_SHELF,
+                SPRUCE_FLOATING_SHELF,
+                WARPED_FLOATING_SHELF
+            ).build(null)
+        );
     }
 }
