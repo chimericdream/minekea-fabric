@@ -13,36 +13,70 @@ import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.*;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 import java.util.Map;
 
-public class GenericShelf extends Block implements MinekeaBlock {
+public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
     public static final DirectionProperty WALL_SIDE;
+    public static final BooleanProperty SLOT_0;
+    public static final BooleanProperty SLOT_1;
+    public static final BooleanProperty SLOT_2;
+    public static final BooleanProperty SLOT_3;
 
-    private final Identifier BLOCK_ID;
-    private final String modId;
-    private final String woodType;
-    private final Map<String, Identifier> materials;
+    protected final Identifier BLOCK_ID;
+    protected final String modId;
+    protected final String woodType;
+    protected final Map<String, Identifier> materials;
 
     static {
         WALL_SIDE = DirectionProperty.of("wall_side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
+        SLOT_0 = BooleanProperty.of("slot0");
+        SLOT_1 = BooleanProperty.of("slot1");
+        SLOT_2 = BooleanProperty.of("slot2");
+        SLOT_3 = BooleanProperty.of("slot3");
+    }
+
+    protected GenericShelf(String woodType, String modId, Map<String, Identifier> materials, Identifier blockId) {
+        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque());
+
+        validateMaterials(materials);
+
+        BLOCK_ID = blockId;
+
+        this.modId = modId;
+        this.woodType = woodType;
+        this.materials = materials;
+
+        this.setDefaultState(
+            this.stateManager
+                .getDefaultState()
+                .with(WALL_SIDE, Direction.NORTH)
+                .with(SLOT_0, false)
+                .with(SLOT_1, false)
+                .with(SLOT_2, false)
+                .with(SLOT_3, false)
+        );
     }
 
     public GenericShelf(String woodType, Map<String, Identifier> materials) {
@@ -64,7 +98,7 @@ public class GenericShelf extends Block implements MinekeaBlock {
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(WALL_SIDE);
+        builder.add(WALL_SIDE, SLOT_0, SLOT_1, SLOT_2, SLOT_3);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -133,6 +167,105 @@ public class GenericShelf extends Block implements MinekeaBlock {
                 throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
             }
         }
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new ShelfBlockEntity(pos, state);
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        }
+
+        Inventory entity = (Inventory) world.getBlockEntity(pos);
+
+        // Theoretically, this shouldn't be possible
+        if (entity == null) {
+            return ActionResult.FAIL;
+        }
+
+        if (!player.getStackInHand(hand).isEmpty()) {
+            // insert an item into the shelf
+            int slot = -1;
+            int idxToCheck = 0;
+
+            do {
+                ItemStack stack = entity.getStack(idxToCheck);
+                if (stack == null || stack.isEmpty()) {
+                    slot = idxToCheck;
+                }
+
+                idxToCheck += 1;
+            } while (slot == -1 && idxToCheck <= 3);
+
+            if (slot == -1) {
+                return ActionResult.FAIL;
+            }
+
+            ItemStack toInsert = player.getStackInHand(hand).copy();
+            toInsert.setCount(1);
+
+            entity.setStack(slot, toInsert);
+
+            if (!player.isCreative()) {
+                player.getStackInHand(hand).decrement(1);
+            }
+        } else if (player.isInSneakingPose() && player.getStackInHand(hand).isEmpty()) {
+            // remove an item from the shelf
+            int slot = -1;
+            int idxToCheck = 3;
+
+            do {
+                ItemStack stack = entity.getStack(idxToCheck);
+                if (stack != null && !stack.isEmpty()) {
+                    slot = idxToCheck;
+                }
+
+                idxToCheck -= 1;
+            } while (slot == -1 && idxToCheck >= 0);
+
+            if (slot == -1) {
+                return ActionResult.FAIL;
+            }
+
+            player.getInventory().offerOrDrop(entity.getStack(slot));
+            entity.setStack(slot, ItemStack.EMPTY);
+        }
+
+        entity.markDirty();
+        world.markDirty(pos);
+
+        return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof ShelfBlockEntity) {
+                ItemScatterer.spawn(world, pos, (ShelfBlockEntity) blockEntity);
+                world.updateComparators(pos, this);
+            }
+            super.onStateReplaced(state, world, pos, newState, moved);
+        }
+    }
+
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
 
     public void register() {
