@@ -4,6 +4,7 @@ import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
@@ -12,6 +13,9 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -86,6 +90,17 @@ public class ShelfBlockEntity extends BlockEntity implements ImplementedInventor
     }
 
     @Override
+    public ItemStack tryInsert(int slot, ItemStack stack) {
+        ItemStack ret = ImplementedInventory.super.tryInsert(slot, stack);
+
+        if (!ItemStack.areEqual(ret, stack)) {
+            this.playAddItemSound();
+        }
+
+        return ret;
+    }
+
+    @Override
     public void markDirty() {
         if (this.world != null) {
             markDirtyInWorld(this.world, this.pos, this.getCachedState());
@@ -98,5 +113,13 @@ public class ShelfBlockEntity extends BlockEntity implements ImplementedInventor
         if (!world.isClient()) {
             ((ServerWorld) world).getChunkManager().markForUpdate(pos); // Mark changes to be synced to the client.
         }
+    }
+
+    public void playAddItemSound() {
+        playSound(SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM);
+    }
+
+    public void playSound(SoundEvent soundEvent) {
+        this.world.playSound((PlayerEntity) null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.BLOCKS, 1.0f, 1.0f);
     }
 }
