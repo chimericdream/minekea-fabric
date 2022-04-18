@@ -30,7 +30,7 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
     }
 
     private boolean isBlockItem(ItemStack stack) {
-        BakedModel model = renderer.getModel(stack, null, null, 0);
+        BakedModel model = renderer.getHeldItemModel(stack, null, null, 0);
         return model.hasDepth();
     }
 
