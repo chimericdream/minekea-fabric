@@ -6,7 +6,8 @@ import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
-import net.devtech.arrp.json.models.*;
+import net.devtech.arrp.json.models.JModel;
+import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -34,7 +35,7 @@ import net.minecraft.world.World;
 import java.util.Map;
 
 public class GenericDisplayCase extends BlockWithEntity {
-    public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 8);
+    public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 7);
 
     private final Identifier BLOCK_ID;
     private final String modId;
@@ -154,7 +155,7 @@ public class GenericDisplayCase extends BlockWithEntity {
                 blockEntity.removeStack(0)
             );
 
-            world.setBlockState(pos, state.with(ROTATION, 8));
+            world.setBlockState(pos, state.with(ROTATION, 0));
             blockEntity.markDirty();
         } else {
             // If the player isn't sneaking, or if they have an item in their hand, rotate the item in the case
@@ -196,6 +197,31 @@ public class GenericDisplayCase extends BlockWithEntity {
         return VoxelShapes.union(MAIN_SHAPE, BASEBOARD_SHAPE);
     }
 
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        ImplementedInventory displayCase;
+
+        try {
+            displayCase = (ImplementedInventory) world.getBlockEntity(pos);
+            assert displayCase != null;
+        } catch (Exception e) {
+            throw new IllegalStateException(String.format("The display case at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+        }
+
+        if (displayCase.isEmpty()) {
+            return 0;
+        }
+
+        int rotation = state.get(ROTATION);
+
+        return (rotation * 2) + 1;
+    }
+
     protected void setupResources() {
         Identifier MODEL_ID;
         Identifier ITEM_MODEL_ID;
@@ -229,291 +255,11 @@ public class GenericDisplayCase extends BlockWithEntity {
             : materials.get("log").getNamespace() + ":block/stripped_" + materials.get("log").getPath();
 
         JTextures textures = new JTextures()
-            .var("0", strippedMat)
-            .var("1", "minecraft:block/item_frame")
-            .var("2", "minecraft:block/glass")
-            .var("5", materials.get("log").getNamespace() + ":block/" + materials.get("log").getPath())
+            .var("stripped_material", strippedMat)
+            .var("material", materials.get("log").getNamespace() + ":block/" + materials.get("log").getPath())
             .var("particle", strippedMat);
 
-        JModel model = JModel.model("minecraft:block/cube")
-            .textures(textures)
-            .element(
-                new JElement()
-                    .from(1, 0, 1)
-                    .to(15, 2, 15)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(1, 14, 15, 16))
-                            .east(new JFace("0").uv(1, 14, 15, 16))
-                            .south(new JFace("0").uv(1, 14, 15, 16))
-                            .west(new JFace("0").uv(1, 14, 15, 16))
-                            .up(new JFace("0").uv(0, 0, 0, 0))
-                            .down(new JFace("0").uv(1, 1, 15, 15))
-                    ),
-                new JElement()
-                    .from(2, 12, 2)
-                    .to(14, 13, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("1").uv(2, 2, 14, 3))
-                            .east(new JFace("1").uv(2, 2, 3, 14).rot90())
-                            .south(new JFace("1").uv(2, 13, 14, 14))
-                            .west(new JFace("1").uv(13, 2, 14, 14).rot90())
-                            .up(new JFace("1").uv(2, 2, 14, 14))
-                            .down(new JFace("1").uv(2, 2, 14, 14))
-                    ),
-                new JElement()
-                    .from(0, 12, 0)
-                    .to(16, 13, 2)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 16, 1))
-                            .east(new JFace("0").uv(0, 0, 2, 1))
-                            .south(new JFace("0").uv(0, 0, 16, 1))
-                            .west(new JFace("0").uv(0, 0, 2, 1))
-                            .up(new JFace("0").uv(0, 0, 16, 2))
-                            .down(new JFace("0").uv(0, 0, 16, 2))
-                    ),
-                new JElement()
-                    .from(0, 12, 14)
-                    .to(16, 13, 16)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 16, 1))
-                            .east(new JFace("0").uv(0, 0, 2, 1))
-                            .south(new JFace("0").uv(0, 0, 16, 1))
-                            .west(new JFace("0").uv(0, 0, 2, 1))
-                            .up(new JFace("0").uv(0, 0, 16, 2))
-                            .down(new JFace("0").uv(0, 0, 16, 2))
-                    ),
-                new JElement()
-                    .from(0, 12, 2)
-                    .to(2, 13, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 1))
-                            .east(new JFace("0").uv(0, 0, 12, 1))
-                            .south(new JFace("0").uv(0, 0, 2, 1))
-                            .west(new JFace("0").uv(0, 0, 12, 1))
-                            .up(new JFace("0").uv(0, 0, 2, 12))
-                            .down(new JFace("0").uv(0, 0, 2, 12))
-                    ),
-                new JElement()
-                    .from(14, 12, 2)
-                    .to(16, 13, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 1))
-                            .east(new JFace("0").uv(0, 0, 12, 1))
-                            .south(new JFace("0").uv(0, 0, 2, 1))
-                            .west(new JFace("0").uv(0, 0, 12, 1))
-                            .up(new JFace("0").uv(0, 0, 2, 12))
-                            .down(new JFace("0").uv(0, 0, 2, 12))
-                    ),
-                new JElement()
-                    .from(0, 13, 0)
-                    .to(16, 16, 16)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("2").uv(0, 0, 16, 3))
-                            .east(new JFace("2").uv(0, 0, 16, 3))
-                            .south(new JFace("2").uv(0, 0, 16, 3))
-                            .west(new JFace("2").uv(0, 0, 16, 3))
-                            .up(new JFace("2").uv(0, 0, 16, 16))
-                    ),
-                new JElement()
-                    .from(14, 2, 14)
-                    .to(16, 12, 16)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 10))
-                            .east(new JFace("0").uv(0, 0, 2, 10))
-                            .south(new JFace("0").uv(0, 0, 2, 10))
-                            .west(new JFace("0").uv(0, 0, 2, 10))
-                            .up(new JFace("0").uv(0, 0, 2, 2))
-                            .down(new JFace("0").uv(0, 0, 2, 2))
-                    ),
-                new JElement()
-                    .from(0, 2, 0)
-                    .to(2, 12, 2)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 10))
-                            .east(new JFace("0").uv(0, 0, 2, 10))
-                            .south(new JFace("0").uv(0, 0, 2, 10))
-                            .west(new JFace("0").uv(0, 0, 2, 10))
-                            .up(new JFace("0").uv(0, 0, 2, 2))
-                            .down(new JFace("0").uv(0, 0, 2, 2))
-                    ),
-                new JElement()
-                    .from(14, 2, 0)
-                    .to(16, 12, 2)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 10))
-                            .east(new JFace("0").uv(0, 0, 2, 10))
-                            .south(new JFace("0").uv(0, 0, 2, 10))
-                            .west(new JFace("0").uv(0, 0, 2, 10))
-                            .up(new JFace("0").uv(0, 0, 2, 2))
-                            .down(new JFace("0").uv(0, 0, 2, 2))
-                    ),
-                new JElement()
-                    .from(0, 2, 14)
-                    .to(2, 12, 16)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 10))
-                            .east(new JFace("0").uv(0, 0, 2, 10))
-                            .south(new JFace("0").uv(0, 0, 2, 10))
-                            .west(new JFace("0").uv(0, 0, 2, 10))
-                            .up(new JFace("0").uv(0, 0, 2, 2))
-                            .down(new JFace("0").uv(0, 0, 2, 2))
-                    ),
-                new JElement()
-                    .from(0, 2, 2)
-                    .to(2, 4, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 2))
-                            .east(new JFace("0").uv(0, 0, 12, 2))
-                            .south(new JFace("0").uv(0, 0, 2, 2))
-                            .west(new JFace("0").uv(0, 0, 12, 2))
-                            .up(new JFace("0").uv(0, 0, 2, 12))
-                            .down(new JFace("0").uv(0, 0, 2, 12))
-                    ),
-                new JElement()
-                    .from(2, 2, 0)
-                    .to(14, 4, 2)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 12, 2))
-                            .east(new JFace("0").uv(0, 0, 2, 2))
-                            .south(new JFace("0").uv(0, 0, 12, 2))
-                            .west(new JFace("0").uv(0, 0, 2, 2))
-                            .up(new JFace("0").uv(0, 0, 12, 2))
-                            .down(new JFace("0").uv(0, 0, 12, 2))
-                    ),
-                new JElement()
-                    .from(2, 2, 14)
-                    .to(14, 4, 16)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 12, 2))
-                            .east(new JFace("0").uv(0, 0, 2, 2))
-                            .south(new JFace("0").uv(0, 0, 12, 2))
-                            .west(new JFace("0").uv(0, 0, 2, 2))
-                            .up(new JFace("0").uv(0, 0, 12, 2))
-                            .down(new JFace("0").uv(0, 0, 12, 2))
-                    ),
-                new JElement()
-                    .from(14, 2, 2)
-                    .to(16, 4, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 2))
-                            .east(new JFace("0").uv(0, 0, 12, 2))
-                            .south(new JFace("0").uv(0, 0, 2, 2))
-                            .west(new JFace("0").uv(0, 0, 12, 2))
-                            .up(new JFace("0").uv(0, 0, 2, 12))
-                            .down(new JFace("0").uv(0, 0, 2, 12))
-                    ),
-                new JElement()
-                    .from(0, 11, 2)
-                    .to(2, 12, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 1))
-                            .east(new JFace("0").uv(0, 0, 12, 1))
-                            .south(new JFace("0").uv(0, 0, 2, 1))
-                            .west(new JFace("0").uv(0, 0, 12, 1))
-                            .up(new JFace("0").uv(0, 0, 2, 12))
-                            .down(new JFace("0").uv(0, 0, 2, 12))
-                    ),
-                new JElement()
-                    .from(2, 11, 0)
-                    .to(14, 12, 2)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 12, 1))
-                            .east(new JFace("0").uv(0, 0, 2, 1))
-                            .south(new JFace("0").uv(0, 0, 12, 1))
-                            .west(new JFace("0").uv(0, 0, 2, 1))
-                            .up(new JFace("0").uv(0, 0, 12, 2))
-                            .down(new JFace("0").uv(0, 0, 12, 2))
-                    ),
-                new JElement()
-                    .from(14, 11, 2)
-                    .to(16, 12, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 2, 1))
-                            .east(new JFace("0").uv(0, 0, 12, 1))
-                            .south(new JFace("0").uv(0, 0, 2, 1))
-                            .west(new JFace("0").uv(0, 0, 12, 1))
-                            .up(new JFace("0").uv(0, 0, 2, 12))
-                            .down(new JFace("0").uv(0, 0, 2, 12))
-                    ),
-                new JElement()
-                    .from(2, 11, 14)
-                    .to(14, 12, 16)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("0").uv(0, 0, 12, 1))
-                            .east(new JFace("0").uv(0, 0, 2, 1))
-                            .south(new JFace("0").uv(0, 0, 12, 1))
-                            .west(new JFace("0").uv(0, 0, 2, 1))
-                            .up(new JFace("0").uv(0, 0, 12, 2))
-                            .down(new JFace("0").uv(0, 0, 12, 2))
-                    ),
-                new JElement()
-                    .from(2, 4, 1)
-                    .to(14, 11, 2)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("5").uv(0, 0, 12, 7))
-                            .east(new JFace("5").uv(0, 0, 1, 7))
-                            .south(new JFace("5").uv(0, 0, 12, 7))
-                            .west(new JFace("5").uv(0, 0, 1, 7))
-                            .up(new JFace("5").uv(0, 0, 12, 1))
-                            .down(new JFace("5").uv(0, 0, 12, 1))
-                    ),
-                new JElement()
-                    .from(1, 4, 2)
-                    .to(2, 11, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("5").uv(0, 0, 1, 7))
-                            .east(new JFace("5").uv(0, 0, 12, 7))
-                            .south(new JFace("5").uv(0, 0, 1, 7))
-                            .west(new JFace("5").uv(0, 0, 12, 7))
-                            .up(new JFace("5").uv(0, 0, 1, 12))
-                            .down(new JFace("5").uv(0, 0, 1, 12))
-                    ),
-                new JElement()
-                    .from(2, 4, 14)
-                    .to(14, 11, 15)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("5").uv(0, 0, 12, 7))
-                            .east(new JFace("5").uv(0, 0, 1, 7))
-                            .south(new JFace("5").uv(0, 0, 12, 7))
-                            .west(new JFace("5").uv(0, 0, 1, 7))
-                            .up(new JFace("5").uv(0, 0, 12, 1))
-                            .down(new JFace("5").uv(0, 0, 12, 1))
-                    ),
-                new JElement()
-                    .from(14, 4, 2)
-                    .to(15, 11, 14)
-                    .faces(
-                        new JFaces()
-                            .north(new JFace("5").uv(0, 0, 1, 7))
-                            .east(new JFace("5").uv(0, 0, 12, 7))
-                            .south(new JFace("5").uv(0, 0, 1, 7))
-                            .west(new JFace("5").uv(0, 0, 12, 7))
-                            .up(new JFace("5").uv(0, 0, 1, 12))
-                            .down(new JFace("5").uv(0, 0, 1, 12))
-                    )
-            );
+        JModel model = JModel.model("minekea:block/display_case").textures(textures);
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(model, MODEL_ID);
 
