@@ -35,7 +35,7 @@ import net.minecraft.world.World;
 import java.util.Map;
 
 public class GenericDisplayCase extends BlockWithEntity {
-    public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 7);
+    public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 8);
 
     private final Identifier BLOCK_ID;
     private final String modId;
@@ -118,15 +118,19 @@ public class GenericDisplayCase extends BlockWithEntity {
 
         int rotation = Math.round(absYaw / 45) + 4;
 
+        if (rotation < 0) {
+            return 0;
+        }
+
         return rotation >= 8 ? rotation - 8 : rotation;
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
-        ImplementedInventory blockEntity;
+        DisplayCaseBlockEntity blockEntity;
 
         try {
-            blockEntity = (ImplementedInventory) world.getBlockEntity(pos);
+            blockEntity = (DisplayCaseBlockEntity) world.getBlockEntity(pos);
             assert blockEntity != null;
         } catch (Exception e) {
             throw new IllegalStateException(String.format("The display case at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
@@ -144,6 +148,7 @@ public class GenericDisplayCase extends BlockWithEntity {
 
                 world.setBlockState(pos, state.with(ROTATION, getRotationFromPlayerFacing(player.getYaw())));
                 blockEntity.markDirty();
+                blockEntity.playAddItemSound();
             }
         } else if (player.isSneaking() && player.getStackInHand(hand).isEmpty()) {
             // If the player is sneaking and not holding anything, get what's in the case
@@ -157,12 +162,14 @@ public class GenericDisplayCase extends BlockWithEntity {
 
             world.setBlockState(pos, state.with(ROTATION, 0));
             blockEntity.markDirty();
+            blockEntity.playRemoveItemSound();
         } else {
             // If the player isn't sneaking, or if they have an item in their hand, rotate the item in the case
             int rotation = state.get(ROTATION);
             int newRotation = rotation == 7 ? 0 : rotation + 1;
 
             world.setBlockState(pos, state.with(ROTATION, newRotation));
+            blockEntity.playRotateItemSound();
         }
 
         world.markDirty(pos);

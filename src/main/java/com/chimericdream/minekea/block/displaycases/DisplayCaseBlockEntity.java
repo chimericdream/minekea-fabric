@@ -5,10 +5,14 @@ import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -66,5 +70,21 @@ public class DisplayCaseBlockEntity extends BlockEntity implements BlockEntityCl
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
         return false;
+    }
+
+    public void playRemoveItemSound() {
+        playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM);
+    }
+
+    public void playRotateItemSound() {
+        playSound(SoundEvents.ENTITY_ITEM_FRAME_ROTATE_ITEM);
+    }
+
+    public void playAddItemSound() {
+        playSound(SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM);
+    }
+
+    public void playSound(SoundEvent soundEvent) {
+        this.world.playSound((PlayerEntity) null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.BLOCKS, 1.0f, 1.0f);
     }
 }
