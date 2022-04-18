@@ -4,25 +4,19 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -32,42 +26,13 @@ import net.minecraft.world.BlockView;
 
 import java.util.Map;
 
-public class GenericFloatingShelf extends Block implements MinekeaBlock {
-    public static final DirectionProperty WALL_SIDE;
-
-    private final Identifier BLOCK_ID;
-    private final String modId;
-    private final String woodType;
-    private final Map<String, Identifier> materials;
-
-    static {
-        WALL_SIDE = DirectionProperty.of("wall_side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
-    }
-
+public class GenericFloatingShelf extends GenericShelf {
     public GenericFloatingShelf(String woodType, Map<String, Identifier> materials) {
         this(woodType, ModInfo.MOD_ID, materials);
     }
 
     public GenericFloatingShelf(String woodType, String modId, Map<String, Identifier> materials) {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque());
-
-        validateMaterials(materials);
-
-        BLOCK_ID = new Identifier(modId, String.format("shelves/%s%s_floating_shelf", ModInfo.getModPrefix(modId), woodType));
-
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
-
-        this.setDefaultState(this.stateManager.getDefaultState().with(WALL_SIDE, Direction.NORTH));
-    }
-
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(WALL_SIDE);
-    }
-
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(WALL_SIDE, ctx.getPlayerLookDirection().getOpposite());
+        super(woodType, modId, materials, new Identifier(modId, String.format("shelves/%s%s_floating_shelf", ModInfo.getModPrefix(modId), woodType)));
     }
 
     @Override
@@ -90,10 +55,7 @@ public class GenericFloatingShelf extends Block implements MinekeaBlock {
         }
     }
 
-    public Identifier getBlockID() {
-        return BLOCK_ID;
-    }
-
+    @Override
     public void validateMaterials(Map<String, Identifier> materials) {
         String[] keys = new String[]{"slab"};
 
@@ -104,6 +66,7 @@ public class GenericFloatingShelf extends Block implements MinekeaBlock {
         }
     }
 
+    @Override
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
         Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
@@ -114,6 +77,7 @@ public class GenericFloatingShelf extends Block implements MinekeaBlock {
         setupResources();
     }
 
+    @Override
     public void setupResources() {
         Identifier planks = materials.get("planks");
         Identifier slab = materials.get("slab");
