@@ -2,7 +2,6 @@ package com.chimericdream.minekea.block.displaycases;
 
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.inventory.Inventories;
@@ -19,7 +18,7 @@ import net.minecraft.util.math.Direction;
 import javax.annotation.Nullable;
 
 public class DisplayCaseBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, Blocks.BARRIER.asItem().getDefaultStack());
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     public DisplayCaseBlockEntity(BlockPos pos, BlockState state) {
         this(DisplayCases.DISPLAY_CASE_BLOCK_ENTITY, pos, state);
@@ -32,13 +31,6 @@ public class DisplayCaseBlockEntity extends BlockEntity implements ImplementedIn
     @Override
     public DefaultedList<ItemStack> getItems() {
         return items;
-    }
-
-    public static NbtCompound getNbt(BlockEntity entity) {
-        NbtCompound nbt = new NbtCompound();
-        Inventories.writeNbt(nbt, ((DisplayCaseBlockEntity) entity).items);
-
-        return nbt;
     }
 
     @Override
@@ -56,7 +48,7 @@ public class DisplayCaseBlockEntity extends BlockEntity implements ImplementedIn
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this, DisplayCaseBlockEntity::getNbt);
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 
     @Override
@@ -66,13 +58,7 @@ public class DisplayCaseBlockEntity extends BlockEntity implements ImplementedIn
 
     @Override
     public int[] getAvailableSlots(Direction var1) {
-        int[] result = new int[getItems().size()];
-
-        for (int i = 0; i < result.length; i++) {
-            result[i] = i;
-        }
-
-        return result;
+        return new int[]{};
     }
 
     @Override
@@ -82,6 +68,6 @@ public class DisplayCaseBlockEntity extends BlockEntity implements ImplementedIn
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
-        return true;
+        return false;
     }
 }
