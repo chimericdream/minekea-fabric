@@ -168,10 +168,6 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
-        if (world.isClient) {
-            return ActionResult.SUCCESS;
-        }
-
         ImplementedInventory entity = (ImplementedInventory) world.getBlockEntity(pos);
 
         // Theoretically, this shouldn't be possible
@@ -198,7 +194,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
             }
 
             player.setStackInHand(hand, entity.tryInsert(slot, player.getStackInHand(hand)));
-        } else if (player.isInSneakingPose() && player.getStackInHand(hand).isEmpty()) {
+        } else if (player.isSneaking() && player.getStackInHand(hand).isEmpty()) {
             // remove an item from the shelf
             int slot = -1;
             int idxToCheck = 3;

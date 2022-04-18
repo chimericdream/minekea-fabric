@@ -4,7 +4,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -33,45 +32,32 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
 
     @Override
     public void render(DisplayCaseBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        ItemStack itemStack = entity.getStack(0);
-
         BlockState state = entity.getCachedState();
 
-        int rotation = -1;
-
-        if (state.get(GenericDisplayCase.HAS_ITEM)) {
-            rotation = state.get(GenericDisplayCase.ROTATION);
+        if (entity.isEmpty()) {
+            return;
         }
+
+        ItemStack itemStack = entity.getStack(0);
+
+        int rotation = state.get(GenericDisplayCase.ROTATION);
 
         matrices.push();
 
-        boolean isBlock = false;
-
         Identifier id = Registry.ITEM.getId(itemStack.getItem());
-        if (id != Registry.ITEM.getDefaultId() && Registry.BLOCK.containsId(id)) {
-            isBlock = true;
-        }
+        boolean isBlock = isBlockItem(itemStack);
 
-        /*
-         * @TODO: find a better way to do this
-         * This is a hack... apparently you have to render an actual item in order to clear the previous one. At least,
-         * that's the only way I could figure out for now.
-         */
-        if (itemStack.isOf(Blocks.BARRIER.asItem())) {
-            matrices.translate(0.5, 0.2, 0.5);
+        if (isBlock) {
+            Block block = Registry.BLOCK.get(id);
+            double maxY = block.getOutlineShape(block.getDefaultState(), null, null, null).getMax(Direction.Axis.Y);
+
+            matrices.translate(0.5, 0.65 + Math.min((0.3 * Math.abs(maxY - 1.0)), 0.125), 0.5);
+            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(rotation * 45));
         } else {
-            if (isBlock) {
-                Block block = Registry.BLOCK.get(id);
-                double maxY = block.getOutlineShape(block.getDefaultState(), null, null, null).getMax(Direction.Axis.Y);
-
-                matrices.translate(0.5, 0.65 + Math.min((0.3 * Math.abs(maxY - 1.0)), 0.125), 0.5);
-                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(rotation * 45));
-            } else {
-                matrices.translate(0.5, 0.85, 0.5);
-                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90));
-                matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(rotation * 45));
-                matrices.scale(0.5f, 0.5f, 0.5f);
-            }
+            matrices.translate(0.5, 0.85, 0.5);
+            matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90));
+            matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(rotation * 45));
+            matrices.scale(0.5f, 0.5f, 0.5f);
         }
 
         ModelTransformation.Mode mode = isBlock ? ModelTransformation.Mode.GROUND : ModelTransformation.Mode.FIXED;

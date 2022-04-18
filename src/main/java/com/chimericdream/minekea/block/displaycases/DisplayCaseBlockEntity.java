@@ -3,7 +3,6 @@ package com.chimericdream.minekea.block.displaycases;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.inventory.Inventories;
@@ -15,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
 public class DisplayCaseBlockEntity extends BlockEntity implements BlockEntityClientSerializable, ImplementedInventory, SidedInventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, Blocks.BARRIER.asItem().getDefaultStack());
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     public DisplayCaseBlockEntity(BlockPos pos, BlockState state) {
         this(DisplayCases.DISPLAY_CASE_BLOCK_ENTITY, pos, state);
@@ -56,13 +55,7 @@ public class DisplayCaseBlockEntity extends BlockEntity implements BlockEntityCl
 
     @Override
     public int[] getAvailableSlots(Direction var1) {
-        int[] result = new int[getItems().size()];
-
-        for (int i = 0; i < result.length; i++) {
-            result[i] = i;
-        }
-
-        return result;
+        return new int[]{};
     }
 
     @Override
@@ -72,6 +65,6 @@ public class DisplayCaseBlockEntity extends BlockEntity implements BlockEntityCl
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
-        return true;
+        return false;
     }
 }
