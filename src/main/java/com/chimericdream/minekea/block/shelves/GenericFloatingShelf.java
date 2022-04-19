@@ -32,7 +32,7 @@ public class GenericFloatingShelf extends GenericShelf {
     }
 
     public GenericFloatingShelf(String woodType, String modId, Map<String, Identifier> materials) {
-        super(woodType, modId, materials, new Identifier(modId, String.format("shelves/%s%s_floating_shelf", ModInfo.getModPrefix(modId), woodType)));
+        super(woodType, modId, materials, new Identifier(ModInfo.MOD_ID, String.format("shelves/%s%s_floating_shelf", ModInfo.getModPrefix(modId), woodType)));
     }
 
     @Override

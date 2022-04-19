@@ -71,7 +71,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
 
         validateMaterials(materials);
 
-        BLOCK_ID = new Identifier(modId, String.format("shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType));
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType));
 
         this.modId = modId;
         this.woodType = woodType;
