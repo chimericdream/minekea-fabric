@@ -6,6 +6,7 @@ import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.doors.Doors;
+import com.chimericdream.minekea.block.jars.Jars;
 import com.chimericdream.minekea.block.shelves.Shelves;
 import com.chimericdream.minekea.block.slabs.BookshelfSlabs;
 import com.chimericdream.minekea.block.stairs.BookshelfStairs;
@@ -39,6 +40,7 @@ public class MinekeaMod implements ModInitializer {
     public static final Shelves SHELVES;
     public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Tables TABLES;
+    public static final Jars JARS;
 
     public static final MinekeaTags TAGS;
     public static final MinekeaResourcePack RESOURCES;
@@ -57,6 +59,7 @@ public class MinekeaMod implements ModInitializer {
         SHELVES = new Shelves();
         DECORATION_BLOCKS = new DecorationBlocks();
         TABLES = new Tables();
+        JARS = new Jars();
 
         TAGS = new MinekeaTags();
         RESOURCES = new MinekeaResourcePack();
@@ -129,6 +132,7 @@ public class MinekeaMod implements ModInitializer {
         SHELVES.register();
         DECORATION_BLOCKS.register();
         TABLES.register();
+        JARS.register();
 
         for (ModCompatLayer mod : OTHER_MODS) {
             mod.register();
@@ -153,5 +157,6 @@ public class MinekeaMod implements ModInitializer {
         SHELVES.onInitializeClient();
         DECORATION_BLOCKS.onInitializeClient();
         TABLES.onInitializeClient();
+        JARS.onInitializeClient();
     }
 }
