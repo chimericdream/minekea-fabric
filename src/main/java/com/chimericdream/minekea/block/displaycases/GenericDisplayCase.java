@@ -26,6 +26,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -118,11 +119,7 @@ public class GenericDisplayCase extends BlockWithEntity {
 
         int rotation = Math.round(absYaw / 45) + 4;
 
-        if (rotation < 0) {
-            return 0;
-        }
-
-        return rotation >= 8 ? rotation - 8 : rotation;
+        return MathHelper.clamp(rotation, 0, 8);
     }
 
     @Override
