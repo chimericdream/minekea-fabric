@@ -119,7 +119,7 @@ public class GenericDisplayCase extends BlockWithEntity {
 
         int rotation = Math.round(absYaw / 45) + 4;
 
-        return MathHelper.clamp(rotation, 0, 8);
+        return MathHelper.clamp(rotation, 0, 7);
     }
 
     @Override
@@ -163,7 +163,7 @@ public class GenericDisplayCase extends BlockWithEntity {
         } else {
             // If the player isn't sneaking, or if they have an item in their hand, rotate the item in the case
             int rotation = state.get(ROTATION);
-            int newRotation = rotation == 7 ? 0 : rotation + 1;
+            int newRotation = rotation >= 7 ? 0 : rotation + 1;
 
             world.setBlockState(pos, state.with(ROTATION, newRotation));
             blockEntity.playRotateItemSound();
