@@ -38,6 +38,7 @@ public class MinekeaMod implements ModInitializer {
     public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Tables TABLES;
 
+    public static final MinekeaTags TAGS;
     public static final MinekeaResourcePack RESOURCES;
     public static final List<ModCompatLayer> OTHER_MODS = new ArrayList<>();
 
@@ -55,6 +56,7 @@ public class MinekeaMod implements ModInitializer {
         DECORATION_BLOCKS = new DecorationBlocks();
         TABLES = new Tables();
 
+        TAGS = new MinekeaTags();
         RESOURCES = new MinekeaResourcePack();
 
         FabricLoader loader = FabricLoader.getInstance();
@@ -111,7 +113,7 @@ public class MinekeaMod implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("[minekea] Registering block and item tags");
-        MinekeaTags.init();
+        TAGS.init();
 
         LOGGER.info("[minekea] Registering blocks");
         BOOKSHELVES.register();
