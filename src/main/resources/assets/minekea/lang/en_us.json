@@ -93,6 +93,8 @@
     "block.minekea.shelves.oak_floating_shelf": "Oak Floating Shelf",
     "block.minekea.shelves.spruce_floating_shelf": "Spruce Floating Shelf",
     "block.minekea.shelves.warped_floating_shelf": "Warped Floating Shelf",
+    "block.minekea.decorations.fake_cake": "Cake",
+    "block.minekea.decorations.fake_cake.tooltip": "This cake is a lie!",
     "container.minekea.crate": "Crate",
     "container.minekea.storage_bookshelf": "Storage Bookshelf"
 }
