@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.block.doors;
 
-public class Doors {
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
+
+public class Doors implements MinekeaBlockCategory {
     public static final GenericBookshelfDoor ACACIA_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor BIRCH_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor CRIMSON_BOOKSHELF_DOOR;

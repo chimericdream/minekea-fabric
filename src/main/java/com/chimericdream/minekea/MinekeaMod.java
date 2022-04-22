@@ -15,6 +15,8 @@ import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.tag.MinekeaTags;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
@@ -134,5 +136,22 @@ public class MinekeaMod implements ModInitializer {
 
         // This must be the last thing
         RESOURCES.register();
+    }
+
+    @Environment(EnvType.CLIENT)
+    public static void onInitializeClient() {
+        LOGGER.info("[minekea] Initializing client code");
+
+        BOOKSHELVES.onInitializeClient();
+        DOORS.onInitializeClient();
+        TRAPDOORS.onInitializeClient();
+        CRATES.onInitializeClient();
+        BARRELS.onInitializeClient();
+        DISPLAY_CASES.onInitializeClient();
+        BOOKSHELF_STAIRS.onInitializeClient();
+        BOOKSHELF_SLABS.onInitializeClient();
+        SHELVES.onInitializeClient();
+        DECORATION_BLOCKS.onInitializeClient();
+        TABLES.onInitializeClient();
     }
 }

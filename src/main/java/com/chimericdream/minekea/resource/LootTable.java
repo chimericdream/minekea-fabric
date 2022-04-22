@@ -12,6 +12,14 @@ import net.minecraft.util.Identifier;
  * https://github.com/Azagwen/ATBYW
  */
 public class LootTable {
+    public static Identifier getLootTableID(String blockID) {
+        return getLootTableID(new Identifier(blockID));
+    }
+
+    public static Identifier getLootTableID(Identifier blockID) {
+        return new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath());
+    }
+
     public static Identifier blockID(Identifier blockID) {
         return new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath());
     }

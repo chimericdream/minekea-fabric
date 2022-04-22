@@ -1,10 +1,16 @@
 package com.chimericdream.minekea.block.barrels;
 
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.minecraft.block.Blocks;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;
 
-public class Barrels {
+public class Barrels implements MinekeaBlockCategory {
     public static final GenericBarrel ACACIA_BARREL;
     public static final GenericBarrel BIRCH_BARREL;
     public static final GenericBarrel CRIMSON_BARREL;
@@ -80,5 +86,21 @@ public class Barrels {
         JUNGLE_BARREL.register();
         SPRUCE_BARREL.register();
         WARPED_BARREL.register();
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getTranslucent(),
+            Blocks.BARREL,
+            ACACIA_BARREL,
+            BIRCH_BARREL,
+            CRIMSON_BARREL,
+            DARK_OAK_BARREL,
+            JUNGLE_BARREL,
+            SPRUCE_BARREL,
+            WARPED_BARREL
+        );
     }
 }
