@@ -75,7 +75,7 @@ public class FakeCake extends CakeBlock implements MinekeaBlock {
                     .key("B", JIngredient.ingredient().item("minecraft:white_dye"))
                     .key("C", JIngredient.ingredient().item("minecraft:brown_wool"))
                     .key("E", JIngredient.ingredient().item("minecraft:redstone")),
-                JResult.result(BLOCK_ID.toString())
+                JResult.stackedResult(BLOCK_ID.toString(), 3)
             )
         );
 
