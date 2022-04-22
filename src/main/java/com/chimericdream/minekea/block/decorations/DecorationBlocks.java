@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.block.decorations;
 
-public class DecorationBlocks {
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
+
+public class DecorationBlocks implements MinekeaBlockCategory {
     public static final FakeCake FAKE_CAKE;
 
     static {

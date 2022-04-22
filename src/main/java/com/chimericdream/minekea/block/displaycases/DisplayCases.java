@@ -1,14 +1,20 @@
 package com.chimericdream.minekea.block.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
 
-public class DisplayCases {
+public class DisplayCases implements MinekeaBlockCategory {
     public static final GenericDisplayCase ACACIA_DISPLAY_CASE;
     public static final GenericDisplayCase BIRCH_DISPLAY_CASE;
     public static final GenericDisplayCase CRIMSON_DISPLAY_CASE;
@@ -147,5 +153,31 @@ public class DisplayCases {
                 STRIPPED_WARPED_DISPLAY_CASE
             ).build(null)
         );
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getCutout(),
+            ACACIA_DISPLAY_CASE,
+            BIRCH_DISPLAY_CASE,
+            CRIMSON_DISPLAY_CASE,
+            DARK_OAK_DISPLAY_CASE,
+            JUNGLE_DISPLAY_CASE,
+            OAK_DISPLAY_CASE,
+            SPRUCE_DISPLAY_CASE,
+            WARPED_DISPLAY_CASE,
+            STRIPPED_ACACIA_DISPLAY_CASE,
+            STRIPPED_BIRCH_DISPLAY_CASE,
+            STRIPPED_CRIMSON_DISPLAY_CASE,
+            STRIPPED_DARK_OAK_DISPLAY_CASE,
+            STRIPPED_JUNGLE_DISPLAY_CASE,
+            STRIPPED_OAK_DISPLAY_CASE,
+            STRIPPED_SPRUCE_DISPLAY_CASE,
+            STRIPPED_WARPED_DISPLAY_CASE
+        );
+
+        BlockEntityRendererRegistry.INSTANCE.register(DISPLAY_CASE_BLOCK_ENTITY, DisplayCaseBlockEntityRenderer::new);
     }
 }

@@ -1,11 +1,12 @@
 package com.chimericdream.minekea.block.stairs;
 
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;
 
-public class BookshelfStairs {
+public class BookshelfStairs implements MinekeaBlockCategory {
     public static final GenericBookshelfStairs ACACIA_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs BIRCH_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs CRIMSON_BOOKSHELF_STAIRS;

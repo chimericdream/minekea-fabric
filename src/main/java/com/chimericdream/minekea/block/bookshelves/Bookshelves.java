@@ -2,9 +2,14 @@ package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.Block;
@@ -13,7 +18,7 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class Bookshelves {
+public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericBookshelf ACACIA_BOOKSHELF;
     public static final GenericBookshelf BIRCH_BOOKSHELF;
     public static final GenericBookshelf CRIMSON_BOOKSHELF;
@@ -143,5 +148,11 @@ public class Bookshelves {
 //            ),
 //            BLOCK_ID
 //        );
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void onInitializeClient() {
+        ScreenRegistry.register(STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
     }
 }

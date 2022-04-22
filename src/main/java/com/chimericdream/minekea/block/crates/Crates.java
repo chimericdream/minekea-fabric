@@ -1,7 +1,12 @@
 package com.chimericdream.minekea.block.crates;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.screen.crate.CrateScreen;
 import com.chimericdream.minekea.screen.crate.CrateScreenHandler;
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.entity.BlockEntityType;
@@ -11,7 +16,7 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
 
-public class Crates {
+public class Crates implements MinekeaBlockCategory {
     public static final GenericCrate ACACIA_CRATE;
     public static final GenericCrate BIRCH_CRATE;
     public static final GenericCrate CRIMSON_CRATE;
@@ -89,5 +94,11 @@ public class Crates {
                 WARPED_CRATE
             ).build(null)
         );
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void onInitializeClient() {
+        ScreenRegistry.register(CRATE_SCREEN_HANDLER, CrateScreen::new);
     }
 }
