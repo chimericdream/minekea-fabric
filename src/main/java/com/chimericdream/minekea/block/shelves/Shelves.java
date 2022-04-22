@@ -1,6 +1,10 @@
 package com.chimericdream.minekea.block.shelves;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
@@ -8,7 +12,7 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
 
-public class Shelves {
+public class Shelves implements MinekeaBlockCategory {
     public static final GenericShelf ACACIA_SHELF;
     public static final GenericShelf BIRCH_SHELF;
     public static final GenericShelf CRIMSON_SHELF;
@@ -91,5 +95,11 @@ public class Shelves {
                 WARPED_FLOATING_SHELF
             ).build(null)
         );
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void onInitializeClient() {
+        BlockEntityRendererRegistry.INSTANCE.register(SHELF_BLOCK_ENTITY, ShelfBlockEntityRenderer::new);
     }
 }

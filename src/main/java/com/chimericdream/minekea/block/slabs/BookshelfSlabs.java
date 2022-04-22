@@ -1,11 +1,12 @@
 package com.chimericdream.minekea.block.slabs;
 
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;
 
-public class BookshelfSlabs {
+public class BookshelfSlabs implements MinekeaBlockCategory {
     public static final GenericBookshelfSlab ACACIA_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab BIRCH_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab CRIMSON_BOOKSHELF_SLAB;

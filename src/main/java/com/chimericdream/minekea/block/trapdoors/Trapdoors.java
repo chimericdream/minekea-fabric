@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.block.trapdoors;
 
-public class Trapdoors {
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
+
+public class Trapdoors implements MinekeaBlockCategory {
     public static final GenericBookshelfTrapdoor ACACIA_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor BIRCH_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor CRIMSON_BOOKSHELF_TRAPDOOR;
