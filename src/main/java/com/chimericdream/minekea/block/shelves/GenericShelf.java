@@ -93,7 +93,13 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(WALL_SIDE, ctx.getPlayerLookDirection().getOpposite());
+        Direction lookDirection = ctx.getPlayerLookDirection();
+
+        if (lookDirection == Direction.DOWN || lookDirection == Direction.UP) {
+            return (BlockState) this.getDefaultState().with(WALL_SIDE, Direction.NORTH);
+        }
+
+        return (BlockState) this.getDefaultState().with(WALL_SIDE, lookDirection.getOpposite());
     }
 
     @Override
