@@ -6,6 +6,7 @@ import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.doors.Doors;
+import com.chimericdream.minekea.block.seating.Seats;
 import com.chimericdream.minekea.block.shelves.Shelves;
 import com.chimericdream.minekea.block.slabs.BookshelfSlabs;
 import com.chimericdream.minekea.block.stairs.BookshelfStairs;
@@ -15,6 +16,7 @@ import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
@@ -39,6 +41,9 @@ public class MinekeaMod implements ModInitializer {
     public static final Shelves SHELVES;
     public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Tables TABLES;
+    public static final Seats SEATS;
+
+    public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
     public static final MinekeaTags TAGS;
     public static final MinekeaResourcePack RESOURCES;
@@ -57,6 +62,22 @@ public class MinekeaMod implements ModInitializer {
         SHELVES = new Shelves();
         DECORATION_BLOCKS = new DecorationBlocks();
         TABLES = new Tables();
+        SEATS = new Seats();
+
+        BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
+            BOOKSHELVES,
+            DOORS,
+            TRAPDOORS,
+            CRATES,
+            BARRELS,
+            DISPLAY_CASES,
+            BOOKSHELF_STAIRS,
+            BOOKSHELF_SLABS,
+            SHELVES,
+            DECORATION_BLOCKS,
+            TABLES,
+            SEATS
+        };
 
         TAGS = new MinekeaTags();
         RESOURCES = new MinekeaResourcePack();
@@ -118,17 +139,9 @@ public class MinekeaMod implements ModInitializer {
         TAGS.init();
 
         LOGGER.info("[minekea] Registering blocks");
-        BOOKSHELVES.register();
-        DOORS.register();
-        TRAPDOORS.register();
-        CRATES.register();
-        BARRELS.register();
-        DISPLAY_CASES.register();
-        BOOKSHELF_STAIRS.register();
-        BOOKSHELF_SLABS.register();
-        SHELVES.register();
-        DECORATION_BLOCKS.register();
-        TABLES.register();
+        for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
+            category.register();
+        }
 
         for (ModCompatLayer mod : OTHER_MODS) {
             mod.register();
@@ -142,16 +155,8 @@ public class MinekeaMod implements ModInitializer {
     public static void onInitializeClient() {
         LOGGER.info("[minekea] Initializing client code");
 
-        BOOKSHELVES.onInitializeClient();
-        DOORS.onInitializeClient();
-        TRAPDOORS.onInitializeClient();
-        CRATES.onInitializeClient();
-        BARRELS.onInitializeClient();
-        DISPLAY_CASES.onInitializeClient();
-        BOOKSHELF_STAIRS.onInitializeClient();
-        BOOKSHELF_SLABS.onInitializeClient();
-        SHELVES.onInitializeClient();
-        DECORATION_BLOCKS.onInitializeClient();
-        TABLES.onInitializeClient();
+        for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
+            category.onInitializeClient();
+        }
     }
 }
