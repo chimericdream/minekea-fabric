@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.tables;
 
-import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
@@ -109,11 +108,6 @@ public class GenericTable extends Block implements MinekeaBlock {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        MinekeaMod.LOGGER.info(String.format("getStateForNeighborUpdate().pos: %s", pos.toString()));
-        MinekeaMod.LOGGER.info(String.format("getStateForNeighborUpdate().neighborPos: %s", neighborPos.toString()));
-        MinekeaMod.LOGGER.info(String.format("getStateForNeighborUpdate().neighborState: %s", neighborState.toString()));
-        MinekeaMod.LOGGER.info(String.format("getStateForNeighborUpdate().direction: %s", direction.toString()));
-
         return direction.getAxis().isHorizontal()
             ? this.getUpdatedState(state, neighborState, direction)
             : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
