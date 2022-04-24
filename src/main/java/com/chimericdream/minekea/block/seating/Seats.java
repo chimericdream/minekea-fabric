@@ -21,6 +21,15 @@ public class Seats implements MinekeaBlockCategory {
     public static final GenericChair SPRUCE_CHAIR;
     public static final GenericChair WARPED_CHAIR;
 
+    public static final GenericStool ACACIA_STOOL;
+    public static final GenericStool BIRCH_STOOL;
+    public static final GenericStool CRIMSON_STOOL;
+    public static final GenericStool DARK_OAK_STOOL;
+    public static final GenericStool JUNGLE_STOOL;
+    public static final GenericStool OAK_STOOL;
+    public static final GenericStool SPRUCE_STOOL;
+    public static final GenericStool WARPED_STOOL;
+
     public static EntityType<SeatEntity> SEAT_ENTITY;
 
     static {
@@ -80,6 +89,63 @@ public class Seats implements MinekeaBlockCategory {
                 "log", new Identifier("minecraft:warped_stem")
             )
         );
+
+        ACACIA_STOOL = new GenericStool(
+            "acacia",
+            Map.of(
+                "planks", new Identifier("minecraft:acacia_planks"),
+                "log", new Identifier("minecraft:acacia_log")
+            )
+        );
+        BIRCH_STOOL = new GenericStool(
+            "birch",
+            Map.of(
+                "planks", new Identifier("minecraft:birch_planks"),
+                "log", new Identifier("minecraft:birch_log")
+            )
+        );
+        CRIMSON_STOOL = new GenericStool(
+            "crimson",
+            Map.of(
+                "planks", new Identifier("minecraft:crimson_planks"),
+                "log", new Identifier("minecraft:crimson_stem")
+            )
+        );
+        DARK_OAK_STOOL = new GenericStool(
+            "dark_oak",
+            Map.of(
+                "planks", new Identifier("minecraft:dark_oak_planks"),
+                "log", new Identifier("minecraft:dark_oak_log")
+            )
+        );
+        JUNGLE_STOOL = new GenericStool(
+            "jungle",
+            Map.of(
+                "planks", new Identifier("minecraft:jungle_planks"),
+                "log", new Identifier("minecraft:jungle_log")
+            )
+        );
+        OAK_STOOL = new GenericStool(
+            "oak",
+            Map.of(
+                "planks", new Identifier("minecraft:oak_planks"),
+                "log", new Identifier("minecraft:oak_log")
+            )
+        );
+        SPRUCE_STOOL = new GenericStool(
+            "spruce",
+            Map.of(
+                "planks", new Identifier("minecraft:spruce_planks"),
+                "log", new Identifier("minecraft:spruce_log")
+            )
+        );
+        WARPED_STOOL = new GenericStool(
+            "warped",
+            Map.of(
+                "planks", new Identifier("minecraft:warped_planks"),
+                "log", new Identifier("minecraft:warped_stem")
+            )
+        );
     }
 
     public void register() {
@@ -91,6 +157,15 @@ public class Seats implements MinekeaBlockCategory {
         OAK_CHAIR.register();
         SPRUCE_CHAIR.register();
         WARPED_CHAIR.register();
+
+        ACACIA_STOOL.register();
+        BIRCH_STOOL.register();
+        CRIMSON_STOOL.register();
+        DARK_OAK_STOOL.register();
+        JUNGLE_STOOL.register();
+        OAK_STOOL.register();
+        SPRUCE_STOOL.register();
+        WARPED_STOOL.register();
 
         SEAT_ENTITY = Registry.register(
             Registry.ENTITY_TYPE,
