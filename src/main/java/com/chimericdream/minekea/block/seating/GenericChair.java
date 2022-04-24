@@ -82,7 +82,7 @@ public class GenericChair extends Block {
         this.woodType = woodType;
         this.materials = materials;
 
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("seating/chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
 
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
@@ -167,8 +167,8 @@ public class GenericChair extends Block {
         String PLANK_MATERIAL = materials.get("planks").toString();
         String LOG_MATERIAL = materials.get("log").toString();
 
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
+        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/seating/chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
+        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/seating/chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
@@ -187,12 +187,12 @@ public class GenericChair extends Block {
             .var("planks", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/chair_variant").textures(textures),
+            JModel.model("minekea:block/seating/chair_block").textures(textures),
             MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:item/chair_item").textures(textures),
+            JModel.model("minekea:item/seating/chair_item").textures(textures),
             ITEM_MODEL_ID
         );
 

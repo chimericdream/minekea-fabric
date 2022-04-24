@@ -67,7 +67,7 @@ public class GenericStool extends Block {
         this.woodType = woodType;
         this.materials = materials;
 
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
+        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("seating/stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -122,8 +122,8 @@ public class GenericStool extends Block {
         String PLANK_MATERIAL = materials.get("planks").toString();
         String LOG_MATERIAL = materials.get("log").toString();
 
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
+        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/seating/stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
+        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/seating/stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
@@ -142,7 +142,7 @@ public class GenericStool extends Block {
             .var("planks", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/stool_block").textures(textures),
+            JModel.model("minekea:block/seating/stool_block").textures(textures),
             MODEL_ID
         );
 
