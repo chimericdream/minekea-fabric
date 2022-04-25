@@ -1,6 +1,6 @@
 # Minekea (Fabric)
 
-![Version: 2.3.2](https://img.shields.io/badge/version-2.3.2-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
+![Version: 2.4.0](https://img.shields.io/badge/version-2.4.0-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
 
 _Simple, functional, decorative blocks for all your building and storage needs (some assembly required)_
 
@@ -24,13 +24,14 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 * Variant barrels in all wood types
 * Display cases
 * Wall-mounted shelves which display their contents
+* Tables and chairs
+* Foot stools
 
 ### Planned/Possible Features
 
 * Iron shelves which display their contents
 * More varieties of bookshelves
 * Other types of hidden or disguised storage
-* Tables and chairs
 * Glass jars for storing food, liquids, dusts, etc
 * Wrench item
 
