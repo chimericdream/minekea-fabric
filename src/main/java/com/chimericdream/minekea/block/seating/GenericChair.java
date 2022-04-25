@@ -113,7 +113,7 @@ public class GenericChair extends Block {
 
         List<SeatEntity> seats = world.getEntitiesByClass(SeatEntity.class, new Box(pos), (Object) -> true);
 
-        if (seats.size() == 0 && player.getStackInHand(hand).isEmpty()) {
+        if (seats.size() == 0 && player.getMainHandStack().isEmpty()) {
             SeatEntity seat = Seats.SEAT_ENTITY.create(world);
             Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() + 1.15d, hit.getBlockPos().getZ() + 0.5d);
 

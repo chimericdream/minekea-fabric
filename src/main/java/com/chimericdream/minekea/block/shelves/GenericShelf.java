@@ -232,10 +232,10 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
             throw new IllegalStateException("It should not be possible to target a slot outside of the block");
         }
 
-        if (!player.getStackInHand(hand).isEmpty()) {
+        if (!player.getMainHandStack().isEmpty()) {
             // Try to insert the item in the player's hand into the targeted slot on the shelf
-            player.setStackInHand(hand, entity.tryInsert(slot, player.getStackInHand(hand)));
-        } else if (player.isSneaking() && player.getStackInHand(hand).isEmpty()) {
+            player.setStackInHand(hand, entity.tryInsert(slot, player.getMainHandStack()));
+        } else if (player.isSneaking() && player.getMainHandStack().isEmpty()) {
             if (!entity.getStack(slot).isEmpty()) {
                 ItemScatterer.spawn(
                     world,

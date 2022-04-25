@@ -135,19 +135,19 @@ public class GenericDisplayCase extends BlockWithEntity {
 
         if (blockEntity.isEmpty()) {
             // If the player is holding something, put it in the case
-            if (!player.getStackInHand(hand).isEmpty()) {
-                ItemStack toInsert = player.getStackInHand(hand).copy();
+            if (!player.getMainHandStack().isEmpty()) {
+                ItemStack toInsert = player.getMainHandStack().copy();
                 toInsert.setCount(1);
 
                 blockEntity.setStack(0, toInsert);
 
-                player.getStackInHand(hand).decrement(1);
+                player.getMainHandStack().decrement(1);
 
                 world.setBlockState(pos, state.with(ROTATION, getRotationFromPlayerFacing(player.getYaw())));
                 blockEntity.markDirty();
                 blockEntity.playAddItemSound();
             }
-        } else if (player.isSneaking() && player.getStackInHand(hand).isEmpty()) {
+        } else if (player.isSneaking() && player.getMainHandStack().isEmpty()) {
             // If the player is sneaking and not holding anything, get what's in the case
             ItemScatterer.spawn(
                 world,
