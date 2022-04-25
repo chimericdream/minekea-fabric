@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
@@ -17,6 +18,9 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericBookshelf ACACIA_BOOKSHELF;
@@ -63,7 +67,8 @@ public class Bookshelves implements MinekeaBlockCategory {
         );
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_BOOKSHELF.register();
         BIRCH_BOOKSHELF.register();
         CRIMSON_BOOKSHELF.register(false);
@@ -81,23 +86,34 @@ public class Bookshelves implements MinekeaBlockCategory {
         SPRUCE_STORAGE_SHELF.register();
         WARPED_STORAGE_SHELF.register(false);
 
+        setupOakBookshelfResources();
+    }
+
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+        List<GenericStorageBookshelf> storageShelves = new ArrayList<>(List.of(
+            ACACIA_STORAGE_SHELF,
+            BIRCH_STORAGE_SHELF,
+            CRIMSON_STORAGE_SHELF,
+            DARK_OAK_STORAGE_SHELF,
+            JUNGLE_STORAGE_SHELF,
+            OAK_STORAGE_SHELF,
+            SPRUCE_STORAGE_SHELF,
+            WARPED_STORAGE_SHELF
+        ));
+
+        for (ModCompatLayer mod : otherMods) {
+            storageShelves.addAll(mod.getStorageShelves());
+        }
+
         STORAGE_SHELF_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
             new Identifier(ModInfo.MOD_ID, "bookshelves/storage/storage_shelf_block_entity"),
             FabricBlockEntityTypeBuilder.create(
                 StorageBookshelfBlockEntity::new,
-                ACACIA_STORAGE_SHELF,
-                BIRCH_STORAGE_SHELF,
-                CRIMSON_STORAGE_SHELF,
-                DARK_OAK_STORAGE_SHELF,
-                JUNGLE_STORAGE_SHELF,
-                OAK_STORAGE_SHELF,
-                SPRUCE_STORAGE_SHELF,
-                WARPED_STORAGE_SHELF
+                storageShelves.toArray(new Block[0])
             ).build(null)
         );
-
-        setupOakBookshelfResources();
     }
 
     public static Block[] getShelvesForEnchanting() {
@@ -152,7 +168,7 @@ public class Bookshelves implements MinekeaBlockCategory {
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void onInitializeClient() {
+    public void initializeClient() {
         ScreenRegistry.register(STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
     }
 }

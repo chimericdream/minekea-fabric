@@ -4,6 +4,7 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.TextHelpers;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
@@ -19,7 +20,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -48,7 +48,7 @@ public class FakeCake extends CakeBlock implements MinekeaBlock {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        tooltip.add(new TranslatableText("block.minekea.decorations.fake_cake.tooltip"));
+        tooltip.add(TextHelpers.getTooltip("block.minekea.decorations.fake_cake.tooltip"));
     }
 
     public Identifier getBlockID() {

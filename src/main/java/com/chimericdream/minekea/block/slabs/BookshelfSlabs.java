@@ -1,9 +1,11 @@
 package com.chimericdream.minekea.block.slabs;
 
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.Map;
 
 public class BookshelfSlabs implements MinekeaBlockCategory {
@@ -68,7 +70,8 @@ public class BookshelfSlabs implements MinekeaBlockCategory {
         );
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_BOOKSHELF_SLAB.register();
         BIRCH_BOOKSHELF_SLAB.register();
         CRIMSON_BOOKSHELF_SLAB.register();
@@ -77,5 +80,9 @@ public class BookshelfSlabs implements MinekeaBlockCategory {
         OAK_BOOKSHELF_SLAB.register();
         SPRUCE_BOOKSHELF_SLAB.register();
         WARPED_BOOKSHELF_SLAB.register();
+    }
+
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
     }
 }

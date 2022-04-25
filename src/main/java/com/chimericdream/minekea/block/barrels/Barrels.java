@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.barrels;
 
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -8,6 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.Map;
 
 public class Barrels implements MinekeaBlockCategory {
@@ -78,7 +80,8 @@ public class Barrels implements MinekeaBlockCategory {
         );
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_BARREL.register();
         BIRCH_BARREL.register();
         CRIMSON_BARREL.register();
@@ -88,9 +91,13 @@ public class Barrels implements MinekeaBlockCategory {
         WARPED_BARREL.register();
     }
 
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+    }
+
     @Environment(EnvType.CLIENT)
     @Override
-    public void onInitializeClient() {
+    public void initializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(
             RenderLayer.getTranslucent(),
             Blocks.BARREL,

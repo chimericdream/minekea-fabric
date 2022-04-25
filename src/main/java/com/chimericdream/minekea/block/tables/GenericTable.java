@@ -5,6 +5,7 @@ import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.TextHelpers;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
@@ -17,12 +18,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.item.*;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -31,7 +31,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 
 public class GenericTable extends Block implements MinekeaBlock {
@@ -86,6 +88,11 @@ public class GenericTable extends Block implements MinekeaBlock {
                 .with(EAST_CONNECTED, false)
                 .with(WEST_CONNECTED, false)
         );
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        tooltip.add(TextHelpers.getTooltip("block.minekea.tables.table_tooltip"));
     }
 
     @Override

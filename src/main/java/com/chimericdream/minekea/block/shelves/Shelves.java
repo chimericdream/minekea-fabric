@@ -1,15 +1,19 @@
 package com.chimericdream.minekea.block.shelves;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Shelves implements MinekeaBlockCategory {
@@ -53,7 +57,8 @@ public class Shelves implements MinekeaBlockCategory {
         WARPED_FLOATING_SHELF = new GenericFloatingShelf("warped", Map.of("slab", new Identifier("minecraft:warped_slab"), "planks", new Identifier("minecraft:warped_planks")));
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_SHELF.register();
         BIRCH_SHELF.register();
         CRIMSON_SHELF.register();
@@ -71,35 +76,46 @@ public class Shelves implements MinekeaBlockCategory {
         OAK_FLOATING_SHELF.register();
         SPRUCE_FLOATING_SHELF.register();
         WARPED_FLOATING_SHELF.register();
+    }
+
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+        List<GenericShelf> shelves = new ArrayList<>(List.of(
+            ACACIA_SHELF,
+            BIRCH_SHELF,
+            CRIMSON_SHELF,
+            DARK_OAK_SHELF,
+            JUNGLE_SHELF,
+            OAK_SHELF,
+            SPRUCE_SHELF,
+            WARPED_SHELF,
+            ACACIA_FLOATING_SHELF,
+            BIRCH_FLOATING_SHELF,
+            CRIMSON_FLOATING_SHELF,
+            DARK_OAK_FLOATING_SHELF,
+            JUNGLE_FLOATING_SHELF,
+            OAK_FLOATING_SHELF,
+            SPRUCE_FLOATING_SHELF,
+            WARPED_FLOATING_SHELF
+        ));
+
+        for (ModCompatLayer mod : otherMods) {
+            shelves.addAll(mod.getShelves());
+        }
 
         SHELF_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
             new Identifier(ModInfo.MOD_ID, "shelves/shelf_block_entity"),
             FabricBlockEntityTypeBuilder.create(
                 ShelfBlockEntity::new,
-                ACACIA_SHELF,
-                BIRCH_SHELF,
-                CRIMSON_SHELF,
-                DARK_OAK_SHELF,
-                JUNGLE_SHELF,
-                OAK_SHELF,
-                SPRUCE_SHELF,
-                WARPED_SHELF,
-                ACACIA_FLOATING_SHELF,
-                BIRCH_FLOATING_SHELF,
-                CRIMSON_FLOATING_SHELF,
-                DARK_OAK_FLOATING_SHELF,
-                JUNGLE_FLOATING_SHELF,
-                OAK_FLOATING_SHELF,
-                SPRUCE_FLOATING_SHELF,
-                WARPED_FLOATING_SHELF
+                shelves.toArray(new Block[0])
             ).build(null)
         );
     }
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void onInitializeClient() {
+    public void initializeClient() {
         BlockEntityRendererRegistry.INSTANCE.register(SHELF_BLOCK_ENTITY, ShelfBlockEntityRenderer::new);
     }
 }
