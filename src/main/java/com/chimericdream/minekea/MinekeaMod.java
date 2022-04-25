@@ -85,6 +85,7 @@ public class MinekeaMod implements ModInitializer {
         FabricLoader loader = FabricLoader.getInstance();
 
         if (loader.isModLoaded("byg")) {
+            LOGGER.info("[minekea][compat] BYG detected! initializing mod compat layer");
             OTHER_MODS.add(new BygBlocks());
         }
     }
@@ -140,11 +141,16 @@ public class MinekeaMod implements ModInitializer {
 
         LOGGER.info("[minekea] Registering blocks");
         for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
-            category.register();
+            category.registerBlocks();
         }
 
         for (ModCompatLayer mod : OTHER_MODS) {
             mod.register();
+        }
+
+        LOGGER.info("[minekea] Registering block entities");
+        for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
+            category.registerBlockEntities(OTHER_MODS);
         }
 
         // This must be the last thing
@@ -156,7 +162,7 @@ public class MinekeaMod implements ModInitializer {
         LOGGER.info("[minekea] Initializing client code");
 
         for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
-            category.onInitializeClient();
+            category.initializeClient();
         }
     }
 }

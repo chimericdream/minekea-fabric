@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.crates;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.screen.crate.CrateScreen;
 import com.chimericdream.minekea.screen.crate.CrateScreenHandler;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -9,11 +10,14 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Crates implements MinekeaBlockCategory {
@@ -69,7 +73,8 @@ public class Crates implements MinekeaBlockCategory {
         );
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_CRATE.register();
         BIRCH_CRATE.register();
         CRIMSON_CRATE.register();
@@ -78,27 +83,38 @@ public class Crates implements MinekeaBlockCategory {
         OAK_CRATE.register();
         SPRUCE_CRATE.register();
         WARPED_CRATE.register();
+    }
+
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+        List<GenericCrate> crates = new ArrayList<>(List.of(
+            ACACIA_CRATE,
+            BIRCH_CRATE,
+            CRIMSON_CRATE,
+            DARK_OAK_CRATE,
+            JUNGLE_CRATE,
+            OAK_CRATE,
+            SPRUCE_CRATE,
+            WARPED_CRATE
+        ));
+
+        for (ModCompatLayer mod : otherMods) {
+            crates.addAll(mod.getCrates());
+        }
 
         CRATE_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
             new Identifier(ModInfo.MOD_ID, "crates/crate_block_entity"),
             FabricBlockEntityTypeBuilder.create(
                 CrateBlockEntity::new,
-                ACACIA_CRATE,
-                BIRCH_CRATE,
-                CRIMSON_CRATE,
-                DARK_OAK_CRATE,
-                JUNGLE_CRATE,
-                OAK_CRATE,
-                SPRUCE_CRATE,
-                WARPED_CRATE
+                crates.toArray(new Block[0])
             ).build(null)
         );
     }
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void onInitializeClient() {
+    public void initializeClient() {
         ScreenRegistry.register(CRATE_SCREEN_HANDLER, CrateScreen::new);
     }
 }

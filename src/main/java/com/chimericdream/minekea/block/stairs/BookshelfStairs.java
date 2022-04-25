@@ -1,9 +1,11 @@
 package com.chimericdream.minekea.block.stairs;
 
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.Map;
 
 public class BookshelfStairs implements MinekeaBlockCategory {
@@ -67,7 +69,8 @@ public class BookshelfStairs implements MinekeaBlockCategory {
         );
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_BOOKSHELF_STAIRS.register();
         BIRCH_BOOKSHELF_STAIRS.register();
         CRIMSON_BOOKSHELF_STAIRS.register();
@@ -76,5 +79,9 @@ public class BookshelfStairs implements MinekeaBlockCategory {
         OAK_BOOKSHELF_STAIRS.register();
         SPRUCE_BOOKSHELF_STAIRS.register();
         WARPED_BOOKSHELF_STAIRS.register();
+    }
+
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
     }
 }

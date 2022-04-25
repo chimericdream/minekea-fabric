@@ -1,6 +1,9 @@
 package com.chimericdream.minekea.block.trapdoors;
 
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+
+import java.util.List;
 
 public class Trapdoors implements MinekeaBlockCategory {
     public static final GenericBookshelfTrapdoor ACACIA_BOOKSHELF_TRAPDOOR;
@@ -23,7 +26,8 @@ public class Trapdoors implements MinekeaBlockCategory {
         WARPED_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor("warped");
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_BOOKSHELF_TRAPDOOR.register();
         BIRCH_BOOKSHELF_TRAPDOOR.register();
         CRIMSON_BOOKSHELF_TRAPDOOR.register();
@@ -32,5 +36,9 @@ public class Trapdoors implements MinekeaBlockCategory {
         OAK_BOOKSHELF_TRAPDOOR.register();
         SPRUCE_BOOKSHELF_TRAPDOOR.register();
         WARPED_BOOKSHELF_TRAPDOOR.register();
+    }
+
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
     }
 }

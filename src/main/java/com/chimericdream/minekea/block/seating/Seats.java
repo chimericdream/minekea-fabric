@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.seating;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -9,6 +10,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.List;
 import java.util.Map;
 
 public class Seats implements MinekeaBlockCategory {
@@ -148,7 +150,8 @@ public class Seats implements MinekeaBlockCategory {
         );
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_CHAIR.register();
         BIRCH_CHAIR.register();
         CRIMSON_CHAIR.register();
@@ -175,7 +178,11 @@ public class Seats implements MinekeaBlockCategory {
     }
 
     @Override
-    public void onInitializeClient() {
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void initializeClient() {
         EntityRendererRegistry.INSTANCE.register(SEAT_ENTITY, SeatEntity.EmptyRenderer::new);
     }
 }
