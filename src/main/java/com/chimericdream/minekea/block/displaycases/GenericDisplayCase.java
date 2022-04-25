@@ -244,8 +244,8 @@ public class GenericDisplayCase extends BlockWithEntity {
                 JPattern.pattern(" G ", "X X", "###"),
                 JKeys.keys()
                     .key("G", JIngredient.ingredient().item("minecraft:glass"))
-                    .key("X", JIngredient.ingredient().item(materials.get("planks").toString()))
-                    .key("#", JIngredient.ingredient().item(materials.get("log").toString())),
+                    .key("#", JIngredient.ingredient().item(materials.get("planks").toString()))
+                    .key("X", JIngredient.ingredient().item(materials.get("log").toString())),
                 JResult.stackedResult(BLOCK_ID.toString(), 2)
             )
         );
