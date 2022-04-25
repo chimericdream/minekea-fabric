@@ -25,6 +25,8 @@ public class BygBlocks implements ModCompatLayer {
     public static final BygBookshelfSlabs BOOKSHELF_SLABS;
     public static final BygBookshelfStairs BOOKSHELF_STAIRS;
     public static final BygShelves SHELVES;
+    public static final BygTables TABLES;
+    public static final BygSeats SEATS;
 
     static {
         BARRELS = new BygBarrels();
@@ -36,6 +38,8 @@ public class BygBlocks implements ModCompatLayer {
         BOOKSHELF_SLABS = new BygBookshelfSlabs();
         BOOKSHELF_STAIRS = new BygBookshelfStairs();
         SHELVES = new BygShelves();
+        TABLES = new BygTables();
+        SEATS = new BygSeats();
     }
 
     public void initializeClient() {
@@ -142,6 +146,8 @@ public class BygBlocks implements ModCompatLayer {
         BOOKSHELF_SLABS.register();
         BOOKSHELF_STAIRS.register();
         SHELVES.register();
+        TABLES.register();
+        SEATS.register();
     }
 
     @Override
