@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.displaycases;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -37,6 +38,9 @@ public class DisplayCaseBlockEntity extends BlockEntity implements BlockEntityCl
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         Inventories.readNbt(nbt, items);
+        if (items.get(0).isOf(Blocks.BARRIER.asItem())) {
+            items.set(0, ItemStack.EMPTY);
+        }
     }
 
     @Override
