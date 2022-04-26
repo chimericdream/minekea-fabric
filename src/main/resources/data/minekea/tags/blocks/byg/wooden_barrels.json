@@ -1,0 +1,33 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:barrels/byg/aspen_barrel",
+        "minekea:barrels/byg/baobab_barrel",
+        "minekea:barrels/byg/blue_enchanted_barrel",
+        "minekea:barrels/byg/bulbis_barrel",
+        "minekea:barrels/byg/cherry_barrel",
+        "minekea:barrels/byg/cika_barrel",
+        "minekea:barrels/byg/cypress_barrel",
+        "minekea:barrels/byg/ebony_barrel",
+        "minekea:barrels/byg/embur_barrel",
+        "minekea:barrels/byg/ether_barrel",
+        "minekea:barrels/byg/fir_barrel",
+        "minekea:barrels/byg/green_enchanted_barrel",
+        "minekea:barrels/byg/holly_barrel",
+        "minekea:barrels/byg/jacaranda_barrel",
+        "minekea:barrels/byg/lament_barrel",
+        "minekea:barrels/byg/mahogany_barrel",
+        "minekea:barrels/byg/mangrove_barrel",
+        "minekea:barrels/byg/maple_barrel",
+        "minekea:barrels/byg/nightshade_barrel",
+        "minekea:barrels/byg/palm_barrel",
+        "minekea:barrels/byg/pine_barrel",
+        "minekea:barrels/byg/rainbow_eucalyptus_barrel",
+        "minekea:barrels/byg/redwood_barrel",
+        "minekea:barrels/byg/skyris_barrel",
+        "minekea:barrels/byg/sythian_barrel",
+        "minekea:barrels/byg/willow_barrel",
+        "minekea:barrels/byg/witch_hazel_barrel",
+        "minekea:barrels/byg/zelkova_barrel"
+    ]
+}

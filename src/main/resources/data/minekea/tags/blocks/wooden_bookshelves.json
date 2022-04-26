@@ -8,6 +8,8 @@
         "minekea:bookshelves/dark_oak_bookshelf",
         "minekea:bookshelves/jungle_bookshelf",
         "minekea:bookshelves/spruce_bookshelf",
-        "minekea:bookshelves/warped_bookshelf"
+        "minekea:bookshelves/warped_bookshelf",
+        "#minekea:wooden_storage_bookshelves",
+        {"id": "#minekea:byg/wooden_bookshelves", "required": false}
     ]
 }

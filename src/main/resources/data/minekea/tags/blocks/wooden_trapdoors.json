@@ -8,6 +8,7 @@
         "minekea:bookshelves/trapdoors/jungle_bookshelf_trapdoor",
         "minekea:bookshelves/trapdoors/oak_bookshelf_trapdoor",
         "minekea:bookshelves/trapdoors/spruce_bookshelf_trapdoor",
-        "minekea:bookshelves/trapdoors/warped_bookshelf_trapdoor"
+        "minekea:bookshelves/trapdoors/warped_bookshelf_trapdoor",
+        {"id": "#minekea:byg/wooden_trapdoors", "required": false}
     ]
 }

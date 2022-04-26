@@ -1,0 +1,14 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:tables/acacia_table",
+        "minekea:tables/birch_table",
+        "minekea:tables/crimson_table",
+        "minekea:tables/dark_oak_table",
+        "minekea:tables/jungle_table",
+        "minekea:tables/oak_table",
+        "minekea:tables/spruce_table",
+        "minekea:tables/warped_table",
+        {"id": "#minekea:byg/wooden_tables", "required": false}
+    ]
+}

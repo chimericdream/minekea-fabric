@@ -8,6 +8,7 @@
         "minekea:crates/jungle_crate",
         "minekea:crates/oak_crate",
         "minekea:crates/spruce_crate",
-        "minekea:crates/warped_crate"
+        "minekea:crates/warped_crate",
+        {"id": "#minekea:byg/wooden_crates", "required": false}
     ]
 }

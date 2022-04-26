@@ -1,0 +1,33 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:tables/byg/aspen_table",
+        "minekea:tables/byg/baobab_table",
+        "minekea:tables/byg/blue_enchanted_table",
+        "minekea:tables/byg/bulbis_table",
+        "minekea:tables/byg/cherry_table",
+        "minekea:tables/byg/cika_table",
+        "minekea:tables/byg/cypress_table",
+        "minekea:tables/byg/ebony_table",
+        "minekea:tables/byg/embur_table",
+        "minekea:tables/byg/ether_table",
+        "minekea:tables/byg/fir_table",
+        "minekea:tables/byg/green_enchanted_table",
+        "minekea:tables/byg/holly_table",
+        "minekea:tables/byg/jacaranda_table",
+        "minekea:tables/byg/lament_table",
+        "minekea:tables/byg/mahogany_table",
+        "minekea:tables/byg/mangrove_table",
+        "minekea:tables/byg/maple_table",
+        "minekea:tables/byg/nightshade_table",
+        "minekea:tables/byg/palm_table",
+        "minekea:tables/byg/pine_table",
+        "minekea:tables/byg/rainbow_eucalyptus_table",
+        "minekea:tables/byg/redwood_table",
+        "minekea:tables/byg/skyris_table",
+        "minekea:tables/byg/sythian_table",
+        "minekea:tables/byg/willow_table",
+        "minekea:tables/byg/witch_hazel_table",
+        "minekea:tables/byg/zelkova_table"
+    ]
+}

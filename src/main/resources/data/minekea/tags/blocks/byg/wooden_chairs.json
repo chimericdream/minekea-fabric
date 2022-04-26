@@ -1,0 +1,33 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:seating/chairs/byg/aspen_chair",
+        "minekea:seating/chairs/byg/baobab_chair",
+        "minekea:seating/chairs/byg/blue_enchanted_chair",
+        "minekea:seating/chairs/byg/bulbis_chair",
+        "minekea:seating/chairs/byg/cherry_chair",
+        "minekea:seating/chairs/byg/cika_chair",
+        "minekea:seating/chairs/byg/cypress_chair",
+        "minekea:seating/chairs/byg/ebony_chair",
+        "minekea:seating/chairs/byg/embur_chair",
+        "minekea:seating/chairs/byg/ether_chair",
+        "minekea:seating/chairs/byg/fir_chair",
+        "minekea:seating/chairs/byg/green_enchanted_chair",
+        "minekea:seating/chairs/byg/holly_chair",
+        "minekea:seating/chairs/byg/jacaranda_chair",
+        "minekea:seating/chairs/byg/lament_chair",
+        "minekea:seating/chairs/byg/mahogany_chair",
+        "minekea:seating/chairs/byg/mangrove_chair",
+        "minekea:seating/chairs/byg/maple_chair",
+        "minekea:seating/chairs/byg/nightshade_chair",
+        "minekea:seating/chairs/byg/palm_chair",
+        "minekea:seating/chairs/byg/pine_chair",
+        "minekea:seating/chairs/byg/rainbow_eucalyptus_chair",
+        "minekea:seating/chairs/byg/redwood_chair",
+        "minekea:seating/chairs/byg/skyris_chair",
+        "minekea:seating/chairs/byg/sythian_chair",
+        "minekea:seating/chairs/byg/willow_chair",
+        "minekea:seating/chairs/byg/witch_hazel_chair",
+        "minekea:seating/chairs/byg/zelkova_chair"
+    ]
+}

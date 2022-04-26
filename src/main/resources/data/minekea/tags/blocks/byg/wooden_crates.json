@@ -1,0 +1,33 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:crates/byg/aspen_crate",
+        "minekea:crates/byg/baobab_crate",
+        "minekea:crates/byg/blue_enchanted_crate",
+        "minekea:crates/byg/bulbis_crate",
+        "minekea:crates/byg/cherry_crate",
+        "minekea:crates/byg/cika_crate",
+        "minekea:crates/byg/cypress_crate",
+        "minekea:crates/byg/ebony_crate",
+        "minekea:crates/byg/embur_crate",
+        "minekea:crates/byg/ether_crate",
+        "minekea:crates/byg/fir_crate",
+        "minekea:crates/byg/green_enchanted_crate",
+        "minekea:crates/byg/holly_crate",
+        "minekea:crates/byg/jacaranda_crate",
+        "minekea:crates/byg/lament_crate",
+        "minekea:crates/byg/mahogany_crate",
+        "minekea:crates/byg/mangrove_crate",
+        "minekea:crates/byg/maple_crate",
+        "minekea:crates/byg/nightshade_crate",
+        "minekea:crates/byg/palm_crate",
+        "minekea:crates/byg/pine_crate",
+        "minekea:crates/byg/rainbow_eucalyptus_crate",
+        "minekea:crates/byg/redwood_crate",
+        "minekea:crates/byg/skyris_crate",
+        "minekea:crates/byg/sythian_crate",
+        "minekea:crates/byg/willow_crate",
+        "minekea:crates/byg/witch_hazel_crate",
+        "minekea:crates/byg/zelkova_crate"
+    ]
+}

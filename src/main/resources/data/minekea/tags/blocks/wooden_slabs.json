@@ -1,0 +1,14 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:slabs/acacia_bookshelf_slab",
+        "minekea:slabs/birch_bookshelf_slab",
+        "minekea:slabs/crimson_bookshelf_slab",
+        "minekea:slabs/dark_oak_bookshelf_slab",
+        "minekea:slabs/jungle_bookshelf_slab",
+        "minekea:slabs/oak_bookshelf_slab",
+        "minekea:slabs/spruce_bookshelf_slab",
+        "minekea:slabs/warped_bookshelf_slab",
+        {"id": "#minekea:byg/wooden_slabs", "required": false}
+    ]
+}
