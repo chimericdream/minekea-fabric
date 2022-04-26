@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "#minekea:wooden_chairs",
+        "#minekea:wooden_stools",
+        {"id": "#minekea:byg/wooden_seating", "required": false}
+    ]
+}

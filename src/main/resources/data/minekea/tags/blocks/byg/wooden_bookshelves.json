@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "#minekea:byg/wooden_storage_bookshelves"
+        {"id": "#minekea:byg/wooden_storage_bookshelves", "required": false}
     ]
 }
