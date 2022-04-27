@@ -5,6 +5,18 @@
         "label": "minekea:block/jars/label",
         "particle": "minecraft:block/glass"
     },
+    "display": {
+        "gui": {
+            "rotation": [30, 135, 0],
+            "translation": [0, 2.5, 0],
+            "scale": [1, 1, 1]
+        },
+        "fixed": {
+            "rotation": [0, 90, 0],
+            "translation": [0, 0, 0],
+            "scale": [0.5, 0.5, 0.5]
+        }
+    },
     "elements": [
         {
             "from": [6, 9, 6],

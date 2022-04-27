@@ -64,12 +64,6 @@ public class GlassJarBlock extends Block implements MinekeaBlock {
     }
 
     public void setupResources() {
-        Identifier MODEL_ID;
-        Identifier ITEM_MODEL_ID;
-
-        MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/jars/%sglass_jar", ModInfo.getModPrefix(modId)));
-        ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/jars/%sglass_jar", ModInfo.getModPrefix(modId)));
-
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(
@@ -81,13 +75,12 @@ public class GlassJarBlock extends Block implements MinekeaBlock {
             )
         );
 
+        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/jars/%sglass_jar", ModInfo.getModPrefix(modId)));
+        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/jars/%sglass_jar", ModInfo.getModPrefix(modId)));
+
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
-
-        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
-
-        JModel model = JModel.model("minekea:block/glass_jar2");
-
-        MinekeaResourcePack.RESOURCE_PACK.addModel(model, MODEL_ID);
+        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(new Identifier(ModInfo.MOD_ID, "block/glass_jar")), MODEL_ID);
+        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(new Identifier(ModInfo.MOD_ID, "item/glass_jar")), ITEM_MODEL_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
             JState.state(JState.variant(new JBlockModel(MODEL_ID))),
