@@ -1,17 +1,21 @@
 package com.chimericdream.minekea.block.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class DisplayCases implements MinekeaBlockCategory {
@@ -111,7 +115,8 @@ public class DisplayCases implements MinekeaBlockCategory {
         );
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_DISPLAY_CASE.register();
         BIRCH_DISPLAY_CASE.register();
         CRIMSON_DISPLAY_CASE.register();
@@ -129,35 +134,45 @@ public class DisplayCases implements MinekeaBlockCategory {
         STRIPPED_OAK_DISPLAY_CASE.register();
         STRIPPED_SPRUCE_DISPLAY_CASE.register();
         STRIPPED_WARPED_DISPLAY_CASE.register();
+    }
+
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+        List<GenericDisplayCase> displayCases = new ArrayList<>(List.of(
+            ACACIA_DISPLAY_CASE,
+            BIRCH_DISPLAY_CASE,
+            CRIMSON_DISPLAY_CASE,
+            DARK_OAK_DISPLAY_CASE,
+            JUNGLE_DISPLAY_CASE,
+            OAK_DISPLAY_CASE,
+            SPRUCE_DISPLAY_CASE,
+            WARPED_DISPLAY_CASE,
+            STRIPPED_ACACIA_DISPLAY_CASE,
+            STRIPPED_BIRCH_DISPLAY_CASE,
+            STRIPPED_CRIMSON_DISPLAY_CASE,
+            STRIPPED_DARK_OAK_DISPLAY_CASE,
+            STRIPPED_JUNGLE_DISPLAY_CASE,
+            STRIPPED_OAK_DISPLAY_CASE,
+            STRIPPED_SPRUCE_DISPLAY_CASE,
+            STRIPPED_WARPED_DISPLAY_CASE
+        ));
+
+        for (ModCompatLayer mod : otherMods) {
+            displayCases.addAll(mod.getDisplayCases());
+        }
 
         DISPLAY_CASE_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
             new Identifier(ModInfo.MOD_ID, "displaycases/display_case_block_entity"),
             FabricBlockEntityTypeBuilder.create(
                 DisplayCaseBlockEntity::new,
-                ACACIA_DISPLAY_CASE,
-                BIRCH_DISPLAY_CASE,
-                CRIMSON_DISPLAY_CASE,
-                DARK_OAK_DISPLAY_CASE,
-                JUNGLE_DISPLAY_CASE,
-                OAK_DISPLAY_CASE,
-                SPRUCE_DISPLAY_CASE,
-                WARPED_DISPLAY_CASE,
-                STRIPPED_ACACIA_DISPLAY_CASE,
-                STRIPPED_BIRCH_DISPLAY_CASE,
-                STRIPPED_CRIMSON_DISPLAY_CASE,
-                STRIPPED_DARK_OAK_DISPLAY_CASE,
-                STRIPPED_JUNGLE_DISPLAY_CASE,
-                STRIPPED_OAK_DISPLAY_CASE,
-                STRIPPED_SPRUCE_DISPLAY_CASE,
-                STRIPPED_WARPED_DISPLAY_CASE
+                displayCases.toArray(new Block[0])
             ).build(null)
         );
     }
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void onInitializeClient() {
+    public void initializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(
             RenderLayer.getCutout(),
             ACACIA_DISPLAY_CASE,

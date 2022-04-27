@@ -1,0 +1,14 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:shelves/acacia_floating_shelf",
+        "minekea:shelves/birch_floating_shelf",
+        "minekea:shelves/crimson_floating_shelf",
+        "minekea:shelves/dark_oak_floating_shelf",
+        "minekea:shelves/jungle_floating_shelf",
+        "minekea:shelves/oak_floating_shelf",
+        "minekea:shelves/spruce_floating_shelf",
+        "minekea:shelves/warped_floating_shelf",
+        {"id": "#minkea:byg/wooden_floating_shelves", "required": false}
+    ]
+}

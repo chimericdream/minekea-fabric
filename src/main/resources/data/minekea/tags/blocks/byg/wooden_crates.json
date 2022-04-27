@@ -1,0 +1,33 @@
+{
+    "replace": false,
+    "values": [
+        {"id": "minekea:crates/byg/aspen_crate", "required": false},
+        {"id": "minekea:crates/byg/baobab_crate", "required": false},
+        {"id": "minekea:crates/byg/blue_enchanted_crate", "required": false},
+        {"id": "minekea:crates/byg/bulbis_crate", "required": false},
+        {"id": "minekea:crates/byg/cherry_crate", "required": false},
+        {"id": "minekea:crates/byg/cika_crate", "required": false},
+        {"id": "minekea:crates/byg/cypress_crate", "required": false},
+        {"id": "minekea:crates/byg/ebony_crate", "required": false},
+        {"id": "minekea:crates/byg/embur_crate", "required": false},
+        {"id": "minekea:crates/byg/ether_crate", "required": false},
+        {"id": "minekea:crates/byg/fir_crate", "required": false},
+        {"id": "minekea:crates/byg/green_enchanted_crate", "required": false},
+        {"id": "minekea:crates/byg/holly_crate", "required": false},
+        {"id": "minekea:crates/byg/jacaranda_crate", "required": false},
+        {"id": "minekea:crates/byg/lament_crate", "required": false},
+        {"id": "minekea:crates/byg/mahogany_crate", "required": false},
+        {"id": "minekea:crates/byg/mangrove_crate", "required": false},
+        {"id": "minekea:crates/byg/maple_crate", "required": false},
+        {"id": "minekea:crates/byg/nightshade_crate", "required": false},
+        {"id": "minekea:crates/byg/palm_crate", "required": false},
+        {"id": "minekea:crates/byg/pine_crate", "required": false},
+        {"id": "minekea:crates/byg/rainbow_eucalyptus_crate", "required": false},
+        {"id": "minekea:crates/byg/redwood_crate", "required": false},
+        {"id": "minekea:crates/byg/skyris_crate", "required": false},
+        {"id": "minekea:crates/byg/sythian_crate", "required": false},
+        {"id": "minekea:crates/byg/willow_crate", "required": false},
+        {"id": "minekea:crates/byg/witch_hazel_crate", "required": false},
+        {"id": "minekea:crates/byg/zelkova_crate", "required": false}
+    ]
+}

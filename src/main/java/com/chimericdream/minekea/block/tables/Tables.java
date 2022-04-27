@@ -1,8 +1,10 @@
 package com.chimericdream.minekea.block.tables;
 
+import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.Map;
 
 public class Tables implements MinekeaBlockCategory {
@@ -50,7 +52,8 @@ public class Tables implements MinekeaBlockCategory {
         );
     }
 
-    public void register() {
+    @Override
+    public void registerBlocks() {
         ACACIA_TABLE.register();
         BIRCH_TABLE.register();
         CRIMSON_TABLE.register();
@@ -59,5 +62,9 @@ public class Tables implements MinekeaBlockCategory {
         OAK_TABLE.register();
         SPRUCE_TABLE.register();
         WARPED_TABLE.register();
+    }
+
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
     }
 }

@@ -29,11 +29,11 @@ public class MixinRegistrationHelper implements IMixinConfigPlugin {
             boolean isBCLibLoaded = FabricLoader.getInstance().isModLoaded("bclib");
 
             if (isBCLibLoaded) {
-                LOGGER.info("[minekea_mixins] BCLib is loaded. Disabling EnchantingTableBlockMixin");
+                LOGGER.info("[minekea][mixins] BCLib is loaded. Disabling EnchantingTableBlockMixin");
                 return false;
             }
 
-            LOGGER.info("[minekea_mixins] BCLib is not loaded. Enabling EnchantingTableBlockMixin");
+            LOGGER.info("[minekea][mixins] BCLib is not loaded. Enabling EnchantingTableBlockMixin");
             return true;
         }
 

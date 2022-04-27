@@ -1,0 +1,33 @@
+{
+    "replace": false,
+    "values": [
+        {"id": "minekea:barrels/byg/aspen_barrel", "required": false},
+        {"id": "minekea:barrels/byg/baobab_barrel", "required": false},
+        {"id": "minekea:barrels/byg/blue_enchanted_barrel", "required": false},
+        {"id": "minekea:barrels/byg/bulbis_barrel", "required": false},
+        {"id": "minekea:barrels/byg/cherry_barrel", "required": false},
+        {"id": "minekea:barrels/byg/cika_barrel", "required": false},
+        {"id": "minekea:barrels/byg/cypress_barrel", "required": false},
+        {"id": "minekea:barrels/byg/ebony_barrel", "required": false},
+        {"id": "minekea:barrels/byg/embur_barrel", "required": false},
+        {"id": "minekea:barrels/byg/ether_barrel", "required": false},
+        {"id": "minekea:barrels/byg/fir_barrel", "required": false},
+        {"id": "minekea:barrels/byg/green_enchanted_barrel", "required": false},
+        {"id": "minekea:barrels/byg/holly_barrel", "required": false},
+        {"id": "minekea:barrels/byg/jacaranda_barrel", "required": false},
+        {"id": "minekea:barrels/byg/lament_barrel", "required": false},
+        {"id": "minekea:barrels/byg/mahogany_barrel", "required": false},
+        {"id": "minekea:barrels/byg/mangrove_barrel", "required": false},
+        {"id": "minekea:barrels/byg/maple_barrel", "required": false},
+        {"id": "minekea:barrels/byg/nightshade_barrel", "required": false},
+        {"id": "minekea:barrels/byg/palm_barrel", "required": false},
+        {"id": "minekea:barrels/byg/pine_barrel", "required": false},
+        {"id": "minekea:barrels/byg/rainbow_eucalyptus_barrel", "required": false},
+        {"id": "minekea:barrels/byg/redwood_barrel", "required": false},
+        {"id": "minekea:barrels/byg/skyris_barrel", "required": false},
+        {"id": "minekea:barrels/byg/sythian_barrel", "required": false},
+        {"id": "minekea:barrels/byg/willow_barrel", "required": false},
+        {"id": "minekea:barrels/byg/witch_hazel_barrel", "required": false},
+        {"id": "minekea:barrels/byg/zelkova_barrel", "required": false}
+    ]
+}
