@@ -15,6 +15,7 @@ import com.chimericdream.minekea.block.trapdoors.Trapdoors;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.tag.CommonBlockTags;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
@@ -45,6 +46,7 @@ public class MinekeaMod implements ModInitializer {
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
+    public static final CommonBlockTags COMMON_TAGS;
     public static final MinekeaTags TAGS;
     public static final MinekeaResourcePack RESOURCES;
     public static final List<ModCompatLayer> OTHER_MODS = new ArrayList<>();
@@ -79,6 +81,7 @@ public class MinekeaMod implements ModInitializer {
             SEATS
         };
 
+        COMMON_TAGS = new CommonBlockTags();
         TAGS = new MinekeaTags();
         RESOURCES = new MinekeaResourcePack();
 
@@ -137,6 +140,7 @@ public class MinekeaMod implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("[minekea] Registering block and item tags");
+        COMMON_TAGS.init();
         TAGS.init();
 
         LOGGER.info("[minekea] Registering blocks");

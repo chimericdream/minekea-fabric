@@ -116,26 +116,6 @@ public class Bookshelves implements MinekeaBlockCategory {
         );
     }
 
-    public static Block[] getShelvesForEnchanting() {
-        return new Block[]{
-            ACACIA_BOOKSHELF,
-            ACACIA_STORAGE_SHELF,
-            BIRCH_BOOKSHELF,
-            BIRCH_STORAGE_SHELF,
-            CRIMSON_BOOKSHELF,
-            CRIMSON_STORAGE_SHELF,
-            DARK_OAK_BOOKSHELF,
-            DARK_OAK_STORAGE_SHELF,
-            JUNGLE_BOOKSHELF,
-            JUNGLE_STORAGE_SHELF,
-            OAK_STORAGE_SHELF,
-            SPRUCE_BOOKSHELF,
-            SPRUCE_STORAGE_SHELF,
-            WARPED_BOOKSHELF,
-            WARPED_STORAGE_SHELF,
-        };
-    }
-
     protected void setupOakBookshelfResources() {
         for (int i = 0; i <= 6; i++) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(
