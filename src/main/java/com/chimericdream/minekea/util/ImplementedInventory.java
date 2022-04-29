@@ -41,6 +41,10 @@ public interface ImplementedInventory extends Inventory {
         return getItems().size();
     }
 
+    default boolean hasContents() {
+        return !isEmpty();
+    }
+
     /**
      * Checks if the inventory is empty.
      *
@@ -96,6 +100,10 @@ public interface ImplementedInventory extends Inventory {
         return items;
     }
 
+    default ItemStack removeStack() {
+        return removeStack(0);
+    }
+
     default boolean isMatchingPartialStack(ItemStack incomingStack, ItemStack existingStack) {
         if (!existingStack.isStackable()) {
             return false;
@@ -106,6 +114,10 @@ public interface ImplementedInventory extends Inventory {
         }
 
         return existingStack.getCount() < existingStack.getMaxCount();
+    }
+
+    default ItemStack tryInsert(ItemStack stack) {
+        return tryInsert(0, stack);
     }
 
     default ItemStack tryInsert(int slot, ItemStack stack) {

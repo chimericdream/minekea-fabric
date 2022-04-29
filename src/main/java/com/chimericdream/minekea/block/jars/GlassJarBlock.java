@@ -8,21 +8,26 @@ import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.recipe.*;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
-public class GlassJarBlock extends Block implements MinekeaBlock {
+public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider {
     private final Identifier BLOCK_ID;
     private final String modId;
     private static final VoxelShape MAIN_SHAPE;
@@ -45,6 +50,117 @@ public class GlassJarBlock extends Block implements MinekeaBlock {
         this.modId = modId;
 
         BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("jars/%sglass_jar", ModInfo.getModPrefix(modId)));
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new GlassJarBlockEntity(Jars.GLASS_JAR_BLOCK_ENTITY, pos, state);
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
+        GlassJarBlockEntity entity = (GlassJarBlockEntity) world.getBlockEntity(pos);
+
+        // Theoretically, this shouldn't be possible
+        if (entity == null) {
+            return ActionResult.FAIL;
+        }
+
+        ItemStack heldItem = player.getMainHandStack();
+
+        if (isFilledBucket(heldItem)) {
+            RegistryEntry.Reference<Item> entry = heldItem.getItem().getRegistryEntry();
+            Fluid bucketFluid = getFluidType(entry);
+
+            if (!bucketFluid.matchesType(Fluids.EMPTY) && entity.tryInsert(bucketFluid)) {
+                player.setStackInHand(Hand.MAIN_HAND, Items.BUCKET.getDefaultStack());
+                entity.playEmptyBucketSound(bucketFluid);
+            }
+        } else if (isEmptyBucket(heldItem) && entity.hasFluid()) {
+            Fluid fluid = entity.getBucket();
+
+            if (!fluid.matchesType(Fluids.EMPTY)) {
+                if (fluid.matchesType(Fluids.WATER)) {
+                    player.setStackInHand(Hand.MAIN_HAND, Items.WATER_BUCKET.getDefaultStack());
+                } else if (fluid.matchesType(Fluids.LAVA)) {
+                    player.setStackInHand(Hand.MAIN_HAND, Items.LAVA_BUCKET.getDefaultStack());
+                }
+
+                entity.playFillBucketSound(fluid);
+            }
+        } else if (!heldItem.isEmpty() && entity.canAcceptItem(heldItem)) {
+            ItemStack originalStack = heldItem.copy();
+
+            // Try to insert the item in the player's hand into the jar
+            ItemStack remainingStack = entity.tryInsert(heldItem);
+
+            if (remainingStack.isEmpty() || originalStack.getCount() > remainingStack.getCount()) {
+                player.setStackInHand(hand, remainingStack);
+                entity.playAddItemSound();
+            }
+        } else if (player.isSneaking() && heldItem.isEmpty()) {
+            if (entity.hasItem()) {
+                ItemScatterer.spawn(
+                    world,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    entity.removeStack()
+                );
+                entity.playRemoveItemSound();
+            }
+        }
+
+        return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity entity = world.getBlockEntity(pos);
+
+            if (entity instanceof GlassJarBlockEntity) {
+                ItemScatterer.spawn(world, pos, ((GlassJarBlockEntity) entity).getItemsOnBreak());
+                world.updateComparators(pos, this);
+            }
+
+            super.onStateReplaced(state, world, pos, newState, moved);
+        }
+    }
+
+    /*
+     * @TODO: it'd be nice if this could be done in a more generalized way
+     */
+    private Fluid getFluidType(RegistryEntry.Reference<Item> entry) {
+        if (entry.value().toString().equals("water_bucket")) {
+            return Fluids.WATER;
+        }
+
+        if (entry.value().toString().equals("lava_bucket")) {
+            return Fluids.LAVA;
+        }
+
+        return Fluids.EMPTY;
+    }
+
+    private boolean isEmptyBucket(ItemStack item) {
+        if (item.isEmpty()) {
+            return false;
+        }
+
+        return item.isItemEqual(Items.BUCKET.getDefaultStack());
+    }
+
+    private boolean isFilledBucket(ItemStack item) {
+        if (item.isEmpty()) {
+            return false;
+        }
+
+        if (!(item.getItem() instanceof BucketItem)) {
+            return false;
+        }
+
+        return !(item.getItem().getRegistryEntry().value().toString().equals("bucket"));
     }
 
     public Identifier getBlockID() {
