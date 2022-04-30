@@ -15,6 +15,7 @@ import com.chimericdream.minekea.block.tables.Tables;
 import com.chimericdream.minekea.block.trapdoors.Trapdoors;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
+import com.chimericdream.minekea.fluid.Fluids;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.tag.CommonBlockTags;
 import com.chimericdream.minekea.tag.MinekeaTags;
@@ -45,6 +46,7 @@ public class MinekeaMod implements ModInitializer {
     public static final Tables TABLES;
     public static final Seats SEATS;
     public static final Jars JARS;
+    public static final Fluids FLUIDS;
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
@@ -68,6 +70,7 @@ public class MinekeaMod implements ModInitializer {
         TABLES = new Tables();
         SEATS = new Seats();
         JARS = new Jars();
+        FLUIDS = new Fluids();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
             BOOKSHELVES,
@@ -82,7 +85,8 @@ public class MinekeaMod implements ModInitializer {
             DECORATION_BLOCKS,
             TABLES,
             SEATS,
-            JARS
+            JARS,
+            FLUIDS
         };
 
         COMMON_TAGS = new CommonBlockTags();

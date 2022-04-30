@@ -84,6 +84,8 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                     player.setStackInHand(Hand.MAIN_HAND, Items.WATER_BUCKET.getDefaultStack());
                 } else if (fluid.matchesType(Fluids.LAVA)) {
                     player.setStackInHand(Hand.MAIN_HAND, Items.LAVA_BUCKET.getDefaultStack());
+                } else if (fluid.matchesType(com.chimericdream.minekea.fluid.Fluids.MILK)) {
+                    player.setStackInHand(Hand.MAIN_HAND, Items.MILK_BUCKET.getDefaultStack());
                 }
 
                 entity.playFillBucketSound(fluid);
@@ -140,6 +142,10 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             return Fluids.LAVA;
         }
 
+        if (entry.value().toString().equals("milk_bucket")) {
+            return com.chimericdream.minekea.fluid.Fluids.MILK;
+        }
+
         return Fluids.EMPTY;
     }
 
@@ -156,11 +162,13 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             return false;
         }
 
-        if (!(item.getItem() instanceof BucketItem)) {
+        if (!(item.getItem() instanceof BucketItem) && !(item.getItem() instanceof MilkBucketItem)) {
             return false;
         }
 
-        return !(item.getItem().getRegistryEntry().value().toString().equals("bucket"));
+        String registryEntry = item.getItem().getRegistryEntry().value().toString();
+
+        return !registryEntry.equals("bucket");
     }
 
     public Identifier getBlockID() {
