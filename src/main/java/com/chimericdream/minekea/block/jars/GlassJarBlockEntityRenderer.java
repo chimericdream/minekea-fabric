@@ -4,9 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
-import net.fabricmc.fabric.impl.client.rendering.ColorProviderRegistryImpl;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -16,12 +14,9 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.texture.Sprite;
-import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 @Environment(EnvType.CLIENT)
@@ -294,28 +289,28 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
     }
 
     private void renderTexture(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        World world = entity.getWorld();
-
-        if (world == null) {
-            return;
-        }
-
-        ItemStack stack = entity.getStack(0);
-        if (stack.isEmpty()) {
-            return;
-        }
-
-        Identifier stackId = stack.getItem().getRegistryEntry().registryKey().getValue();
-        Sprite texture = MinecraftClient.getInstance().getSpriteAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).apply(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE);
-        MinecraftClient.getInstance().getBlockColors().registerColorProvider();
-
-        ItemColorProvider provider = ColorProviderRegistryImpl.ITEM.get(stack.getItem());
-        int color = provider.getColor(stack, 0);
-
-        int fillLevel = entity.getStoredStacks() + 1;
-
-        float fY = (((float) fillLevel / (GlassJarBlockEntity.MAX_ITEM_STACKS + 1)) * VERTICAL_MULTIPLIER) - EPSILON;
-
-        this.renderTexture(matrices, vertexConsumers, texture, color, light, fillLevel, fY);
+//        World world = entity.getWorld();
+//
+//        if (world == null) {
+//            return;
+//        }
+//
+//        ItemStack stack = entity.getStack(0);
+//        if (stack.isEmpty()) {
+//            return;
+//        }
+//
+//        Identifier stackId = stack.getItem().getRegistryEntry().registryKey().getValue();
+//        Sprite texture = MinecraftClient.getInstance().getSpriteAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).apply(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE);
+//        MinecraftClient.getInstance().getBlockColors().registerColorProvider();
+//
+//        ItemColorProvider provider = ColorProviderRegistryImpl.ITEM.get(stack.getItem());
+//        int color = provider.getColor(stack, 0);
+//
+//        int fillLevel = entity.getStoredStacks() + 1;
+//
+//        float fY = (((float) fillLevel / (GlassJarBlockEntity.MAX_ITEM_STACKS + 1)) * VERTICAL_MULTIPLIER) - EPSILON;
+//
+//        this.renderTexture(matrices, vertexConsumers, texture, color, light, fillLevel, fY);
     }
 }
