@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.jars;
 
+import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -41,6 +42,14 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
 
     public GlassJarBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+    }
+
+    public Fluid getStoredFluid() {
+        return storedFluid;
+    }
+
+    public int getStoredBuckets() {
+        return fluidAmountInBuckets;
     }
 
     public boolean canAcceptFluid(Fluid fluid) {
@@ -227,12 +236,15 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             storedFluid = Fluids.EMPTY;
             fluidAmountInBuckets = 0;
         } else {
+            MinekeaMod.LOGGER.info(String.format("readNbt()->fluidKey: '%s'", fluidKey));
             storedFluid = Registry.FLUID.get(new Identifier(fluidKey));
             fluidAmountInBuckets = nbt.getInt(FLUID_AMT_KEY);
         }
 
         Inventories.readNbt(nbt, items);
         fullItemStacks = nbt.getInt(ITEM_AMT_KEY);
+
+        markDirty();
     }
 
     @Override
@@ -244,7 +256,8 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             nbt.putString(FLUID_KEY, "NONE");
             nbt.putInt(FLUID_AMT_KEY, 0);
         } else {
-            nbt.putString(FLUID_KEY, storedFluid.getRegistryEntry().getKey().toString());
+            MinekeaMod.LOGGER.info(String.format("writeNbt()->FLUID_KEY: '%s'", storedFluid.getRegistryEntry().registryKey().getValue().toString()));
+            nbt.putString(FLUID_KEY, storedFluid.getRegistryEntry().registryKey().getValue().toString());
             nbt.putInt(FLUID_AMT_KEY, fluidAmountInBuckets);
         }
 

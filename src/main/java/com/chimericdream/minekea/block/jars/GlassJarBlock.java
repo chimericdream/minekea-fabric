@@ -75,6 +75,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             if (!bucketFluid.matchesType(Fluids.EMPTY) && entity.tryInsert(bucketFluid)) {
                 player.setStackInHand(Hand.MAIN_HAND, Items.BUCKET.getDefaultStack());
                 entity.playEmptyBucketSound(bucketFluid);
+                entity.markDirty();
             }
         } else if (isEmptyBucket(heldItem) && entity.hasFluid()) {
             Fluid fluid = entity.getBucket();
@@ -89,6 +90,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                 }
 
                 entity.playFillBucketSound(fluid);
+                entity.markDirty();
             }
         } else if (!heldItem.isEmpty() && entity.canAcceptItem(heldItem)) {
             ItemStack originalStack = heldItem.copy();
@@ -99,6 +101,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             if (remainingStack.isEmpty() || originalStack.getCount() > remainingStack.getCount()) {
                 player.setStackInHand(hand, remainingStack);
                 entity.playAddItemSound();
+                entity.markDirty();
             }
         } else if (player.isSneaking() && heldItem.isEmpty()) {
             if (entity.hasItem()) {
@@ -110,6 +113,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                     entity.removeStack()
                 );
                 entity.playRemoveItemSound();
+                entity.markDirty();
             }
         }
 
