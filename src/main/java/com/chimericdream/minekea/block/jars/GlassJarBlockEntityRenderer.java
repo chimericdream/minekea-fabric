@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.jars;
 
-import com.chimericdream.minekea.resource.Texture;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.minecraft.client.MinecraftClient;
@@ -76,10 +75,18 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
 
         VertexConsumer translucentBuffer = vertexConsumers.getBuffer(RenderLayer.getTranslucent());
 
-        Texture.Color fluidColor = new Texture.Color(color);
-        Texture.Color xColor = fluidColor.withLight(xLightFactor);
-        Texture.Color yColor = fluidColor.withLight(yLightFactor);
-        Texture.Color zColor = fluidColor.withLight(zLightFactor);
+        float fluidColorR = (float) (color >> 16 & 255) / 255.0F;
+        float fluidColorG = (float) (color >> 8 & 255) / 255.0F;
+        float fluidColorB = (float) (color & 255) / 255.0F;
+        float xColorR = fluidColorR * xLightFactor;
+        float xColorG = fluidColorG * xLightFactor;
+        float xColorB = fluidColorB * xLightFactor;
+        float yColorR = fluidColorR * yLightFactor;
+        float yColorG = fluidColorG * yLightFactor;
+        float yColorB = fluidColorB * yLightFactor;
+        float zColorR = fluidColorR * zLightFactor;
+        float zColorG = fluidColorG * zLightFactor;
+        float zColorB = fluidColorB * zLightFactor;
 
         int fillLevel = entity.getStoredBuckets();
 
@@ -88,28 +95,28 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         // east (x+)
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, 0f, 1f - HORIZONTAL_OFFSET)
-            .color(xColor.r, xColor.g, xColor.b, 1f)
+            .color(xColorR, xColorG, xColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getMinV())
             .light(light)
             .normal(1f, 0f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, 0f, 0f + HORIZONTAL_OFFSET)
-            .color(xColor.r, xColor.g, xColor.b, 1f)
+            .color(xColorR, xColorG, xColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getMinV())
             .light(light)
             .normal(1f, 0f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, fY, 0f + HORIZONTAL_OFFSET)
-            .color(xColor.r, xColor.g, xColor.b, 1f)
+            .color(xColorR, xColorG, xColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getFrameV(fillLevel))
             .light(light)
             .normal(1f, 0f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, fY, 1f - HORIZONTAL_OFFSET)
-            .color(xColor.r, xColor.g, xColor.b, 1f)
+            .color(xColorR, xColorG, xColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getFrameV(fillLevel))
             .light(light)
             .normal(1f, 0f, 0f)
@@ -118,28 +125,28 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         // west (x-)
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, 0f, 0f + HORIZONTAL_OFFSET)
-            .color(xColor.r, xColor.g, xColor.b, 1f)
+            .color(xColorR, xColorG, xColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getMinV())
             .light(light)
             .normal(-1f, 0f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, 0f, 1f - HORIZONTAL_OFFSET)
-            .color(xColor.r, xColor.g, xColor.b, 1f)
+            .color(xColorR, xColorG, xColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getMinV())
             .light(light)
             .normal(-1f, 0f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, fY, 1f - HORIZONTAL_OFFSET)
-            .color(xColor.r, xColor.g, xColor.b, 1f)
+            .color(xColorR, xColorG, xColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getFrameV(fillLevel))
             .light(light)
             .normal(-1f, 0f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, fY, 0f + HORIZONTAL_OFFSET)
-            .color(xColor.r, xColor.g, xColor.b, 1f)
+            .color(xColorR, xColorG, xColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getFrameV(fillLevel))
             .light(light)
             .normal(-1f, 0f, 0f)
@@ -148,28 +155,28 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         // south (z+)
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, 0f, 1f - HORIZONTAL_OFFSET)
-            .color(zColor.r, zColor.g, zColor.b, 1f)
+            .color(zColorR, zColorG, zColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getMinV())
             .light(light)
             .normal(0f, 0f, 1f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, 0f, 1f - HORIZONTAL_OFFSET)
-            .color(zColor.r, zColor.g, zColor.b, 1f)
+            .color(zColorR, zColorG, zColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getMinV())
             .light(light)
             .normal(0f, 0f, 1f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, fY, 1f - HORIZONTAL_OFFSET)
-            .color(zColor.r, zColor.g, zColor.b, 1f)
+            .color(zColorR, zColorG, zColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getFrameV(fillLevel))
             .light(light)
             .normal(0f, 0f, 1f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, fY, 1f - HORIZONTAL_OFFSET)
-            .color(zColor.r, zColor.g, zColor.b, 1f)
+            .color(zColorR, zColorG, zColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getFrameV(fillLevel))
             .light(light)
             .normal(0f, 0f, 1f)
@@ -178,28 +185,28 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         // north (z-)
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, 0f, 0f + HORIZONTAL_OFFSET)
-            .color(zColor.r, zColor.g, zColor.b, 1f)
+            .color(zColorR, zColorG, zColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getMinV())
             .light(light)
             .normal(0f, 0f, -1f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, 0f, 0f + HORIZONTAL_OFFSET)
-            .color(zColor.r, zColor.g, zColor.b, 1f)
+            .color(zColorR, zColorG, zColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getMinV())
             .light(light)
             .normal(0f, 0f, -1f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, fY, 0f + HORIZONTAL_OFFSET)
-            .color(zColor.r, zColor.g, zColor.b, 1f)
+            .color(zColorR, zColorG, zColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getFrameV(fillLevel))
             .light(light)
             .normal(0f, 0f, -1f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, fY, 0f + HORIZONTAL_OFFSET)
-            .color(zColor.r, zColor.g, zColor.b, 1f)
+            .color(zColorR, zColorG, zColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getFrameV(fillLevel))
             .light(light)
             .normal(0f, 0f, -1f)
@@ -208,28 +215,28 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         // up (y+)
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, fY - EPSILON, 1f - HORIZONTAL_OFFSET)
-            .color(fluidColor.r, fluidColor.g, fluidColor.b, 1f)
+            .color(fluidColorR, fluidColorG, fluidColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getMinV())
             .light(light)
             .normal(0f, 1f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, fY - EPSILON, 1f - HORIZONTAL_OFFSET)
-            .color(fluidColor.r, fluidColor.g, fluidColor.b, 1f)
+            .color(fluidColorR, fluidColorG, fluidColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getMinV())
             .light(light)
             .normal(0f, 1f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, fY - EPSILON, 0f + HORIZONTAL_OFFSET)
-            .color(fluidColor.r, fluidColor.g, fluidColor.b, 1f)
+            .color(fluidColorR, fluidColorG, fluidColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getMaxV())
             .light(light)
             .normal(0f, 1f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, fY - EPSILON, 0f + HORIZONTAL_OFFSET)
-            .color(fluidColor.r, fluidColor.g, fluidColor.b, 1f)
+            .color(fluidColorR, fluidColorG, fluidColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getMaxV())
             .light(light)
             .normal(0f, 1f, 0f)
@@ -238,28 +245,28 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         // down (y-)
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, 0f + EPSILON, 0f + HORIZONTAL_OFFSET)
-            .color(yColor.r, yColor.g, yColor.b, 1f)
+            .color(yColorR, yColorG, yColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getMinV())
             .light(light)
             .normal(0f, -1f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, 0f + EPSILON, 0f + HORIZONTAL_OFFSET)
-            .color(yColor.r, yColor.g, yColor.b, 1f)
+            .color(yColorR, yColorG, yColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getMinV())
             .light(light)
             .normal(0f, -1f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 1f - HORIZONTAL_OFFSET, 0f + EPSILON, 1f - HORIZONTAL_OFFSET)
-            .color(yColor.r, yColor.g, yColor.b, 1f)
+            .color(yColorR, yColorG, yColorB, 1f)
             .texture(fluidTexture.getMaxU(), fluidTexture.getMaxV())
             .light(light)
             .normal(0f, -1f, 0f)
             .next();
         translucentBuffer
             .vertex(worldMatrix.getPositionMatrix(), 0f + HORIZONTAL_OFFSET, 0f + EPSILON, 1f - HORIZONTAL_OFFSET)
-            .color(yColor.r, yColor.g, yColor.b, 1f)
+            .color(yColorR, yColorG, yColorB, 1f)
             .texture(fluidTexture.getMinU(), fluidTexture.getMaxV())
             .light(light)
             .normal(0f, -1f, 0f)
