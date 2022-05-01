@@ -53,6 +53,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         return storedFluid;
     }
 
+    public int getStoredStacks() {
+        return fullItemStacks;
+    }
+
     public int getStoredBuckets() {
         return fluidAmountInBuckets;
     }
