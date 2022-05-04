@@ -96,6 +96,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         storedFluid = fluid;
         fluidAmountInBuckets += amount;
 
+        if (fluidAmountInBuckets > (MAX_BUCKETS - BOTTLE_SIZE)) {
+            fluidAmountInBuckets = MAX_BUCKETS;
+        }
+
         return true;
     }
 

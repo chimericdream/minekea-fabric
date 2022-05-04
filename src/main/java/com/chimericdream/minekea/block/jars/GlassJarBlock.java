@@ -76,22 +76,24 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             Fluid bucketFluid = getFluidType(entry);
 
             if (!bucketFluid.matchesType(Fluids.EMPTY) && entity.tryInsert(bucketFluid)) {
-                player.setStackInHand(Hand.MAIN_HAND, Items.BUCKET.getDefaultStack());
+                replaceHeldItemOrDont(world, player, heldItem, Items.BUCKET.getDefaultStack());
                 entity.playEmptyBucketSound(bucketFluid);
                 entity.markDirty();
             }
         } else if (isFilledBottle(heldItem)) {
-            if (heldItem.isItemEqual(Items.HONEY_BOTTLE.getDefaultStack()) && entity.tryInsert(com.chimericdream.minekea.fluid.Fluids.HONEY, 0.3)) {
-                player.setStackInHand(Hand.MAIN_HAND, Items.GLASS_BOTTLE.getDefaultStack());
+            if (
+                heldItem.isItemEqual(Items.HONEY_BOTTLE.getDefaultStack())
+                    && entity.tryInsert(com.chimericdream.minekea.fluid.Fluids.HONEY, GlassJarBlockEntity.BOTTLE_SIZE)
+            ) {
+                replaceHeldItemOrDont(world, player, heldItem, Items.GLASS_BOTTLE.getDefaultStack());
                 entity.playEmptyBottleSound();
                 entity.markDirty();
             } else if (
                 heldItem.isItemEqual(Items.POTION.getDefaultStack())
                     && PotionUtil.getPotion(heldItem) == Potions.WATER
-                    && entity.canAcceptFluid(Fluids.WATER)
-                    && entity.tryInsert(Fluids.WATER, 0.33)
+                    && entity.tryInsert(Fluids.WATER, GlassJarBlockEntity.BOTTLE_SIZE)
             ) {
-                player.setStackInHand(Hand.MAIN_HAND, Items.GLASS_BOTTLE.getDefaultStack());
+                replaceHeldItemOrDont(world, player, heldItem, Items.GLASS_BOTTLE.getDefaultStack());
                 entity.playEmptyBottleSound();
                 entity.markDirty();
             }
@@ -103,7 +105,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             ItemStack bottle = entity.getBottle();
 
             if (bottle != null && !bottle.isItemEqual(Items.GLASS_BOTTLE.getDefaultStack())) {
-                player.setStackInHand(Hand.MAIN_HAND, bottle);
+                replaceHeldItemOrDont(world, player, heldItem, bottle);
                 entity.playFillBottleSound();
             }
         } else if (isEmptyBucket(heldItem) && entity.hasFluid()) {
@@ -111,13 +113,14 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
             if (!fluid.matchesType(Fluids.EMPTY)) {
                 if (fluid.matchesType(Fluids.WATER)) {
-                    player.setStackInHand(Hand.MAIN_HAND, Items.WATER_BUCKET.getDefaultStack());
+                    replaceHeldItemOrDont(world, player, heldItem, Items.WATER_BUCKET.getDefaultStack());
                 } else if (fluid.matchesType(Fluids.LAVA)) {
+                    replaceHeldItemOrDont(world, player, heldItem, Items.LAVA_BUCKET.getDefaultStack());
                     player.setStackInHand(Hand.MAIN_HAND, Items.LAVA_BUCKET.getDefaultStack());
                 } else if (fluid.matchesType(com.chimericdream.minekea.fluid.Fluids.MILK)) {
-                    player.setStackInHand(Hand.MAIN_HAND, Items.MILK_BUCKET.getDefaultStack());
+                    replaceHeldItemOrDont(world, player, heldItem, Items.MILK_BUCKET.getDefaultStack());
                 } else if (fluid.matchesType(com.chimericdream.minekea.fluid.Fluids.HONEY)) {
-                    player.setStackInHand(Hand.MAIN_HAND, com.chimericdream.minekea.fluid.Fluids.HONEY_BUCKET.getDefaultStack());
+                    replaceHeldItemOrDont(world, player, heldItem, com.chimericdream.minekea.fluid.Fluids.HONEY_BUCKET.getDefaultStack());
                 }
 
                 entity.playFillBucketSound(fluid);
@@ -149,6 +152,24 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         }
 
         return ActionResult.SUCCESS;
+    }
+
+    private void replaceHeldItemOrDont(World world, PlayerEntity player, ItemStack heldItem, ItemStack item) {
+        ItemStack remaining = heldItem.copy();
+        remaining.decrement(1);
+
+        if (remaining.getCount() == 0) {
+            player.setStackInHand(Hand.MAIN_HAND, item);
+        } else {
+            player.setStackInHand(Hand.MAIN_HAND, remaining);
+            ItemScatterer.spawn(
+                world,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                item
+            );
+        }
     }
 
     @Override
