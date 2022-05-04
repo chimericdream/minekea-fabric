@@ -10,6 +10,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -26,6 +27,7 @@ import javax.annotation.Nullable;
 
 public class GlassJarBlockEntity extends BlockEntity implements ImplementedInventory {
     public static final int MAX_BUCKETS = 8;
+    public static final double BOTTLE_SIZE = 0.33;
 
     // Since the `items` stores a single stack, the actual total is one higher than this
     public static final int MAX_ITEM_STACKS = 7;
@@ -34,7 +36,7 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     private int fullItemStacks = 0;
 
     private Fluid storedFluid = Fluids.EMPTY;
-    private int fluidAmountInBuckets = 0;
+    private double fluidAmountInBuckets = 0.0;
 
     private static final String ITEM_AMT_KEY = "FullItemStacks";
     private static final String FLUID_KEY = "StoredFluid";
@@ -56,11 +58,15 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         return fullItemStacks;
     }
 
-    public int getStoredBuckets() {
+    public double getStoredBuckets() {
         return fluidAmountInBuckets;
     }
 
     public boolean canAcceptFluid(Fluid fluid) {
+        return canAcceptFluid(fluid, 1.0);
+    }
+
+    public boolean canAcceptFluid(Fluid fluid, double amount) {
         if (this.isEmpty()) {
             return true;
         }
@@ -75,29 +81,63 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         }
 
         // If this is the same fluid we're already storing, AND the jar isn't full yet
-        return fluid.matchesType(storedFluid) && fluidAmountInBuckets < MAX_BUCKETS;
+        return fluid.matchesType(storedFluid) && (fluidAmountInBuckets + amount) <= MAX_BUCKETS;
     }
 
     public boolean tryInsert(Fluid fluid) {
-        if (!canAcceptFluid(fluid)) {
+        return tryInsert(fluid, 1.0);
+    }
+
+    public boolean tryInsert(Fluid fluid, double amount) {
+        if (!canAcceptFluid(fluid, amount)) {
             return false;
         }
 
         storedFluid = fluid;
-        fluidAmountInBuckets += 1;
+        fluidAmountInBuckets += amount;
 
         return true;
     }
 
-    public Fluid getBucket() {
+    @Nullable
+    public ItemStack getBottle() {
         if (!this.hasFluid()) {
+            return null;
+        }
+
+        if (!this.hasFluid()) {
+            return Items.GLASS_BOTTLE.getDefaultStack();
+        }
+
+        ItemStack retStack = null;
+
+        if (this.getStoredFluid() == Fluids.WATER) {
+            fluidAmountInBuckets -= BOTTLE_SIZE;
+            retStack = Items.POTION.getDefaultStack();
+        }
+
+        if (this.getStoredFluid() == com.chimericdream.minekea.fluid.Fluids.HONEY) {
+            fluidAmountInBuckets -= BOTTLE_SIZE;
+            retStack = Items.HONEY_BOTTLE.getDefaultStack();
+        }
+
+        if (fluidAmountInBuckets < BOTTLE_SIZE) {
+            storedFluid = Fluids.EMPTY;
+            fluidAmountInBuckets = 0;
+        }
+
+        return retStack;
+    }
+
+    public Fluid getBucket() {
+        if (!this.hasFluid() || fluidAmountInBuckets < 1) {
             return Fluids.EMPTY;
         }
 
         Fluid fluid = storedFluid;
         fluidAmountInBuckets -= 1;
 
-        if (fluidAmountInBuckets == 0) {
+        if (fluidAmountInBuckets <= 0) {
             storedFluid = Fluids.EMPTY;
         }
 
@@ -242,10 +282,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
 
         if (fluidKey.equals("NONE")) {
             storedFluid = Fluids.EMPTY;
-            fluidAmountInBuckets = 0;
+            fluidAmountInBuckets = 0.0;
         } else {
             storedFluid = Registry.FLUID.get(new Identifier(fluidKey));
-            fluidAmountInBuckets = nbt.getInt(FLUID_AMT_KEY);
+            fluidAmountInBuckets = nbt.getDouble(FLUID_AMT_KEY);
         }
 
         Inventories.readNbt(nbt, items);
@@ -261,10 +301,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
 
         if (storedFluid.matchesType(Fluids.EMPTY)) {
             nbt.putString(FLUID_KEY, "NONE");
-            nbt.putInt(FLUID_AMT_KEY, 0);
+            nbt.putDouble(FLUID_AMT_KEY, 0.0);
         } else {
             nbt.putString(FLUID_KEY, storedFluid.getRegistryEntry().registryKey().getValue().toString());
-            nbt.putInt(FLUID_AMT_KEY, fluidAmountInBuckets);
+            nbt.putDouble(FLUID_AMT_KEY, fluidAmountInBuckets);
         }
 
         super.writeNbt(nbt);
@@ -284,6 +324,14 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     @Override
     public boolean isEmpty() {
         return ImplementedInventory.super.isEmpty() && storedFluid.matchesType(Fluids.EMPTY);
+    }
+
+    public void playEmptyBottleSound() {
+        playSound(SoundEvents.ITEM_BOTTLE_EMPTY);
+    }
+
+    public void playFillBottleSound() {
+        playSound(SoundEvents.ITEM_BOTTLE_FILL);
     }
 
     public void playEmptyBucketSound(Fluid fluid) {

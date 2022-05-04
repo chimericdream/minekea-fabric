@@ -15,6 +15,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
+import net.minecraft.potion.PotionUtil;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -77,6 +79,32 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                 player.setStackInHand(Hand.MAIN_HAND, Items.BUCKET.getDefaultStack());
                 entity.playEmptyBucketSound(bucketFluid);
                 entity.markDirty();
+            }
+        } else if (isFilledBottle(heldItem)) {
+            if (heldItem.isItemEqual(Items.HONEY_BOTTLE.getDefaultStack()) && entity.tryInsert(com.chimericdream.minekea.fluid.Fluids.HONEY, 0.3)) {
+                player.setStackInHand(Hand.MAIN_HAND, Items.GLASS_BOTTLE.getDefaultStack());
+                entity.playEmptyBottleSound();
+                entity.markDirty();
+            } else if (
+                heldItem.isItemEqual(Items.POTION.getDefaultStack())
+                    && PotionUtil.getPotion(heldItem) == Potions.WATER
+                    && entity.canAcceptFluid(Fluids.WATER)
+                    && entity.tryInsert(Fluids.WATER, 0.33)
+            ) {
+                player.setStackInHand(Hand.MAIN_HAND, Items.GLASS_BOTTLE.getDefaultStack());
+                entity.playEmptyBottleSound();
+                entity.markDirty();
+            }
+        } else if (
+            heldItem.isItemEqual(Items.GLASS_BOTTLE.getDefaultStack())
+                && entity.hasFluid()
+                && (entity.getStoredFluid() == Fluids.WATER || entity.getStoredFluid() == com.chimericdream.minekea.fluid.Fluids.HONEY)
+        ) {
+            ItemStack bottle = entity.getBottle();
+
+            if (bottle != null && !bottle.isItemEqual(Items.GLASS_BOTTLE.getDefaultStack())) {
+                player.setStackInHand(Hand.MAIN_HAND, bottle);
+                entity.playFillBottleSound();
             }
         } else if (isEmptyBucket(heldItem) && entity.hasFluid()) {
             Fluid fluid = entity.getBucket();
@@ -166,6 +194,22 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         }
 
         return item.isItemEqual(Items.BUCKET.getDefaultStack());
+    }
+
+    private boolean isFilledBottle(ItemStack item) {
+        if (item.isEmpty()) {
+            return false;
+        }
+
+        if (item.isItemEqual(Items.POTION.getDefaultStack()) && PotionUtil.getPotion(item) == Potions.WATER) {
+            return true;
+        }
+
+        if (item.isItemEqual(Items.HONEY_BOTTLE.getDefaultStack())) {
+            return true;
+        }
+
+        return false;
     }
 
     private boolean isFilledBucket(ItemStack item) {

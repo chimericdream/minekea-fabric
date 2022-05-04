@@ -4,6 +4,7 @@ import com.chimericdream.minekea.ModInfo;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -18,7 +19,7 @@ public class HoneyBucketItem extends BucketItem {
     public static Identifier ITEM_ID = new Identifier(ModInfo.MOD_ID, "honey_bucket");
 
     public HoneyBucketItem() {
-        super(Fluids.HONEY, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1));
+        super(Fluids.HONEY, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(ItemGroup.MISC));
     }
 
     @Override

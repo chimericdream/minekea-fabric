@@ -62,7 +62,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         MatrixStack matrices,
         VertexConsumerProvider vertexConsumers,
         float fY,
-        int fillLevel,
+        double fillLevel,
         int color,
         int light
     ) {
@@ -285,7 +285,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
 
         Sprite fluidTexture = getFluidTexture(storedFluid);
 
-        int fillLevel = entity.getStoredBuckets();
+        double fillLevel = entity.getStoredBuckets();
 
         float fY = (((float) fillLevel / GlassJarBlockEntity.MAX_BUCKETS) * VERTICAL_MULTIPLIER) - NUDGE;
 

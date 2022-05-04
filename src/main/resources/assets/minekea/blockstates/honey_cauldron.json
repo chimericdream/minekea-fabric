@@ -1,7 +1,13 @@
 {
     "variants": {
-        "": {
-            "model": "minekea:block/honey_cauldron"
+        "level=1": {
+            "model": "minekea:block/honey_cauldron_level1"
+        },
+        "level=2": {
+            "model": "minekea:block/honey_cauldron_level2"
+        },
+        "level=3": {
+            "model": "minekea:block/honey_cauldron_full"
         }
     }
 }
