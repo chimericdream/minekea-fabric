@@ -3,6 +3,10 @@ package com.chimericdream.minekea.resource;
 import net.minecraft.util.Identifier;
 
 public class Texture {
+    public static Identifier getBlockTextureFileID(Identifier id) {
+        return new Identifier(id.getNamespace(), "block/" + id.getPath() + ".png");
+    }
+
     public static Identifier getBlockTextureID(Identifier id) {
         return new Identifier(id.getNamespace(), "block/" + id.getPath());
     }

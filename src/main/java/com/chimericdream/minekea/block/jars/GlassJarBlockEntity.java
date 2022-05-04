@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.jars;
 
-import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -245,7 +244,6 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             storedFluid = Fluids.EMPTY;
             fluidAmountInBuckets = 0;
         } else {
-            MinekeaMod.LOGGER.info(String.format("readNbt()->fluidKey: '%s'", fluidKey));
             storedFluid = Registry.FLUID.get(new Identifier(fluidKey));
             fluidAmountInBuckets = nbt.getInt(FLUID_AMT_KEY);
         }
@@ -265,7 +263,6 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             nbt.putString(FLUID_KEY, "NONE");
             nbt.putInt(FLUID_AMT_KEY, 0);
         } else {
-            MinekeaMod.LOGGER.info(String.format("writeNbt()->FLUID_KEY: '%s'", storedFluid.getRegistryEntry().registryKey().getValue().toString()));
             nbt.putString(FLUID_KEY, storedFluid.getRegistryEntry().registryKey().getValue().toString());
             nbt.putInt(FLUID_AMT_KEY, fluidAmountInBuckets);
         }
@@ -290,7 +287,7 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     }
 
     public void playEmptyBucketSound(Fluid fluid) {
-        if (fluid == Fluids.LAVA) {
+        if (fluid == Fluids.LAVA || fluid == com.chimericdream.minekea.fluid.Fluids.HONEY) {
             playSound(SoundEvents.ITEM_BUCKET_EMPTY_LAVA);
         } else {
             playSound(SoundEvents.ITEM_BUCKET_EMPTY);
@@ -298,7 +295,7 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     }
 
     public void playFillBucketSound(Fluid fluid) {
-        if (fluid == Fluids.LAVA) {
+        if (fluid == Fluids.LAVA || fluid == com.chimericdream.minekea.fluid.Fluids.HONEY) {
             playSound(SoundEvents.ITEM_BUCKET_FILL_LAVA);
         } else {
             playSound(SoundEvents.ITEM_BUCKET_FILL);

@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.jars;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.fluid.HoneyBucketItem;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -87,6 +88,8 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                     player.setStackInHand(Hand.MAIN_HAND, Items.LAVA_BUCKET.getDefaultStack());
                 } else if (fluid.matchesType(com.chimericdream.minekea.fluid.Fluids.MILK)) {
                     player.setStackInHand(Hand.MAIN_HAND, Items.MILK_BUCKET.getDefaultStack());
+                } else if (fluid.matchesType(com.chimericdream.minekea.fluid.Fluids.HONEY)) {
+                    player.setStackInHand(Hand.MAIN_HAND, com.chimericdream.minekea.fluid.Fluids.HONEY_BUCKET.getDefaultStack());
                 }
 
                 entity.playFillBucketSound(fluid);
@@ -148,6 +151,10 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
         if (entry.value().toString().equals("milk_bucket")) {
             return com.chimericdream.minekea.fluid.Fluids.MILK;
+        }
+
+        if (entry.value().toString().equals(HoneyBucketItem.ITEM_ID.getPath())) {
+            return com.chimericdream.minekea.fluid.Fluids.HONEY;
         }
 
         return Fluids.EMPTY;
