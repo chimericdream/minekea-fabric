@@ -1,0 +1,19 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:redstone",
+        "minecraft:glowstone_dust",
+        "minecraft:sand",
+        "minecraft:red_sand",
+        "minecraft:gravel",
+        "minecraft:blaze_powder",
+        "minecraft:sugar",
+        "minecraft:slime_ball",
+        "minecraft:honeycomb",
+        "minecraft:honey_bottle",
+        "minecraft:ender_pearl",
+        "#c:dyes",
+        "#c:concrete_powders",
+        "#c:crops"
+    ]
+}

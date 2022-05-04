@@ -82,7 +82,7 @@ public class GenericStool extends Block {
 
         List<SeatEntity> seats = world.getEntitiesByClass(SeatEntity.class, new Box(pos), (Object) -> true);
 
-        if (seats.size() == 0 && player.getMainHandStack().isEmpty()) {
+        if (seats.size() == 0) {
             SeatEntity seat = Seats.SEAT_ENTITY.create(world);
             Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() + 1.05d, hit.getBlockPos().getZ() + 0.5d);
 

@@ -5,7 +5,8 @@
     "compatibilityLevel": "JAVA_17",
     "mixins": [
         "BlockEntityMixin",
-        "EnchantingTableBlockMixin"
+        "EnchantingTableBlockMixin",
+        "MilkBucketItemMixin"
     ],
     "client": [],
     "injectors": {

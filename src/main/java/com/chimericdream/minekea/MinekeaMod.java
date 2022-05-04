@@ -6,15 +6,20 @@ import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.doors.Doors;
+import com.chimericdream.minekea.block.jars.Jars;
 import com.chimericdream.minekea.block.seating.Seats;
 import com.chimericdream.minekea.block.shelves.Shelves;
 import com.chimericdream.minekea.block.slabs.BookshelfSlabs;
 import com.chimericdream.minekea.block.stairs.BookshelfStairs;
+import com.chimericdream.minekea.block.storage.StorageBlocks;
 import com.chimericdream.minekea.block.tables.Tables;
 import com.chimericdream.minekea.block.trapdoors.Trapdoors;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
+import com.chimericdream.minekea.fluid.Fluids;
+import com.chimericdream.minekea.item.Items;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.tag.CommonBlockTags;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
@@ -42,9 +47,15 @@ public class MinekeaMod implements ModInitializer {
     public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Tables TABLES;
     public static final Seats SEATS;
+    public static final Jars JARS;
+    public static final StorageBlocks STORAGE_BLOCKS;
+    public static final Fluids FLUIDS;
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
+    public static final Items ITEMS;
+
+    public static final CommonBlockTags COMMON_TAGS;
     public static final MinekeaTags TAGS;
     public static final MinekeaResourcePack RESOURCES;
     public static final List<ModCompatLayer> OTHER_MODS = new ArrayList<>();
@@ -63,6 +74,9 @@ public class MinekeaMod implements ModInitializer {
         DECORATION_BLOCKS = new DecorationBlocks();
         TABLES = new Tables();
         SEATS = new Seats();
+        JARS = new Jars();
+        STORAGE_BLOCKS = new StorageBlocks();
+        FLUIDS = new Fluids();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
             BOOKSHELVES,
@@ -76,9 +90,15 @@ public class MinekeaMod implements ModInitializer {
             SHELVES,
             DECORATION_BLOCKS,
             TABLES,
-            SEATS
+            SEATS,
+            JARS,
+            STORAGE_BLOCKS,
+            FLUIDS
         };
 
+        ITEMS = new Items();
+
+        COMMON_TAGS = new CommonBlockTags();
         TAGS = new MinekeaTags();
         RESOURCES = new MinekeaResourcePack();
 
@@ -137,6 +157,7 @@ public class MinekeaMod implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("[minekea] Registering block and item tags");
+        COMMON_TAGS.init();
         TAGS.init();
 
         LOGGER.info("[minekea] Registering blocks");
@@ -152,6 +173,8 @@ public class MinekeaMod implements ModInitializer {
         for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
             category.registerBlockEntities(OTHER_MODS);
         }
+
+        ITEMS.register();
 
         // This must be the last thing
         RESOURCES.register();
