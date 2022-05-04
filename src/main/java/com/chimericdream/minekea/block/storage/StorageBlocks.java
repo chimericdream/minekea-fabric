@@ -11,7 +11,6 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 
 public class StorageBlocks implements MinekeaBlockCategory {
-    public static final GenericStorageFallingBlock SUGAR_BLOCK;
     public static final GenericStorageBlock WHITE_DYE_BLOCK;
     public static final GenericStorageBlock ORANGE_DYE_BLOCK;
     public static final GenericStorageBlock MAGENTA_DYE_BLOCK;
@@ -29,6 +28,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock RED_DYE_BLOCK;
     public static final GenericStorageBlock BLACK_DYE_BLOCK;
 
+    public static final GenericStorageFallingBlock SUGAR_BLOCK;
     public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
     public static final GenericStorageBlock POTATO_BLOCK;
     public static final GenericStorageBlock ENDER_PEARL_BLOCK;
@@ -37,7 +37,6 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock CHORUS_FRUIT_BLOCK;
 
     static {
-        SUGAR_BLOCK = new CompressedSugarBlock(new Identifier("minecraft:sugar"));
         WHITE_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:white_dye"), "white");
         ORANGE_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:orange_dye"), "orange");
         MAGENTA_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:magenta_dye"), "magenta");
@@ -54,12 +53,14 @@ public class StorageBlocks implements MinekeaBlockCategory {
         GREEN_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:green_dye"), "green");
         RED_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:red_dye"), "red");
         BLACK_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:black_dye"), "black");
+
+        SUGAR_BLOCK = new CompressedSugarBlock(new Identifier("minecraft:sugar"));
         BLAZE_POWDER_BLOCK = new GenericStorageBlock(new Identifier("minecraft:blaze_powder"));
-        POTATO_BLOCK = new GenericStorageBlock(new Identifier("minecraft:potato"));
+        POTATO_BLOCK = new GenericStorageBlock(new Identifier("minecraft:potato"), true);
         ENDER_PEARL_BLOCK = new GenericStorageBlock(new Identifier("minecraft:ender_pearl"));
-        CARROT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:carrot"));
-        BEETROOT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:beetroot"));
-        CHORUS_FRUIT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:chorus_fruit"));
+        CARROT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:carrot"), true);
+        BEETROOT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:beetroot"), true);
+        CHORUS_FRUIT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:chorus_fruit"), true);
     }
 
     @Override
@@ -113,7 +114,11 @@ public class StorageBlocks implements MinekeaBlockCategory {
             BROWN_DYE_BLOCK,
             GREEN_DYE_BLOCK,
             RED_DYE_BLOCK,
-            BLACK_DYE_BLOCK
+            BLACK_DYE_BLOCK,
+            POTATO_BLOCK,
+            CARROT_BLOCK,
+            BEETROOT_BLOCK,
+            CHORUS_FRUIT_BLOCK
         );
     }
 }
