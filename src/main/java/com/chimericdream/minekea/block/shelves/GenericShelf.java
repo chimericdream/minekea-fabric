@@ -48,30 +48,25 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
         WALL_SIDE = DirectionProperty.of("wall_side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
     }
 
+    public GenericShelf(String woodType, Map<String, Identifier> materials) {
+        this(woodType, ModInfo.MOD_ID, materials);
+    }
+
+    public GenericShelf(String woodType, String modId, Map<String, Identifier> materials) {
+        this(
+            woodType,
+            modId,
+            materials,
+            new Identifier(ModInfo.MOD_ID, String.format("shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType))
+        );
+    }
+
     protected GenericShelf(String woodType, String modId, Map<String, Identifier> materials, Identifier blockId) {
         super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque());
 
         validateMaterials(materials);
 
         BLOCK_ID = blockId;
-
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
-
-        this.setDefaultState(this.stateManager.getDefaultState().with(WALL_SIDE, Direction.NORTH));
-    }
-
-    public GenericShelf(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
-    }
-
-    public GenericShelf(String woodType, String modId, Map<String, Identifier> materials) {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque());
-
-        validateMaterials(materials);
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType));
 
         this.modId = modId;
         this.woodType = woodType;
@@ -246,6 +241,9 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
                 );
             }
         }
+
+        entity.markDirty();
+        world.markDirty(pos);
 
         return ActionResult.SUCCESS;
     }
