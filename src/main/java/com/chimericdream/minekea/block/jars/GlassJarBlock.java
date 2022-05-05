@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.jars;
 
+import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.fluid.HoneyBucketItem;
 import com.chimericdream.minekea.resource.LootTable;
@@ -61,11 +62,19 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
-        GlassJarBlockEntity entity = (GlassJarBlockEntity) world.getBlockEntity(pos);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (world.isClient()) {
+            return ActionResult.SUCCESS;
+        }
 
-        // Theoretically, this shouldn't be possible
-        if (entity == null) {
+        GlassJarBlockEntity entity;
+
+        try {
+            entity = (GlassJarBlockEntity) world.getBlockEntity(pos);
+            assert entity != null;
+        } catch (Exception e) {
+            MinekeaMod.LOGGER.error(String.format("The glass jar at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+
             return ActionResult.FAIL;
         }
 
@@ -116,7 +125,6 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                     replaceHeldItemOrDont(world, player, heldItem, Items.WATER_BUCKET.getDefaultStack());
                 } else if (fluid.matchesType(Fluids.LAVA)) {
                     replaceHeldItemOrDont(world, player, heldItem, Items.LAVA_BUCKET.getDefaultStack());
-                    player.setStackInHand(Hand.MAIN_HAND, Items.LAVA_BUCKET.getDefaultStack());
                 } else if (fluid.matchesType(com.chimericdream.minekea.fluid.Fluids.MILK)) {
                     replaceHeldItemOrDont(world, player, heldItem, Items.MILK_BUCKET.getDefaultStack());
                 } else if (fluid.matchesType(com.chimericdream.minekea.fluid.Fluids.HONEY)) {
@@ -150,6 +158,8 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                 entity.markDirty();
             }
         }
+
+        world.markDirty(pos);
 
         return ActionResult.SUCCESS;
     }

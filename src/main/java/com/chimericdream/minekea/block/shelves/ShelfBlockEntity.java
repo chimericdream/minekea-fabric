@@ -39,15 +39,17 @@ public class ShelfBlockEntity extends BlockEntity implements ImplementedInventor
         return items;
     }
 
-    public static NbtCompound getNbt(BlockEntity entity) {
+    public NbtCompound getNbt() {
         NbtCompound nbt = new NbtCompound();
-        Inventories.writeNbt(nbt, ((ShelfBlockEntity) entity).items);
+
+        this.writeNbt(nbt);
 
         return nbt;
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
+        items.clear();
         Inventories.readNbt(nbt, items);
         markDirty();
     }

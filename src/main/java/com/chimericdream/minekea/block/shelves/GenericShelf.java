@@ -1,10 +1,10 @@
 package com.chimericdream.minekea.block.shelves;
 
+import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;
-import com.chimericdream.minekea.util.ImplementedInventory;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -215,10 +215,18 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ImplementedInventory entity = (ImplementedInventory) world.getBlockEntity(pos);
+        if (world.isClient()) {
+            return ActionResult.SUCCESS;
+        }
 
-        // Theoretically, this shouldn't be possible
-        if (entity == null) {
+        ShelfBlockEntity entity;
+
+        try {
+            entity = (ShelfBlockEntity) world.getBlockEntity(pos);
+            assert entity != null;
+        } catch (Exception e) {
+            MinekeaMod.LOGGER.error(String.format("The shelf at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+
             return ActionResult.FAIL;
         }
 
