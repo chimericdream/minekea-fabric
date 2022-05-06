@@ -10,19 +10,43 @@ import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 public class CompressedDyeBlock extends GenericStorageBlock {
     private final String color;
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
     public CompressedDyeBlock(Identifier baseBlock, String color) {
         super(
-            FabricBlockSettings.copyOf(Blocks.HONEY_BLOCK),
+            FabricBlockSettings.copyOf(Blocks.HONEY_BLOCK).jumpVelocityMultiplier(0.5F),
             new Identifier(ModInfo.MOD_ID, "storage/dyes/compressed_" + baseBlock.getPath()),
             baseBlock
         );
         this.color = color;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+        entity.playSound(SoundEvents.BLOCK_HONEY_BLOCK_SLIDE, 1.0F, 1.0F);
+        if (entity.handleFallDamage(fallDistance, 0.2F, DamageSource.FALL)) {
+            entity.playSound(this.soundGroup.getFallSound(), this.soundGroup.getVolume() * 0.5F, this.soundGroup.getPitch() * 0.75F);
+        }
     }
 
     @Override
