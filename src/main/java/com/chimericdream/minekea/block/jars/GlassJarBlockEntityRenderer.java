@@ -341,9 +341,6 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
             case "minecraft:glowstone_dust":
                 return Items.GLOWSTONE.getDefaultStack();
 
-            case "minecraft:honey_bottle":
-                return Items.HONEY_BLOCK.getDefaultStack();
-
             case "minecraft:honeycomb":
                 return Items.HONEYCOMB_BLOCK.getDefaultStack();
 
@@ -418,6 +415,12 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
 
             case "minecraft:amethyst_shard":
                 return new ItemStack(Blocks.AMETHYST_BLOCK.asItem());
+
+            case "minecraft:dried_kelp":
+                return new ItemStack(Blocks.DRIED_KELP_BLOCK.asItem());
+
+            case "minecraft:melon_slice":
+                return new ItemStack(Blocks.MELON.asItem());
 
             default:
                 return stack;
