@@ -28,6 +28,6 @@
         "fabric": "*",
         "minecraft": "1.18.1",
         "java": ">=17",
-        "advanced_runtime_resource_pack": "0.5.5"
+        "advanced_runtime_resource_pack": "*"
     }
 }

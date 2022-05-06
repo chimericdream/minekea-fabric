@@ -1,0 +1,33 @@
+{
+    "replace": false,
+    "values": [
+        {"id": "minekea:shelves/byg/aspen_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/baobab_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/blue_enchanted_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/bulbis_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/cherry_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/cika_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/cypress_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/ebony_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/embur_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/ether_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/fir_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/green_enchanted_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/holly_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/jacaranda_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/lament_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/mahogany_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/mangrove_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/maple_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/nightshade_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/palm_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/pine_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/rainbow_eucalyptus_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/redwood_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/skyris_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/sythian_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/willow_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/witch_hazel_floating_shelf", "required": false},
+        {"id": "minekea:shelves/byg/zelkova_floating_shelf", "required": false}
+    ]
+}

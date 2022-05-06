@@ -1,0 +1,23 @@
+{
+    "parent": "minekea:block/glass_jar",
+    "display": {
+        "thirdperson_righthand": {
+            "translation": [0, 2, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "thirdperson_lefthand": {
+            "translation": [0, 2, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "firstperson_righthand": {
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "firstperson_lefthand": {
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "ground": {
+            "translation": [0, 3, 0],
+            "scale": [0.6, 0.6, 0.6]
+        }
+    }
+}

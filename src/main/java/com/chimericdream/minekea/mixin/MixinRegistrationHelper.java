@@ -25,15 +25,15 @@ public class MixinRegistrationHelper implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.equals("com.chimericdream.minekea.mixin.EnchantmentScreenHandlerMixin")) {
+        if (mixinClassName.equals("com.chimericdream.minekea.mixin.EnchantingTableBlockMixin")) {
             boolean isBCLibLoaded = FabricLoader.getInstance().isModLoaded("bclib");
 
             if (isBCLibLoaded) {
-                LOGGER.info("[minekea][mixins] BCLib is loaded. Disabling EnchantmentScreenHandlerMixin");
+                LOGGER.info("[minekea][mixins] BCLib is loaded. Disabling EnchantingTableBlockMixin");
                 return false;
             }
 
-            LOGGER.info("[minekea][mixins] BCLib is not loaded. Enabling EnchantmentScreenHandlerMixin");
+            LOGGER.info("[minekea][mixins] BCLib is not loaded. Enabling EnchantingTableBlockMixin");
             return true;
         }
 

@@ -1,0 +1,10 @@
+{
+    "repalce": false,
+    "values": [
+        "minecraft:wheat",
+        "minecraft:carrot",
+        "minecraft:potato",
+        "minecraft:beetroot",
+        "minecraft:chorus_fruit"
+    ]
+}

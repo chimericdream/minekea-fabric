@@ -1,0 +1,14 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:stairs/acacia_bookshelf_stairs",
+        "minekea:stairs/birch_bookshelf_stairs",
+        "minekea:stairs/crimson_bookshelf_stairs",
+        "minekea:stairs/dark_oak_bookshelf_stairs",
+        "minekea:stairs/jungle_bookshelf_stairs",
+        "minekea:stairs/oak_bookshelf_stairs",
+        "minekea:stairs/spruce_bookshelf_stairs",
+        "minekea:stairs/warped_bookshelf_stairs",
+        {"id": "#minekea:byg/wooden_stairs", "required": false}
+    ]
+}

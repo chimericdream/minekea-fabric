@@ -1,0 +1,14 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:seating/chairs/acacia_chair",
+        "minekea:seating/chairs/birch_chair",
+        "minekea:seating/chairs/crimson_chair",
+        "minekea:seating/chairs/dark_oak_chair",
+        "minekea:seating/chairs/jungle_chair",
+        "minekea:seating/chairs/oak_chair",
+        "minekea:seating/chairs/spruce_chair",
+        "minekea:seating/chairs/warped_chair",
+        {"id": "#minekea:byg/wooden_chairs", "required": false}
+    ]
+}
