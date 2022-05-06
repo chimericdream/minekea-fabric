@@ -1,0 +1,14 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:bookshelves/doors/acacia_bookshelf_door",
+        "minekea:bookshelves/doors/birch_bookshelf_door",
+        "minekea:bookshelves/doors/crimson_bookshelf_door",
+        "minekea:bookshelves/doors/dark_oak_bookshelf_door",
+        "minekea:bookshelves/doors/jungle_bookshelf_door",
+        "minekea:bookshelves/doors/oak_bookshelf_door",
+        "minekea:bookshelves/doors/spruce_bookshelf_door",
+        "minekea:bookshelves/doors/warped_bookshelf_door",
+        {"id": "#minekea:byg/wooden_doors", "required": false}
+    ]
+}

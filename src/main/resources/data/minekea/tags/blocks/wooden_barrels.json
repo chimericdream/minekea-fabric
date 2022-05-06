@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:barrels/acacia_barrel",
+        "minekea:barrels/birch_barrel",
+        "minekea:barrels/crimson_barrel",
+        "minekea:barrels/dark_oak_barrel",
+        "minekea:barrels/jungle_barrel",
+        "minekea:barrels/spruce_barrel",
+        "minekea:barrels/warped_barrel",
+        {"id": "#minekea:byg/wooden_barrels", "required": false}
+    ]
+}

@@ -35,15 +35,17 @@ public class ShelfBlockEntity extends BlockEntity implements BlockEntityClientSe
         return items;
     }
 
-    public static NbtCompound getNbt(BlockEntity entity) {
+    public NbtCompound getNbt() {
         NbtCompound nbt = new NbtCompound();
-        Inventories.writeNbt(nbt, ((ShelfBlockEntity) entity).items);
+
+        this.writeNbt(nbt);
 
         return nbt;
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
+        items.clear();
         Inventories.readNbt(nbt, items);
         markDirty();
     }
@@ -51,7 +53,7 @@ public class ShelfBlockEntity extends BlockEntity implements BlockEntityClientSe
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
-        return nbt;
+        return super.writeNbt(nbt);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.displaycases;
 
+import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
@@ -123,29 +124,35 @@ public class GenericDisplayCase extends BlockWithEntity {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
-        DisplayCaseBlockEntity blockEntity;
-
-        try {
-            blockEntity = (DisplayCaseBlockEntity) world.getBlockEntity(pos);
-            assert blockEntity != null;
-        } catch (Exception e) {
-            throw new IllegalStateException(String.format("The display case at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (world.isClient()) {
+            return ActionResult.SUCCESS;
         }
 
-        if (blockEntity.isEmpty()) {
+        DisplayCaseBlockEntity entity;
+
+        try {
+            entity = (DisplayCaseBlockEntity) world.getBlockEntity(pos);
+            assert entity != null;
+        } catch (Exception e) {
+            MinekeaMod.LOGGER.error(String.format("The display case at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+
+            return ActionResult.FAIL;
+        }
+
+        if (entity.isEmpty()) {
             // If the player is holding something, put it in the case
             if (!player.getMainHandStack().isEmpty()) {
                 ItemStack toInsert = player.getMainHandStack().copy();
                 toInsert.setCount(1);
 
-                blockEntity.setStack(0, toInsert);
+                entity.setStack(0, toInsert);
 
                 player.getMainHandStack().decrement(1);
 
                 world.setBlockState(pos, state.with(ROTATION, getRotationFromPlayerFacing(player.getYaw())));
-                blockEntity.markDirty();
-                blockEntity.playAddItemSound();
+                entity.markDirty();
+                entity.playAddItemSound();
             }
         } else if (player.isSneaking() && player.getMainHandStack().isEmpty()) {
             // If the player is sneaking and not holding anything, get what's in the case
@@ -154,19 +161,19 @@ public class GenericDisplayCase extends BlockWithEntity {
                 player.getX(),
                 player.getY(),
                 player.getZ(),
-                blockEntity.removeStack(0)
+                entity.removeStack(0)
             );
 
             world.setBlockState(pos, state.with(ROTATION, 0));
-            blockEntity.markDirty();
-            blockEntity.playRemoveItemSound();
+            entity.markDirty();
+            entity.playRemoveItemSound();
         } else {
             // If the player isn't sneaking, or if they have an item in their hand, rotate the item in the case
             int rotation = state.get(ROTATION);
             int newRotation = rotation >= 7 ? 0 : rotation + 1;
 
             world.setBlockState(pos, state.with(ROTATION, newRotation));
-            blockEntity.playRotateItemSound();
+            entity.playRotateItemSound();
         }
 
         world.markDirty(pos);

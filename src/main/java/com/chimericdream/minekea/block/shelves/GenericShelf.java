@@ -1,10 +1,10 @@
 package com.chimericdream.minekea.block.shelves;
 
+import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;
-import com.chimericdream.minekea.util.ImplementedInventory;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -48,30 +48,25 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
         WALL_SIDE = DirectionProperty.of("wall_side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
     }
 
+    public GenericShelf(String woodType, Map<String, Identifier> materials) {
+        this(woodType, ModInfo.MOD_ID, materials);
+    }
+
+    public GenericShelf(String woodType, String modId, Map<String, Identifier> materials) {
+        this(
+            woodType,
+            modId,
+            materials,
+            new Identifier(ModInfo.MOD_ID, String.format("shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType))
+        );
+    }
+
     protected GenericShelf(String woodType, String modId, Map<String, Identifier> materials, Identifier blockId) {
         super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque());
 
         validateMaterials(materials);
 
         BLOCK_ID = blockId;
-
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
-
-        this.setDefaultState(this.stateManager.getDefaultState().with(WALL_SIDE, Direction.NORTH));
-    }
-
-    public GenericShelf(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
-    }
-
-    public GenericShelf(String woodType, String modId, Map<String, Identifier> materials) {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque());
-
-        validateMaterials(materials);
-
-        BLOCK_ID = new Identifier(modId, String.format("shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType));
 
         this.modId = modId;
         this.woodType = woodType;
@@ -220,10 +215,18 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ImplementedInventory entity = (ImplementedInventory) world.getBlockEntity(pos);
+        if (world.isClient()) {
+            return ActionResult.SUCCESS;
+        }
 
-        // Theoretically, this shouldn't be possible
-        if (entity == null) {
+        ShelfBlockEntity entity;
+
+        try {
+            entity = (ShelfBlockEntity) world.getBlockEntity(pos);
+            assert entity != null;
+        } catch (Exception e) {
+            MinekeaMod.LOGGER.error(String.format("The shelf at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+
             return ActionResult.FAIL;
         }
 
@@ -246,6 +249,9 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
                 );
             }
         }
+
+        entity.markDirty();
+        world.markDirty(pos);
 
         return ActionResult.SUCCESS;
     }

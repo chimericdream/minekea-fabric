@@ -33,7 +33,6 @@ public class CrateBlockEntity extends BlockEntity implements NamedScreenHandlerF
         this(Crates.CRATE_BLOCK_ENTITY, pos, state);
     }
 
-
     public CrateBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
 
