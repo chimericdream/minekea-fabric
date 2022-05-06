@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:storage/compressed_potato",
+        "minekea:storage/compressed_carrot",
+        "minekea:storage/compressed_beetroot",
+        "minekea:storage/compressed_chorus_fruit"
+    ]
+}
