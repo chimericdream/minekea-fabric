@@ -8,9 +8,7 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.*;
-import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
@@ -39,13 +37,9 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
     // Ensures that the total height of the contents doesn't go above the top
     private static final float VERTICAL_MULTIPLIER = 9f / 16f;
 
-    protected final BlockEntityRenderDispatcher dispatcher;
     private final ItemRenderer renderer = MinecraftClient.getInstance().getItemRenderer();
-    private final TextRenderer textRenderer;
 
     public GlassJarBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
-        this.dispatcher = ctx.getRenderDispatcher();
-        this.textRenderer = ctx.getTextRenderer();
     }
 
     @Override
@@ -347,9 +341,6 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
             case "minecraft:glowstone_dust":
                 return Items.GLOWSTONE.getDefaultStack();
 
-            case "minecraft:honey_bottle":
-                return Items.HONEY_BLOCK.getDefaultStack();
-
             case "minecraft:honeycomb":
                 return Items.HONEYCOMB_BLOCK.getDefaultStack();
 
@@ -424,6 +415,12 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
 
             case "minecraft:amethyst_shard":
                 return new ItemStack(Blocks.AMETHYST_BLOCK.asItem());
+
+            case "minecraft:dried_kelp":
+                return new ItemStack(Blocks.DRIED_KELP_BLOCK.asItem());
+
+            case "minecraft:melon_slice":
+                return new ItemStack(Blocks.MELON.asItem());
 
             default:
                 return stack;
