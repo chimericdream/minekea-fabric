@@ -6,6 +6,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.*;
@@ -420,6 +421,9 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
 
             case "minecraft:chorus_fruit":
                 return new ItemStack(StorageBlocks.CHORUS_FRUIT_BLOCK.asItem());
+
+            case "minecraft:amethyst_shard":
+                return new ItemStack(Blocks.AMETHYST_BLOCK.asItem());
 
             default:
                 return stack;
