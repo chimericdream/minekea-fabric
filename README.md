@@ -1,6 +1,6 @@
 # Minekea (Fabric)
 
-![Version: 2.4.2](https://img.shields.io/badge/version-2.4.2-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
+![Version: 2.5.0](https://img.shields.io/badge/version-2.5.0-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
 
 _Simple, functional, decorative blocks for all your building and storage needs (some assembly required)_
 
@@ -10,9 +10,10 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 
 ### Versions
 
-* 1.18.x: supported
-* 1.17.x: supported
-* < 1.17: not planned
+* 1.18.2: supported
+* 1.18.1: supported up to version 2.5.0
+* 1.17.1: supported up to version 2.5.0
+* < 1.17.1: not planned
 
 ### Current Features
 
@@ -26,14 +27,15 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 * Wall-mounted shelves which display their contents
 * Tables and chairs
 * Foot stools
+* Glass jars for storing food, liquids, dusts, etc
+* Wrench item
+* Storage blocks (i.e. compressed) for all dyes and a number of other items
 
 ### Planned/Possible Features
 
 * Iron shelves which display their contents
 * More varieties of bookshelves
 * Other types of hidden or disguised storage
-* Glass jars for storing food, liquids, dusts, etc
-* Wrench item
 
 ### Mod Support
 
