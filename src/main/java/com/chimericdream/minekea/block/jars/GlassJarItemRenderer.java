@@ -38,7 +38,7 @@ public class GlassJarItemRenderer implements BuiltinItemRendererRegistry.Dynamic
         MinecraftClient.getInstance().getBlockEntityRenderDispatcher().renderEntity(entity, matrices, vertexConsumers, light, overlay);
     }
 
-    private class JarModel extends ForwardingBakedModel {
+    private static class JarModel extends ForwardingBakedModel {
         public void setModel(BakedModel model) {
             this.wrapped = model;
         }
