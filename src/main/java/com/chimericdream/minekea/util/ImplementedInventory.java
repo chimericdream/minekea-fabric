@@ -109,7 +109,7 @@ public interface ImplementedInventory extends Inventory {
             return false;
         }
 
-        if (!existingStack.isItemEqual(incomingStack)) {
+        if (!existingStack.isItemEqual(incomingStack) || !ItemStack.areNbtEqual(incomingStack, existingStack)) {
             return false;
         }
 
