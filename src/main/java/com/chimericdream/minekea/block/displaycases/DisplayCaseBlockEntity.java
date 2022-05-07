@@ -48,7 +48,7 @@ public class DisplayCaseBlockEntity extends BlockEntity implements ImplementedIn
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
-        return super.writeNbt(nbt);
+        return nbt;
     }
 
     @Override

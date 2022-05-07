@@ -312,7 +312,7 @@ public class GlassJarBlockEntity extends BlockEntity implements BlockEntityClien
             nbt.putDouble(FLUID_AMT_KEY, fluidAmountInBuckets);
         }
 
-        return super.writeNbt(nbt);
+        return nbt;
     }
 
     @Override

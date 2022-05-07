@@ -117,7 +117,7 @@ public class StorageBookshelfBlockEntity extends BlockEntity implements NamedScr
     public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
 
-        return super.writeNbt(nbt);
+        return nbt;
     }
 
     void setOpen(BlockState state, boolean open) {

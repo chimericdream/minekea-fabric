@@ -53,7 +53,7 @@ public class ShelfBlockEntity extends BlockEntity implements BlockEntityClientSe
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
-        return super.writeNbt(nbt);
+        return nbt;
     }
 
     @Override

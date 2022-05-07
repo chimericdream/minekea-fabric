@@ -88,7 +88,7 @@ public class CrateBlockEntity extends BlockEntity implements NamedScreenHandlerF
     public NbtCompound writeNbt(NbtCompound nbt) {
         Inventories.writeNbt(nbt, items);
 
-        return super.writeNbt(nbt);
+        return nbt;
     }
 
     public void onOpen(PlayerEntity player) {
