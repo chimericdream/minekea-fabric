@@ -182,14 +182,14 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                         (double) pos.getX() + 0.5D,
                         (double) pos.getY() + 0.5D,
                         (double) pos.getZ() + 0.5D,
-                        Jars.GLASS_JAR.asItem().getDefaultStack()
+                        Jars.GLASS_JAR_ITEM.getDefaultStack()
                     );
 
                     itemEntity.setToDefaultPickupDelay();
 
                     world.spawnEntity(itemEntity);
                 } else if (!entity.isEmpty()) {
-                    ItemStack itemStack = new ItemStack(Jars.GLASS_JAR);
+                    ItemStack itemStack = new ItemStack(Jars.GLASS_JAR_ITEM);
                     NbtCompound nbt = new NbtCompound();
                     entity.writeNbt(nbt);
 
@@ -352,7 +352,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Jars.GLASS_JAR_ITEM = Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS).maxCount(8)));
 
         setupResources();
     }

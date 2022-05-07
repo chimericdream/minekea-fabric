@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.shelves;
 
+import com.chimericdream.minekea.block.jars.Jars;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -32,6 +33,10 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
     private boolean isBlockItem(ItemStack stack) {
         BakedModel model = renderer.getModel(stack, null, null, 0);
         return model.hasDepth();
+    }
+
+    private boolean isJarItem(ItemStack stack) {
+        return stack.isItemEqual(Jars.GLASS_JAR.asItem().getDefaultStack());
     }
 
     @Override
@@ -83,7 +88,10 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
         matrices.multiply(rotation);
         matrices.translate(-0.5, -0.5, -0.5);
 
-        if (isBlockItem(stack)) {
+        if (isJarItem(stack)) {
+            matrices.translate(x, 0.785, 0.25);
+            matrices.scale(0.9f, 0.9f, 0.9f);
+        } else if (isBlockItem(stack)) {
             matrices.translate(x, 0.65, 0.25);
             matrices.scale(0.375f, 0.375f, 0.375f);
         } else {

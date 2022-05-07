@@ -7,10 +7,12 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -21,6 +23,7 @@ public class Jars implements MinekeaBlockCategory {
     public static final GlassJarBlock GLASS_JAR;
 
     public static BlockEntityType<GlassJarBlockEntity> GLASS_JAR_BLOCK_ENTITY;
+    public static BlockItem GLASS_JAR_ITEM;
 
     static {
         GLASS_JAR = new GlassJarBlock();
@@ -32,7 +35,7 @@ public class Jars implements MinekeaBlockCategory {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), GLASS_JAR);
 
         BlockEntityRendererRegistry.INSTANCE.register(GLASS_JAR_BLOCK_ENTITY, GlassJarBlockEntityRenderer::new);
-//        BuiltinItemRendererRegistry.INSTANCE.register(GLASS_JAR.asItem(), new GlassJarItemRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(GLASS_JAR_ITEM, new GlassJarItemRenderer());
     }
 
     @Override
