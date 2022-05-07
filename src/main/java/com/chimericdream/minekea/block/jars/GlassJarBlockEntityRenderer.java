@@ -45,9 +45,9 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
     @Override
     public void render(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         if (entity.hasFluid()) {
-            renderFluid(entity, tickDelta, matrices, vertexConsumers, light, overlay);
+            renderFluid(entity, matrices, vertexConsumers, light);
         } else if (entity.hasItem()) {
-            renderItem(entity, tickDelta, matrices, vertexConsumers, light, overlay);
+            renderItem(entity, matrices, vertexConsumers);
         }
 
     }
@@ -262,7 +262,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         matrices.pop();
     }
 
-    private void renderFluid(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    private void renderFluid(GlassJarBlockEntity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
         World world = entity.getWorld();
 
         if (world == null) {
@@ -287,7 +287,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         renderFluidTexture(fluidTexture, matrices, vertexConsumers, fY, fillLevel, color, light);
     }
 
-    private void renderItem(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    private void renderItem(GlassJarBlockEntity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers) {
         World world = entity.getWorld();
         BlockPos pos = entity.getPos();
 
@@ -303,11 +303,6 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         ItemStack stack = getStackToRender(storedStack);
 
         if (stack.isItemEqual(Items.AIR.getDefaultStack())) {
-//            Sprite fluidTexture = getFluidTexture(Jars.JAR_POWDER_FLUID);
-//            int color = getFluidColor(stack);
-//
-//            renderFluidTexture(fluidTexture, matrices, vertexConsumers, fY, fillLevel, color, light);
-
             return;
         }
 
