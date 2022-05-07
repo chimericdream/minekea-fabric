@@ -45,9 +45,9 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
     @Override
     public void render(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         if (entity.hasFluid()) {
-            renderFluid(entity, tickDelta, matrices, vertexConsumers, light, overlay);
+            renderFluid(entity, matrices, vertexConsumers, light);
         } else if (entity.hasItem()) {
-            renderItem(entity, tickDelta, matrices, vertexConsumers, light, overlay);
+            renderItem(entity, matrices, vertexConsumers);
         }
 
     }
@@ -262,12 +262,8 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         matrices.pop();
     }
 
-    private void renderFluid(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    private void renderFluid(GlassJarBlockEntity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
         World world = entity.getWorld();
-
-        if (world == null) {
-            return;
-        }
 
         Fluid storedFluid = entity.getStoredFluid();
         if (storedFluid.matchesType(Fluids.EMPTY)) {
@@ -276,7 +272,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
 
         FluidRenderHandler renderHandler = FluidRenderHandlerRegistry.INSTANCE.get(storedFluid);
 
-        int color = renderHandler.getFluidColor(entity.getWorld(), entity.getPos(), storedFluid.getDefaultState());
+        int color = renderHandler.getFluidColor(world, entity.getPos(), storedFluid.getDefaultState());
 
         Sprite fluidTexture = getFluidTexture(storedFluid);
 
@@ -287,13 +283,9 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         renderFluidTexture(fluidTexture, matrices, vertexConsumers, fY, fillLevel, color, light);
     }
 
-    private void renderItem(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    private void renderItem(GlassJarBlockEntity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers) {
         World world = entity.getWorld();
         BlockPos pos = entity.getPos();
-
-        if (world == null) {
-            return;
-        }
 
         ItemStack storedStack = entity.getStack(0);
         if (storedStack.isEmpty()) {
@@ -303,11 +295,6 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         ItemStack stack = getStackToRender(storedStack);
 
         if (stack.isItemEqual(Items.AIR.getDefaultStack())) {
-//            Sprite fluidTexture = getFluidTexture(Jars.JAR_POWDER_FLUID);
-//            int color = getFluidColor(stack);
-//
-//            renderFluidTexture(fluidTexture, matrices, vertexConsumers, fY, fillLevel, color, light);
-
             return;
         }
 
@@ -319,7 +306,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         matrices.translate(0.5, (fY * 0.25) + NUDGE, 0.5);
         matrices.scale(0.749f, fY, 0.749f);
 
-        int lightAbove = WorldRenderer.getLightmapCoordinates(world, pos.up());
+        int lightAbove = world == null ? 15728880 : WorldRenderer.getLightmapCoordinates(world, pos.up());
         renderer.renderItem(stack, ModelTransformation.Mode.FIXED, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, 0);
 
         matrices.pop();
