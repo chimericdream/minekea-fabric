@@ -40,9 +40,9 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     private Fluid storedFluid = Fluids.EMPTY;
     private double fluidAmountInBuckets = 0.0;
 
-    private static final String ITEM_AMT_KEY = "FullItemStacks";
-    private static final String FLUID_KEY = "StoredFluid";
-    private static final String FLUID_AMT_KEY = "StoredFluidAmount";
+    public static final String ITEM_AMT_KEY = "FullItemStacks";
+    public static final String FLUID_KEY = "StoredFluid";
+    public static final String FLUID_AMT_KEY = "StoredFluidAmount";
 
     public GlassJarBlockEntity(BlockPos pos, BlockState state) {
         this(Jars.GLASS_JAR_BLOCK_ENTITY, pos, state);

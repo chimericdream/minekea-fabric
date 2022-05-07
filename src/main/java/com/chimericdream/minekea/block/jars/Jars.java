@@ -32,6 +32,7 @@ public class Jars implements MinekeaBlockCategory {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), GLASS_JAR);
 
         BlockEntityRendererRegistry.INSTANCE.register(GLASS_JAR_BLOCK_ENTITY, GlassJarBlockEntityRenderer::new);
+//        BuiltinItemRendererRegistry.INSTANCE.register(GLASS_JAR.asItem(), new GlassJarItemRenderer());
     }
 
     @Override
