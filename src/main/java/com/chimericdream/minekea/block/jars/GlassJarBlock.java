@@ -3,8 +3,8 @@ package com.chimericdream.minekea.block.jars;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.fluid.HoneyBucketItem;
-import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.util.FluidHelpers;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -12,16 +12,20 @@ import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.recipe.*;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.item.*;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
+import net.minecraft.util.*;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -30,6 +34,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider {
     private final Identifier BLOCK_ID;
@@ -164,6 +171,49 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         return ActionResult.SUCCESS;
     }
 
+    @Override
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+
+        if (blockEntity instanceof GlassJarBlockEntity entity) {
+            if (!world.isClient) {
+                if (entity.isEmpty() && !player.isCreative()) {
+                    ItemEntity itemEntity = new ItemEntity(
+                        world,
+                        (double) pos.getX() + 0.5D,
+                        (double) pos.getY() + 0.5D,
+                        (double) pos.getZ() + 0.5D,
+                        Jars.GLASS_JAR.asItem().getDefaultStack()
+                    );
+
+                    itemEntity.setToDefaultPickupDelay();
+
+                    world.spawnEntity(itemEntity);
+                } else if (!entity.isEmpty()) {
+                    ItemStack itemStack = new ItemStack(Jars.GLASS_JAR);
+                    NbtCompound nbt = new NbtCompound();
+                    entity.writeNbt(nbt);
+
+                    if (!nbt.isEmpty()) {
+                        itemStack.setSubNbt("BlockEntityTag", nbt);
+                    }
+
+                    ItemEntity itemEntity = new ItemEntity(
+                        world,
+                        (double) pos.getX() + 0.5D,
+                        (double) pos.getY() + 0.5D,
+                        (double) pos.getZ() + 0.5D,
+                        itemStack
+                    );
+
+                    itemEntity.setToDefaultPickupDelay();
+
+                    world.spawnEntity(itemEntity);
+                }
+            }
+        }
+    }
+
     private void replaceHeldItemOrDont(World world, PlayerEntity player, ItemStack heldItem, ItemStack item) {
         ItemStack remaining = heldItem.copy();
         remaining.decrement(1);
@@ -183,12 +233,54 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     }
 
     @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        super.appendTooltip(stack, world, tooltip, options);
+
+        NbtCompound nbt = stack.getSubNbt("BlockEntityTag");
+
+        if (nbt != null) {
+            String storedFluid = nbt.getString(GlassJarBlockEntity.FLUID_KEY);
+            if (!storedFluid.equals("") && !storedFluid.equals("NONE")) {
+                Fluid fluid = Registry.FLUID.get(new Identifier(storedFluid));
+
+                if (fluid != Fluids.EMPTY) {
+                    MutableText text = FluidHelpers.getFluidName(fluid).shallowCopy().formatted(Formatting.GREEN);
+
+                    double fluidAmount = nbt.getDouble(GlassJarBlockEntity.FLUID_AMT_KEY);
+
+                    String format = Math.round(fluidAmount) == fluidAmount ? " (%.0f buckets)" : " (%.1f buckets)";
+                    text.append(
+                        fluidAmount != 1.0
+                            ? String.format(format, fluidAmount)
+                            : " (1 bucket)"
+                    );
+
+                    tooltip.add(text);
+                }
+            } else {
+                DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
+                Inventories.readNbt(nbt, items);
+
+                ItemStack storedItem = items.get(0);
+                if (!storedItem.isEmpty()) {
+                    int fullStacks = nbt.getInt(GlassJarBlockEntity.ITEM_AMT_KEY);
+                    int total = storedItem.getCount() + (fullStacks * storedItem.getMaxCount());
+
+                    MutableText text = storedItem.getName().shallowCopy().formatted(Formatting.GREEN);
+                    text.append(String.format(" (%d)", total));
+
+                    tooltip.add(text);
+                }
+            }
+        }
+    }
+
+    @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity entity = world.getBlockEntity(pos);
 
             if (entity instanceof GlassJarBlockEntity) {
-                ItemScatterer.spawn(world, pos, ((GlassJarBlockEntity) entity).getItemsOnBreak());
                 world.updateComparators(pos, this);
             }
 
@@ -288,7 +380,6 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/jars/%sglass_jar", ModInfo.getModPrefix(modId)));
         Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/jars/%sglass_jar", ModInfo.getModPrefix(modId)));
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(new Identifier(ModInfo.MOD_ID, "block/glass_jar")), MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(new Identifier(ModInfo.MOD_ID, "item/glass_jar")), ITEM_MODEL_ID);
 
