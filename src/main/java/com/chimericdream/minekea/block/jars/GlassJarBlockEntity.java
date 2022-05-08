@@ -156,7 +156,7 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             return false;
         }
 
-        if (!item.getItem().getRegistryEntry().isIn(MinekeaTags.GLASS_JAR_STORABLE)) {
+        if (!item.isIn(MinekeaTags.GLASS_JAR_STORABLE)) {
             return false;
         }
 

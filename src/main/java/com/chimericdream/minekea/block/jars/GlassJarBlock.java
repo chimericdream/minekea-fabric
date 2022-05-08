@@ -2,7 +2,6 @@ package com.chimericdream.minekea.block.jars;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.fluid.HoneyBucketItem;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.FluidHelpers;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -29,7 +28,6 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -37,6 +35,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider {
     private final Identifier BLOCK_ID;
@@ -88,8 +87,8 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         ItemStack heldItem = player.getMainHandStack();
 
         if (isFilledBucket(heldItem)) {
-            RegistryEntry.Reference<Item> entry = heldItem.getItem().getRegistryEntry();
-            Fluid bucketFluid = getFluidType(entry);
+            Identifier heldItemId = Registry.ITEM.getId(heldItem.getItem());
+            Fluid bucketFluid = getFluidType(heldItemId);
 
             if (!bucketFluid.matchesType(Fluids.EMPTY) && entity.tryInsert(bucketFluid)) {
                 replaceHeldItemOrDont(world, player, heldItem, Items.BUCKET.getDefaultStack());
@@ -288,27 +287,15 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         }
     }
 
-    /*
-     * @TODO: it'd be nice if this could be done in a more generalized way
-     */
-    private Fluid getFluidType(RegistryEntry.Reference<Item> entry) {
-        if (entry.value().toString().equals("water_bucket")) {
-            return Fluids.WATER;
-        }
+    private Fluid getFluidType(Identifier heldItemId) {
+        Optional<Fluid> foundFluid = Registry.FLUID.stream()
+            .filter(fluid -> {
+                Item bucket = fluid.getBucketItem();
+                return Registry.ITEM.getId(bucket).compareTo(heldItemId) == 0;
+            })
+            .findFirst();
 
-        if (entry.value().toString().equals("lava_bucket")) {
-            return Fluids.LAVA;
-        }
-
-        if (entry.value().toString().equals("milk_bucket")) {
-            return com.chimericdream.minekea.fluid.Fluids.MILK;
-        }
-
-        if (entry.value().toString().equals(HoneyBucketItem.ITEM_ID.getPath())) {
-            return com.chimericdream.minekea.fluid.Fluids.HONEY;
-        }
-
-        return Fluids.EMPTY;
+        return foundFluid.orElse(Fluids.EMPTY);
     }
 
     private boolean isEmptyBucket(ItemStack item) {
@@ -328,11 +315,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             return true;
         }
 
-        if (item.isItemEqual(Items.HONEY_BOTTLE.getDefaultStack())) {
-            return true;
-        }
-
-        return false;
+        return item.isItemEqual(Items.HONEY_BOTTLE.getDefaultStack());
     }
 
     private boolean isFilledBucket(ItemStack item) {
@@ -344,9 +327,9 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             return false;
         }
 
-        String registryEntry = item.getItem().getRegistryEntry().value().toString();
+        Identifier itemId = Registry.ITEM.getId(item.getItem());
 
-        return !registryEntry.equals("bucket");
+        return itemId.compareTo(Registry.ITEM.getId(Items.BUCKET.asItem())) != 0;
     }
 
     public Identifier getBlockID() {
