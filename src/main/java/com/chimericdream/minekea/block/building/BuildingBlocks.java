@@ -6,10 +6,10 @@ import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import java.util.List;
 
 public class BuildingBlocks implements MinekeaBlockCategory {
-    public static final SmoothBasaltBricksBlock SMOOTH_BASALT_BRICKS_BLOCK;
+    public static final BasaltBricksBlock SMOOTH_BASALT_BRICKS_BLOCK;
 
     static {
-        SMOOTH_BASALT_BRICKS_BLOCK = new SmoothBasaltBricksBlock();
+        SMOOTH_BASALT_BRICKS_BLOCK = new BasaltBricksBlock();
     }
 
     @Override

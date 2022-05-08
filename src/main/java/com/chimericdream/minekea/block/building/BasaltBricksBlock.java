@@ -20,10 +20,10 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class SmoothBasaltBricksBlock extends Block implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/smooth_basalt_bricks");
+public class BasaltBricksBlock extends Block implements MinekeaBlock {
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/basalt_bricks");
 
-    public SmoothBasaltBricksBlock() {
+    public BasaltBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.SMOOTH_BASALT));
     }
 
