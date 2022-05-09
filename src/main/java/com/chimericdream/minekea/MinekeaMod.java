@@ -125,14 +125,6 @@ public class MinekeaMod implements ModInitializer {
      * https://www.curseforge.com/minecraft/mc-mods/beholders-bookshelves
      *
      * [ ] iron shelves
-     * [x] variant bookshelves
-     * [x]   - works for enchanting
-     * [x] storage version of all bookshelves
-     * [x]   - works for enchanting
-     * [ ]   - works for enchanting (variable power based on contents)
-     * [x] secret door bookshelves in all wood types
-     * [x] crates in all wood types
-     * [x] variant barrels
      * [ ] variant crafting tables
      * [ ] variant ladders
      * [ ] bookshelves in non-wood varieties
@@ -146,17 +138,12 @@ public class MinekeaMod implements ModInitializer {
      * [ ]   - polished blackstone bricks
      * [ ]   - polished deepslate
      * [ ]   - polished basalt
-     * [ ]   - stone bricks
      * [ ]   - deepslate bricks
      * [ ]   - endstone bricks
-     * [ ]   - nether bricks
      * [ ]   - red nether bricks
      * [ ]   - prismarine bricks
      * [ ]   - quartz bricks
-     * [ ]   - purpur
-     * [ ]   - bone
      * [ ]   - prismarine
-     * [ ]   - dark prismarine
      */
 
     @Override
@@ -181,7 +168,7 @@ public class MinekeaMod implements ModInitializer {
 
         ITEMS.register();
 
-        // This must be the last thing
+        // This _must_ be the last thing
         RESOURCES.register();
     }
 

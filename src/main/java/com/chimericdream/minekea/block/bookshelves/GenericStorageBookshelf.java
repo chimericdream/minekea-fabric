@@ -65,7 +65,7 @@ public class GenericStorageBookshelf extends BlockWithEntity {
     }
 
     public GenericStorageBookshelf(String woodType) {
-        this(woodType, "minekea");
+        this(woodType, ModInfo.MOD_ID);
     }
 
     public GenericStorageBookshelf(String woodType, String modId) {
@@ -79,8 +79,20 @@ public class GenericStorageBookshelf extends BlockWithEntity {
         );
     }
 
+    public GenericStorageBookshelf(String woodType, Map<String, Identifier> materials) {
+        this(woodType, ModInfo.MOD_ID, materials);
+    }
+
+    public GenericStorageBookshelf(String woodType, Map<String, Identifier> materials, Block copyOf) {
+        this(woodType, ModInfo.MOD_ID, materials, copyOf);
+    }
+
     public GenericStorageBookshelf(String woodType, String modId, Map<String, Identifier> materials) {
-        super(Settings.copy(Blocks.CHEST));
+        this(woodType, modId, materials, Blocks.CHEST);
+    }
+
+    public GenericStorageBookshelf(String woodType, String modId, Map<String, Identifier> materials, Block copyOf) {
+        super(Settings.copy(copyOf));
 
         validateMaterials(materials);
 

@@ -14,6 +14,7 @@ import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
@@ -21,6 +22,7 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericBookshelf ACACIA_BOOKSHELF;
@@ -31,6 +33,12 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericBookshelf SPRUCE_BOOKSHELF;
     public static final GenericBookshelf WARPED_BOOKSHELF;
 
+    public static final GenericBookshelf BONE_BOOKSHELF;
+    public static final GenericBookshelf DARK_PRISMARINE_BOOKSHELF;
+    public static final GenericBookshelf NETHER_BRICK_BOOKSHELF;
+    public static final GenericBookshelf PURPUR_BOOKSHELF;
+    public static final GenericBookshelf STONE_BRICK_BOOKSHELF;
+
     public static final GenericStorageBookshelf ACACIA_STORAGE_SHELF;
     public static final GenericStorageBookshelf BIRCH_STORAGE_SHELF;
     public static final GenericStorageBookshelf CRIMSON_STORAGE_SHELF;
@@ -39,6 +47,12 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericStorageBookshelf OAK_STORAGE_SHELF;
     public static final GenericStorageBookshelf SPRUCE_STORAGE_SHELF;
     public static final GenericStorageBookshelf WARPED_STORAGE_SHELF;
+
+    public static final GenericStorageBookshelf BONE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf DARK_PRISMARINE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf NETHER_BRICK_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf PURPUR_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf STONE_BRICK_STORAGE_BOOKSHELF;
 
     public static BlockEntityType<StorageBookshelfBlockEntity> STORAGE_SHELF_BLOCK_ENTITY;
     public static ScreenHandlerType<StorageBookshelfScreenHandler> STORAGE_SHELF_SCREEN_HANDLER;
@@ -52,6 +66,35 @@ public class Bookshelves implements MinekeaBlockCategory {
         SPRUCE_BOOKSHELF = new GenericBookshelf("spruce");
         WARPED_BOOKSHELF = new GenericBookshelf("warped");
 
+        BONE_BOOKSHELF = new GenericBookshelf(
+            "bone",
+            Map.of(
+                "planks", new Identifier("minecraft:bone_block"),
+                "plank_texture", new Identifier("minecraft:bone_block_side")
+            ),
+            Blocks.BONE_BLOCK
+        );
+        DARK_PRISMARINE_BOOKSHELF = new GenericBookshelf(
+            "dark_prismarine",
+            Map.of("planks", new Identifier("minecraft:dark_prismarine")),
+            Blocks.DARK_PRISMARINE
+        );
+        NETHER_BRICK_BOOKSHELF = new GenericBookshelf(
+            "nether_brick",
+            Map.of("planks", new Identifier("minecraft:nether_bricks")),
+            Blocks.NETHER_BRICKS
+        );
+        PURPUR_BOOKSHELF = new GenericBookshelf(
+            "purpur",
+            Map.of("planks", new Identifier("minecraft:purpur_block")),
+            Blocks.PURPUR_BLOCK
+        );
+        STONE_BRICK_BOOKSHELF = new GenericBookshelf(
+            "stone_brick",
+            Map.of("planks", new Identifier("minecraft:stone_bricks")),
+            Blocks.STONE_BRICKS
+        );
+
         ACACIA_STORAGE_SHELF = new GenericStorageBookshelf("acacia");
         BIRCH_STORAGE_SHELF = new GenericStorageBookshelf("birch");
         CRIMSON_STORAGE_SHELF = new GenericStorageBookshelf("crimson");
@@ -60,6 +103,47 @@ public class Bookshelves implements MinekeaBlockCategory {
         OAK_STORAGE_SHELF = new GenericStorageBookshelf("oak");
         SPRUCE_STORAGE_SHELF = new GenericStorageBookshelf("spruce");
         WARPED_STORAGE_SHELF = new GenericStorageBookshelf("warped");
+
+        BONE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "bone",
+            Map.of(
+                "planks", new Identifier("minecraft:bone_block_side"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/bone_bookshelf")
+            ),
+            Blocks.BONE_BLOCK
+        );
+        DARK_PRISMARINE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "dark_prismarine",
+            Map.of(
+                "planks", new Identifier("minecraft:dark_prismarine"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/dark_prismarine_bookshelf")
+            ),
+            Blocks.DARK_PRISMARINE
+        );
+        NETHER_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "nether_bricks",
+            Map.of(
+                "planks", new Identifier("minecraft:nether_bricks"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/nether_brick_bookshelf")
+            ),
+            Blocks.NETHER_BRICKS
+        );
+        PURPUR_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "purpur",
+            Map.of(
+                "planks", new Identifier("minecraft:purpur_block"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/purpur_bookshelf")
+            ),
+            Blocks.PURPUR_BLOCK
+        );
+        STONE_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "stone_brick",
+            Map.of(
+                "planks", new Identifier("minecraft:stone_bricks"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/stone_brick_bookshelf")
+            ),
+            Blocks.STONE_BRICKS
+        );
 
         STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(
             new Identifier(ModInfo.MOD_ID, "screens/storage_shelf"),
@@ -77,6 +161,12 @@ public class Bookshelves implements MinekeaBlockCategory {
         SPRUCE_BOOKSHELF.register();
         WARPED_BOOKSHELF.register(false);
 
+        BONE_BOOKSHELF.register(false);
+        DARK_PRISMARINE_BOOKSHELF.register(false);
+        NETHER_BRICK_BOOKSHELF.register(false);
+        PURPUR_BOOKSHELF.register(false);
+        STONE_BRICK_BOOKSHELF.register(false);
+
         ACACIA_STORAGE_SHELF.register();
         BIRCH_STORAGE_SHELF.register();
         CRIMSON_STORAGE_SHELF.register(false);
@@ -85,6 +175,12 @@ public class Bookshelves implements MinekeaBlockCategory {
         OAK_STORAGE_SHELF.register();
         SPRUCE_STORAGE_SHELF.register();
         WARPED_STORAGE_SHELF.register(false);
+
+        BONE_STORAGE_BOOKSHELF.register(false);
+        DARK_PRISMARINE_STORAGE_BOOKSHELF.register(false);
+        NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
+        PURPUR_STORAGE_BOOKSHELF.register(false);
+        STONE_BRICK_STORAGE_BOOKSHELF.register(false);
 
         setupOakBookshelfResources();
     }
@@ -99,7 +195,12 @@ public class Bookshelves implements MinekeaBlockCategory {
             JUNGLE_STORAGE_SHELF,
             OAK_STORAGE_SHELF,
             SPRUCE_STORAGE_SHELF,
-            WARPED_STORAGE_SHELF
+            WARPED_STORAGE_SHELF,
+            BONE_STORAGE_BOOKSHELF,
+            DARK_PRISMARINE_STORAGE_BOOKSHELF,
+            NETHER_BRICK_STORAGE_BOOKSHELF,
+            PURPUR_STORAGE_BOOKSHELF,
+            STONE_BRICK_STORAGE_BOOKSHELF
         ));
 
         for (ModCompatLayer mod : otherMods) {

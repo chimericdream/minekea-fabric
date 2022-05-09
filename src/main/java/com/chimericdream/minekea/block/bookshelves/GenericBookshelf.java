@@ -34,15 +34,27 @@ public class GenericBookshelf extends Block {
     public final Identifier BLOCK_ID;
 
     public GenericBookshelf(String woodType) {
-        this(woodType, "minekea");
+        this(woodType, ModInfo.MOD_ID);
     }
 
     public GenericBookshelf(String woodType, String modId) {
         this(woodType, modId, Map.of("planks", new Identifier(String.format("minecraft:%s_planks", woodType))));
     }
 
+    public GenericBookshelf(String woodType, Map<String, Identifier> materials) {
+        this(woodType, ModInfo.MOD_ID, materials);
+    }
+
+    public GenericBookshelf(String woodType, Map<String, Identifier> materials, Block copyOf) {
+        this(woodType, ModInfo.MOD_ID, materials, copyOf);
+    }
+
     public GenericBookshelf(String woodType, String modId, Map<String, Identifier> materials) {
-        super(AbstractBlock.Settings.copy(Blocks.BOOKSHELF));
+        this(woodType, modId, materials, Blocks.BOOKSHELF);
+    }
+
+    public GenericBookshelf(String woodType, String modId, Map<String, Identifier> materials, Block copyOf) {
+        super(AbstractBlock.Settings.copy(copyOf));
 
         validateMaterials(materials);
 
@@ -125,13 +137,15 @@ public class GenericBookshelf extends Block {
                 )
         );
 
+        Identifier plankTextureId = materials.getOrDefault("plank_texture", materials.get("planks"));
+
         // Block model variations
         for (int i = 0; i <= 6; i++) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(
                 JModel.model("minekea:block/bookshelf_variant")
                     .textures(
                         new JTextures()
-                            .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+                            .var("material", Texture.getBlockTextureID(plankTextureId).toString())
                             .var("shelf", String.format("minekea:block/bookshelves/shelf%d", i))
                     ),
                 new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/shelf%d", ModInfo.getModPrefix(modId), woodType, i))
