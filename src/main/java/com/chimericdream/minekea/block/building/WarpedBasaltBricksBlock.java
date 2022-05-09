@@ -53,7 +53,7 @@ public class WarpedBasaltBricksBlock extends Block implements MinekeaBlock {
             JRecipe.shapeless(
                 JIngredients.ingredients()
                     .add(JIngredient.ingredient().item(BasaltBricksBlock.BLOCK_ID.toString()))
-                    .add(JIngredient.ingredient().item("minecraft:warped_roots")),
+                    .add(JIngredient.ingredient().item("minecraft:twisting_vines")),
                 JResult.result(BLOCK_ID.toString())
             )
         );

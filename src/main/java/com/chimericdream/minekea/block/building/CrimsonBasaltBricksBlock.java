@@ -53,7 +53,7 @@ public class CrimsonBasaltBricksBlock extends Block implements MinekeaBlock {
             JRecipe.shapeless(
                 JIngredients.ingredients()
                     .add(JIngredient.ingredient().item(BasaltBricksBlock.BLOCK_ID.toString()))
-                    .add(JIngredient.ingredient().item("minecraft:crimson_roots")),
+                    .add(JIngredient.ingredient().item("minecraft:weeping_vines")),
                 JResult.result(BLOCK_ID.toString())
             )
         );
