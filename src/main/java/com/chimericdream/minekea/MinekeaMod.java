@@ -128,8 +128,6 @@ public class MinekeaMod implements ModInitializer {
      * [ ] variant crafting tables
      * [ ] variant ladders
      * [ ] bookshelves in non-wood varieties
-     * [ ]   - quartz
-     * [ ]   - smooth quartz
      * [ ]   - smooth stone
      * [ ]   - polished granite
      * [ ]   - polished andesite
@@ -140,9 +138,7 @@ public class MinekeaMod implements ModInitializer {
      * [ ]   - polished basalt
      * [ ]   - deepslate bricks
      * [ ]   - endstone bricks
-     * [ ]   - red nether bricks
      * [ ]   - prismarine bricks
-     * [ ]   - quartz bricks
      * [ ]   - prismarine
      */
 

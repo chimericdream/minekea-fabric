@@ -37,6 +37,10 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericBookshelf DARK_PRISMARINE_BOOKSHELF;
     public static final GenericBookshelf NETHER_BRICK_BOOKSHELF;
     public static final GenericBookshelf PURPUR_BOOKSHELF;
+    public static final GenericBookshelf QUARTZ_BOOKSHELF;
+    public static final GenericBookshelf QUARTZ_BRICK_BOOKSHELF;
+    public static final GenericBookshelf RED_NETHER_BRICK_BOOKSHELF;
+    public static final GenericBookshelf SMOOTH_QUARTZ_BOOKSHELF;
     public static final GenericBookshelf STONE_BRICK_BOOKSHELF;
 
     public static final GenericStorageBookshelf ACACIA_STORAGE_SHELF;
@@ -52,6 +56,10 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericStorageBookshelf DARK_PRISMARINE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf NETHER_BRICK_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf PURPUR_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf QUARTZ_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf QUARTZ_BRICK_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf RED_NETHER_BRICK_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf SMOOTH_QUARTZ_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf STONE_BRICK_STORAGE_BOOKSHELF;
 
     public static BlockEntityType<StorageBookshelfBlockEntity> STORAGE_SHELF_BLOCK_ENTITY;
@@ -88,6 +96,32 @@ public class Bookshelves implements MinekeaBlockCategory {
             "purpur",
             Map.of("planks", new Identifier("minecraft:purpur_block")),
             Blocks.PURPUR_BLOCK
+        );
+        QUARTZ_BOOKSHELF = new GenericBookshelf(
+            "quartz",
+            Map.of(
+                "planks", new Identifier("minecraft:quartz_block"),
+                "plank_texture", new Identifier("minecraft:quartz_block_side")
+            ),
+            Blocks.QUARTZ_BLOCK
+        );
+        QUARTZ_BRICK_BOOKSHELF = new GenericBookshelf(
+            "quartz_brick",
+            Map.of("planks", new Identifier("minecraft:quartz_bricks")),
+            Blocks.QUARTZ_BRICKS
+        );
+        RED_NETHER_BRICK_BOOKSHELF = new GenericBookshelf(
+            "red_nether_brick",
+            Map.of("planks", new Identifier("minecraft:red_nether_bricks")),
+            Blocks.RED_NETHER_BRICKS
+        );
+        SMOOTH_QUARTZ_BOOKSHELF = new GenericBookshelf(
+            "smooth_quartz",
+            Map.of(
+                "planks", new Identifier("minecraft:smooth_quartz"),
+                "plank_texture", new Identifier("minecraft:quartz_block_bottom")
+            ),
+            Blocks.SMOOTH_QUARTZ
         );
         STONE_BRICK_BOOKSHELF = new GenericBookshelf(
             "stone_brick",
@@ -136,6 +170,38 @@ public class Bookshelves implements MinekeaBlockCategory {
             ),
             Blocks.PURPUR_BLOCK
         );
+        QUARTZ_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "quartz",
+            Map.of(
+                "planks", new Identifier("minecraft:quartz_block_side"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/quartz_bookshelf")
+            ),
+            Blocks.QUARTZ_BLOCK
+        );
+        QUARTZ_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "quartz_brick",
+            Map.of(
+                "planks", new Identifier("minecraft:quartz_bricks"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/quartz_brick_bookshelf")
+            ),
+            Blocks.QUARTZ_BRICKS
+        );
+        RED_NETHER_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "red_nether_brick",
+            Map.of(
+                "planks", new Identifier("minecraft:red_nether_bricks"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/red_nether_brick_bookshelf")
+            ),
+            Blocks.RED_NETHER_BRICKS
+        );
+        SMOOTH_QUARTZ_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "smooth_quartz",
+            Map.of(
+                "planks", new Identifier("minecraft:quartz_block_bottom"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/smooth_quartz_bookshelf")
+            ),
+            Blocks.SMOOTH_QUARTZ
+        );
         STONE_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
             "stone_brick",
             Map.of(
@@ -165,6 +231,10 @@ public class Bookshelves implements MinekeaBlockCategory {
         DARK_PRISMARINE_BOOKSHELF.register(false);
         NETHER_BRICK_BOOKSHELF.register(false);
         PURPUR_BOOKSHELF.register(false);
+        QUARTZ_BOOKSHELF.register(false);
+        QUARTZ_BRICK_BOOKSHELF.register(false);
+        RED_NETHER_BRICK_BOOKSHELF.register(false);
+        SMOOTH_QUARTZ_BOOKSHELF.register(false);
         STONE_BRICK_BOOKSHELF.register(false);
 
         ACACIA_STORAGE_SHELF.register();
@@ -180,6 +250,10 @@ public class Bookshelves implements MinekeaBlockCategory {
         DARK_PRISMARINE_STORAGE_BOOKSHELF.register(false);
         NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
         PURPUR_STORAGE_BOOKSHELF.register(false);
+        QUARTZ_STORAGE_BOOKSHELF.register(false);
+        QUARTZ_BRICK_STORAGE_BOOKSHELF.register(false);
+        RED_NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
+        SMOOTH_QUARTZ_STORAGE_BOOKSHELF.register(false);
         STONE_BRICK_STORAGE_BOOKSHELF.register(false);
 
         setupOakBookshelfResources();
@@ -200,6 +274,10 @@ public class Bookshelves implements MinekeaBlockCategory {
             DARK_PRISMARINE_STORAGE_BOOKSHELF,
             NETHER_BRICK_STORAGE_BOOKSHELF,
             PURPUR_STORAGE_BOOKSHELF,
+            QUARTZ_STORAGE_BOOKSHELF,
+            QUARTZ_BRICK_STORAGE_BOOKSHELF,
+            RED_NETHER_BRICK_STORAGE_BOOKSHELF,
+            SMOOTH_QUARTZ_STORAGE_BOOKSHELF,
             STONE_BRICK_STORAGE_BOOKSHELF
         ));
 
