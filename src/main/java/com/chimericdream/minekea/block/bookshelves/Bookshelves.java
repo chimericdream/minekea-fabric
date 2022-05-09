@@ -121,7 +121,7 @@ public class Bookshelves implements MinekeaBlockCategory {
             Blocks.DARK_PRISMARINE
         );
         NETHER_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
-            "nether_bricks",
+            "nether_brick",
             Map.of(
                 "planks", new Identifier("minecraft:nether_bricks"),
                 "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/nether_brick_bookshelf")
