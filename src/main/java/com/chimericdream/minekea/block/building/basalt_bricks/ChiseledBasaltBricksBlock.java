@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.building;
+package com.chimericdream.minekea.block.building.basalt_bricks;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
@@ -10,10 +10,7 @@ import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
-import net.devtech.arrp.json.recipe.JIngredient;
-import net.devtech.arrp.json.recipe.JIngredients;
-import net.devtech.arrp.json.recipe.JRecipe;
-import net.devtech.arrp.json.recipe.JResult;
+import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -23,10 +20,10 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class MossyBasaltBricksBlock extends Block implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/mossy_basalt_bricks");
+public class ChiseledBasaltBricksBlock extends Block implements MinekeaBlock {
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/chiseled_basalt_bricks");
 
-    public MossyBasaltBricksBlock() {
+    public ChiseledBasaltBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.SMOOTH_BASALT));
     }
 
@@ -50,18 +47,38 @@ public class MossyBasaltBricksBlock extends Block implements MinekeaBlock {
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
-            JRecipe.shapeless(
-                JIngredients.ingredients()
-                    .add(JIngredient.ingredient().item(BasaltBricksBlock.BLOCK_ID.toString()))
-                    .add(JIngredient.ingredient().item("minecraft:vine")),
-                JResult.result(BLOCK_ID.toString())
+            JRecipe.shaped(
+                JPattern.pattern("##", "##"),
+                JKeys.keys().key("#", JIngredient.ingredient().item(BasaltBricksBlock.BLOCK_ID.toString())),
+                JResult.stackedResult(BLOCK_ID.toString(), 4)
+            )
+        );
+        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
+            new Identifier(BLOCK_ID.getNamespace(), BLOCK_ID.getPath() + "_stonecutting"),
+            JRecipe.stonecutting(
+                JIngredient.ingredient().item(BasaltBricksBlock.BLOCK_ID.toString()),
+                JResult.stackedResult(BLOCK_ID.toString(), 1)
             )
         );
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             new Identifier(BLOCK_ID.getNamespace(), BLOCK_ID.getPath() + "_stonecutting_reverse"),
             JRecipe.stonecutting(
                 JIngredient.ingredient().item(BLOCK_ID.toString()),
-                JResult.stackedResult(BasaltBricksBlock.BLOCK_ID.toString(), 1)
+                JResult.stackedResult(BLOCK_ID.getPath() + "_stonecutting", 1)
+            )
+        );
+        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
+            new Identifier(BLOCK_ID.getNamespace(), BLOCK_ID.getPath() + "_stonecutting_from_smooth"),
+            JRecipe.stonecutting(
+                JIngredient.ingredient().item("minecraft:smooth_basalt"),
+                JResult.stackedResult(BLOCK_ID.toString(), 1)
+            )
+        );
+        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
+            new Identifier(BLOCK_ID.getNamespace(), BLOCK_ID.getPath() + "_stonecutting_to_smooth"),
+            JRecipe.stonecutting(
+                JIngredient.ingredient().item(BLOCK_ID.toString()),
+                JResult.stackedResult("minecraft:smooth_basalt", 1)
             )
         );
 

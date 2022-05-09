@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.building;
+package com.chimericdream.minekea.block.building.basalt_bricks;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;

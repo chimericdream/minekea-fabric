@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building;
 
+import com.chimericdream.minekea.block.building.basalt_bricks.*;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 
