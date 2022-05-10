@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.building.BuildingBlocks;
+import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;
@@ -35,13 +37,25 @@ public class Bookshelves implements MinekeaBlockCategory {
 
     public static final GenericBookshelf BONE_BOOKSHELF;
     public static final GenericBookshelf DARK_PRISMARINE_BOOKSHELF;
+    public static final GenericBookshelf DEEPSLATE_BRICK_BOOKSHELF;
+    public static final GenericBookshelf END_STONE_BRICK_BOOKSHELF;
     public static final GenericBookshelf NETHER_BRICK_BOOKSHELF;
+    public static final GenericBookshelf POLISHED_ANDESITE_BOOKSHELF;
+    public static final GenericBookshelf POLISHED_BASALT_BOOKSHELF;
+    public static final GenericBookshelf POLISHED_BLACKSTONE_BOOKSHELF;
+    public static final GenericBookshelf POLISHED_BLACKSTONE_BRICK_BOOKSHELF;
+    public static final GenericBookshelf POLISHED_DEEPSLATE_BOOKSHELF;
+    public static final GenericBookshelf POLISHED_DIORITE_BOOKSHELF;
+    public static final GenericBookshelf POLISHED_GRANITE_BOOKSHELF;
+    public static final GenericBookshelf PRISMARINE_BOOKSHELF;
+    public static final GenericBookshelf PRISMARINE_BRICK_BOOKSHELF;
     public static final GenericBookshelf PURPUR_BOOKSHELF;
-    public static final GenericBookshelf QUARTZ_BOOKSHELF;
     public static final GenericBookshelf QUARTZ_BRICK_BOOKSHELF;
     public static final GenericBookshelf RED_NETHER_BRICK_BOOKSHELF;
     public static final GenericBookshelf SMOOTH_QUARTZ_BOOKSHELF;
+    public static final GenericBookshelf SMOOTH_STONE_BOOKSHELF;
     public static final GenericBookshelf STONE_BRICK_BOOKSHELF;
+    public static final GenericBookshelf WARPED_NETHER_BRICK_BOOKSHELF;
 
     public static final GenericStorageBookshelf ACACIA_STORAGE_SHELF;
     public static final GenericStorageBookshelf BIRCH_STORAGE_SHELF;
@@ -54,13 +68,25 @@ public class Bookshelves implements MinekeaBlockCategory {
 
     public static final GenericStorageBookshelf BONE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf DARK_PRISMARINE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf DEEPSLATE_BRICK_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf END_STONE_BRICK_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf NETHER_BRICK_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf POLISHED_ANDESITE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf POLISHED_BASALT_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf POLISHED_BLACKSTONE_BRICK_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf POLISHED_BLACKSTONE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf POLISHED_DEEPSLATE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf POLISHED_DIORITE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf POLISHED_GRANITE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf PRISMARINE_BRICK_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf PRISMARINE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf PURPUR_STORAGE_BOOKSHELF;
-    public static final GenericStorageBookshelf QUARTZ_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf QUARTZ_BRICK_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf RED_NETHER_BRICK_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf SMOOTH_QUARTZ_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf SMOOTH_STONE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf STONE_BRICK_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf WARPED_NETHER_BRICK_STORAGE_BOOKSHELF;
 
     public static BlockEntityType<StorageBookshelfBlockEntity> STORAGE_SHELF_BLOCK_ENTITY;
     public static ScreenHandlerType<StorageBookshelfScreenHandler> STORAGE_SHELF_SCREEN_HANDLER;
@@ -87,23 +113,73 @@ public class Bookshelves implements MinekeaBlockCategory {
             Map.of("planks", new Identifier("minecraft:dark_prismarine")),
             Blocks.DARK_PRISMARINE
         );
+        DEEPSLATE_BRICK_BOOKSHELF = new GenericBookshelf(
+            "deepslate_brick",
+            Map.of("planks", new Identifier("minecraft:deepslate_bricks")),
+            Blocks.DEEPSLATE_BRICKS
+        );
+        END_STONE_BRICK_BOOKSHELF = new GenericBookshelf(
+            "end_stone_brick",
+            Map.of("planks", new Identifier("minecraft:end_stone_bricks")),
+            Blocks.END_STONE_BRICKS
+        );
         NETHER_BRICK_BOOKSHELF = new GenericBookshelf(
             "nether_brick",
             Map.of("planks", new Identifier("minecraft:nether_bricks")),
             Blocks.NETHER_BRICKS
         );
+        POLISHED_ANDESITE_BOOKSHELF = new GenericBookshelf(
+            "polished_andesite",
+            Map.of("planks", new Identifier("minecraft:polished_andesite")),
+            Blocks.POLISHED_ANDESITE
+        );
+        POLISHED_BASALT_BOOKSHELF = new GenericBookshelf(
+            "polished_basalt",
+            Map.of(
+                "planks", new Identifier("minecraft:polished_basalt"),
+                "plank_texture", new Identifier("minecraft:polished_basalt_side")
+            ),
+            Blocks.POLISHED_BASALT
+        );
+        POLISHED_BLACKSTONE_BOOKSHELF = new GenericBookshelf(
+            "polished_blackstone",
+            Map.of("planks", new Identifier("minecraft:polished_blackstone")),
+            Blocks.POLISHED_BLACKSTONE
+        );
+        POLISHED_BLACKSTONE_BRICK_BOOKSHELF = new GenericBookshelf(
+            "polished_blackstone_brick",
+            Map.of("planks", new Identifier("minecraft:polished_blackstone_bricks")),
+            Blocks.POLISHED_BLACKSTONE_BRICKS
+        );
+        POLISHED_DEEPSLATE_BOOKSHELF = new GenericBookshelf(
+            "polished_deepslate",
+            Map.of("planks", new Identifier("minecraft:polished_deepslate")),
+            Blocks.POLISHED_DEEPSLATE
+        );
+        POLISHED_DIORITE_BOOKSHELF = new GenericBookshelf(
+            "polished_diorite",
+            Map.of("planks", new Identifier("minecraft:polished_diorite")),
+            Blocks.POLISHED_DIORITE
+        );
+        POLISHED_GRANITE_BOOKSHELF = new GenericBookshelf(
+            "polished_granite",
+            Map.of("planks", new Identifier("minecraft:polished_granite")),
+            Blocks.POLISHED_GRANITE
+        );
+        PRISMARINE_BOOKSHELF = new GenericBookshelf(
+            "prismarine",
+            Map.of("planks", new Identifier("minecraft:prismarine")),
+            Blocks.PRISMARINE
+        );
+        PRISMARINE_BRICK_BOOKSHELF = new GenericBookshelf(
+            "prismarine_brick",
+            Map.of("planks", new Identifier("minecraft:prismarine_bricks")),
+            Blocks.PRISMARINE_BRICKS
+        );
         PURPUR_BOOKSHELF = new GenericBookshelf(
             "purpur",
             Map.of("planks", new Identifier("minecraft:purpur_block")),
             Blocks.PURPUR_BLOCK
-        );
-        QUARTZ_BOOKSHELF = new GenericBookshelf(
-            "quartz",
-            Map.of(
-                "planks", new Identifier("minecraft:quartz_block"),
-                "plank_texture", new Identifier("minecraft:quartz_block_side")
-            ),
-            Blocks.QUARTZ_BLOCK
         );
         QUARTZ_BRICK_BOOKSHELF = new GenericBookshelf(
             "quartz_brick",
@@ -123,10 +199,20 @@ public class Bookshelves implements MinekeaBlockCategory {
             ),
             Blocks.SMOOTH_QUARTZ
         );
+        SMOOTH_STONE_BOOKSHELF = new GenericBookshelf(
+            "smooth_stone",
+            Map.of("planks", new Identifier("minecraft:smooth_stone")),
+            Blocks.SMOOTH_STONE
+        );
         STONE_BRICK_BOOKSHELF = new GenericBookshelf(
             "stone_brick",
             Map.of("planks", new Identifier("minecraft:stone_bricks")),
             Blocks.STONE_BRICKS
+        );
+        WARPED_NETHER_BRICK_BOOKSHELF = new GenericBookshelf(
+            "warped_nether_brick",
+            Map.of("planks", WarpedNetherBricksBlock.BLOCK_ID),
+            BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK
         );
 
         ACACIA_STORAGE_SHELF = new GenericStorageBookshelf("acacia");
@@ -154,6 +240,22 @@ public class Bookshelves implements MinekeaBlockCategory {
             ),
             Blocks.DARK_PRISMARINE
         );
+        DEEPSLATE_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "deepslate_brick",
+            Map.of(
+                "planks", new Identifier("minecraft:deepslate_bricks"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/deepslate_brick_bookshelf")
+            ),
+            Blocks.DEEPSLATE_BRICKS
+        );
+        END_STONE_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "end_stone_brick",
+            Map.of(
+                "planks", new Identifier("minecraft:end_stone_bricks"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/end_stone_brick_bookshelf")
+            ),
+            Blocks.END_STONE_BRICKS
+        );
         NETHER_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
             "nether_brick",
             Map.of(
@@ -162,6 +264,78 @@ public class Bookshelves implements MinekeaBlockCategory {
             ),
             Blocks.NETHER_BRICKS
         );
+        POLISHED_ANDESITE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "polished_andesite",
+            Map.of(
+                "planks", new Identifier("minecraft:polished_andesite"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/polished_andesite_bookshelf")
+            ),
+            Blocks.POLISHED_ANDESITE
+        );
+        POLISHED_BASALT_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "polished_basalt",
+            Map.of(
+                "planks", new Identifier("minecraft:polished_basalt_side"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/polished_basalt_bookshelf")
+            ),
+            Blocks.POLISHED_BASALT
+        );
+        POLISHED_BLACKSTONE_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "polished_blackstone",
+            Map.of(
+                "planks", new Identifier("minecraft:polished_blackstone"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/polished_blackstone_bookshelf")
+            ),
+            Blocks.POLISHED_BLACKSTONE_BRICKS
+        );
+        POLISHED_BLACKSTONE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "polished_blackstone_brick",
+            Map.of(
+                "planks", new Identifier("minecraft:polished_blackstone_bricks"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/polished_blackstone_brick_bookshelf")
+            ),
+            Blocks.POLISHED_BLACKSTONE
+        );
+        POLISHED_DEEPSLATE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "polished_deepslate",
+            Map.of(
+                "planks", new Identifier("minecraft:polished_deepslate"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/polished_deepslate_bookshelf")
+            ),
+            Blocks.POLISHED_DEEPSLATE
+        );
+        POLISHED_DIORITE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "polished_diorite",
+            Map.of(
+                "planks", new Identifier("minecraft:polished_diorite"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/polished_diorite_bookshelf")
+            ),
+            Blocks.POLISHED_DIORITE
+        );
+        POLISHED_GRANITE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "polished_granite",
+            Map.of(
+                "planks", new Identifier("minecraft:polished_granite"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/polished_granite_bookshelf")
+            ),
+            Blocks.POLISHED_GRANITE
+        );
+        PRISMARINE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "prismarine",
+            Map.of(
+                "planks", new Identifier("minecraft:prismarine"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/prismarine_bookshelf")
+            ),
+            Blocks.PRISMARINE
+        );
+        PRISMARINE_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "prismarine_brick",
+            Map.of(
+                "planks", new Identifier("minecraft:prismarine_bricks"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/prismarine_brick_bookshelf")
+            ),
+            Blocks.PRISMARINE_BRICKS
+        );
         PURPUR_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
             "purpur",
             Map.of(
@@ -169,14 +343,6 @@ public class Bookshelves implements MinekeaBlockCategory {
                 "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/purpur_bookshelf")
             ),
             Blocks.PURPUR_BLOCK
-        );
-        QUARTZ_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
-            "quartz",
-            Map.of(
-                "planks", new Identifier("minecraft:quartz_block_side"),
-                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/quartz_bookshelf")
-            ),
-            Blocks.QUARTZ_BLOCK
         );
         QUARTZ_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
             "quartz_brick",
@@ -202,6 +368,14 @@ public class Bookshelves implements MinekeaBlockCategory {
             ),
             Blocks.SMOOTH_QUARTZ
         );
+        SMOOTH_STONE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "smooth_stone",
+            Map.of(
+                "planks", new Identifier("minecraft:smooth_stone"),
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/smooth_stone_bookshelf")
+            ),
+            Blocks.SMOOTH_STONE
+        );
         STONE_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
             "stone_brick",
             Map.of(
@@ -209,6 +383,14 @@ public class Bookshelves implements MinekeaBlockCategory {
                 "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/stone_brick_bookshelf")
             ),
             Blocks.STONE_BRICKS
+        );
+        WARPED_NETHER_BRICK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(
+            "warped_nether_brick",
+            Map.of(
+                "planks", WarpedNetherBricksBlock.BLOCK_ID,
+                "bookshelf", new Identifier(ModInfo.MOD_ID, "bookshelves/warped_nether_brick_bookshelf")
+            ),
+            Blocks.RED_NETHER_BRICKS
         );
 
         STORAGE_SHELF_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(
@@ -229,13 +411,25 @@ public class Bookshelves implements MinekeaBlockCategory {
 
         BONE_BOOKSHELF.register(false);
         DARK_PRISMARINE_BOOKSHELF.register(false);
+        DEEPSLATE_BRICK_BOOKSHELF.register();
+        END_STONE_BRICK_BOOKSHELF.register();
         NETHER_BRICK_BOOKSHELF.register(false);
+        POLISHED_ANDESITE_BOOKSHELF.register();
+        POLISHED_BASALT_BOOKSHELF.register();
+        POLISHED_BLACKSTONE_BOOKSHELF.register();
+        POLISHED_BLACKSTONE_BRICK_BOOKSHELF.register();
+        POLISHED_DEEPSLATE_BOOKSHELF.register();
+        POLISHED_DIORITE_BOOKSHELF.register();
+        POLISHED_GRANITE_BOOKSHELF.register();
+        PRISMARINE_BOOKSHELF.register();
+        PRISMARINE_BRICK_BOOKSHELF.register();
         PURPUR_BOOKSHELF.register(false);
-        QUARTZ_BOOKSHELF.register(false);
         QUARTZ_BRICK_BOOKSHELF.register(false);
         RED_NETHER_BRICK_BOOKSHELF.register(false);
         SMOOTH_QUARTZ_BOOKSHELF.register(false);
+        SMOOTH_STONE_BOOKSHELF.register();
         STONE_BRICK_BOOKSHELF.register(false);
+        WARPED_NETHER_BRICK_BOOKSHELF.register(false);
 
         ACACIA_STORAGE_SHELF.register();
         BIRCH_STORAGE_SHELF.register();
@@ -248,13 +442,25 @@ public class Bookshelves implements MinekeaBlockCategory {
 
         BONE_STORAGE_BOOKSHELF.register(false);
         DARK_PRISMARINE_STORAGE_BOOKSHELF.register(false);
+        DEEPSLATE_BRICK_STORAGE_BOOKSHELF.register();
+        END_STONE_BRICK_STORAGE_BOOKSHELF.register();
         NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
+        POLISHED_ANDESITE_STORAGE_BOOKSHELF.register();
+        POLISHED_BASALT_STORAGE_BOOKSHELF.register();
+        POLISHED_BLACKSTONE_BRICK_STORAGE_BOOKSHELF.register();
+        POLISHED_BLACKSTONE_STORAGE_BOOKSHELF.register();
+        POLISHED_DEEPSLATE_STORAGE_BOOKSHELF.register();
+        POLISHED_DIORITE_STORAGE_BOOKSHELF.register();
+        POLISHED_GRANITE_STORAGE_BOOKSHELF.register();
+        PRISMARINE_STORAGE_BOOKSHELF.register();
+        PRISMARINE_BRICK_STORAGE_BOOKSHELF.register();
         PURPUR_STORAGE_BOOKSHELF.register(false);
-        QUARTZ_STORAGE_BOOKSHELF.register(false);
         QUARTZ_BRICK_STORAGE_BOOKSHELF.register(false);
         RED_NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
         SMOOTH_QUARTZ_STORAGE_BOOKSHELF.register(false);
+        SMOOTH_STONE_STORAGE_BOOKSHELF.register();
         STONE_BRICK_STORAGE_BOOKSHELF.register(false);
+        WARPED_NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
 
         setupOakBookshelfResources();
     }
@@ -272,13 +478,25 @@ public class Bookshelves implements MinekeaBlockCategory {
             WARPED_STORAGE_SHELF,
             BONE_STORAGE_BOOKSHELF,
             DARK_PRISMARINE_STORAGE_BOOKSHELF,
+            DEEPSLATE_BRICK_STORAGE_BOOKSHELF,
+            END_STONE_BRICK_STORAGE_BOOKSHELF,
             NETHER_BRICK_STORAGE_BOOKSHELF,
+            POLISHED_ANDESITE_STORAGE_BOOKSHELF,
+            POLISHED_BASALT_STORAGE_BOOKSHELF,
+            POLISHED_BLACKSTONE_BRICK_STORAGE_BOOKSHELF,
+            POLISHED_BLACKSTONE_STORAGE_BOOKSHELF,
+            POLISHED_DEEPSLATE_STORAGE_BOOKSHELF,
+            POLISHED_DIORITE_STORAGE_BOOKSHELF,
+            POLISHED_GRANITE_STORAGE_BOOKSHELF,
+            PRISMARINE_STORAGE_BOOKSHELF,
+            PRISMARINE_BRICK_STORAGE_BOOKSHELF,
             PURPUR_STORAGE_BOOKSHELF,
-            QUARTZ_STORAGE_BOOKSHELF,
             QUARTZ_BRICK_STORAGE_BOOKSHELF,
             RED_NETHER_BRICK_STORAGE_BOOKSHELF,
             SMOOTH_QUARTZ_STORAGE_BOOKSHELF,
-            STONE_BRICK_STORAGE_BOOKSHELF
+            SMOOTH_STONE_STORAGE_BOOKSHELF,
+            STONE_BRICK_STORAGE_BOOKSHELF,
+            WARPED_NETHER_BRICK_STORAGE_BOOKSHELF
         ));
 
         for (ModCompatLayer mod : otherMods) {

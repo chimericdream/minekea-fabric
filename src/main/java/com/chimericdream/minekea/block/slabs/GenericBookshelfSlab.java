@@ -1,15 +1,11 @@
 package com.chimericdream.minekea.block.slabs;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;
-import com.google.gson.JsonObject;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
-import net.devtech.arrp.json.loot.JCondition;
-import net.devtech.arrp.json.loot.JEntry;
-import net.devtech.arrp.json.loot.JFunction;
-import net.devtech.arrp.json.loot.JLootTable;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
@@ -86,34 +82,9 @@ public class GenericBookshelfSlab extends SlabBlock {
             )
         );
 
-        JsonObject doubleType = new JsonObject();
-        doubleType.addProperty("type", "double");
-
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(
             new Identifier(BLOCK_ID.getNamespace(), "blocks/" + BLOCK_ID.getPath()),
-            JLootTable.loot("minecraft:block")
-                .pool(
-                    JLootTable.pool()
-                        .rolls(1)
-                        .entry(
-                            new JEntry()
-                                .type("minecraft:item")
-                                .name(BLOCK_ID.toString())
-                                .function("minecraft:explosion_decay")
-                                .function(
-                                    new JFunction("minecraft:set_count")
-                                        .parameter("count", 2)
-                                        .parameter("add", false)
-                                        .condition(
-                                            new JCondition()
-                                                .condition("minecraft:block_state_property")
-                                                .parameter("block", BLOCK_ID.toString())
-                                                .parameter("properties", doubleType)
-                                        )
-                                )
-                        )
-                        .condition(new JCondition().condition("minecraft:survives_explosion"))
-                )
+            LootTable.slabLootTable(BLOCK_ID)
         );
 
         JTextures textures = new JTextures()

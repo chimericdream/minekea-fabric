@@ -124,22 +124,10 @@ public class MinekeaMod implements ModInitializer {
      * https://www.curseforge.com/minecraft/mc-mods/bookinit
      * https://www.curseforge.com/minecraft/mc-mods/beholders-bookshelves
      *
+     * [ ] block covers (veneer/plate/"carpet")
      * [ ] iron shelves
      * [ ] variant crafting tables
      * [ ] variant ladders
-     * [ ] bookshelves in non-wood varieties
-     * [ ]   - smooth stone
-     * [ ]   - polished granite
-     * [ ]   - polished andesite
-     * [ ]   - polished diorite
-     * [ ]   - polished blackstone
-     * [ ]   - polished blackstone bricks
-     * [ ]   - polished deepslate
-     * [ ]   - polished basalt
-     * [ ]   - deepslate bricks
-     * [ ]   - endstone bricks
-     * [ ]   - prismarine bricks
-     * [ ]   - prismarine
      */
 
     @Override
