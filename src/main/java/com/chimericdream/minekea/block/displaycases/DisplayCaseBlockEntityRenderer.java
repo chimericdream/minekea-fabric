@@ -15,6 +15,7 @@ import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.HitResult;
@@ -72,6 +73,11 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
             matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90));
             matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(rotation * 45));
             matrices.scale(0.5f, 0.5f, 0.5f);
+        }
+
+        // Rotate heads so they face up instead of being half inside the case
+        if (id.compareTo(Registry.ITEM.getId(Items.PLAYER_HEAD)) == 0) {
+            matrices.multiply(Vec3f.NEGATIVE_X.getDegreesQuaternion(90));
         }
 
         ModelTransformation.Mode mode = isBlock ? ModelTransformation.Mode.GROUND : ModelTransformation.Mode.FIXED;
