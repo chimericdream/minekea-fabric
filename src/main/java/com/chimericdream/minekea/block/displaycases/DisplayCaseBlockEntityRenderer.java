@@ -41,6 +41,15 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
         return model.hasDepth();
     }
 
+    private boolean isHeadItem(Identifier id) {
+        return
+            id.compareTo(Registry.ITEM.getId(Items.PLAYER_HEAD)) == 0
+                || id.compareTo(Registry.ITEM.getId(Items.ZOMBIE_HEAD)) == 0
+                || id.compareTo(Registry.ITEM.getId(Items.SKELETON_SKULL)) == 0
+                || id.compareTo(Registry.ITEM.getId(Items.CREEPER_HEAD)) == 0
+                || id.compareTo(Registry.ITEM.getId(Items.WITHER_SKELETON_SKULL)) == 0;
+    }
+
     @Override
     public void render(DisplayCaseBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         BlockState state = entity.getCachedState();
@@ -76,7 +85,7 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
         }
 
         // Rotate heads so they face up instead of being half inside the case
-        if (id.compareTo(Registry.ITEM.getId(Items.PLAYER_HEAD)) == 0) {
+        if (isHeadItem(id)) {
             matrices.multiply(Vec3f.NEGATIVE_X.getDegreesQuaternion(90));
         }
 
