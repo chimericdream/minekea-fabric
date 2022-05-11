@@ -7,7 +7,6 @@ import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.doors.Doors;
-import com.chimericdream.minekea.block.jars.Jars;
 import com.chimericdream.minekea.block.seating.Seats;
 import com.chimericdream.minekea.block.shelves.Shelves;
 import com.chimericdream.minekea.block.slabs.BookshelfSlabs;
@@ -49,7 +48,6 @@ public class MinekeaMod implements ModInitializer {
     public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Tables TABLES;
     public static final Seats SEATS;
-    public static final Jars JARS;
     public static final StorageBlocks STORAGE_BLOCKS;
     public static final Fluids FLUIDS;
 
@@ -78,7 +76,6 @@ public class MinekeaMod implements ModInitializer {
         DECORATION_BLOCKS = new DecorationBlocks();
         TABLES = new Tables();
         SEATS = new Seats();
-        JARS = new Jars();
         STORAGE_BLOCKS = new StorageBlocks();
         FLUIDS = new Fluids();
 
@@ -96,7 +93,6 @@ public class MinekeaMod implements ModInitializer {
             DECORATION_BLOCKS,
             TABLES,
             SEATS,
-            JARS,
             STORAGE_BLOCKS,
             FLUIDS
         };

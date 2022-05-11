@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.jars;
+package com.chimericdream.minekea.block.decorations.jars;
 
 import com.chimericdream.minekea.block.storage.StorageBlocks;
 import com.chimericdream.minekea.util.ItemHelpers;

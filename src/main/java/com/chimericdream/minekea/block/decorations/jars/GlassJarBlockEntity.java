@@ -1,5 +1,6 @@
-package com.chimericdream.minekea.block.jars;
+package com.chimericdream.minekea.block.decorations.jars;
 
+import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -45,7 +46,7 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     public static final String FLUID_AMT_KEY = "StoredFluidAmount";
 
     public GlassJarBlockEntity(BlockPos pos, BlockState state) {
-        this(Jars.GLASS_JAR_BLOCK_ENTITY, pos, state);
+        this(DecorationBlocks.GLASS_JAR_BLOCK_ENTITY, pos, state);
     }
 
     public GlassJarBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {

@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.jars;
+package com.chimericdream.minekea.block.decorations.jars;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

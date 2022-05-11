@@ -1,7 +1,8 @@
-package com.chimericdream.minekea.block.jars;
+package com.chimericdream.minekea.block.decorations.jars;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.FluidHelpers;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -64,7 +65,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new GlassJarBlockEntity(Jars.GLASS_JAR_BLOCK_ENTITY, pos, state);
+        return new GlassJarBlockEntity(DecorationBlocks.GLASS_JAR_BLOCK_ENTITY, pos, state);
     }
 
     @Override
@@ -182,14 +183,14 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                         (double) pos.getX() + 0.5D,
                         (double) pos.getY() + 0.5D,
                         (double) pos.getZ() + 0.5D,
-                        Jars.GLASS_JAR_ITEM.getDefaultStack()
+                        DecorationBlocks.GLASS_JAR_ITEM.getDefaultStack()
                     );
 
                     itemEntity.setToDefaultPickupDelay();
 
                     world.spawnEntity(itemEntity);
                 } else if (!entity.isEmpty()) {
-                    ItemStack itemStack = new ItemStack(Jars.GLASS_JAR_ITEM);
+                    ItemStack itemStack = new ItemStack(DecorationBlocks.GLASS_JAR_ITEM);
                     NbtCompound nbt = new NbtCompound();
                     entity.writeNbt(nbt);
 
@@ -338,7 +339,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Jars.GLASS_JAR_ITEM = Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS).maxCount(8)));
+        DecorationBlocks.GLASS_JAR_ITEM = Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS).maxCount(8)));
 
         setupResources();
     }

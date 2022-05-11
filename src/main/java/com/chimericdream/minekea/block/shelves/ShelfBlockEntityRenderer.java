@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.shelves;
 
-import com.chimericdream.minekea.block.jars.Jars;
+import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -36,7 +36,7 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
     }
 
     private boolean isJarItem(ItemStack stack) {
-        return stack.isItemEqual(Jars.GLASS_JAR.asItem().getDefaultStack());
+        return stack.isItemEqual(DecorationBlocks.GLASS_JAR.asItem().getDefaultStack());
     }
 
     @Override
