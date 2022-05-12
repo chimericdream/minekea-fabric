@@ -1,6 +1,7 @@
 package com.chimericdream.minekea;
 
 import com.chimericdream.minekea.block.barrels.Barrels;
+import com.chimericdream.minekea.block.beams.Beams;
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.crates.Crates;
@@ -35,6 +36,7 @@ import java.util.List;
 public class MinekeaMod implements ModInitializer {
     public static final Logger LOGGER;
 
+    public static final Beams BEAMS;
     public static final Bookshelves BOOKSHELVES;
     public static final BuildingBlocks BUILDING_BLOCKS;
     public static final Doors DOORS;
@@ -63,6 +65,7 @@ public class MinekeaMod implements ModInitializer {
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
 
+        BEAMS = new Beams();
         BOOKSHELVES = new Bookshelves();
         BUILDING_BLOCKS = new BuildingBlocks();
         DOORS = new Doors();
@@ -80,6 +83,7 @@ public class MinekeaMod implements ModInitializer {
         FLUIDS = new Fluids();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
+            BEAMS,
             BOOKSHELVES,
             BUILDING_BLOCKS,
             DOORS,
