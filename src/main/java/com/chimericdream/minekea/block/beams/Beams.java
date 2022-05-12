@@ -61,6 +61,71 @@ public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock SMOOTH_RED_SANDSTONE_BEAM;
     public static final GenericBeamBlock SMOOTH_SANDSTONE_BEAM;
 
+    public static final GenericBeamBlock WHITE_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock ORANGE_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock MAGENTA_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock LIGHT_BLUE_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock YELLOW_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock LIME_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock PINK_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock GRAY_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock LIGHT_GRAY_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock CYAN_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock PURPLE_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock BLUE_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock BROWN_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock GREEN_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock RED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock BLACK_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock WHITE_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock ORANGE_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock MAGENTA_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock LIGHT_BLUE_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock YELLOW_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock LIME_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock PINK_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock GRAY_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock LIGHT_GRAY_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock CYAN_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock PURPLE_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock BLUE_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock BROWN_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock GREEN_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock RED_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock BLACK_GLAZED_TERRACOTTA_BEAM;
+    public static final GenericBeamBlock WHITE_CONCRETE_BEAM;
+    public static final GenericBeamBlock ORANGE_CONCRETE_BEAM;
+    public static final GenericBeamBlock MAGENTA_CONCRETE_BEAM;
+    public static final GenericBeamBlock LIGHT_BLUE_CONCRETE_BEAM;
+    public static final GenericBeamBlock YELLOW_CONCRETE_BEAM;
+    public static final GenericBeamBlock LIME_CONCRETE_BEAM;
+    public static final GenericBeamBlock PINK_CONCRETE_BEAM;
+    public static final GenericBeamBlock GRAY_CONCRETE_BEAM;
+    public static final GenericBeamBlock LIGHT_GRAY_CONCRETE_BEAM;
+    public static final GenericBeamBlock CYAN_CONCRETE_BEAM;
+    public static final GenericBeamBlock PURPLE_CONCRETE_BEAM;
+    public static final GenericBeamBlock BLUE_CONCRETE_BEAM;
+    public static final GenericBeamBlock BROWN_CONCRETE_BEAM;
+    public static final GenericBeamBlock GREEN_CONCRETE_BEAM;
+    public static final GenericBeamBlock RED_CONCRETE_BEAM;
+    public static final GenericBeamBlock BLACK_CONCRETE_BEAM;
+    public static final GenericBeamBlock ACACIA_LOG_BEAM;
+    public static final GenericBeamBlock BIRCH_LOG_BEAM;
+    public static final GenericBeamBlock CRIMSON_STEM_BEAM;
+    public static final GenericBeamBlock DARK_OAK_LOG_BEAM;
+    public static final GenericBeamBlock JUNGLE_LOG_BEAM;
+    public static final GenericBeamBlock OAK_LOG_BEAM;
+    public static final GenericBeamBlock SPRUCE_LOG_BEAM;
+    public static final GenericBeamBlock WARPED_STEM_BEAM;
+    public static final GenericBeamBlock ACACIA_PLANK_BEAM;
+    public static final GenericBeamBlock BIRCH_PLANK_BEAM;
+    public static final GenericBeamBlock CRIMSON_PLANK_BEAM;
+    public static final GenericBeamBlock DARK_OAK_PLANK_BEAM;
+    public static final GenericBeamBlock JUNGLE_PLANK_BEAM;
+    public static final GenericBeamBlock OAK_PLANK_BEAM;
+    public static final GenericBeamBlock SPRUCE_PLANK_BEAM;
+    public static final GenericBeamBlock WARPED_PLANK_BEAM;
+
     static {
         ANDESITE_BEAM = new GenericBeamBlock("andesite", Map.of("main", new Identifier("minecraft:andesite")));
         BLACKSTONE_BEAM = new GenericBeamBlock("blackstone", Map.of("main", new Identifier("minecraft:blackstone")));
@@ -140,8 +205,7 @@ public class Beams implements MinekeaBlockCategory {
         PURPUR_BEAM = new GenericBeamBlock(
             "purpur",
             Map.of(
-                "main", new Identifier("minecraft:purpur_block"),
-                "ingredient", new Identifier("minecraft:purpur")
+                "main", new Identifier("minecraft:purpur_block")
             )
         );
         SMOOTH_RED_SANDSTONE_BEAM = new GenericBeamBlock(
@@ -158,6 +222,71 @@ public class Beams implements MinekeaBlockCategory {
                 "ingredient", new Identifier("minecraft:smooth_sandstone")
             )
         );
+
+        WHITE_TERRACOTTA_BEAM = new GenericBeamBlock("white_terracotta", Map.of("main", new Identifier("minecraft:white_terracotta")));
+        ORANGE_TERRACOTTA_BEAM = new GenericBeamBlock("orange_terracotta", Map.of("main", new Identifier("minecraft:orange_terracotta")));
+        MAGENTA_TERRACOTTA_BEAM = new GenericBeamBlock("magenta_terracotta", Map.of("main", new Identifier("minecraft:magenta_terracotta")));
+        LIGHT_BLUE_TERRACOTTA_BEAM = new GenericBeamBlock("light_blue_terracotta", Map.of("main", new Identifier("minecraft:light_blue_terracotta")));
+        YELLOW_TERRACOTTA_BEAM = new GenericBeamBlock("yellow_terracotta", Map.of("main", new Identifier("minecraft:yellow_terracotta")));
+        LIME_TERRACOTTA_BEAM = new GenericBeamBlock("lime_terracotta", Map.of("main", new Identifier("minecraft:lime_terracotta")));
+        PINK_TERRACOTTA_BEAM = new GenericBeamBlock("pink_terracotta", Map.of("main", new Identifier("minecraft:pink_terracotta")));
+        GRAY_TERRACOTTA_BEAM = new GenericBeamBlock("gray_terracotta", Map.of("main", new Identifier("minecraft:gray_terracotta")));
+        LIGHT_GRAY_TERRACOTTA_BEAM = new GenericBeamBlock("light_gray_terracotta", Map.of("main", new Identifier("minecraft:light_gray_terracotta")));
+        CYAN_TERRACOTTA_BEAM = new GenericBeamBlock("cyan_terracotta", Map.of("main", new Identifier("minecraft:cyan_terracotta")));
+        PURPLE_TERRACOTTA_BEAM = new GenericBeamBlock("purple_terracotta", Map.of("main", new Identifier("minecraft:purple_terracotta")));
+        BLUE_TERRACOTTA_BEAM = new GenericBeamBlock("blue_terracotta", Map.of("main", new Identifier("minecraft:blue_terracotta")));
+        BROWN_TERRACOTTA_BEAM = new GenericBeamBlock("brown_terracotta", Map.of("main", new Identifier("minecraft:brown_terracotta")));
+        GREEN_TERRACOTTA_BEAM = new GenericBeamBlock("green_terracotta", Map.of("main", new Identifier("minecraft:green_terracotta")));
+        RED_TERRACOTTA_BEAM = new GenericBeamBlock("red_terracotta", Map.of("main", new Identifier("minecraft:red_terracotta")));
+        BLACK_TERRACOTTA_BEAM = new GenericBeamBlock("black_terracotta", Map.of("main", new Identifier("minecraft:black_terracotta")));
+        WHITE_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("white_glazed_terracotta", Map.of("main", new Identifier("minecraft:white_glazed_terracotta")));
+        ORANGE_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("orange_glazed_terracotta", Map.of("main", new Identifier("minecraft:orange_glazed_terracotta")));
+        MAGENTA_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("magenta_glazed_terracotta", Map.of("main", new Identifier("minecraft:magenta_glazed_terracotta")));
+        LIGHT_BLUE_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("light_blue_glazed_terracotta", Map.of("main", new Identifier("minecraft:light_blue_glazed_terracotta")));
+        YELLOW_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("yellow_glazed_terracotta", Map.of("main", new Identifier("minecraft:yellow_glazed_terracotta")));
+        LIME_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("lime_glazed_terracotta", Map.of("main", new Identifier("minecraft:lime_glazed_terracotta")));
+        PINK_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("pink_glazed_terracotta", Map.of("main", new Identifier("minecraft:pink_glazed_terracotta")));
+        GRAY_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("gray_glazed_terracotta", Map.of("main", new Identifier("minecraft:gray_glazed_terracotta")));
+        LIGHT_GRAY_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("light_gray_glazed_terracotta", Map.of("main", new Identifier("minecraft:light_gray_glazed_terracotta")));
+        CYAN_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("cyan_glazed_terracotta", Map.of("main", new Identifier("minecraft:cyan_glazed_terracotta")));
+        PURPLE_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("purple_glazed_terracotta", Map.of("main", new Identifier("minecraft:purple_glazed_terracotta")));
+        BLUE_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("blue_glazed_terracotta", Map.of("main", new Identifier("minecraft:blue_glazed_terracotta")));
+        BROWN_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("brown_glazed_terracotta", Map.of("main", new Identifier("minecraft:brown_glazed_terracotta")));
+        GREEN_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("green_glazed_terracotta", Map.of("main", new Identifier("minecraft:green_glazed_terracotta")));
+        RED_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("red_glazed_terracotta", Map.of("main", new Identifier("minecraft:red_glazed_terracotta")));
+        BLACK_GLAZED_TERRACOTTA_BEAM = new GenericBeamBlock("black_glazed_terracotta", Map.of("main", new Identifier("minecraft:black_glazed_terracotta")));
+        WHITE_CONCRETE_BEAM = new GenericBeamBlock("white_concrete", Map.of("main", new Identifier("minecraft:white_concrete")));
+        ORANGE_CONCRETE_BEAM = new GenericBeamBlock("orange_concrete", Map.of("main", new Identifier("minecraft:orange_concrete")));
+        MAGENTA_CONCRETE_BEAM = new GenericBeamBlock("magenta_concrete", Map.of("main", new Identifier("minecraft:magenta_concrete")));
+        LIGHT_BLUE_CONCRETE_BEAM = new GenericBeamBlock("light_blue_concrete", Map.of("main", new Identifier("minecraft:light_blue_concrete")));
+        YELLOW_CONCRETE_BEAM = new GenericBeamBlock("yellow_concrete", Map.of("main", new Identifier("minecraft:yellow_concrete")));
+        LIME_CONCRETE_BEAM = new GenericBeamBlock("lime_concrete", Map.of("main", new Identifier("minecraft:lime_concrete")));
+        PINK_CONCRETE_BEAM = new GenericBeamBlock("pink_concrete", Map.of("main", new Identifier("minecraft:pink_concrete")));
+        GRAY_CONCRETE_BEAM = new GenericBeamBlock("gray_concrete", Map.of("main", new Identifier("minecraft:gray_concrete")));
+        LIGHT_GRAY_CONCRETE_BEAM = new GenericBeamBlock("light_gray_concrete", Map.of("main", new Identifier("minecraft:light_gray_concrete")));
+        CYAN_CONCRETE_BEAM = new GenericBeamBlock("cyan_concrete", Map.of("main", new Identifier("minecraft:cyan_concrete")));
+        PURPLE_CONCRETE_BEAM = new GenericBeamBlock("purple_concrete", Map.of("main", new Identifier("minecraft:purple_concrete")));
+        BLUE_CONCRETE_BEAM = new GenericBeamBlock("blue_concrete", Map.of("main", new Identifier("minecraft:blue_concrete")));
+        BROWN_CONCRETE_BEAM = new GenericBeamBlock("brown_concrete", Map.of("main", new Identifier("minecraft:brown_concrete")));
+        GREEN_CONCRETE_BEAM = new GenericBeamBlock("green_concrete", Map.of("main", new Identifier("minecraft:green_concrete")));
+        RED_CONCRETE_BEAM = new GenericBeamBlock("red_concrete", Map.of("main", new Identifier("minecraft:red_concrete")));
+        BLACK_CONCRETE_BEAM = new GenericBeamBlock("black_concrete", Map.of("main", new Identifier("minecraft:black_concrete")));
+        ACACIA_LOG_BEAM = new GenericBeamBlock("acacia_log", Map.of("main", new Identifier("minecraft:acacia_log"), "end", new Identifier("minecraft:acacia_log_top")));
+        BIRCH_LOG_BEAM = new GenericBeamBlock("birch_log", Map.of("main", new Identifier("minecraft:birch_log"), "end", new Identifier("minecraft:birch_log_top")));
+        CRIMSON_STEM_BEAM = new GenericBeamBlock("crimson_stem", Map.of("main", new Identifier("minecraft:crimson_stem"), "end", new Identifier("minecraft:crimson_stem_top")));
+        DARK_OAK_LOG_BEAM = new GenericBeamBlock("dark_oak_log", Map.of("main", new Identifier("minecraft:dark_oak_log"), "end", new Identifier("minecraft:dark_oak_log_top")));
+        JUNGLE_LOG_BEAM = new GenericBeamBlock("jungle_log", Map.of("main", new Identifier("minecraft:jungle_log"), "end", new Identifier("minecraft:jungle_log_top")));
+        OAK_LOG_BEAM = new GenericBeamBlock("oak_log", Map.of("main", new Identifier("minecraft:oak_log"), "end", new Identifier("minecraft:oak_log_top")));
+        SPRUCE_LOG_BEAM = new GenericBeamBlock("spruce_log", Map.of("main", new Identifier("minecraft:spruce_log"), "end", new Identifier("minecraft:spruce_log_top")));
+        WARPED_STEM_BEAM = new GenericBeamBlock("warped_stem", Map.of("main", new Identifier("minecraft:warped_stem"), "end", new Identifier("minecraft:warped_stem_top")));
+        ACACIA_PLANK_BEAM = new GenericBeamBlock("acacia_plank", Map.of("main", new Identifier("minecraft:acacia_planks")));
+        BIRCH_PLANK_BEAM = new GenericBeamBlock("birch_plank", Map.of("main", new Identifier("minecraft:birch_planks")));
+        CRIMSON_PLANK_BEAM = new GenericBeamBlock("crimson_plank", Map.of("main", new Identifier("minecraft:crimson_planks")));
+        DARK_OAK_PLANK_BEAM = new GenericBeamBlock("dark_oak_plank", Map.of("main", new Identifier("minecraft:dark_oak_planks")));
+        JUNGLE_PLANK_BEAM = new GenericBeamBlock("jungle_plank", Map.of("main", new Identifier("minecraft:jungle_planks")));
+        OAK_PLANK_BEAM = new GenericBeamBlock("oak_plank", Map.of("main", new Identifier("minecraft:oak_planks")));
+        SPRUCE_PLANK_BEAM = new GenericBeamBlock("spruce_plank", Map.of("main", new Identifier("minecraft:spruce_planks")));
+        WARPED_PLANK_BEAM = new GenericBeamBlock("warped_plank", Map.of("main", new Identifier("minecraft:warped_planks")));
     }
 
     @Override
@@ -212,6 +341,70 @@ public class Beams implements MinekeaBlockCategory {
         STONE_BRICK_BEAM.register(false);
         TUFF_BEAM.register(false);
         WARPED_NETHER_BRICK_BEAM.register(false);
+        WHITE_TERRACOTTA_BEAM.register(false);
+        ORANGE_TERRACOTTA_BEAM.register(false);
+        MAGENTA_TERRACOTTA_BEAM.register(false);
+        LIGHT_BLUE_TERRACOTTA_BEAM.register(false);
+        YELLOW_TERRACOTTA_BEAM.register(false);
+        LIME_TERRACOTTA_BEAM.register(false);
+        PINK_TERRACOTTA_BEAM.register(false);
+        GRAY_TERRACOTTA_BEAM.register(false);
+        LIGHT_GRAY_TERRACOTTA_BEAM.register(false);
+        CYAN_TERRACOTTA_BEAM.register(false);
+        PURPLE_TERRACOTTA_BEAM.register(false);
+        BLUE_TERRACOTTA_BEAM.register(false);
+        BROWN_TERRACOTTA_BEAM.register(false);
+        GREEN_TERRACOTTA_BEAM.register(false);
+        RED_TERRACOTTA_BEAM.register(false);
+        BLACK_TERRACOTTA_BEAM.register(false);
+        WHITE_GLAZED_TERRACOTTA_BEAM.register(false);
+        ORANGE_GLAZED_TERRACOTTA_BEAM.register(false);
+        MAGENTA_GLAZED_TERRACOTTA_BEAM.register(false);
+        LIGHT_BLUE_GLAZED_TERRACOTTA_BEAM.register(false);
+        YELLOW_GLAZED_TERRACOTTA_BEAM.register(false);
+        LIME_GLAZED_TERRACOTTA_BEAM.register(false);
+        PINK_GLAZED_TERRACOTTA_BEAM.register(false);
+        GRAY_GLAZED_TERRACOTTA_BEAM.register(false);
+        LIGHT_GRAY_GLAZED_TERRACOTTA_BEAM.register(false);
+        CYAN_GLAZED_TERRACOTTA_BEAM.register(false);
+        PURPLE_GLAZED_TERRACOTTA_BEAM.register(false);
+        BLUE_GLAZED_TERRACOTTA_BEAM.register(false);
+        BROWN_GLAZED_TERRACOTTA_BEAM.register(false);
+        GREEN_GLAZED_TERRACOTTA_BEAM.register(false);
+        RED_GLAZED_TERRACOTTA_BEAM.register(false);
+        BLACK_GLAZED_TERRACOTTA_BEAM.register(false);
+        WHITE_CONCRETE_BEAM.register(false);
+        ORANGE_CONCRETE_BEAM.register(false);
+        MAGENTA_CONCRETE_BEAM.register(false);
+        LIGHT_BLUE_CONCRETE_BEAM.register(false);
+        YELLOW_CONCRETE_BEAM.register(false);
+        LIME_CONCRETE_BEAM.register(false);
+        PINK_CONCRETE_BEAM.register(false);
+        GRAY_CONCRETE_BEAM.register(false);
+        LIGHT_GRAY_CONCRETE_BEAM.register(false);
+        CYAN_CONCRETE_BEAM.register(false);
+        PURPLE_CONCRETE_BEAM.register(false);
+        BLUE_CONCRETE_BEAM.register(false);
+        BROWN_CONCRETE_BEAM.register(false);
+        GREEN_CONCRETE_BEAM.register(false);
+        RED_CONCRETE_BEAM.register(false);
+        BLACK_CONCRETE_BEAM.register(false);
+        ACACIA_LOG_BEAM.register();
+        BIRCH_LOG_BEAM.register();
+        CRIMSON_STEM_BEAM.register(false);
+        DARK_OAK_LOG_BEAM.register();
+        JUNGLE_LOG_BEAM.register();
+        OAK_LOG_BEAM.register();
+        SPRUCE_LOG_BEAM.register();
+        WARPED_STEM_BEAM.register(false);
+        ACACIA_PLANK_BEAM.register();
+        BIRCH_PLANK_BEAM.register();
+        CRIMSON_PLANK_BEAM.register(false);
+        DARK_OAK_PLANK_BEAM.register();
+        JUNGLE_PLANK_BEAM.register();
+        OAK_PLANK_BEAM.register();
+        SPRUCE_PLANK_BEAM.register();
+        WARPED_PLANK_BEAM.register(false);
     }
 
     @Override

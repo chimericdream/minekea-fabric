@@ -17,6 +17,8 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
@@ -111,6 +113,54 @@ public class WrenchItem extends Item implements MinekeaItem {
         return false;
     }
 
+    private double getPartialCoord(Direction hitSide, double coord) {
+        double offset = 0.00001;
+
+        if (hitSide == Direction.EAST || hitSide == Direction.SOUTH || hitSide == Direction.UP) {
+            offset = -1 * offset;
+        }
+
+        int floor = MathHelper.floor(coord + offset);
+
+        return coord - (double) floor;
+    }
+
+    private boolean tryBeam(BlockState state, ItemUsageContext context, BlockPos pos, World world) {
+//        if (state.getBlock() instanceof GenericBeamBlock) {
+//            Direction hitSide = context.getSide();
+//            Vec3d hitPos = context.getHitPos();
+//            BooleanProperty connection = GenericBeamBlock.getConnectionProperty(hitSide);
+//
+//            double x = getPartialCoord(hitSide, hitPos.x);
+//            double y = getPartialCoord(hitSide, hitPos.y);
+//            double z = getPartialCoord(hitSide, hitPos.z);
+//
+//            double UPPER_ARM_START = 0.687500;
+//            double LOWER_ARM_END = 0.312500;
+//
+//            if (x > UPPER_ARM_START) {
+//                connection = GenericBeamBlock.CONNECTED_EAST;
+//            } else if (y > UPPER_ARM_START) {
+//                connection = GenericBeamBlock.CONNECTED_UP;
+//            } else if (z > UPPER_ARM_START) {
+//                connection = GenericBeamBlock.CONNECTED_SOUTH;
+//            } else if (x < LOWER_ARM_END) {
+//                connection = GenericBeamBlock.CONNECTED_WEST;
+//            } else if (y < LOWER_ARM_END) {
+//                connection = GenericBeamBlock.CONNECTED_DOWN;
+//            } else if (z < LOWER_ARM_END) {
+//                connection = GenericBeamBlock.CONNECTED_NORTH;
+//            }
+//
+//            world.setBlockState(pos, state.with(connection, !state.get(connection)));
+//            world.markDirty(pos);
+//
+//            return true;
+//        }
+
+        return false;
+    }
+
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
@@ -130,6 +180,7 @@ public class WrenchItem extends Item implements MinekeaItem {
             tryFacing(state, pos, world)
                 || tryAxes(state, pos, world)
                 || trySlab(state, pos, world)
+                || tryBeam(state, context, pos, world)
         ) {
             if (!world.isClient()) {
                 world.playSound(null, pos, SoundEvents.ITEM_SPYGLASS_USE, SoundCategory.AMBIENT, 2.0F, 1.5F);

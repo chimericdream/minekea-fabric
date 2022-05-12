@@ -15,7 +15,7 @@
                 "east": {"uv": [5, 11, 11, 16], "texture": "#beam"},
                 "south": {"uv": [5, 11, 11, 16], "texture": "#beam"},
                 "west": {"uv": [5, 5, 11, 0], "texture": "#beam"},
-                "down": {"uv": [5, 5, 11, 11], "texture": "#beam"}
+                "down": {"uv": [5, 5, 11, 11], "texture": "#end"}
             }
         }
     ]

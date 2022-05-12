@@ -34,7 +34,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.WorldAccess;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -159,13 +158,15 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
 
         Direction hitSide = ctx.getSide();
 
-        BlockState blockState = this.getDefaultState()
-            .with(CONNECTED_NORTH, canConnect(northState))
-            .with(CONNECTED_EAST, canConnect(eastState))
-            .with(CONNECTED_SOUTH, canConnect(southState))
-            .with(CONNECTED_WEST, canConnect(westState))
-            .with(CONNECTED_UP, canConnect(upState))
-            .with(CONNECTED_DOWN, canConnect(downState));
+        BlockState blockState = this.getDefaultState();
+
+//        BlockState blockState = this.getDefaultState()
+//            .with(CONNECTED_NORTH, canConnect(northState))
+//            .with(CONNECTED_EAST, canConnect(eastState))
+//            .with(CONNECTED_SOUTH, canConnect(southState))
+//            .with(CONNECTED_WEST, canConnect(westState))
+//            .with(CONNECTED_UP, canConnect(upState))
+//            .with(CONNECTED_DOWN, canConnect(downState));
 
         blockState = switch (hitSide) {
             case NORTH, SOUTH -> blockState.with(CONNECTED_NORTH, true).with(CONNECTED_SOUTH, true);
@@ -176,7 +177,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         return blockState;
     }
 
-    private BooleanProperty getConnectionProperty(Direction direction) {
+    public static BooleanProperty getConnectionProperty(Direction direction) {
         return switch (direction) {
             case NORTH -> CONNECTED_NORTH;
             case EAST -> CONNECTED_EAST;
@@ -187,10 +188,10 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         };
     }
 
-    @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        return state.with(getConnectionProperty(direction), neighborState.isOf(this));
-    }
+//    @Override
+//    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+//        return state.with(getConnectionProperty(direction), neighborState.isOf(this));
+//    }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(
