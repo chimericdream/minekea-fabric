@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.slabs.GenericBookshelfSlab;
+import com.chimericdream.minekea.block.bookshelves.slabs.GenericBookshelfSlab;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;

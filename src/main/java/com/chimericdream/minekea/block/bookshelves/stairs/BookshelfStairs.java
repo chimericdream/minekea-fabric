@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.stairs;
+package com.chimericdream.minekea.block.bookshelves.stairs;
 
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.compat.ModCompatLayer;

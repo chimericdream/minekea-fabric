@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.stairs;
+package com.chimericdream.minekea.block.bookshelves.stairs;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
