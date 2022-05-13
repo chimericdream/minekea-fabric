@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.item;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.beams.GenericBeamBlock;
 import com.chimericdream.minekea.util.MinekeaItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.BedBlock;
@@ -13,12 +14,14 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
@@ -126,37 +129,37 @@ public class WrenchItem extends Item implements MinekeaItem {
     }
 
     private boolean tryBeam(BlockState state, ItemUsageContext context, BlockPos pos, World world) {
-//        if (state.getBlock() instanceof GenericBeamBlock) {
-//            Direction hitSide = context.getSide();
-//            Vec3d hitPos = context.getHitPos();
-//            BooleanProperty connection = GenericBeamBlock.getConnectionProperty(hitSide);
-//
-//            double x = getPartialCoord(hitSide, hitPos.x);
-//            double y = getPartialCoord(hitSide, hitPos.y);
-//            double z = getPartialCoord(hitSide, hitPos.z);
-//
-//            double UPPER_ARM_START = 0.687500;
-//            double LOWER_ARM_END = 0.312500;
-//
-//            if (x > UPPER_ARM_START) {
-//                connection = GenericBeamBlock.CONNECTED_EAST;
-//            } else if (y > UPPER_ARM_START) {
-//                connection = GenericBeamBlock.CONNECTED_UP;
-//            } else if (z > UPPER_ARM_START) {
-//                connection = GenericBeamBlock.CONNECTED_SOUTH;
-//            } else if (x < LOWER_ARM_END) {
-//                connection = GenericBeamBlock.CONNECTED_WEST;
-//            } else if (y < LOWER_ARM_END) {
-//                connection = GenericBeamBlock.CONNECTED_DOWN;
-//            } else if (z < LOWER_ARM_END) {
-//                connection = GenericBeamBlock.CONNECTED_NORTH;
-//            }
-//
-//            world.setBlockState(pos, state.with(connection, !state.get(connection)));
-//            world.markDirty(pos);
-//
-//            return true;
-//        }
+        if (state.getBlock() instanceof GenericBeamBlock) {
+            Direction hitSide = context.getSide();
+            Vec3d hitPos = context.getHitPos();
+            BooleanProperty connection = GenericBeamBlock.getConnectionProperty(hitSide);
+
+            double x = getPartialCoord(hitSide, hitPos.x);
+            double y = getPartialCoord(hitSide, hitPos.y);
+            double z = getPartialCoord(hitSide, hitPos.z);
+
+            double UPPER_ARM_START = 0.687500;
+            double LOWER_ARM_END = 0.312500;
+
+            if (x > UPPER_ARM_START) {
+                connection = GenericBeamBlock.CONNECTED_EAST;
+            } else if (y > UPPER_ARM_START) {
+                connection = GenericBeamBlock.CONNECTED_UP;
+            } else if (z > UPPER_ARM_START) {
+                connection = GenericBeamBlock.CONNECTED_SOUTH;
+            } else if (x < LOWER_ARM_END) {
+                connection = GenericBeamBlock.CONNECTED_WEST;
+            } else if (y < LOWER_ARM_END) {
+                connection = GenericBeamBlock.CONNECTED_DOWN;
+            } else if (z < LOWER_ARM_END) {
+                connection = GenericBeamBlock.CONNECTED_NORTH;
+            }
+
+            world.setBlockState(pos, state.with(connection, !state.get(connection)));
+            world.markDirty(pos);
+
+            return true;
+        }
 
         return false;
     }

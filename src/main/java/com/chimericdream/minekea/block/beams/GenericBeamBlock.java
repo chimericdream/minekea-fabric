@@ -241,16 +241,6 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         return outline;
     }
 
-//    @Override
-//    public BlockState rotate(BlockState state, BlockRotation rotation) {
-//        return (BlockState) state.with(FACING, rotation.rotate((Direction) state.get(FACING)));
-//    }
-//
-//    @Override
-//    public BlockState mirror(BlockState state, BlockMirror mirror) {
-//        return (BlockState) state.with(FACING, mirror.apply((Direction) state.get(FACING)));
-//    }
-
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
