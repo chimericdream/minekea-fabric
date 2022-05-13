@@ -17,6 +17,7 @@ import com.chimericdream.minekea.block.tables.Tables;
 import com.chimericdream.minekea.block.trapdoors.Trapdoors;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
+import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
 import com.chimericdream.minekea.item.Items;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
@@ -39,6 +40,7 @@ public class MinekeaMod implements ModInitializer {
     public static final Beams BEAMS;
     public static final Bookshelves BOOKSHELVES;
     public static final BuildingBlocks BUILDING_BLOCKS;
+    public static final Crops CROPS;
     public static final Doors DOORS;
     public static final Trapdoors TRAPDOORS;
     public static final Crates CRATES;
@@ -68,6 +70,7 @@ public class MinekeaMod implements ModInitializer {
         BEAMS = new Beams();
         BOOKSHELVES = new Bookshelves();
         BUILDING_BLOCKS = new BuildingBlocks();
+        CROPS = new Crops();
         DOORS = new Doors();
         TRAPDOORS = new Trapdoors();
         CRATES = new Crates();
@@ -86,6 +89,7 @@ public class MinekeaMod implements ModInitializer {
             BEAMS,
             BOOKSHELVES,
             BUILDING_BLOCKS,
+            CROPS,
             DOORS,
             TRAPDOORS,
             CRATES,
@@ -139,10 +143,12 @@ public class MinekeaMod implements ModInitializer {
         LOGGER.info("[minekea] Registering blocks");
         for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
             category.registerBlocks();
+            category.setupResources();
         }
 
         for (ModCompatLayer mod : OTHER_MODS) {
             mod.register();
+            mod.setupResources();
         }
 
         LOGGER.info("[minekea] Registering block entities");

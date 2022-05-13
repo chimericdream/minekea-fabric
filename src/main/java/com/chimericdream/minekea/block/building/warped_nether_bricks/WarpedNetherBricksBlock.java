@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.building.warped_nether_bricks;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.crops.WarpedWartItem;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
@@ -50,7 +51,7 @@ public class WarpedNetherBricksBlock extends Block implements MinekeaBlock {
             JRecipe.shaped(
                 JPattern.pattern("AB", "BA"),
                 JKeys.keys()
-                    .key("A", JIngredient.ingredient().item("minecraft:warped_roots"))
+                    .key("A", JIngredient.ingredient().item(WarpedWartItem.ITEM_ID.toString()))
                     .key("B", JIngredient.ingredient().item("minecraft:nether_brick")),
                 JResult.result(BLOCK_ID.toString())
             )

@@ -12,6 +12,9 @@ public interface ModCompatLayer {
 
     void register();
 
+    default void setupResources() {
+    }
+
     List<GenericCrate> getCrates();
 
     List<GenericDisplayCase> getDisplayCases();

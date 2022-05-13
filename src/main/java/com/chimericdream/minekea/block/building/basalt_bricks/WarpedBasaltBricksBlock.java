@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.building.basalt_bricks;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.crops.WarpedWartItem;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
@@ -53,7 +54,7 @@ public class WarpedBasaltBricksBlock extends Block implements MinekeaBlock {
             JRecipe.shapeless(
                 JIngredients.ingredients()
                     .add(JIngredient.ingredient().item(BasaltBricksBlock.BLOCK_ID.toString()))
-                    .add(JIngredient.ingredient().item("minecraft:twisting_vines")),
+                    .add(JIngredient.ingredient().item(WarpedWartItem.ITEM_ID.toString())),
                 JResult.result(BLOCK_ID.toString())
             )
         );

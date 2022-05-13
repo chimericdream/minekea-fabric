@@ -15,6 +15,14 @@ public class Texture {
         return getBlockTextureID(new Identifier(id));
     }
 
+    public static Identifier getItemTextureID(Identifier id) {
+        return new Identifier(id.getNamespace(), "item/" + id.getPath());
+    }
+
+    public static Identifier getItemTextureID(String id) {
+        return getItemTextureID(new Identifier(id));
+    }
+
     public static class Color {
         public final float r;
         public final float g;

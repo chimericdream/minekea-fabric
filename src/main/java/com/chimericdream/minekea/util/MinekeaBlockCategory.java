@@ -8,6 +8,9 @@ public interface MinekeaBlockCategory {
     default void initializeClient() {
     }
 
+    default void setupResources() {
+    }
+
     void registerBlocks();
 
     void registerBlockEntities(List<ModCompatLayer> otherMods);
