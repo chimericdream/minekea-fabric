@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.beams;
 
+import com.chimericdream.minekea.block.building.basalt_bricks.*;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -11,15 +12,18 @@ import java.util.Map;
 public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock ANDESITE_BEAM;
     public static final GenericBeamBlock BASALT_BEAM;
+    public static final GenericBeamBlock BASALT_BRICK_BEAM;
     public static final GenericBeamBlock BLACKSTONE_BEAM;
     public static final GenericBeamBlock BONE_BEAM;
     public static final GenericBeamBlock BRICK_BEAM;
     public static final GenericBeamBlock CALCITE_BEAM;
     public static final GenericBeamBlock COBBLED_DEEPSLATE_BEAM;
     public static final GenericBeamBlock COBBLESTONE_BEAM;
+    public static final GenericBeamBlock CRACKED_BASALT_BRICK_BEAM;
     public static final GenericBeamBlock CRACKED_DEEPSLATE_BRICK_BEAM;
     public static final GenericBeamBlock CRACKED_DEEPSLATE_TILE_BEAM;
     public static final GenericBeamBlock CRACKED_STONE_BRICK_BEAM;
+    public static final GenericBeamBlock CRIMSON_BASALT_BRICK_BEAM;
     public static final GenericBeamBlock CRYING_OBSIDIAN_BEAM;
     public static final GenericBeamBlock CUT_RED_SANDSTONE_BEAM;
     public static final GenericBeamBlock CUT_SANDSTONE_BEAM;
@@ -31,6 +35,7 @@ public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock END_STONE_BEAM;
     public static final GenericBeamBlock END_STONE_BRICK_BEAM;
     public static final GenericBeamBlock GRANITE_BEAM;
+    public static final GenericBeamBlock MOSSY_BASALT_BRICK_BEAM;
     public static final GenericBeamBlock MOSSY_COBBLESTONE_BEAM;
     public static final GenericBeamBlock MOSSY_STONE_BRICK_BEAM;
     public static final GenericBeamBlock NETHER_BRICK_BEAM;
@@ -54,6 +59,7 @@ public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock STONE_BEAM;
     public static final GenericBeamBlock STONE_BRICK_BEAM;
     public static final GenericBeamBlock TUFF_BEAM;
+    public static final GenericBeamBlock WARPED_BASALT_BRICK_BEAM;
     public static final GenericBeamBlock WARPED_NETHER_BRICK_BEAM;
 
     public static final GenericBeamBlock AMETHYST_BEAM;
@@ -128,14 +134,17 @@ public class Beams implements MinekeaBlockCategory {
 
     static {
         ANDESITE_BEAM = new GenericBeamBlock("andesite", Map.of("main", new Identifier("minecraft:andesite")));
+        BASALT_BRICK_BEAM = new GenericBeamBlock("basalt_brick", Map.of("main", BasaltBricksBlock.BLOCK_ID));
         BLACKSTONE_BEAM = new GenericBeamBlock("blackstone", Map.of("main", new Identifier("minecraft:blackstone")));
         BRICK_BEAM = new GenericBeamBlock("brick", Map.of("main", new Identifier("minecraft:bricks")));
         CALCITE_BEAM = new GenericBeamBlock("calcite", Map.of("main", new Identifier("minecraft:calcite")));
         COBBLED_DEEPSLATE_BEAM = new GenericBeamBlock("cobbled_deepslate", Map.of("main", new Identifier("minecraft:cobbled_deepslate")));
         COBBLESTONE_BEAM = new GenericBeamBlock("cobblestone", Map.of("main", new Identifier("minecraft:cobblestone")));
+        CRACKED_BASALT_BRICK_BEAM = new GenericBeamBlock("cracked_basalt_brick", Map.of("main", CrackedBasaltBricksBlock.BLOCK_ID));
         CRACKED_DEEPSLATE_BRICK_BEAM = new GenericBeamBlock("cracked_deepslate_brick", Map.of("main", new Identifier("minecraft:cracked_deepslate_bricks")));
         CRACKED_DEEPSLATE_TILE_BEAM = new GenericBeamBlock("cracked_deepslate_tile", Map.of("main", new Identifier("minecraft:cracked_deepslate_tiles")));
         CRACKED_STONE_BRICK_BEAM = new GenericBeamBlock("cracked_stone_brick", Map.of("main", new Identifier("minecraft:cracked_stone_bricks")));
+        CRIMSON_BASALT_BRICK_BEAM = new GenericBeamBlock("crimson_basalt_brick", Map.of("main", CrimsonBasaltBricksBlock.BLOCK_ID));
         CRYING_OBSIDIAN_BEAM = new GenericBeamBlock("crying_obsidian", Map.of("main", new Identifier("minecraft:crying_obsidian")));
         CUT_RED_SANDSTONE_BEAM = new GenericBeamBlock("cut_red_sandstone", Map.of("main", new Identifier("minecraft:cut_red_sandstone")));
         CUT_SANDSTONE_BEAM = new GenericBeamBlock("cut_sandstone", Map.of("main", new Identifier("minecraft:cut_sandstone")));
@@ -147,6 +156,7 @@ public class Beams implements MinekeaBlockCategory {
         END_STONE_BEAM = new GenericBeamBlock("end_stone", Map.of("main", new Identifier("minecraft:end_stone")));
         END_STONE_BRICK_BEAM = new GenericBeamBlock("end_stone_brick", Map.of("main", new Identifier("minecraft:end_stone_bricks")));
         GRANITE_BEAM = new GenericBeamBlock("granite", Map.of("main", new Identifier("minecraft:granite")));
+        MOSSY_BASALT_BRICK_BEAM = new GenericBeamBlock("mossy_basalt_brick", Map.of("main", MossyBasaltBricksBlock.BLOCK_ID));
         MOSSY_COBBLESTONE_BEAM = new GenericBeamBlock("mossy_cobblestone", Map.of("main", new Identifier("minecraft:mossy_cobblestone")));
         MOSSY_STONE_BRICK_BEAM = new GenericBeamBlock("mossy_stone_brick", Map.of("main", new Identifier("minecraft:mossy_stone_bricks")));
         NETHER_BRICK_BEAM = new GenericBeamBlock("nether_brick", Map.of("main", new Identifier("minecraft:nether_bricks")));
@@ -169,6 +179,7 @@ public class Beams implements MinekeaBlockCategory {
         STONE_BEAM = new GenericBeamBlock("stone", Map.of("main", new Identifier("minecraft:stone")));
         STONE_BRICK_BEAM = new GenericBeamBlock("stone_brick", Map.of("main", new Identifier("minecraft:stone_bricks")));
         TUFF_BEAM = new GenericBeamBlock("tuff", Map.of("main", new Identifier("minecraft:tuff")));
+        WARPED_BASALT_BRICK_BEAM = new GenericBeamBlock("warped_basalt_brick", Map.of("main", WarpedBasaltBricksBlock.BLOCK_ID));
         WARPED_NETHER_BRICK_BEAM = new GenericBeamBlock("warped_nether_brick", Map.of("main", WarpedNetherBricksBlock.BLOCK_ID));
 
         AMETHYST_BEAM = new GenericBeamBlock(
@@ -294,15 +305,18 @@ public class Beams implements MinekeaBlockCategory {
         AMETHYST_BEAM.register(false);
         ANDESITE_BEAM.register(false);
         BASALT_BEAM.register(false);
+        BASALT_BRICK_BEAM.register(false);
         BLACKSTONE_BEAM.register(false);
         BONE_BEAM.register(false);
         BRICK_BEAM.register(false);
         CALCITE_BEAM.register(false);
         COBBLED_DEEPSLATE_BEAM.register(false);
         COBBLESTONE_BEAM.register(false);
+        CRACKED_BASALT_BRICK_BEAM.register(false);
         CRACKED_DEEPSLATE_BRICK_BEAM.register(false);
         CRACKED_DEEPSLATE_TILE_BEAM.register(false);
         CRACKED_STONE_BRICK_BEAM.register(false);
+        CRIMSON_BASALT_BRICK_BEAM.register(false);
         CRYING_OBSIDIAN_BEAM.register(false);
         CUT_RED_SANDSTONE_BEAM.register(false);
         CUT_SANDSTONE_BEAM.register(false);
@@ -314,6 +328,7 @@ public class Beams implements MinekeaBlockCategory {
         END_STONE_BEAM.register(false);
         END_STONE_BRICK_BEAM.register(false);
         GRANITE_BEAM.register(false);
+        MOSSY_BASALT_BRICK_BEAM.register(false);
         MOSSY_COBBLESTONE_BEAM.register(false);
         MOSSY_STONE_BRICK_BEAM.register(false);
         NETHER_BRICK_BEAM.register(false);
@@ -340,6 +355,7 @@ public class Beams implements MinekeaBlockCategory {
         STONE_BEAM.register(false);
         STONE_BRICK_BEAM.register(false);
         TUFF_BEAM.register(false);
+        WARPED_BASALT_BRICK_BEAM.register(false);
         WARPED_NETHER_BRICK_BEAM.register(false);
         WHITE_TERRACOTTA_BEAM.register(false);
         ORANGE_TERRACOTTA_BEAM.register(false);
