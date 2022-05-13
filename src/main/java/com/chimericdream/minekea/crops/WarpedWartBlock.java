@@ -10,7 +10,6 @@ import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
@@ -57,7 +56,7 @@ public class WarpedWartBlock extends PlantBlock implements MinekeaBlock {
     }
 
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return new ItemStack(Items.NETHER_WART);
+        return new ItemStack(Crops.WARPED_WART_ITEM);
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
