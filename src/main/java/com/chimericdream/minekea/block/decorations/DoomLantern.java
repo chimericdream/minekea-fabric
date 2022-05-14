@@ -54,16 +54,6 @@ public class DoomLantern extends LanternBlock implements MinekeaBlock {
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            new Identifier(ModInfo.MOD_ID, "decorations/lantern_from_doom_lantern"),
-            JRecipe.shapeless(
-                JIngredients.ingredients()
-                    .add(JIngredient.ingredient().item(Items.WATER_BUCKET))
-                    .add(JIngredient.ingredient().item(BLOCK_ID.toString())),
-                JResult.result("minecraft:lantern")
-            )
-        );
-
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
 
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
