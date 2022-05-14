@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.bookshelves.stairs;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -64,11 +65,11 @@ public class GenericBookshelfStairs extends StairsBlock {
         Identifier shelf = materials.get("bookshelf");
         Identifier planks = materials.get("planks");
 
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, "item/" + BLOCK_ID.getPath());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
 
-        Identifier MAIN_MODEL_ID = new Identifier(ModInfo.MOD_ID, "block/" + BLOCK_ID.getPath());
-        Identifier INNER_MODEL_ID = new Identifier(ModInfo.MOD_ID, "block/" + BLOCK_ID.getPath() + "_inner");
-        Identifier OUTER_MODEL_ID = new Identifier(ModInfo.MOD_ID, "block/" + BLOCK_ID.getPath() + "_outer");
+        Identifier MAIN_MODEL_ID = Model.getBlockModelID(BLOCK_ID);
+        Identifier INNER_MODEL_ID = new Identifier(MAIN_MODEL_ID.getNamespace(), MAIN_MODEL_ID.getPath() + "_inner");
+        Identifier OUTER_MODEL_ID = new Identifier(MAIN_MODEL_ID.getNamespace(), MAIN_MODEL_ID.getPath() + "_outer");
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,

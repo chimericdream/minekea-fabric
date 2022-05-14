@@ -18,6 +18,15 @@ public class BookshelfStairs implements MinekeaBlockCategory {
     public static final GenericBookshelfStairs SPRUCE_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs WARPED_BOOKSHELF_STAIRS;
 
+    public static final GenericVerticalBookshelfStairs ACACIA_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs BIRCH_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs CRIMSON_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs DARK_OAK_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs JUNGLE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs OAK_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs SPRUCE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs WARPED_VERTICAL_BOOKSHELF_STAIRS;
+
     static {
         ACACIA_BOOKSHELF_STAIRS = new GenericBookshelfStairs("acacia",
             Map.of(
@@ -67,6 +76,55 @@ public class BookshelfStairs implements MinekeaBlockCategory {
                 "planks", new Identifier("minecraft:warped_planks")
             )
         );
+
+        ACACIA_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("acacia",
+            Map.of(
+                "bookshelf", Bookshelves.ACACIA_BOOKSHELF.BLOCK_ID,
+                "planks", new Identifier("minecraft:acacia_planks")
+            )
+        );
+        BIRCH_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("birch",
+            Map.of(
+                "bookshelf", Bookshelves.BIRCH_BOOKSHELF.BLOCK_ID,
+                "planks", new Identifier("minecraft:birch_planks")
+            )
+        );
+        CRIMSON_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("crimson",
+            Map.of(
+                "bookshelf", Bookshelves.CRIMSON_BOOKSHELF.BLOCK_ID,
+                "planks", new Identifier("minecraft:crimson_planks")
+            )
+        );
+        DARK_OAK_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("dark_oak",
+            Map.of(
+                "bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.BLOCK_ID,
+                "planks", new Identifier("minecraft:dark_oak_planks")
+            )
+        );
+        JUNGLE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("jungle",
+            Map.of(
+                "bookshelf", Bookshelves.JUNGLE_BOOKSHELF.BLOCK_ID,
+                "planks", new Identifier("minecraft:jungle_planks")
+            )
+        );
+        OAK_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("oak",
+            Map.of(
+                "bookshelf", new Identifier("minecraft:bookshelf"),
+                "planks", new Identifier("minecraft:oak_planks")
+            )
+        );
+        SPRUCE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("spruce",
+            Map.of(
+                "bookshelf", Bookshelves.SPRUCE_BOOKSHELF.BLOCK_ID,
+                "planks", new Identifier("minecraft:spruce_planks")
+            )
+        );
+        WARPED_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("warped",
+            Map.of(
+                "bookshelf", Bookshelves.WARPED_BOOKSHELF.BLOCK_ID,
+                "planks", new Identifier("minecraft:warped_planks")
+            )
+        );
     }
 
     @Override
@@ -79,6 +137,15 @@ public class BookshelfStairs implements MinekeaBlockCategory {
         OAK_BOOKSHELF_STAIRS.register();
         SPRUCE_BOOKSHELF_STAIRS.register();
         WARPED_BOOKSHELF_STAIRS.register();
+
+        ACACIA_VERTICAL_BOOKSHELF_STAIRS.register();
+        BIRCH_VERTICAL_BOOKSHELF_STAIRS.register();
+        CRIMSON_VERTICAL_BOOKSHELF_STAIRS.register();
+        DARK_OAK_VERTICAL_BOOKSHELF_STAIRS.register();
+        JUNGLE_VERTICAL_BOOKSHELF_STAIRS.register();
+        OAK_VERTICAL_BOOKSHELF_STAIRS.register();
+        SPRUCE_VERTICAL_BOOKSHELF_STAIRS.register();
+        WARPED_VERTICAL_BOOKSHELF_STAIRS.register();
     }
 
     @Override
