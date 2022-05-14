@@ -1,0 +1,21 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:beams/acacia_log_beam",
+        "minekea:beams/birch_log_beam",
+        "minekea:beams/crimson_stem_beam",
+        "minekea:beams/dark_oak_log_beam",
+        "minekea:beams/jungle_log_beam",
+        "minekea:beams/oak_log_beam",
+        "minekea:beams/spruce_log_beam",
+        "minekea:beams/warped_stem_beam",
+        "minekea:beams/acacia_plank_beam",
+        "minekea:beams/birch_plank_beam",
+        "minekea:beams/crimson_plank_beam",
+        "minekea:beams/dark_oak_plank_beam",
+        "minekea:beams/jungle_plank_beam",
+        "minekea:beams/oak_plank_beam",
+        "minekea:beams/spruce_plank_beam",
+        "minekea:beams/warped_plank_beam"
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "replace": false,
+    "values": [
+        "minekea:bookshelves/bone_bookshelf",
+        "minekea:bookshelves/dark_prismarine_bookshelf",
+        "minekea:bookshelves/deepslate_brick_bookshelf",
+        "minekea:bookshelves/end_stone_brick_bookshelf",
+        "minekea:bookshelves/nether_brick_bookshelf",
+        "minekea:bookshelves/polished_andesite_bookshelf",
+        "minekea:bookshelves/polished_basalt_bookshelf",
+        "minekea:bookshelves/polished_blackstone_bookshelf",
+        "minekea:bookshelves/polished_blackstone_brick_bookshelf",
+        "minekea:bookshelves/polished_deepslate_bookshelf",
+        "minekea:bookshelves/polished_diorite_bookshelf",
+        "minekea:bookshelves/polished_granite_bookshelf",
+        "minekea:bookshelves/prismarine_bookshelf",
+        "minekea:bookshelves/prismarine_brick_bookshelf",
+        "minekea:bookshelves/purpur_bookshelf",
+        "minekea:bookshelves/quartz_brick_bookshelf",
+        "minekea:bookshelves/red_nether_brick_bookshelf",
+        "minekea:bookshelves/smooth_quartz_bookshelf",
+        "minekea:bookshelves/smooth_stone_bookshelf",
+        "minekea:bookshelves/stone_brick_bookshelf",
+        "minekea:bookshelves/warped_nether_brick_bookshelf",
+        "#minekea:non_wooden_storage_bookshelves"
+    ]
+}

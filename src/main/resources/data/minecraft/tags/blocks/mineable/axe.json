@@ -10,6 +10,8 @@
         "#minekea:wooden_shelves",
         "#minekea:wooden_stools",
         "#minekea:wooden_storage_bookshelves",
-        "#minekea:wooden_tables"
+        "#minekea:wooden_tables",
+        "#minekea:wooden_beams",
+        "#minekea:wooden_vertical_stairs"
     ]
 }

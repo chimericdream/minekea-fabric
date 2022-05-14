@@ -1,11 +1,7 @@
 {
     "replace": false,
     "values": [
-        "minekea:bookshelves/storage/bone_storage_shelf",
-        "minekea:bookshelves/storage/dark_prismarine_storage_shelf",
-        "minekea:bookshelves/storage/nether_brick_storage_shelf",
-        "minekea:bookshelves/storage/purpur_storage_shelf",
-        "minekea:bookshelves/storage/stone_brick_storage_shelf",
+        "#minekea:non_wooden_storage_bookshelves",
         "#minekea:wooden_storage_bookshelves"
     ]
 }
