@@ -22,6 +22,8 @@ import net.minecraft.util.registry.Registry;
 import java.util.List;
 
 public class DecorationBlocks implements MinekeaBlockCategory {
+    public static final DoomLantern DOOM_LANTERN;
+    public static final EndLantern END_LANTERN;
     public static final EndlessRod ENDLESS_ROD;
     public static final FakeCake FAKE_CAKE;
     public static final GlassJarBlock GLASS_JAR;
@@ -30,6 +32,8 @@ public class DecorationBlocks implements MinekeaBlockCategory {
     public static BlockItem GLASS_JAR_ITEM;
 
     static {
+        DOOM_LANTERN = new DoomLantern();
+        END_LANTERN = new EndLantern();
         ENDLESS_ROD = new EndlessRod();
         FAKE_CAKE = new FakeCake();
         GLASS_JAR = new GlassJarBlock();
@@ -38,7 +42,12 @@ public class DecorationBlocks implements MinekeaBlockCategory {
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), GLASS_JAR);
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getTranslucent(),
+            DOOM_LANTERN,
+            END_LANTERN,
+            GLASS_JAR
+        );
 
         BlockEntityRendererRegistry.INSTANCE.register(GLASS_JAR_BLOCK_ENTITY, GlassJarBlockEntityRenderer::new);
         BuiltinItemRendererRegistry.INSTANCE.register(GLASS_JAR_ITEM, new GlassJarItemRenderer());
@@ -46,6 +55,8 @@ public class DecorationBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
+        DOOM_LANTERN.register();
+        END_LANTERN.register();
         ENDLESS_ROD.register();
         FAKE_CAKE.register();
         GLASS_JAR.register();

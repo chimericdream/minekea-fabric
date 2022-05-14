@@ -429,6 +429,8 @@
     "block.minekea.crates.oak_crate": "Oak Crate",
     "block.minekea.crates.spruce_crate": "Spruce Crate",
     "block.minekea.crates.warped_crate": "Warped Crate",
+    "block.minekea.decorations.doom_lantern": "Doom Lantern",
+    "block.minekea.decorations.end_lantern": "End Lantern",
     "block.minekea.decorations.endless_rod": "End(less) Rod",
     "block.minekea.decorations.fake_cake": "Cake",
     "block.minekea.decorations.fake_cake.tooltip": "This cake is a lie!",
