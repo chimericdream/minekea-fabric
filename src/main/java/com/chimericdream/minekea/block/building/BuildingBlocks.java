@@ -2,11 +2,14 @@ package com.chimericdream.minekea.block.building;
 
 import com.chimericdream.minekea.block.building.basalt_bricks.*;
 import com.chimericdream.minekea.block.building.stairs.Stairs;
+import com.chimericdream.minekea.block.building.storage.StorageBlocks;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBrickSlabBlock;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBrickStairsBlock;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import java.util.List;
 
@@ -38,6 +41,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final WarpedNetherBricksBlock WARPED_NETHER_BRICKS_BLOCK;
 
     public static final Stairs STAIRS;
+    public static final StorageBlocks STORAGE_BLOCKS;
 
     static {
         BASALT_BRICKS_BLOCK = new BasaltBricksBlock();
@@ -67,6 +71,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         WARPED_NETHER_BRICKS_BLOCK = new WarpedNetherBricksBlock();
 
         STAIRS = new Stairs();
+        STORAGE_BLOCKS = new StorageBlocks();
     }
 
     @Override
@@ -98,10 +103,19 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         WARPED_NETHER_BRICKS_BLOCK.register();
 
         STAIRS.registerBlocks();
+        STORAGE_BLOCKS.registerBlocks();
     }
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
         STAIRS.registerBlockEntities(otherMods);
+        STORAGE_BLOCKS.registerBlockEntities(otherMods);
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        STAIRS.initializeClient();
+        STORAGE_BLOCKS.initializeClient();
     }
 }

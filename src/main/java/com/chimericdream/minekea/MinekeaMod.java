@@ -3,18 +3,13 @@ package com.chimericdream.minekea;
 import com.chimericdream.minekea.block.barrels.Barrels;
 import com.chimericdream.minekea.block.beams.Beams;
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
-import com.chimericdream.minekea.block.bookshelves.slabs.BookshelfSlabs;
-import com.chimericdream.minekea.block.bookshelves.stairs.BookshelfStairs;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.crates.Crates;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.displaycases.DisplayCases;
-import com.chimericdream.minekea.block.doors.Doors;
 import com.chimericdream.minekea.block.seating.Seats;
 import com.chimericdream.minekea.block.shelves.Shelves;
-import com.chimericdream.minekea.block.storage.StorageBlocks;
 import com.chimericdream.minekea.block.tables.Tables;
-import com.chimericdream.minekea.block.trapdoors.Trapdoors;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.crops.Crops;
@@ -41,18 +36,13 @@ public class MinekeaMod implements ModInitializer {
     public static final Bookshelves BOOKSHELVES;
     public static final BuildingBlocks BUILDING_BLOCKS;
     public static final Crops CROPS;
-    public static final Doors DOORS;
-    public static final Trapdoors TRAPDOORS;
     public static final Crates CRATES;
     public static final Barrels BARRELS;
     public static final DisplayCases DISPLAY_CASES;
-    public static final BookshelfStairs BOOKSHELF_STAIRS;
-    public static final BookshelfSlabs BOOKSHELF_SLABS;
     public static final Shelves SHELVES;
     public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Tables TABLES;
     public static final Seats SEATS;
-    public static final StorageBlocks STORAGE_BLOCKS;
     public static final Fluids FLUIDS;
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
@@ -71,18 +61,13 @@ public class MinekeaMod implements ModInitializer {
         BOOKSHELVES = new Bookshelves();
         BUILDING_BLOCKS = new BuildingBlocks();
         CROPS = new Crops();
-        DOORS = new Doors();
-        TRAPDOORS = new Trapdoors();
         CRATES = new Crates();
         BARRELS = new Barrels();
         DISPLAY_CASES = new DisplayCases();
-        BOOKSHELF_STAIRS = new BookshelfStairs();
-        BOOKSHELF_SLABS = new BookshelfSlabs();
         SHELVES = new Shelves();
         DECORATION_BLOCKS = new DecorationBlocks();
         TABLES = new Tables();
         SEATS = new Seats();
-        STORAGE_BLOCKS = new StorageBlocks();
         FLUIDS = new Fluids();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
@@ -90,18 +75,13 @@ public class MinekeaMod implements ModInitializer {
             BOOKSHELVES,
             BUILDING_BLOCKS,
             CROPS,
-            DOORS,
-            TRAPDOORS,
             CRATES,
             BARRELS,
             DISPLAY_CASES,
-            BOOKSHELF_STAIRS,
-            BOOKSHELF_SLABS,
             SHELVES,
             DECORATION_BLOCKS,
             TABLES,
             SEATS,
-            STORAGE_BLOCKS,
             FLUIDS
         };
 

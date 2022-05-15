@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.trapdoors;
+package com.chimericdream.minekea.block.bookshelves.trapdoors;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;

@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.storage;
+package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;

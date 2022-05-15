@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.doors;
+package com.chimericdream.minekea.block.bookshelves.doors;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;

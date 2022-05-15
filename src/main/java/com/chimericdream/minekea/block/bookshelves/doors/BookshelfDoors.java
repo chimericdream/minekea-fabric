@@ -1,11 +1,11 @@
-package com.chimericdream.minekea.block.doors;
+package com.chimericdream.minekea.block.bookshelves.doors;
 
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 
 import java.util.List;
 
-public class Doors implements MinekeaBlockCategory {
+public class BookshelfDoors implements MinekeaBlockCategory {
     public static final GenericBookshelfDoor ACACIA_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor BIRCH_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor CRIMSON_BOOKSHELF_DOOR;

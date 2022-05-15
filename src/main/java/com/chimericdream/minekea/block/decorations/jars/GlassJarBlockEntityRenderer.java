@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.decorations.jars;
 
-import com.chimericdream.minekea.block.storage.StorageBlocks;
+import com.chimericdream.minekea.block.building.storage.StorageBlocks;
 import com.chimericdream.minekea.util.ItemHelpers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

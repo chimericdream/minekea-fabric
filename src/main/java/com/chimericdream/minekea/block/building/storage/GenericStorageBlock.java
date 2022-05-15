@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.storage;
+package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;

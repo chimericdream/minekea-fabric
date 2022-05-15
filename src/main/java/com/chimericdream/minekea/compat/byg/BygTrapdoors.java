@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.trapdoors.GenericBookshelfTrapdoor;
+import com.chimericdream.minekea.block.bookshelves.trapdoors.GenericBookshelfTrapdoor;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;

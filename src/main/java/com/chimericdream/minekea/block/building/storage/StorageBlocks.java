@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.storage;
+package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
