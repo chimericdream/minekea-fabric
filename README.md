@@ -1,6 +1,6 @@
 # Minekea (Fabric)
 
-![Version: 2.6.1](https://img.shields.io/badge/version-2.6.1-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
+![Version: 2.7.0](https://img.shields.io/badge/version-2.7.0-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
 
 _Simple, functional, decorative blocks for all your building and storage needs (some assembly required)_
 
@@ -30,6 +30,13 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 * Glass jars for storing food, liquids, dusts, etc
 * Wrench item
 * Storage blocks (i.e. compressed) for all dyes and a number of other items
+* Vertical stairs
+* Endless end rod
+* More lamp variants
+* Warped wart item and crop
+* Beams for most building blocks (think somewhere between a wall and fence post)
+    * Beam connections can be enabled and disabled by right-clicking with a wrench
+* New basalt brick block and variants
 
 ### Planned/Possible Features
 
@@ -40,16 +47,6 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 ### Mod Support
 
 * Oh, the Biomes You'll Go (1.18.x only)
-
-### Screenshots
-
-![Shelves](./docs/img/shelves.png)
-
-![Storage Shelves](./docs/img/storage-shelves.png)
-
-![Shelf Recipes](./docs/img/shelf-recipes.png)
-
-![Storage Shelf Recipes](./docs/img/storage-recipes.png)
 
 ## Issues & Suggestions
 
