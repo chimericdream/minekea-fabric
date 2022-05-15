@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.tables.GenericTable;
+import com.chimericdream.minekea.block.furniture.tables.GenericTable;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;

@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.displaycases.GenericDisplayCase;
+import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;

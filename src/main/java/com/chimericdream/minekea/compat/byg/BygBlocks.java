@@ -1,9 +1,9 @@
 package com.chimericdream.minekea.compat.byg;
 
 import com.chimericdream.minekea.block.bookshelves.GenericStorageBookshelf;
-import com.chimericdream.minekea.block.crates.GenericCrate;
-import com.chimericdream.minekea.block.displaycases.GenericDisplayCase;
-import com.chimericdream.minekea.block.shelves.GenericShelf;
+import com.chimericdream.minekea.block.containers.crates.GenericCrate;
+import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
+import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;

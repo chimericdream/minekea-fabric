@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.crates.GenericCrate;
+import com.chimericdream.minekea.block.containers.crates.GenericCrate;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;

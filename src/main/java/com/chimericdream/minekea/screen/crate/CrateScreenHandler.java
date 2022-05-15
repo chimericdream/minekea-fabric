@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.screen.crate;
 
-import com.chimericdream.minekea.block.crates.GenericCrate;
+import com.chimericdream.minekea.block.containers.crates.GenericCrate;
 import com.chimericdream.minekea.screen.SimpleInventoryScreenHandler;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;

@@ -1,15 +1,10 @@
 package com.chimericdream.minekea;
 
-import com.chimericdream.minekea.block.barrels.Barrels;
-import com.chimericdream.minekea.block.beams.Beams;
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
-import com.chimericdream.minekea.block.crates.Crates;
+import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
-import com.chimericdream.minekea.block.displaycases.DisplayCases;
-import com.chimericdream.minekea.block.seating.Seats;
-import com.chimericdream.minekea.block.shelves.Shelves;
-import com.chimericdream.minekea.block.tables.Tables;
+import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.crops.Crops;
@@ -32,18 +27,13 @@ import java.util.List;
 public class MinekeaMod implements ModInitializer {
     public static final Logger LOGGER;
 
-    public static final Beams BEAMS;
     public static final Bookshelves BOOKSHELVES;
     public static final BuildingBlocks BUILDING_BLOCKS;
+    public static final ContainerBlocks CONTAINER_BLOCKS;
     public static final Crops CROPS;
-    public static final Crates CRATES;
-    public static final Barrels BARRELS;
-    public static final DisplayCases DISPLAY_CASES;
-    public static final Shelves SHELVES;
     public static final DecorationBlocks DECORATION_BLOCKS;
-    public static final Tables TABLES;
-    public static final Seats SEATS;
     public static final Fluids FLUIDS;
+    public static final FurnitureBlocks FURNITURE_BLOCKS;
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
@@ -57,32 +47,22 @@ public class MinekeaMod implements ModInitializer {
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
 
-        BEAMS = new Beams();
         BOOKSHELVES = new Bookshelves();
         BUILDING_BLOCKS = new BuildingBlocks();
+        CONTAINER_BLOCKS = new ContainerBlocks();
         CROPS = new Crops();
-        CRATES = new Crates();
-        BARRELS = new Barrels();
-        DISPLAY_CASES = new DisplayCases();
-        SHELVES = new Shelves();
         DECORATION_BLOCKS = new DecorationBlocks();
-        TABLES = new Tables();
-        SEATS = new Seats();
         FLUIDS = new Fluids();
+        FURNITURE_BLOCKS = new FurnitureBlocks();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
-            BEAMS,
             BOOKSHELVES,
             BUILDING_BLOCKS,
+            CONTAINER_BLOCKS,
             CROPS,
-            CRATES,
-            BARRELS,
-            DISPLAY_CASES,
-            SHELVES,
             DECORATION_BLOCKS,
-            TABLES,
-            SEATS,
-            FLUIDS
+            FLUIDS,
+            FURNITURE_BLOCKS
         };
 
         ITEMS = new Items();

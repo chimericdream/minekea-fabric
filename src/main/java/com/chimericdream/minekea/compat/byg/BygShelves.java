@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.shelves.GenericFloatingShelf;
-import com.chimericdream.minekea.block.shelves.GenericShelf;
+import com.chimericdream.minekea.block.furniture.shelves.GenericFloatingShelf;
+import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;

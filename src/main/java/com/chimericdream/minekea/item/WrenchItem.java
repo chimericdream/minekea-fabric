@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.item;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.beams.GenericBeamBlock;
+import com.chimericdream.minekea.block.building.beams.GenericBeamBlock;
 import com.chimericdream.minekea.util.MinekeaItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.BedBlock;

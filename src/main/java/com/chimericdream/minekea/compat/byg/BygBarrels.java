@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.barrels.GenericBarrel;
+import com.chimericdream.minekea.block.containers.barrels.GenericBarrel;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;

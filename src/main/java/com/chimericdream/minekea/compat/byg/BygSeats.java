@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.seating.GenericChair;
-import com.chimericdream.minekea.block.seating.GenericStool;
+import com.chimericdream.minekea.block.furniture.seating.GenericChair;
+import com.chimericdream.minekea.block.furniture.seating.GenericStool;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;
