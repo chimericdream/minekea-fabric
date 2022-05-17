@@ -16,9 +16,8 @@ repositories {
     // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
     // See https://docs.gradle.org/current/userguide/declaring_repositories.html
     // for more information about repositories.
-    maven {
-        url = uri("https://storage.googleapis.com/devan-maven/")
-    }
+    maven { url = uri("https://storage.googleapis.com/devan-maven/") }
+    maven { url = uri("https://maven.blamejared.com") }
 }
 
 dependencies {
@@ -27,6 +26,8 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.devtech:arrp:0.+"
+
+    modRuntimeOnly "vazkii.patchouli:Patchouli:${project.patchouli_version}"
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"

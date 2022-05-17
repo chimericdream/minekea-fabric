@@ -1,0 +1,8 @@
+{
+    "name": "Minekea Catalogue",
+    "landing_text": "Welcome to Minekea(tm)!$(br2)In this catalogue, you will find a wide range of building blocks, decorations, and more!$(br)(some assembly required)$(br2)$(o)Some categories may have a hundred or more blocks, so a mod such as Roughly Enough Items is recommended.$()",
+    "version": 1,
+    "model": "minekea:minekea_catalogue",
+    "book_texture": "patchouli:textures/gui/book_blue.png",
+    "show_progress": false
+}

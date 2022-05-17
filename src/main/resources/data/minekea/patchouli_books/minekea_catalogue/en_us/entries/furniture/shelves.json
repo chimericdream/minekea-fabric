@@ -1,0 +1,23 @@
+{
+    "name": "Shelves",
+    "icon": "minekea:shelves/oak_supported_shelf",
+    "category": "minekea:furniture",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Shelves are a great way to display items and/or store a small number of some blocks. Classy, functional, and stylish, they are available in all wood types in two styles: floating and supported."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:shelves/warped_floating_shelf",
+            "recipe2": "minekea:shelves/oak_supported_shelf",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["minekea:textures/gui/patchouli/floating_shelf_example.png"],
+            "text": "A dark oak floating shelf displaying some basic supplies."
+        }
+    ]
+}

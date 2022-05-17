@@ -1,0 +1,34 @@
+{
+    "name": "Basalt Bricks",
+    "icon": "minekea:building/basalt_bricks",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "If you find yourself with too much basalt, try using some of it to craft some new brick blocks! Each brick type (except for chiseled) also includes a slab, stair, and vertical stair version."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/basalt_bricks",
+            "title": "Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/chiseled_basalt_bricks",
+            "recipe2": "minekea:building/crimson_basalt_bricks",
+            "title": "Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/mossy_basalt_bricks",
+            "recipe2": "minekea:building/warped_basalt_bricks",
+            "title": "Recipes"
+        },
+        {
+            "type": "patchouli:smelting",
+            "recipe": "minekea:building/cracked_basalt_bricks",
+            "title": "Recipes"
+        }
+    ]
+}

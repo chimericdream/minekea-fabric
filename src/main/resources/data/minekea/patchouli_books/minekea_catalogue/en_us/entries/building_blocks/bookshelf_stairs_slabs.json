@@ -1,0 +1,23 @@
+{
+    "name": "Bookshelf Stairs/Slabs",
+    "icon": "minekea:stairs/oak_bookshelf_stairs",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "In addition to providing a number of variations of bookshelves, you can now use them to craft slab, stair, and vertical stair variants!$(br2)All bookshelf variants are available in each shape."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:stairs/oak_bookshelf_stairs",
+            "recipe2": "minekea:slabs/oak_bookshelf_slab",
+            "title": "Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/stairs/oak_vertical_bookshelf_stairs",
+            "title": "Recipes"
+        }
+    ]
+}

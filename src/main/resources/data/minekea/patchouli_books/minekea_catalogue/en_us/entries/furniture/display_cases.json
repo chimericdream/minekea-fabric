@@ -1,0 +1,28 @@
+{
+    "name": "Display Cases",
+    "icon": "minekea:displaycases/oak_display_case",
+    "category": "minekea:furniture",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "We understand. You're a connoisseur of all things luxury. But what good are fancy items if you can't show them off? Look no further! Our exquisite display cases are available in all wood types, both in classic \"stripped\" and wonderful \"rustic\" styles."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:displaycases/oak_display_case",
+            "recipe2": "minekea:displaycases/stripped_birch_display_case",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["minekea:textures/gui/patchouli/display_case_rendering.png"],
+            "text": "Items look great in a display case! Mob and player heads have special rendering for best results."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["minekea:textures/gui/patchouli/display_case_redstone.png"],
+            "text": "Not only can you rotate the item on display, the case outputs a variable redstone signal based on the current rotation!"
+        }
+    ]
+}

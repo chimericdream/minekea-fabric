@@ -1,0 +1,17 @@
+{
+    "name": "Wrench",
+    "icon": "minekea:wrench",
+    "category": "minekea:tools",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "This wrench is the ultimate multi-tool! You can use it to rotate blocks such as glazed terracotta, redstone components, stairs, and more."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:wrench",
+            "title": "Recipe"
+        }
+    ]
+}

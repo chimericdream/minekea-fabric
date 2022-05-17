@@ -1,0 +1,22 @@
+{
+    "name": "Warped Wart",
+    "icon": "minekea:crops/warped_wart",
+    "category": "minekea:crops",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "What do you expect? It's like nether wart, but less red."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["minekea:textures/gui/patchouli/warped_wart_patch.png"],
+            "text": "$(o)Just an example. Warped wart does not generate naturally."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:crops/warped_wart",
+            "text": "Warped wart blocks can be uncrafted into warped wart."
+        }
+    ]
+}

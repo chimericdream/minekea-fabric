@@ -1,0 +1,17 @@
+{
+    "name": "Fake Cake",
+    "icon": "minekea:decorations/fake_cake",
+    "category": "minekea:decorative_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Sometimes you may want to $(o)look$() like a good host, but you don't actually want to go through the hassle of cooking for your guests. Introducing artificial cake! It looks so good, your guests won't know the difference, and that's no lie!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:decorations/fake_cake",
+            "title": "Recipe"
+        }
+    ]
+}

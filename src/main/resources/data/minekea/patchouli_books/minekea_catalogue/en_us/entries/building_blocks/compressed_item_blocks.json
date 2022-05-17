@@ -1,0 +1,30 @@
+{
+    "name": "Compressed Item Blocks",
+    "icon": "minekea:storage/compressed_ender_pearl",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Some items tend to take up a large amount of space in your inventory or storage system. Wouldn't it be nice if you could craft them into solid blocks for better storage, or even as decorations? Yes! It would!!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:storage/compressed_ender_pearl",
+            "recipe2": "minekea:storage/compressed_blaze_powder",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:storage/compressed_sugar",
+            "recipe2": "minekea:storage/compressed_potato",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:storage/dyes/compressed_white_dye",
+            "title": "Example Recipes",
+            "text": "All dyes can be compressed into gooey blocks which behave much like honey. They slow entities down and prevent jumping. However, they cannot be used in redstone contraptions."
+        }
+    ]
+}

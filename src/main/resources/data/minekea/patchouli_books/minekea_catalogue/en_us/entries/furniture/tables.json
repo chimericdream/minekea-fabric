@@ -1,0 +1,28 @@
+{
+    "name": "Tables",
+    "icon": "minekea:tables/oak_table",
+    "category": "minekea:furniture",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "A quality table can spice up any room, and we have the best! Like our other furniture, tables are available in all wood types."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:tables/oak_table",
+            "recipe2": "minekea:tables/spruce_table",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/table0.png",
+                "minekea:textures/gui/patchouli/table1.png",
+                "minekea:textures/gui/patchouli/table2.png",
+                "minekea:textures/gui/patchouli/table3.png"
+            ],
+            "text": "Tables will connect logically along both horizontal axes"
+        }
+    ]
+}

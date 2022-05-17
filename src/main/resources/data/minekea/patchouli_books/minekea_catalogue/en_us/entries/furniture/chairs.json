@@ -1,0 +1,18 @@
+{
+    "name": "Chairs and stools",
+    "icon": "minekea:seating/chairs/oak_chair",
+    "category": "minekea:furniture",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Sometimes you want a place to sit that's $(o)not$() a minecart or a boat, right? Our new line of chairs and footstools (available in $(o)all$() wood types) are the highest quality furniture around. Sit down, put your feet up, and rest in utter bliss for hours!$(br2)$(o)Minekea is not responsible for splinters, sores, or other consequences that may result from extended sitting."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:seating/chairs/oak_chair",
+            "recipe2": "minekea:seating/stools/oak_stool",
+            "title": "Example Recipes"
+        }
+    ]
+}

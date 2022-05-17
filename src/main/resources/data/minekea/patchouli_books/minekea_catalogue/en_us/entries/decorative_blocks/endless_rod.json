@@ -1,0 +1,17 @@
+{
+    "name": "End(less) Rod",
+    "icon": "minekea:decorations/endless_rod",
+    "category": "minekea:decorative_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Ever wish there was a version of the end rod without a base? Introducing the End(less) Rod!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:decorations/endless_rod",
+            "title": "Recipe"
+        }
+    ]
+}
