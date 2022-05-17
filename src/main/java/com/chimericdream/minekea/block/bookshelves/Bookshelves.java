@@ -413,6 +413,17 @@ public class Bookshelves implements MinekeaBlockCategory {
         BOOKSHELF_TRAPDOORS = new BookshelfTrapdoors();
     }
 
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        ScreenRegistry.register(STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
+
+        BOOKSHELF_DOORS.initializeClient();
+        BOOKSHELF_SLABS.initializeClient();
+        BOOKSHELF_STAIRS.initializeClient();
+        BOOKSHELF_TRAPDOORS.initializeClient();
+    }
+
     @Override
     public void registerBlocks() {
         ACACIA_BOOKSHELF.register();
@@ -476,8 +487,6 @@ public class Bookshelves implements MinekeaBlockCategory {
         STONE_BRICK_STORAGE_BOOKSHELF.register(false);
         WARPED_NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
 
-        setupOakBookshelfResources();
-
         BOOKSHELF_DOORS.registerBlocks();
         BOOKSHELF_SLABS.registerBlocks();
         BOOKSHELF_STAIRS.registerBlocks();
@@ -537,7 +546,21 @@ public class Bookshelves implements MinekeaBlockCategory {
         BOOKSHELF_TRAPDOORS.registerBlockEntities(otherMods);
     }
 
-    protected void setupOakBookshelfResources() {
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+        BOOKSHELF_DOORS.registerEntities(otherMods);
+        BOOKSHELF_SLABS.registerEntities(otherMods);
+        BOOKSHELF_STAIRS.registerEntities(otherMods);
+        BOOKSHELF_TRAPDOORS.registerEntities(otherMods);
+    }
+
+    @Override
+    public void setupResources() {
+        BOOKSHELF_DOORS.setupResources();
+        BOOKSHELF_SLABS.setupResources();
+        BOOKSHELF_STAIRS.setupResources();
+        BOOKSHELF_TRAPDOORS.setupResources();
+
         for (int i = 0; i <= 6; i++) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(
                 JModel.model("minekea:block/bookshelf_variant")
@@ -565,16 +588,5 @@ public class Bookshelves implements MinekeaBlockCategory {
 //            ),
 //            BLOCK_ID
 //        );
-    }
-
-    @Environment(EnvType.CLIENT)
-    @Override
-    public void initializeClient() {
-        ScreenRegistry.register(STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-
-        BOOKSHELF_DOORS.initializeClient();
-        BOOKSHELF_SLABS.initializeClient();
-        BOOKSHELF_STAIRS.initializeClient();
-        BOOKSHELF_TRAPDOORS.initializeClient();
     }
 }

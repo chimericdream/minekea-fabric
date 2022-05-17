@@ -39,6 +39,10 @@ public class Crops implements MinekeaBlockCategory {
     }
 
     @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
     public void setupResources() {
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             new Identifier(ModInfo.MOD_ID, "items/nether_wart_from_block"),

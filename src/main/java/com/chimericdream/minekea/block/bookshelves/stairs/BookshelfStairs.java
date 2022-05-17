@@ -128,6 +128,10 @@ public class BookshelfStairs implements MinekeaBlockCategory {
     }
 
     @Override
+    public void initializeClient() {
+    }
+
+    @Override
     public void registerBlocks() {
         ACACIA_BOOKSHELF_STAIRS.register();
         BIRCH_BOOKSHELF_STAIRS.register();
@@ -150,5 +154,13 @@ public class BookshelfStairs implements MinekeaBlockCategory {
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }

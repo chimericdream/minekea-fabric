@@ -111,9 +111,10 @@ public class MinekeaMod implements ModInitializer {
             mod.setupResources();
         }
 
-        LOGGER.info("[minekea] Registering block entities");
+        LOGGER.info("[minekea] Registering entities");
         for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
             category.registerBlockEntities(OTHER_MODS);
+            category.registerEntities(OTHER_MODS);
         }
 
         ITEMS.register();

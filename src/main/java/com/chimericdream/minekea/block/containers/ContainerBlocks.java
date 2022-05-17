@@ -70,4 +70,16 @@ public class ContainerBlocks implements MinekeaBlockCategory {
             FabricBlockEntityTypeBuilder.create(GlassJarBlockEntity::new, GLASS_JAR).build(null)
         );
     }
+
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+        BARRELS.registerEntities(otherMods);
+        CRATES.registerEntities(otherMods);
+    }
+
+    @Override
+    public void setupResources() {
+        BARRELS.setupResources();
+        CRATES.setupResources();
+    }
 }

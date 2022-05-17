@@ -73,6 +73,12 @@ public class Crates implements MinekeaBlockCategory {
         );
     }
 
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        ScreenRegistry.register(CRATE_SCREEN_HANDLER, CrateScreen::new);
+    }
+
     @Override
     public void registerBlocks() {
         ACACIA_CRATE.register();
@@ -112,9 +118,11 @@ public class Crates implements MinekeaBlockCategory {
         );
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
-    public void initializeClient() {
-        ScreenRegistry.register(CRATE_SCREEN_HANDLER, CrateScreen::new);
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }

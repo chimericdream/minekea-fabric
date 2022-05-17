@@ -123,6 +123,10 @@ public class Stairs implements MinekeaBlockCategory {
     }
 
     @Override
+    public void initializeClient() {
+    }
+
+    @Override
     public void registerBlocks() {
         CUT_COPPER_VERTICAL_STAIRS.register();
         EXPOSED_CUT_COPPER_VERTICAL_STAIRS.register();
@@ -182,5 +186,13 @@ public class Stairs implements MinekeaBlockCategory {
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }

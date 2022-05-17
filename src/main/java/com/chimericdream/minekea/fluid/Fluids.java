@@ -92,6 +92,22 @@ public class Fluids implements MinekeaBlockCategory {
         setupHoneyHandlers();
     }
 
+    @Override
+    public void registerBlocks() {
+    }
+
+    @Override
+    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
+    }
+
     private void setupMilkHandlers() {
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
             registry.register(Texture.getBlockTextureID(MILK_ID));
@@ -172,13 +188,5 @@ public class Fluids implements MinekeaBlockCategory {
 
         FluidRenderHandlerRegistry.INSTANCE.register(HONEY, renderHandler);
         FluidRenderHandlerRegistry.INSTANCE.register(FLOWING_HONEY, renderHandler);
-    }
-
-    @Override
-    public void registerBlocks() {
-    }
-
-    @Override
-    public void registerBlockEntities(List<ModCompatLayer> otherMods) {
     }
 }

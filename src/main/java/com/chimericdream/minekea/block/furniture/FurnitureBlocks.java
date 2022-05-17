@@ -48,4 +48,20 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
         SHELVES.registerBlockEntities(otherMods);
         TABLES.registerBlockEntities(otherMods);
     }
+
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+        DISPLAY_CASES.registerEntities(otherMods);
+        SEATS.registerEntities(otherMods);
+        SHELVES.registerEntities(otherMods);
+        TABLES.registerEntities(otherMods);
+    }
+
+    @Override
+    public void setupResources() {
+        DISPLAY_CASES.setupResources();
+        SEATS.setupResources();
+        SHELVES.setupResources();
+        TABLES.setupResources();
+    }
 }

@@ -80,6 +80,22 @@ public class Barrels implements MinekeaBlockCategory {
         );
     }
 
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getTranslucent(),
+            Blocks.BARREL,
+            ACACIA_BARREL,
+            BIRCH_BARREL,
+            CRIMSON_BARREL,
+            DARK_OAK_BARREL,
+            JUNGLE_BARREL,
+            SPRUCE_BARREL,
+            WARPED_BARREL
+        );
+    }
+
     @Override
     public void registerBlocks() {
         ACACIA_BARREL.register();
@@ -95,19 +111,11 @@ public class Barrels implements MinekeaBlockCategory {
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
-    public void initializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(
-            RenderLayer.getTranslucent(),
-            Blocks.BARREL,
-            ACACIA_BARREL,
-            BIRCH_BARREL,
-            CRIMSON_BARREL,
-            DARK_OAK_BARREL,
-            JUNGLE_BARREL,
-            SPRUCE_BARREL,
-            WARPED_BARREL
-        );
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }

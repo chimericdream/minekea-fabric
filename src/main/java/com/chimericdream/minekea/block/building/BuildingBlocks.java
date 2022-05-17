@@ -77,6 +77,14 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         STORAGE_BLOCKS = new StorageBlocks();
     }
 
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        BEAMS.initializeClient();
+        STAIRS.initializeClient();
+        STORAGE_BLOCKS.initializeClient();
+    }
+
     @Override
     public void registerBlocks() {
         BASALT_BRICKS_BLOCK.register();
@@ -117,11 +125,17 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         STORAGE_BLOCKS.registerBlockEntities(otherMods);
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
-    public void initializeClient() {
-        BEAMS.initializeClient();
-        STAIRS.initializeClient();
-        STORAGE_BLOCKS.initializeClient();
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+        BEAMS.registerEntities(otherMods);
+        STAIRS.registerEntities(otherMods);
+        STORAGE_BLOCKS.registerEntities(otherMods);
+    }
+
+    @Override
+    public void setupResources() {
+        BEAMS.setupResources();
+        STAIRS.setupResources();
+        STORAGE_BLOCKS.setupResources();
     }
 }

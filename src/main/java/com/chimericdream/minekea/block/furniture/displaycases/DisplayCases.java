@@ -115,6 +115,32 @@ public class DisplayCases implements MinekeaBlockCategory {
         );
     }
 
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getCutout(),
+            ACACIA_DISPLAY_CASE,
+            BIRCH_DISPLAY_CASE,
+            CRIMSON_DISPLAY_CASE,
+            DARK_OAK_DISPLAY_CASE,
+            JUNGLE_DISPLAY_CASE,
+            OAK_DISPLAY_CASE,
+            SPRUCE_DISPLAY_CASE,
+            WARPED_DISPLAY_CASE,
+            STRIPPED_ACACIA_DISPLAY_CASE,
+            STRIPPED_BIRCH_DISPLAY_CASE,
+            STRIPPED_CRIMSON_DISPLAY_CASE,
+            STRIPPED_DARK_OAK_DISPLAY_CASE,
+            STRIPPED_JUNGLE_DISPLAY_CASE,
+            STRIPPED_OAK_DISPLAY_CASE,
+            STRIPPED_SPRUCE_DISPLAY_CASE,
+            STRIPPED_WARPED_DISPLAY_CASE
+        );
+
+        BlockEntityRendererRegistry.INSTANCE.register(DISPLAY_CASE_BLOCK_ENTITY, DisplayCaseBlockEntityRenderer::new);
+    }
+
     @Override
     public void registerBlocks() {
         ACACIA_DISPLAY_CASE.register();
@@ -136,6 +162,7 @@ public class DisplayCases implements MinekeaBlockCategory {
         STRIPPED_WARPED_DISPLAY_CASE.register();
     }
 
+    @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
         List<GenericDisplayCase> displayCases = new ArrayList<>(List.of(
             ACACIA_DISPLAY_CASE,
@@ -170,29 +197,11 @@ public class DisplayCases implements MinekeaBlockCategory {
         );
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
-    public void initializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(
-            RenderLayer.getCutout(),
-            ACACIA_DISPLAY_CASE,
-            BIRCH_DISPLAY_CASE,
-            CRIMSON_DISPLAY_CASE,
-            DARK_OAK_DISPLAY_CASE,
-            JUNGLE_DISPLAY_CASE,
-            OAK_DISPLAY_CASE,
-            SPRUCE_DISPLAY_CASE,
-            WARPED_DISPLAY_CASE,
-            STRIPPED_ACACIA_DISPLAY_CASE,
-            STRIPPED_BIRCH_DISPLAY_CASE,
-            STRIPPED_CRIMSON_DISPLAY_CASE,
-            STRIPPED_DARK_OAK_DISPLAY_CASE,
-            STRIPPED_JUNGLE_DISPLAY_CASE,
-            STRIPPED_OAK_DISPLAY_CASE,
-            STRIPPED_SPRUCE_DISPLAY_CASE,
-            STRIPPED_WARPED_DISPLAY_CASE
-        );
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
 
-        BlockEntityRendererRegistry.INSTANCE.register(DISPLAY_CASE_BLOCK_ENTITY, DisplayCaseBlockEntityRenderer::new);
+    @Override
+    public void setupResources() {
     }
 }

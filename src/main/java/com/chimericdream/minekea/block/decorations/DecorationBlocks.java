@@ -39,4 +39,12 @@ public class DecorationBlocks implements MinekeaBlockCategory {
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
     }
+
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
+    }
 }

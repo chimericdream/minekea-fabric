@@ -63,6 +63,34 @@ public class StorageBlocks implements MinekeaBlockCategory {
         CHORUS_FRUIT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:chorus_fruit"), true);
     }
 
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getTranslucent(),
+            WHITE_DYE_BLOCK,
+            ORANGE_DYE_BLOCK,
+            MAGENTA_DYE_BLOCK,
+            LIGHT_BLUE_DYE_BLOCK,
+            YELLOW_DYE_BLOCK,
+            LIME_DYE_BLOCK,
+            PINK_DYE_BLOCK,
+            GRAY_DYE_BLOCK,
+            LIGHT_GRAY_DYE_BLOCK,
+            CYAN_DYE_BLOCK,
+            PURPLE_DYE_BLOCK,
+            BLUE_DYE_BLOCK,
+            BROWN_DYE_BLOCK,
+            GREEN_DYE_BLOCK,
+            RED_DYE_BLOCK,
+            BLACK_DYE_BLOCK,
+            POTATO_BLOCK,
+            CARROT_BLOCK,
+            BEETROOT_BLOCK,
+            CHORUS_FRUIT_BLOCK
+        );
+    }
+
     @Override
     public void registerBlocks() {
         SUGAR_BLOCK.register();
@@ -94,31 +122,11 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
-    public void initializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(
-            RenderLayer.getTranslucent(),
-            WHITE_DYE_BLOCK,
-            ORANGE_DYE_BLOCK,
-            MAGENTA_DYE_BLOCK,
-            LIGHT_BLUE_DYE_BLOCK,
-            YELLOW_DYE_BLOCK,
-            LIME_DYE_BLOCK,
-            PINK_DYE_BLOCK,
-            GRAY_DYE_BLOCK,
-            LIGHT_GRAY_DYE_BLOCK,
-            CYAN_DYE_BLOCK,
-            PURPLE_DYE_BLOCK,
-            BLUE_DYE_BLOCK,
-            BROWN_DYE_BLOCK,
-            GREEN_DYE_BLOCK,
-            RED_DYE_BLOCK,
-            BLACK_DYE_BLOCK,
-            POTATO_BLOCK,
-            CARROT_BLOCK,
-            BEETROOT_BLOCK,
-            CHORUS_FRUIT_BLOCK
-        );
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }

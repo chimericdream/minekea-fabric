@@ -301,6 +301,10 @@ public class Beams implements MinekeaBlockCategory {
     }
 
     @Override
+    public void initializeClient() {
+    }
+
+    @Override
     public void registerBlocks() {
         AMETHYST_BEAM.register(false);
         ANDESITE_BEAM.register(false);
@@ -425,5 +429,13 @@ public class Beams implements MinekeaBlockCategory {
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }

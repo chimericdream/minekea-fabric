@@ -27,6 +27,10 @@ public class BookshelfTrapdoors implements MinekeaBlockCategory {
     }
 
     @Override
+    public void initializeClient() {
+    }
+
+    @Override
     public void registerBlocks() {
         ACACIA_BOOKSHELF_TRAPDOOR.register();
         BIRCH_BOOKSHELF_TRAPDOOR.register();
@@ -40,5 +44,13 @@ public class BookshelfTrapdoors implements MinekeaBlockCategory {
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }

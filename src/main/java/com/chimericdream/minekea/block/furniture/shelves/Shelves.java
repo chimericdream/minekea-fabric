@@ -57,6 +57,12 @@ public class Shelves implements MinekeaBlockCategory {
         WARPED_FLOATING_SHELF = new GenericFloatingShelf("warped", Map.of("slab", new Identifier("minecraft:warped_slab"), "planks", new Identifier("minecraft:warped_planks")));
     }
 
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        BlockEntityRendererRegistry.INSTANCE.register(SHELF_BLOCK_ENTITY, ShelfBlockEntityRenderer::new);
+    }
+
     @Override
     public void registerBlocks() {
         ACACIA_SHELF.register();
@@ -113,9 +119,11 @@ public class Shelves implements MinekeaBlockCategory {
         );
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
-    public void initializeClient() {
-        BlockEntityRendererRegistry.INSTANCE.register(SHELF_BLOCK_ENTITY, ShelfBlockEntityRenderer::new);
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }

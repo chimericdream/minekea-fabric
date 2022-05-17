@@ -151,6 +151,11 @@ public class Seats implements MinekeaBlockCategory {
     }
 
     @Override
+    public void initializeClient() {
+        EntityRendererRegistry.INSTANCE.register(SEAT_ENTITY, SeatEntity.EmptyRenderer::new);
+    }
+
+    @Override
     public void registerBlocks() {
         ACACIA_CHAIR.register();
         BIRCH_CHAIR.register();
@@ -182,7 +187,10 @@ public class Seats implements MinekeaBlockCategory {
     }
 
     @Override
-    public void initializeClient() {
-        EntityRendererRegistry.INSTANCE.register(SEAT_ENTITY, SeatEntity.EmptyRenderer::new);
+    public void registerEntities(List<ModCompatLayer> otherMods) {
+    }
+
+    @Override
+    public void setupResources() {
     }
 }
