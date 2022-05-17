@@ -2,7 +2,9 @@ package com.chimericdream.minekea.item;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.beams.GenericBeamBlock;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.MinekeaItem;
+import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.BlockState;
@@ -42,6 +44,20 @@ public class WrenchItem extends Item implements MinekeaItem {
     @Override
     public void register() {
         Registry.register(Registry.ITEM, ITEM_ID, Items.WRENCH_ITEM);
+        setupResources();
+    }
+
+    @Override
+    public void setupResources() {
+        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
+            ITEM_ID,
+            JRecipe.shaped(
+                JPattern.pattern(" # ", " ##", "#  "),
+                JKeys.keys()
+                    .key("#", JIngredient.ingredient().item(net.minecraft.item.Items.IRON_INGOT)),
+                JResult.result(ITEM_ID.toString())
+            )
+        );
     }
 
     private boolean tryPlacing(BlockPos pos, BlockState state, World world) {
