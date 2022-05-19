@@ -79,21 +79,6 @@ public class MinekeaMod implements ModInitializer {
         }
     }
 
-    /*
-     * Inspiration:
-     * https://www.curseforge.com/minecraft/mc-mods/bookshelving
-     * https://www.curseforge.com/minecraft/mc-mods/market-crates
-     * https://www.curseforge.com/minecraft/mc-mods/secret-bookshelf
-     * https://www.curseforge.com/minecraft/mc-mods/giacomos-bookshelf
-     * https://www.curseforge.com/minecraft/mc-mods/bookinit
-     * https://www.curseforge.com/minecraft/mc-mods/beholders-bookshelves
-     *
-     * [ ] block covers (veneer/plate/"carpet")
-     * [ ] iron shelves
-     * [ ] variant crafting tables
-     * [ ] variant ladders
-     */
-
     @Override
     public void onInitialize() {
         LOGGER.info("[minekea] Registering block and item tags");
