@@ -12,7 +12,7 @@
             "type": "patchouli:crafting",
             "recipe": "minekea:beams/cobblestone_beam",
             "title": "Recipe",
-            "text": "There are more than a hundred types of beams, but all follow the same recipe pattern."
+            "text": "There are nearly a hundred types of beams, but all follow the same recipe pattern."
         }
     ]
 }
