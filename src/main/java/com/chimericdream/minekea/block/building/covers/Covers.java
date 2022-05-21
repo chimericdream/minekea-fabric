@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.building.covers;
 
 import com.chimericdream.minekea.block.building.basalt_bricks.*;
+import com.chimericdream.minekea.block.building.end_stone.CobbledEndStoneBlock;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -18,6 +19,7 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock BRICK_COVER;
     public static final GenericCoverBlock CALCITE_COVER;
     public static final GenericCoverBlock COBBLED_DEEPSLATE_COVER;
+    public static final GenericCoverBlock COBBLED_END_STONE_COVER;
     public static final GenericCoverBlock COBBLESTONE_COVER;
     public static final GenericCoverBlock CRACKED_BASALT_BRICK_COVER;
     public static final GenericCoverBlock CRACKED_DEEPSLATE_BRICK_COVER;
@@ -139,6 +141,7 @@ public class Covers implements MinekeaBlockCategory {
         BRICK_COVER = new GenericCoverBlock("brick", Map.of("main", new Identifier("minecraft:bricks")));
         CALCITE_COVER = new GenericCoverBlock("calcite", Map.of("main", new Identifier("minecraft:calcite")));
         COBBLED_DEEPSLATE_COVER = new GenericCoverBlock("cobbled_deepslate", Map.of("main", new Identifier("minecraft:cobbled_deepslate")));
+        COBBLED_END_STONE_COVER = new GenericCoverBlock("cobbled_end_stone", Map.of("main", CobbledEndStoneBlock.BLOCK_ID));
         COBBLESTONE_COVER = new GenericCoverBlock("cobblestone", Map.of("main", new Identifier("minecraft:cobblestone")));
         CRACKED_BASALT_BRICK_COVER = new GenericCoverBlock("cracked_basalt_brick", Map.of("main", CrackedBasaltBricksBlock.BLOCK_ID));
         CRACKED_DEEPSLATE_BRICK_COVER = new GenericCoverBlock("cracked_deepslate_brick", Map.of("main", new Identifier("minecraft:cracked_deepslate_bricks")));
@@ -315,6 +318,7 @@ public class Covers implements MinekeaBlockCategory {
         BRICK_COVER.register(false);
         CALCITE_COVER.register(false);
         COBBLED_DEEPSLATE_COVER.register(false);
+        COBBLED_END_STONE_COVER.register(false);
         COBBLESTONE_COVER.register(false);
         CRACKED_BASALT_BRICK_COVER.register(false);
         CRACKED_DEEPSLATE_BRICK_COVER.register(false);
