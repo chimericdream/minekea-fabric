@@ -3,16 +3,19 @@ package com.chimericdream.minekea.block.building;
 import com.chimericdream.minekea.block.building.basalt_bricks.*;
 import com.chimericdream.minekea.block.building.beams.Beams;
 import com.chimericdream.minekea.block.building.covers.Covers;
+import com.chimericdream.minekea.block.building.end_stone.*;
 import com.chimericdream.minekea.block.building.stairs.Stairs;
 import com.chimericdream.minekea.block.building.storage.StorageBlocks;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBrickSlabBlock;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBrickStairsBlock;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BuildingBlocks implements MinekeaBlockCategory {
@@ -42,10 +45,21 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final WarpedNetherBrickStairsBlock WARPED_NETHER_BRICK_STAIRS_BLOCK;
     public static final WarpedNetherBricksBlock WARPED_NETHER_BRICKS_BLOCK;
 
+    public static final EndStoneSlabBlock END_STONE_SLAB_BLOCK;
+    public static final EndStoneStairsBlock END_STONE_STAIRS_BLOCK;
+
+    public static final CobbledEndStoneBlock COBBLED_END_STONE_BLOCK;
+    public static final CobbledEndStoneSlabBlock COBBLED_END_STONE_SLAB_BLOCK;
+    public static final CobbledEndStoneStairsBlock COBBLED_END_STONE_STAIRS_BLOCK;
+    public static final CobbledEndStoneWallBlock COBBLED_END_STONE_WALL_BLOCK;
+
     public static final Beams BEAMS;
     public static final Covers COVERS;
     public static final Stairs STAIRS;
     public static final StorageBlocks STORAGE_BLOCKS;
+
+    private static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
+    private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
 
     static {
         BASALT_BRICKS_BLOCK = new BasaltBricksBlock();
@@ -74,76 +88,92 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         WARPED_NETHER_BRICK_STAIRS_BLOCK = new WarpedNetherBrickStairsBlock();
         WARPED_NETHER_BRICKS_BLOCK = new WarpedNetherBricksBlock();
 
+        END_STONE_SLAB_BLOCK = new EndStoneSlabBlock();
+        END_STONE_STAIRS_BLOCK = new EndStoneStairsBlock();
+
+        COBBLED_END_STONE_BLOCK = new CobbledEndStoneBlock();
+        COBBLED_END_STONE_SLAB_BLOCK = new CobbledEndStoneSlabBlock();
+        COBBLED_END_STONE_STAIRS_BLOCK = new CobbledEndStoneStairsBlock();
+        COBBLED_END_STONE_WALL_BLOCK = new CobbledEndStoneWallBlock();
+
+        BLOCKS.addAll(List.of(
+            BASALT_BRICKS_BLOCK,
+            BASALT_BRICK_SLAB_BLOCK,
+            BASALT_BRICK_STAIRS_BLOCK,
+            CRACKED_BASALT_BRICKS_BLOCK,
+            CRACKED_BASALT_BRICK_SLAB_BLOCK,
+            CRACKED_BASALT_BRICK_STAIRS_BLOCK,
+            CRIMSON_BASALT_BRICKS_BLOCK,
+            CRIMSON_BASALT_BRICK_SLAB_BLOCK,
+            CRIMSON_BASALT_BRICK_STAIRS_BLOCK,
+            MOSSY_BASALT_BRICKS_BLOCK,
+            MOSSY_BASALT_BRICK_SLAB_BLOCK,
+            MOSSY_BASALT_BRICK_STAIRS_BLOCK,
+            WARPED_BASALT_BRICKS_BLOCK,
+            WARPED_BASALT_BRICK_SLAB_BLOCK,
+            WARPED_BASALT_BRICK_STAIRS_BLOCK,
+            CHISELED_BASALT_BRICKS_BLOCK,
+            WARPED_NETHER_BRICK_SLAB_BLOCK,
+            WARPED_NETHER_BRICK_STAIRS_BLOCK,
+            WARPED_NETHER_BRICKS_BLOCK,
+            END_STONE_SLAB_BLOCK,
+            END_STONE_STAIRS_BLOCK,
+            COBBLED_END_STONE_BLOCK,
+            COBBLED_END_STONE_SLAB_BLOCK,
+            COBBLED_END_STONE_STAIRS_BLOCK,
+            COBBLED_END_STONE_WALL_BLOCK
+        ));
+
         BEAMS = new Beams();
         COVERS = new Covers();
         STAIRS = new Stairs();
         STORAGE_BLOCKS = new StorageBlocks();
+
+        BLOCK_GROUPS.addAll(List.of(
+            BEAMS,
+            COVERS,
+            STAIRS,
+            STORAGE_BLOCKS
+        ));
     }
 
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
-        BEAMS.initializeClient();
-        COVERS.initializeClient();
-        STAIRS.initializeClient();
-        STORAGE_BLOCKS.initializeClient();
+        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
+            group.initializeClient();
+        }
     }
 
     @Override
     public void registerBlocks() {
-        BASALT_BRICKS_BLOCK.register();
-        BASALT_BRICK_SLAB_BLOCK.register();
-        BASALT_BRICK_STAIRS_BLOCK.register();
+        for (MinekeaBlock block : BLOCKS) {
+            block.register();
+        }
 
-        CRACKED_BASALT_BRICKS_BLOCK.register();
-        CRACKED_BASALT_BRICK_SLAB_BLOCK.register();
-        CRACKED_BASALT_BRICK_STAIRS_BLOCK.register();
-
-        CRIMSON_BASALT_BRICKS_BLOCK.register();
-        CRIMSON_BASALT_BRICK_SLAB_BLOCK.register();
-        CRIMSON_BASALT_BRICK_STAIRS_BLOCK.register();
-
-        MOSSY_BASALT_BRICKS_BLOCK.register();
-        MOSSY_BASALT_BRICK_SLAB_BLOCK.register();
-        MOSSY_BASALT_BRICK_STAIRS_BLOCK.register();
-
-        WARPED_BASALT_BRICKS_BLOCK.register();
-        WARPED_BASALT_BRICK_SLAB_BLOCK.register();
-        WARPED_BASALT_BRICK_STAIRS_BLOCK.register();
-
-        CHISELED_BASALT_BRICKS_BLOCK.register();
-
-        WARPED_NETHER_BRICK_SLAB_BLOCK.register();
-        WARPED_NETHER_BRICK_STAIRS_BLOCK.register();
-        WARPED_NETHER_BRICKS_BLOCK.register();
-
-        BEAMS.registerBlocks();
-        COVERS.registerBlocks();
-        STAIRS.registerBlocks();
-        STORAGE_BLOCKS.registerBlocks();
+        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
+            group.registerBlocks();
+        }
     }
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
-        BEAMS.registerBlockEntities(otherMods);
-        COVERS.registerBlockEntities(otherMods);
-        STAIRS.registerBlockEntities(otherMods);
-        STORAGE_BLOCKS.registerBlockEntities(otherMods);
+        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
+            group.registerBlockEntities(otherMods);
+        }
     }
 
     @Override
     public void registerEntities(List<ModCompatLayer> otherMods) {
-        BEAMS.registerEntities(otherMods);
-        COVERS.registerEntities(otherMods);
-        STAIRS.registerEntities(otherMods);
-        STORAGE_BLOCKS.registerEntities(otherMods);
+        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
+            group.registerEntities(otherMods);
+        }
     }
 
     @Override
     public void setupResources() {
-        BEAMS.setupResources();
-        COVERS.setupResources();
-        STAIRS.setupResources();
-        STORAGE_BLOCKS.setupResources();
+        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
+            group.setupResources();
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.building.beams;
 
 import com.chimericdream.minekea.block.building.basalt_bricks.*;
+import com.chimericdream.minekea.block.building.end_stone.CobbledEndStoneBlock;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -18,6 +19,7 @@ public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock BRICK_BEAM;
     public static final GenericBeamBlock CALCITE_BEAM;
     public static final GenericBeamBlock COBBLED_DEEPSLATE_BEAM;
+    public static final GenericBeamBlock COBBLED_END_STONE_BEAM;
     public static final GenericBeamBlock COBBLESTONE_BEAM;
     public static final GenericBeamBlock CRACKED_BASALT_BRICK_BEAM;
     public static final GenericBeamBlock CRACKED_DEEPSLATE_BRICK_BEAM;
@@ -139,6 +141,7 @@ public class Beams implements MinekeaBlockCategory {
         BRICK_BEAM = new GenericBeamBlock("brick", Map.of("main", new Identifier("minecraft:bricks")));
         CALCITE_BEAM = new GenericBeamBlock("calcite", Map.of("main", new Identifier("minecraft:calcite")));
         COBBLED_DEEPSLATE_BEAM = new GenericBeamBlock("cobbled_deepslate", Map.of("main", new Identifier("minecraft:cobbled_deepslate")));
+        COBBLED_END_STONE_BEAM = new GenericBeamBlock("cobbled_end_stone", Map.of("main", CobbledEndStoneBlock.BLOCK_ID));
         COBBLESTONE_BEAM = new GenericBeamBlock("cobblestone", Map.of("main", new Identifier("minecraft:cobblestone")));
         CRACKED_BASALT_BRICK_BEAM = new GenericBeamBlock("cracked_basalt_brick", Map.of("main", CrackedBasaltBricksBlock.BLOCK_ID));
         CRACKED_DEEPSLATE_BRICK_BEAM = new GenericBeamBlock("cracked_deepslate_brick", Map.of("main", new Identifier("minecraft:cracked_deepslate_bricks")));
@@ -315,6 +318,7 @@ public class Beams implements MinekeaBlockCategory {
         BRICK_BEAM.register(false);
         CALCITE_BEAM.register(false);
         COBBLED_DEEPSLATE_BEAM.register(false);
+        COBBLED_END_STONE_BEAM.register(false);
         COBBLESTONE_BEAM.register(false);
         CRACKED_BASALT_BRICK_BEAM.register(false);
         CRACKED_DEEPSLATE_BRICK_BEAM.register(false);
