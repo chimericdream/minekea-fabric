@@ -21,7 +21,7 @@ public class Keybindings {
             "key.minekea.items.painter.cycle_color",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_EQUAL,
-            "category.minekea.items"
+            "category.minekea"
         ));
     }
 
