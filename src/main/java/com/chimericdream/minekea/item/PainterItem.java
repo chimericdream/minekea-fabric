@@ -195,18 +195,24 @@ public class PainterItem extends Item implements MinekeaItem {
             return super.useOnBlock(context);
         }
 
-        ItemStack painter = context.getStack();
-        BlockColor color = getColor(painter);
-        ItemStack dye = getSelectedDye(painter);
+        ItemStack stack = context.getStack();
+        BlockColor color = getColor(stack);
 
-        if (dye.isEmpty()) {
+        Block newBlock = ColoredBlocksRegistry.findBlock(colorGroup, color);
+        if (newBlock == null || state.isOf(newBlock)) {
+            return super.useOnBlock(context);
+        }
+
+        PlayerEntity player = context.getPlayer();
+        ItemStack dye = getSelectedDye(stack);
+
+        if (dye.isEmpty() && (player == null || !player.isCreative())) {
             return ActionResult.FAIL;
         }
 
-        Block newBlock = ColoredBlocksRegistry.findBlock(colorGroup, color);
-
-        if (newBlock == null) {
-            return super.useOnBlock(context);
+        if (player != null && !player.isCreative()) {
+            PainterInventory painter = new PainterInventory(stack);
+            painter.consumeDye(color);
         }
 
         context.getWorld().setBlockState(pos, newBlock.getDefaultState());
@@ -248,6 +254,23 @@ public class PainterItem extends Item implements MinekeaItem {
         @Override
         public ItemStack tryInsert(int slot, ItemStack stack) {
             return ImplementedInventory.super.tryInsert(slot, stack);
+        }
+
+        public void consumeDye(BlockColor color) {
+            ItemStack dye = this.getStack(color.getIndex()).copy();
+            if (dye.isEmpty()) {
+                return;
+            }
+
+            dye.decrement(1);
+
+            if (dye.isEmpty()) {
+                this.setStack(color.getIndex(), ItemStack.EMPTY);
+            } else {
+                this.setStack(color.getIndex(), dye);
+            }
+
+            this.markDirty();
         }
 
         @Override
