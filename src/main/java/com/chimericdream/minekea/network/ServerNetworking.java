@@ -7,6 +7,7 @@ import com.chimericdream.minekea.util.StreamUtils;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -36,7 +37,9 @@ public class ServerNetworking {
             }
 
             ColoredBlocksRegistry.BlockColor nextColor = PainterItem.getNextColor(heldItem);
-            heldItem.setNbt(PainterItem.makeNbt(nextColor));
+            NbtCompound nbt = heldItem.getOrCreateNbt();
+
+            heldItem.setNbt(PainterItem.makeNbt(nbt, nextColor));
         });
     }
 }

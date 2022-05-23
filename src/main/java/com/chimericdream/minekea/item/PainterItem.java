@@ -4,23 +4,40 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry.BlockColor;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.screen.item.BlockPainterScreenHandler;
+import com.chimericdream.minekea.util.ImplementedInventory;
 import com.chimericdream.minekea.util.MinekeaItem;
+import com.chimericdream.minekea.util.NbtHelpers;
 import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -50,8 +67,7 @@ public class PainterItem extends Item implements MinekeaItem {
         return BlockColor.get(stackColor).getNext();
     }
 
-    public static NbtCompound makeNbt(BlockColor color) {
-        NbtCompound nbt = new NbtCompound();
+    public static NbtCompound makeNbt(NbtCompound nbt, BlockColor color) {
         nbt.putString("current_color", color.toString());
         nbt.putInt("CustomModelData", color.getModelNumber());
 
@@ -62,7 +78,7 @@ public class PainterItem extends Item implements MinekeaItem {
     public ItemStack getDefaultStack() {
         ItemStack stack = new ItemStack(this);
 
-        stack.setNbt(makeNbt(BlockColor.WHITE));
+        stack.setNbt(makeNbt(new NbtCompound(), BlockColor.WHITE));
 
         return stack;
     }
@@ -106,6 +122,65 @@ public class PainterItem extends Item implements MinekeaItem {
     }
 
     @Override
+    public boolean isItemBarVisible(ItemStack painter) {
+        ItemStack dye = getSelectedDye(painter);
+
+        return !dye.isEmpty();
+    }
+
+    @Override
+    public int getItemBarStep(ItemStack painter) {
+        ItemStack dye = getSelectedDye(painter);
+
+        if (dye.isEmpty()) {
+            return 0;
+        }
+
+        return Math.round(13.0F - (float) (dye.getMaxCount() - dye.getCount()) * 13.0F / (float) dye.getMaxCount());
+    }
+
+    @Override
+    public int getItemBarColor(ItemStack painter) {
+        ItemStack dye = getSelectedDye(painter);
+
+        float f = Math.max(0.0F, (float) dye.getCount() / (float) dye.getMaxCount());
+        return MathHelper.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
+    }
+
+    @Override
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        MinecraftClient client = MinecraftClient.getInstance();
+        HitResult hit = client.crosshairTarget;
+
+        if (hit != null && hit.getType() == HitResult.Type.MISS) {
+            openScreen(user, user.getStackInHand(hand));
+        }
+
+        return TypedActionResult.success(user.getStackInHand(hand));
+    }
+
+    public static void openScreen(PlayerEntity player, ItemStack painter) {
+        if (player.world != null && !player.world.isClient) {
+            player.openHandledScreen(new ExtendedScreenHandlerFactory() {
+                @Override
+                public void writeScreenOpeningData(ServerPlayerEntity serverPlayerEntity, PacketByteBuf packetByteBuf) {
+                    packetByteBuf.writeItemStack(painter);
+                }
+
+                @Override
+                public Text getDisplayName() {
+                    return new TranslatableText(painter.getItem().getTranslationKey());
+                }
+
+                @Override
+                public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
+                    return new BlockPainterScreenHandler(syncId, inv, painter);
+                }
+            });
+        }
+    }
+
+    @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         if (context.getWorld().isClient()) {
             return super.useOnBlock(context);
@@ -122,6 +197,12 @@ public class PainterItem extends Item implements MinekeaItem {
 
         ItemStack painter = context.getStack();
         BlockColor color = getColor(painter);
+        ItemStack dye = getSelectedDye(painter);
+
+        if (dye.isEmpty()) {
+            return ActionResult.FAIL;
+        }
+
         Block newBlock = ColoredBlocksRegistry.findBlock(colorGroup, color);
 
         if (newBlock == null) {
@@ -132,5 +213,48 @@ public class PainterItem extends Item implements MinekeaItem {
         context.getWorld().markDirty(pos);
 
         return ActionResult.SUCCESS;
+    }
+
+    private ItemStack getSelectedDye(ItemStack painter) {
+        BlockColor color = getColor(painter);
+        DefaultedList<ItemStack> inventory = NbtHelpers.getInventory(painter, PainterInventory.INVENTORY_SIZE);
+
+        return inventory.get(color.getIndex());
+    }
+
+    public static class PainterInventory implements ImplementedInventory {
+        public static final int INVENTORY_SIZE = 16;
+
+        private final ItemStack painterStack;
+        private final DefaultedList<ItemStack> items = DefaultedList.ofSize(INVENTORY_SIZE, ItemStack.EMPTY);
+
+        public PainterInventory(ItemStack stack) {
+            painterStack = stack;
+
+            NbtCompound nbt = painterStack.getOrCreateNbt();
+            Inventories.readNbt(nbt, items);
+        }
+
+        @Override
+        public DefaultedList<ItemStack> getItems() {
+            return items;
+        }
+
+        @Override
+        public ItemStack tryInsert(ItemStack stack) {
+            return stack;
+        }
+
+        @Override
+        public ItemStack tryInsert(int slot, ItemStack stack) {
+            return ImplementedInventory.super.tryInsert(slot, stack);
+        }
+
+        @Override
+        public void markDirty() {
+            NbtCompound nbt = painterStack.getOrCreateNbt();
+
+            Inventories.writeNbt(nbt, this.items);
+        }
     }
 }

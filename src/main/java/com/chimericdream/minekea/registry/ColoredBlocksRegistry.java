@@ -88,6 +88,10 @@ public class ColoredBlocksRegistry {
             return WHITE;
         }
 
+        public int getIndex() {
+            return idx;
+        }
+
         public int getModelNumber() {
             return modelNumber;
         }
