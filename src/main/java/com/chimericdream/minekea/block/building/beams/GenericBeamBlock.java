@@ -5,6 +5,7 @@ import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -12,12 +13,10 @@ import net.devtech.arrp.json.blockstate.JWhen;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -39,12 +38,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GenericBeamBlock extends Block implements MinekeaBlock {
-    private final Identifier BLOCK_ID;
-    private final String modId;
-
-    protected final String mainMaterial;
-    protected final Map<String, Identifier> materials;
-
     protected static final VoxelShape CORE_SHAPE = Block.createCuboidShape(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
     protected static final VoxelShape CONNECTED_NORTH_SHAPE = Block.createCuboidShape(5.0, 5.0, 0.0, 11.0, 11.0, 5.0);
     protected static final VoxelShape CONNECTED_EAST_SHAPE = Block.createCuboidShape(11.0, 5.0, 5.0, 16.0, 11.0, 11.0);
@@ -52,8 +45,6 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
     protected static final VoxelShape CONNECTED_WEST_SHAPE = Block.createCuboidShape(0.0, 5.0, 5.0, 5.0, 11.0, 11.0);
     protected static final VoxelShape CONNECTED_UP_SHAPE = Block.createCuboidShape(5.0, 11.0, 5.0, 11.0, 16.0, 11.0);
     protected static final VoxelShape CONNECTED_DOWN_SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 5.0, 11.0);
-
-    protected static final Settings DEFAULT_SETTINGS = FabricBlockSettings.copyOf(Blocks.COBBLESTONE_WALL);
 
     public static final BooleanProperty CONNECTED_NORTH;
     public static final BooleanProperty CONNECTED_EAST;
@@ -71,49 +62,8 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         CONNECTED_DOWN = BooleanProperty.of("connected_down");
     }
 
-    public GenericBeamBlock(String mainMaterial, Map<String, Identifier> materials) {
-        this(mainMaterial, ModInfo.MOD_ID, materials);
-    }
-
-    public GenericBeamBlock(String mainMaterial, String modId, Map<String, Identifier> materials) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            DEFAULT_SETTINGS
-        );
-    }
-
-    public GenericBeamBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Settings settings) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            getDefaultBlockId(modId, mainMaterial),
-            settings
-        );
-    }
-
-    protected GenericBeamBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Identifier blockId) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            blockId,
-            DEFAULT_SETTINGS
-        );
-    }
-
-    protected GenericBeamBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Identifier blockId, Settings settings) {
-        super(settings.nonOpaque());
-
-        validateMaterials(materials);
-
-        BLOCK_ID = blockId;
-
-        this.modId = modId;
-        this.mainMaterial = mainMaterial;
-        this.materials = materials;
+    public GenericBeamBlock(BeamSettings settings) {
+        super(settings);
 
         this.setDefaultState(
             this.stateManager
@@ -127,46 +77,10 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         );
     }
 
-    protected static Identifier getDefaultBlockId(String modId, String mainMaterial) {
-        return new Identifier(ModInfo.MOD_ID, String.format("beams/%s%s_beam", ModInfo.getModPrefix(modId), mainMaterial));
-    }
-
-    private boolean canConnect(BlockState state) {
-        return state.isOf(this);
-    }
-
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        BlockView blockView = ctx.getWorld();
-        BlockPos blockPos = ctx.getBlockPos();
-
-        // Neighbors
-        BlockPos north = blockPos.north();
-        BlockPos east = blockPos.east();
-        BlockPos south = blockPos.south();
-        BlockPos west = blockPos.west();
-        BlockPos up = blockPos.up();
-        BlockPos down = blockPos.down();
-
-        // Neighbor blockstates
-        BlockState northState = blockView.getBlockState(north);
-        BlockState eastState = blockView.getBlockState(east);
-        BlockState southState = blockView.getBlockState(south);
-        BlockState westState = blockView.getBlockState(west);
-        BlockState upState = blockView.getBlockState(up);
-        BlockState downState = blockView.getBlockState(down);
-
         Direction hitSide = ctx.getSide();
-
         BlockState blockState = this.getDefaultState();
-
-//        BlockState blockState = this.getDefaultState()
-//            .with(CONNECTED_NORTH, canConnect(northState))
-//            .with(CONNECTED_EAST, canConnect(eastState))
-//            .with(CONNECTED_SOUTH, canConnect(southState))
-//            .with(CONNECTED_WEST, canConnect(westState))
-//            .with(CONNECTED_UP, canConnect(upState))
-//            .with(CONNECTED_DOWN, canConnect(downState));
 
         blockState = switch (hitSide) {
             case NORTH, SOUTH -> blockState.with(CONNECTED_NORTH, true).with(CONNECTED_SOUTH, true);
@@ -187,11 +101,6 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
             case DOWN -> CONNECTED_DOWN;
         };
     }
-
-//    @Override
-//    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-//        return state.with(getConnectionProperty(direction), neighborState.isOf(this));
-//    }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(
@@ -248,7 +157,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
 
     @Override
     public Identifier getBlockID() {
-        return BLOCK_ID;
+        return ((BeamSettings) this.settings).getBlockId();
     }
 
     @Override
@@ -257,8 +166,8 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
     }
 
     public void register(boolean isFlammable) {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -270,12 +179,14 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        Map<String, Identifier> materials = ((BeamSettings) this.settings).getMaterials();
+
         Identifier end = materials.getOrDefault("end", materials.get("main"));
         Identifier side = materials.get("main");
         Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
 
-        Identifier BASE_MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
+        Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         Map<String, Identifier> MODEL_IDS = new HashMap<>();
         MODEL_IDS.put("core", new Identifier(BASE_MODEL_ID.getNamespace(), BASE_MODEL_ID.getPath() + "_core"));
@@ -287,15 +198,15 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         MODEL_IDS.put("connected_down", new Identifier(BASE_MODEL_ID.getNamespace(), BASE_MODEL_ID.getPath() + "_connected_down"));
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("X X", "X X", "X X"),
                 JKeys.keys().key("X", JIngredient.ingredient().item(ingredient.toString())),
-                JResult.stackedResult(BLOCK_ID.toString(), 6)
+                JResult.stackedResult(getBlockID().toString(), 6)
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
             .var("end", Texture.getBlockTextureID(end).toString())
@@ -335,19 +246,6 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
             MODEL_IDS.get("connected_down")
         );
 
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(
-//                JState.variant()
-//                    .put("facing=down", new JBlockModel(MODEL_ID).x(180))
-//                    .put("facing=east", new JBlockModel(MODEL_ID).x(90).y(90))
-//                    .put("facing=north", new JBlockModel(MODEL_ID).x(90))
-//                    .put("facing=south", new JBlockModel(MODEL_ID).x(90).y(180))
-//                    .put("facing=up", new JBlockModel(MODEL_ID))
-//                    .put("facing=west", new JBlockModel(MODEL_ID).x(90).y(270))
-//            ),
-//            BLOCK_ID
-//        );
-
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
             JState.state(
                 JState.multipart(new JBlockModel(MODEL_IDS.get("core"))),
@@ -364,18 +262,22 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
                 JState.multipart(new JBlockModel(MODEL_IDS.get("connected_down")).uvlock())
                     .when(new JWhen().add("connected_down", "true"))
             ),
-            BLOCK_ID
+            getBlockID()
         );
     }
 
-    @Override
-    public void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"main"};
+    public static class BeamSettings extends MinekeaBlockSettings<BeamSettings> {
+        public BeamSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
 
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("beams/%s%s_beam", ModInfo.getModPrefix(modId), mainMaterial));
             }
+
+            return blockId;
         }
     }
 }

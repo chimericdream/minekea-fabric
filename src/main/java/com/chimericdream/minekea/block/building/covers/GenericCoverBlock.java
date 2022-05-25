@@ -5,18 +5,17 @@ import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.CarpetBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -34,61 +33,12 @@ import java.util.Map;
 public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
     public static final DirectionProperty FACING;
 
-    private final Identifier BLOCK_ID;
-    private final String modId;
-
-    protected final String mainMaterial;
-    protected final Map<String, Identifier> materials;
-
-    protected static final Settings DEFAULT_SETTINGS = FabricBlockSettings.copyOf(Blocks.COBBLESTONE_WALL);
-
     static {
         FACING = Properties.HORIZONTAL_FACING;
     }
 
-    public GenericCoverBlock(String mainMaterial, Map<String, Identifier> materials) {
-        this(mainMaterial, ModInfo.MOD_ID, materials);
-    }
-
-    public GenericCoverBlock(String mainMaterial, String modId, Map<String, Identifier> materials) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            DEFAULT_SETTINGS
-        );
-    }
-
-    public GenericCoverBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Settings settings) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            getDefaultBlockId(modId, mainMaterial),
-            settings
-        );
-    }
-
-    protected GenericCoverBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Identifier blockId) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            blockId,
-            DEFAULT_SETTINGS
-        );
-    }
-
-    protected GenericCoverBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Identifier blockId, Settings settings) {
-        super(settings.nonOpaque());
-
-        validateMaterials(materials);
-
-        BLOCK_ID = blockId;
-
-        this.modId = modId;
-        this.mainMaterial = mainMaterial;
-        this.materials = materials;
+    public GenericCoverBlock(CoverSettings settings) {
+        super(settings);
 
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
@@ -101,13 +51,9 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
         return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
     }
 
-    protected static Identifier getDefaultBlockId(String modId, String mainMaterial) {
-        return new Identifier(ModInfo.MOD_ID, String.format("covers/%s%s_cover", ModInfo.getModPrefix(modId), mainMaterial));
-    }
-
     @Override
     public Identifier getBlockID() {
-        return BLOCK_ID;
+        return ((CoverSettings) this.settings).getBlockId();
     }
 
     @Override
@@ -116,8 +62,8 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
     }
 
     public void register(boolean isFlammable) {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Registry.register(Registry.BLOCK, ((CoverSettings) this.settings).getBlockId(), this);
+        Registry.register(Registry.ITEM, ((CoverSettings) this.settings).getBlockId(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -129,23 +75,24 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        Map<String, Identifier> materials = ((CoverSettings) this.settings).getMaterials();
         Identifier end = materials.getOrDefault("end", materials.get("main"));
         Identifier side = materials.get("main");
         Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
 
-        Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
+        Identifier MODEL_ID = Model.getBlockModelID(((CoverSettings) this.settings).getBlockId());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(((CoverSettings) this.settings).getBlockId());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            ((CoverSettings) this.settings).getBlockId(),
             JRecipe.shaped(
                 JPattern.pattern("X X", "   ", "X X"),
                 JKeys.keys().key("X", JIngredient.ingredient().item(ingredient.toString())),
-                JResult.stackedResult(BLOCK_ID.toString(), 16)
+                JResult.stackedResult(((CoverSettings) this.settings).getBlockId().toString(), 16)
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(((CoverSettings) this.settings).getBlockId()), LootTable.dropSelf(((CoverSettings) this.settings).getBlockId()));
 
         JTextures textures = new JTextures()
             .var("end", Texture.getBlockTextureID(end).toString())
@@ -166,18 +113,22 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
                     .put("facing=south", new JBlockModel(MODEL_ID).y(180))
                     .put("facing=west", new JBlockModel(MODEL_ID).y(270))
             ),
-            BLOCK_ID
+            ((CoverSettings) this.settings).getBlockId()
         );
     }
 
-    @Override
-    public void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"main"};
+    public static class CoverSettings extends MinekeaBlockSettings<CoverSettings> {
+        public CoverSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
 
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("covers/%s%s_cover", ModInfo.getModPrefix(modId), mainMaterial));
             }
+
+            return blockId;
         }
     }
 }
