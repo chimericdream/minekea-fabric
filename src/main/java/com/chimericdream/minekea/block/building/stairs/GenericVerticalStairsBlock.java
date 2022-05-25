@@ -4,18 +4,17 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -54,63 +53,17 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
         Block.createCuboidShape(8.0, 0.0, 0.0, 16.0, 16.0, 8.0)
     );
 
-    private final Identifier BLOCK_ID;
-    private final String modId;
-
-    protected final String mainMaterial;
-    protected final Map<String, Identifier> materials;
-
-    protected static final Settings DEFAULT_SETTINGS = FabricBlockSettings.copyOf(Blocks.COBBLESTONE_STAIRS);
-
     static {
         FACING = Properties.HORIZONTAL_FACING;
     }
 
-    public GenericVerticalStairsBlock(String mainMaterial, Map<String, Identifier> materials) {
-        this(mainMaterial, ModInfo.MOD_ID, materials);
+    public GenericVerticalStairsBlock(VerticalStairsSettings settings) {
+        super(settings);
     }
 
-    public GenericVerticalStairsBlock(String mainMaterial, String modId, Map<String, Identifier> materials) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            DEFAULT_SETTINGS
-        );
-    }
-
-    public GenericVerticalStairsBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Settings settings) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            getDefaultBlockId(modId, mainMaterial),
-            settings
-        );
-    }
-
-    protected GenericVerticalStairsBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Identifier blockId) {
-        this(
-            mainMaterial,
-            modId,
-            materials,
-            blockId,
-            DEFAULT_SETTINGS
-        );
-    }
-
-    protected GenericVerticalStairsBlock(String mainMaterial, String modId, Map<String, Identifier> materials, Identifier blockId, Settings settings) {
-        super(settings.nonOpaque());
-
-        validateMaterials(materials);
-
-        BLOCK_ID = blockId;
-
-        this.modId = modId;
-        this.mainMaterial = mainMaterial;
-        this.materials = materials;
-
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+    @Override
+    public Identifier getBlockID() {
+        return ((VerticalStairsSettings) this.settings).getBlockId();
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -141,23 +94,14 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
         }
     }
 
-    protected static Identifier getDefaultBlockId(String modId, String mainMaterial) {
-        return new Identifier(ModInfo.MOD_ID, String.format("building/stairs/%s%s_vertical_stairs", ModInfo.getModPrefix(modId), mainMaterial));
-    }
-
-    @Override
-    public Identifier getBlockID() {
-        return BLOCK_ID;
-    }
-
     @Override
     public void register() {
         register(false);
     }
 
     public void register(boolean isFlammable) {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -180,18 +124,20 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        Map<String, Identifier> materials = ((VerticalStairsSettings) this.settings).getMaterials();
+
         Identifier main = materials.get("main");
         Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
 
-        Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
+        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("XXX", " XX", "  X"),
                 JKeys.keys().key("X", JIngredient.ingredient().item(ingredient.toString())),
-                JResult.stackedResult(BLOCK_ID.toString(), 8)
+                JResult.stackedResult(getBlockID().toString(), 8)
             )
         );
 
@@ -211,7 +157,22 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
                     .put("facing=south", new JBlockModel(MODEL_ID).y(180).uvlock())
                     .put("facing=west", new JBlockModel(MODEL_ID).y(270).uvlock())
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class VerticalStairsSettings extends MinekeaBlockSettings<VerticalStairsSettings> {
+        public VerticalStairsSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("building/stairs/%s%s_vertical_stairs", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }

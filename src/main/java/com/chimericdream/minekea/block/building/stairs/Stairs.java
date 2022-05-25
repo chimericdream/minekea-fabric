@@ -1,18 +1,15 @@
 package com.chimericdream.minekea.block.building.stairs;
 
-import com.chimericdream.minekea.block.building.basalt_bricks.*;
 import com.chimericdream.minekea.block.building.stairs.GenericStairsBlock.StairsSettings;
-import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
+import com.chimericdream.minekea.block.building.stairs.GenericVerticalStairsBlock.VerticalStairsSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalStairsBlock ANDESITE_VERTICAL_STAIRS;
@@ -64,14 +61,22 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalStairsBlock WAXED_OXIDIZED_CUT_COPPER_VERTICAL_STAIRS;
 
     public static final GenericVerticalStairsBlock CRIMSON_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock CRIMSON_STEM_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock WARPED_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock WARPED_STEM_VERTICAL_STAIRS;
 
     public static final GenericVerticalStairsBlock ACACIA_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock ACACIA_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock BIRCH_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock BIRCH_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock DARK_OAK_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock DARK_OAK_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock JUNGLE_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock JUNGLE_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock OAK_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock OAK_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock SPRUCE_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock SPRUCE_LOG_VERTICAL_STAIRS;
 
     public static final GenericStairsBlock AMETHYST_STAIRS;
     public static final GenericStairsBlock BASALT_STAIRS;
@@ -181,79 +186,85 @@ public class Stairs implements MinekeaBlockCategory {
     public static final List<GenericStairsBlock> TRANSLUCENT_STAIRS = new ArrayList<>();
 
     static {
-        ANDESITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("andesite", Map.of("main", new Identifier("minecraft:andesite")));
-        BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("basalt_brick", Map.of("main", BasaltBricksBlock.BLOCK_ID));
-        BLACKSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("blackstone", Map.of("main", new Identifier("minecraft:blackstone")));
-        BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("brick", Map.of("main", new Identifier("minecraft:bricks")));
-        COBBLED_DEEPSLATE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("cobbled_deepslate", Map.of("main", new Identifier("minecraft:cobbled_deepslate")));
-        COBBLESTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("cobblestone", Map.of("main", new Identifier("minecraft:cobblestone")));
-        CRACKED_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("cracked_basalt_brick", Map.of("main", CrackedBasaltBricksBlock.BLOCK_ID));
-        CRIMSON_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("crimson_basalt_brick", Map.of("main", CrimsonBasaltBricksBlock.BLOCK_ID));
-        DARK_PRISMARINE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("dark_prismarine", Map.of("main", new Identifier("minecraft:dark_prismarine")));
-        DEEPSLATE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("deepslate_brick", Map.of("main", new Identifier("minecraft:deepslate_bricks")));
-        DEEPSLATE_TILE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("deepslate_tile", Map.of("main", new Identifier("minecraft:deepslate_tiles")));
-        DIORITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("diorite", Map.of("main", new Identifier("minecraft:diorite")));
-        END_STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("end_stone_brick", Map.of("main", new Identifier("minecraft:end_stone_bricks")));
-        GRANITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("granite", Map.of("main", new Identifier("minecraft:granite")));
-        MOSSY_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("mossy_basalt_brick", Map.of("main", MossyBasaltBricksBlock.BLOCK_ID));
-        MOSSY_COBBLESTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("mossy_cobblestone", Map.of("main", new Identifier("minecraft:mossy_cobblestone")));
-        MOSSY_STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("mossy_stone_brick", Map.of("main", new Identifier("minecraft:mossy_stone_bricks")));
-        NETHER_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("nether_brick", Map.of("main", new Identifier("minecraft:nether_bricks")));
-        POLISHED_ANDESITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("polished_andesite", Map.of("main", new Identifier("minecraft:polished_andesite")));
-        POLISHED_BLACKSTONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("polished_blackstone_brick", Map.of("main", new Identifier("minecraft:polished_blackstone_bricks")));
-        POLISHED_BLACKSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("polished_blackstone", Map.of("main", new Identifier("minecraft:polished_blackstone")));
-        POLISHED_DEEPSLATE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("polished_deepslate", Map.of("main", new Identifier("minecraft:polished_deepslate")));
-        POLISHED_DIORITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("polished_diorite", Map.of("main", new Identifier("minecraft:polished_diorite")));
-        POLISHED_GRANITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("polished_granite", Map.of("main", new Identifier("minecraft:polished_granite")));
-        PRISMARINE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("prismarine_brick", Map.of("main", new Identifier("minecraft:prismarine_bricks")));
-        PRISMARINE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("prismarine", Map.of("main", new Identifier("minecraft:prismarine")));
-        PURPUR_VERTICAL_STAIRS = new GenericVerticalStairsBlock("purpur", Map.of("main", new Identifier("minecraft:purpur_block")));
-        QUARTZ_VERTICAL_STAIRS = new GenericVerticalStairsBlock("quartz", Map.of("main", new Identifier("minecraft:quartz_block_top"), "ingredient", new Identifier("minecraft:quartz_block")));
-        RED_NETHER_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("red_nether_brick", Map.of("main", new Identifier("minecraft:red_nether_bricks")));
-        RED_SANDSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("red_sandstone", Map.of("main", new Identifier("minecraft:red_sandstone")));
-        SANDSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("sandstone", Map.of("main", new Identifier("minecraft:sandstone")));
-        SMOOTH_QUARTZ_VERTICAL_STAIRS = new GenericVerticalStairsBlock("smooth_quartz", Map.of("main", new Identifier("minecraft:quartz_block_bottom"), "ingredient", new Identifier("minecraft:smooth_quartz")));
-        SMOOTH_RED_SANDSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("smooth_red_sandstone", Map.of("main", new Identifier("minecraft:red_sandstone_top"), "ingredient", new Identifier("minecraft:smooth_red_sandstone")));
-        SMOOTH_SANDSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("smooth_sandstone", Map.of("main", new Identifier("minecraft:sandstone_top"), "ingredient", new Identifier("minecraft:smooth_sandstone")));
-        STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("stone_brick", Map.of("main", new Identifier("minecraft:stone_bricks")));
-        STONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("stone", Map.of("main", new Identifier("minecraft:stone")));
-        WARPED_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("warped_basalt_brick", Map.of("main", WarpedBasaltBricksBlock.BLOCK_ID));
-        WARPED_NETHER_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("warped_nether_brick", Map.of("main", WarpedNetherBricksBlock.BLOCK_ID));
+        ANDESITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.ANDESITE));
+        BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BASALT_BRICK));
+        BLACKSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BLACKSTONE));
+        BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BRICK));
+        COBBLED_DEEPSLATE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.COBBLED_DEEPSLATE));
+        COBBLESTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.COBBLESTONE));
+        CRACKED_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRACKED_BASALT_BRICK));
+        CRIMSON_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRIMSON_BASALT_BRICK));
+        DARK_PRISMARINE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DARK_PRISMARINE));
+        DEEPSLATE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DEEPSLATE_BRICK));
+        DEEPSLATE_TILE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DEEPSLATE_TILE));
+        DIORITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DIORITE));
+        END_STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.END_STONE));
+        GRANITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.GRANITE));
+        MOSSY_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
+        MOSSY_COBBLESTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MOSSY_COBBLESTONE));
+        MOSSY_STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MOSSY_STONE_BRICK));
+        NETHER_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.NETHER_BRICK));
+        POLISHED_ANDESITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_ANDESITE));
+        POLISHED_BLACKSTONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_BLACKSTONE_BRICK));
+        POLISHED_BLACKSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_BLACKSTONE));
+        POLISHED_DEEPSLATE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_DEEPSLATE));
+        POLISHED_DIORITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_DIORITE));
+        POLISHED_GRANITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_GRANITE));
+        PRISMARINE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.PRISMARINE_BRICK));
+        PRISMARINE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.PRISMARINE));
+        PURPUR_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.PURPUR));
+        QUARTZ_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.QUARTZ));
+        RED_NETHER_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.RED_NETHER_BRICK));
+        RED_SANDSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.RED_SANDSTONE));
+        SANDSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SANDSTONE));
+        SMOOTH_QUARTZ_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SMOOTH_QUARTZ));
+        SMOOTH_RED_SANDSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SMOOTH_RED_SANDSTONE));
+        SMOOTH_SANDSTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SMOOTH_SANDSTONE));
+        STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.STONE_BRICK));
+        STONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.STONE));
+        WARPED_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_BASALT_BRICK));
+        WARPED_NETHER_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_NETHER_BRICK));
 
-        CRIMSON_VERTICAL_STAIRS = new GenericVerticalStairsBlock("crimson", Map.of("main", new Identifier("minecraft:crimson_planks")));
-//        CRIMSON_STEM_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRIMSON_STEM));
-        WARPED_VERTICAL_STAIRS = new GenericVerticalStairsBlock("warped", Map.of("main", new Identifier("minecraft:warped_planks")));
-//        WARPED_STEM_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_STEM));
+        CRIMSON_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRIMSON_PLANK));
+        CRIMSON_STEM_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRIMSON_STEM));
+        WARPED_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_PLANK));
+        WARPED_STEM_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_STEM));
 
-        CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock("cut_copper", Map.of("main", new Identifier("minecraft:cut_copper")));
-        EXPOSED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock("exposed_cut_copper", Map.of("main", new Identifier("minecraft:exposed_cut_copper")));
-        WEATHERED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock("weathered_cut_copper", Map.of("main", new Identifier("minecraft:weathered_cut_copper")));
-        OXIDIZED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock("oxidized_cut_copper", Map.of("main", new Identifier("minecraft:oxidized_cut_copper")));
-        WAXED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock("waxed_cut_copper", Map.of("main", new Identifier("minecraft:cut_copper"), "ingredient", new Identifier("minecraft:waxed_cut_copper")));
-        WAXED_EXPOSED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock("waxed_exposed_cut_copper", Map.of("main", new Identifier("minecraft:exposed_cut_copper"), "ingredient", new Identifier("minecraft:waxed_exposed_cut_copper")));
-        WAXED_WEATHERED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock("waxed_weathered_cut_copper", Map.of("main", new Identifier("minecraft:weathered_cut_copper"), "ingredient", new Identifier("minecraft:waxed_weathered_cut_copper")));
-        WAXED_OXIDIZED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock("waxed_oxidized_cut_copper", Map.of("main", new Identifier("minecraft:oxidized_cut_copper"), "ingredient", new Identifier("minecraft:waxed_oxidized_cut_copper")));
+        CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CUT_COPPER));
+        EXPOSED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.EXPOSED_CUT_COPPER));
+        WEATHERED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WEATHERED_CUT_COPPER));
+        OXIDIZED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OXIDIZED_CUT_COPPER));
+        WAXED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WAXED_CUT_COPPER));
+        WAXED_EXPOSED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WAXED_EXPOSED_CUT_COPPER));
+        WAXED_WEATHERED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WAXED_WEATHERED_CUT_COPPER));
+        WAXED_OXIDIZED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WAXED_OXIDIZED_CUT_COPPER));
 
-        ACACIA_VERTICAL_STAIRS = new GenericVerticalStairsBlock("acacia", Map.of("main", new Identifier("minecraft:acacia_planks")));
-//        ACACIA_VERTICAL_LOG_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.ACACIA_LOG));
-        BIRCH_VERTICAL_STAIRS = new GenericVerticalStairsBlock("birch", Map.of("main", new Identifier("minecraft:birch_planks")));
-//        BIRCH_VERTICAL_LOG_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BIRCH_LOG));
-        DARK_OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("dark_oak", Map.of("main", new Identifier("minecraft:dark_oak_planks")));
-//        DARK_OAK_VERTICAL_LOG_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DARK_OAK_LOG));
-        JUNGLE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("jungle", Map.of("main", new Identifier("minecraft:jungle_planks")));
-//        JUNGLE_VERTICAL_LOG_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.JUNGLE_LOG));
-        OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock("oak", Map.of("main", new Identifier("minecraft:oak_planks")));
-//        OAK_VERTICAL_LOG_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OAK_LOG));
-        SPRUCE_VERTICAL_STAIRS = new GenericVerticalStairsBlock("spruce", Map.of("main", new Identifier("minecraft:spruce_planks")));
-//        SPRUCE_VERTICAL_LOG_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SPRUCE_LOG));
+        ACACIA_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.ACACIA_PLANK));
+        ACACIA_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.ACACIA_LOG));
+        BIRCH_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BIRCH_PLANK));
+        BIRCH_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BIRCH_LOG));
+        DARK_OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DARK_OAK_PLANK));
+        DARK_OAK_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DARK_OAK_LOG));
+        JUNGLE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.JUNGLE_PLANK));
+        JUNGLE_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.JUNGLE_LOG));
+        OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OAK_PLANK));
+        OAK_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OAK_LOG));
+        SPRUCE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SPRUCE_PLANK));
+        SPRUCE_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SPRUCE_LOG));
 
         FLAMMABLE_VERTICAL_STAIRS.addAll(List.of(
             ACACIA_VERTICAL_STAIRS,
+            ACACIA_LOG_VERTICAL_STAIRS,
             BIRCH_VERTICAL_STAIRS,
+            BIRCH_LOG_VERTICAL_STAIRS,
             DARK_OAK_VERTICAL_STAIRS,
+            DARK_OAK_LOG_VERTICAL_STAIRS,
             JUNGLE_VERTICAL_STAIRS,
+            JUNGLE_LOG_VERTICAL_STAIRS,
             OAK_VERTICAL_STAIRS,
-            SPRUCE_VERTICAL_STAIRS
+            OAK_LOG_VERTICAL_STAIRS,
+            SPRUCE_VERTICAL_STAIRS,
+            SPRUCE_LOG_VERTICAL_STAIRS
         ));
 
         NONFLAMMABLE_VERTICAL_STAIRS.addAll(List.of(
@@ -306,7 +317,9 @@ public class Stairs implements MinekeaBlockCategory {
             WAXED_OXIDIZED_CUT_COPPER_VERTICAL_STAIRS,
 
             CRIMSON_VERTICAL_STAIRS,
-            WARPED_VERTICAL_STAIRS
+            CRIMSON_STEM_VERTICAL_STAIRS,
+            WARPED_VERTICAL_STAIRS,
+            WARPED_STEM_VERTICAL_STAIRS
         ));
 
         TRANSLUCENT_VERTICAL_STAIRS.addAll(List.of());
@@ -440,6 +453,9 @@ public class Stairs implements MinekeaBlockCategory {
             SMOOTH_BASALT_STAIRS,
             SMOOTH_STONE_STAIRS,
             TUFF_STAIRS,
+
+            CRIMSON_STEM_STAIRS,
+            WARPED_STEM_STAIRS,
 
             WHITE_TERRACOTTA_STAIRS,
             ORANGE_TERRACOTTA_STAIRS,

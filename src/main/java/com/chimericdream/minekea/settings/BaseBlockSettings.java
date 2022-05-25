@@ -414,6 +414,16 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings QUARTZ = new DefaultSettings(Blocks.QUARTZ_BLOCK)
+        .material("quartz")
+        .translation("Quartz")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:quartz_block_top"),
+                "ingredient", new Identifier("minecraft:quartz_block")
+            )
+        );
+
     public static DefaultSettings RED_NETHER_BRICK = new DefaultSettings(Blocks.RED_NETHER_BRICKS)
         .material("red_nether_brick")
         .translation("Red Nether Brick")
@@ -447,6 +457,16 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:smooth_basalt")
+            )
+        );
+
+    public static DefaultSettings SMOOTH_QUARTZ = new DefaultSettings(Blocks.SMOOTH_QUARTZ)
+        .material("smooth_quartz")
+        .translation("Smooth Quartz")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:quartz_block_bottom"),
+                "ingredient", new Identifier("minecraft:smooth_quartz")
             )
         );
 
@@ -521,6 +541,82 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", WarpedNetherBricksBlock.BLOCK_ID
+            )
+        );
+
+    public static DefaultSettings CUT_COPPER = new DefaultSettings(Blocks.CUT_COPPER)
+        .material("cut_copper")
+        .translation("Cut Copper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:cut_copper")
+            )
+        );
+
+    public static DefaultSettings EXPOSED_CUT_COPPER = new DefaultSettings(Blocks.EXPOSED_CUT_COPPER)
+        .material("exposed_cut_copper")
+        .translation("Exposed Cut Copper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:exposed_cut_copper")
+            )
+        );
+
+    public static DefaultSettings WEATHERED_CUT_COPPER = new DefaultSettings(Blocks.WEATHERED_CUT_COPPER)
+        .material("weathered_cut_copper")
+        .translation("Weathered Cut Copper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:weathered_cut_copper")
+            )
+        );
+
+    public static DefaultSettings OXIDIZED_CUT_COPPER = new DefaultSettings(Blocks.OXIDIZED_CUT_COPPER)
+        .material("oxidized_cut_copper")
+        .translation("Oxidized Cut Copper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:oxidized_cut_copper")
+            )
+        );
+
+    public static DefaultSettings WAXED_CUT_COPPER = new DefaultSettings(Blocks.WAXED_CUT_COPPER)
+        .material("waxed_cut_copper")
+        .translation("Waxed Cut Copper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:cut_copper"),
+                "ingredient", new Identifier("minecraft:waxed_cut_copper")
+            )
+        );
+
+    public static DefaultSettings WAXED_EXPOSED_CUT_COPPER = new DefaultSettings(Blocks.WAXED_EXPOSED_CUT_COPPER)
+        .material("waxed_exposed_cut_copper")
+        .translation("Waxed Exposed Cut Copper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:exposed_cut_copper"),
+                "ingredient", new Identifier("minecraft:waxed_exposed_cut_copper")
+            )
+        );
+
+    public static DefaultSettings WAXED_WEATHERED_CUT_COPPER = new DefaultSettings(Blocks.WAXED_WEATHERED_CUT_COPPER)
+        .material("waxed_weathered_cut_copper")
+        .translation("Waxed Weathered Cut Copper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:weathered_cut_copper"),
+                "ingredient", new Identifier("minecraft:waxed_weathered_cut_copper")
+            )
+        );
+
+    public static DefaultSettings WAXED_OXIDIZED_CUT_COPPER = new DefaultSettings(Blocks.WAXED_OXIDIZED_CUT_COPPER)
+        .material("waxed_oxidized_cut_copper")
+        .translation("Waxed Oxidized Cut Copper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:oxidized_cut_copper"),
+                "ingredient", new Identifier("minecraft:waxed_oxidized_cut_copper")
             )
         );
 
