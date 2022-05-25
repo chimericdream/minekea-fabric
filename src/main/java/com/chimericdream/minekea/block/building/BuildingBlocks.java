@@ -4,6 +4,7 @@ import com.chimericdream.minekea.block.building.basalt_bricks.*;
 import com.chimericdream.minekea.block.building.beams.Beams;
 import com.chimericdream.minekea.block.building.covers.Covers;
 import com.chimericdream.minekea.block.building.end_stone.*;
+import com.chimericdream.minekea.block.building.slabs.Slabs;
 import com.chimericdream.minekea.block.building.stairs.Stairs;
 import com.chimericdream.minekea.block.building.storage.StorageBlocks;
 import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBrickSlabBlock;
@@ -55,6 +56,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
     public static final Beams BEAMS;
     public static final Covers COVERS;
+    public static final Slabs SLABS;
     public static final Stairs STAIRS;
     public static final StorageBlocks STORAGE_BLOCKS;
 
@@ -126,12 +128,14 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
         BEAMS = new Beams();
         COVERS = new Covers();
+        SLABS = new Slabs();
         STAIRS = new Stairs();
         STORAGE_BLOCKS = new StorageBlocks();
 
         BLOCK_GROUPS.addAll(List.of(
             BEAMS,
             COVERS,
+            SLABS,
             STAIRS,
             STORAGE_BLOCKS
         ));

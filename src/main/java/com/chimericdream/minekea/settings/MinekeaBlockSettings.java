@@ -4,7 +4,6 @@ import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;
@@ -18,14 +17,29 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected int burnTime = 0;
     protected int fuelTime = 0;
     protected String defaultTranslation;
+    protected Block baseBlock;
 
     protected MinekeaBlockSettings(Block block) {
-        super(FabricBlockSettings.copyOf(block));
+        this(FabricBlockSettings.copyOf(block));
+
+        this.baseBlock = block;
     }
 
     protected MinekeaBlockSettings(DefaultSettings settings) {
         super(settings);
 
+        copySettings(settings);
+    }
+
+    protected MinekeaBlockSettings(AbstractBlock.Settings settings) {
+        super(settings);
+
+        if (settings instanceof DefaultSettings) {
+            copySettings((DefaultSettings) settings);
+        }
+    }
+
+    protected void copySettings(DefaultSettings settings) {
         this.mainMaterial = settings.mainMaterial;
         this.materials = settings.materials;
         this.modId = settings.modId;
@@ -33,16 +47,23 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.burnTime = settings.burnTime;
         this.burnSpread = settings.burnSpread;
         this.fuelTime = settings.fuelTime;
-    }
-
-    protected MinekeaBlockSettings(AbstractBlock.Settings settings) {
-        super(settings);
+        this.baseBlock = settings.baseBlock;
     }
 
     abstract public Identifier getBlockId();
 
     public Map<String, Identifier> getMaterials() {
         return this.materials;
+    }
+
+    public Block getBaseBlock() {
+        return this.baseBlock;
+    }
+
+    public T baseBlock(Block baseBlock) {
+        this.baseBlock = baseBlock;
+        // noinspection unchecked
+        return (T) this;
     }
 
     public T burnSpread(int spread) {
@@ -93,12 +114,8 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     }
 
     public static class DefaultSettings extends MinekeaBlockSettings<DefaultSettings> {
-        public DefaultSettings() {
-            super(FabricBlockSettings.of(Material.AIR));
-        }
-
         public DefaultSettings(Block block) {
-            super(FabricBlockSettings.copyOf(block));
+            super(block);
         }
 
         @Override
