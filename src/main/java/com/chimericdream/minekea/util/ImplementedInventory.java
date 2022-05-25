@@ -195,4 +195,3 @@ public interface ImplementedInventory extends Inventory {
         return true;
     }
 }
-

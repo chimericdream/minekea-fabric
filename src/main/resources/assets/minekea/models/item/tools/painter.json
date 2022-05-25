@@ -1,0 +1,24 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "minekea:item/tools/painter/painter_white"
+    },
+    "overrides": [
+        {"predicate": {"custom_model_data": 2232001}, "model": "minekea:item/tools/painter/painter_white"},
+        {"predicate": {"custom_model_data": 2232002}, "model": "minekea:item/tools/painter/painter_orange"},
+        {"predicate": {"custom_model_data": 2232003}, "model": "minekea:item/tools/painter/painter_magenta"},
+        {"predicate": {"custom_model_data": 2232004}, "model": "minekea:item/tools/painter/painter_light_blue"},
+        {"predicate": {"custom_model_data": 2232005}, "model": "minekea:item/tools/painter/painter_yellow"},
+        {"predicate": {"custom_model_data": 2232006}, "model": "minekea:item/tools/painter/painter_lime"},
+        {"predicate": {"custom_model_data": 2232007}, "model": "minekea:item/tools/painter/painter_pink"},
+        {"predicate": {"custom_model_data": 2232008}, "model": "minekea:item/tools/painter/painter_gray"},
+        {"predicate": {"custom_model_data": 2232009}, "model": "minekea:item/tools/painter/painter_light_gray"},
+        {"predicate": {"custom_model_data": 2232010}, "model": "minekea:item/tools/painter/painter_cyan"},
+        {"predicate": {"custom_model_data": 2232011}, "model": "minekea:item/tools/painter/painter_purple"},
+        {"predicate": {"custom_model_data": 2232012}, "model": "minekea:item/tools/painter/painter_blue"},
+        {"predicate": {"custom_model_data": 2232013}, "model": "minekea:item/tools/painter/painter_brown"},
+        {"predicate": {"custom_model_data": 2232014}, "model": "minekea:item/tools/painter/painter_green"},
+        {"predicate": {"custom_model_data": 2232015}, "model": "minekea:item/tools/painter/painter_red"},
+        {"predicate": {"custom_model_data": 2232016}, "model": "minekea:item/tools/painter/painter_black"}
+    ]
+}

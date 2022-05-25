@@ -524,7 +524,10 @@
     "container.minekea.storage_bookshelf": "Storage Bookshelf",
     "item.minekea.crops.warped_wart": "Warped Wart",
     "item.minekea.honey_bucket": "Honey Bucket",
+    "item.minekea.tools.painter": "Block Painter",
     "item.minekea.wrench": "Wrench",
+    "category.minekea": "Minekea",
+    "key.minekea.items.painter.cycle_color": "Block Painter: Cycle Color",
     "text.minekea.bucket": "bucket",
     "text.minekea.buckets": "buckets"
 }
