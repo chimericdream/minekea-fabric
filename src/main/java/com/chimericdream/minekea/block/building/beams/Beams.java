@@ -4,6 +4,8 @@ import com.chimericdream.minekea.block.building.beams.GenericBeamBlock.BeamSetti
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.minecraft.client.render.RenderLayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,6 +119,23 @@ public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock RED_CONCRETE_BEAM;
     public static final GenericBeamBlock BLACK_CONCRETE_BEAM;
 
+    public static final GenericBeamBlock WHITE_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock ORANGE_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock MAGENTA_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock LIGHT_BLUE_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock YELLOW_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock LIME_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock PINK_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock GRAY_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock LIGHT_GRAY_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock CYAN_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock PURPLE_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock BLUE_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock BROWN_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock GREEN_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock RED_STAINED_GLASS_BEAM;
+    public static final GenericBeamBlock BLACK_STAINED_GLASS_BEAM;
+
     public static final GenericBeamBlock ACACIA_LOG_BEAM;
     public static final GenericBeamBlock ACACIA_PLANK_BEAM;
     public static final GenericBeamBlock BIRCH_LOG_BEAM;
@@ -136,6 +155,7 @@ public class Beams implements MinekeaBlockCategory {
 
     public static final List<GenericBeamBlock> FLAMMABLE_BEAMS = new ArrayList<>();
     public static final List<GenericBeamBlock> NONFLAMMABLE_BEAMS = new ArrayList<>();
+    public static final List<GenericBeamBlock> TRANSLUCENT_BEAMS = new ArrayList<>();
 
     static {
         AMETHYST_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.AMETHYST));
@@ -245,6 +265,23 @@ public class Beams implements MinekeaBlockCategory {
         GREEN_CONCRETE_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.GREEN_CONCRETE));
         RED_CONCRETE_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.RED_CONCRETE));
         BLACK_CONCRETE_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BLACK_CONCRETE));
+
+        WHITE_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.WHITE_STAINED_GLASS));
+        ORANGE_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ORANGE_STAINED_GLASS));
+        MAGENTA_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.MAGENTA_STAINED_GLASS));
+        LIGHT_BLUE_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.LIGHT_BLUE_STAINED_GLASS));
+        YELLOW_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.YELLOW_STAINED_GLASS));
+        LIME_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.LIME_STAINED_GLASS));
+        PINK_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.PINK_STAINED_GLASS));
+        GRAY_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.GRAY_STAINED_GLASS));
+        LIGHT_GRAY_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.LIGHT_GRAY_STAINED_GLASS));
+        CYAN_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.CYAN_STAINED_GLASS));
+        PURPLE_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.PURPLE_STAINED_GLASS));
+        BLUE_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BLUE_STAINED_GLASS));
+        BROWN_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BROWN_STAINED_GLASS));
+        GREEN_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.GREEN_STAINED_GLASS));
+        RED_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.RED_STAINED_GLASS));
+        BLACK_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BLACK_STAINED_GLASS));
 
         ACACIA_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ACACIA_LOG));
         ACACIA_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ACACIA_PLANK));
@@ -387,15 +424,54 @@ public class Beams implements MinekeaBlockCategory {
             RED_CONCRETE_BEAM,
             BLACK_CONCRETE_BEAM,
 
+            WHITE_STAINED_GLASS_BEAM,
+            ORANGE_STAINED_GLASS_BEAM,
+            MAGENTA_STAINED_GLASS_BEAM,
+            LIGHT_BLUE_STAINED_GLASS_BEAM,
+            YELLOW_STAINED_GLASS_BEAM,
+            LIME_STAINED_GLASS_BEAM,
+            PINK_STAINED_GLASS_BEAM,
+            GRAY_STAINED_GLASS_BEAM,
+            LIGHT_GRAY_STAINED_GLASS_BEAM,
+            CYAN_STAINED_GLASS_BEAM,
+            PURPLE_STAINED_GLASS_BEAM,
+            BLUE_STAINED_GLASS_BEAM,
+            BROWN_STAINED_GLASS_BEAM,
+            GREEN_STAINED_GLASS_BEAM,
+            RED_STAINED_GLASS_BEAM,
+            BLACK_STAINED_GLASS_BEAM,
+
             CRIMSON_STEM_BEAM,
             WARPED_STEM_BEAM,
             CRIMSON_PLANK_BEAM,
             WARPED_PLANK_BEAM
         ));
+
+        TRANSLUCENT_BEAMS.addAll(List.of(
+            WHITE_STAINED_GLASS_BEAM,
+            ORANGE_STAINED_GLASS_BEAM,
+            MAGENTA_STAINED_GLASS_BEAM,
+            LIGHT_BLUE_STAINED_GLASS_BEAM,
+            YELLOW_STAINED_GLASS_BEAM,
+            LIME_STAINED_GLASS_BEAM,
+            PINK_STAINED_GLASS_BEAM,
+            GRAY_STAINED_GLASS_BEAM,
+            LIGHT_GRAY_STAINED_GLASS_BEAM,
+            CYAN_STAINED_GLASS_BEAM,
+            PURPLE_STAINED_GLASS_BEAM,
+            BLUE_STAINED_GLASS_BEAM,
+            BROWN_STAINED_GLASS_BEAM,
+            GREEN_STAINED_GLASS_BEAM,
+            RED_STAINED_GLASS_BEAM,
+            BLACK_STAINED_GLASS_BEAM
+        ));
     }
 
     @Override
     public void initializeClient() {
+        for (GenericBeamBlock beam : TRANSLUCENT_BEAMS) {
+            BlockRenderLayerMap.INSTANCE.putBlock(beam, RenderLayer.getTranslucent());
+        }
     }
 
     @Override

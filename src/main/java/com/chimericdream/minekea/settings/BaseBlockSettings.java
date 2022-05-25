@@ -13,7 +13,7 @@ import java.util.Map;
 public class BaseBlockSettings {
     public static DefaultSettings AMETHYST = new DefaultSettings(Blocks.AMETHYST_BLOCK)
         .material("amethyst")
-        .translation("amethyst")
+        .translation("Amethyst")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:amethyst_block"),
@@ -23,7 +23,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ANDESITE = new DefaultSettings(Blocks.ANDESITE)
         .material("andesite")
-        .translation("andesite")
+        .translation("Andesite")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:andesite")
@@ -32,7 +32,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BASALT = new DefaultSettings(Blocks.BASALT)
         .material("basalt")
-        .translation("basalt")
+        .translation("Basalt")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:basalt_side"),
@@ -43,7 +43,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BASALT_BRICK = new DefaultSettings(BuildingBlocks.BASALT_BRICKS_BLOCK)
         .material("basalt_brick")
-        .translation("basalt brick")
+        .translation("Basalt Brick")
         .materials(
             Map.of(
                 "main", BasaltBricksBlock.BLOCK_ID
@@ -52,7 +52,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLACKSTONE = new DefaultSettings(Blocks.BLACKSTONE)
         .material("blackstone")
-        .translation("blackstone")
+        .translation("Blackstone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:blackstone")
@@ -61,7 +61,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BONE = new DefaultSettings(Blocks.BONE_BLOCK)
         .material("bone")
-        .translation("bone")
+        .translation("Bone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:bone_block_side"),
@@ -72,7 +72,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BRICK = new DefaultSettings(Blocks.BRICKS)
         .material("brick")
-        .translation("brick")
+        .translation("Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:bricks")
@@ -81,7 +81,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CALCITE = new DefaultSettings(Blocks.CALCITE)
         .material("calcite")
-        .translation("calcite")
+        .translation("Calcite")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:calcite")
@@ -90,7 +90,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings COBBLED_DEEPSLATE = new DefaultSettings(Blocks.COBBLED_DEEPSLATE)
         .material("cobbled_deepslate")
-        .translation("cobbled deepslate")
+        .translation("Cobbled Deepslate")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cobbled_deepslate")
@@ -99,7 +99,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings COBBLED_END_STONE = new DefaultSettings(BuildingBlocks.COBBLED_END_STONE_BLOCK)
         .material("cobbled_end_stone")
-        .translation("cobbled end stone")
+        .translation("Cobbled End Stone")
         .materials(
             Map.of(
                 "main", CobbledEndStoneBlock.BLOCK_ID
@@ -108,7 +108,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings COBBLESTONE = new DefaultSettings(Blocks.COBBLESTONE)
         .material("cobblestone")
-        .translation("cobblestone")
+        .translation("Cobblestone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cobblestone")
@@ -117,7 +117,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRACKED_BASALT_BRICK = new DefaultSettings(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK)
         .material("cracked_basalt_brick")
-        .translation("cracked basalt brick")
+        .translation("Cracked Basalt Brick")
         .materials(
             Map.of(
                 "main", CrackedBasaltBricksBlock.BLOCK_ID
@@ -126,7 +126,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRACKED_DEEPSLATE_BRICK = new DefaultSettings(Blocks.CRACKED_DEEPSLATE_BRICKS)
         .material("cracked_deepslate_brick")
-        .translation("cracked deepslate brick")
+        .translation("Cracked Deepslate Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cracked_deepslate_bricks")
@@ -135,7 +135,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRACKED_DEEPSLATE_TILE = new DefaultSettings(Blocks.CRACKED_DEEPSLATE_TILES)
         .material("cracked_deepslate_tile")
-        .translation("cracked deepslate tile")
+        .translation("Cracked Deepslate Tile")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cracked_deepslate_tiles")
@@ -144,7 +144,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRACKED_STONE_BRICK = new DefaultSettings(Blocks.CRACKED_STONE_BRICKS)
         .material("cracked_stone_brick")
-        .translation("cracked stone brick")
+        .translation("Cracked Stone Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cracked_stone_bricks")
@@ -153,7 +153,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRIMSON_BASALT_BRICK = new DefaultSettings(BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK)
         .material("crimson_basalt_brick")
-        .translation("crimson basalt brick")
+        .translation("Crimson Basalt Brick")
         .materials(
             Map.of(
                 "main", CrimsonBasaltBricksBlock.BLOCK_ID
@@ -162,7 +162,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRYING_OBSIDIAN = new DefaultSettings(Blocks.CRYING_OBSIDIAN)
         .material("crying_obsidian")
-        .translation("crying obsidian")
+        .translation("Crying Obsidian")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:crying_obsidian")
@@ -171,7 +171,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CUT_RED_SANDSTONE = new DefaultSettings(Blocks.CUT_RED_SANDSTONE)
         .material("cut_red_sandstone")
-        .translation("cut red sandstone")
+        .translation("Cut Red Sandstone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cut_red_sandstone")
@@ -180,7 +180,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CUT_SANDSTONE = new DefaultSettings(Blocks.CUT_SANDSTONE)
         .material("cut_sandstone")
-        .translation("cut sandstone")
+        .translation("Cut Sandstone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cut_sandstone")
@@ -189,7 +189,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_PRISMARINE = new DefaultSettings(Blocks.DARK_PRISMARINE)
         .material("dark_prismarine")
-        .translation("dark prismarine")
+        .translation("Dark Prismarine")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:dark_prismarine")
@@ -198,7 +198,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DEEPSLATE_BRICK = new DefaultSettings(Blocks.DEEPSLATE_BRICKS)
         .material("deepslate_brick")
-        .translation("deepslate brick")
+        .translation("Deepslate Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:deepslate_bricks")
@@ -207,7 +207,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DEEPSLATE = new DefaultSettings(Blocks.DEEPSLATE)
         .material("deepslate")
-        .translation("deepslate")
+        .translation("Deepslate")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:deepslate")
@@ -216,7 +216,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DEEPSLATE_TILE = new DefaultSettings(Blocks.DEEPSLATE_TILES)
         .material("deepslate_tile")
-        .translation("deepslate tile")
+        .translation("Deepslate Tile")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:deepslate_tiles")
@@ -225,7 +225,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DIORITE = new DefaultSettings(Blocks.DIORITE)
         .material("diorite")
-        .translation("diorite")
+        .translation("Diorite")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:diorite")
@@ -234,7 +234,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings END_STONE_BRICK = new DefaultSettings(Blocks.END_STONE_BRICKS)
         .material("end_stone_brick")
-        .translation("end stone brick")
+        .translation("End Stone Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:end_stone_bricks")
@@ -243,7 +243,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings END_STONE = new DefaultSettings(Blocks.END_STONE)
         .material("end_stone")
-        .translation("end stone")
+        .translation("End Stone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:end_stone")
@@ -252,7 +252,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GRANITE = new DefaultSettings(Blocks.GRANITE)
         .material("granite")
-        .translation("granite")
+        .translation("Granite")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:granite")
@@ -261,7 +261,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MOSSY_BASALT_BRICK = new DefaultSettings(BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK)
         .material("mossy_basalt_brick")
-        .translation("mossy basalt brick")
+        .translation("Mossy Basalt Brick")
         .materials(
             Map.of(
                 "main", MossyBasaltBricksBlock.BLOCK_ID
@@ -270,7 +270,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MOSSY_COBBLESTONE = new DefaultSettings(Blocks.MOSSY_COBBLESTONE)
         .material("mossy_cobblestone")
-        .translation("mossy cobblestone")
+        .translation("Mossy Cobblestone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:mossy_cobblestone")
@@ -279,7 +279,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MOSSY_STONE_BRICK = new DefaultSettings(Blocks.MOSSY_STONE_BRICKS)
         .material("mossy_stone_brick")
-        .translation("mossy stone brick")
+        .translation("Mossy Stone Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:mossy_stone_bricks")
@@ -288,7 +288,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings NETHERRACK = new DefaultSettings(Blocks.NETHERRACK)
         .material("netherrack")
-        .translation("netherrack")
+        .translation("Netherrack")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:netherrack")
@@ -297,7 +297,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings NETHER_BRICK = new DefaultSettings(Blocks.NETHER_BRICKS)
         .material("nether_brick")
-        .translation("nether brick")
+        .translation("Nether Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:nether_bricks")
@@ -306,7 +306,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OBSIDIAN = new DefaultSettings(Blocks.OBSIDIAN)
         .material("obsidian")
-        .translation("obsidian")
+        .translation("Obsidian")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:obsidian")
@@ -315,7 +315,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings POLISHED_ANDESITE = new DefaultSettings(Blocks.POLISHED_ANDESITE)
         .material("polished_andesite")
-        .translation("polished andesite")
+        .translation("Polished Andesite")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:polished_andesite")
@@ -324,7 +324,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings POLISHED_BASALT = new DefaultSettings(Blocks.POLISHED_BASALT)
         .material("polished_basalt")
-        .translation("polished basalt")
+        .translation("Polished Basalt")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:polished_basalt_side"),
@@ -335,7 +335,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings POLISHED_BLACKSTONE_BRICK = new DefaultSettings(Blocks.POLISHED_BLACKSTONE_BRICKS)
         .material("polished_blackstone_brick")
-        .translation("polished blackstone brick")
+        .translation("Polished Blackstone Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:polished_blackstone_bricks")
@@ -344,7 +344,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings POLISHED_BLACKSTONE = new DefaultSettings(Blocks.POLISHED_BLACKSTONE)
         .material("polished_blackstone")
-        .translation("polished blackstone")
+        .translation("Polished Blackstone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:polished_blackstone")
@@ -353,7 +353,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings POLISHED_DEEPSLATE = new DefaultSettings(Blocks.POLISHED_DEEPSLATE)
         .material("polished_deepslate")
-        .translation("polished deepslate")
+        .translation("Polished Deepslate")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:polished_deepslate")
@@ -362,7 +362,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings POLISHED_DIORITE = new DefaultSettings(Blocks.POLISHED_DIORITE)
         .material("polished_diorite")
-        .translation("polished diorite")
+        .translation("Polished Diorite")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:polished_diorite")
@@ -371,7 +371,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings POLISHED_GRANITE = new DefaultSettings(Blocks.POLISHED_GRANITE)
         .material("polished_granite")
-        .translation("polished granite")
+        .translation("Polished Granite")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:polished_granite")
@@ -380,7 +380,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PRISMARINE_BRICK = new DefaultSettings(Blocks.PRISMARINE_BRICKS)
         .material("prismarine_brick")
-        .translation("prismarine brick")
+        .translation("Prismarine Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:prismarine_bricks")
@@ -389,7 +389,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PRISMARINE = new DefaultSettings(Blocks.PRISMARINE)
         .material("prismarine")
-        .translation("prismarine")
+        .translation("Prismarine")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:prismarine")
@@ -398,7 +398,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PURPUR = new DefaultSettings(Blocks.PURPUR_BLOCK)
         .material("purpur")
-        .translation("purpur")
+        .translation("Purpur")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:purpur_block")
@@ -407,7 +407,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PURPUR_PILLAR = new DefaultSettings(Blocks.PURPUR_PILLAR)
         .material("purpur_pillar")
-        .translation("purpur pillar")
+        .translation("Purpur Pillar")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:purpur_pillar")
@@ -416,7 +416,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings RED_NETHER_BRICK = new DefaultSettings(Blocks.RED_NETHER_BRICKS)
         .material("red_nether_brick")
-        .translation("red nether brick")
+        .translation("Red Nether Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:red_nether_bricks")
@@ -425,7 +425,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings RED_SANDSTONE = new DefaultSettings(Blocks.RED_SANDSTONE)
         .material("red_sandstone")
-        .translation("red sandstone")
+        .translation("Red Sandstone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:red_sandstone")
@@ -434,7 +434,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SANDSTONE = new DefaultSettings(Blocks.SANDSTONE)
         .material("sandstone")
-        .translation("sandstone")
+        .translation("Sandstone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:sandstone")
@@ -443,7 +443,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SMOOTH_BASALT = new DefaultSettings(Blocks.SMOOTH_BASALT)
         .material("smooth_basalt")
-        .translation("smooth basalt")
+        .translation("Smooth Basalt")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:smooth_basalt")
@@ -452,7 +452,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SMOOTH_RED_SANDSTONE = new DefaultSettings(Blocks.SMOOTH_RED_SANDSTONE)
         .material("smooth_red_sandstone")
-        .translation("smooth red sandstone")
+        .translation("Smooth Red Sandstone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:red_sandstone_top"),
@@ -462,7 +462,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SMOOTH_SANDSTONE = new DefaultSettings(Blocks.SMOOTH_SANDSTONE)
         .material("smooth_sandstone")
-        .translation("smooth sandstone")
+        .translation("Smooth Sandstone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:sandstone_top"),
@@ -472,7 +472,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SMOOTH_STONE = new DefaultSettings(Blocks.SMOOTH_STONE)
         .material("smooth_stone")
-        .translation("smooth stone")
+        .translation("Smooth Stone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:smooth_stone")
@@ -481,7 +481,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings STONE_BRICK = new DefaultSettings(Blocks.STONE_BRICKS)
         .material("stone_brick")
-        .translation("stone brick")
+        .translation("Stone Brick")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:stone_bricks")
@@ -490,7 +490,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings STONE = new DefaultSettings(Blocks.STONE)
         .material("stone")
-        .translation("stone")
+        .translation("Stone")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:stone")
@@ -499,7 +499,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings TUFF = new DefaultSettings(Blocks.TUFF)
         .material("tuff")
-        .translation("tuff")
+        .translation("Tuff")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:tuff")
@@ -508,7 +508,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED_BASALT_BRICK = new DefaultSettings(BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK)
         .material("warped_basalt_brick")
-        .translation("warped basalt brick")
+        .translation("Warped Basalt Brick")
         .materials(
             Map.of(
                 "main", WarpedBasaltBricksBlock.BLOCK_ID
@@ -517,7 +517,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED_NETHER_BRICK = new DefaultSettings(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK)
         .material("warped_nether_brick")
-        .translation("warped nether brick")
+        .translation("Warped Nether Brick")
         .materials(
             Map.of(
                 "main", WarpedNetherBricksBlock.BLOCK_ID
@@ -526,7 +526,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WHITE_TERRACOTTA = new DefaultSettings(Blocks.WHITE_TERRACOTTA)
         .material("white_terracotta")
-        .translation("white terracotta")
+        .translation("White Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:white_terracotta")
@@ -535,7 +535,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ORANGE_TERRACOTTA = new DefaultSettings(Blocks.ORANGE_TERRACOTTA)
         .material("orange_terracotta")
-        .translation("orange terracotta")
+        .translation("Orange Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:orange_terracotta")
@@ -544,7 +544,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MAGENTA_TERRACOTTA = new DefaultSettings(Blocks.MAGENTA_TERRACOTTA)
         .material("magenta_terracotta")
-        .translation("magenta terracotta")
+        .translation("Magenta Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:magenta_terracotta")
@@ -553,7 +553,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIGHT_BLUE_TERRACOTTA = new DefaultSettings(Blocks.LIGHT_BLUE_TERRACOTTA)
         .material("light_blue_terracotta")
-        .translation("light blue terracotta")
+        .translation("Light Blue Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:light_blue_terracotta")
@@ -562,7 +562,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings YELLOW_TERRACOTTA = new DefaultSettings(Blocks.YELLOW_TERRACOTTA)
         .material("yellow_terracotta")
-        .translation("yellow terracotta")
+        .translation("Yellow Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:yellow_terracotta")
@@ -571,7 +571,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIME_TERRACOTTA = new DefaultSettings(Blocks.LIME_TERRACOTTA)
         .material("lime_terracotta")
-        .translation("lime terracotta")
+        .translation("Lime Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:lime_terracotta")
@@ -580,7 +580,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PINK_TERRACOTTA = new DefaultSettings(Blocks.PINK_TERRACOTTA)
         .material("pink_terracotta")
-        .translation("pink terracotta")
+        .translation("Pink Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:pink_terracotta")
@@ -589,7 +589,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GRAY_TERRACOTTA = new DefaultSettings(Blocks.GRAY_TERRACOTTA)
         .material("gray_terracotta")
-        .translation("gray terracotta")
+        .translation("Gray Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:gray_terracotta")
@@ -598,7 +598,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIGHT_GRAY_TERRACOTTA = new DefaultSettings(Blocks.LIGHT_GRAY_TERRACOTTA)
         .material("light_gray_terracotta")
-        .translation("light gray terracotta")
+        .translation("Light Gray Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:light_gray_terracotta")
@@ -607,7 +607,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CYAN_TERRACOTTA = new DefaultSettings(Blocks.CYAN_TERRACOTTA)
         .material("cyan_terracotta")
-        .translation("cyan terracotta")
+        .translation("Cyan Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cyan_terracotta")
@@ -616,7 +616,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PURPLE_TERRACOTTA = new DefaultSettings(Blocks.PURPLE_TERRACOTTA)
         .material("purple_terracotta")
-        .translation("purple terracotta")
+        .translation("Purple Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:purple_terracotta")
@@ -625,7 +625,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLUE_TERRACOTTA = new DefaultSettings(Blocks.BLUE_TERRACOTTA)
         .material("blue_terracotta")
-        .translation("blue terracotta")
+        .translation("Blue Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:blue_terracotta")
@@ -634,7 +634,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BROWN_TERRACOTTA = new DefaultSettings(Blocks.BROWN_TERRACOTTA)
         .material("brown_terracotta")
-        .translation("brown terracotta")
+        .translation("Brown Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:brown_terracotta")
@@ -643,7 +643,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GREEN_TERRACOTTA = new DefaultSettings(Blocks.GREEN_TERRACOTTA)
         .material("green_terracotta")
-        .translation("green terracotta")
+        .translation("Green Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:green_terracotta")
@@ -652,7 +652,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings RED_TERRACOTTA = new DefaultSettings(Blocks.RED_TERRACOTTA)
         .material("red_terracotta")
-        .translation("red terracotta")
+        .translation("Red Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:red_terracotta")
@@ -661,7 +661,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLACK_TERRACOTTA = new DefaultSettings(Blocks.BLACK_TERRACOTTA)
         .material("black_terracotta")
-        .translation("black terracotta")
+        .translation("Black Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:black_terracotta")
@@ -670,7 +670,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WHITE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.WHITE_GLAZED_TERRACOTTA)
         .material("white_glazed_terracotta")
-        .translation("white glazed terracotta")
+        .translation("White Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:white_glazed_terracotta")
@@ -679,7 +679,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ORANGE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.ORANGE_GLAZED_TERRACOTTA)
         .material("orange_glazed_terracotta")
-        .translation("orange glazed terracotta")
+        .translation("Orange Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:orange_glazed_terracotta")
@@ -688,7 +688,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MAGENTA_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.MAGENTA_GLAZED_TERRACOTTA)
         .material("magenta_glazed_terracotta")
-        .translation("magenta glazed terracotta")
+        .translation("Magenta Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:magenta_glazed_terracotta")
@@ -697,7 +697,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIGHT_BLUE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA)
         .material("light_blue_glazed_terracotta")
-        .translation("light blue glazed terracotta")
+        .translation("Light Blue Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:light_blue_glazed_terracotta")
@@ -706,7 +706,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings YELLOW_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.YELLOW_GLAZED_TERRACOTTA)
         .material("yellow_glazed_terracotta")
-        .translation("yellow glazed terracotta")
+        .translation("Yellow Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:yellow_glazed_terracotta")
@@ -715,7 +715,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIME_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.LIME_GLAZED_TERRACOTTA)
         .material("lime_glazed_terracotta")
-        .translation("lime glazed terracotta")
+        .translation("Lime Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:lime_glazed_terracotta")
@@ -724,7 +724,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PINK_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.PINK_GLAZED_TERRACOTTA)
         .material("pink_glazed_terracotta")
-        .translation("pink glazed terracotta")
+        .translation("Pink Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:pink_glazed_terracotta")
@@ -733,7 +733,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GRAY_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.GRAY_GLAZED_TERRACOTTA)
         .material("gray_glazed_terracotta")
-        .translation("gray glazed terracotta")
+        .translation("Gray Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:gray_glazed_terracotta")
@@ -742,7 +742,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIGHT_GRAY_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA)
         .material("light_gray_glazed_terracotta")
-        .translation("light gray glazed terracotta")
+        .translation("Light Gray Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:light_gray_glazed_terracotta")
@@ -751,7 +751,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CYAN_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.CYAN_GLAZED_TERRACOTTA)
         .material("cyan_glazed_terracotta")
-        .translation("cyan glazed terracotta")
+        .translation("Cyan Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cyan_glazed_terracotta")
@@ -760,7 +760,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PURPLE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.PURPLE_GLAZED_TERRACOTTA)
         .material("purple_glazed_terracotta")
-        .translation("purple glazed terracotta")
+        .translation("Purple Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:purple_glazed_terracotta")
@@ -769,7 +769,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLUE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.BLUE_GLAZED_TERRACOTTA)
         .material("blue_glazed_terracotta")
-        .translation("blue glazed terracotta")
+        .translation("Blue Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:blue_glazed_terracotta")
@@ -778,7 +778,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BROWN_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.BROWN_GLAZED_TERRACOTTA)
         .material("brown_glazed_terracotta")
-        .translation("brown glazed terracotta")
+        .translation("Brown Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:brown_glazed_terracotta")
@@ -787,7 +787,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GREEN_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.GREEN_GLAZED_TERRACOTTA)
         .material("green_glazed_terracotta")
-        .translation("green glazed terracotta")
+        .translation("Green Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:green_glazed_terracotta")
@@ -796,7 +796,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings RED_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.RED_GLAZED_TERRACOTTA)
         .material("red_glazed_terracotta")
-        .translation("red glazed terracotta")
+        .translation("Red Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:red_glazed_terracotta")
@@ -805,7 +805,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLACK_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.BLACK_GLAZED_TERRACOTTA)
         .material("black_glazed_terracotta")
-        .translation("black glazed terracotta")
+        .translation("Black Glazed Terracotta")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:black_glazed_terracotta")
@@ -814,7 +814,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WHITE_CONCRETE = new DefaultSettings(Blocks.WHITE_CONCRETE)
         .material("white_concrete")
-        .translation("white concrete")
+        .translation("White Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:white_concrete")
@@ -823,7 +823,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ORANGE_CONCRETE = new DefaultSettings(Blocks.ORANGE_CONCRETE)
         .material("orange_concrete")
-        .translation("orange concrete")
+        .translation("Orange Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:orange_concrete")
@@ -832,7 +832,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MAGENTA_CONCRETE = new DefaultSettings(Blocks.MAGENTA_CONCRETE)
         .material("magenta_concrete")
-        .translation("magenta concrete")
+        .translation("Magenta Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:magenta_concrete")
@@ -841,7 +841,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIGHT_BLUE_CONCRETE = new DefaultSettings(Blocks.LIGHT_BLUE_CONCRETE)
         .material("light_blue_concrete")
-        .translation("light blue concrete")
+        .translation("Light Blue Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:light_blue_concrete")
@@ -850,7 +850,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings YELLOW_CONCRETE = new DefaultSettings(Blocks.YELLOW_CONCRETE)
         .material("yellow_concrete")
-        .translation("yellow concrete")
+        .translation("Yellow Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:yellow_concrete")
@@ -859,7 +859,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIME_CONCRETE = new DefaultSettings(Blocks.LIME_CONCRETE)
         .material("lime_concrete")
-        .translation("lime concrete")
+        .translation("Lime Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:lime_concrete")
@@ -868,7 +868,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PINK_CONCRETE = new DefaultSettings(Blocks.PINK_CONCRETE)
         .material("pink_concrete")
-        .translation("pink concrete")
+        .translation("Pink Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:pink_concrete")
@@ -877,7 +877,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GRAY_CONCRETE = new DefaultSettings(Blocks.GRAY_CONCRETE)
         .material("gray_concrete")
-        .translation("gray concrete")
+        .translation("Gray Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:gray_concrete")
@@ -886,7 +886,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIGHT_GRAY_CONCRETE = new DefaultSettings(Blocks.LIGHT_GRAY_CONCRETE)
         .material("light_gray_concrete")
-        .translation("light gray concrete")
+        .translation("Light Gray Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:light_gray_concrete")
@@ -895,7 +895,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CYAN_CONCRETE = new DefaultSettings(Blocks.CYAN_CONCRETE)
         .material("cyan_concrete")
-        .translation("cyan concrete")
+        .translation("Cyan Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:cyan_concrete")
@@ -904,7 +904,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PURPLE_CONCRETE = new DefaultSettings(Blocks.PURPLE_CONCRETE)
         .material("purple_concrete")
-        .translation("purple concrete")
+        .translation("Purple Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:purple_concrete")
@@ -913,7 +913,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLUE_CONCRETE = new DefaultSettings(Blocks.BLUE_CONCRETE)
         .material("blue_concrete")
-        .translation("blue concrete")
+        .translation("Blue Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:blue_concrete")
@@ -922,7 +922,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BROWN_CONCRETE = new DefaultSettings(Blocks.BROWN_CONCRETE)
         .material("brown_concrete")
-        .translation("brown concrete")
+        .translation("Brown Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:brown_concrete")
@@ -931,7 +931,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GREEN_CONCRETE = new DefaultSettings(Blocks.GREEN_CONCRETE)
         .material("green_concrete")
-        .translation("green concrete")
+        .translation("Green Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:green_concrete")
@@ -940,7 +940,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings RED_CONCRETE = new DefaultSettings(Blocks.RED_CONCRETE)
         .material("red_concrete")
-        .translation("red concrete")
+        .translation("Red Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:red_concrete")
@@ -949,16 +949,160 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLACK_CONCRETE = new DefaultSettings(Blocks.BLACK_CONCRETE)
         .material("black_concrete")
-        .translation("black concrete")
+        .translation("Black Concrete")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:black_concrete")
             )
         );
 
+    public static DefaultSettings WHITE_STAINED_GLASS = new DefaultSettings(Blocks.WHITE_STAINED_GLASS)
+        .material("white_stained_glass")
+        .translation("White Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:white_stained_glass")
+            )
+        );
+
+    public static DefaultSettings ORANGE_STAINED_GLASS = new DefaultSettings(Blocks.ORANGE_STAINED_GLASS)
+        .material("orange_stained_glass")
+        .translation("Orange Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:orange_stained_glass")
+            )
+        );
+
+    public static DefaultSettings MAGENTA_STAINED_GLASS = new DefaultSettings(Blocks.MAGENTA_STAINED_GLASS)
+        .material("magenta_stained_glass")
+        .translation("Magenta Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:magenta_stained_glass")
+            )
+        );
+
+    public static DefaultSettings LIGHT_BLUE_STAINED_GLASS = new DefaultSettings(Blocks.LIGHT_BLUE_STAINED_GLASS)
+        .material("light_blue_stained_glass")
+        .translation("Light Blue Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:light_blue_stained_glass")
+            )
+        );
+
+    public static DefaultSettings YELLOW_STAINED_GLASS = new DefaultSettings(Blocks.YELLOW_STAINED_GLASS)
+        .material("yellow_stained_glass")
+        .translation("Yellow Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:yellow_stained_glass")
+            )
+        );
+
+    public static DefaultSettings LIME_STAINED_GLASS = new DefaultSettings(Blocks.LIME_STAINED_GLASS)
+        .material("lime_stained_glass")
+        .translation("Lime Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:lime_stained_glass")
+            )
+        );
+
+    public static DefaultSettings PINK_STAINED_GLASS = new DefaultSettings(Blocks.PINK_STAINED_GLASS)
+        .material("pink_stained_glass")
+        .translation("Pink Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:pink_stained_glass")
+            )
+        );
+
+    public static DefaultSettings GRAY_STAINED_GLASS = new DefaultSettings(Blocks.GRAY_STAINED_GLASS)
+        .material("gray_stained_glass")
+        .translation("Gray Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:gray_stained_glass")
+            )
+        );
+
+    public static DefaultSettings LIGHT_GRAY_STAINED_GLASS = new DefaultSettings(Blocks.LIGHT_GRAY_STAINED_GLASS)
+        .material("light_gray_stained_glass")
+        .translation("Light Gray Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:light_gray_stained_glass")
+            )
+        );
+
+    public static DefaultSettings CYAN_STAINED_GLASS = new DefaultSettings(Blocks.CYAN_STAINED_GLASS)
+        .material("cyan_stained_glass")
+        .translation("Cyan Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:cyan_stained_glass")
+            )
+        );
+
+    public static DefaultSettings PURPLE_STAINED_GLASS = new DefaultSettings(Blocks.PURPLE_STAINED_GLASS)
+        .material("purple_stained_glass")
+        .translation("Purple Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:purple_stained_glass")
+            )
+        );
+
+    public static DefaultSettings BLUE_STAINED_GLASS = new DefaultSettings(Blocks.BLUE_STAINED_GLASS)
+        .material("blue_stained_glass")
+        .translation("Blue Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:blue_stained_glass")
+            )
+        );
+
+    public static DefaultSettings BROWN_STAINED_GLASS = new DefaultSettings(Blocks.BROWN_STAINED_GLASS)
+        .material("brown_stained_glass")
+        .translation("Brown Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:brown_stained_glass")
+            )
+        );
+
+    public static DefaultSettings GREEN_STAINED_GLASS = new DefaultSettings(Blocks.GREEN_STAINED_GLASS)
+        .material("green_stained_glass")
+        .translation("Green Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:green_stained_glass")
+            )
+        );
+
+    public static DefaultSettings RED_STAINED_GLASS = new DefaultSettings(Blocks.RED_STAINED_GLASS)
+        .material("red_stained_glass")
+        .translation("Red Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:red_stained_glass")
+            )
+        );
+
+    public static DefaultSettings BLACK_STAINED_GLASS = new DefaultSettings(Blocks.BLACK_STAINED_GLASS)
+        .material("black_stained_glass")
+        .translation("Black Stained Glass")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:black_stained_glass")
+            )
+        );
+
     public static DefaultSettings ACACIA_LOG = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia_log")
-        .translation("acacia log")
+        .translation("Acacia Log")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:acacia_log"),
@@ -968,7 +1112,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA_PLANK = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia_plank")
-        .translation("acacia plank")
+        .translation("Acacia Plank")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:acacia_planks")
@@ -977,7 +1121,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH_LOG = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch_log")
-        .translation("birch log")
+        .translation("Birch Log")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:birch_log"),
@@ -987,7 +1131,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH_PLANK = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch_plank")
-        .translation("birch plank")
+        .translation("Birch Plank")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:birch_planks")
@@ -996,7 +1140,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRIMSON_PLANK = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson_plank")
-        .translation("crimson plank")
+        .translation("Crimson Plank")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:crimson_planks")
@@ -1005,7 +1149,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRIMSON_STEM = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson_stem")
-        .translation("crimson stem")
+        .translation("Crimson Stem")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:crimson_stem"),
@@ -1015,7 +1159,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK_LOG = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak_log")
-        .translation("dark oak log")
+        .translation("Dark Oak Log")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:dark_oak_log"),
@@ -1025,7 +1169,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK_PLANK = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak_plank")
-        .translation("dark oak plank")
+        .translation("Dark Oak Plank")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:dark_oak_planks")
@@ -1034,7 +1178,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE_LOG = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle_log")
-        .translation("jungle log")
+        .translation("Jungle Log")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:jungle_log"),
@@ -1044,7 +1188,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE_PLANK = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle_plank")
-        .translation("jungle plank")
+        .translation("Jungle Plank")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:jungle_planks")
@@ -1053,7 +1197,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK_LOG = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_log")
-        .translation("oak log")
+        .translation("Oak Log")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:oak_log"),
@@ -1063,7 +1207,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK_PLANK = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_plank")
-        .translation("oak plank")
+        .translation("Oak Plank")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:oak_planks")
@@ -1072,7 +1216,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE_LOG = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce_log")
-        .translation("spruce log")
+        .translation("Spruce Log")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:spruce_log"),
@@ -1082,7 +1226,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE_PLANK = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce_plank")
-        .translation("spruce plank")
+        .translation("Spruce Plank")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:spruce_planks")
@@ -1091,7 +1235,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED_PLANK = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped_plank")
-        .translation("warped plank")
+        .translation("Warped Plank")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:warped_planks")
@@ -1100,7 +1244,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED_STEM = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped_stem")
-        .translation("warped stem")
+        .translation("Warped Stem")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:warped_stem"),
