@@ -1,5 +1,6 @@
-package com.chimericdream.minekea.block.containers.jars;
+package com.chimericdream.minekea.entities.blocks.containers;
 
+import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.ImplementedInventory;
@@ -29,6 +30,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 public class GlassJarBlockEntity extends BlockEntity implements ImplementedInventory {
+    public static final Identifier ENTITY_ID = new Identifier(ModInfo.MOD_ID, "entities/blocks/containers/glass_jar");
     public static final int MAX_BUCKETS = 8;
     public static final double BOTTLE_SIZE = 0.33;
 

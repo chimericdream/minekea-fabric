@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.furniture.shelves;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;

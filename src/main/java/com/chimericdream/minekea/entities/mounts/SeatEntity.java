@@ -1,5 +1,7 @@
-package com.chimericdream.minekea.block.furniture.seating;
+package com.chimericdream.minekea.entities.mounts;
 
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.furniture.seating.Seats;
 import net.minecraft.client.render.Frustum;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -12,6 +14,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class SeatEntity extends Entity {
+    public static final Identifier ENTITY_ID = new Identifier(ModInfo.MOD_ID, "entities/mounts/seat");
+
     public SeatEntity(EntityType<? extends SeatEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -48,7 +52,7 @@ public class SeatEntity extends Entity {
     }
 
     public static class EmptyRenderer extends EntityRenderer<SeatEntity> {
-        protected EmptyRenderer(EntityRendererFactory.Context ctx) {
+        public EmptyRenderer(EntityRendererFactory.Context ctx) {
             super(ctx);
         }
 

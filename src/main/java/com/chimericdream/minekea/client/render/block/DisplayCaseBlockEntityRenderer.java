@@ -1,5 +1,7 @@
-package com.chimericdream.minekea.block.furniture.displaycases;
+package com.chimericdream.minekea.client.render.block;
 
+import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
+import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;

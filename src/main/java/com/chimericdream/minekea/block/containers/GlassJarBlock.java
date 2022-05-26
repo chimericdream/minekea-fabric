@@ -1,14 +1,11 @@
-package com.chimericdream.minekea.block.containers.jars;
+package com.chimericdream.minekea.block.containers;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.containers.ContainerBlocks;
+import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.FluidHelpers;
 import com.chimericdream.minekea.util.MinekeaBlock;
-import net.devtech.arrp.json.blockstate.JBlockModel;
-import net.devtech.arrp.json.blockstate.JState;
-import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.recipe.*;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -39,7 +36,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider {
-    private final Identifier BLOCK_ID;
+    private final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "containers/glass_jar");
     private final String modId;
     private static final VoxelShape MAIN_SHAPE;
     private static final VoxelShape LID_SHAPE;
@@ -59,8 +56,6 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         validateMaterials(null);
 
         this.modId = modId;
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("jars/%sglass_jar", ModInfo.getModPrefix(modId)));
     }
 
     @Override
@@ -359,17 +354,6 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                     .key("L", JIngredient.ingredient().item("minecraft:acacia_planks")),
                 JResult.stackedResult(BLOCK_ID.toString(), 3)
             )
-        );
-
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/jars/%sglass_jar", ModInfo.getModPrefix(modId)));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/jars/%sglass_jar", ModInfo.getModPrefix(modId)));
-
-        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(new Identifier(ModInfo.MOD_ID, "block/glass_jar")), MODEL_ID);
-        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(new Identifier(ModInfo.MOD_ID, "item/glass_jar")), ITEM_MODEL_ID);
-
-        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-            JState.state(JState.variant(new JBlockModel(MODEL_ID))),
-            BLOCK_ID
         );
     }
 }

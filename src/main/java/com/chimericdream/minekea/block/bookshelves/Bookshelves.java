@@ -8,6 +8,7 @@ import com.chimericdream.minekea.block.bookshelves.trapdoors.BookshelfTrapdoors;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
@@ -533,7 +534,7 @@ public class Bookshelves implements MinekeaBlockCategory {
 
         STORAGE_SHELF_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "bookshelves/storage/storage_shelf_block_entity"),
+            StorageBookshelfBlockEntity.ENTITY_ID,
             FabricBlockEntityTypeBuilder.create(
                 StorageBookshelfBlockEntity::new,
                 storageShelves.toArray(new Block[0])

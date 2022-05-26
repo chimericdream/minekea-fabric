@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
-import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -177,7 +177,7 @@ public class Seats implements MinekeaBlockCategory {
 
         SEAT_ENTITY = Registry.register(
             Registry.ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "seats/seat_entity"),
+            SeatEntity.ENTITY_ID,
             FabricEntityTypeBuilder.<SeatEntity>create(SpawnGroup.MISC, SeatEntity::new).build()
         );
     }

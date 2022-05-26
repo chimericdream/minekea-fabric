@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.furniture.displaycases;
 
-import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.client.render.block.DisplayCaseBlockEntityRenderer;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -189,7 +190,7 @@ public class DisplayCases implements MinekeaBlockCategory {
 
         DISPLAY_CASE_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "displaycases/display_case_block_entity"),
+            DisplayCaseBlockEntity.ENTITY_ID,
             FabricBlockEntityTypeBuilder.create(
                 DisplayCaseBlockEntity::new,
                 displayCases.toArray(new Block[0])

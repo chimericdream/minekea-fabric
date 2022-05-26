@@ -3,7 +3,6 @@
     "textures": {
         "planks": "minecraft:block/acacia_planks",
         "glass": "minecraft:block/glass",
-        "label": "minekea:block/jars/label",
         "particle": "minecraft:block/glass"
     },
     "display": {

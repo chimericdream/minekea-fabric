@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;

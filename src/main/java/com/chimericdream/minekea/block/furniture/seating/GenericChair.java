@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;

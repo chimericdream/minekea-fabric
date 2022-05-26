@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.containers.crates;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.MinekeaBlock;

@@ -1,6 +1,8 @@
-package com.chimericdream.minekea.block.furniture.shelves;
+package com.chimericdream.minekea.client.render.block;
 
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
+import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
+import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;

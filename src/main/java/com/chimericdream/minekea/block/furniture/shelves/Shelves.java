@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.furniture.shelves;
 
-import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.client.render.block.ShelfBlockEntityRenderer;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -111,7 +112,7 @@ public class Shelves implements MinekeaBlockCategory {
 
         SHELF_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "shelves/shelf_block_entity"),
+            ShelfBlockEntity.ENTITY_ID,
             FabricBlockEntityTypeBuilder.create(
                 ShelfBlockEntity::new,
                 shelves.toArray(new Block[0])

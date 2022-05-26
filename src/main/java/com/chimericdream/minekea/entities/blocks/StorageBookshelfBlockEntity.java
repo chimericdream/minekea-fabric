@@ -1,5 +1,8 @@
-package com.chimericdream.minekea.block.bookshelves;
+package com.chimericdream.minekea.entities.blocks;
 
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.bookshelves.Bookshelves;
+import com.chimericdream.minekea.block.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -19,6 +22,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -26,6 +30,8 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 public class StorageBookshelfBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+    public static final Identifier ENTITY_ID = new Identifier(ModInfo.MOD_ID, "entities/blocks/storage_bookshelf");
+
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(GenericStorageBookshelf.ROW_COUNT * 9, ItemStack.EMPTY);
     private final ViewerCountManager stateManager;
 

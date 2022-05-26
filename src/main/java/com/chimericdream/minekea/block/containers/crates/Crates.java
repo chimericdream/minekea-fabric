@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.containers.crates;
 
-import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
 import com.chimericdream.minekea.screen.crate.CrateScreen;
 import com.chimericdream.minekea.screen.crate.CrateScreenHandler;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -110,7 +110,7 @@ public class Crates implements MinekeaBlockCategory {
 
         CRATE_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "crates/crate_block_entity"),
+            CrateBlockEntity.ENTITY_ID,
             FabricBlockEntityTypeBuilder.create(
                 CrateBlockEntity::new,
                 crates.toArray(new Block[0])

@@ -24,9 +24,13 @@ public class IdentifierMixin {
 
         if (id[1].matches("^bookshelves/storage/[_a-z]+storage_shelf_block_entity$")) {
             id[1] = "bookshelves/storage/storage_shelf_block_entity";
-        } else if (id[1].matches("^crates/[_a-z]+crate_block_entity$")) {
+        }
+
+        if (id[1].matches("^crates/[_a-z]+crate_block_entity$")) {
             id[1] = "crates/crate_block_entity";
-        } else if (id[1].matches("^displaycases/[_a-z]+case_block_entity$")) {
+        }
+
+        if (id[1].matches("^displaycases/[_a-z]+case_block_entity$")) {
             id[1] = "displaycases/display_case_block_entity";
         }
     }
@@ -74,6 +78,15 @@ public class IdentifierMixin {
             case "decorations/doom_lantern" -> id[1] = "decorations/lighting/doom_lantern";
             case "decorations/end_lantern" -> id[1] = "decorations/lighting/end_lantern";
             case "decorations/endless_rod" -> id[1] = "decorations/lighting/endless_rod";
+
+            case "jars/glass_jar" -> id[1] = "containers/glass_jar";
+
+            case "bookshelves/storage/storage_shelf_block_entity" -> id[1] = "entities/blocks/storage_bookshelf";
+            case "crates/crate_block_entity" -> id[1] = "entities/blocks/containers/crate";
+            case "displaycases/display_case_block_entity" -> id[1] = "entities/blocks/furniture/display_case";
+            case "jars/glass_jar_block_entity" -> id[1] = "entities/blocks/containers/glass_jar";
+            case "seats/seat_entity" -> id[1] = "entities/mounts/seat";
+            case "shelves/shelf_block_entity" -> id[1] = "entities/blocks/furniture/shelf";
         }
     }
 }
