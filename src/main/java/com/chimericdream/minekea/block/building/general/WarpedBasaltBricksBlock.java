@@ -25,7 +25,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class WarpedBasaltBricksBlock extends Block implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/warped_basalt_bricks");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/general/warped_basalt_bricks");
 
     public WarpedBasaltBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.SMOOTH_BASALT));

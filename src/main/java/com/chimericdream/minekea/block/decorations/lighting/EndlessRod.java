@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.decorations;
+package com.chimericdream.minekea.block.decorations.lighting;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
@@ -18,12 +18,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class EndlessRod extends EndRodBlock implements MinekeaBlock {
-    private final Identifier BLOCK_ID;
+    private final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "decorations/lighting/endless_rod");
 
     public EndlessRod() {
         super(FabricBlockSettings.copyOf(Blocks.END_ROD));
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, "decorations/endless_rod");
     }
 
     public Identifier getBlockID() {

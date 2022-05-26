@@ -1,6 +1,7 @@
-package com.chimericdream.minekea.block.building.general;
+package com.chimericdream.minekea.block.building.walls;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.building.general.CobbledEndStoneBlock;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;

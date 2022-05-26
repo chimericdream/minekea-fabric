@@ -16,6 +16,7 @@ public class IdentifierMixin {
         return id;
     }
 
+    // Changes made in 2.2.0
     private static void updateIdsV1V2(String[] id) {
         if (!id[0].equals(ModInfo.MOD_ID)) {
             return;
@@ -30,12 +31,22 @@ public class IdentifierMixin {
         }
     }
 
+    // Changes made in 2.8.0
     private static void updateIdsV2V3(String[] id) {
         if (!id[0].equals(ModInfo.MOD_ID)) {
             return;
         }
 
         switch (id[1]) {
+            case "building/basalt_bricks" -> id[1] = "building/general/basalt_bricks";
+            case "building/cracked_basalt_bricks" -> id[1] = "building/general/cracked_basalt_bricks";
+            case "building/chiseled_basalt_bricks" -> id[1] = "building/general/chiseled_basalt_bricks";
+            case "building/warped_basalt_bricks" -> id[1] = "building/general/warped_basalt_bricks";
+            case "building/mossy_basalt_bricks" -> id[1] = "building/general/mossy_basalt_bricks";
+            case "building/crimson_basalt_bricks" -> id[1] = "building/general/crimson_basalt_bricks";
+            case "building/cobbled_end_stone" -> id[1] = "building/general/cobbled_end_stone";
+            case "building/warped_nether_bricks" -> id[1] = "building/general/warped_nether_bricks";
+
             case "building/basalt_brick_slab" -> id[1] = "slabs/basalt_brick_slab";
             case "building/cobbled_end_stone_slab" -> id[1] = "slabs/cobbled_end_stone_slab";
             case "building/cracked_basalt_brick_slab" -> id[1] = "slabs/cracked_basalt_brick_slab";
@@ -53,6 +64,16 @@ public class IdentifierMixin {
             case "building/mossy_basalt_brick_stairs" -> id[1] = "stairs/mossy_basalt_brick_stairs";
             case "building/warped_basalt_brick_stairs" -> id[1] = "stairs/warped_basalt_brick_stairs";
             case "building/warped_nether_brick_stairs" -> id[1] = "stairs/warped_nether_brick_stairs";
+
+            case "fluids/flowing_honey" -> id[1] = "fluids/honey/flowing";
+            case "fluids/flowing_milk" -> id[1] = "fluids/milk/flowing";
+            case "fluids/honey_source" -> id[1] = "fluids/honey/source";
+            case "fluids/milk_source" -> id[1] = "fluids/milk/source";
+
+            case "decorations/fake_cake" -> id[1] = "decorations/misc/fake_cake";
+            case "decorations/doom_lantern" -> id[1] = "decorations/lighting/doom_lantern";
+            case "decorations/end_lantern" -> id[1] = "decorations/lighting/end_lantern";
+            case "decorations/endless_rod" -> id[1] = "decorations/lighting/endless_rod";
         }
     }
 }

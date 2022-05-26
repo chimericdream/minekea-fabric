@@ -24,7 +24,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class MossyBasaltBricksBlock extends Block implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/mossy_basalt_bricks");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/general/mossy_basalt_bricks");
 
     public MossyBasaltBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.SMOOTH_BASALT));

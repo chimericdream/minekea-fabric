@@ -24,7 +24,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class CrimsonBasaltBricksBlock extends Block implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/crimson_basalt_bricks");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/general/crimson_basalt_bricks");
 
     public CrimsonBasaltBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.SMOOTH_BASALT));

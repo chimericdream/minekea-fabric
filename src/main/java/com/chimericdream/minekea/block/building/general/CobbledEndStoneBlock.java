@@ -20,7 +20,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class CobbledEndStoneBlock extends Block implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/cobbled_end_stone");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/general/cobbled_end_stone");
 
     public CobbledEndStoneBlock() {
         super(FabricBlockSettings.copyOf(Blocks.END_STONE));

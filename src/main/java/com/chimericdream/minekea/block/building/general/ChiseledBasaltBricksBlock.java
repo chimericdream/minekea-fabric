@@ -21,7 +21,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ChiseledBasaltBricksBlock extends Block implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/chiseled_basalt_bricks");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/general/chiseled_basalt_bricks");
 
     public ChiseledBasaltBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.SMOOTH_BASALT));

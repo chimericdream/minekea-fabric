@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.decorations;
+package com.chimericdream.minekea.block.decorations.lighting;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
@@ -21,13 +21,11 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class EndLantern extends LanternBlock implements MinekeaBlock {
-    private final Identifier BLOCK_ID;
+public class DoomLantern extends LanternBlock implements MinekeaBlock {
+    private final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "decorations/lighting/doom_lantern");
 
-    public EndLantern() {
+    public DoomLantern() {
         super(FabricBlockSettings.copyOf(Blocks.LANTERN));
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, "decorations/end_lantern");
     }
 
     public Identifier getBlockID() {
@@ -45,10 +43,10 @@ public class EndLantern extends LanternBlock implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(
-                JPattern.pattern("###", "#P#", "#T#"),
+                JPattern.pattern("###", "#F#", "#T#"),
                 JKeys.keys()
                     .key("#", JIngredient.ingredient().item(Items.IRON_NUGGET))
-                    .key("P", JIngredient.ingredient().item(Items.ENDER_PEARL))
+                    .key("F", JIngredient.ingredient().item(Items.CRIMSON_FUNGUS))
                     .key("T", JIngredient.ingredient().item(Items.TORCH)),
                 JResult.result(BLOCK_ID.toString())
             )

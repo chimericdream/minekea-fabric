@@ -1,5 +1,9 @@
 package com.chimericdream.minekea.block.decorations;
 
+import com.chimericdream.minekea.block.decorations.lighting.DoomLantern;
+import com.chimericdream.minekea.block.decorations.lighting.EndLantern;
+import com.chimericdream.minekea.block.decorations.lighting.EndlessRod;
+import com.chimericdream.minekea.block.decorations.misc.FakeCake;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;

@@ -1,8 +1,9 @@
-package com.chimericdream.minekea.block.decorations;
+package com.chimericdream.minekea.block.decorations.misc;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.TextHelpers;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -33,12 +34,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class FakeCake extends CakeBlock implements MinekeaBlock {
-    private final Identifier BLOCK_ID;
+    private final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "decorations/misc/fake_cake");
 
     public FakeCake() {
         super(FabricBlockSettings.copyOf(Blocks.CAKE));
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, "decorations/fake_cake");
     }
 
     @Override
@@ -63,8 +62,8 @@ public class FakeCake extends CakeBlock implements MinekeaBlock {
     }
 
     public void setupResources() {
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, "block/decorations/fake_cake");
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, "item/decorations/fake_cake");
+        Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,

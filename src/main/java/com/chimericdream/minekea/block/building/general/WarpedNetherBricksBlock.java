@@ -22,7 +22,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class WarpedNetherBricksBlock extends Block implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/warped_nether_bricks");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/general/warped_nether_bricks");
 
     public WarpedNetherBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS));

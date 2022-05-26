@@ -14,8 +14,8 @@
     },
     "ambientocclusion": false,
     "textures": {
-        "end_rod": "minekea:block/decorations/endless_rod",
-        "particle": "minekea:block/decorations/endless_rod"
+        "end_rod": "minekea:block/decorations/lighting/endless_rod",
+        "particle": "minekea:block/decorations/lighting/endless_rod"
     },
     "elements": [
         {

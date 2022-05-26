@@ -44,12 +44,12 @@ public class Fluids implements MinekeaBlockCategory {
     public static final Item HONEY_BUCKET;
 
     public static final Identifier MILK_ID = new Identifier(ModInfo.MOD_ID, "fluids/milk");
-    public static final Identifier FLOWING_MILK_ID = new Identifier(ModInfo.MOD_ID, "fluids/flowing_milk");
-    public static final Identifier MILK_SOURCE_ID = new Identifier(ModInfo.MOD_ID, "fluids/milk_source");
+    public static final Identifier FLOWING_MILK_ID = new Identifier(ModInfo.MOD_ID, "fluids/milk/flowing");
+    public static final Identifier MILK_SOURCE_ID = new Identifier(ModInfo.MOD_ID, "fluids/milk/source");
 
     public static final Identifier HONEY_ID = new Identifier(ModInfo.MOD_ID, "fluids/honey");
-    public static final Identifier FLOWING_HONEY_ID = new Identifier(ModInfo.MOD_ID, "fluids/flowing_honey");
-    public static final Identifier HONEY_SOURCE_ID = new Identifier(ModInfo.MOD_ID, "fluids/honey_source");
+    public static final Identifier FLOWING_HONEY_ID = new Identifier(ModInfo.MOD_ID, "fluids/honey/flowing");
+    public static final Identifier HONEY_SOURCE_ID = new Identifier(ModInfo.MOD_ID, "fluids/honey/source");
 
     static {
         MILK = Registry.register(Registry.FLUID, MILK_ID, new MilkFluid.Still());
