@@ -142,7 +142,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/building/vertical_stairs")
+            JModel.model("minekea:block/building/stairs/vertical")
                 .textures(new JTextures().var("main", Texture.getBlockTextureID(main).toString())),
             MODEL_ID
         );
@@ -169,7 +169,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
         @Override
         public Identifier getBlockId() {
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("building/stairs/%s%s_vertical_stairs", ModInfo.getModPrefix(modId), mainMaterial));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/stairs/vertical/%s", ModInfo.getModPrefix(modId), mainMaterial));
             }
 
             return blockId;

@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.building.slabs;
 import com.chimericdream.minekea.block.building.slabs.GenericSlabBlock.SlabSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
@@ -33,9 +34,6 @@ public class Slabs implements MinekeaBlockCategory {
     public static final GenericSlabBlock TUFF_SLAB;
     public static final GenericSlabBlock WARPED_BASALT_BRICK_SLAB;
     public static final GenericSlabBlock WARPED_NETHER_BRICK_SLAB;
-
-    public static final GenericSlabBlock CRIMSON_STEM_SLAB;
-    public static final GenericSlabBlock WARPED_STEM_SLAB;
 
     public static final GenericSlabBlock WHITE_TERRACOTTA_SLAB;
     public static final GenericSlabBlock ORANGE_TERRACOTTA_SLAB;
@@ -107,14 +105,14 @@ public class Slabs implements MinekeaBlockCategory {
 
     public static final GenericSlabBlock ACACIA_LOG_SLAB;
     public static final GenericSlabBlock BIRCH_LOG_SLAB;
+    public static final GenericSlabBlock CRIMSON_STEM_SLAB;
     public static final GenericSlabBlock DARK_OAK_LOG_SLAB;
     public static final GenericSlabBlock JUNGLE_LOG_SLAB;
     public static final GenericSlabBlock OAK_LOG_SLAB;
     public static final GenericSlabBlock SPRUCE_LOG_SLAB;
+    public static final GenericSlabBlock WARPED_STEM_SLAB;
 
-    public static final List<GenericSlabBlock> FLAMMABLE_SLABS = new ArrayList<>();
-    public static final List<GenericSlabBlock> NONFLAMMABLE_SLABS = new ArrayList<>();
-    public static final List<GenericSlabBlock> TRANSLUCENT_SLABS = new ArrayList<>();
+    public static final List<GenericSlabBlock> SLABS = new ArrayList<>();
 
     static {
         AMETHYST_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.AMETHYST));
@@ -218,16 +216,7 @@ public class Slabs implements MinekeaBlockCategory {
         OAK_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.OAK_LOG));
         SPRUCE_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.SPRUCE_LOG));
 
-        FLAMMABLE_SLABS.addAll(List.of(
-            ACACIA_LOG_SLAB,
-            BIRCH_LOG_SLAB,
-            DARK_OAK_LOG_SLAB,
-            JUNGLE_LOG_SLAB,
-            OAK_LOG_SLAB,
-            SPRUCE_LOG_SLAB
-        ));
-
-        NONFLAMMABLE_SLABS.addAll(List.of(
+        SLABS.addAll(List.of(
             AMETHYST_SLAB,
             BASALT_BRICK_SLAB,
             BASALT_SLAB,
@@ -250,9 +239,6 @@ public class Slabs implements MinekeaBlockCategory {
             TUFF_SLAB,
             WARPED_BASALT_BRICK_SLAB,
             WARPED_NETHER_BRICK_SLAB,
-
-            CRIMSON_STEM_SLAB,
-            WARPED_STEM_SLAB,
 
             WHITE_TERRACOTTA_SLAB,
             ORANGE_TERRACOTTA_SLAB,
@@ -320,44 +306,34 @@ public class Slabs implements MinekeaBlockCategory {
             BROWN_STAINED_GLASS_SLAB,
             GREEN_STAINED_GLASS_SLAB,
             RED_STAINED_GLASS_SLAB,
-            BLACK_STAINED_GLASS_SLAB
-        ));
+            BLACK_STAINED_GLASS_SLAB,
 
-        TRANSLUCENT_SLABS.addAll(List.of(
-            WHITE_STAINED_GLASS_SLAB,
-            ORANGE_STAINED_GLASS_SLAB,
-            MAGENTA_STAINED_GLASS_SLAB,
-            LIGHT_BLUE_STAINED_GLASS_SLAB,
-            YELLOW_STAINED_GLASS_SLAB,
-            LIME_STAINED_GLASS_SLAB,
-            PINK_STAINED_GLASS_SLAB,
-            GRAY_STAINED_GLASS_SLAB,
-            LIGHT_GRAY_STAINED_GLASS_SLAB,
-            CYAN_STAINED_GLASS_SLAB,
-            PURPLE_STAINED_GLASS_SLAB,
-            BLUE_STAINED_GLASS_SLAB,
-            BROWN_STAINED_GLASS_SLAB,
-            GREEN_STAINED_GLASS_SLAB,
-            RED_STAINED_GLASS_SLAB,
-            BLACK_STAINED_GLASS_SLAB
+            ACACIA_LOG_SLAB,
+            BIRCH_LOG_SLAB,
+            CRIMSON_STEM_SLAB,
+            DARK_OAK_LOG_SLAB,
+            JUNGLE_LOG_SLAB,
+            OAK_LOG_SLAB,
+            SPRUCE_LOG_SLAB,
+            WARPED_STEM_SLAB
         ));
     }
 
     @Override
     public void initializeClient() {
-        for (GenericSlabBlock block : TRANSLUCENT_SLABS) {
-            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+        for (GenericSlabBlock block : SLABS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            if (settings.isTranslucent()) {
+                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+            }
         }
     }
 
     @Override
     public void registerBlocks() {
-        for (GenericSlabBlock block : NONFLAMMABLE_SLABS) {
-            block.register(false);
-        }
-
-        for (GenericSlabBlock block : FLAMMABLE_SLABS) {
-            block.register();
+        for (GenericSlabBlock block : SLABS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
         }
     }
 

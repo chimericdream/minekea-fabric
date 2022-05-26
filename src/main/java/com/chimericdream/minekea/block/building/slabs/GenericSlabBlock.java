@@ -113,7 +113,7 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
         @Override
         public Identifier getBlockId() {
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("slabs/%s%s_slab", ModInfo.getModPrefix(modId), mainMaterial));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/slabs/%s", ModInfo.getModPrefix(modId), mainMaterial));
             }
 
             return blockId;

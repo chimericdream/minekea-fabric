@@ -213,36 +213,36 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
             .var("side", Texture.getBlockTextureID(side).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":item/beams/generic_beam").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":item/building/beam").textures(textures),
             ITEM_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":block/beams/beam_core").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/beams/core").textures(textures),
             MODEL_IDS.get("core")
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":block/beams/beam_connected_north").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/beams/connected_north").textures(textures),
             MODEL_IDS.get("connected_north")
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":block/beams/beam_connected_east").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/beams/connected_east").textures(textures),
             MODEL_IDS.get("connected_east")
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":block/beams/beam_connected_south").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/beams/connected_south").textures(textures),
             MODEL_IDS.get("connected_south")
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":block/beams/beam_connected_west").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/beams/connected_west").textures(textures),
             MODEL_IDS.get("connected_west")
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":block/beams/beam_connected_up").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/beams/connected_up").textures(textures),
             MODEL_IDS.get("connected_up")
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":block/beams/beam_connected_down").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/beams/connected_down").textures(textures),
             MODEL_IDS.get("connected_down")
         );
 
@@ -274,7 +274,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         @Override
         public Identifier getBlockId() {
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("beams/%s%s_beam", ModInfo.getModPrefix(modId), mainMaterial));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/beams/%s", ModInfo.getModPrefix(modId), mainMaterial));
             }
 
             return blockId;

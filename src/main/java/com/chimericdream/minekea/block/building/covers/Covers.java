@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.building.covers;
 import com.chimericdream.minekea.block.building.covers.GenericCoverBlock.CoverSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
@@ -153,9 +154,7 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock WARPED_PLANK_COVER;
     public static final GenericCoverBlock WARPED_STEM_COVER;
 
-    public static final List<GenericCoverBlock> FLAMMABLE_COVERS = new ArrayList<>();
-    public static final List<GenericCoverBlock> NONFLAMMABLE_COVERS = new ArrayList<>();
-    public static final List<GenericCoverBlock> TRANSLUCENT_COVERS = new ArrayList<>();
+    public static final List<GenericCoverBlock> COVERS = new ArrayList<>();
 
     static {
         AMETHYST_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.AMETHYST));
@@ -300,22 +299,7 @@ public class Covers implements MinekeaBlockCategory {
         WARPED_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WARPED_PLANK));
         WARPED_STEM_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WARPED_STEM));
 
-        FLAMMABLE_COVERS.addAll(List.of(
-            ACACIA_LOG_COVER,
-            ACACIA_PLANK_COVER,
-            BIRCH_LOG_COVER,
-            BIRCH_PLANK_COVER,
-            DARK_OAK_LOG_COVER,
-            DARK_OAK_PLANK_COVER,
-            JUNGLE_LOG_COVER,
-            JUNGLE_PLANK_COVER,
-            OAK_LOG_COVER,
-            OAK_PLANK_COVER,
-            SPRUCE_LOG_COVER,
-            SPRUCE_PLANK_COVER
-        ));
-
-        NONFLAMMABLE_COVERS.addAll(List.of(
+        COVERS.addAll(List.of(
             AMETHYST_COVER,
             ANDESITE_COVER,
             BASALT_BRICK_COVER,
@@ -441,47 +425,40 @@ public class Covers implements MinekeaBlockCategory {
             RED_STAINED_GLASS_COVER,
             BLACK_STAINED_GLASS_COVER,
 
+            ACACIA_LOG_COVER,
+            ACACIA_PLANK_COVER,
+            BIRCH_LOG_COVER,
+            BIRCH_PLANK_COVER,
             CRIMSON_PLANK_COVER,
             CRIMSON_STEM_COVER,
+            DARK_OAK_LOG_COVER,
+            DARK_OAK_PLANK_COVER,
+            JUNGLE_LOG_COVER,
+            JUNGLE_PLANK_COVER,
+            OAK_LOG_COVER,
+            OAK_PLANK_COVER,
+            SPRUCE_LOG_COVER,
+            SPRUCE_PLANK_COVER,
             WARPED_PLANK_COVER,
             WARPED_STEM_COVER
-        ));
-
-        TRANSLUCENT_COVERS.addAll(List.of(
-            WHITE_STAINED_GLASS_COVER,
-            ORANGE_STAINED_GLASS_COVER,
-            MAGENTA_STAINED_GLASS_COVER,
-            LIGHT_BLUE_STAINED_GLASS_COVER,
-            YELLOW_STAINED_GLASS_COVER,
-            LIME_STAINED_GLASS_COVER,
-            PINK_STAINED_GLASS_COVER,
-            GRAY_STAINED_GLASS_COVER,
-            LIGHT_GRAY_STAINED_GLASS_COVER,
-            CYAN_STAINED_GLASS_COVER,
-            PURPLE_STAINED_GLASS_COVER,
-            BLUE_STAINED_GLASS_COVER,
-            BROWN_STAINED_GLASS_COVER,
-            GREEN_STAINED_GLASS_COVER,
-            RED_STAINED_GLASS_COVER,
-            BLACK_STAINED_GLASS_COVER
         ));
     }
 
     @Override
     public void initializeClient() {
-        for (GenericCoverBlock cover : TRANSLUCENT_COVERS) {
-            BlockRenderLayerMap.INSTANCE.putBlock(cover, RenderLayer.getTranslucent());
+        for (GenericCoverBlock block : COVERS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            if (settings.isTranslucent()) {
+                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+            }
         }
     }
 
     @Override
     public void registerBlocks() {
-        for (GenericCoverBlock cover : FLAMMABLE_COVERS) {
-            cover.register();
-        }
-
-        for (GenericCoverBlock cover : NONFLAMMABLE_COVERS) {
-            cover.register(false);
+        for (GenericCoverBlock block : COVERS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
         }
     }
 

@@ -6,6 +6,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
+import java.util.Map;
+
 @Mixin(Identifier.class)
 public class IdentifierMixin {
     @ModifyVariable(method = "<init>([Ljava/lang/String;)V", at = @At(value = "HEAD", ordinal = 1))
@@ -88,7 +90,21 @@ public class IdentifierMixin {
             case "seats/seat_entity" -> id[1] = "entities/mounts/seat";
             case "shelves/shelf_block_entity" -> id[1] = "entities/blocks/furniture/shelf";
 
-            case "building/cobbled_end_stone_wall" -> id[1] = "building/walls/cobbled_end_stone_wall";
+            case "building/cobbled_end_stone_wall" -> id[1] = "building/walls/cobbled_end_stone";
         }
+
+        Map<String, String> replacements = Map.of(
+            "^beams/([^/]+/)?([_a-z]+)_beam$", "$1building/beams/$2",
+            "^slabs/([^/]+/)?([_a-z]+)_slab$", "$1building/slabs/$2",
+            "^stairs/([^/]+/)?([_a-z]+)_stairs$", "$1building/stairs/$2",
+            "^covers/([^/]+/)?([_a-z]+)_cover$", "$1building/covers/$2",
+            "^building/stairs/([^/]+/)?([_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2"
+        );
+
+        replacements.forEach((String match, String replace) -> {
+            if (id[1].matches(match)) {
+                id[1] = id[1].replaceAll(match, replace);
+            }
+        });
     }
 }

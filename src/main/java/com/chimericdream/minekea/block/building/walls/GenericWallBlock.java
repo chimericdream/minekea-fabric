@@ -132,7 +132,7 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
         @Override
         public Identifier getBlockId() {
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/walls/%s_wall", ModInfo.getModPrefix(modId), mainMaterial));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/walls/%s", ModInfo.getModPrefix(modId), mainMaterial));
             }
 
             return blockId;
