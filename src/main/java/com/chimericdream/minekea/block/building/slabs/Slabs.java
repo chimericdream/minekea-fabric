@@ -37,7 +37,6 @@ public class Slabs implements MinekeaBlockCategory {
     public static final GenericSlabBlock CRIMSON_STEM_SLAB;
     public static final GenericSlabBlock WARPED_STEM_SLAB;
 
-
     public static final GenericSlabBlock WHITE_TERRACOTTA_SLAB;
     public static final GenericSlabBlock ORANGE_TERRACOTTA_SLAB;
     public static final GenericSlabBlock MAGENTA_TERRACOTTA_SLAB;

@@ -6,7 +6,7 @@ import com.chimericdream.minekea.block.building.general.*;
 import com.chimericdream.minekea.block.building.slabs.Slabs;
 import com.chimericdream.minekea.block.building.stairs.Stairs;
 import com.chimericdream.minekea.block.building.storage.StorageBlocks;
-import com.chimericdream.minekea.block.building.walls.CobbledEndStoneWallBlock;
+import com.chimericdream.minekea.block.building.walls.Walls;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -20,7 +20,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final BasaltBricksBlock BASALT_BRICKS_BLOCK;
     public static final ChiseledBasaltBricksBlock CHISELED_BASALT_BRICKS_BLOCK;
     public static final CobbledEndStoneBlock COBBLED_END_STONE_BLOCK;
-    public static final CobbledEndStoneWallBlock COBBLED_END_STONE_WALL_BLOCK;
     public static final CrackedBasaltBricksBlock CRACKED_BASALT_BRICKS_BLOCK;
     public static final CrimsonBasaltBricksBlock CRIMSON_BASALT_BRICKS_BLOCK;
     public static final MossyBasaltBricksBlock MOSSY_BASALT_BRICKS_BLOCK;
@@ -32,6 +31,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final Slabs SLABS;
     public static final Stairs STAIRS;
     public static final StorageBlocks STORAGE_BLOCKS;
+    public static final Walls WALLS;
 
     private static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
@@ -40,7 +40,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         BASALT_BRICKS_BLOCK = new BasaltBricksBlock();
         CHISELED_BASALT_BRICKS_BLOCK = new ChiseledBasaltBricksBlock();
         COBBLED_END_STONE_BLOCK = new CobbledEndStoneBlock();
-        COBBLED_END_STONE_WALL_BLOCK = new CobbledEndStoneWallBlock();
         CRACKED_BASALT_BRICKS_BLOCK = new CrackedBasaltBricksBlock();
         CRIMSON_BASALT_BRICKS_BLOCK = new CrimsonBasaltBricksBlock();
         MOSSY_BASALT_BRICKS_BLOCK = new MossyBasaltBricksBlock();
@@ -51,7 +50,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
             BASALT_BRICKS_BLOCK,
             CHISELED_BASALT_BRICKS_BLOCK,
             COBBLED_END_STONE_BLOCK,
-            COBBLED_END_STONE_WALL_BLOCK,
             CRACKED_BASALT_BRICKS_BLOCK,
             CRIMSON_BASALT_BRICKS_BLOCK,
             MOSSY_BASALT_BRICKS_BLOCK,
@@ -64,13 +62,15 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         SLABS = new Slabs();
         STAIRS = new Stairs();
         STORAGE_BLOCKS = new StorageBlocks();
+        WALLS = new Walls();
 
         BLOCK_GROUPS.addAll(List.of(
             BEAMS,
             COVERS,
             SLABS,
             STAIRS,
-            STORAGE_BLOCKS
+            STORAGE_BLOCKS,
+            WALLS
         ));
     }
 

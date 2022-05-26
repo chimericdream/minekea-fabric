@@ -87,6 +87,8 @@ public class IdentifierMixin {
             case "jars/glass_jar_block_entity" -> id[1] = "entities/blocks/containers/glass_jar";
             case "seats/seat_entity" -> id[1] = "entities/mounts/seat";
             case "shelves/shelf_block_entity" -> id[1] = "entities/blocks/furniture/shelf";
+
+            case "building/cobbled_end_stone_wall" -> id[1] = "building/walls/cobbled_end_stone_wall";
         }
     }
 }

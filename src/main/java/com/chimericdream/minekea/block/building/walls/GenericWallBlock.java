@@ -1,11 +1,11 @@
 package com.chimericdream.minekea.block.building.walls;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.building.general.CobbledEndStoneBlock;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -13,8 +13,8 @@ import net.devtech.arrp.json.blockstate.JWhen;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Blocks;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.WallBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -22,30 +22,44 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class CobbledEndStoneWallBlock extends WallBlock implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "building/cobbled_end_stone_wall");
+import java.util.Map;
 
-    public CobbledEndStoneWallBlock() {
-        super(FabricBlockSettings.copyOf(Blocks.END_STONE_BRICK_WALL));
+public class GenericWallBlock extends WallBlock implements MinekeaBlock {
+    public GenericWallBlock(WallSettings settings) {
+        super(settings);
     }
 
     @Override
     public Identifier getBlockID() {
-        return BLOCK_ID;
+        return ((WallSettings) this.settings).getBlockId();
     }
 
     @Override
     public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        register(false);
+    }
+
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
 
         setupResources();
     }
 
     @Override
     public void setupResources() {
-        Identifier BASE_MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
+        Map<String, Identifier> materials = ((GenericWallBlock.WallSettings) this.settings).getMaterials();
+
+        Identifier main = materials.get("main");
+        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+
+        Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         Identifier INVENTORY_MODEL_ID = new Identifier(BASE_MODEL_ID.getNamespace(), BASE_MODEL_ID.getPath() + "_inventory");
         Identifier POST_MODEL_ID = new Identifier(BASE_MODEL_ID.getNamespace(), BASE_MODEL_ID.getPath() + "_post");
@@ -53,18 +67,18 @@ public class CobbledEndStoneWallBlock extends WallBlock implements MinekeaBlock 
         Identifier SIDE_TALL_MODEL_ID = new Identifier(BASE_MODEL_ID.getNamespace(), BASE_MODEL_ID.getPath() + "_side_tall");
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("###", "###"),
                 JKeys.keys()
-                    .key("#", JIngredient.ingredient().item(CobbledEndStoneBlock.BLOCK_ID.toString())),
-                JResult.stackedResult(BLOCK_ID.toString(), 6)
+                    .key("#", JIngredient.ingredient().item(ingredient.toString())),
+                JResult.stackedResult(getBlockID().toString(), 6)
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
-        JTextures textures = new JTextures().var("wall", Texture.getBlockTextureID(CobbledEndStoneBlock.BLOCK_ID).toString());
+        JTextures textures = new JTextures().var("wall", Texture.getBlockTextureID(main).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minecraft:block/wall_inventory").textures(textures),
@@ -106,7 +120,22 @@ public class CobbledEndStoneWallBlock extends WallBlock implements MinekeaBlock 
                 JState.multipart(new JBlockModel(SIDE_TALL_MODEL_ID).y(270).uvlock())
                     .when(new JWhen().add("west", "tall"))
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class WallSettings extends MinekeaBlockSettings<WallSettings> {
+        public WallSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/walls/%s_wall", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }
