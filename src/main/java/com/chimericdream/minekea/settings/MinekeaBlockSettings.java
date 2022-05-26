@@ -16,6 +16,8 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected int burnSpread = 0;
     protected int burnTime = 0;
     protected int fuelTime = 0;
+    protected boolean isFlammable = false;
+    protected boolean isTranslucent = false;
     protected String defaultTranslation;
     protected Block baseBlock;
 
@@ -60,6 +62,14 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         return this.baseBlock;
     }
 
+    public boolean isFlammable() {
+        return this.isFlammable;
+    }
+
+    public boolean isTranslucent() {
+        return this.isTranslucent;
+    }
+
     public T baseBlock(Block baseBlock) {
         this.baseBlock = baseBlock;
         // noinspection unchecked
@@ -80,6 +90,30 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public T fuelTime(int time) {
         this.fuelTime = time;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T flammable() {
+        this.isFlammable = true;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T nonFlammable() {
+        this.isFlammable = false;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T translucent() {
+        this.isTranslucent = true;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T opaque() {
+        this.isTranslucent = false;
         // noinspection unchecked
         return (T) this;
     }

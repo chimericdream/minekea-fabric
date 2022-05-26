@@ -1052,6 +1052,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WHITE_STAINED_GLASS = new DefaultSettings(Blocks.WHITE_STAINED_GLASS)
         .material("white_stained_glass")
+        .translucent()
         .translation("White Stained Glass")
         .materials(
             Map.of(
@@ -1061,6 +1062,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ORANGE_STAINED_GLASS = new DefaultSettings(Blocks.ORANGE_STAINED_GLASS)
         .material("orange_stained_glass")
+        .translucent()
         .translation("Orange Stained Glass")
         .materials(
             Map.of(
@@ -1070,6 +1072,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MAGENTA_STAINED_GLASS = new DefaultSettings(Blocks.MAGENTA_STAINED_GLASS)
         .material("magenta_stained_glass")
+        .translucent()
         .translation("Magenta Stained Glass")
         .materials(
             Map.of(
@@ -1079,6 +1082,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIGHT_BLUE_STAINED_GLASS = new DefaultSettings(Blocks.LIGHT_BLUE_STAINED_GLASS)
         .material("light_blue_stained_glass")
+        .translucent()
         .translation("Light Blue Stained Glass")
         .materials(
             Map.of(
@@ -1088,6 +1092,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings YELLOW_STAINED_GLASS = new DefaultSettings(Blocks.YELLOW_STAINED_GLASS)
         .material("yellow_stained_glass")
+        .translucent()
         .translation("Yellow Stained Glass")
         .materials(
             Map.of(
@@ -1097,6 +1102,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIME_STAINED_GLASS = new DefaultSettings(Blocks.LIME_STAINED_GLASS)
         .material("lime_stained_glass")
+        .translucent()
         .translation("Lime Stained Glass")
         .materials(
             Map.of(
@@ -1106,6 +1112,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PINK_STAINED_GLASS = new DefaultSettings(Blocks.PINK_STAINED_GLASS)
         .material("pink_stained_glass")
+        .translucent()
         .translation("Pink Stained Glass")
         .materials(
             Map.of(
@@ -1115,6 +1122,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GRAY_STAINED_GLASS = new DefaultSettings(Blocks.GRAY_STAINED_GLASS)
         .material("gray_stained_glass")
+        .translucent()
         .translation("Gray Stained Glass")
         .materials(
             Map.of(
@@ -1124,6 +1132,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings LIGHT_GRAY_STAINED_GLASS = new DefaultSettings(Blocks.LIGHT_GRAY_STAINED_GLASS)
         .material("light_gray_stained_glass")
+        .translucent()
         .translation("Light Gray Stained Glass")
         .materials(
             Map.of(
@@ -1133,6 +1142,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CYAN_STAINED_GLASS = new DefaultSettings(Blocks.CYAN_STAINED_GLASS)
         .material("cyan_stained_glass")
+        .translucent()
         .translation("Cyan Stained Glass")
         .materials(
             Map.of(
@@ -1142,6 +1152,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings PURPLE_STAINED_GLASS = new DefaultSettings(Blocks.PURPLE_STAINED_GLASS)
         .material("purple_stained_glass")
+        .translucent()
         .translation("Purple Stained Glass")
         .materials(
             Map.of(
@@ -1151,6 +1162,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLUE_STAINED_GLASS = new DefaultSettings(Blocks.BLUE_STAINED_GLASS)
         .material("blue_stained_glass")
+        .translucent()
         .translation("Blue Stained Glass")
         .materials(
             Map.of(
@@ -1160,6 +1172,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BROWN_STAINED_GLASS = new DefaultSettings(Blocks.BROWN_STAINED_GLASS)
         .material("brown_stained_glass")
+        .translucent()
         .translation("Brown Stained Glass")
         .materials(
             Map.of(
@@ -1169,6 +1182,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GREEN_STAINED_GLASS = new DefaultSettings(Blocks.GREEN_STAINED_GLASS)
         .material("green_stained_glass")
+        .translucent()
         .translation("Green Stained Glass")
         .materials(
             Map.of(
@@ -1178,6 +1192,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings RED_STAINED_GLASS = new DefaultSettings(Blocks.RED_STAINED_GLASS)
         .material("red_stained_glass")
+        .translucent()
         .translation("Red Stained Glass")
         .materials(
             Map.of(
@@ -1187,6 +1202,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BLACK_STAINED_GLASS = new DefaultSettings(Blocks.BLACK_STAINED_GLASS)
         .material("black_stained_glass")
+        .translucent()
         .translation("Black Stained Glass")
         .materials(
             Map.of(
@@ -1196,6 +1212,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA_LOG = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia_log")
+        .flammable()
         .translation("Acacia Log")
         .materials(
             Map.of(
@@ -1206,6 +1223,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA_PLANK = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia_plank")
+        .flammable()
         .translation("Acacia Plank")
         .materials(
             Map.of(
@@ -1215,6 +1233,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH_LOG = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch_log")
+        .flammable()
         .translation("Birch Log")
         .materials(
             Map.of(
@@ -1225,6 +1244,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH_PLANK = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch_plank")
+        .flammable()
         .translation("Birch Plank")
         .materials(
             Map.of(
@@ -1253,6 +1273,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK_LOG = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak_log")
+        .flammable()
         .translation("Dark Oak Log")
         .materials(
             Map.of(
@@ -1263,6 +1284,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK_PLANK = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak_plank")
+        .flammable()
         .translation("Dark Oak Plank")
         .materials(
             Map.of(
@@ -1272,6 +1294,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE_LOG = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle_log")
+        .flammable()
         .translation("Jungle Log")
         .materials(
             Map.of(
@@ -1282,6 +1305,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE_PLANK = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle_plank")
+        .flammable()
         .translation("Jungle Plank")
         .materials(
             Map.of(
@@ -1291,6 +1315,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK_LOG = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_log")
+        .flammable()
         .translation("Oak Log")
         .materials(
             Map.of(
@@ -1301,6 +1326,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK_PLANK = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_plank")
+        .flammable()
         .translation("Oak Plank")
         .materials(
             Map.of(
@@ -1310,6 +1336,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE_LOG = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce_log")
+        .flammable()
         .translation("Spruce Log")
         .materials(
             Map.of(
@@ -1320,6 +1347,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE_PLANK = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce_plank")
+        .flammable()
         .translation("Spruce Plank")
         .materials(
             Map.of(

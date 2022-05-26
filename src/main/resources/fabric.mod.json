@@ -23,6 +23,7 @@
     "mixins": [
         "minekea.mixins.json"
     ],
+    "accessWidener": "minekea.accesswidener",
     "depends": {
         "fabricloader": ">=0.13.3",
         "fabric": "*",
