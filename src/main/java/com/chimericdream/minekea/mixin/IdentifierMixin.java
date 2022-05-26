@@ -93,12 +93,14 @@ public class IdentifierMixin {
             case "building/cobbled_end_stone_wall" -> id[1] = "building/walls/cobbled_end_stone";
         }
 
-        Map<String, String> replacements = Map.of(
-            "^beams/([^/]+/)?([_a-z]+)_beam$", "$1building/beams/$2",
-            "^slabs/([^/]+/)?([_a-z]+)_slab$", "$1building/slabs/$2",
-            "^stairs/([^/]+/)?([_a-z]+)_stairs$", "$1building/stairs/$2",
-            "^covers/([^/]+/)?([_a-z]+)_cover$", "$1building/covers/$2",
-            "^building/stairs/([^/]+/)?([_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2"
+        Map<String, String> replacements = Map.ofEntries(
+            Map.entry("^beams/([^/]+/)?([./_a-z]+)_beam$", "$1building/beams/$2"),
+            Map.entry("^slabs/([^/]+/)?([./_a-z]+)_slab$", "$1building/slabs/$2"),
+            Map.entry("^stairs/([^/]+/)?([./_a-z]+)_stairs$", "$1building/stairs/$2"),
+            Map.entry("^covers/([^/]+/)?([./_a-z]+)_cover$", "$1building/covers/$2"),
+            Map.entry("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2"),
+            Map.entry("^storage/compressed_([./_a-z]+)$", "storage/compressed/$1"),
+            Map.entry("^storage/dyes/compressed_([./_a-z]+)$", "storage/dyes/$1")
         );
 
         replacements.forEach((String match, String replace) -> {

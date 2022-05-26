@@ -28,7 +28,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock RED_DYE_BLOCK;
     public static final GenericStorageBlock BLACK_DYE_BLOCK;
 
-    public static final GenericStorageFallingBlock SUGAR_BLOCK;
+    public static final GenericStorageBlock SUGAR_BLOCK;
     public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
     public static final GenericStorageBlock POTATO_BLOCK;
     public static final GenericStorageBlock ENDER_PEARL_BLOCK;
@@ -37,24 +37,24 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock CHORUS_FRUIT_BLOCK;
 
     static {
-        WHITE_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:white_dye"), "white");
-        ORANGE_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:orange_dye"), "orange");
-        MAGENTA_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:magenta_dye"), "magenta");
-        LIGHT_BLUE_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:light_blue_dye"), "light_blue");
-        YELLOW_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:yellow_dye"), "yellow");
-        LIME_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:lime_dye"), "lime");
-        PINK_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:pink_dye"), "pink");
-        GRAY_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:gray_dye"), "gray");
-        LIGHT_GRAY_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:light_gray_dye"), "light_gray");
-        CYAN_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:cyan_dye"), "cyan");
-        PURPLE_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:purple_dye"), "purple");
-        BLUE_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:blue_dye"), "blue");
-        BROWN_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:brown_dye"), "brown");
-        GREEN_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:green_dye"), "green");
-        RED_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:red_dye"), "red");
-        BLACK_DYE_BLOCK = new CompressedDyeBlock(new Identifier("minecraft:black_dye"), "black");
+        WHITE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:white_dye"), "white");
+        ORANGE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:orange_dye"), "orange");
+        MAGENTA_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:magenta_dye"), "magenta");
+        LIGHT_BLUE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:light_blue_dye"), "light_blue");
+        YELLOW_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:yellow_dye"), "yellow");
+        LIME_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:lime_dye"), "lime");
+        PINK_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:pink_dye"), "pink");
+        GRAY_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:gray_dye"), "gray");
+        LIGHT_GRAY_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:light_gray_dye"), "light_gray");
+        CYAN_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:cyan_dye"), "cyan");
+        PURPLE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:purple_dye"), "purple");
+        BLUE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:blue_dye"), "blue");
+        BROWN_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:brown_dye"), "brown");
+        GREEN_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:green_dye"), "green");
+        RED_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:red_dye"), "red");
+        BLACK_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:black_dye"), "black");
 
-        SUGAR_BLOCK = new CompressedSugarBlock(new Identifier("minecraft:sugar"));
+        SUGAR_BLOCK = new GenericStorageBlock(new Identifier("minecraft:sugar"));
         BLAZE_POWDER_BLOCK = new GenericStorageBlock(new Identifier("minecraft:blaze_powder"));
         POTATO_BLOCK = new GenericStorageBlock(new Identifier("minecraft:potato"), true);
         ENDER_PEARL_BLOCK = new GenericStorageBlock(new Identifier("minecraft:ender_pearl"));

@@ -2,9 +2,9 @@
     "parent": "block/block",
     "textures": {
         "particle": "#contents",
-        "down": "minekea:block/storage/sack_side",
-        "up": "minekea:block/storage/sack_top",
-        "side": "minekea:block/storage/sack_side",
+        "down": "minekea:block/storage/overlays/sack/side",
+        "up": "minekea:block/storage/overlays/sack/top",
+        "side": "minekea:block/storage/overlays/sack/side",
         "contents": "#contents"
     },
     "elements": [

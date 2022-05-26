@@ -23,14 +23,14 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class CompressedDyeBlock extends GenericStorageBlock {
+public class DyeStorageBlock extends GenericStorageBlock {
     private final String color;
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
-    public CompressedDyeBlock(Identifier baseBlock, String color) {
+    public DyeStorageBlock(Identifier baseBlock, String color) {
         super(
             FabricBlockSettings.copyOf(Blocks.HONEY_BLOCK).jumpVelocityMultiplier(0.5F),
-            new Identifier(ModInfo.MOD_ID, "storage/dyes/compressed_" + baseBlock.getPath()),
+            new Identifier(ModInfo.MOD_ID, "storage/dyes/" + baseBlock.getPath()),
             baseBlock
         );
         this.color = color;
@@ -78,7 +78,7 @@ public class CompressedDyeBlock extends GenericStorageBlock {
             .var("side", String.format("%s:block/storage/dyes/%s/side", ModInfo.MOD_ID, color))
             .var("top", String.format("%s:block/storage/dyes/%s/top", ModInfo.MOD_ID, color));
 
-        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(String.format("%s:block/storage/compressed_dye_block", ModInfo.MOD_ID)).textures(textures), MODEL_ID);
+        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(String.format("%s:block/storage/dye_block", ModInfo.MOD_ID)).textures(textures), MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
