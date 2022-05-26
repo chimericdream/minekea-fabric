@@ -1,4 +1,4 @@
-package com.chimericdream.minekea.block.building.end_stone;
+package com.chimericdream.minekea.block.building.general;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;

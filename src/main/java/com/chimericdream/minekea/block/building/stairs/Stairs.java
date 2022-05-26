@@ -79,18 +79,22 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalStairsBlock SPRUCE_LOG_VERTICAL_STAIRS;
 
     public static final GenericStairsBlock AMETHYST_STAIRS;
+    public static final GenericStairsBlock BASALT_BRICK_STAIRS;
     public static final GenericStairsBlock BASALT_STAIRS;
     public static final GenericStairsBlock BONE_STAIRS;
     public static final GenericStairsBlock CALCITE_STAIRS;
     public static final GenericStairsBlock COBBLED_END_STONE_STAIRS;
+    public static final GenericStairsBlock CRACKED_BASALT_BRICK_STAIRS;
     public static final GenericStairsBlock CRACKED_DEEPSLATE_BRICK_STAIRS;
     public static final GenericStairsBlock CRACKED_DEEPSLATE_TILE_STAIRS;
     public static final GenericStairsBlock CRACKED_STONE_BRICK_STAIRS;
+    public static final GenericStairsBlock CRIMSON_BASALT_BRICK_STAIRS;
     public static final GenericStairsBlock CRYING_OBSIDIAN_STAIRS;
     public static final GenericStairsBlock CUT_RED_SANDSTONE_STAIRS;
     public static final GenericStairsBlock CUT_SANDSTONE_STAIRS;
     public static final GenericStairsBlock DEEPSLATE_STAIRS;
     public static final GenericStairsBlock END_STONE_STAIRS;
+    public static final GenericStairsBlock MOSSY_BASALT_BRICK_STAIRS;
     public static final GenericStairsBlock NETHERRACK_STAIRS;
     public static final GenericStairsBlock OBSIDIAN_STAIRS;
     public static final GenericStairsBlock POLISHED_BASALT_STAIRS;
@@ -98,6 +102,8 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericStairsBlock SMOOTH_BASALT_STAIRS;
     public static final GenericStairsBlock SMOOTH_STONE_STAIRS;
     public static final GenericStairsBlock TUFF_STAIRS;
+    public static final GenericStairsBlock WARPED_BASALT_BRICK_STAIRS;
+    public static final GenericStairsBlock WARPED_NETHER_BRICK_STAIRS;
 
     public static final GenericStairsBlock CRIMSON_STEM_STAIRS;
     public static final GenericStairsBlock WARPED_STEM_STAIRS;
@@ -325,18 +331,22 @@ public class Stairs implements MinekeaBlockCategory {
         TRANSLUCENT_VERTICAL_STAIRS.addAll(List.of());
 
         AMETHYST_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.AMETHYST));
+        BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BASALT_BRICK));
         BASALT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BASALT));
         BONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BONE));
         CALCITE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CALCITE));
         COBBLED_END_STONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.COBBLED_END_STONE));
+        CRACKED_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_BASALT_BRICK));
         CRACKED_DEEPSLATE_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_DEEPSLATE_BRICK));
         CRACKED_DEEPSLATE_TILE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_DEEPSLATE_TILE));
         CRACKED_STONE_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_STONE_BRICK));
+        CRIMSON_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRIMSON_BASALT_BRICK));
         CRYING_OBSIDIAN_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRYING_OBSIDIAN));
         CUT_RED_SANDSTONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CUT_RED_SANDSTONE));
         CUT_SANDSTONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CUT_SANDSTONE));
         DEEPSLATE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.DEEPSLATE));
         END_STONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.END_STONE));
+        MOSSY_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
         NETHERRACK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.NETHERRACK));
         OBSIDIAN_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.OBSIDIAN));
         POLISHED_BASALT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.POLISHED_BASALT));
@@ -344,6 +354,8 @@ public class Stairs implements MinekeaBlockCategory {
         SMOOTH_BASALT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.SMOOTH_BASALT));
         SMOOTH_STONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.SMOOTH_STONE));
         TUFF_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.TUFF));
+        WARPED_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WARPED_BASALT_BRICK));
+        WARPED_NETHER_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WARPED_NETHER_BRICK));
 
         CRIMSON_STEM_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRIMSON_STEM));
         WARPED_STEM_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WARPED_STEM));
@@ -434,18 +446,22 @@ public class Stairs implements MinekeaBlockCategory {
 
         NONFLAMMABLE_STAIRS.addAll(List.of(
             AMETHYST_STAIRS,
+            BASALT_BRICK_STAIRS,
             BASALT_STAIRS,
             BONE_STAIRS,
             CALCITE_STAIRS,
             COBBLED_END_STONE_STAIRS,
+            CRACKED_BASALT_BRICK_STAIRS,
             CRACKED_DEEPSLATE_BRICK_STAIRS,
             CRACKED_DEEPSLATE_TILE_STAIRS,
             CRACKED_STONE_BRICK_STAIRS,
+            CRIMSON_BASALT_BRICK_STAIRS,
             CRYING_OBSIDIAN_STAIRS,
             CUT_RED_SANDSTONE_STAIRS,
             CUT_SANDSTONE_STAIRS,
             DEEPSLATE_STAIRS,
             END_STONE_STAIRS,
+            MOSSY_BASALT_BRICK_STAIRS,
             NETHERRACK_STAIRS,
             OBSIDIAN_STAIRS,
             POLISHED_BASALT_STAIRS,
@@ -453,6 +469,8 @@ public class Stairs implements MinekeaBlockCategory {
             SMOOTH_BASALT_STAIRS,
             SMOOTH_STONE_STAIRS,
             TUFF_STAIRS,
+            WARPED_BASALT_BRICK_STAIRS,
+            WARPED_NETHER_BRICK_STAIRS,
 
             CRIMSON_STEM_STAIRS,
             WARPED_STEM_STAIRS,

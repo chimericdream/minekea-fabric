@@ -6,7 +6,7 @@ import com.chimericdream.minekea.block.bookshelves.slabs.BookshelfSlabs;
 import com.chimericdream.minekea.block.bookshelves.stairs.BookshelfStairs;
 import com.chimericdream.minekea.block.bookshelves.trapdoors.BookshelfTrapdoors;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
-import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
+import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;

@@ -1,9 +1,7 @@
 package com.chimericdream.minekea.settings;
 
 import com.chimericdream.minekea.block.building.BuildingBlocks;
-import com.chimericdream.minekea.block.building.basalt_bricks.*;
-import com.chimericdream.minekea.block.building.end_stone.CobbledEndStoneBlock;
-import com.chimericdream.minekea.block.building.warped_nether_bricks.WarpedNetherBricksBlock;
+import com.chimericdream.minekea.block.building.general.*;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;

@@ -12,23 +12,31 @@ import java.util.List;
 
 public class Slabs implements MinekeaBlockCategory {
     public static final GenericSlabBlock AMETHYST_SLAB;
+    public static final GenericSlabBlock BASALT_BRICK_SLAB;
     public static final GenericSlabBlock BASALT_SLAB;
     public static final GenericSlabBlock BONE_SLAB;
     public static final GenericSlabBlock CALCITE_SLAB;
+    public static final GenericSlabBlock COBBLED_END_STONE_SLAB;
+    public static final GenericSlabBlock CRACKED_BASALT_BRICK_SLAB;
     public static final GenericSlabBlock CRACKED_DEEPSLATE_BRICK_SLAB;
     public static final GenericSlabBlock CRACKED_DEEPSLATE_TILE_SLAB;
     public static final GenericSlabBlock CRACKED_STONE_BRICK_SLAB;
     public static final GenericSlabBlock CRIMSON_BASALT_BRICK_SLAB;
     public static final GenericSlabBlock CRYING_OBSIDIAN_SLAB;
     public static final GenericSlabBlock DEEPSLATE_SLAB;
+    public static final GenericSlabBlock END_STONE_SLAB;
+    public static final GenericSlabBlock MOSSY_BASALT_BRICK_SLAB;
     public static final GenericSlabBlock OBSIDIAN_SLAB;
     public static final GenericSlabBlock POLISHED_BASALT_SLAB;
     public static final GenericSlabBlock PURPUR_PILLAR_SLAB;
     public static final GenericSlabBlock SMOOTH_BASALT_SLAB;
     public static final GenericSlabBlock TUFF_SLAB;
+    public static final GenericSlabBlock WARPED_BASALT_BRICK_SLAB;
+    public static final GenericSlabBlock WARPED_NETHER_BRICK_SLAB;
 
     public static final GenericSlabBlock CRIMSON_STEM_SLAB;
     public static final GenericSlabBlock WARPED_STEM_SLAB;
+
 
     public static final GenericSlabBlock WHITE_TERRACOTTA_SLAB;
     public static final GenericSlabBlock ORANGE_TERRACOTTA_SLAB;
@@ -111,20 +119,27 @@ public class Slabs implements MinekeaBlockCategory {
 
     static {
         AMETHYST_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.AMETHYST));
+        BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BASALT_BRICK));
         BASALT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BASALT));
         BONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BONE));
         CALCITE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CALCITE));
+        COBBLED_END_STONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.COBBLED_END_STONE));
+        CRACKED_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_BASALT_BRICK));
         CRACKED_DEEPSLATE_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_DEEPSLATE_BRICK));
         CRACKED_DEEPSLATE_TILE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_DEEPSLATE_TILE));
         CRACKED_STONE_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_STONE_BRICK));
         CRIMSON_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRIMSON_BASALT_BRICK));
         CRYING_OBSIDIAN_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRYING_OBSIDIAN));
         DEEPSLATE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.DEEPSLATE));
+        END_STONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.END_STONE));
+        MOSSY_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
         OBSIDIAN_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.OBSIDIAN));
         POLISHED_BASALT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.POLISHED_BASALT));
         PURPUR_PILLAR_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.PURPUR_PILLAR));
         SMOOTH_BASALT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.SMOOTH_BASALT));
         TUFF_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.TUFF));
+        WARPED_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.WARPED_BASALT_BRICK));
+        WARPED_NETHER_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.WARPED_NETHER_BRICK));
 
         CRIMSON_STEM_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRIMSON_STEM));
         WARPED_STEM_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.WARPED_STEM));
@@ -215,20 +230,27 @@ public class Slabs implements MinekeaBlockCategory {
 
         NONFLAMMABLE_SLABS.addAll(List.of(
             AMETHYST_SLAB,
+            BASALT_BRICK_SLAB,
             BASALT_SLAB,
             BONE_SLAB,
             CALCITE_SLAB,
+            COBBLED_END_STONE_SLAB,
+            CRACKED_BASALT_BRICK_SLAB,
             CRACKED_DEEPSLATE_BRICK_SLAB,
             CRACKED_DEEPSLATE_TILE_SLAB,
             CRACKED_STONE_BRICK_SLAB,
             CRIMSON_BASALT_BRICK_SLAB,
             CRYING_OBSIDIAN_SLAB,
             DEEPSLATE_SLAB,
+            END_STONE_SLAB,
+            MOSSY_BASALT_BRICK_SLAB,
             OBSIDIAN_SLAB,
             POLISHED_BASALT_SLAB,
             PURPUR_PILLAR_SLAB,
             SMOOTH_BASALT_SLAB,
             TUFF_SLAB,
+            WARPED_BASALT_BRICK_SLAB,
+            WARPED_NETHER_BRICK_SLAB,
 
             CRIMSON_STEM_SLAB,
             WARPED_STEM_SLAB,
