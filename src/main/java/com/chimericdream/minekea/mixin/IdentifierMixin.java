@@ -100,7 +100,8 @@ public class IdentifierMixin {
             Map.entry("^covers/([^/]+/)?([./_a-z]+)_cover$", "$1building/covers/$2"),
             Map.entry("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2"),
             Map.entry("^storage/compressed_([./_a-z]+)$", "storage/compressed/$1"),
-            Map.entry("^storage/dyes/compressed_([./_a-z]+)$", "storage/dyes/$1")
+            Map.entry("^storage/dyes/compressed_([./_a-z]+)$", "storage/dyes/$1"),
+            Map.entry("^crates/([^/]+/)?([./_a-z]+)_crate$", "$1containers/crates/$2")
         );
 
         replacements.forEach((String match, String replace) -> {

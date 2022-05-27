@@ -70,6 +70,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         return this.isTranslucent;
     }
 
+    public T modId(String modId) {
+        this.modId = modId;
+        // noinspection unchecked
+        return (T) this;
+    }
+
     public T baseBlock(Block baseBlock) {
         this.baseBlock = baseBlock;
         // noinspection unchecked

@@ -1217,17 +1217,23 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:acacia_log"),
-                "end", new Identifier("minecraft:acacia_log_top")
+                "end", new Identifier("minecraft:acacia_log_top"),
+                "log", new Identifier("minecraft:acacia_log"),
+                "stripped_log", new Identifier("minecraft:stripped_acacia_log"),
+                "planks", new Identifier("minecraft:acacia_planks")
             )
         );
 
     public static DefaultSettings ACACIA_PLANK = new DefaultSettings(Blocks.ACACIA_PLANKS)
-        .material("acacia_plank")
+        .material("acacia")
         .flammable()
         .translation("Acacia Plank")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:acacia_planks")
+                "main", new Identifier("minecraft:acacia_planks"),
+                "log", new Identifier("minecraft:acacia_log"),
+                "stripped_log", new Identifier("minecraft:stripped_acacia_log"),
+                "planks", new Identifier("minecraft:acacia_planks")
             )
         );
 
@@ -1238,26 +1244,35 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:birch_log"),
-                "end", new Identifier("minecraft:birch_log_top")
+                "end", new Identifier("minecraft:birch_log_top"),
+                "log", new Identifier("minecraft:birch_log"),
+                "stripped_log", new Identifier("minecraft:stripped_birch_log"),
+                "planks", new Identifier("minecraft:birch_planks")
             )
         );
 
     public static DefaultSettings BIRCH_PLANK = new DefaultSettings(Blocks.BIRCH_PLANKS)
-        .material("birch_plank")
+        .material("birch")
         .flammable()
         .translation("Birch Plank")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:birch_planks")
+                "main", new Identifier("minecraft:birch_planks"),
+                "log", new Identifier("minecraft:birch_log"),
+                "stripped_log", new Identifier("minecraft:stripped_birch_log"),
+                "planks", new Identifier("minecraft:birch_planks")
             )
         );
 
     public static DefaultSettings CRIMSON_PLANK = new DefaultSettings(Blocks.CRIMSON_PLANKS)
-        .material("crimson_plank")
+        .material("crimson")
         .translation("Crimson Plank")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:crimson_planks")
+                "main", new Identifier("minecraft:crimson_planks"),
+                "log", new Identifier("minecraft:crimson_stem"),
+                "stripped_log", new Identifier("minecraft:stripped_crimson_stem"),
+                "planks", new Identifier("minecraft:crimson_planks")
             )
         );
 
@@ -1267,7 +1282,10 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:crimson_stem"),
-                "end", new Identifier("minecraft:crimson_stem_top")
+                "end", new Identifier("minecraft:crimson_stem_top"),
+                "log", new Identifier("minecraft:crimson_stem"),
+                "stripped_log", new Identifier("minecraft:stripped_crimson_stem"),
+                "planks", new Identifier("minecraft:crimson_planks")
             )
         );
 
@@ -1278,17 +1296,23 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:dark_oak_log"),
-                "end", new Identifier("minecraft:dark_oak_log_top")
+                "end", new Identifier("minecraft:dark_oak_log_top"),
+                "log", new Identifier("minecraft:dark_oak_log"),
+                "stripped_log", new Identifier("minecraft:stripped_dark_oak_log"),
+                "planks", new Identifier("minecraft:dark_oak_planks")
             )
         );
 
     public static DefaultSettings DARK_OAK_PLANK = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
-        .material("dark_oak_plank")
+        .material("dark_oak")
         .flammable()
         .translation("Dark Oak Plank")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:dark_oak_planks")
+                "main", new Identifier("minecraft:dark_oak_planks"),
+                "log", new Identifier("minecraft:dark_oak_log"),
+                "stripped_log", new Identifier("minecraft:stripped_dark_oak_log"),
+                "planks", new Identifier("minecraft:dark_oak_planks")
             )
         );
 
@@ -1299,17 +1323,23 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:jungle_log"),
-                "end", new Identifier("minecraft:jungle_log_top")
+                "end", new Identifier("minecraft:jungle_log_top"),
+                "log", new Identifier("minecraft:jungle_log"),
+                "stripped_log", new Identifier("minecraft:stripped_jungle_log"),
+                "planks", new Identifier("minecraft:jungle_planks")
             )
         );
 
     public static DefaultSettings JUNGLE_PLANK = new DefaultSettings(Blocks.JUNGLE_PLANKS)
-        .material("jungle_plank")
+        .material("jungle")
         .flammable()
         .translation("Jungle Plank")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:jungle_planks")
+                "main", new Identifier("minecraft:jungle_planks"),
+                "log", new Identifier("minecraft:jungle_log"),
+                "stripped_log", new Identifier("minecraft:stripped_jungle_log"),
+                "planks", new Identifier("minecraft:jungle_planks")
             )
         );
 
@@ -1320,17 +1350,23 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:oak_log"),
-                "end", new Identifier("minecraft:oak_log_top")
+                "end", new Identifier("minecraft:oak_log_top"),
+                "log", new Identifier("minecraft:oak_log"),
+                "stripped_log", new Identifier("minecraft:stripped_oak_log"),
+                "planks", new Identifier("minecraft:oak_planks")
             )
         );
 
     public static DefaultSettings OAK_PLANK = new DefaultSettings(Blocks.OAK_PLANKS)
-        .material("oak_plank")
+        .material("oak")
         .flammable()
         .translation("Oak Plank")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:oak_planks")
+                "main", new Identifier("minecraft:oak_planks"),
+                "log", new Identifier("minecraft:oak_log"),
+                "stripped_log", new Identifier("minecraft:stripped_oak_log"),
+                "planks", new Identifier("minecraft:oak_planks")
             )
         );
 
@@ -1341,26 +1377,35 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:spruce_log"),
-                "end", new Identifier("minecraft:spruce_log_top")
+                "end", new Identifier("minecraft:spruce_log_top"),
+                "log", new Identifier("minecraft:spruce_log"),
+                "stripped_log", new Identifier("minecraft:stripped_spruce_log"),
+                "planks", new Identifier("minecraft:spruce_planks")
             )
         );
 
     public static DefaultSettings SPRUCE_PLANK = new DefaultSettings(Blocks.SPRUCE_PLANKS)
-        .material("spruce_plank")
+        .material("spruce")
         .flammable()
         .translation("Spruce Plank")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:spruce_planks")
+                "main", new Identifier("minecraft:spruce_planks"),
+                "log", new Identifier("minecraft:spruce_log"),
+                "stripped_log", new Identifier("minecraft:stripped_spruce_log"),
+                "planks", new Identifier("minecraft:spruce_planks")
             )
         );
 
     public static DefaultSettings WARPED_PLANK = new DefaultSettings(Blocks.WARPED_PLANKS)
-        .material("warped_plank")
+        .material("warped")
         .translation("Warped Plank")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:warped_planks")
+                "main", new Identifier("minecraft:warped_planks"),
+                "log", new Identifier("minecraft:warped_stem"),
+                "stripped_log", new Identifier("minecraft:stripped_warped_stem"),
+                "planks", new Identifier("minecraft:warped_planks")
             )
         );
 
@@ -1370,7 +1415,10 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:warped_stem"),
-                "end", new Identifier("minecraft:warped_stem_top")
+                "end", new Identifier("minecraft:warped_stem_top"),
+                "log", new Identifier("minecraft:warped_stem"),
+                "stripped_log", new Identifier("minecraft:stripped_warped_stem"),
+                "planks", new Identifier("minecraft:warped_planks")
             )
         );
 }
