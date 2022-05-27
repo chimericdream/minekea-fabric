@@ -2,7 +2,7 @@ package com.chimericdream.minekea.entities.blocks;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.bookshelves.Bookshelves;
-import com.chimericdream.minekea.block.bookshelves.GenericStorageBookshelf;
+import com.chimericdream.minekea.block.furniture.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;

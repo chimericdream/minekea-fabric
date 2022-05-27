@@ -84,7 +84,7 @@ public class GenericBookshelfStairs extends StairsBlock {
 
         JTextures textures = new JTextures()
             .var("planks", Texture.getBlockTextureID(planks).toString())
-            .var("shelf", ModInfo.MOD_ID + ":block/bookshelves/shelf0");
+            .var("shelf", ModInfo.MOD_ID + ":block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/bookshelf_stairs").textures(textures),

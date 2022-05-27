@@ -21,31 +21,31 @@ public class BookshelfSlabs implements MinekeaBlockCategory {
     static {
         ACACIA_BOOKSHELF_SLAB = new GenericBookshelfSlab("acacia",
             Map.of(
-                "bookshelf", Bookshelves.ACACIA_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.ACACIA_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:acacia_planks")
             )
         );
         BIRCH_BOOKSHELF_SLAB = new GenericBookshelfSlab("birch",
             Map.of(
-                "bookshelf", Bookshelves.BIRCH_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.BIRCH_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:birch_planks")
             )
         );
         CRIMSON_BOOKSHELF_SLAB = new GenericBookshelfSlab("crimson",
             Map.of(
-                "bookshelf", Bookshelves.CRIMSON_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:crimson_planks")
             )
         );
         DARK_OAK_BOOKSHELF_SLAB = new GenericBookshelfSlab("dark_oak",
             Map.of(
-                "bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:dark_oak_planks")
             )
         );
         JUNGLE_BOOKSHELF_SLAB = new GenericBookshelfSlab("jungle",
             Map.of(
-                "bookshelf", Bookshelves.JUNGLE_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:jungle_planks")
             )
         );
@@ -58,13 +58,13 @@ public class BookshelfSlabs implements MinekeaBlockCategory {
         );
         SPRUCE_BOOKSHELF_SLAB = new GenericBookshelfSlab("spruce",
             Map.of(
-                "bookshelf", Bookshelves.SPRUCE_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:spruce_planks")
             )
         );
         WARPED_BOOKSHELF_SLAB = new GenericBookshelfSlab("warped",
             Map.of(
-                "bookshelf", Bookshelves.WARPED_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:warped_planks")
             )
         );

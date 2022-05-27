@@ -14,8 +14,7 @@ public class BaseBlockSettings {
         .translation("Amethyst")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:amethyst_block"),
-                "ingredient", new Identifier("minecraft:amethyst_shard")
+                "main", new Identifier("minecraft:amethyst_block")
             )
         );
 
@@ -419,6 +418,15 @@ public class BaseBlockSettings {
             Map.of(
                 "main", new Identifier("minecraft:quartz_block_top"),
                 "ingredient", new Identifier("minecraft:quartz_block")
+            )
+        );
+
+    public static DefaultSettings QUARTZ_BRICK = new DefaultSettings(Blocks.QUARTZ_BRICKS)
+        .material("quartz_brick")
+        .translation("Quartz Brick")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:quartz_bricks")
             )
         );
 

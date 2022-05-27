@@ -70,7 +70,7 @@ public class GenericBookshelfSlab extends SlabBlock {
         Identifier TOP_SLAB_MODEL_ID = new Identifier(ModInfo.MOD_ID, "block/" + BLOCK_ID.getPath() + "_top");
         Identifier DOUBLE_MODEL_ID = materials.getOrDefault(
             "model",
-            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/shelf0", ModInfo.getModPrefix(modId), woodType))
+            new Identifier(ModInfo.MOD_ID, String.format("block/%sfurniture/bookshelves/%s0", ModInfo.getModPrefix(modId), woodType))
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
@@ -89,7 +89,7 @@ public class GenericBookshelfSlab extends SlabBlock {
 
         JTextures textures = new JTextures()
             .var("planks", Texture.getBlockTextureID(planks).toString())
-            .var("shelf", ModInfo.MOD_ID + ":block/bookshelves/shelf0");
+            .var("shelf", ModInfo.MOD_ID + ":block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/bookshelf_slab").textures(textures),

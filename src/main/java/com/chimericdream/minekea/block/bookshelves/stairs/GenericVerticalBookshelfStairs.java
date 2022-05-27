@@ -138,7 +138,7 @@ public class GenericVerticalBookshelfStairs extends Block implements MinekeaBloc
 
         JTextures textures = new JTextures()
             .var("planks", Texture.getBlockTextureID(planks).toString())
-            .var("shelf", ModInfo.MOD_ID + ":block/bookshelves/shelf0");
+            .var("shelf", ModInfo.MOD_ID + ":block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/bookshelves/vertical_bookshelf_stairs").textures(textures),

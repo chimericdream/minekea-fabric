@@ -6,6 +6,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> extends FabricBlockSettings {
@@ -128,7 +129,19 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public T materials(Map<String, Identifier> materials) {
         validateMaterials(materials);
-        this.materials = materials;
+        this.materials = new HashMap<>(materials);
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T addMaterial(String key, Identifier value) {
+        this.materials.put(key, value);
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T addMaterial(String key, String value) {
+        this.materials.put(key, new Identifier(value));
         // noinspection unchecked
         return (T) this;
     }

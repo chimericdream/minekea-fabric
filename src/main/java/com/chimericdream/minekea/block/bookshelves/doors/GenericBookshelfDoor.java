@@ -61,7 +61,7 @@ public class GenericBookshelfDoor extends DoorBlock {
         if (woodType.equals("oak")) {
             return "minecraft:bookshelf";
         } else {
-            return String.format("minekea:bookshelves/%s%s_bookshelf", ModInfo.getModPrefix(modId), woodType);
+            return String.format("minekea:%sfurniture/bookshelves/%s", ModInfo.getModPrefix(modId), woodType);
         }
     }
 
@@ -125,11 +125,11 @@ public class GenericBookshelfDoor extends DoorBlock {
 
         JTextures doorBottom = new JTextures()
             .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
-            .var("shelf", "minekea:block/bookshelves/shelf0");
+            .var("shelf", "minekea:block/furniture/bookshelves/shelf0");
 
         JTextures doorTop = new JTextures()
             .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
-            .var("shelf", "minekea:block/bookshelves/shelf1");
+            .var("shelf", "minekea:block/furniture/bookshelves/shelf1");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/bookshelf_door_bottom").textures(doorBottom),

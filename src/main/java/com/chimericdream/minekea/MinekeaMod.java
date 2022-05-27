@@ -55,8 +55,8 @@ public class MinekeaMod implements ModInitializer {
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
 
-        BOOKSHELVES = new Bookshelves();
         BUILDING_BLOCKS = new BuildingBlocks();
+        BOOKSHELVES = new Bookshelves();
         CONTAINER_BLOCKS = new ContainerBlocks();
         CROPS = new Crops();
         DECORATION_BLOCKS = new DecorationBlocks();

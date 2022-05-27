@@ -30,31 +30,31 @@ public class BookshelfStairs implements MinekeaBlockCategory {
     static {
         ACACIA_BOOKSHELF_STAIRS = new GenericBookshelfStairs("acacia",
             Map.of(
-                "bookshelf", Bookshelves.ACACIA_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.ACACIA_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:acacia_planks")
             )
         );
         BIRCH_BOOKSHELF_STAIRS = new GenericBookshelfStairs("birch",
             Map.of(
-                "bookshelf", Bookshelves.BIRCH_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.BIRCH_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:birch_planks")
             )
         );
         CRIMSON_BOOKSHELF_STAIRS = new GenericBookshelfStairs("crimson",
             Map.of(
-                "bookshelf", Bookshelves.CRIMSON_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:crimson_planks")
             )
         );
         DARK_OAK_BOOKSHELF_STAIRS = new GenericBookshelfStairs("dark_oak",
             Map.of(
-                "bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:dark_oak_planks")
             )
         );
         JUNGLE_BOOKSHELF_STAIRS = new GenericBookshelfStairs("jungle",
             Map.of(
-                "bookshelf", Bookshelves.JUNGLE_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:jungle_planks")
             )
         );
@@ -66,44 +66,44 @@ public class BookshelfStairs implements MinekeaBlockCategory {
         );
         SPRUCE_BOOKSHELF_STAIRS = new GenericBookshelfStairs("spruce",
             Map.of(
-                "bookshelf", Bookshelves.SPRUCE_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:spruce_planks")
             )
         );
         WARPED_BOOKSHELF_STAIRS = new GenericBookshelfStairs("warped",
             Map.of(
-                "bookshelf", Bookshelves.WARPED_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:warped_planks")
             )
         );
 
         ACACIA_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("acacia",
             Map.of(
-                "bookshelf", Bookshelves.ACACIA_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.ACACIA_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:acacia_planks")
             )
         );
         BIRCH_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("birch",
             Map.of(
-                "bookshelf", Bookshelves.BIRCH_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.BIRCH_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:birch_planks")
             )
         );
         CRIMSON_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("crimson",
             Map.of(
-                "bookshelf", Bookshelves.CRIMSON_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:crimson_planks")
             )
         );
         DARK_OAK_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("dark_oak",
             Map.of(
-                "bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:dark_oak_planks")
             )
         );
         JUNGLE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("jungle",
             Map.of(
-                "bookshelf", Bookshelves.JUNGLE_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:jungle_planks")
             )
         );
@@ -115,13 +115,13 @@ public class BookshelfStairs implements MinekeaBlockCategory {
         );
         SPRUCE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("spruce",
             Map.of(
-                "bookshelf", Bookshelves.SPRUCE_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:spruce_planks")
             )
         );
         WARPED_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs("warped",
             Map.of(
-                "bookshelf", Bookshelves.WARPED_BOOKSHELF.BLOCK_ID,
+                "bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID(),
                 "planks", new Identifier("minecraft:warped_planks")
             )
         );

@@ -59,7 +59,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock {
         if (woodType.equals("oak")) {
             return "minecraft:bookshelf";
         } else {
-            return String.format("minekea:bookshelves/%s%s_bookshelf", ModInfo.getModPrefix(modId), woodType);
+            return String.format("minekea:%sfurniture/bookshelves/%s", ModInfo.getModPrefix(modId), woodType);
         }
     }
 
@@ -113,7 +113,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock {
 
         JTextures textures = new JTextures()
             .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
-            .var("shelf", "minekea:block/bookshelves/shelf0");
+            .var("shelf", "minekea:block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/template_orientable_bookshelf_trapdoor_bottom").textures(textures),

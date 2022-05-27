@@ -1,6 +1,7 @@
-package com.chimericdream.minekea.block.bookshelves;
+package com.chimericdream.minekea.block.furniture.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
@@ -109,7 +110,7 @@ public class GenericStorageBookshelf extends BlockWithEntity {
         if (woodType.equals("oak")) {
             return "minecraft:bookshelf";
         } else {
-            return String.format("minekea:bookshelves/%s%s_bookshelf", ModInfo.getModPrefix(modId), woodType);
+            return String.format("minekea:%sfurniture/bookshelves/%s", ModInfo.getModPrefix(modId), woodType);
         }
     }
 
@@ -268,41 +269,41 @@ public class GenericStorageBookshelf extends BlockWithEntity {
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/bookshelf_variant")
+            JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
                         .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
-                        .var("shelf", "minekea:block/bookshelves/empty-shelf")
+                        .var("shelf", "minekea:block/furniture/bookshelves/empty-shelf")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/empty_shelf", ModInfo.getModPrefix(modId), woodType))
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/bookshelf_variant")
+            JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
                         .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
-                        .var("shelf", "minekea:block/bookshelves/one-half-shelf")
+                        .var("shelf", "minekea:block/furniture/bookshelves/one-half-shelf")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/one_half_shelf", ModInfo.getModPrefix(modId), woodType))
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/bookshelf_variant")
+            JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
                         .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
-                        .var("shelf", "minekea:block/bookshelves/one-quarter-shelf")
+                        .var("shelf", "minekea:block/furniture/bookshelves/one-quarter-shelf")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/one_quarter_shelf", ModInfo.getModPrefix(modId), woodType))
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/bookshelf_variant")
+            JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
                         .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
-                        .var("shelf", "minekea:block/bookshelves/three-quarters-shelf")
+                        .var("shelf", "minekea:block/furniture/bookshelves/three-quarters-shelf")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/three_quarters_shelf", ModInfo.getModPrefix(modId), woodType))
         );
@@ -313,11 +314,11 @@ public class GenericStorageBookshelf extends BlockWithEntity {
          * for it. However, that means we won't have the `shelf0` model we expect/need.
          */
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/bookshelf_variant")
+            JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
                         .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
-                        .var("shelf", "minekea:block/bookshelves/shelf0")
+                        .var("shelf", "minekea:block/furniture/bookshelves/shelf0")
                 ),
             new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/shelf0", ModInfo.getModPrefix(modId), woodType))
         );

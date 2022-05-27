@@ -5,13 +5,16 @@ import com.chimericdream.minekea.block.bookshelves.doors.BookshelfDoors;
 import com.chimericdream.minekea.block.bookshelves.slabs.BookshelfSlabs;
 import com.chimericdream.minekea.block.bookshelves.stairs.BookshelfStairs;
 import com.chimericdream.minekea.block.bookshelves.trapdoors.BookshelfTrapdoors;
-import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
+import com.chimericdream.minekea.block.furniture.bookshelves.GenericBookshelf;
+import com.chimericdream.minekea.block.furniture.bookshelves.GenericBookshelf.BookshelfSettings;
+import com.chimericdream.minekea.block.furniture.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
+import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
@@ -102,128 +105,35 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static final BookshelfTrapdoors BOOKSHELF_TRAPDOORS;
 
     static {
-        ACACIA_BOOKSHELF = new GenericBookshelf("acacia");
-        BIRCH_BOOKSHELF = new GenericBookshelf("birch");
-        CRIMSON_BOOKSHELF = new GenericBookshelf("crimson");
-        DARK_OAK_BOOKSHELF = new GenericBookshelf("dark_oak");
-        JUNGLE_BOOKSHELF = new GenericBookshelf("jungle");
-        SPRUCE_BOOKSHELF = new GenericBookshelf("spruce");
-        WARPED_BOOKSHELF = new GenericBookshelf("warped");
+        ACACIA_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.ACACIA));
+        BIRCH_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.CRIMSON));
+        DARK_OAK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.DARK_OAK));
+        JUNGLE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.JUNGLE));
+        SPRUCE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.SPRUCE));
+        WARPED_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.WARPED));
 
-        BONE_BOOKSHELF = new GenericBookshelf(
-            "bone",
-            Map.of(
-                "planks", new Identifier("minecraft:bone_block"),
-                "plank_texture", new Identifier("minecraft:bone_block_side")
-            ),
-            Blocks.BONE_BLOCK
-        );
-        DARK_PRISMARINE_BOOKSHELF = new GenericBookshelf(
-            "dark_prismarine",
-            Map.of("planks", new Identifier("minecraft:dark_prismarine")),
-            Blocks.DARK_PRISMARINE
-        );
-        DEEPSLATE_BRICK_BOOKSHELF = new GenericBookshelf(
-            "deepslate_brick",
-            Map.of("planks", new Identifier("minecraft:deepslate_bricks")),
-            Blocks.DEEPSLATE_BRICKS
-        );
-        END_STONE_BRICK_BOOKSHELF = new GenericBookshelf(
-            "end_stone_brick",
-            Map.of("planks", new Identifier("minecraft:end_stone_bricks")),
-            Blocks.END_STONE_BRICKS
-        );
-        NETHER_BRICK_BOOKSHELF = new GenericBookshelf(
-            "nether_brick",
-            Map.of("planks", new Identifier("minecraft:nether_bricks")),
-            Blocks.NETHER_BRICKS
-        );
-        POLISHED_ANDESITE_BOOKSHELF = new GenericBookshelf(
-            "polished_andesite",
-            Map.of("planks", new Identifier("minecraft:polished_andesite")),
-            Blocks.POLISHED_ANDESITE
-        );
-        POLISHED_BASALT_BOOKSHELF = new GenericBookshelf(
-            "polished_basalt",
-            Map.of(
-                "planks", new Identifier("minecraft:polished_basalt"),
-                "plank_texture", new Identifier("minecraft:polished_basalt_side")
-            ),
-            Blocks.POLISHED_BASALT
-        );
-        POLISHED_BLACKSTONE_BOOKSHELF = new GenericBookshelf(
-            "polished_blackstone",
-            Map.of("planks", new Identifier("minecraft:polished_blackstone")),
-            Blocks.POLISHED_BLACKSTONE
-        );
-        POLISHED_BLACKSTONE_BRICK_BOOKSHELF = new GenericBookshelf(
-            "polished_blackstone_brick",
-            Map.of("planks", new Identifier("minecraft:polished_blackstone_bricks")),
-            Blocks.POLISHED_BLACKSTONE_BRICKS
-        );
-        POLISHED_DEEPSLATE_BOOKSHELF = new GenericBookshelf(
-            "polished_deepslate",
-            Map.of("planks", new Identifier("minecraft:polished_deepslate")),
-            Blocks.POLISHED_DEEPSLATE
-        );
-        POLISHED_DIORITE_BOOKSHELF = new GenericBookshelf(
-            "polished_diorite",
-            Map.of("planks", new Identifier("minecraft:polished_diorite")),
-            Blocks.POLISHED_DIORITE
-        );
-        POLISHED_GRANITE_BOOKSHELF = new GenericBookshelf(
-            "polished_granite",
-            Map.of("planks", new Identifier("minecraft:polished_granite")),
-            Blocks.POLISHED_GRANITE
-        );
-        PRISMARINE_BOOKSHELF = new GenericBookshelf(
-            "prismarine",
-            Map.of("planks", new Identifier("minecraft:prismarine")),
-            Blocks.PRISMARINE
-        );
-        PRISMARINE_BRICK_BOOKSHELF = new GenericBookshelf(
-            "prismarine_brick",
-            Map.of("planks", new Identifier("minecraft:prismarine_bricks")),
-            Blocks.PRISMARINE_BRICKS
-        );
-        PURPUR_BOOKSHELF = new GenericBookshelf(
-            "purpur",
-            Map.of("planks", new Identifier("minecraft:purpur_block")),
-            Blocks.PURPUR_BLOCK
-        );
-        QUARTZ_BRICK_BOOKSHELF = new GenericBookshelf(
-            "quartz_brick",
-            Map.of("planks", new Identifier("minecraft:quartz_bricks")),
-            Blocks.QUARTZ_BRICKS
-        );
-        RED_NETHER_BRICK_BOOKSHELF = new GenericBookshelf(
-            "red_nether_brick",
-            Map.of("planks", new Identifier("minecraft:red_nether_bricks")),
-            Blocks.RED_NETHER_BRICKS
-        );
-        SMOOTH_QUARTZ_BOOKSHELF = new GenericBookshelf(
-            "smooth_quartz",
-            Map.of(
-                "planks", new Identifier("minecraft:smooth_quartz"),
-                "plank_texture", new Identifier("minecraft:quartz_block_bottom")
-            ),
-            Blocks.SMOOTH_QUARTZ
-        );
-        SMOOTH_STONE_BOOKSHELF = new GenericBookshelf(
-            "smooth_stone",
-            Map.of("planks", new Identifier("minecraft:smooth_stone")),
-            Blocks.SMOOTH_STONE
-        );
-        STONE_BRICK_BOOKSHELF = new GenericBookshelf(
-            "stone_brick",
-            Map.of("planks", new Identifier("minecraft:stone_bricks")),
-            Blocks.STONE_BRICKS
-        );
-        WARPED_NETHER_BRICK_BOOKSHELF = new GenericBookshelf(
-            "warped_nether_brick",
-            Map.of("planks", WarpedNetherBricksBlock.BLOCK_ID),
-            BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK
-        );
+        BONE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.BONE).addMaterial("side_texture", "minecraft:bone_block_side"));
+        DARK_PRISMARINE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.DARK_PRISMARINE));
+        DEEPSLATE_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.DEEPSLATE_BRICK));
+        END_STONE_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.END_STONE_BRICK));
+        NETHER_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.NETHER_BRICK));
+        POLISHED_ANDESITE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.POLISHED_ANDESITE));
+        POLISHED_BASALT_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.POLISHED_BASALT).addMaterial("side_texture", "minecraft:polished_basalt_side"));
+        POLISHED_BLACKSTONE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.POLISHED_BLACKSTONE));
+        POLISHED_BLACKSTONE_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.POLISHED_BLACKSTONE_BRICK));
+        POLISHED_DEEPSLATE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.POLISHED_DEEPSLATE));
+        POLISHED_DIORITE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.POLISHED_DIORITE));
+        POLISHED_GRANITE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.POLISHED_GRANITE));
+        PRISMARINE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.PRISMARINE));
+        PRISMARINE_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.PRISMARINE_BRICK));
+        PURPUR_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.PURPUR));
+        QUARTZ_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.QUARTZ_BRICK));
+        RED_NETHER_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.RED_NETHER_BRICK));
+        SMOOTH_QUARTZ_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.SMOOTH_QUARTZ).addMaterial("side_texture", "minecraft:quartz_block_bottom"));
+        SMOOTH_STONE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.SMOOTH_STONE));
+        STONE_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.STONE_BRICK));
+        WARPED_NETHER_BRICK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.WARPED_NETHER_BRICK));
 
         ACACIA_STORAGE_SHELF = new GenericStorageBookshelf("acacia");
         BIRCH_STORAGE_SHELF = new GenericStorageBookshelf("birch");
@@ -564,11 +474,11 @@ public class Bookshelves implements MinekeaBlockCategory {
 
         for (int i = 0; i <= 6; i++) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(
-                JModel.model("minekea:block/bookshelf_variant")
+                JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                     .textures(
                         new JTextures()
                             .var("material", "minecraft:block/oak_planks")
-                            .var("shelf", String.format("minekea:block/bookshelves/shelf%d", i))
+                            .var("shelf", String.format("minekea:block/furniture/bookshelves/shelf%d", i))
                     ),
                 new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/oak/shelf%d", i))
             );
