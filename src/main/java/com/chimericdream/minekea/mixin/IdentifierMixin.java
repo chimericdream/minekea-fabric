@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Mixin(Identifier.class)
@@ -93,17 +94,19 @@ public class IdentifierMixin {
             case "building/cobbled_end_stone_wall" -> id[1] = "building/walls/cobbled_end_stone";
         }
 
-        Map<String, String> replacements = Map.ofEntries(
-            Map.entry("^beams/([^/]+/)?([./_a-z]+)_beam$", "$1building/beams/$2"),
-            Map.entry("^slabs/([^/]+/)?([./_a-z]+)_slab$", "$1building/slabs/$2"),
-            Map.entry("^stairs/([^/]+/)?([./_a-z]+)_stairs$", "$1building/stairs/$2"),
-            Map.entry("^covers/([^/]+/)?([./_a-z]+)_cover$", "$1building/covers/$2"),
-            Map.entry("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2"),
-            Map.entry("^storage/compressed_([./_a-z]+)$", "storage/compressed/$1"),
-            Map.entry("^storage/dyes/compressed_([./_a-z]+)$", "storage/dyes/$1"),
-            Map.entry("^crates/([^/]+/)?([./_a-z]+)_crate$", "$1containers/crates/$2"),
-            Map.entry("^barrels/([^/]+/)?([./_a-z]+)_barrel$", "$1containers/barrels/$2")
-        );
+        Map<String, String> replacements = new LinkedHashMap<>();
+
+        replacements.put("^beams/([^/]+/)?([./_a-z]+)_beam$", "$1building/beams/$2");
+        replacements.put("^slabs/([^/]+/)?([./_a-z]+)_slab$", "$1building/slabs/$2");
+        replacements.put("^stairs/([^/]+/)?([./_a-z]+)_stairs$", "$1building/stairs/$2");
+        replacements.put("^covers/([^/]+/)?([./_a-z]+)_cover$", "$1building/covers/$2");
+        replacements.put("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2");
+        replacements.put("^storage/compressed_([./_a-z]+)$", "storage/compressed/$1");
+        replacements.put("^storage/dyes/compressed_([./_a-z]+)$", "storage/dyes/$1");
+        replacements.put("^crates/([^/]+/)?([./_a-z]+)_crate$", "$1containers/crates/$2");
+        replacements.put("^barrels/([^/]+/)?([./_a-z]+)_barrel$", "$1containers/barrels/$2");
+        replacements.put("^displaycases/([^/]+/)?stripped_([./_a-z]+)_display_case$", "$1furniture/display_cases/stripped/$2");
+        replacements.put("^displaycases/([^/]+/)?([./_a-z]+)_display_case$", "$1furniture/display_cases/$2");
 
         replacements.forEach((String match, String replace) -> {
             if (id[1].matches(match)) {

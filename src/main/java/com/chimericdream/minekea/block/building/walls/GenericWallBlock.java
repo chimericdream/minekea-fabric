@@ -53,7 +53,7 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        Map<String, Identifier> materials = ((GenericWallBlock.WallSettings) this.settings).getMaterials();
+        Map<String, Identifier> materials = ((WallSettings) this.settings).getMaterials();
 
         Identifier main = materials.get("main");
         Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
