@@ -5,14 +5,15 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
@@ -40,40 +41,36 @@ import java.util.Map;
 public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
     public static final DirectionProperty WALL_SIDE;
 
-    protected final Identifier BLOCK_ID;
-    protected final String modId;
-    protected final String woodType;
-    protected final Map<String, Identifier> materials;
-
     static {
         WALL_SIDE = DirectionProperty.of("wall_side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
     }
 
-    public GenericShelf(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
-    }
-
-    public GenericShelf(String woodType, String modId, Map<String, Identifier> materials) {
-        this(
-            woodType,
-            modId,
-            materials,
-            new Identifier(ModInfo.MOD_ID, String.format("shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType))
-        );
-    }
-
-    protected GenericShelf(String woodType, String modId, Map<String, Identifier> materials, Identifier blockId) {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque());
-
-        validateMaterials(materials);
-
-        BLOCK_ID = blockId;
-
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
+    public GenericShelf(SupportedShelfSettings settings) {
+        super(settings);
 
         this.setDefaultState(this.stateManager.getDefaultState().with(WALL_SIDE, Direction.NORTH));
+    }
+
+    @Override
+    public Identifier getBlockID() {
+        return ((SupportedShelfSettings) this.settings).getBlockId();
+    }
+
+    @Override
+    public void register() {
+        register(false);
+    }
+
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
+
+        setupResources();
     }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
@@ -145,20 +142,6 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
                     Block.createCuboidShape(15.0, 6.0, 10.0, 16.0, 7.0, 12.0),
                     Block.createCuboidShape(15.0, 4.0, 14.0, 16.0, 7.0, 16.0)
                 );
-        }
-    }
-
-    public Identifier getBlockID() {
-        return BLOCK_ID;
-    }
-
-    public void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"slab", "log"};
-
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
         }
     }
 
@@ -269,42 +252,35 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
         }
     }
 
-    public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
-
-        FuelRegistry.INSTANCE.add(this, 300);
-        FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
-
-        setupResources();
-    }
-
+    @Override
     public void setupResources() {
-        Identifier log = materials.get("log");
-        Identifier planks = materials.get("planks");
-        Identifier slab = materials.get("slab");
+        Map<String, Identifier> materials = ((SupportedShelfSettings) this.settings).getMaterials();
 
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/shelves/%s%s_supported_shelf", ModInfo.getModPrefix(modId), woodType));
+        Identifier log = materials.getOrDefault("log", materials.get("main"));
+        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
+        Identifier slab = materials.getOrDefault("slab", materials.get("main"));
+
+        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("XXX", "# #", "X X"),
                 JKeys.keys()
                     .key("X", JIngredient.ingredient().item(slab.toString()))
                     .key("#", JIngredient.ingredient().item("minecraft:iron_nugget")),
-                JResult.stackedResult(BLOCK_ID.toString(), 3)
+                JResult.stackedResult(getBlockID().toString(), 3)
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel
-                .model(ModInfo.MOD_ID + ":block/supported_shelf")
+                .model(ModInfo.MOD_ID + ":block/furniture/shelves/supported")
                 .textures(
                     new JTextures()
                         .var("planks", Texture.getBlockTextureID(planks).toString())
@@ -321,7 +297,22 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
                     .put("wall_side=south", new JBlockModel(MODEL_ID).y(180))
                     .put("wall_side=west", new JBlockModel(MODEL_ID).y(270))
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class SupportedShelfSettings extends MinekeaBlockSettings<SupportedShelfSettings> {
+        public SupportedShelfSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/shelves/supported/%s", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }

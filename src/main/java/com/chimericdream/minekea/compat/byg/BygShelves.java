@@ -1,10 +1,9 @@
 package com.chimericdream.minekea.compat.byg;
 
 import com.chimericdream.minekea.block.furniture.shelves.GenericFloatingShelf;
+import com.chimericdream.minekea.block.furniture.shelves.GenericFloatingShelf.FloatingShelfSettings;
 import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
-import net.minecraft.util.Identifier;
-
-import java.util.Map;
+import com.chimericdream.minekea.block.furniture.shelves.GenericShelf.SupportedShelfSettings;
 
 public class BygShelves {
     public static final GenericShelf ASPEN_SHELF;
@@ -66,483 +65,63 @@ public class BygShelves {
     public static final GenericFloatingShelf ZELKOVA_FLOATING_SHELF;
 
     static {
-        ASPEN_SHELF = new GenericShelf(
-            "aspen",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:aspen_slab"),
-                "planks", new Identifier("byg:aspen_planks"),
-                "log", new Identifier("byg:stripped_aspen_log")
-            )
-        );
-        BAOBAB_SHELF = new GenericShelf(
-            "baobab",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:baobab_slab"),
-                "planks", new Identifier("byg:baobab_planks"),
-                "log", new Identifier("byg:stripped_baobab_log")
-            )
-        );
-        BLUE_ENCHANTED_SHELF = new GenericShelf(
-            "blue_enchanted",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:blue_enchanted_slab"),
-                "planks", new Identifier("byg:blue_enchanted_planks"),
-                "log", new Identifier("byg:stripped_blue_enchanted_log")
-            )
-        );
-        BULBIS_SHELF = new GenericShelf(
-            "bulbis",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:bulbis_slab"),
-                "planks", new Identifier("byg:bulbis_planks"),
-                "log", new Identifier("byg:stripped_bulbis_stem")
-            )
-        );
-        CHERRY_SHELF = new GenericShelf(
-            "cherry",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:cherry_slab"),
-                "planks", new Identifier("byg:cherry_planks"),
-                "log", new Identifier("byg:stripped_cherry_log")
-            )
-        );
-        CIKA_SHELF = new GenericShelf(
-            "cika",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:cika_slab"),
-                "planks", new Identifier("byg:cika_planks"),
-                "log", new Identifier("byg:stripped_cika_log")
-            )
-        );
-        CYPRESS_SHELF = new GenericShelf(
-            "cypress",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:cypress_slab"),
-                "planks", new Identifier("byg:cypress_planks"),
-                "log", new Identifier("byg:stripped_cypress_log")
-            )
-        );
-        EBONY_SHELF = new GenericShelf(
-            "ebony",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:ebony_slab"),
-                "planks", new Identifier("byg:ebony_planks"),
-                "log", new Identifier("byg:stripped_ebony_log")
-            )
-        );
-        EMBUR_SHELF = new GenericShelf(
-            "embur",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:embur_slab"),
-                "planks", new Identifier("byg:embur_planks"),
-                "log", new Identifier("byg:stripped_embur_pedu")
-            )
-        );
-        ETHER_SHELF = new GenericShelf(
-            "ether",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:ether_slab"),
-                "planks", new Identifier("byg:ether_planks"),
-                "log", new Identifier("byg:stripped_ether_log")
-            )
-        );
-        FIR_SHELF = new GenericShelf(
-            "fir",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:fir_slab"),
-                "planks", new Identifier("byg:fir_planks"),
-                "log", new Identifier("byg:stripped_fir_log")
-            )
-        );
-        GREEN_ENCHANTED_SHELF = new GenericShelf(
-            "green_enchanted",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:green_enchanted_slab"),
-                "planks", new Identifier("byg:green_enchanted_planks"),
-                "log", new Identifier("byg:stripped_green_enchanted_log")
-            )
-        );
-        HOLLY_SHELF = new GenericShelf(
-            "holly",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:holly_slab"),
-                "planks", new Identifier("byg:holly_planks"),
-                "log", new Identifier("byg:stripped_holly_log")
-            )
-        );
-        JACARANDA_SHELF = new GenericShelf(
-            "jacaranda",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:jacaranda_slab"),
-                "planks", new Identifier("byg:jacaranda_planks"),
-                "log", new Identifier("byg:stripped_jacaranda_log")
-            )
-        );
-        LAMENT_SHELF = new GenericShelf(
-            "lament",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:lament_slab"),
-                "planks", new Identifier("byg:lament_planks"),
-                "log", new Identifier("byg:stripped_lament_log")
-            )
-        );
-        MAHOGANY_SHELF = new GenericShelf(
-            "mahogany",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:mahogany_slab"),
-                "planks", new Identifier("byg:mahogany_planks"),
-                "log", new Identifier("byg:stripped_mahogany_log")
-            )
-        );
-        MANGROVE_SHELF = new GenericShelf(
-            "mangrove",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:mangrove_slab"),
-                "planks", new Identifier("byg:mangrove_planks"),
-                "log", new Identifier("byg:stripped_mangrove_log")
-            )
-        );
-        MAPLE_SHELF = new GenericShelf(
-            "maple",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:maple_slab"),
-                "planks", new Identifier("byg:maple_planks"),
-                "log", new Identifier("byg:stripped_maple_log")
-            )
-        );
-        NIGHTSHADE_SHELF = new GenericShelf(
-            "nightshade",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:nightshade_slab"),
-                "planks", new Identifier("byg:nightshade_planks"),
-                "log", new Identifier("byg:stripped_nightshade_log")
-            )
-        );
-        PALM_SHELF = new GenericShelf(
-            "palm",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:palm_slab"),
-                "planks", new Identifier("byg:palm_planks"),
-                "log", new Identifier("byg:stripped_palm_log")
-            )
-        );
-        PINE_SHELF = new GenericShelf(
-            "pine",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:pine_slab"),
-                "planks", new Identifier("byg:pine_planks"),
-                "log", new Identifier("byg:stripped_pine_log")
-            )
-        );
-        RAINBOW_EUCALYPTUS_SHELF = new GenericShelf(
-            "rainbow_eucalyptus",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:rainbow_eucalyptus_slab"),
-                "planks", new Identifier("byg:rainbow_eucalyptus_planks"),
-                "log", new Identifier("byg:stripped_rainbow_eucalyptus_log")
-            )
-        );
-        REDWOOD_SHELF = new GenericShelf(
-            "redwood",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:redwood_slab"),
-                "planks", new Identifier("byg:redwood_planks"),
-                "log", new Identifier("byg:stripped_redwood_log")
-            )
-        );
-        SKYRIS_SHELF = new GenericShelf(
-            "skyris",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:skyris_slab"),
-                "planks", new Identifier("byg:skyris_planks"),
-                "log", new Identifier("byg:stripped_skyris_log")
-            )
-        );
-        SYTHIAN_SHELF = new GenericShelf(
-            "sythian",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:sythian_slab"),
-                "planks", new Identifier("byg:sythian_planks"),
-                "log", new Identifier("byg:stripped_sythian_stem")
-            )
-        );
-        WILLOW_SHELF = new GenericShelf(
-            "willow",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:willow_slab"),
-                "planks", new Identifier("byg:willow_planks"),
-                "log", new Identifier("byg:stripped_willow_log")
-            )
-        );
-        WITCH_HAZEL_SHELF = new GenericShelf(
-            "witch_hazel",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:witch_hazel_slab"),
-                "planks", new Identifier("byg:witch_hazel_planks"),
-                "log", new Identifier("byg:stripped_witch_hazel_log")
-            )
-        );
-        ZELKOVA_SHELF = new GenericShelf(
-            "zelkova",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:zelkova_slab"),
-                "planks", new Identifier("byg:zelkova_planks"),
-                "log", new Identifier("byg:stripped_zelkova_log")
-            )
-        );
+        ASPEN_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.ASPEN));
+        BAOBAB_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.BAOBAB));
+        BLUE_ENCHANTED_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.BLUE_ENCHANTED));
+        BULBIS_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.BULBIS));
+        CHERRY_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.CHERRY));
+        CIKA_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.CIKA));
+        CYPRESS_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.CYPRESS));
+        EBONY_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.EBONY));
+        EMBUR_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.EMBUR));
+        ETHER_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.ETHER));
+        FIR_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.FIR));
+        GREEN_ENCHANTED_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.GREEN_ENCHANTED));
+        HOLLY_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.HOLLY));
+        JACARANDA_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.JACARANDA));
+        LAMENT_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.LAMENT));
+        MAHOGANY_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.MAHOGANY));
+        MANGROVE_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.MANGROVE));
+        MAPLE_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.MAPLE));
+        NIGHTSHADE_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.NIGHTSHADE));
+        PALM_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.PALM));
+        PINE_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.PINE));
+        RAINBOW_EUCALYPTUS_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.RAINBOW_EUCALYPTUS));
+        REDWOOD_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.REDWOOD));
+        SKYRIS_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.SKYRIS));
+        SYTHIAN_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.SYTHIAN));
+        WILLOW_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.WILLOW));
+        WITCH_HAZEL_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.WITCH_HAZEL));
+        ZELKOVA_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.ZELKOVA));
 
-        ASPEN_FLOATING_SHELF = new GenericFloatingShelf(
-            "aspen",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:aspen_slab"),
-                "planks", new Identifier("byg:aspen_planks")
-            )
-        );
-        BAOBAB_FLOATING_SHELF = new GenericFloatingShelf(
-            "baobab",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:baobab_slab"),
-                "planks", new Identifier("byg:baobab_planks")
-            )
-        );
-        BLUE_ENCHANTED_FLOATING_SHELF = new GenericFloatingShelf(
-            "blue_enchanted",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:blue_enchanted_slab"),
-                "planks", new Identifier("byg:blue_enchanted_planks")
-            )
-        );
-        BULBIS_FLOATING_SHELF = new GenericFloatingShelf(
-            "bulbis",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:bulbis_slab"),
-                "planks", new Identifier("byg:bulbis_planks")
-            )
-        );
-        CHERRY_FLOATING_SHELF = new GenericFloatingShelf(
-            "cherry",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:cherry_slab"),
-                "planks", new Identifier("byg:cherry_planks")
-            )
-        );
-        CIKA_FLOATING_SHELF = new GenericFloatingShelf(
-            "cika",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:cika_slab"),
-                "planks", new Identifier("byg:cika_planks")
-            )
-        );
-        CYPRESS_FLOATING_SHELF = new GenericFloatingShelf(
-            "cypress",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:cypress_slab"),
-                "planks", new Identifier("byg:cypress_planks")
-            )
-        );
-        EBONY_FLOATING_SHELF = new GenericFloatingShelf(
-            "ebony",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:ebony_slab"),
-                "planks", new Identifier("byg:ebony_planks")
-            )
-        );
-        EMBUR_FLOATING_SHELF = new GenericFloatingShelf(
-            "embur",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:embur_slab"),
-                "planks", new Identifier("byg:embur_planks")
-            )
-        );
-        ETHER_FLOATING_SHELF = new GenericFloatingShelf(
-            "ether",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:ether_slab"),
-                "planks", new Identifier("byg:ether_planks")
-            )
-        );
-        FIR_FLOATING_SHELF = new GenericFloatingShelf(
-            "fir",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:fir_slab"),
-                "planks", new Identifier("byg:fir_planks")
-            )
-        );
-        GREEN_ENCHANTED_FLOATING_SHELF = new GenericFloatingShelf(
-            "green_enchanted",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:green_enchanted_slab"),
-                "planks", new Identifier("byg:green_enchanted_planks")
-            )
-        );
-        HOLLY_FLOATING_SHELF = new GenericFloatingShelf(
-            "holly",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:holly_slab"),
-                "planks", new Identifier("byg:holly_planks")
-            )
-        );
-        JACARANDA_FLOATING_SHELF = new GenericFloatingShelf(
-            "jacaranda",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:jacaranda_slab"),
-                "planks", new Identifier("byg:jacaranda_planks")
-            )
-        );
-        LAMENT_FLOATING_SHELF = new GenericFloatingShelf(
-            "lament",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:lament_slab"),
-                "planks", new Identifier("byg:lament_planks")
-            )
-        );
-        MAHOGANY_FLOATING_SHELF = new GenericFloatingShelf(
-            "mahogany",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:mahogany_slab"),
-                "planks", new Identifier("byg:mahogany_planks")
-            )
-        );
-        MANGROVE_FLOATING_SHELF = new GenericFloatingShelf(
-            "mangrove",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:mangrove_slab"),
-                "planks", new Identifier("byg:mangrove_planks")
-            )
-        );
-        MAPLE_FLOATING_SHELF = new GenericFloatingShelf(
-            "maple",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:maple_slab"),
-                "planks", new Identifier("byg:maple_planks")
-            )
-        );
-        NIGHTSHADE_FLOATING_SHELF = new GenericFloatingShelf(
-            "nightshade",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:nightshade_slab"),
-                "planks", new Identifier("byg:nightshade_planks")
-            )
-        );
-        PALM_FLOATING_SHELF = new GenericFloatingShelf(
-            "palm",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:palm_slab"),
-                "planks", new Identifier("byg:palm_planks")
-            )
-        );
-        PINE_FLOATING_SHELF = new GenericFloatingShelf(
-            "pine",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:pine_slab"),
-                "planks", new Identifier("byg:pine_planks")
-            )
-        );
-        RAINBOW_EUCALYPTUS_FLOATING_SHELF = new GenericFloatingShelf(
-            "rainbow_eucalyptus",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:rainbow_eucalyptus_slab"),
-                "planks", new Identifier("byg:rainbow_eucalyptus_planks")
-            )
-        );
-        REDWOOD_FLOATING_SHELF = new GenericFloatingShelf(
-            "redwood",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:redwood_slab"),
-                "planks", new Identifier("byg:redwood_planks")
-            )
-        );
-        SKYRIS_FLOATING_SHELF = new GenericFloatingShelf(
-            "skyris",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:skyris_slab"),
-                "planks", new Identifier("byg:skyris_planks")
-            )
-        );
-        SYTHIAN_FLOATING_SHELF = new GenericFloatingShelf(
-            "sythian",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:sythian_slab"),
-                "planks", new Identifier("byg:sythian_planks")
-            )
-        );
-        WILLOW_FLOATING_SHELF = new GenericFloatingShelf(
-            "willow",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:willow_slab"),
-                "planks", new Identifier("byg:willow_planks")
-            )
-        );
-        WITCH_HAZEL_FLOATING_SHELF = new GenericFloatingShelf(
-            "witch_hazel",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:witch_hazel_slab"),
-                "planks", new Identifier("byg:witch_hazel_planks")
-            )
-        );
-        ZELKOVA_FLOATING_SHELF = new GenericFloatingShelf(
-            "zelkova",
-            "byg",
-            Map.of(
-                "slab", new Identifier("byg:zelkova_slab"),
-                "planks", new Identifier("byg:zelkova_planks")
-            )
-        );
+        ASPEN_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.ASPEN));
+        BAOBAB_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.BAOBAB));
+        BLUE_ENCHANTED_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.BLUE_ENCHANTED));
+        BULBIS_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.BULBIS));
+        CHERRY_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.CHERRY));
+        CIKA_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.CIKA));
+        CYPRESS_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.CYPRESS));
+        EBONY_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.EBONY));
+        EMBUR_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.EMBUR));
+        ETHER_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.ETHER));
+        FIR_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.FIR));
+        GREEN_ENCHANTED_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.GREEN_ENCHANTED));
+        HOLLY_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.HOLLY));
+        JACARANDA_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.JACARANDA));
+        LAMENT_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.LAMENT));
+        MAHOGANY_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.MAHOGANY));
+        MANGROVE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.MANGROVE));
+        MAPLE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.MAPLE));
+        NIGHTSHADE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.NIGHTSHADE));
+        PALM_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.PALM));
+        PINE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.PINE));
+        RAINBOW_EUCALYPTUS_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.RAINBOW_EUCALYPTUS));
+        REDWOOD_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.REDWOOD));
+        SKYRIS_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.SKYRIS));
+        SYTHIAN_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.SYTHIAN));
+        WILLOW_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.WILLOW));
+        WITCH_HAZEL_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.WITCH_HAZEL));
+        ZELKOVA_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.ZELKOVA));
     }
 
     public void register() {
