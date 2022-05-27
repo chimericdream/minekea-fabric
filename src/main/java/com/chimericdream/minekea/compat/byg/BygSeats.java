@@ -1,10 +1,9 @@
 package com.chimericdream.minekea.compat.byg;
 
 import com.chimericdream.minekea.block.furniture.seating.GenericChair;
+import com.chimericdream.minekea.block.furniture.seating.GenericChair.ChairSettings;
 import com.chimericdream.minekea.block.furniture.seating.GenericStool;
-import net.minecraft.util.Identifier;
-
-import java.util.Map;
+import com.chimericdream.minekea.block.furniture.seating.GenericStool.StoolSettings;
 
 public class BygSeats {
     public static final GenericChair ASPEN_CHAIR;
@@ -66,455 +65,63 @@ public class BygSeats {
     public static final GenericStool ZELKOVA_STOOL;
 
     static {
-        ASPEN_CHAIR = new GenericChair(
-            "aspen",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:aspen_planks"),
-                "log", new Identifier("byg:aspen_log")
-            )
-        );
-        BAOBAB_CHAIR = new GenericChair(
-            "baobab",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:baobab_planks"),
-                "log", new Identifier("byg:baobab_log")
-            )
-        );
-        BLUE_ENCHANTED_CHAIR = new GenericChair(
-            "blue_enchanted",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:blue_enchanted_planks"),
-                "log", new Identifier("byg:blue_enchanted_log")
-            )
-        );
-        BULBIS_CHAIR = new GenericChair(
-            "bulbis",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:bulbis_planks"),
-                "log", new Identifier("byg:bulbis_stem")
-            )
-        );
-        CHERRY_CHAIR = new GenericChair(
-            "cherry",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:cherry_planks"),
-                "log", new Identifier("byg:cherry_log")
-            )
-        );
-        CIKA_CHAIR = new GenericChair(
-            "cika",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:cika_planks"),
-                "log", new Identifier("byg:cika_log")
-            )
-        );
-        CYPRESS_CHAIR = new GenericChair(
-            "cypress",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:cypress_planks"),
-                "log", new Identifier("byg:cypress_log")
-            )
-        );
-        EBONY_CHAIR = new GenericChair(
-            "ebony",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:ebony_planks"),
-                "log", new Identifier("byg:ebony_log")
-            )
-        );
-        EMBUR_CHAIR = new GenericChair(
-            "embur",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:embur_planks"),
-                "log", new Identifier("byg:embur_pedu")
-            )
-        );
-        ETHER_CHAIR = new GenericChair(
-            "ether",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:ether_planks"),
-                "log", new Identifier("byg:ether_log")
-            )
-        );
-        FIR_CHAIR = new GenericChair(
-            "fir",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:fir_planks"),
-                "log", new Identifier("byg:fir_log")
-            )
-        );
-        GREEN_ENCHANTED_CHAIR = new GenericChair(
-            "green_enchanted",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:green_enchanted_planks"),
-                "log", new Identifier("byg:green_enchanted_log")
-            )
-        );
-        HOLLY_CHAIR = new GenericChair(
-            "holly",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:holly_planks"),
-                "log", new Identifier("byg:holly_log")
-            )
-        );
-        JACARANDA_CHAIR = new GenericChair(
-            "jacaranda",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:jacaranda_planks"),
-                "log", new Identifier("byg:jacaranda_log")
-            )
-        );
-        LAMENT_CHAIR = new GenericChair(
-            "lament",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:lament_planks"),
-                "log", new Identifier("byg:lament_log")
-            )
-        );
-        MAHOGANY_CHAIR = new GenericChair(
-            "mahogany",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:mahogany_planks"),
-                "log", new Identifier("byg:mahogany_log")
-            )
-        );
-        MANGROVE_CHAIR = new GenericChair(
-            "mangrove",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:mangrove_planks"),
-                "log", new Identifier("byg:mangrove_log")
-            )
-        );
-        MAPLE_CHAIR = new GenericChair(
-            "maple",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:maple_planks"),
-                "log", new Identifier("byg:maple_log")
-            )
-        );
-        NIGHTSHADE_CHAIR = new GenericChair(
-            "nightshade",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:nightshade_planks"),
-                "log", new Identifier("byg:nightshade_log")
-            )
-        );
-        PALM_CHAIR = new GenericChair(
-            "palm",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:palm_planks"),
-                "log", new Identifier("byg:palm_log")
-            )
-        );
-        PINE_CHAIR = new GenericChair(
-            "pine",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:pine_planks"),
-                "log", new Identifier("byg:pine_log")
-            )
-        );
-        RAINBOW_EUCALYPTUS_CHAIR = new GenericChair(
-            "rainbow_eucalyptus",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:rainbow_eucalyptus_planks"),
-                "log", new Identifier("byg:rainbow_eucalyptus_log")
-            )
-        );
-        REDWOOD_CHAIR = new GenericChair(
-            "redwood",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:redwood_planks"),
-                "log", new Identifier("byg:redwood_log")
-            )
-        );
-        SKYRIS_CHAIR = new GenericChair(
-            "skyris",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:skyris_planks"),
-                "log", new Identifier("byg:skyris_log")
-            )
-        );
-        SYTHIAN_CHAIR = new GenericChair(
-            "sythian",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:sythian_planks"),
-                "log", new Identifier("byg:sythian_stem")
-            )
-        );
-        WILLOW_CHAIR = new GenericChair(
-            "willow",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:willow_planks"),
-                "log", new Identifier("byg:willow_log")
-            )
-        );
-        WITCH_HAZEL_CHAIR = new GenericChair(
-            "witch_hazel",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:witch_hazel_planks"),
-                "log", new Identifier("byg:witch_hazel_log")
-            )
-        );
-        ZELKOVA_CHAIR = new GenericChair(
-            "zelkova",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:zelkova_planks"),
-                "log", new Identifier("byg:zelkova_log")
-            )
-        );
+        ASPEN_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.ASPEN));
+        BAOBAB_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.BAOBAB));
+        BLUE_ENCHANTED_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.BLUE_ENCHANTED));
+        BULBIS_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.BULBIS));
+        CHERRY_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.CHERRY));
+        CIKA_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.CIKA));
+        CYPRESS_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.CYPRESS));
+        EBONY_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.EBONY));
+        EMBUR_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.EMBUR));
+        ETHER_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.ETHER));
+        FIR_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.FIR));
+        GREEN_ENCHANTED_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.GREEN_ENCHANTED));
+        HOLLY_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.HOLLY));
+        JACARANDA_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.JACARANDA));
+        LAMENT_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.LAMENT));
+        MAHOGANY_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.MAHOGANY));
+        MANGROVE_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.MANGROVE));
+        MAPLE_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.MAPLE));
+        NIGHTSHADE_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.NIGHTSHADE));
+        PALM_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.PALM));
+        PINE_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.PINE));
+        RAINBOW_EUCALYPTUS_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.RAINBOW_EUCALYPTUS));
+        REDWOOD_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.REDWOOD));
+        SKYRIS_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.SKYRIS));
+        SYTHIAN_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.SYTHIAN));
+        WILLOW_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.WILLOW));
+        WITCH_HAZEL_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.WITCH_HAZEL));
+        ZELKOVA_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.ZELKOVA));
 
-        ASPEN_STOOL = new GenericStool(
-            "aspen",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:aspen_planks"),
-                "log", new Identifier("byg:aspen_log")
-            )
-        );
-        BAOBAB_STOOL = new GenericStool(
-            "baobab",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:baobab_planks"),
-                "log", new Identifier("byg:baobab_log")
-            )
-        );
-        BLUE_ENCHANTED_STOOL = new GenericStool(
-            "blue_enchanted",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:blue_enchanted_planks"),
-                "log", new Identifier("byg:blue_enchanted_log")
-            )
-        );
-        BULBIS_STOOL = new GenericStool(
-            "bulbis",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:bulbis_planks"),
-                "log", new Identifier("byg:bulbis_stem")
-            )
-        );
-        CHERRY_STOOL = new GenericStool(
-            "cherry",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:cherry_planks"),
-                "log", new Identifier("byg:cherry_log")
-            )
-        );
-        CIKA_STOOL = new GenericStool(
-            "cika",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:cika_planks"),
-                "log", new Identifier("byg:cika_log")
-            )
-        );
-        CYPRESS_STOOL = new GenericStool(
-            "cypress",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:cypress_planks"),
-                "log", new Identifier("byg:cypress_log")
-            )
-        );
-        EBONY_STOOL = new GenericStool(
-            "ebony",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:ebony_planks"),
-                "log", new Identifier("byg:ebony_log")
-            )
-        );
-        EMBUR_STOOL = new GenericStool(
-            "embur",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:embur_planks"),
-                "log", new Identifier("byg:embur_pedu")
-            )
-        );
-        ETHER_STOOL = new GenericStool(
-            "ether",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:ether_planks"),
-                "log", new Identifier("byg:ether_log")
-            )
-        );
-        FIR_STOOL = new GenericStool(
-            "fir",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:fir_planks"),
-                "log", new Identifier("byg:fir_log")
-            )
-        );
-        GREEN_ENCHANTED_STOOL = new GenericStool(
-            "green_enchanted",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:green_enchanted_planks"),
-                "log", new Identifier("byg:green_enchanted_log")
-            )
-        );
-        HOLLY_STOOL = new GenericStool(
-            "holly",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:holly_planks"),
-                "log", new Identifier("byg:holly_log")
-            )
-        );
-        JACARANDA_STOOL = new GenericStool(
-            "jacaranda",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:jacaranda_planks"),
-                "log", new Identifier("byg:jacaranda_log")
-            )
-        );
-        LAMENT_STOOL = new GenericStool(
-            "lament",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:lament_planks"),
-                "log", new Identifier("byg:lament_log")
-            )
-        );
-        MAHOGANY_STOOL = new GenericStool(
-            "mahogany",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:mahogany_planks"),
-                "log", new Identifier("byg:mahogany_log")
-            )
-        );
-        MANGROVE_STOOL = new GenericStool(
-            "mangrove",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:mangrove_planks"),
-                "log", new Identifier("byg:mangrove_log")
-            )
-        );
-        MAPLE_STOOL = new GenericStool(
-            "maple",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:maple_planks"),
-                "log", new Identifier("byg:maple_log")
-            )
-        );
-        NIGHTSHADE_STOOL = new GenericStool(
-            "nightshade",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:nightshade_planks"),
-                "log", new Identifier("byg:nightshade_log")
-            )
-        );
-        PALM_STOOL = new GenericStool(
-            "palm",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:palm_planks"),
-                "log", new Identifier("byg:palm_log")
-            )
-        );
-        PINE_STOOL = new GenericStool(
-            "pine",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:pine_planks"),
-                "log", new Identifier("byg:pine_log")
-            )
-        );
-        RAINBOW_EUCALYPTUS_STOOL = new GenericStool(
-            "rainbow_eucalyptus",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:rainbow_eucalyptus_planks"),
-                "log", new Identifier("byg:rainbow_eucalyptus_log")
-            )
-        );
-        REDWOOD_STOOL = new GenericStool(
-            "redwood",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:redwood_planks"),
-                "log", new Identifier("byg:redwood_log")
-            )
-        );
-        SKYRIS_STOOL = new GenericStool(
-            "skyris",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:skyris_planks"),
-                "log", new Identifier("byg:skyris_log")
-            )
-        );
-        SYTHIAN_STOOL = new GenericStool(
-            "sythian",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:sythian_planks"),
-                "log", new Identifier("byg:sythian_stem")
-            )
-        );
-        WILLOW_STOOL = new GenericStool(
-            "willow",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:willow_planks"),
-                "log", new Identifier("byg:willow_log")
-            )
-        );
-        WITCH_HAZEL_STOOL = new GenericStool(
-            "witch_hazel",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:witch_hazel_planks"),
-                "log", new Identifier("byg:witch_hazel_log")
-            )
-        );
-        ZELKOVA_STOOL = new GenericStool(
-            "zelkova",
-            "byg",
-            Map.of(
-                "planks", new Identifier("byg:zelkova_planks"),
-                "log", new Identifier("byg:zelkova_log")
-            )
-        );
+        ASPEN_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.ASPEN));
+        BAOBAB_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.BAOBAB));
+        BLUE_ENCHANTED_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.BLUE_ENCHANTED));
+        BULBIS_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.BULBIS));
+        CHERRY_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.CHERRY));
+        CIKA_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.CIKA));
+        CYPRESS_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.CYPRESS));
+        EBONY_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.EBONY));
+        EMBUR_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.EMBUR));
+        ETHER_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.ETHER));
+        FIR_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.FIR));
+        GREEN_ENCHANTED_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.GREEN_ENCHANTED));
+        HOLLY_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.HOLLY));
+        JACARANDA_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.JACARANDA));
+        LAMENT_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.LAMENT));
+        MAHOGANY_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.MAHOGANY));
+        MANGROVE_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.MANGROVE));
+        MAPLE_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.MAPLE));
+        NIGHTSHADE_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.NIGHTSHADE));
+        PALM_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.PALM));
+        PINE_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.PINE));
+        RAINBOW_EUCALYPTUS_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.RAINBOW_EUCALYPTUS));
+        REDWOOD_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.REDWOOD));
+        SKYRIS_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.SKYRIS));
+        SYTHIAN_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.SYTHIAN));
+        WILLOW_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.WILLOW));
+        WITCH_HAZEL_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.WITCH_HAZEL));
+        ZELKOVA_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.ZELKOVA));
     }
 
     public void register() {

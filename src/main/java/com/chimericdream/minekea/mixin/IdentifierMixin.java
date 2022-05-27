@@ -107,6 +107,9 @@ public class IdentifierMixin {
         replacements.put("^barrels/([^/]+/)?([./_a-z]+)_barrel$", "$1containers/barrels/$2");
         replacements.put("^displaycases/([^/]+/)?stripped_([./_a-z]+)_display_case$", "$1furniture/display_cases/stripped/$2");
         replacements.put("^displaycases/([^/]+/)?([./_a-z]+)_display_case$", "$1furniture/display_cases/$2");
+        replacements.put("^seating/stools/([^/]+/)?([./_a-z]+)_stool", "$1furniture/seating/stools/$2");
+        replacements.put("^seating/chairs/([^/]+/)?([./_a-z]+)_chair", "$1furniture/seating/chairs/$2");
+
 
         replacements.forEach((String match, String replace) -> {
             if (id[1].matches(match)) {

@@ -4,23 +4,25 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.ActionResult;
@@ -40,13 +42,8 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Map;
 
-public class GenericChair extends Block {
+public class GenericChair extends Block implements MinekeaBlock {
     public static final DirectionProperty FACING;
-
-    private final String modId;
-    private final String woodType;
-    private final Identifier BLOCK_ID;
-    private final Map<String, Identifier> materials;
 
     private static final VoxelShape SEAT_SHAPE;
     private static final VoxelShape[] LEG_SHAPES;
@@ -70,22 +67,32 @@ public class GenericChair extends Block {
         );
     }
 
-    public GenericChair(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
-    }
-
-    public GenericChair(String woodType, String modId, Map<String, Identifier> materials) {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(BlockSoundGroup.WOOD));
-
-        validateMaterials(materials);
-
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("seating/chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
+    public GenericChair(ChairSettings settings) {
+        super(settings);
 
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+    }
+
+    @Override
+    public Identifier getBlockID() {
+        return ((ChairSettings) this.settings).getBlockId();
+    }
+
+    @Override
+    public void register() {
+        register(false);
+    }
+
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
+
+        setupResources();
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -151,53 +158,39 @@ public class GenericChair extends Block {
         return VoxelShapes.union(VoxelShapes.union(SEAT_SHAPE, LEG_SHAPES), SEAT_BACKS.get("south"));
     }
 
-    protected void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"planks", "log"};
+    @Override
+    public void setupResources() {
+        Map<String, Identifier> materials = ((ChairSettings) this.settings).getMaterials();
 
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
-        }
-    }
+        Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));
+        Identifier LOG_MATERIAL = materials.getOrDefault("log", materials.get("main"));
 
-    public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
-
-        setupResources();
-    }
-
-    protected void setupResources() {
-        String PLANK_MATERIAL = materials.get("planks").toString();
-        String LOG_MATERIAL = materials.get("log").toString();
-
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/seating/chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/seating/chairs/%s%s_chair", ModInfo.getModPrefix(modId), woodType));
+        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("P  ", "PP ", "LL "),
                 JKeys.keys()
-                    .key("P", JIngredient.ingredient().item(PLANK_MATERIAL))
-                    .key("L", JIngredient.ingredient().item(LOG_MATERIAL)),
-                JResult.stackedResult(BLOCK_ID.toString(), 2)
+                    .key("P", JIngredient.ingredient().item(PLANK_MATERIAL.toString()))
+                    .key("L", JIngredient.ingredient().item(LOG_MATERIAL.toString())),
+                JResult.stackedResult(getBlockID().toString(), 2)
             )
         );
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
             .var("log", Texture.getBlockTextureID(LOG_MATERIAL).toString())
             .var("planks", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/seating/chair_block").textures(textures),
+            JModel.model("minekea:block/furniture/seating/chair").textures(textures),
             MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:item/seating/chair_item").textures(textures),
+            JModel.model("minekea:item/furniture/seating/chair").textures(textures),
             ITEM_MODEL_ID
         );
 
@@ -209,7 +202,22 @@ public class GenericChair extends Block {
                     .put("facing=east", new JBlockModel(MODEL_ID).y(180))
                     .put("facing=west", new JBlockModel(MODEL_ID))
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class ChairSettings extends MinekeaBlockSettings<ChairSettings> {
+        public ChairSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/seating/chairs/%s", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }
