@@ -283,20 +283,20 @@ public class Beams implements MinekeaBlockCategory {
         BLACK_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BLACK_STAINED_GLASS));
 
         ACACIA_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ACACIA_LOG));
-        ACACIA_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ACACIA_PLANK));
+        ACACIA_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ACACIA));
         BIRCH_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BIRCH_LOG));
-        BIRCH_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BIRCH_PLANK));
-        CRIMSON_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.CRIMSON_PLANK));
+        BIRCH_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.CRIMSON));
         CRIMSON_STEM_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.CRIMSON_STEM));
         DARK_OAK_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.DARK_OAK_LOG));
-        DARK_OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.DARK_OAK_PLANK));
+        DARK_OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.JUNGLE_LOG));
-        JUNGLE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.JUNGLE_PLANK));
+        JUNGLE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.JUNGLE));
         OAK_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OAK_LOG));
-        OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OAK_PLANK));
+        OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OAK));
         SPRUCE_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.SPRUCE_LOG));
-        SPRUCE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.SPRUCE_PLANK));
-        WARPED_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.WARPED_PLANK));
+        SPRUCE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.SPRUCE));
+        WARPED_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.WARPED));
         WARPED_STEM_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.WARPED_STEM));
 
         BEAMS.addAll(List.of(

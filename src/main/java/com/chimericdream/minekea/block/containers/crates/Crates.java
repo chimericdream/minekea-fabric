@@ -36,14 +36,14 @@ public class Crates implements MinekeaBlockCategory {
     public static ScreenHandlerType<CrateScreenHandler> CRATE_SCREEN_HANDLER;
 
     static {
-        ACACIA_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.ACACIA_PLANK));
-        BIRCH_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.BIRCH_PLANK));
-        CRIMSON_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.CRIMSON_PLANK));
-        DARK_OAK_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.DARK_OAK_PLANK));
-        JUNGLE_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.JUNGLE_PLANK));
-        OAK_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.OAK_PLANK));
-        SPRUCE_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.SPRUCE_PLANK));
-        WARPED_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.WARPED_PLANK));
+        ACACIA_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.ACACIA));
+        BIRCH_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.CRIMSON));
+        DARK_OAK_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.DARK_OAK));
+        JUNGLE_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.JUNGLE));
+        OAK_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.OAK));
+        SPRUCE_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.SPRUCE));
+        WARPED_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.WARPED));
 
         CRATES.addAll(List.of(
             ACACIA_CRATE,

@@ -14,6 +14,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:aspen_planks"),
+                "slab", new Identifier("byg:aspen_slab"),
                 "log", new Identifier("byg:aspen_log")
             )
         );
@@ -25,6 +26,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:baobab_planks"),
+                "slab", new Identifier("byg:baobab_slab"),
                 "log", new Identifier("byg:baobab_log")
             )
         );
@@ -36,6 +38,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:blue_enchanted_planks"),
+                "slab", new Identifier("byg:blue_enchanted_slab"),
                 "log", new Identifier("byg:blue_enchanted_log")
             )
         );
@@ -47,6 +50,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:bulbis_planks"),
+                "slab", new Identifier("byg:bulbis_slab"),
                 "log", new Identifier("byg:bulbis_stem")
             )
         );
@@ -58,6 +62,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:cherry_planks"),
+                "slab", new Identifier("byg:cherry_slab"),
                 "log", new Identifier("byg:cherry_log")
             )
         );
@@ -69,6 +74,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:cika_planks"),
+                "slab", new Identifier("byg:cika_slab"),
                 "log", new Identifier("byg:cika_log")
             )
         );
@@ -80,6 +86,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:cypress_planks"),
+                "slab", new Identifier("byg:cypress_slab"),
                 "log", new Identifier("byg:cypress_log")
             )
         );
@@ -91,6 +98,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:ebony_planks"),
+                "slab", new Identifier("byg:ebony_slab"),
                 "log", new Identifier("byg:ebony_log")
             )
         );
@@ -102,6 +110,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:embur_planks"),
+                "slab", new Identifier("byg:embur_slab"),
                 "log", new Identifier("byg:embur_pedu")
             )
         );
@@ -113,6 +122,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:ether_planks"),
+                "slab", new Identifier("byg:ether_slab"),
                 "log", new Identifier("byg:ether_log")
             )
         );
@@ -124,6 +134,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:fir_planks"),
+                "slab", new Identifier("byg:fir_slab"),
                 "log", new Identifier("byg:fir_log")
             )
         );
@@ -135,6 +146,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:green_enchanted_planks"),
+                "slab", new Identifier("byg:green_enchanted_slab"),
                 "log", new Identifier("byg:green_enchanted_log")
             )
         );
@@ -146,6 +158,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:holly_planks"),
+                "slab", new Identifier("byg:holly_slab"),
                 "log", new Identifier("byg:holly_log")
             )
         );
@@ -157,6 +170,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:jacaranda_planks"),
+                "slab", new Identifier("byg:jacaranda_slab"),
                 "log", new Identifier("byg:jacaranda_log")
             )
         );
@@ -168,6 +182,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:lament_planks"),
+                "slab", new Identifier("byg:lament_slab"),
                 "log", new Identifier("byg:lament_log")
             )
         );
@@ -179,6 +194,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:mahogany_planks"),
+                "slab", new Identifier("byg:mahogany_slab"),
                 "log", new Identifier("byg:mahogany_log")
             )
         );
@@ -190,6 +206,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:mangrove_planks"),
+                "slab", new Identifier("byg:mangrove_slab"),
                 "log", new Identifier("byg:mangrove_log")
             )
         );
@@ -201,6 +218,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:maple_planks"),
+                "slab", new Identifier("byg:maple_slab"),
                 "log", new Identifier("byg:maple_log")
             )
         );
@@ -212,6 +230,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:nightshade_planks"),
+                "slab", new Identifier("byg:nightshade_slab"),
                 "log", new Identifier("byg:nightshade_log")
             )
         );
@@ -223,6 +242,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:palm_planks"),
+                "slab", new Identifier("byg:palm_slab"),
                 "log", new Identifier("byg:palm_log")
             )
         );
@@ -234,6 +254,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:pine_planks"),
+                "slab", new Identifier("byg:pine_slab"),
                 "log", new Identifier("byg:pine_log")
             )
         );
@@ -245,6 +266,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:rainbow_eucalyptus_planks"),
+                "slab", new Identifier("byg:rainbow_eucalyptus_slab"),
                 "log", new Identifier("byg:rainbow_eucalyptus_log")
             )
         );
@@ -256,6 +278,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:redwood_planks"),
+                "slab", new Identifier("byg:redwood_slab"),
                 "log", new Identifier("byg:redwood_log")
             )
         );
@@ -267,6 +290,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:skyris_planks"),
+                "slab", new Identifier("byg:skyris_slab"),
                 "log", new Identifier("byg:skyris_log")
             )
         );
@@ -278,6 +302,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:sythian_planks"),
+                "slab", new Identifier("byg:sythian_slab"),
                 "Log", new Identifier("byg:sythian_stem")
             )
         );
@@ -289,6 +314,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:willow_planks"),
+                "slab", new Identifier("byg:willow_slab"),
                 "log", new Identifier("byg:willow_log")
             )
         );
@@ -300,6 +326,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:witch_hazel_planks"),
+                "slab", new Identifier("byg:witch_hazel_slab"),
                 "log", new Identifier("byg:witch_hazel_log")
             )
         );
@@ -311,6 +338,7 @@ public class BygBlockSettings {
         .materials(
             Map.of(
                 "planks", new Identifier("byg:zelkova_planks"),
+                "slab", new Identifier("byg:zelkova_slab"),
                 "log", new Identifier("byg:zelkova_log")
             )
         );

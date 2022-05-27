@@ -1,13 +1,13 @@
 {
     "replace": false,
     "values": [
-        "minekea:barrels/acacia_barrel",
-        "minekea:barrels/birch_barrel",
-        "minekea:barrels/crimson_barrel",
-        "minekea:barrels/dark_oak_barrel",
-        "minekea:barrels/jungle_barrel",
-        "minekea:barrels/spruce_barrel",
-        "minekea:barrels/warped_barrel",
+        "minekea:containers/barrels/acacia",
+        "minekea:containers/barrels/birch",
+        "minekea:containers/barrels/crimson",
+        "minekea:containers/barrels/dark_oak",
+        "minekea:containers/barrels/jungle",
+        "minekea:containers/barrels/spruce",
+        "minekea:containers/barrels/warped",
         {"id": "#minekea:byg/wooden_barrels", "required": false}
     ]
 }

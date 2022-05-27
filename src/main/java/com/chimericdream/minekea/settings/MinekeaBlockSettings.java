@@ -46,9 +46,11 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.materials = settings.materials;
         this.modId = settings.modId;
         this.blockId = settings.blockId;
-        this.burnTime = settings.burnTime;
         this.burnSpread = settings.burnSpread;
+        this.burnTime = settings.burnTime;
         this.fuelTime = settings.fuelTime;
+        this.isFlammable = settings.isFlammable;
+        this.isTranslucent = settings.isTranslucent;
         this.baseBlock = settings.baseBlock;
     }
 

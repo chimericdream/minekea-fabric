@@ -1,5 +1,5 @@
 {
-    "parent": "minekea:block/barrel_variant",
+    "parent": "minekea:block/containers/barrel",
     "textures": {
         "face": "minecraft:block/stripped_oak_log",
         "sides": "minecraft:block/oak_planks"

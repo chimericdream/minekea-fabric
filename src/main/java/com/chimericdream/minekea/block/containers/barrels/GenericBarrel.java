@@ -1,117 +1,89 @@
 package com.chimericdream.minekea.block.containers.barrels;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
-import net.devtech.arrp.json.loot.JCondition;
-import net.devtech.arrp.json.loot.JEntry;
-import net.devtech.arrp.json.loot.JLootTable;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BarrelBlock;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
 
-public class GenericBarrel extends BarrelBlock {
-    private final String modId;
-    private final String woodType;
-    private final Identifier BLOCK_ID;
-    private final Map<String, Identifier> materials;
-
-    public GenericBarrel(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
+public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
+    public GenericBarrel(BarrelSettings settings) {
+        super(settings);
     }
 
-    public GenericBarrel(String woodType, String modId, Map<String, Identifier> materials) {
-        super(FabricBlockSettings.copyOf(Blocks.BARREL).sounds(BlockSoundGroup.WOOD));
-
-        validateMaterials(materials);
-
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("barrels/%s%s_barrel", ModInfo.getModPrefix(modId), woodType));
+    @Override
+    public Identifier getBlockID() {
+        return ((BarrelSettings) this.settings).getBlockId();
     }
 
-    protected void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"planks", "slab", "log"};
-
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
-        }
-    }
-
+    @Override
     public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        register(false);
+    }
+
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
 
         setupResources();
     }
 
-    protected void setupResources() {
-        String PLANK_MATERIAL = materials.get("planks").toString();
-        String SLAB_MATERIAL = materials.get("slab").toString();
-        String LOG_MATERIAL = materials.get("log").toString();
+    public void setupResources() {
+        Map<String, Identifier> materials = ((BarrelSettings) this.settings).getMaterials();
 
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/barrels/%s%s_barrel", ModInfo.getModPrefix(modId), woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/barrels/%s%s_barrel", ModInfo.getModPrefix(modId), woodType));
-        Identifier OPEN_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/barrels/%s%s_barrel_open", ModInfo.getModPrefix(modId), woodType));
+        String PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main")).toString();
+        String SLAB_MATERIAL = materials.getOrDefault("slab", materials.get("main")).toString();
+        String LOG_MATERIAL = materials.getOrDefault("stripped_log", materials.get("main")).toString();
+
+        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
+        Identifier OPEN_MODEL_ID = new Identifier(MODEL_ID + "_open");
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("PSP", "P P", "PSP"),
                 JKeys.keys()
                     .key("P", JIngredient.ingredient().item(PLANK_MATERIAL))
                     .key("S", JIngredient.ingredient().item(SLAB_MATERIAL)),
-                JResult.result(BLOCK_ID.toString())
+                JResult.result(getBlockID().toString())
             )
         );
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(
-            new Identifier(BLOCK_ID.getNamespace(), "blocks/" + BLOCK_ID.getPath()),
-            JLootTable.loot("minecraft:block")
-                .pool(
-                    JLootTable.pool()
-                        .rolls(1)
-                        .entry(
-                            new JEntry()
-                                .type("minecraft:item")
-                                .name(BLOCK_ID.toString())
-                        )
-                        .condition(new JCondition().condition("minecraft:survives_explosion"))
-                )
-        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
+
+        JTextures textures = new JTextures()
+            .var("face", Texture.getBlockTextureID(LOG_MATERIAL).toString())
+            .var("sides", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/barrel_variant")
-                .textures(
-                    new JTextures()
-                        .var("face", Texture.getBlockTextureID(LOG_MATERIAL).toString())
-                        .var("sides", Texture.getBlockTextureID(PLANK_MATERIAL).toString())
-                ),
+            JModel.model("minekea:block/containers/barrel").textures(textures),
             MODEL_ID
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/barrel_variant_open")
-                .textures(
-                    new JTextures()
-                        .var("face", Texture.getBlockTextureID(LOG_MATERIAL).toString())
-                        .var("sides", Texture.getBlockTextureID(PLANK_MATERIAL).toString())
-                ),
+            JModel.model("minekea:block/containers/barrel_open").textures(textures),
             OPEN_MODEL_ID
         );
 
@@ -134,7 +106,22 @@ public class GenericBarrel extends BarrelBlock {
                     .put("facing=up,open=true", new JBlockModel(OPEN_MODEL_ID))
                     .put("facing=west,open=true", new JBlockModel(OPEN_MODEL_ID).x(90).y(270))
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class BarrelSettings extends MinekeaBlockSettings<BarrelSettings> {
+        public BarrelSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%scontainers/barrels/%s", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }

@@ -283,20 +283,20 @@ public class Covers implements MinekeaBlockCategory {
         BLACK_STAINED_GLASS_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.BLACK_STAINED_GLASS));
 
         ACACIA_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.ACACIA_LOG));
-        ACACIA_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.ACACIA_PLANK));
+        ACACIA_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.ACACIA));
         BIRCH_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.BIRCH_LOG));
-        BIRCH_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.BIRCH_PLANK));
-        CRIMSON_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.CRIMSON_PLANK));
+        BIRCH_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.CRIMSON));
         CRIMSON_STEM_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.CRIMSON_STEM));
         DARK_OAK_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.DARK_OAK_LOG));
-        DARK_OAK_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.DARK_OAK_PLANK));
+        DARK_OAK_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.JUNGLE_LOG));
-        JUNGLE_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.JUNGLE_PLANK));
+        JUNGLE_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.JUNGLE));
         OAK_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.OAK_LOG));
-        OAK_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.OAK_PLANK));
+        OAK_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.OAK));
         SPRUCE_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.SPRUCE_LOG));
-        SPRUCE_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.SPRUCE_PLANK));
-        WARPED_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WARPED_PLANK));
+        SPRUCE_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.SPRUCE));
+        WARPED_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WARPED));
         WARPED_STEM_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WARPED_STEM));
 
         COVERS.addAll(List.of(
