@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.bookshelves.stairs.BookshelfStairs;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.block.furniture.bookshelves.GenericBookshelf;
 import com.chimericdream.minekea.block.furniture.bookshelves.GenericBookshelf.BookshelfSettings;
@@ -95,8 +94,6 @@ public class Bookshelves implements MinekeaBlockCategory {
 
     public static BlockEntityType<StorageBookshelfBlockEntity> STORAGE_SHELF_BLOCK_ENTITY;
     public static ScreenHandlerType<StorageBookshelfScreenHandler> STORAGE_SHELF_SCREEN_HANDLER;
-
-    public static final BookshelfStairs BOOKSHELF_STAIRS;
 
     static {
         ACACIA_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.ACACIA));
@@ -311,16 +308,12 @@ public class Bookshelves implements MinekeaBlockCategory {
             new Identifier(ModInfo.MOD_ID, "screens/storage_shelf"),
             (syncId, inventory) -> new StorageBookshelfScreenHandler(STORAGE_SHELF_SCREEN_HANDLER, syncId, inventory)
         );
-
-        BOOKSHELF_STAIRS = new BookshelfStairs();
     }
 
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
         ScreenRegistry.register(STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
-
-        BOOKSHELF_STAIRS.initializeClient();
     }
 
     @Override
@@ -385,8 +378,6 @@ public class Bookshelves implements MinekeaBlockCategory {
         SMOOTH_STONE_STORAGE_BOOKSHELF.register();
         STONE_BRICK_STORAGE_BOOKSHELF.register(false);
         WARPED_NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
-
-        BOOKSHELF_STAIRS.registerBlocks();
     }
 
     @Override
@@ -435,19 +426,14 @@ public class Bookshelves implements MinekeaBlockCategory {
                 storageShelves.toArray(new Block[0])
             ).build(null)
         );
-
-        BOOKSHELF_STAIRS.registerBlockEntities(otherMods);
     }
 
     @Override
     public void registerEntities(List<ModCompatLayer> otherMods) {
-        BOOKSHELF_STAIRS.registerEntities(otherMods);
     }
 
     @Override
     public void setupResources() {
-        BOOKSHELF_STAIRS.setupResources();
-
         for (int i = 0; i <= 6; i++) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(
                 JModel.model("minekea:block/furniture/bookshelves/bookshelf")
