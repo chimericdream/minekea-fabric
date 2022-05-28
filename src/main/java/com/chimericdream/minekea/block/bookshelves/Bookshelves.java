@@ -2,7 +2,6 @@ package com.chimericdream.minekea.block.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.bookshelves.doors.BookshelfDoors;
-import com.chimericdream.minekea.block.bookshelves.slabs.BookshelfSlabs;
 import com.chimericdream.minekea.block.bookshelves.stairs.BookshelfStairs;
 import com.chimericdream.minekea.block.bookshelves.trapdoors.BookshelfTrapdoors;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
@@ -100,7 +99,6 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static ScreenHandlerType<StorageBookshelfScreenHandler> STORAGE_SHELF_SCREEN_HANDLER;
 
     public static final BookshelfDoors BOOKSHELF_DOORS;
-    public static final BookshelfSlabs BOOKSHELF_SLABS;
     public static final BookshelfStairs BOOKSHELF_STAIRS;
     public static final BookshelfTrapdoors BOOKSHELF_TRAPDOORS;
 
@@ -319,7 +317,6 @@ public class Bookshelves implements MinekeaBlockCategory {
         );
 
         BOOKSHELF_DOORS = new BookshelfDoors();
-        BOOKSHELF_SLABS = new BookshelfSlabs();
         BOOKSHELF_STAIRS = new BookshelfStairs();
         BOOKSHELF_TRAPDOORS = new BookshelfTrapdoors();
     }
@@ -330,7 +327,6 @@ public class Bookshelves implements MinekeaBlockCategory {
         ScreenRegistry.register(STORAGE_SHELF_SCREEN_HANDLER, StorageBookshelfScreen::new);
 
         BOOKSHELF_DOORS.initializeClient();
-        BOOKSHELF_SLABS.initializeClient();
         BOOKSHELF_STAIRS.initializeClient();
         BOOKSHELF_TRAPDOORS.initializeClient();
     }
@@ -399,7 +395,6 @@ public class Bookshelves implements MinekeaBlockCategory {
         WARPED_NETHER_BRICK_STORAGE_BOOKSHELF.register(false);
 
         BOOKSHELF_DOORS.registerBlocks();
-        BOOKSHELF_SLABS.registerBlocks();
         BOOKSHELF_STAIRS.registerBlocks();
         BOOKSHELF_TRAPDOORS.registerBlocks();
     }
@@ -452,7 +447,6 @@ public class Bookshelves implements MinekeaBlockCategory {
         );
 
         BOOKSHELF_DOORS.registerBlockEntities(otherMods);
-        BOOKSHELF_SLABS.registerBlockEntities(otherMods);
         BOOKSHELF_STAIRS.registerBlockEntities(otherMods);
         BOOKSHELF_TRAPDOORS.registerBlockEntities(otherMods);
     }
@@ -460,7 +454,6 @@ public class Bookshelves implements MinekeaBlockCategory {
     @Override
     public void registerEntities(List<ModCompatLayer> otherMods) {
         BOOKSHELF_DOORS.registerEntities(otherMods);
-        BOOKSHELF_SLABS.registerEntities(otherMods);
         BOOKSHELF_STAIRS.registerEntities(otherMods);
         BOOKSHELF_TRAPDOORS.registerEntities(otherMods);
     }
@@ -468,7 +461,6 @@ public class Bookshelves implements MinekeaBlockCategory {
     @Override
     public void setupResources() {
         BOOKSHELF_DOORS.setupResources();
-        BOOKSHELF_SLABS.setupResources();
         BOOKSHELF_STAIRS.setupResources();
         BOOKSHELF_TRAPDOORS.setupResources();
 

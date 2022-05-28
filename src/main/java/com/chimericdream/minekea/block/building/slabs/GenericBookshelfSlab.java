@@ -23,14 +23,14 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
 
-public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
-    public GenericSlabBlock(SlabSettings settings) {
+public class GenericBookshelfSlab extends SlabBlock implements MinekeaBlock {
+    public GenericBookshelfSlab(BookshelfSlabSettings settings) {
         super(settings);
     }
 
     @Override
     public Identifier getBlockID() {
-        return ((SlabSettings) this.settings).getBlockId();
+        return ((BookshelfSlabSettings) this.settings).getBlockId();
     }
 
     @Override
@@ -52,22 +52,26 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        Map<String, Identifier> materials = ((SlabSettings) this.settings).getMaterials();
+        BookshelfSlabSettings settings = (BookshelfSlabSettings) this.settings;
 
-        Identifier end = materials.getOrDefault("end", materials.get("main"));
-        Identifier side = materials.get("main");
-        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+        Map<String, Identifier> materials = settings.getMaterials();
+        Identifier shelf = materials.get("bookshelf");
+        Identifier planks = materials.get("planks");
+
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         Identifier SLAB_MODEL_ID = Model.getBlockModelID(getBlockID());
-        Identifier TOP_SLAB_MODEL_ID = new Identifier(ModInfo.MOD_ID, SLAB_MODEL_ID.getPath() + "_top");
-        Identifier DOUBLE_MODEL_ID = Model.getItemModelID(ingredient);
-        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
+        Identifier TOP_SLAB_MODEL_ID = new Identifier(SLAB_MODEL_ID + "_top");
+        Identifier DOUBLE_MODEL_ID = materials.getOrDefault(
+            "model",
+            new Identifier(ModInfo.MOD_ID, String.format("block/%sfurniture/bookshelves/%s0", ModInfo.getModPrefix(settings.getModId()), settings.getMainMaterial()))
+        );
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("###"),
-                JKeys.keys().key("#", JIngredient.ingredient().item(ingredient.toString())),
+                JKeys.keys().key("#", JIngredient.ingredient().item(shelf.toString())),
                 JResult.stackedResult(getBlockID().toString(), 6)
             )
         );
@@ -75,17 +79,16 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.getLootTableID(getBlockID()), LootTable.slabLootTable(getBlockID()));
 
         JTextures textures = new JTextures()
-            .var("bottom", Texture.getBlockTextureID(end).toString())
-            .var("top", Texture.getBlockTextureID(end).toString())
-            .var("side", Texture.getBlockTextureID(side).toString());
+            .var("planks", Texture.getBlockTextureID(planks).toString())
+            .var("shelf", ModInfo.MOD_ID + ":block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/slab").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/slabs/bookshelves/bottom").textures(textures),
             SLAB_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minecraft:block/slab_top").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/slabs/bookshelves/top").textures(textures),
             TOP_SLAB_MODEL_ID
         );
 
@@ -102,15 +105,15 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
         );
     }
 
-    public static class SlabSettings extends MinekeaBlockSettings<SlabSettings> {
-        public SlabSettings(DefaultSettings settings) {
+    public static class BookshelfSlabSettings extends MinekeaBlockSettings<BookshelfSlabSettings> {
+        public BookshelfSlabSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
         }
 
         @Override
         public Identifier getBlockId() {
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/slabs/%s", ModInfo.getModPrefix(modId), mainMaterial));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/slabs/bookshelves/%s", ModInfo.getModPrefix(modId), mainMaterial));
             }
 
             return blockId;

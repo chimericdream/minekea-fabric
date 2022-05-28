@@ -57,6 +57,14 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     abstract public Identifier getBlockId();
 
+    public String getModId() {
+        return this.modId;
+    }
+
+    public String getMainMaterial() {
+        return this.mainMaterial;
+    }
+
     public Map<String, Identifier> getMaterials() {
         return this.materials;
     }

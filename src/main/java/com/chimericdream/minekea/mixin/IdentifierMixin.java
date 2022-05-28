@@ -97,6 +97,7 @@ public class IdentifierMixin {
         Map<String, String> replacements = new LinkedHashMap<>();
 
         replacements.put("^beams/([^/]+/)?([./_a-z]+)_beam$", "$1building/beams/$2");
+        replacements.put("^slabs/([^/]+/)?([./_a-z]+)_bookshelf_slab$", "$1building/slabs/bookshelves/$2");
         replacements.put("^slabs/([^/]+/)?([./_a-z]+)_slab$", "$1building/slabs/$2");
         replacements.put("^stairs/([^/]+/)?([./_a-z]+)_stairs$", "$1building/stairs/$2");
         replacements.put("^covers/([^/]+/)?([./_a-z]+)_cover$", "$1building/covers/$2");

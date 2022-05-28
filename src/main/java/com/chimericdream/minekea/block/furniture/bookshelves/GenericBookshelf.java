@@ -58,8 +58,11 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
     public void setupResources() {
         Map<String, Identifier> materials = ((BookshelfSettings) this.settings).getMaterials();
 
-        Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));
-        Identifier sideTexture = materials.getOrDefault("side_texture", PLANK_MATERIAL);
+        Identifier ingredient = materials.getOrDefault(
+            "ingredient",
+            materials.getOrDefault("planks", materials.get("main"))
+        );
+        Identifier sideTexture = materials.getOrDefault("side_texture", ingredient);
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -69,7 +72,7 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
             JRecipe.shaped(
                 JPattern.pattern("###", "XXX", "###"),
                 JKeys.keys()
-                    .key("#", JIngredient.ingredient().item(PLANK_MATERIAL.toString()))
+                    .key("#", JIngredient.ingredient().item(ingredient.toString()))
                     .key("X", JIngredient.ingredient().item("minecraft:book")),
                 JResult.result(getBlockID().toString())
             )
