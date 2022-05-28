@@ -1,9 +1,8 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.bookshelves.stairs.GenericBookshelfStairs;
+import com.chimericdream.minekea.block.building.stairs.GenericBookshelfStairs;
+import com.chimericdream.minekea.block.building.stairs.GenericBookshelfStairs.BookshelfStairsSettings;
 import net.minecraft.util.Identifier;
-
-import java.util.Map;
 
 public class BygBookshelfStairs {
     public static final GenericBookshelfStairs ASPEN_BOOKSHELF_STAIRS;
@@ -36,202 +35,34 @@ public class BygBookshelfStairs {
     public static final GenericBookshelfStairs ZELKOVA_BOOKSHELF_STAIRS;
 
     static {
-        ASPEN_BOOKSHELF_STAIRS = new GenericBookshelfStairs("aspen",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:aspen_bookshelf"),
-                "planks", new Identifier("byg:aspen_planks")
-            )
-        );
-        BAOBAB_BOOKSHELF_STAIRS = new GenericBookshelfStairs("baobab",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:baobab_bookshelf"),
-                "planks", new Identifier("byg:baobab_planks")
-            )
-        );
-        BLUE_ENCHANTED_BOOKSHELF_STAIRS = new GenericBookshelfStairs("blue_enchanted",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:blue_enchanted_bookshelf"),
-                "planks", new Identifier("byg:blue_enchanted_planks")
-            )
-        );
-        BULBIS_BOOKSHELF_STAIRS = new GenericBookshelfStairs("bulbis",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:bulbis_bookshelf"),
-                "planks", new Identifier("byg:bulbis_planks")
-            )
-        );
-        CHERRY_BOOKSHELF_STAIRS = new GenericBookshelfStairs("cherry",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:cherry_bookshelf"),
-                "planks", new Identifier("byg:cherry_planks")
-            )
-        );
-        CIKA_BOOKSHELF_STAIRS = new GenericBookshelfStairs("cika",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:cika_bookshelf"),
-                "planks", new Identifier("byg:cika_planks")
-            )
-        );
-        CYPRESS_BOOKSHELF_STAIRS = new GenericBookshelfStairs("cypress",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:cypress_bookshelf"),
-                "planks", new Identifier("byg:cypress_planks")
-            )
-        );
-        EBONY_BOOKSHELF_STAIRS = new GenericBookshelfStairs("ebony",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:ebony_bookshelf"),
-                "planks", new Identifier("byg:ebony_planks")
-            )
-        );
-        EMBUR_BOOKSHELF_STAIRS = new GenericBookshelfStairs("embur",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:embur_bookshelf"),
-                "planks", new Identifier("byg:embur_planks")
-            )
-        );
-        ETHER_BOOKSHELF_STAIRS = new GenericBookshelfStairs("ether",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:ether_bookshelf"),
-                "planks", new Identifier("byg:ether_planks")
-            )
-        );
-        FIR_BOOKSHELF_STAIRS = new GenericBookshelfStairs("fir",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:fir_bookshelf"),
-                "planks", new Identifier("byg:fir_planks")
-            )
-        );
-        GREEN_ENCHANTED_BOOKSHELF_STAIRS = new GenericBookshelfStairs("green_enchanted",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:green_enchanted_bookshelf"),
-                "planks", new Identifier("byg:green_enchanted_planks")
-            )
-        );
-        HOLLY_BOOKSHELF_STAIRS = new GenericBookshelfStairs("holly",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:holly_bookshelf"),
-                "planks", new Identifier("byg:holly_planks")
-            )
-        );
-        JACARANDA_BOOKSHELF_STAIRS = new GenericBookshelfStairs("jacaranda",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:jacaranda_bookshelf"),
-                "planks", new Identifier("byg:jacaranda_planks")
-            )
-        );
-        LAMENT_BOOKSHELF_STAIRS = new GenericBookshelfStairs("lament",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:lament_bookshelf"),
-                "planks", new Identifier("byg:lament_planks")
-            )
-        );
-        MAHOGANY_BOOKSHELF_STAIRS = new GenericBookshelfStairs("mahogany",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:mahogany_bookshelf"),
-                "planks", new Identifier("byg:mahogany_planks")
-            )
-        );
-        MANGROVE_BOOKSHELF_STAIRS = new GenericBookshelfStairs("mangrove",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:mangrove_bookshelf"),
-                "planks", new Identifier("byg:mangrove_planks")
-            )
-        );
-        MAPLE_BOOKSHELF_STAIRS = new GenericBookshelfStairs("maple",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:maple_bookshelf"),
-                "planks", new Identifier("byg:maple_planks")
-            )
-        );
-        NIGHTSHADE_BOOKSHELF_STAIRS = new GenericBookshelfStairs("nightshade",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:nightshade_bookshelf"),
-                "planks", new Identifier("byg:nightshade_planks")
-            )
-        );
-        PALM_BOOKSHELF_STAIRS = new GenericBookshelfStairs("palm",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:palm_bookshelf"),
-                "planks", new Identifier("byg:palm_planks")
-            )
-        );
-        PINE_BOOKSHELF_STAIRS = new GenericBookshelfStairs("pine",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:pine_bookshelf"),
-                "planks", new Identifier("byg:pine_planks")
-            )
-        );
-        RAINBOW_EUCALYPTUS_BOOKSHELF_STAIRS = new GenericBookshelfStairs("rainbow_eucalyptus",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:rainbow_eucalyptus_bookshelf"),
-                "planks", new Identifier("byg:rainbow_eucalyptus_planks")
-            )
-        );
-        REDWOOD_BOOKSHELF_STAIRS = new GenericBookshelfStairs("redwood",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:redwood_bookshelf"),
-                "planks", new Identifier("byg:redwood_planks")
-            )
-        );
-        SKYRIS_BOOKSHELF_STAIRS = new GenericBookshelfStairs("skyris",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:skyris_bookshelf"),
-                "planks", new Identifier("byg:skyris_planks")
-            )
-        );
-        SYTHIAN_BOOKSHELF_STAIRS = new GenericBookshelfStairs("sythian",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:sythian_bookshelf"),
-                "planks", new Identifier("byg:sythian_planks")
-            )
-        );
-        WILLOW_BOOKSHELF_STAIRS = new GenericBookshelfStairs("willow",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:willow_bookshelf"),
-                "planks", new Identifier("byg:willow_planks")
-            )
-        );
-        WITCH_HAZEL_BOOKSHELF_STAIRS = new GenericBookshelfStairs("witch_hazel",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:witch_hazel_bookshelf"),
-                "planks", new Identifier("byg:witch_hazel_planks")
-            )
-        );
-        ZELKOVA_BOOKSHELF_STAIRS = new GenericBookshelfStairs("zelkova",
-            "byg",
-            Map.of(
-                "bookshelf", new Identifier("byg:zelkova_bookshelf"),
-                "planks", new Identifier("byg:zelkova_planks")
-            )
-        );
+        ASPEN_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.ASPEN).addMaterial("bookshelf", new Identifier("byg:aspen_bookshelf")));
+        BAOBAB_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.BAOBAB).addMaterial("bookshelf", new Identifier("byg:baobab_bookshelf")));
+        BLUE_ENCHANTED_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.BLUE_ENCHANTED).addMaterial("bookshelf", new Identifier("byg:blue_enchanted_bookshelf")));
+        BULBIS_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.BULBIS).addMaterial("bookshelf", new Identifier("byg:bulbis_bookshelf")));
+        CHERRY_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.CHERRY).addMaterial("bookshelf", new Identifier("byg:cherry_bookshelf")));
+        CIKA_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.CIKA).addMaterial("bookshelf", new Identifier("byg:cika_bookshelf")));
+        CYPRESS_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.CYPRESS).addMaterial("bookshelf", new Identifier("byg:cypress_bookshelf")));
+        EBONY_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.EBONY).addMaterial("bookshelf", new Identifier("byg:ebony_bookshelf")));
+        EMBUR_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.EMBUR).addMaterial("bookshelf", new Identifier("byg:embur_bookshelf")));
+        ETHER_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.ETHER).addMaterial("bookshelf", new Identifier("byg:ether_bookshelf")));
+        FIR_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.FIR).addMaterial("bookshelf", new Identifier("byg:fir_bookshelf")));
+        GREEN_ENCHANTED_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.GREEN_ENCHANTED).addMaterial("bookshelf", new Identifier("byg:green_enchanted_bookshelf")));
+        HOLLY_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.HOLLY).addMaterial("bookshelf", new Identifier("byg:holly_bookshelf")));
+        JACARANDA_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
+        LAMENT_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
+        MAHOGANY_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
+        MANGROVE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.MANGROVE).addMaterial("bookshelf", new Identifier("byg:mangrove_bookshelf")));
+        MAPLE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.MAPLE).addMaterial("bookshelf", new Identifier("byg:maple_bookshelf")));
+        NIGHTSHADE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.NIGHTSHADE).addMaterial("bookshelf", new Identifier("byg:nightshade_bookshelf")));
+        PALM_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.PALM).addMaterial("bookshelf", new Identifier("byg:palm_bookshelf")));
+        PINE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.PINE).addMaterial("bookshelf", new Identifier("byg:pine_bookshelf")));
+        RAINBOW_EUCALYPTUS_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.RAINBOW_EUCALYPTUS).addMaterial("bookshelf", new Identifier("byg:rainbow_eucalyptus_bookshelf")));
+        REDWOOD_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.REDWOOD).addMaterial("bookshelf", new Identifier("byg:redwood_bookshelf")));
+        SKYRIS_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.SKYRIS).addMaterial("bookshelf", new Identifier("byg:skyris_bookshelf")));
+        SYTHIAN_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.SYTHIAN).addMaterial("bookshelf", new Identifier("byg:sythian_bookshelf")));
+        WILLOW_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.WILLOW).addMaterial("bookshelf", new Identifier("byg:willow_bookshelf")));
+        WITCH_HAZEL_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.WITCH_HAZEL).addMaterial("bookshelf", new Identifier("byg:witch_hazel_bookshelf")));
+        ZELKOVA_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.ZELKOVA).addMaterial("bookshelf", new Identifier("byg:zelkova_bookshelf")));
     }
 
     public void register() {

@@ -99,8 +99,10 @@ public class IdentifierMixin {
         replacements.put("^beams/([^/]+/)?([./_a-z]+)_beam$", "$1building/beams/$2");
         replacements.put("^slabs/([^/]+/)?([./_a-z]+)_bookshelf_slab$", "$1building/slabs/bookshelves/$2");
         replacements.put("^slabs/([^/]+/)?([./_a-z]+)_slab$", "$1building/slabs/$2");
+        replacements.put("^stairs/([^/]+/)?([./_a-z]+)_bookshelf_stairs$", "$1building/stairs/bookshelves/$2");
         replacements.put("^stairs/([^/]+/)?([./_a-z]+)_stairs$", "$1building/stairs/$2");
         replacements.put("^covers/([^/]+/)?([./_a-z]+)_cover$", "$1building/covers/$2");
+        replacements.put("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_bookshelf_stairs$", "$1building/stairs/vertical/bookshelves/$2");
         replacements.put("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2");
         replacements.put("^storage/compressed_([./_a-z]+)$", "storage/compressed/$1");
         replacements.put("^storage/dyes/compressed_([./_a-z]+)$", "storage/dyes/$1");
@@ -116,6 +118,7 @@ public class IdentifierMixin {
         replacements.put("^bookshelves/([^/]+/)?([./_a-z]+)_bookshelf$", "$1furniture/bookshelves/$2");
         replacements.put("^bookshelves/doors/([^/]+/)?([./_a-z]+)_bookshelf_door$", "$1furniture/doors/bookshelves/$2");
         replacements.put("^bookshelves/trapdoors/([^/]+/)?([./_a-z]+)_bookshelf_trapdoor$", "$1furniture/trapdoors/bookshelves/$2");
+
 
         replacements.forEach((String match, String replace) -> {
             if (id[1].matches(match)) {

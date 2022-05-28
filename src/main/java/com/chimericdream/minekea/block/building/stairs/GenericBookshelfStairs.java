@@ -1,103 +1,95 @@
-package com.chimericdream.minekea.block.bookshelves.stairs;
+package com.chimericdream.minekea.block.building.stairs;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Blocks;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
 
-public class GenericBookshelfStairs extends StairsBlock {
-    private final String modId;
-    private final String woodType;
-    private final Identifier BLOCK_ID;
-    private final Map<String, Identifier> materials;
-
-    public GenericBookshelfStairs(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
+public class GenericBookshelfStairs extends StairsBlock implements MinekeaBlock {
+    public GenericBookshelfStairs(BookshelfStairsSettings settings) {
+        super(settings.getBaseBlock().getDefaultState(), settings);
     }
 
-    public GenericBookshelfStairs(String woodType, String modId, Map<String, Identifier> materials) {
-        super(Blocks.OAK_STAIRS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).sounds(BlockSoundGroup.WOOD));
-
-        validateMaterials(materials);
-
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("stairs/%s%s_bookshelf_stairs", ModInfo.getModPrefix(modId), woodType));
+    @Override
+    public Identifier getBlockID() {
+        return ((BookshelfStairsSettings) this.settings).getBlockId();
     }
 
-    protected void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"bookshelf", "planks"};
-
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
-        }
-    }
-
+    @Override
     public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        register(false);
+    }
+
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
 
         setupResources();
     }
 
-    protected void setupResources() {
+    @Override
+    public void setupResources() {
+        Map<String, Identifier> materials = ((BookshelfStairsSettings) this.settings).getMaterials();
+
         Identifier shelf = materials.get("bookshelf");
         Identifier planks = materials.get("planks");
 
-        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
-        Identifier MAIN_MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-        Identifier INNER_MODEL_ID = new Identifier(MAIN_MODEL_ID.getNamespace(), MAIN_MODEL_ID.getPath() + "_inner");
-        Identifier OUTER_MODEL_ID = new Identifier(MAIN_MODEL_ID.getNamespace(), MAIN_MODEL_ID.getPath() + "_outer");
+        Identifier MAIN_MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier INNER_MODEL_ID = new Identifier(MAIN_MODEL_ID + "_inner");
+        Identifier OUTER_MODEL_ID = new Identifier(MAIN_MODEL_ID + "_outer");
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("#  ", "## ", "###"),
                 JKeys.keys().key("#", JIngredient.ingredient().item(shelf.toString())),
-                JResult.stackedResult(BLOCK_ID.toString(), 8)
+                JResult.stackedResult(getBlockID().toString(), 8)
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
             .var("planks", Texture.getBlockTextureID(planks).toString())
             .var("shelf", ModInfo.MOD_ID + ":block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/bookshelf_stairs").textures(textures),
+            JModel.model("minekea:block/building/stairs/bookshelves/main").textures(textures),
             MAIN_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/bookshelf_inner_stairs").textures(textures),
+            JModel.model("minekea:block/building/stairs/bookshelves/inner").textures(textures),
             INNER_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/bookshelf_outer_stairs").textures(textures),
+            JModel.model("minekea:block/building/stairs/bookshelves/outer").textures(textures),
             OUTER_MODEL_ID
         );
 
@@ -147,7 +139,22 @@ public class GenericBookshelfStairs extends StairsBlock {
                     .put("facing=west,half=top,shape=outer_right", new JBlockModel(OUTER_MODEL_ID).x(180).y(270).uvlock())
                     .put("facing=west,half=top,shape=straight", new JBlockModel(MAIN_MODEL_ID).x(180).y(180).uvlock())
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class BookshelfStairsSettings extends MinekeaBlockSettings<BookshelfStairsSettings> {
+        public BookshelfStairsSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/stairs/bookshelves/%s", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }
