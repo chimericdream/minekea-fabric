@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.furniture;
 
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.furniture.doors.Doors;
 import com.chimericdream.minekea.block.furniture.seating.Seats;
@@ -14,6 +15,7 @@ import net.fabricmc.api.Environment;
 import java.util.List;
 
 public class FurnitureBlocks implements MinekeaBlockCategory {
+    public static final Bookshelves BOOKSHELVES;
     public static final DisplayCases DISPLAY_CASES;
     public static final Doors DOORS;
     public static final Seats SEATS;
@@ -22,6 +24,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
     public static final Trapdoors TRAPDOORS;
 
     static {
+        BOOKSHELVES = new Bookshelves();
         DISPLAY_CASES = new DisplayCases();
         DOORS = new Doors();
         SEATS = new Seats();
@@ -33,6 +36,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
+        BOOKSHELVES.initializeClient();
         DISPLAY_CASES.initializeClient();
         DOORS.initializeClient();
         SEATS.initializeClient();
@@ -43,6 +47,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
+        BOOKSHELVES.registerBlocks();
         DISPLAY_CASES.registerBlocks();
         DOORS.registerBlocks();
         SEATS.registerBlocks();
@@ -53,6 +58,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+        BOOKSHELVES.registerBlockEntities(otherMods);
         DISPLAY_CASES.registerBlockEntities(otherMods);
         DOORS.registerBlockEntities(otherMods);
         SEATS.registerBlockEntities(otherMods);
@@ -63,6 +69,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerEntities(List<ModCompatLayer> otherMods) {
+        BOOKSHELVES.registerEntities(otherMods);
         DISPLAY_CASES.registerEntities(otherMods);
         DOORS.registerEntities(otherMods);
         SEATS.registerEntities(otherMods);
@@ -73,6 +80,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
+        BOOKSHELVES.setupResources();
         DISPLAY_CASES.setupResources();
         DOORS.setupResources();
         SEATS.setupResources();

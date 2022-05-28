@@ -1,10 +1,10 @@
 package com.chimericdream.minekea.block.building.stairs;
 
-import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.building.stairs.GenericBookshelfStairs.BookshelfStairsSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericStairsBlock.StairsSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericVerticalBookshelfStairs.VerticalBookshelfStairsSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericVerticalStairsBlock.VerticalStairsSettings;
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;

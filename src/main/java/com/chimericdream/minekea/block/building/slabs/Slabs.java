@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.block.building.slabs;
 
-import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.building.slabs.GenericBookshelfSlab.BookshelfSlabSettings;
 import com.chimericdream.minekea.block.building.slabs.GenericSlabBlock.SlabSettings;
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;

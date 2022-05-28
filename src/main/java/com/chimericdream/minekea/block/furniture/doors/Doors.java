@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.furniture.doors;
 
-import com.chimericdream.minekea.block.bookshelves.Bookshelves;
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.furniture.doors.GenericBookshelfDoor.BookshelfDoorSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;

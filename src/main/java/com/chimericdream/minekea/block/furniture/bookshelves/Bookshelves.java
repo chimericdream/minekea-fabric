@@ -1,10 +1,8 @@
-package com.chimericdream.minekea.block.bookshelves;
+package com.chimericdream.minekea.block.furniture.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
-import com.chimericdream.minekea.block.furniture.bookshelves.GenericBookshelf;
 import com.chimericdream.minekea.block.furniture.bookshelves.GenericBookshelf.BookshelfSettings;
-import com.chimericdream.minekea.block.furniture.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
