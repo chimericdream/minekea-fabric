@@ -114,6 +114,8 @@ public class IdentifierMixin {
         replacements.put("^shelves/([^/]+/)?([./_a-z]+)_supported_shelf$", "$1furniture/shelves/supported/$2");
         replacements.put("^shelves/([^/]+/)?([./_a-z]+)_floating_shelf$", "$1furniture/shelves/floating/$2");
         replacements.put("^bookshelves/([^/]+/)?([./_a-z]+)_bookshelf$", "$1furniture/bookshelves/$2");
+        replacements.put("^bookshelves/doors/([^/]+/)?([./_a-z]+)_bookshelf_door$", "$1furniture/doors/bookshelves/$2");
+        replacements.put("^bookshelves/trapdoors/([^/]+/)?([./_a-z]+)_bookshelf_trapdoor$", "$1furniture/trapdoors/bookshelves/$2");
 
         replacements.forEach((String match, String replace) -> {
             if (id[1].matches(match)) {

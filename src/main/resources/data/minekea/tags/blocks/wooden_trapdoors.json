@@ -1,14 +1,14 @@
 {
     "replace": false,
     "values": [
-        "minekea:bookshelves/trapdoors/acacia_bookshelf_trapdoor",
-        "minekea:bookshelves/trapdoors/birch_bookshelf_trapdoor",
-        "minekea:bookshelves/trapdoors/crimson_bookshelf_trapdoor",
-        "minekea:bookshelves/trapdoors/dark_oak_bookshelf_trapdoor",
-        "minekea:bookshelves/trapdoors/jungle_bookshelf_trapdoor",
-        "minekea:bookshelves/trapdoors/oak_bookshelf_trapdoor",
-        "minekea:bookshelves/trapdoors/spruce_bookshelf_trapdoor",
-        "minekea:bookshelves/trapdoors/warped_bookshelf_trapdoor",
+        "minekea:furniture/trapdoors/bookshelves/acacia",
+        "minekea:furniture/trapdoors/bookshelves/birch",
+        "minekea:furniture/trapdoors/bookshelves/crimson",
+        "minekea:furniture/trapdoors/bookshelves/dark_oak",
+        "minekea:furniture/trapdoors/bookshelves/jungle",
+        "minekea:furniture/trapdoors/bookshelves/oak",
+        "minekea:furniture/trapdoors/bookshelves/spruce",
+        "minekea:furniture/trapdoors/bookshelves/warped",
         {"id": "#minekea:byg/wooden_trapdoors", "required": false}
     ]
 }
