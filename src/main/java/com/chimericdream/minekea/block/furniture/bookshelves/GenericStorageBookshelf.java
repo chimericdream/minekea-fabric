@@ -4,7 +4,10 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.loot.JCondition;
@@ -19,7 +22,10 @@ import net.devtech.arrp.json.recipe.JRecipe;
 import net.devtech.arrp.json.recipe.JResult;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -47,17 +53,12 @@ import net.minecraft.world.World;
 
 import java.util.Map;
 
-public class GenericStorageBookshelf extends BlockWithEntity {
+public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaBlock {
     public static final Integer ROW_COUNT = 1;
 
     public static final DirectionProperty FACING;
     public static final IntProperty FILL_LEVEL;
     public static final BooleanProperty OPEN;
-
-    private final Identifier BLOCK_ID;
-    private final Map<String, Identifier> materials;
-    private final String modId;
-    private final String woodType;
 
     static {
         FACING = Properties.FACING;
@@ -65,62 +66,32 @@ public class GenericStorageBookshelf extends BlockWithEntity {
         OPEN = Properties.OPEN;
     }
 
-    public GenericStorageBookshelf(String woodType) {
-        this(woodType, ModInfo.MOD_ID);
-    }
-
-    public GenericStorageBookshelf(String woodType, String modId) {
-        this(
-            woodType,
-            modId,
-            Map.of(
-                "bookshelf", new Identifier(getDefaultBookshelfId(woodType, modId)),
-                "planks", new Identifier(String.format("minecraft:%s_planks", woodType))
-            )
-        );
-    }
-
-    public GenericStorageBookshelf(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
-    }
-
-    public GenericStorageBookshelf(String woodType, Map<String, Identifier> materials, Block copyOf) {
-        this(woodType, ModInfo.MOD_ID, materials, copyOf);
-    }
-
-    public GenericStorageBookshelf(String woodType, String modId, Map<String, Identifier> materials) {
-        this(woodType, modId, materials, Blocks.CHEST);
-    }
-
-    public GenericStorageBookshelf(String woodType, String modId, Map<String, Identifier> materials, Block copyOf) {
-        super(Settings.copy(copyOf));
-
-        validateMaterials(materials);
+    public GenericStorageBookshelf(StorageBookshelfSettings settings) {
+        super(settings);
 
         setDefaultState(getStateManager().getDefaultState().with(FILL_LEVEL, 0).with(FACING, Direction.NORTH).with(OPEN, false));
-
-        this.materials = materials;
-        this.modId = modId;
-        this.woodType = woodType;
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("bookshelves/storage/%s%s_storage_shelf", ModInfo.getModPrefix(modId), woodType));
     }
 
-    private static String getDefaultBookshelfId(String woodType, String modId) {
-        if (woodType.equals("oak")) {
-            return "minecraft:bookshelf";
-        } else {
-            return String.format("minekea:%sfurniture/bookshelves/%s", ModInfo.getModPrefix(modId), woodType);
-        }
+    @Override
+    public Identifier getBlockID() {
+        return ((StorageBookshelfSettings) this.settings).getBlockId();
     }
 
-    protected void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"bookshelf", "planks"};
+    @Override
+    public void register() {
+        register(false);
+    }
 
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
+
+        setupResources();
     }
 
     @Override
@@ -130,22 +101,6 @@ public class GenericStorageBookshelf extends BlockWithEntity {
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite());
-    }
-
-    public void register() {
-        this.register(true);
-    }
-
-    public void register(boolean isFlammable) {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
-
-        if (isFlammable) {
-            FuelRegistry.INSTANCE.add(this, 300);
-            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
-        }
-
-        setupResources();
     }
 
     @Override
@@ -221,19 +176,33 @@ public class GenericStorageBookshelf extends BlockWithEntity {
         return 1;
     }
 
-    protected void setupResources() {
+    @Override
+    public void setupResources() {
+        StorageBookshelfSettings settings = (StorageBookshelfSettings) this.settings;
+
+        Map<String, Identifier> materials = settings.getMaterials();
+
+        Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
+
+        Identifier EMPTY_SHELF_MODEL_ID = new Identifier(BASE_MODEL_ID + "_empty");
+        Identifier ONE_HALF_SHELF_MODEL_ID = new Identifier(BASE_MODEL_ID + "_one_half");
+        Identifier ONE_QUARTER_SHELF_MODEL_ID = new Identifier(BASE_MODEL_ID + "_one_quarter");
+        Identifier THREE_QUARTERS_SHELF_MODEL_ID = new Identifier(BASE_MODEL_ID + "_three_quarters");
+        Identifier FULL_SHELF_MODEL_ID = settings.getBaseShelfBlockId();
+
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shapeless(
                 JIngredients.ingredients()
                     .add(JIngredient.ingredient().item("minecraft:chest"))
                     .add(JIngredient.ingredient().item(materials.get("bookshelf").toString())),
-                JResult.result(BLOCK_ID.toString())
+                JResult.result(getBlockID().toString())
             )
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(
-            LootTable.blockID(BLOCK_ID),
+            LootTable.blockID(getBlockID()),
             JLootTable.loot("minecraft:block")
                 .pool(
                     JLootTable.pool()
@@ -244,7 +213,7 @@ public class GenericStorageBookshelf extends BlockWithEntity {
                                 .child(
                                     new JEntry()
                                         .type("minecraft:item")
-                                        .name(BLOCK_ID.toString())
+                                        .name(getBlockID().toString())
                                         .condition(
                                             new JCondition()
                                                 .condition("minecraft:match_tool")
@@ -267,44 +236,51 @@ public class GenericStorageBookshelf extends BlockWithEntity {
                 )
         );
 
+        String sideTexture = Texture.getBlockTextureID(
+            materials.getOrDefault(
+                "side_texture",
+                materials.getOrDefault("planks", materials.get("main"))
+            )
+        ).toString();
+
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
-                        .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+                        .var("material", sideTexture)
                         .var("shelf", "minekea:block/furniture/bookshelves/empty-shelf")
                 ),
-            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/empty_shelf", ModInfo.getModPrefix(modId), woodType))
+            EMPTY_SHELF_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
-                        .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+                        .var("material", sideTexture)
                         .var("shelf", "minekea:block/furniture/bookshelves/one-half-shelf")
                 ),
-            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/one_half_shelf", ModInfo.getModPrefix(modId), woodType))
+            ONE_HALF_SHELF_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
-                        .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+                        .var("material", sideTexture)
                         .var("shelf", "minekea:block/furniture/bookshelves/one-quarter-shelf")
                 ),
-            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/one_quarter_shelf", ModInfo.getModPrefix(modId), woodType))
+            ONE_QUARTER_SHELF_MODEL_ID
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
-                        .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+                        .var("material", sideTexture)
                         .var("shelf", "minekea:block/furniture/bookshelves/three-quarters-shelf")
                 ),
-            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/three_quarters_shelf", ModInfo.getModPrefix(modId), woodType))
+            THREE_QUARTERS_SHELF_MODEL_ID
         );
 
         /*
@@ -316,27 +292,43 @@ public class GenericStorageBookshelf extends BlockWithEntity {
             JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                 .textures(
                     new JTextures()
-                        .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+                        .var("material", sideTexture)
                         .var("shelf", "minekea:block/furniture/bookshelves/shelf0")
                 ),
-            new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/shelf0", ModInfo.getModPrefix(modId), woodType))
+            FULL_SHELF_MODEL_ID
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(String.format("minekea:block/bookshelves/%s%s/empty_shelf", ModInfo.getModPrefix(modId), woodType)),
-            new Identifier(ModInfo.MOD_ID, String.format("item/bookshelves/storage/%s%s_storage_shelf", ModInfo.getModPrefix(modId), woodType))
-        );
+        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(EMPTY_SHELF_MODEL_ID), ITEM_MODEL_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
             JState.state(
                 JState.variant()
-                    .put("fill_level=0", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/empty_shelf", ModInfo.getModPrefix(modId), woodType))))
-                    .put("fill_level=1", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/one_quarter_shelf", ModInfo.getModPrefix(modId), woodType))))
-                    .put("fill_level=2", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/one_half_shelf", ModInfo.getModPrefix(modId), woodType))))
-                    .put("fill_level=3", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/three_quarters_shelf", ModInfo.getModPrefix(modId), woodType))))
-                    .put("fill_level=4", new JBlockModel(new Identifier(ModInfo.MOD_ID, String.format("block/bookshelves/%s%s/shelf0", ModInfo.getModPrefix(modId), woodType))))
+                    .put("fill_level=0", new JBlockModel(EMPTY_SHELF_MODEL_ID))
+                    .put("fill_level=1", new JBlockModel(ONE_QUARTER_SHELF_MODEL_ID))
+                    .put("fill_level=2", new JBlockModel(ONE_HALF_SHELF_MODEL_ID))
+                    .put("fill_level=3", new JBlockModel(THREE_QUARTERS_SHELF_MODEL_ID))
+                    .put("fill_level=4", new JBlockModel(FULL_SHELF_MODEL_ID))
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class StorageBookshelfSettings extends MinekeaBlockSettings<StorageBookshelfSettings> {
+        public StorageBookshelfSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public Identifier getBaseShelfBlockId() {
+            return new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/bookshelves/%s", ModInfo.getModPrefix(modId), mainMaterial));
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/bookshelves/storage/%s", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }
