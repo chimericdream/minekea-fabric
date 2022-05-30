@@ -2,9 +2,14 @@ package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
+import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.ImplementedInventory;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
@@ -36,14 +41,8 @@ import net.minecraft.world.World;
 
 import java.util.Map;
 
-public class GenericDisplayCase extends BlockWithEntity {
+public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock {
     public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 8);
-
-    private final Identifier BLOCK_ID;
-    private final String modId;
-    private final String woodType;
-    private final Map<String, Identifier> materials;
-    private final boolean isStripped;
 
     private static final VoxelShape MAIN_SHAPE;
     private static final VoxelShape BASEBOARD_SHAPE;
@@ -53,54 +52,25 @@ public class GenericDisplayCase extends BlockWithEntity {
         BASEBOARD_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 2.0, 15.0);
     }
 
-    public GenericDisplayCase(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials, false);
-    }
-
-    public GenericDisplayCase(String woodType, Map<String, Identifier> materials, boolean isStripped) {
-        this(woodType, ModInfo.MOD_ID, materials, isStripped);
-    }
-
-    public GenericDisplayCase(String woodType, String modId, Map<String, Identifier> materials) {
-        this(woodType, modId, materials, false);
-    }
-
-    public GenericDisplayCase(String woodType, String modId, Map<String, Identifier> materials, boolean isStripped) {
-        super(Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
+    public GenericDisplayCase(DisplayCaseSettings settings) {
+        super(settings);
 
         setDefaultState(getStateManager().getDefaultState().with(ROTATION, 0));
-
-        validateMaterials(materials);
-
-        this.isStripped = isStripped;
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
-
-        if (isStripped) {
-            BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("displaycases/%sstripped_%s_display_case", ModInfo.getModPrefix(modId), woodType));
-        } else {
-            BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("displaycases/%s%s_display_case", ModInfo.getModPrefix(modId), woodType));
-        }
     }
 
-    protected void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"planks", "log"};
-
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
-        }
+    @Override
+    public Identifier getBlockID() {
+        return ((DisplayCaseSettings) this.settings).getBlockId();
     }
 
+    @Override
     public void register() {
-        register(true);
+        register(false);
     }
 
     public void register(boolean isFlammable) {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -233,50 +203,81 @@ public class GenericDisplayCase extends BlockWithEntity {
         return (rotation * 2) + 1;
     }
 
-    protected void setupResources() {
-        Identifier MODEL_ID;
-        Identifier ITEM_MODEL_ID;
+    @Override
+    public void setupResources() {
+        Map<String, Identifier> materials = ((DisplayCaseSettings) this.settings).getMaterials();
+        boolean isStripped = ((DisplayCaseSettings) this.settings).isStripped;
 
-        if (isStripped) {
-            MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/displaycases/%sstripped_%s_display_case", ModInfo.getModPrefix(modId), woodType));
-            ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/%sstripped_%s_display_case", ModInfo.getModPrefix(modId), woodType));
-        } else {
-            MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/displaycases/%s%s_display_case", ModInfo.getModPrefix(modId), woodType));
-            ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/displaycases/%s%s_display_case", ModInfo.getModPrefix(modId), woodType));
-        }
+        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
+        Identifier log = materials.getOrDefault("log", materials.get("main"));
+        Identifier stripped_log = materials.getOrDefault("stripped_log", materials.get("main"));
+
+        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern(" G ", "X X", "###"),
                 JKeys.keys()
                     .key("G", JIngredient.ingredient().item("minecraft:glass"))
-                    .key("#", JIngredient.ingredient().item(materials.get("planks").toString()))
-                    .key("X", JIngredient.ingredient().item(materials.get("log").toString())),
-                JResult.stackedResult(BLOCK_ID.toString(), 2)
+                    .key("#", JIngredient.ingredient().item(planks.toString()))
+                    .key("X", JIngredient.ingredient().item(isStripped ? stripped_log.toString() : log.toString())),
+                JResult.stackedResult(getBlockID().toString(), 2)
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
-        String strippedMat = isStripped
-            ? materials.get("log").getNamespace() + ":block/" + materials.get("log").getPath()
-            : materials.get("log").getNamespace() + ":block/stripped_" + materials.get("log").getPath();
-
         JTextures textures = new JTextures()
-            .var("stripped_material", strippedMat)
-            .var("material", materials.get("log").getNamespace() + ":block/" + materials.get("log").getPath())
-            .var("particle", strippedMat);
+            .var("stripped_material", Texture.getBlockTextureID(stripped_log).toString())
+            .var("material", isStripped ? Texture.getBlockTextureID(stripped_log).toString() : Texture.getBlockTextureID(log).toString())
+            .var("particle", Texture.getBlockTextureID(stripped_log).toString());
 
-        JModel model = JModel.model("minekea:block/display_case").textures(textures);
+        JModel model = JModel.model("minekea:block/furniture/display_case").textures(textures);
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(model, MODEL_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
             JState.state(JState.variant(new JBlockModel(MODEL_ID))),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class DisplayCaseSettings extends MinekeaBlockSettings<DisplayCaseSettings> {
+        protected boolean isStripped = false;
+
+        public DisplayCaseSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public boolean isStripped() {
+            return this.isStripped;
+        }
+
+        public DisplayCaseSettings stripped() {
+            this.isStripped = true;
+            return this;
+        }
+
+        public DisplayCaseSettings unstripped() {
+            this.isStripped = false;
+            return this;
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                if (isStripped) {
+                    blockId = new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/display_cases/stripped/%s", ModInfo.getModPrefix(modId), mainMaterial));
+                } else {
+                    blockId = new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/display_cases/%s", ModInfo.getModPrefix(modId), mainMaterial));
+                }
+            }
+
+            return blockId;
+        }
     }
 }

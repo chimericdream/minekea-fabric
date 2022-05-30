@@ -3,7 +3,9 @@ package com.chimericdream.minekea.block.furniture.tables;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.TextHelpers;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -11,12 +13,10 @@ import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.*;
@@ -42,11 +42,6 @@ public class GenericTable extends Block implements MinekeaBlock {
     public static final BooleanProperty EAST_CONNECTED;
     public static final BooleanProperty WEST_CONNECTED;
 
-    private final Identifier BLOCK_ID;
-    private final String modId;
-    private final String woodType;
-    private final Map<String, Identifier> materials;
-
     private static final VoxelShape TABLE_SURFACE_SHAPE;
     private static final VoxelShape[] LEG_SHAPES;
 
@@ -65,20 +60,8 @@ public class GenericTable extends Block implements MinekeaBlock {
         WEST_CONNECTED = BooleanProperty.of("west_connected");
     }
 
-    public GenericTable(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
-    }
-
-    public GenericTable(String woodType, String modId, Map<String, Identifier> materials) {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(3.0F, 4.0F));
-
-        validateMaterials(materials);
-
-        this.modId = modId;
-        this.materials = materials;
-        this.woodType = woodType;
-
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("tables/%s%s_table", ModInfo.getModPrefix(modId), woodType));
+    public GenericTable(TableSettings settings) {
+        super(settings);
 
         this.setDefaultState(
             this.stateManager
@@ -91,19 +74,30 @@ public class GenericTable extends Block implements MinekeaBlock {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        tooltip.add(TextHelpers.getTooltip("block.minekea.tables.table_tooltip"));
+    public Identifier getBlockID() {
+        return ((TableSettings) this.settings).getBlockId();
     }
 
     @Override
-    public void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"planks", "log"};
+    public void register() {
+        register(false);
+    }
 
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
+
+        setupResources();
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        tooltip.add(TextHelpers.getTooltip("block.minekea.tables.table_tooltip"));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -157,11 +151,6 @@ public class GenericTable extends Block implements MinekeaBlock {
     }
 
     @Override
-    public Identifier getBlockID() {
-        return BLOCK_ID;
-    }
-
-    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         boolean north = state.get(NORTH_CONNECTED);
         boolean south = state.get(SOUTH_CONNECTED);
@@ -208,66 +197,60 @@ public class GenericTable extends Block implements MinekeaBlock {
     }
 
     @Override
-    public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
-
-        FuelRegistry.INSTANCE.add(this, 300);
-        FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
-
-        setupResources();
-    }
-
-    @Override
     public void setupResources() {
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table", ModInfo.getModPrefix(modId), woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/tables/%s%s_table", ModInfo.getModPrefix(modId), woodType));
+        Map<String, Identifier> materials = ((TableSettings) this.settings).getMaterials();
 
-        Identifier NORTH_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_north_connected");
-        Identifier SOUTH_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_south_connected");
-        Identifier EAST_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_east_connected");
-        Identifier WEST_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_west_connected");
+        Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));
+        Identifier LOG_MATERIAL = materials.getOrDefault("log", materials.get("main"));
 
-        Identifier NORTH_EAST_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_north_east_connected");
-        Identifier SOUTH_EAST_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_south_east_connected");
+        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
-        Identifier NORTH_WEST_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_north_west_connected");
-        Identifier SOUTH_WEST_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_south_west_connected");
+        Identifier NORTH_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_north_connected");
+        Identifier SOUTH_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_south_connected");
+        Identifier EAST_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_east_connected");
+        Identifier WEST_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_west_connected");
 
-        Identifier ALL_CONN = new Identifier(ModInfo.MOD_ID, "block/tables/table_all_connected");
+        Identifier NORTH_EAST_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_north_east_connected");
+        Identifier SOUTH_EAST_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_south_east_connected");
+
+        Identifier NORTH_WEST_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_north_west_connected");
+        Identifier SOUTH_WEST_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_south_west_connected");
+
+        Identifier ALL_CONN = new Identifier(ModInfo.MOD_ID, "block/furniture/tables/table_all_connected");
 
         Map<String, Identifier> OTHER_MODEL_IDS = Map.of(
-            "north", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_north", ModInfo.getModPrefix(modId), woodType)),
-            "east", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_east", ModInfo.getModPrefix(modId), woodType)),
-            "south", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_south", ModInfo.getModPrefix(modId), woodType)),
-            "west", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_west", ModInfo.getModPrefix(modId), woodType)),
-            "north_east", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_north_east", ModInfo.getModPrefix(modId), woodType)),
-            "south_east", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_south_east", ModInfo.getModPrefix(modId), woodType)),
-            "north_west", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_north_west", ModInfo.getModPrefix(modId), woodType)),
-            "south_west", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_south_west", ModInfo.getModPrefix(modId), woodType)),
-            "all", new Identifier(ModInfo.MOD_ID, String.format("block/tables/%s%s_table_all", ModInfo.getModPrefix(modId), woodType))
+            "north", new Identifier(MODEL_ID + "_north"),
+            "east", new Identifier(MODEL_ID + "_east"),
+            "south", new Identifier(MODEL_ID + "_south"),
+            "west", new Identifier(MODEL_ID + "_west"),
+            "north_east", new Identifier(MODEL_ID + "_north_east"),
+            "south_east", new Identifier(MODEL_ID + "_south_east"),
+            "north_west", new Identifier(MODEL_ID + "_north_west"),
+            "south_west", new Identifier(MODEL_ID + "_south_west"),
+            "all", new Identifier(MODEL_ID + "_all")
         );
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("XXX", "# #", "# #"),
                 JKeys.keys()
-                    .key("X", JIngredient.ingredient().item(materials.get("planks").toString()))
-                    .key("#", JIngredient.ingredient().item(materials.get("log").toString())),
-                JResult.stackedResult(BLOCK_ID.toString(), 3)
+                    .key("X", JIngredient.ingredient().item(PLANK_MATERIAL.toString()))
+                    .key("#", JIngredient.ingredient().item(LOG_MATERIAL.toString())),
+                JResult.stackedResult(getBlockID().toString(), 3)
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         JTextures textures = new JTextures()
-            .var("log", Texture.getBlockTextureID(materials.get("log")).toString())
-            .var("planks", Texture.getBlockTextureID(materials.get("planks")).toString());
+            .var("log", Texture.getBlockTextureID(LOG_MATERIAL).toString())
+            .var("planks", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
 
-        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minekea:block/table").textures(textures), MODEL_ID);
+        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minekea:block/furniture/table").textures(textures), MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(NORTH_CONN).textures(textures), OTHER_MODEL_IDS.get("north"));
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(EAST_CONN).textures(textures), OTHER_MODEL_IDS.get("east"));
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(SOUTH_CONN).textures(textures), OTHER_MODEL_IDS.get("south"));
@@ -303,7 +286,22 @@ public class GenericTable extends Block implements MinekeaBlock {
                     .put("east_connected=true,north_connected=true,south_connected=true,west_connected=true", new JBlockModel(OTHER_MODEL_IDS.get("all")))
 
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class TableSettings extends MinekeaBlockSettings<TableSettings> {
+        public TableSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/tables/%s", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }

@@ -1,18 +1,23 @@
 package com.chimericdream.minekea.block.containers.crates;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -45,41 +50,16 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     public static final DirectionProperty FACING;
     public static final BooleanProperty OPEN;
 
-    private final Identifier BLOCK_ID;
-    private final String modId;
-    private final String woodType;
-    private final Map<String, Identifier> materials;
-
     static {
         AXIS = Properties.AXIS;
         FACING = Properties.FACING;
         OPEN = Properties.OPEN;
     }
 
-    public GenericCrate(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
-    }
+    public GenericCrate(CrateSettings settings) {
+        super(settings);
 
-    public GenericCrate(String woodType, String modId, Map<String, Identifier> materials) {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(3.0F, 4.0F));
-
-        validateMaterials(materials);
-
-        this.modId = modId;
-        this.materials = materials;
-        this.woodType = woodType;
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y).with(FACING, Direction.NORTH).with(OPEN, false));
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
-    }
-
-    public void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"planks", "log"};
-
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
-        }
     }
 
     @Override
@@ -87,16 +67,24 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         return new CrateBlockEntity(Crates.CRATE_BLOCK_ENTITY, pos, state);
     }
 
+    @Override
     public Identifier getBlockID() {
-        return BLOCK_ID;
+        return ((CrateSettings) this.settings).getBlockId();
     }
 
+    @Override
     public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        register(false);
+    }
 
-        FuelRegistry.INSTANCE.add(this, 300);
-        FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
 
         setupResources();
     }
@@ -115,20 +103,14 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     }
 
     public static BlockState changeRotation(BlockState state, BlockRotation rotation) {
-        switch (rotation) {
-            case COUNTERCLOCKWISE_90:
-            case CLOCKWISE_90:
-                switch ((Axis) state.get(AXIS)) {
-                    case X:
-                        return (BlockState) state.with(AXIS, Axis.Z);
-                    case Z:
-                        return (BlockState) state.with(AXIS, Axis.X);
-                    default:
-                        return state;
-                }
-            default:
-                return state;
-        }
+        return switch (rotation) {
+            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch ((Axis) state.get(AXIS)) {
+                case X -> (BlockState) state.with(AXIS, Axis.Z);
+                case Z -> (BlockState) state.with(AXIS, Axis.X);
+                default -> state;
+            };
+            default -> state;
+        };
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -183,31 +165,37 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     }
 
     public void setupResources() {
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
-        Identifier HORIZONTAL_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/crates/%s%s_crate_horizontal", ModInfo.getModPrefix(modId), woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/crates/%s%s_crate", ModInfo.getModPrefix(modId), woodType));
+        Map<String, Identifier> materials = ((CrateSettings) this.settings).getMaterials();
+
+        Identifier log = materials.getOrDefault("log", materials.get("main"));
+        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
+        Identifier stripped_log = materials.getOrDefault("stripped_log", materials.get("main"));
+
+        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier HORIZONTAL_MODEL_ID = new Identifier(MODEL_ID + "_horizontal");
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("#X#", "XXX", "#X#"),
                 JKeys.keys()
-                    .key("X", JIngredient.ingredient().item(materials.get("planks").toString()))
-                    .key("#", JIngredient.ingredient().item(materials.get("log").toString())),
-                JResult.result(BLOCK_ID.toString())
+                    .key("X", JIngredient.ingredient().item(planks.toString()))
+                    .key("#", JIngredient.ingredient().item(log.toString())),
+                JResult.result(getBlockID().toString())
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         JTextures textures = new JTextures()
-            .var("brace", materials.get("log").getNamespace() + ":block/stripped_" + materials.get("log").getPath())
-            .var("planks", materials.get("planks").getNamespace() + ":block/" + materials.get("planks").getPath());
+            .var("brace", Model.getBlockModelID(stripped_log).toString())
+            .var("planks", Model.getBlockModelID(planks).toString());
 
-        JModel mainModel = JModel.model("minekea:block/crate").textures(textures);
-        JModel horizontalModel = JModel.model("minekea:block/crate_horizontal").textures(textures);
+        JModel mainModel = JModel.model("minekea:block/containers/crate").textures(textures);
+        JModel horizontalModel = JModel.model("minekea:block/containers/crate_horizontal").textures(textures);
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(mainModel, MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(horizontalModel, HORIZONTAL_MODEL_ID);
@@ -219,7 +207,22 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
                     .put("axis=y", new JBlockModel(MODEL_ID))
                     .put("axis=z", new JBlockModel(HORIZONTAL_MODEL_ID).x(90))
             ),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class CrateSettings extends MinekeaBlockSettings<CrateSettings> {
+        public CrateSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%scontainers/crates/%s", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }

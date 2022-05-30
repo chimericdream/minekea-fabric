@@ -1,7 +1,11 @@
 package com.chimericdream.minekea.block.furniture.shelves;
 
-import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.furniture.shelves.GenericFloatingShelf.FloatingShelfSettings;
+import com.chimericdream.minekea.block.furniture.shelves.GenericShelf.SupportedShelfSettings;
+import com.chimericdream.minekea.client.render.block.ShelfBlockEntityRenderer;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
+import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,12 +13,10 @@ import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegi
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Shelves implements MinekeaBlockCategory {
     public static final GenericShelf ACACIA_SHELF;
@@ -38,23 +40,23 @@ public class Shelves implements MinekeaBlockCategory {
     public static BlockEntityType<ShelfBlockEntity> SHELF_BLOCK_ENTITY;
 
     static {
-        ACACIA_SHELF = new GenericShelf("acacia", Map.of("slab", new Identifier("minecraft:acacia_slab"), "planks", new Identifier("minecraft:acacia_planks"), "log", new Identifier("minecraft:stripped_acacia_log")));
-        BIRCH_SHELF = new GenericShelf("birch", Map.of("slab", new Identifier("minecraft:birch_slab"), "planks", new Identifier("minecraft:birch_planks"), "log", new Identifier("minecraft:stripped_birch_log")));
-        CRIMSON_SHELF = new GenericShelf("crimson", Map.of("slab", new Identifier("minecraft:crimson_slab"), "planks", new Identifier("minecraft:crimson_planks"), "log", new Identifier("minecraft:stripped_crimson_stem")));
-        DARK_OAK_SHELF = new GenericShelf("dark_oak", Map.of("slab", new Identifier("minecraft:dark_oak_slab"), "planks", new Identifier("minecraft:dark_oak_planks"), "log", new Identifier("minecraft:stripped_dark_oak_log")));
-        JUNGLE_SHELF = new GenericShelf("jungle", Map.of("slab", new Identifier("minecraft:jungle_slab"), "planks", new Identifier("minecraft:jungle_planks"), "log", new Identifier("minecraft:stripped_jungle_log")));
-        OAK_SHELF = new GenericShelf("oak", Map.of("slab", new Identifier("minecraft:oak_slab"), "planks", new Identifier("minecraft:oak_planks"), "log", new Identifier("minecraft:stripped_oak_log")));
-        SPRUCE_SHELF = new GenericShelf("spruce", Map.of("slab", new Identifier("minecraft:spruce_slab"), "planks", new Identifier("minecraft:spruce_planks"), "log", new Identifier("minecraft:stripped_spruce_log")));
-        WARPED_SHELF = new GenericShelf("warped", Map.of("slab", new Identifier("minecraft:warped_slab"), "planks", new Identifier("minecraft:warped_planks"), "log", new Identifier("minecraft:stripped_warped_stem")));
+        ACACIA_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.ACACIA));
+        BIRCH_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.CRIMSON));
+        DARK_OAK_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.DARK_OAK));
+        JUNGLE_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.JUNGLE));
+        OAK_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.OAK));
+        SPRUCE_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.SPRUCE));
+        WARPED_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.WARPED));
 
-        ACACIA_FLOATING_SHELF = new GenericFloatingShelf("acacia", Map.of("slab", new Identifier("minecraft:acacia_slab"), "planks", new Identifier("minecraft:acacia_planks")));
-        BIRCH_FLOATING_SHELF = new GenericFloatingShelf("birch", Map.of("slab", new Identifier("minecraft:birch_slab"), "planks", new Identifier("minecraft:birch_planks")));
-        CRIMSON_FLOATING_SHELF = new GenericFloatingShelf("crimson", Map.of("slab", new Identifier("minecraft:crimson_slab"), "planks", new Identifier("minecraft:crimson_planks")));
-        DARK_OAK_FLOATING_SHELF = new GenericFloatingShelf("dark_oak", Map.of("slab", new Identifier("minecraft:dark_oak_slab"), "planks", new Identifier("minecraft:dark_oak_planks")));
-        JUNGLE_FLOATING_SHELF = new GenericFloatingShelf("jungle", Map.of("slab", new Identifier("minecraft:jungle_slab"), "planks", new Identifier("minecraft:jungle_planks")));
-        OAK_FLOATING_SHELF = new GenericFloatingShelf("oak", Map.of("slab", new Identifier("minecraft:oak_slab"), "planks", new Identifier("minecraft:oak_planks")));
-        SPRUCE_FLOATING_SHELF = new GenericFloatingShelf("spruce", Map.of("slab", new Identifier("minecraft:spruce_slab"), "planks", new Identifier("minecraft:spruce_planks")));
-        WARPED_FLOATING_SHELF = new GenericFloatingShelf("warped", Map.of("slab", new Identifier("minecraft:warped_slab"), "planks", new Identifier("minecraft:warped_planks")));
+        ACACIA_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.ACACIA));
+        BIRCH_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.CRIMSON));
+        DARK_OAK_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.DARK_OAK));
+        JUNGLE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.JUNGLE));
+        OAK_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.OAK));
+        SPRUCE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.SPRUCE));
+        WARPED_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.WARPED));
     }
 
     @Environment(EnvType.CLIENT)
@@ -111,7 +113,7 @@ public class Shelves implements MinekeaBlockCategory {
 
         SHELF_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "shelves/shelf_block_entity"),
+            ShelfBlockEntity.ENTITY_ID,
             FabricBlockEntityTypeBuilder.create(
                 ShelfBlockEntity::new,
                 shelves.toArray(new Block[0])

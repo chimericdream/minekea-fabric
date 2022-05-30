@@ -1,12 +1,17 @@
 package com.chimericdream.minekea.block.building.stairs;
 
+import com.chimericdream.minekea.block.building.stairs.GenericBookshelfStairs.BookshelfStairsSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericStairsBlock.StairsSettings;
+import com.chimericdream.minekea.block.building.stairs.GenericVerticalBookshelfStairs.VerticalBookshelfStairsSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericVerticalStairsBlock.VerticalStairsSettings;
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,15 +65,12 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalStairsBlock WAXED_WEATHERED_CUT_COPPER_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock WAXED_OXIDIZED_CUT_COPPER_VERTICAL_STAIRS;
 
-    public static final GenericVerticalStairsBlock CRIMSON_VERTICAL_STAIRS;
-    public static final GenericVerticalStairsBlock CRIMSON_STEM_VERTICAL_STAIRS;
-    public static final GenericVerticalStairsBlock WARPED_VERTICAL_STAIRS;
-    public static final GenericVerticalStairsBlock WARPED_STEM_VERTICAL_STAIRS;
-
     public static final GenericVerticalStairsBlock ACACIA_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock ACACIA_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock BIRCH_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock BIRCH_LOG_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock CRIMSON_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock CRIMSON_STEM_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock DARK_OAK_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock DARK_OAK_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock JUNGLE_VERTICAL_STAIRS;
@@ -77,20 +79,35 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalStairsBlock OAK_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock SPRUCE_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock SPRUCE_LOG_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock WARPED_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock WARPED_STEM_VERTICAL_STAIRS;
+
+    public static final GenericVerticalBookshelfStairs ACACIA_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs BIRCH_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs CRIMSON_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs DARK_OAK_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs JUNGLE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs OAK_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs SPRUCE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs WARPED_VERTICAL_BOOKSHELF_STAIRS;
 
     public static final GenericStairsBlock AMETHYST_STAIRS;
+    public static final GenericStairsBlock BASALT_BRICK_STAIRS;
     public static final GenericStairsBlock BASALT_STAIRS;
     public static final GenericStairsBlock BONE_STAIRS;
     public static final GenericStairsBlock CALCITE_STAIRS;
     public static final GenericStairsBlock COBBLED_END_STONE_STAIRS;
+    public static final GenericStairsBlock CRACKED_BASALT_BRICK_STAIRS;
     public static final GenericStairsBlock CRACKED_DEEPSLATE_BRICK_STAIRS;
     public static final GenericStairsBlock CRACKED_DEEPSLATE_TILE_STAIRS;
     public static final GenericStairsBlock CRACKED_STONE_BRICK_STAIRS;
+    public static final GenericStairsBlock CRIMSON_BASALT_BRICK_STAIRS;
     public static final GenericStairsBlock CRYING_OBSIDIAN_STAIRS;
     public static final GenericStairsBlock CUT_RED_SANDSTONE_STAIRS;
     public static final GenericStairsBlock CUT_SANDSTONE_STAIRS;
     public static final GenericStairsBlock DEEPSLATE_STAIRS;
     public static final GenericStairsBlock END_STONE_STAIRS;
+    public static final GenericStairsBlock MOSSY_BASALT_BRICK_STAIRS;
     public static final GenericStairsBlock NETHERRACK_STAIRS;
     public static final GenericStairsBlock OBSIDIAN_STAIRS;
     public static final GenericStairsBlock POLISHED_BASALT_STAIRS;
@@ -98,9 +115,8 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericStairsBlock SMOOTH_BASALT_STAIRS;
     public static final GenericStairsBlock SMOOTH_STONE_STAIRS;
     public static final GenericStairsBlock TUFF_STAIRS;
-
-    public static final GenericStairsBlock CRIMSON_STEM_STAIRS;
-    public static final GenericStairsBlock WARPED_STEM_STAIRS;
+    public static final GenericStairsBlock WARPED_BASALT_BRICK_STAIRS;
+    public static final GenericStairsBlock WARPED_NETHER_BRICK_STAIRS;
 
     public static final GenericStairsBlock WHITE_TERRACOTTA_STAIRS;
     public static final GenericStairsBlock ORANGE_TERRACOTTA_STAIRS;
@@ -172,18 +188,24 @@ public class Stairs implements MinekeaBlockCategory {
 
     public static final GenericStairsBlock ACACIA_LOG_STAIRS;
     public static final GenericStairsBlock BIRCH_LOG_STAIRS;
+    public static final GenericStairsBlock CRIMSON_STEM_STAIRS;
     public static final GenericStairsBlock DARK_OAK_LOG_STAIRS;
     public static final GenericStairsBlock JUNGLE_LOG_STAIRS;
     public static final GenericStairsBlock OAK_LOG_STAIRS;
     public static final GenericStairsBlock SPRUCE_LOG_STAIRS;
+    public static final GenericStairsBlock WARPED_STEM_STAIRS;
 
-    public static final List<GenericVerticalStairsBlock> FLAMMABLE_VERTICAL_STAIRS = new ArrayList<>();
-    public static final List<GenericVerticalStairsBlock> NONFLAMMABLE_VERTICAL_STAIRS = new ArrayList<>();
-    public static final List<GenericVerticalStairsBlock> TRANSLUCENT_VERTICAL_STAIRS = new ArrayList<>();
+    public static final GenericBookshelfStairs ACACIA_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs BIRCH_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs CRIMSON_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs DARK_OAK_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs JUNGLE_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs OAK_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs SPRUCE_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs WARPED_BOOKSHELF_STAIRS;
 
-    public static final List<GenericStairsBlock> FLAMMABLE_STAIRS = new ArrayList<>();
-    public static final List<GenericStairsBlock> NONFLAMMABLE_STAIRS = new ArrayList<>();
-    public static final List<GenericStairsBlock> TRANSLUCENT_STAIRS = new ArrayList<>();
+    public static final List<GenericStairsBlock> STAIRS = new ArrayList<>();
+    public static final List<GenericVerticalStairsBlock> VERTICAL_STAIRS = new ArrayList<>();
 
     static {
         ANDESITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.ANDESITE));
@@ -198,7 +220,7 @@ public class Stairs implements MinekeaBlockCategory {
         DEEPSLATE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DEEPSLATE_BRICK));
         DEEPSLATE_TILE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DEEPSLATE_TILE));
         DIORITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DIORITE));
-        END_STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.END_STONE));
+        END_STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.END_STONE_BRICK));
         GRANITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.GRANITE));
         MOSSY_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
         MOSSY_COBBLESTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MOSSY_COBBLESTONE));
@@ -225,11 +247,6 @@ public class Stairs implements MinekeaBlockCategory {
         WARPED_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_BASALT_BRICK));
         WARPED_NETHER_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_NETHER_BRICK));
 
-        CRIMSON_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRIMSON_PLANK));
-        CRIMSON_STEM_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRIMSON_STEM));
-        WARPED_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_PLANK));
-        WARPED_STEM_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_STEM));
-
         CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CUT_COPPER));
         EXPOSED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.EXPOSED_CUT_COPPER));
         WEATHERED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WEATHERED_CUT_COPPER));
@@ -239,35 +256,33 @@ public class Stairs implements MinekeaBlockCategory {
         WAXED_WEATHERED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WAXED_WEATHERED_CUT_COPPER));
         WAXED_OXIDIZED_CUT_COPPER_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WAXED_OXIDIZED_CUT_COPPER));
 
-        ACACIA_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.ACACIA_PLANK));
+        ACACIA_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.ACACIA));
         ACACIA_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.ACACIA_LOG));
-        BIRCH_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BIRCH_PLANK));
+        BIRCH_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BIRCH));
         BIRCH_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BIRCH_LOG));
-        DARK_OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DARK_OAK_PLANK));
+        CRIMSON_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRIMSON));
+        CRIMSON_STEM_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CRIMSON_STEM));
+        DARK_OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DARK_OAK));
         DARK_OAK_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DARK_OAK_LOG));
-        JUNGLE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.JUNGLE_PLANK));
+        JUNGLE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.JUNGLE));
         JUNGLE_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.JUNGLE_LOG));
-        OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OAK_PLANK));
+        OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OAK));
         OAK_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OAK_LOG));
-        SPRUCE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SPRUCE_PLANK));
+        SPRUCE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SPRUCE));
         SPRUCE_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SPRUCE_LOG));
+        WARPED_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED));
+        WARPED_STEM_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.WARPED_STEM));
 
-        FLAMMABLE_VERTICAL_STAIRS.addAll(List.of(
-            ACACIA_VERTICAL_STAIRS,
-            ACACIA_LOG_VERTICAL_STAIRS,
-            BIRCH_VERTICAL_STAIRS,
-            BIRCH_LOG_VERTICAL_STAIRS,
-            DARK_OAK_VERTICAL_STAIRS,
-            DARK_OAK_LOG_VERTICAL_STAIRS,
-            JUNGLE_VERTICAL_STAIRS,
-            JUNGLE_LOG_VERTICAL_STAIRS,
-            OAK_VERTICAL_STAIRS,
-            OAK_LOG_VERTICAL_STAIRS,
-            SPRUCE_VERTICAL_STAIRS,
-            SPRUCE_LOG_VERTICAL_STAIRS
-        ));
+        ACACIA_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.ACACIA).addMaterial("bookshelf", Bookshelves.ACACIA_BOOKSHELF.getBlockID()));
+        BIRCH_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.BIRCH).addMaterial("bookshelf", Bookshelves.BIRCH_BOOKSHELF.getBlockID()));
+        CRIMSON_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID()));
+        DARK_OAK_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID()));
+        JUNGLE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID()));
+        OAK_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")).addMaterial("model", new Identifier("minecraft:block/bookshelf")));
+        SPRUCE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID()));
+        WARPED_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID()));
 
-        NONFLAMMABLE_VERTICAL_STAIRS.addAll(List.of(
+        VERTICAL_STAIRS.addAll(List.of(
             ANDESITE_VERTICAL_STAIRS,
             BASALT_BRICK_VERTICAL_STAIRS,
             BLACKSTONE_VERTICAL_STAIRS,
@@ -316,27 +331,41 @@ public class Stairs implements MinekeaBlockCategory {
             WAXED_WEATHERED_CUT_COPPER_VERTICAL_STAIRS,
             WAXED_OXIDIZED_CUT_COPPER_VERTICAL_STAIRS,
 
+            ACACIA_VERTICAL_STAIRS,
+            ACACIA_LOG_VERTICAL_STAIRS,
+            BIRCH_VERTICAL_STAIRS,
+            BIRCH_LOG_VERTICAL_STAIRS,
             CRIMSON_VERTICAL_STAIRS,
             CRIMSON_STEM_VERTICAL_STAIRS,
+            DARK_OAK_VERTICAL_STAIRS,
+            DARK_OAK_LOG_VERTICAL_STAIRS,
+            JUNGLE_VERTICAL_STAIRS,
+            JUNGLE_LOG_VERTICAL_STAIRS,
+            OAK_VERTICAL_STAIRS,
+            OAK_LOG_VERTICAL_STAIRS,
+            SPRUCE_VERTICAL_STAIRS,
+            SPRUCE_LOG_VERTICAL_STAIRS,
             WARPED_VERTICAL_STAIRS,
             WARPED_STEM_VERTICAL_STAIRS
         ));
 
-        TRANSLUCENT_VERTICAL_STAIRS.addAll(List.of());
-
         AMETHYST_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.AMETHYST));
+        BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BASALT_BRICK));
         BASALT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BASALT));
         BONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BONE));
         CALCITE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CALCITE));
         COBBLED_END_STONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.COBBLED_END_STONE));
+        CRACKED_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_BASALT_BRICK));
         CRACKED_DEEPSLATE_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_DEEPSLATE_BRICK));
         CRACKED_DEEPSLATE_TILE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_DEEPSLATE_TILE));
         CRACKED_STONE_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_STONE_BRICK));
+        CRIMSON_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRIMSON_BASALT_BRICK));
         CRYING_OBSIDIAN_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRYING_OBSIDIAN));
         CUT_RED_SANDSTONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CUT_RED_SANDSTONE));
         CUT_SANDSTONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CUT_SANDSTONE));
         DEEPSLATE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.DEEPSLATE));
         END_STONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.END_STONE));
+        MOSSY_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
         NETHERRACK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.NETHERRACK));
         OBSIDIAN_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.OBSIDIAN));
         POLISHED_BASALT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.POLISHED_BASALT));
@@ -344,9 +373,8 @@ public class Stairs implements MinekeaBlockCategory {
         SMOOTH_BASALT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.SMOOTH_BASALT));
         SMOOTH_STONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.SMOOTH_STONE));
         TUFF_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.TUFF));
-
-        CRIMSON_STEM_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRIMSON_STEM));
-        WARPED_STEM_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WARPED_STEM));
+        WARPED_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WARPED_BASALT_BRICK));
+        WARPED_NETHER_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WARPED_NETHER_BRICK));
 
         WHITE_TERRACOTTA_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WHITE_TERRACOTTA));
         ORANGE_TERRACOTTA_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.ORANGE_TERRACOTTA));
@@ -418,34 +446,40 @@ public class Stairs implements MinekeaBlockCategory {
 
         ACACIA_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.ACACIA_LOG));
         BIRCH_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BIRCH_LOG));
+        CRIMSON_STEM_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRIMSON_STEM));
         DARK_OAK_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.DARK_OAK_LOG));
         JUNGLE_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.JUNGLE_LOG));
         OAK_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.OAK_LOG));
         SPRUCE_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.SPRUCE_LOG));
+        WARPED_STEM_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WARPED_STEM));
 
-        FLAMMABLE_STAIRS.addAll(List.of(
-            ACACIA_LOG_STAIRS,
-            BIRCH_LOG_STAIRS,
-            DARK_OAK_LOG_STAIRS,
-            JUNGLE_LOG_STAIRS,
-            OAK_LOG_STAIRS,
-            SPRUCE_LOG_STAIRS
-        ));
+        ACACIA_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.ACACIA).addMaterial("bookshelf", Bookshelves.ACACIA_BOOKSHELF.getBlockID()));
+        BIRCH_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.BIRCH).addMaterial("bookshelf", Bookshelves.BIRCH_BOOKSHELF.getBlockID()));
+        CRIMSON_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID()));
+        DARK_OAK_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID()));
+        JUNGLE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID()));
+        OAK_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")).addMaterial("model", new Identifier("minecraft:block/bookshelf")));
+        SPRUCE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID()));
+        WARPED_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID()));
 
-        NONFLAMMABLE_STAIRS.addAll(List.of(
+        STAIRS.addAll(List.of(
             AMETHYST_STAIRS,
+            BASALT_BRICK_STAIRS,
             BASALT_STAIRS,
             BONE_STAIRS,
             CALCITE_STAIRS,
             COBBLED_END_STONE_STAIRS,
+            CRACKED_BASALT_BRICK_STAIRS,
             CRACKED_DEEPSLATE_BRICK_STAIRS,
             CRACKED_DEEPSLATE_TILE_STAIRS,
             CRACKED_STONE_BRICK_STAIRS,
+            CRIMSON_BASALT_BRICK_STAIRS,
             CRYING_OBSIDIAN_STAIRS,
             CUT_RED_SANDSTONE_STAIRS,
             CUT_SANDSTONE_STAIRS,
             DEEPSLATE_STAIRS,
             END_STONE_STAIRS,
+            MOSSY_BASALT_BRICK_STAIRS,
             NETHERRACK_STAIRS,
             OBSIDIAN_STAIRS,
             POLISHED_BASALT_STAIRS,
@@ -453,9 +487,8 @@ public class Stairs implements MinekeaBlockCategory {
             SMOOTH_BASALT_STAIRS,
             SMOOTH_STONE_STAIRS,
             TUFF_STAIRS,
-
-            CRIMSON_STEM_STAIRS,
-            WARPED_STEM_STAIRS,
+            WARPED_BASALT_BRICK_STAIRS,
+            WARPED_NETHER_BRICK_STAIRS,
 
             WHITE_TERRACOTTA_STAIRS,
             ORANGE_TERRACOTTA_STAIRS,
@@ -523,57 +556,65 @@ public class Stairs implements MinekeaBlockCategory {
             BROWN_STAINED_GLASS_STAIRS,
             GREEN_STAINED_GLASS_STAIRS,
             RED_STAINED_GLASS_STAIRS,
-            BLACK_STAINED_GLASS_STAIRS
-        ));
+            BLACK_STAINED_GLASS_STAIRS,
 
-        TRANSLUCENT_STAIRS.addAll(List.of(
-            WHITE_STAINED_GLASS_STAIRS,
-            ORANGE_STAINED_GLASS_STAIRS,
-            MAGENTA_STAINED_GLASS_STAIRS,
-            LIGHT_BLUE_STAINED_GLASS_STAIRS,
-            YELLOW_STAINED_GLASS_STAIRS,
-            LIME_STAINED_GLASS_STAIRS,
-            PINK_STAINED_GLASS_STAIRS,
-            GRAY_STAINED_GLASS_STAIRS,
-            LIGHT_GRAY_STAINED_GLASS_STAIRS,
-            CYAN_STAINED_GLASS_STAIRS,
-            PURPLE_STAINED_GLASS_STAIRS,
-            BLUE_STAINED_GLASS_STAIRS,
-            BROWN_STAINED_GLASS_STAIRS,
-            GREEN_STAINED_GLASS_STAIRS,
-            RED_STAINED_GLASS_STAIRS,
-            BLACK_STAINED_GLASS_STAIRS
+            ACACIA_LOG_STAIRS,
+            BIRCH_LOG_STAIRS,
+            CRIMSON_STEM_STAIRS,
+            DARK_OAK_LOG_STAIRS,
+            JUNGLE_LOG_STAIRS,
+            OAK_LOG_STAIRS,
+            SPRUCE_LOG_STAIRS,
+            WARPED_STEM_STAIRS
         ));
     }
 
     @Override
     public void initializeClient() {
-        for (GenericStairsBlock block : TRANSLUCENT_STAIRS) {
-            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+        for (GenericStairsBlock block : STAIRS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            if (settings.isTranslucent()) {
+                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+            }
         }
 
-        for (GenericVerticalStairsBlock block : TRANSLUCENT_VERTICAL_STAIRS) {
-            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+        for (GenericVerticalStairsBlock block : VERTICAL_STAIRS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            if (settings.isTranslucent()) {
+                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+            }
         }
     }
 
     @Override
     public void registerBlocks() {
-        for (GenericStairsBlock block : NONFLAMMABLE_STAIRS) {
-            block.register(false);
+        for (GenericStairsBlock block : STAIRS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
         }
 
-        for (GenericStairsBlock block : FLAMMABLE_STAIRS) {
-            block.register();
+        for (GenericVerticalStairsBlock block : VERTICAL_STAIRS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
         }
 
-        for (GenericVerticalStairsBlock block : NONFLAMMABLE_VERTICAL_STAIRS) {
-            block.register(false);
-        }
+        ACACIA_BOOKSHELF_STAIRS.register();
+        BIRCH_BOOKSHELF_STAIRS.register();
+        CRIMSON_BOOKSHELF_STAIRS.register();
+        DARK_OAK_BOOKSHELF_STAIRS.register();
+        JUNGLE_BOOKSHELF_STAIRS.register();
+        OAK_BOOKSHELF_STAIRS.register();
+        SPRUCE_BOOKSHELF_STAIRS.register();
+        WARPED_BOOKSHELF_STAIRS.register();
 
-        for (GenericVerticalStairsBlock block : FLAMMABLE_VERTICAL_STAIRS) {
-            block.register();
-        }
+        ACACIA_VERTICAL_BOOKSHELF_STAIRS.register();
+        BIRCH_VERTICAL_BOOKSHELF_STAIRS.register();
+        CRIMSON_VERTICAL_BOOKSHELF_STAIRS.register();
+        DARK_OAK_VERTICAL_BOOKSHELF_STAIRS.register();
+        JUNGLE_VERTICAL_BOOKSHELF_STAIRS.register();
+        OAK_VERTICAL_BOOKSHELF_STAIRS.register();
+        SPRUCE_VERTICAL_BOOKSHELF_STAIRS.register();
+        WARPED_VERTICAL_BOOKSHELF_STAIRS.register();
     }
 
     @Override

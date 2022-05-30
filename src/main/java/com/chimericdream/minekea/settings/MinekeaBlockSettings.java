@@ -6,6 +6,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> extends FabricBlockSettings {
@@ -16,6 +17,8 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected int burnSpread = 0;
     protected int burnTime = 0;
     protected int fuelTime = 0;
+    protected boolean isFlammable = false;
+    protected boolean isTranslucent = false;
     protected String defaultTranslation;
     protected Block baseBlock;
 
@@ -44,13 +47,23 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.materials = settings.materials;
         this.modId = settings.modId;
         this.blockId = settings.blockId;
-        this.burnTime = settings.burnTime;
         this.burnSpread = settings.burnSpread;
+        this.burnTime = settings.burnTime;
         this.fuelTime = settings.fuelTime;
+        this.isFlammable = settings.isFlammable;
+        this.isTranslucent = settings.isTranslucent;
         this.baseBlock = settings.baseBlock;
     }
 
     abstract public Identifier getBlockId();
+
+    public String getModId() {
+        return this.modId;
+    }
+
+    public String getMainMaterial() {
+        return this.mainMaterial;
+    }
 
     public Map<String, Identifier> getMaterials() {
         return this.materials;
@@ -58,6 +71,20 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public Block getBaseBlock() {
         return this.baseBlock;
+    }
+
+    public boolean isFlammable() {
+        return this.isFlammable;
+    }
+
+    public boolean isTranslucent() {
+        return this.isTranslucent;
+    }
+
+    public T modId(String modId) {
+        this.modId = modId;
+        // noinspection unchecked
+        return (T) this;
     }
 
     public T baseBlock(Block baseBlock) {
@@ -84,9 +111,45 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         return (T) this;
     }
 
+    public T flammable() {
+        this.isFlammable = true;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T nonFlammable() {
+        this.isFlammable = false;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T translucent() {
+        this.isTranslucent = true;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T opaque() {
+        this.isTranslucent = false;
+        // noinspection unchecked
+        return (T) this;
+    }
+
     public T materials(Map<String, Identifier> materials) {
         validateMaterials(materials);
-        this.materials = materials;
+        this.materials = new HashMap<>(materials);
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T addMaterial(String key, Identifier value) {
+        this.materials.put(key, value);
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T addMaterial(String key, String value) {
+        this.materials.put(key, new Identifier(value));
         // noinspection unchecked
         return (T) this;
     }

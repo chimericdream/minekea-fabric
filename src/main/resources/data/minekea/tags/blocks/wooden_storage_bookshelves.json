@@ -1,14 +1,14 @@
 {
     "replace": false,
     "values": [
-        "minekea:bookshelves/storage/acacia_storage_shelf",
-        "minekea:bookshelves/storage/birch_storage_shelf",
-        "minekea:bookshelves/storage/crimson_storage_shelf",
-        "minekea:bookshelves/storage/dark_oak_storage_shelf",
-        "minekea:bookshelves/storage/jungle_storage_shelf",
-        "minekea:bookshelves/storage/oak_storage_shelf",
-        "minekea:bookshelves/storage/spruce_storage_shelf",
-        "minekea:bookshelves/storage/warped_storage_shelf",
+        "minekea:furniture/bookshelves/storage/acacia",
+        "minekea:furniture/bookshelves/storage/birch",
+        "minekea:furniture/bookshelves/storage/crimson",
+        "minekea:furniture/bookshelves/storage/dark_oak",
+        "minekea:furniture/bookshelves/storage/jungle",
+        "minekea:furniture/bookshelves/storage/oak",
+        "minekea:furniture/bookshelves/storage/spruce",
+        "minekea:furniture/bookshelves/storage/warped",
         {"id": "#minekea:byg/wooden_storage_bookshelves", "required": false}
     ]
 }

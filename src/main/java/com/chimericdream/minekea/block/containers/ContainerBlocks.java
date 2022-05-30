@@ -1,13 +1,11 @@
 package com.chimericdream.minekea.block.containers;
 
-import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.containers.barrels.Barrels;
 import com.chimericdream.minekea.block.containers.crates.Crates;
-import com.chimericdream.minekea.block.containers.jars.GlassJarBlock;
-import com.chimericdream.minekea.block.containers.jars.GlassJarBlockEntity;
-import com.chimericdream.minekea.block.containers.jars.GlassJarBlockEntityRenderer;
-import com.chimericdream.minekea.block.containers.jars.GlassJarItemRenderer;
+import com.chimericdream.minekea.client.render.block.GlassJarBlockEntityRenderer;
+import com.chimericdream.minekea.client.render.item.GlassJarItemRenderer;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -18,7 +16,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.List;
@@ -66,7 +63,7 @@ public class ContainerBlocks implements MinekeaBlockCategory {
 
         GLASS_JAR_BLOCK_ENTITY = Registry.register(
             Registry.BLOCK_ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "jars/glass_jar_block_entity"),
+            GlassJarBlockEntity.ENTITY_ID,
             FabricBlockEntityTypeBuilder.create(GlassJarBlockEntity::new, GLASS_JAR).build(null)
         );
     }

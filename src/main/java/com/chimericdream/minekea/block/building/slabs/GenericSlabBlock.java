@@ -72,10 +72,7 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
             )
         );
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(
-            new Identifier(getBlockID().getNamespace(), "blocks/" + getBlockID().getPath()),
-            LootTable.slabLootTable(getBlockID())
-        );
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.getLootTableID(getBlockID()), LootTable.slabLootTable(getBlockID()));
 
         JTextures textures = new JTextures()
             .var("bottom", Texture.getBlockTextureID(end).toString())
@@ -113,7 +110,7 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
         @Override
         public Identifier getBlockId() {
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("slabs/%s%s_slab", ModInfo.getModPrefix(modId), mainMaterial));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/slabs/%s", ModInfo.getModPrefix(modId), mainMaterial));
             }
 
             return blockId;

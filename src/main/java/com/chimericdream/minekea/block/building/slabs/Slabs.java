@@ -1,34 +1,42 @@
 package com.chimericdream.minekea.block.building.slabs;
 
+import com.chimericdream.minekea.block.building.slabs.GenericBookshelfSlab.BookshelfSlabSettings;
 import com.chimericdream.minekea.block.building.slabs.GenericSlabBlock.SlabSettings;
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Slabs implements MinekeaBlockCategory {
     public static final GenericSlabBlock AMETHYST_SLAB;
+    public static final GenericSlabBlock BASALT_BRICK_SLAB;
     public static final GenericSlabBlock BASALT_SLAB;
     public static final GenericSlabBlock BONE_SLAB;
     public static final GenericSlabBlock CALCITE_SLAB;
+    public static final GenericSlabBlock COBBLED_END_STONE_SLAB;
+    public static final GenericSlabBlock CRACKED_BASALT_BRICK_SLAB;
     public static final GenericSlabBlock CRACKED_DEEPSLATE_BRICK_SLAB;
     public static final GenericSlabBlock CRACKED_DEEPSLATE_TILE_SLAB;
     public static final GenericSlabBlock CRACKED_STONE_BRICK_SLAB;
     public static final GenericSlabBlock CRIMSON_BASALT_BRICK_SLAB;
     public static final GenericSlabBlock CRYING_OBSIDIAN_SLAB;
     public static final GenericSlabBlock DEEPSLATE_SLAB;
+    public static final GenericSlabBlock END_STONE_SLAB;
+    public static final GenericSlabBlock MOSSY_BASALT_BRICK_SLAB;
     public static final GenericSlabBlock OBSIDIAN_SLAB;
     public static final GenericSlabBlock POLISHED_BASALT_SLAB;
     public static final GenericSlabBlock PURPUR_PILLAR_SLAB;
     public static final GenericSlabBlock SMOOTH_BASALT_SLAB;
     public static final GenericSlabBlock TUFF_SLAB;
-
-    public static final GenericSlabBlock CRIMSON_STEM_SLAB;
-    public static final GenericSlabBlock WARPED_STEM_SLAB;
+    public static final GenericSlabBlock WARPED_BASALT_BRICK_SLAB;
+    public static final GenericSlabBlock WARPED_NETHER_BRICK_SLAB;
 
     public static final GenericSlabBlock WHITE_TERRACOTTA_SLAB;
     public static final GenericSlabBlock ORANGE_TERRACOTTA_SLAB;
@@ -100,31 +108,48 @@ public class Slabs implements MinekeaBlockCategory {
 
     public static final GenericSlabBlock ACACIA_LOG_SLAB;
     public static final GenericSlabBlock BIRCH_LOG_SLAB;
+    public static final GenericSlabBlock CRIMSON_STEM_SLAB;
     public static final GenericSlabBlock DARK_OAK_LOG_SLAB;
     public static final GenericSlabBlock JUNGLE_LOG_SLAB;
     public static final GenericSlabBlock OAK_LOG_SLAB;
     public static final GenericSlabBlock SPRUCE_LOG_SLAB;
+    public static final GenericSlabBlock WARPED_STEM_SLAB;
 
-    public static final List<GenericSlabBlock> FLAMMABLE_SLABS = new ArrayList<>();
-    public static final List<GenericSlabBlock> NONFLAMMABLE_SLABS = new ArrayList<>();
-    public static final List<GenericSlabBlock> TRANSLUCENT_SLABS = new ArrayList<>();
+    public static final GenericBookshelfSlab ACACIA_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab BIRCH_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab CRIMSON_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab DARK_OAK_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab JUNGLE_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab OAK_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab SPRUCE_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab WARPED_BOOKSHELF_SLAB;
+
+    public static final List<GenericSlabBlock> SLABS = new ArrayList<>();
+    public static final List<GenericBookshelfSlab> BOOKSHELF_SLABS = new ArrayList<>();
 
     static {
         AMETHYST_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.AMETHYST));
+        BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BASALT_BRICK));
         BASALT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BASALT));
         BONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BONE));
         CALCITE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CALCITE));
+        COBBLED_END_STONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.COBBLED_END_STONE));
+        CRACKED_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_BASALT_BRICK));
         CRACKED_DEEPSLATE_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_DEEPSLATE_BRICK));
         CRACKED_DEEPSLATE_TILE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_DEEPSLATE_TILE));
         CRACKED_STONE_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_STONE_BRICK));
         CRIMSON_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRIMSON_BASALT_BRICK));
         CRYING_OBSIDIAN_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRYING_OBSIDIAN));
         DEEPSLATE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.DEEPSLATE));
+        END_STONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.END_STONE));
+        MOSSY_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
         OBSIDIAN_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.OBSIDIAN));
         POLISHED_BASALT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.POLISHED_BASALT));
         PURPUR_PILLAR_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.PURPUR_PILLAR));
         SMOOTH_BASALT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.SMOOTH_BASALT));
         TUFF_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.TUFF));
+        WARPED_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.WARPED_BASALT_BRICK));
+        WARPED_NETHER_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.WARPED_NETHER_BRICK));
 
         CRIMSON_STEM_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRIMSON_STEM));
         WARPED_STEM_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.WARPED_STEM));
@@ -204,34 +229,38 @@ public class Slabs implements MinekeaBlockCategory {
         OAK_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.OAK_LOG));
         SPRUCE_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.SPRUCE_LOG));
 
-        FLAMMABLE_SLABS.addAll(List.of(
-            ACACIA_LOG_SLAB,
-            BIRCH_LOG_SLAB,
-            DARK_OAK_LOG_SLAB,
-            JUNGLE_LOG_SLAB,
-            OAK_LOG_SLAB,
-            SPRUCE_LOG_SLAB
-        ));
+        ACACIA_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.ACACIA).addMaterial("bookshelf", Bookshelves.ACACIA_BOOKSHELF.getBlockID()));
+        BIRCH_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.BIRCH).addMaterial("bookshelf", Bookshelves.BIRCH_BOOKSHELF.getBlockID()));
+        CRIMSON_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID()));
+        DARK_OAK_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID()));
+        JUNGLE_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID()));
+        OAK_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")).addMaterial("model", new Identifier("minecraft:block/bookshelf")));
+        SPRUCE_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID()));
+        WARPED_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID()));
 
-        NONFLAMMABLE_SLABS.addAll(List.of(
+        SLABS.addAll(List.of(
             AMETHYST_SLAB,
+            BASALT_BRICK_SLAB,
             BASALT_SLAB,
             BONE_SLAB,
             CALCITE_SLAB,
+            COBBLED_END_STONE_SLAB,
+            CRACKED_BASALT_BRICK_SLAB,
             CRACKED_DEEPSLATE_BRICK_SLAB,
             CRACKED_DEEPSLATE_TILE_SLAB,
             CRACKED_STONE_BRICK_SLAB,
             CRIMSON_BASALT_BRICK_SLAB,
             CRYING_OBSIDIAN_SLAB,
             DEEPSLATE_SLAB,
+            END_STONE_SLAB,
+            MOSSY_BASALT_BRICK_SLAB,
             OBSIDIAN_SLAB,
             POLISHED_BASALT_SLAB,
             PURPUR_PILLAR_SLAB,
             SMOOTH_BASALT_SLAB,
             TUFF_SLAB,
-
-            CRIMSON_STEM_SLAB,
-            WARPED_STEM_SLAB,
+            WARPED_BASALT_BRICK_SLAB,
+            WARPED_NETHER_BRICK_SLAB,
 
             WHITE_TERRACOTTA_SLAB,
             ORANGE_TERRACOTTA_SLAB,
@@ -299,44 +328,57 @@ public class Slabs implements MinekeaBlockCategory {
             BROWN_STAINED_GLASS_SLAB,
             GREEN_STAINED_GLASS_SLAB,
             RED_STAINED_GLASS_SLAB,
-            BLACK_STAINED_GLASS_SLAB
+            BLACK_STAINED_GLASS_SLAB,
+
+            ACACIA_LOG_SLAB,
+            BIRCH_LOG_SLAB,
+            CRIMSON_STEM_SLAB,
+            DARK_OAK_LOG_SLAB,
+            JUNGLE_LOG_SLAB,
+            OAK_LOG_SLAB,
+            SPRUCE_LOG_SLAB,
+            WARPED_STEM_SLAB
         ));
 
-        TRANSLUCENT_SLABS.addAll(List.of(
-            WHITE_STAINED_GLASS_SLAB,
-            ORANGE_STAINED_GLASS_SLAB,
-            MAGENTA_STAINED_GLASS_SLAB,
-            LIGHT_BLUE_STAINED_GLASS_SLAB,
-            YELLOW_STAINED_GLASS_SLAB,
-            LIME_STAINED_GLASS_SLAB,
-            PINK_STAINED_GLASS_SLAB,
-            GRAY_STAINED_GLASS_SLAB,
-            LIGHT_GRAY_STAINED_GLASS_SLAB,
-            CYAN_STAINED_GLASS_SLAB,
-            PURPLE_STAINED_GLASS_SLAB,
-            BLUE_STAINED_GLASS_SLAB,
-            BROWN_STAINED_GLASS_SLAB,
-            GREEN_STAINED_GLASS_SLAB,
-            RED_STAINED_GLASS_SLAB,
-            BLACK_STAINED_GLASS_SLAB
+        BOOKSHELF_SLABS.addAll(List.of(
+            ACACIA_BOOKSHELF_SLAB,
+            BIRCH_BOOKSHELF_SLAB,
+            CRIMSON_BOOKSHELF_SLAB,
+            DARK_OAK_BOOKSHELF_SLAB,
+            JUNGLE_BOOKSHELF_SLAB,
+            OAK_BOOKSHELF_SLAB,
+            SPRUCE_BOOKSHELF_SLAB,
+            WARPED_BOOKSHELF_SLAB
         ));
     }
 
     @Override
     public void initializeClient() {
-        for (GenericSlabBlock block : TRANSLUCENT_SLABS) {
-            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+        for (GenericSlabBlock block : SLABS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            if (settings.isTranslucent()) {
+                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+            }
+        }
+
+        for (GenericBookshelfSlab block : BOOKSHELF_SLABS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            if (settings.isTranslucent()) {
+                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+            }
         }
     }
 
     @Override
     public void registerBlocks() {
-        for (GenericSlabBlock block : NONFLAMMABLE_SLABS) {
-            block.register(false);
+        for (GenericSlabBlock block : SLABS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
         }
 
-        for (GenericSlabBlock block : FLAMMABLE_SLABS) {
-            block.register();
+        for (GenericBookshelfSlab block : BOOKSHELF_SLABS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
         }
     }
 

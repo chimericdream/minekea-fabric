@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.fluid;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.containers.HoneyCauldronBlock;
+import com.chimericdream.minekea.block.containers.MilkCauldronBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.item.containers.HoneyBucket;
 import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
@@ -44,12 +47,12 @@ public class Fluids implements MinekeaBlockCategory {
     public static final Item HONEY_BUCKET;
 
     public static final Identifier MILK_ID = new Identifier(ModInfo.MOD_ID, "fluids/milk");
-    public static final Identifier FLOWING_MILK_ID = new Identifier(ModInfo.MOD_ID, "fluids/flowing_milk");
-    public static final Identifier MILK_SOURCE_ID = new Identifier(ModInfo.MOD_ID, "fluids/milk_source");
+    public static final Identifier FLOWING_MILK_ID = new Identifier(ModInfo.MOD_ID, "fluids/milk/flowing");
+    public static final Identifier MILK_SOURCE_ID = new Identifier(ModInfo.MOD_ID, "fluids/milk/source");
 
     public static final Identifier HONEY_ID = new Identifier(ModInfo.MOD_ID, "fluids/honey");
-    public static final Identifier FLOWING_HONEY_ID = new Identifier(ModInfo.MOD_ID, "fluids/flowing_honey");
-    public static final Identifier HONEY_SOURCE_ID = new Identifier(ModInfo.MOD_ID, "fluids/honey_source");
+    public static final Identifier FLOWING_HONEY_ID = new Identifier(ModInfo.MOD_ID, "fluids/honey/flowing");
+    public static final Identifier HONEY_SOURCE_ID = new Identifier(ModInfo.MOD_ID, "fluids/honey/source");
 
     static {
         MILK = Registry.register(Registry.FLUID, MILK_ID, new MilkFluid.Still());
@@ -76,8 +79,8 @@ public class Fluids implements MinekeaBlockCategory {
 
         HONEY_BUCKET = Registry.register(
             Registry.ITEM,
-            HoneyBucketItem.ITEM_ID,
-            new HoneyBucketItem()
+            HoneyBucket.ITEM_ID,
+            new HoneyBucket()
         );
         HONEY_CAULDRON = Registry.register(
             Registry.BLOCK,

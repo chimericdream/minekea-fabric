@@ -153,7 +153,7 @@ public class GenericStairsBlock extends StairsBlock implements MinekeaBlock {
         @Override
         public Identifier getBlockId() {
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("stairs/%s%s_stairs", ModInfo.getModPrefix(modId), mainMaterial));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/stairs/%s", ModInfo.getModPrefix(modId), mainMaterial));
             }
 
             return blockId;

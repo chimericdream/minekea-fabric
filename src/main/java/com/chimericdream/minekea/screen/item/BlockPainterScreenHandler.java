@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.screen.item;
 
-import com.chimericdream.minekea.item.PainterItem;
+import com.chimericdream.minekea.item.tools.PainterItem;
 import com.chimericdream.minekea.util.ScreenHelpers;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

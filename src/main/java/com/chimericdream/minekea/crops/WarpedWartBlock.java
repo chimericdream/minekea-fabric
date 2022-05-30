@@ -24,7 +24,7 @@ import net.minecraft.world.BlockView;
 import java.util.Random;
 
 public class WarpedWartBlock extends PlantBlock implements MinekeaBlock {
-    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "crops/warped_wart_block");
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "crops/warped_wart/block");
     public static final IntProperty AGE;
     private static final VoxelShape[] AGE_TO_SHAPE;
 
@@ -52,7 +52,6 @@ public class WarpedWartBlock extends PlantBlock implements MinekeaBlock {
             state = (BlockState) state.with(AGE, i + 1);
             world.setBlockState(pos, state, 2);
         }
-
     }
 
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
@@ -93,17 +92,17 @@ public class WarpedWartBlock extends PlantBlock implements MinekeaBlock {
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minecraft:block/crop")
-                .textures(new JTextures().var("crop", "minekea:block/crops/warped_wart_stage0")),
+                .textures(new JTextures().var("crop", "minekea:block/crops/warped_wart/stage0")),
             STAGE0_MODEL_ID
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minecraft:block/crop")
-                .textures(new JTextures().var("crop", "minekea:block/crops/warped_wart_stage1")),
+                .textures(new JTextures().var("crop", "minekea:block/crops/warped_wart/stage1")),
             STAGE1_MODEL_ID
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minecraft:block/crop")
-                .textures(new JTextures().var("crop", "minekea:block/crops/warped_wart_stage2")),
+                .textures(new JTextures().var("crop", "minekea:block/crops/warped_wart/stage2")),
             STAGE2_MODEL_ID
         );
 

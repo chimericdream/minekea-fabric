@@ -99,7 +99,7 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
             .var("side", Texture.getBlockTextureID(side).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model(ModInfo.MOD_ID + ":block/building/block_cover").textures(textures),
+            JModel.model(ModInfo.MOD_ID + ":block/building/cover").textures(textures),
             MODEL_ID
         );
 
@@ -125,7 +125,7 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
         @Override
         public Identifier getBlockId() {
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("covers/%s%s_cover", ModInfo.getModPrefix(modId), mainMaterial));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/covers/%s", ModInfo.getModPrefix(modId), mainMaterial));
             }
 
             return blockId;

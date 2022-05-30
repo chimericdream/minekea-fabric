@@ -1,14 +1,14 @@
 {
     "replace": false,
     "values": [
-        "minekea:seating/stools/acacia_stool",
-        "minekea:seating/stools/birch_stool",
-        "minekea:seating/stools/crimson_stool",
-        "minekea:seating/stools/dark_oak_stool",
-        "minekea:seating/stools/jungle_stool",
-        "minekea:seating/stools/oak_stool",
-        "minekea:seating/stools/spruce_stool",
-        "minekea:seating/stools/warped_stool",
+        "minekea:furniture/seating/stools/acacia",
+        "minekea:furniture/seating/stools/birch",
+        "minekea:furniture/seating/stools/crimson",
+        "minekea:furniture/seating/stools/dark_oak",
+        "minekea:furniture/seating/stools/jungle",
+        "minekea:furniture/seating/stools/oak",
+        "minekea:furniture/seating/stools/spruce",
+        "minekea:furniture/seating/stools/warped",
         {"id": "#minekea:byg/wooden_stools", "required": false}
     ]
 }

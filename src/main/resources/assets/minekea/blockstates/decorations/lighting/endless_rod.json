@@ -1,0 +1,30 @@
+{
+    "variants": {
+        "facing=down": {
+            "model": "minekea:block/decorations/lighting/endless_rod",
+            "x": 180
+        },
+        "facing=east": {
+            "model": "minekea:block/decorations/lighting/endless_rod",
+            "x": 90,
+            "y": 90
+        },
+        "facing=north": {
+            "model": "minekea:block/decorations/lighting/endless_rod",
+            "x": 90
+        },
+        "facing=south": {
+            "model": "minekea:block/decorations/lighting/endless_rod",
+            "x": 90,
+            "y": 180
+        },
+        "facing=up": {
+            "model": "minekea:block/decorations/lighting/endless_rod"
+        },
+        "facing=west": {
+            "model": "minekea:block/decorations/lighting/endless_rod",
+            "x": 90,
+            "y": 270
+        }
+    }
+}

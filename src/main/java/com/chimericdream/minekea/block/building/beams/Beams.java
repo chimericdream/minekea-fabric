@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.building.beams;
 import com.chimericdream.minekea.block.building.beams.GenericBeamBlock.BeamSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
@@ -153,9 +154,7 @@ public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock WARPED_PLANK_BEAM;
     public static final GenericBeamBlock WARPED_STEM_BEAM;
 
-    public static final List<GenericBeamBlock> FLAMMABLE_BEAMS = new ArrayList<>();
-    public static final List<GenericBeamBlock> NONFLAMMABLE_BEAMS = new ArrayList<>();
-    public static final List<GenericBeamBlock> TRANSLUCENT_BEAMS = new ArrayList<>();
+    public static final List<GenericBeamBlock> BEAMS = new ArrayList<>();
 
     static {
         AMETHYST_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.AMETHYST));
@@ -284,38 +283,23 @@ public class Beams implements MinekeaBlockCategory {
         BLACK_STAINED_GLASS_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BLACK_STAINED_GLASS));
 
         ACACIA_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ACACIA_LOG));
-        ACACIA_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ACACIA_PLANK));
+        ACACIA_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.ACACIA));
         BIRCH_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BIRCH_LOG));
-        BIRCH_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BIRCH_PLANK));
-        CRIMSON_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.CRIMSON_PLANK));
+        BIRCH_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.CRIMSON));
         CRIMSON_STEM_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.CRIMSON_STEM));
         DARK_OAK_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.DARK_OAK_LOG));
-        DARK_OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.DARK_OAK_PLANK));
+        DARK_OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.JUNGLE_LOG));
-        JUNGLE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.JUNGLE_PLANK));
+        JUNGLE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.JUNGLE));
         OAK_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OAK_LOG));
-        OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OAK_PLANK));
+        OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OAK));
         SPRUCE_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.SPRUCE_LOG));
-        SPRUCE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.SPRUCE_PLANK));
-        WARPED_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.WARPED_PLANK));
+        SPRUCE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.SPRUCE));
+        WARPED_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.WARPED));
         WARPED_STEM_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.WARPED_STEM));
 
-        FLAMMABLE_BEAMS.addAll(List.of(
-            ACACIA_LOG_BEAM,
-            ACACIA_PLANK_BEAM,
-            BIRCH_LOG_BEAM,
-            BIRCH_PLANK_BEAM,
-            DARK_OAK_LOG_BEAM,
-            DARK_OAK_PLANK_BEAM,
-            JUNGLE_LOG_BEAM,
-            JUNGLE_PLANK_BEAM,
-            OAK_LOG_BEAM,
-            OAK_PLANK_BEAM,
-            SPRUCE_LOG_BEAM,
-            SPRUCE_PLANK_BEAM
-        ));
-
-        NONFLAMMABLE_BEAMS.addAll(List.of(
+        BEAMS.addAll(List.of(
             AMETHYST_BEAM,
             ANDESITE_BEAM,
             BASALT_BEAM,
@@ -441,47 +425,40 @@ public class Beams implements MinekeaBlockCategory {
             RED_STAINED_GLASS_BEAM,
             BLACK_STAINED_GLASS_BEAM,
 
-            CRIMSON_STEM_BEAM,
-            WARPED_STEM_BEAM,
+            ACACIA_LOG_BEAM,
+            ACACIA_PLANK_BEAM,
+            BIRCH_LOG_BEAM,
+            BIRCH_PLANK_BEAM,
             CRIMSON_PLANK_BEAM,
-            WARPED_PLANK_BEAM
-        ));
-
-        TRANSLUCENT_BEAMS.addAll(List.of(
-            WHITE_STAINED_GLASS_BEAM,
-            ORANGE_STAINED_GLASS_BEAM,
-            MAGENTA_STAINED_GLASS_BEAM,
-            LIGHT_BLUE_STAINED_GLASS_BEAM,
-            YELLOW_STAINED_GLASS_BEAM,
-            LIME_STAINED_GLASS_BEAM,
-            PINK_STAINED_GLASS_BEAM,
-            GRAY_STAINED_GLASS_BEAM,
-            LIGHT_GRAY_STAINED_GLASS_BEAM,
-            CYAN_STAINED_GLASS_BEAM,
-            PURPLE_STAINED_GLASS_BEAM,
-            BLUE_STAINED_GLASS_BEAM,
-            BROWN_STAINED_GLASS_BEAM,
-            GREEN_STAINED_GLASS_BEAM,
-            RED_STAINED_GLASS_BEAM,
-            BLACK_STAINED_GLASS_BEAM
+            CRIMSON_STEM_BEAM,
+            DARK_OAK_LOG_BEAM,
+            DARK_OAK_PLANK_BEAM,
+            JUNGLE_LOG_BEAM,
+            JUNGLE_PLANK_BEAM,
+            OAK_LOG_BEAM,
+            OAK_PLANK_BEAM,
+            SPRUCE_LOG_BEAM,
+            SPRUCE_PLANK_BEAM,
+            WARPED_PLANK_BEAM,
+            WARPED_STEM_BEAM
         ));
     }
 
     @Override
     public void initializeClient() {
-        for (GenericBeamBlock beam : TRANSLUCENT_BEAMS) {
-            BlockRenderLayerMap.INSTANCE.putBlock(beam, RenderLayer.getTranslucent());
+        for (GenericBeamBlock block : BEAMS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            if (settings.isTranslucent()) {
+                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+            }
         }
     }
 
     @Override
     public void registerBlocks() {
-        for (GenericBeamBlock beam : FLAMMABLE_BEAMS) {
-            beam.register();
-        }
-
-        for (GenericBeamBlock beam : NONFLAMMABLE_BEAMS) {
-            beam.register(false);
+        for (GenericBeamBlock block : BEAMS) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
         }
     }
 

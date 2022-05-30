@@ -1,6 +1,5 @@
 package com.chimericdream.minekea;
 
-import com.chimericdream.minekea.block.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
@@ -32,7 +31,6 @@ import java.util.List;
 public class MinekeaMod implements ModInitializer {
     public static final Logger LOGGER;
 
-    public static final Bookshelves BOOKSHELVES;
     public static final BuildingBlocks BUILDING_BLOCKS;
     public static final ContainerBlocks CONTAINER_BLOCKS;
     public static final Crops CROPS;
@@ -55,7 +53,6 @@ public class MinekeaMod implements ModInitializer {
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
 
-        BOOKSHELVES = new Bookshelves();
         BUILDING_BLOCKS = new BuildingBlocks();
         CONTAINER_BLOCKS = new ContainerBlocks();
         CROPS = new Crops();
@@ -64,7 +61,6 @@ public class MinekeaMod implements ModInitializer {
         FURNITURE_BLOCKS = new FurnitureBlocks();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
-            BOOKSHELVES,
             BUILDING_BLOCKS,
             CONTAINER_BLOCKS,
             CROPS,

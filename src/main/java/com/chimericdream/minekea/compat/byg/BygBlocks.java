@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.compat.byg;
 
-import com.chimericdream.minekea.block.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.block.containers.crates.GenericCrate;
+import com.chimericdream.minekea.block.furniture.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
 import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
 import com.chimericdream.minekea.compat.ModCompatLayer;
@@ -311,34 +311,34 @@ public class BygBlocks implements ModCompatLayer {
     @Override
     public List<GenericStorageBookshelf> getStorageShelves() {
         return List.of(
-            ASPEN_STORAGE_SHELF,
-            BAOBAB_STORAGE_SHELF,
-            BLUE_ENCHANTED_STORAGE_SHELF,
-            BULBIS_STORAGE_SHELF,
-            CHERRY_STORAGE_SHELF,
-            CIKA_STORAGE_SHELF,
-            CYPRESS_STORAGE_SHELF,
-            EBONY_STORAGE_SHELF,
-            EMBUR_STORAGE_SHELF,
-            ETHER_STORAGE_SHELF,
-            FIR_STORAGE_SHELF,
-            GREEN_ENCHANTED_STORAGE_SHELF,
-            HOLLY_STORAGE_SHELF,
-            JACARANDA_STORAGE_SHELF,
-            LAMENT_STORAGE_SHELF,
-            MAHOGANY_STORAGE_SHELF,
-            MANGROVE_STORAGE_SHELF,
-            MAPLE_STORAGE_SHELF,
-            NIGHTSHADE_STORAGE_SHELF,
-            PALM_STORAGE_SHELF,
-            PINE_STORAGE_SHELF,
-            RAINBOW_EUCALYPTUS_STORAGE_SHELF,
-            REDWOOD_STORAGE_SHELF,
-            SKYRIS_STORAGE_SHELF,
-            SYTHIAN_STORAGE_SHELF,
-            WILLOW_STORAGE_SHELF,
-            WITCH_HAZEL_STORAGE_SHELF,
-            ZELKOVA_STORAGE_SHELF
+            ASPEN_STORAGE_BOOKSHELF,
+            BAOBAB_STORAGE_BOOKSHELF,
+            BLUE_ENCHANTED_STORAGE_BOOKSHELF,
+            BULBIS_STORAGE_BOOKSHELF,
+            CHERRY_STORAGE_BOOKSHELF,
+            CIKA_STORAGE_BOOKSHELF,
+            CYPRESS_STORAGE_BOOKSHELF,
+            EBONY_STORAGE_BOOKSHELF,
+            EMBUR_STORAGE_BOOKSHELF,
+            ETHER_STORAGE_BOOKSHELF,
+            FIR_STORAGE_BOOKSHELF,
+            GREEN_ENCHANTED_STORAGE_BOOKSHELF,
+            HOLLY_STORAGE_BOOKSHELF,
+            JACARANDA_STORAGE_BOOKSHELF,
+            LAMENT_STORAGE_BOOKSHELF,
+            MAHOGANY_STORAGE_BOOKSHELF,
+            MANGROVE_STORAGE_BOOKSHELF,
+            MAPLE_STORAGE_BOOKSHELF,
+            NIGHTSHADE_STORAGE_BOOKSHELF,
+            PALM_STORAGE_BOOKSHELF,
+            PINE_STORAGE_BOOKSHELF,
+            RAINBOW_EUCALYPTUS_STORAGE_BOOKSHELF,
+            REDWOOD_STORAGE_BOOKSHELF,
+            SKYRIS_STORAGE_BOOKSHELF,
+            SYTHIAN_STORAGE_BOOKSHELF,
+            WILLOW_STORAGE_BOOKSHELF,
+            WITCH_HAZEL_STORAGE_BOOKSHELF,
+            ZELKOVA_STORAGE_BOOKSHELF
         );
     }
 }

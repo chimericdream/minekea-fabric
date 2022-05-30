@@ -1,24 +1,27 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -35,12 +38,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Map;
 
-public class GenericStool extends Block {
-    private final String modId;
-    private final String woodType;
-    private final Identifier BLOCK_ID;
-    private final Map<String, Identifier> materials;
-
+public class GenericStool extends Block implements MinekeaBlock {
     private static final VoxelShape SEAT_SHAPE;
     private static final VoxelShape[] LEG_SHAPES;
 
@@ -54,20 +52,30 @@ public class GenericStool extends Block {
         };
     }
 
-    public GenericStool(String woodType, Map<String, Identifier> materials) {
-        this(woodType, ModInfo.MOD_ID, materials);
+    public GenericStool(StoolSettings settings) {
+        super(settings);
     }
 
-    public GenericStool(String woodType, String modId, Map<String, Identifier> materials) {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(BlockSoundGroup.WOOD));
+    @Override
+    public Identifier getBlockID() {
+        return ((StoolSettings) this.settings).getBlockId();
+    }
 
-        validateMaterials(materials);
+    @Override
+    public void register() {
+        register(false);
+    }
 
-        this.modId = modId;
-        this.woodType = woodType;
-        this.materials = materials;
+    public void register(boolean isFlammable) {
+        Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 
-        BLOCK_ID = new Identifier(ModInfo.MOD_ID, String.format("seating/stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
+
+        setupResources();
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -101,48 +109,34 @@ public class GenericStool extends Block {
         return VoxelShapes.union(SEAT_SHAPE, LEG_SHAPES);
     }
 
-    protected void validateMaterials(Map<String, Identifier> materials) {
-        String[] keys = new String[]{"planks", "log"};
+    @Override
+    public void setupResources() {
+        Map<String, Identifier> materials = ((StoolSettings) this.settings).getMaterials();
 
-        for (String key : keys) {
-            if (!materials.containsKey(key)) {
-                throw new IllegalArgumentException(String.format("The materials must contain a '%s' key", key));
-            }
-        }
-    }
+        Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));
+        Identifier LOG_MATERIAL = materials.getOrDefault("log", materials.get("main"));
 
-    public void register() {
-        Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
-
-        setupResources();
-    }
-
-    protected void setupResources() {
-        String PLANK_MATERIAL = materials.get("planks").toString();
-        String LOG_MATERIAL = materials.get("log").toString();
-
-        Identifier MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("block/seating/stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
-        Identifier ITEM_MODEL_ID = new Identifier(ModInfo.MOD_ID, String.format("item/seating/stools/%s%s_stool", ModInfo.getModPrefix(modId), woodType));
+        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
+        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-            BLOCK_ID,
+            getBlockID(),
             JRecipe.shaped(
                 JPattern.pattern("PP", "LL"),
                 JKeys.keys()
-                    .key("P", JIngredient.ingredient().item(PLANK_MATERIAL))
-                    .key("L", JIngredient.ingredient().item(LOG_MATERIAL)),
-                JResult.stackedResult(BLOCK_ID.toString(), 2)
+                    .key("P", JIngredient.ingredient().item(PLANK_MATERIAL.toString()))
+                    .key("L", JIngredient.ingredient().item(LOG_MATERIAL.toString())),
+                JResult.stackedResult(getBlockID().toString(), 2)
             )
         );
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
             .var("log", Texture.getBlockTextureID(LOG_MATERIAL).toString())
             .var("planks", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/seating/stool_block").textures(textures),
+            JModel.model("minekea:block/furniture/seating/stool").textures(textures),
             MODEL_ID
         );
 
@@ -150,7 +144,22 @@ public class GenericStool extends Block {
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
             JState.state(JState.variant().put("", new JBlockModel(MODEL_ID))),
-            BLOCK_ID
+            getBlockID()
         );
+    }
+
+    public static class StoolSettings extends MinekeaBlockSettings<StoolSettings> {
+        public StoolSettings(DefaultSettings settings) {
+            super((DefaultSettings) settings.nonOpaque());
+        }
+
+        @Override
+        public Identifier getBlockId() {
+            if (blockId == null) {
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/seating/stools/%s", ModInfo.getModPrefix(modId), mainMaterial));
+            }
+
+            return blockId;
+        }
     }
 }

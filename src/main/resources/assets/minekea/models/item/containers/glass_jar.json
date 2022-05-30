@@ -1,0 +1,64 @@
+{
+    "parent": "minecraft:builtin/entity",
+    "textures": {
+        "planks": "minecraft:block/acacia_planks",
+        "glass": "minecraft:block/glass",
+        "particle": "minecraft:block/glass"
+    },
+    "display": {
+        "gui": {
+            "rotation": [30, 135, 0],
+            "translation": [0, 2.5, 0],
+            "scale": [1, 1, 1]
+        },
+        "fixed": {
+            "rotation": [0, 90, 0],
+            "translation": [0, 0, 0],
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "thirdperson_righthand": {
+            "translation": [0, 2, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "thirdperson_lefthand": {
+            "translation": [0, 2, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "firstperson_righthand": {
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "firstperson_lefthand": {
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "ground": {
+            "translation": [0, 3, 0],
+            "scale": [0.6, 0.6, 0.6]
+        }
+    },
+    "elements": [
+        {
+            "from": [6, 9, 6],
+            "to": [10, 10, 10],
+            "faces": {
+                "north": {"uv": [9, 6, 10, 10], "rotation": 90, "texture": "#planks"},
+                "east": {"uv": [6, 6, 10, 7], "texture": "#planks"},
+                "south": {"uv": [6, 6, 7, 10], "rotation": 90, "texture": "#planks"},
+                "west": {"uv": [6, 9, 10, 10], "texture": "#planks"},
+                "up": {"uv": [6, 6, 10, 10], "texture": "#planks"},
+                "down": {"uv": [6, 6, 10, 10], "texture": "#planks"}
+            }
+        },
+        {
+            "from": [5, 0, 5],
+            "to": [11, 9, 11],
+            "faces": {
+                "north": {"uv": [0, 0, 16, 16], "texture": "#glass"},
+                "east": {"uv": [0, 0, 16, 16], "texture": "#glass"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#glass"},
+                "west": {"uv": [0, 0, 16, 16], "texture": "#glass"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#glass"},
+                "down": {"uv": [0, 0, 16, 16], "texture": "#glass"}
+            }
+        }
+    ]
+}

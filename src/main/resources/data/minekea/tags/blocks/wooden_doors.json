@@ -1,14 +1,14 @@
 {
     "replace": false,
     "values": [
-        "minekea:bookshelves/doors/acacia_bookshelf_door",
-        "minekea:bookshelves/doors/birch_bookshelf_door",
-        "minekea:bookshelves/doors/crimson_bookshelf_door",
-        "minekea:bookshelves/doors/dark_oak_bookshelf_door",
-        "minekea:bookshelves/doors/jungle_bookshelf_door",
-        "minekea:bookshelves/doors/oak_bookshelf_door",
-        "minekea:bookshelves/doors/spruce_bookshelf_door",
-        "minekea:bookshelves/doors/warped_bookshelf_door",
+        "minekea:furniture/doors/bookshelves/acacia",
+        "minekea:furniture/doors/bookshelves/birch",
+        "minekea:furniture/doors/bookshelves/crimson",
+        "minekea:furniture/doors/bookshelves/dark_oak",
+        "minekea:furniture/doors/bookshelves/jungle",
+        "minekea:furniture/doors/bookshelves/oak",
+        "minekea:furniture/doors/bookshelves/spruce",
+        "minekea:furniture/doors/bookshelves/warped",
         {"id": "#minekea:byg/wooden_doors", "required": false}
     ]
 }

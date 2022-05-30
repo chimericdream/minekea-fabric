@@ -25,7 +25,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class GenericStorageBlock extends Block implements MinekeaBlock {
-    public static final BooleanProperty IS_PLACED = BooleanProperty.of("is_placed");
+    // @TODO: change this to `is_bagged` instead of `is_placed`
+    public static final BooleanProperty IS_BAGGED = BooleanProperty.of("is_placed");
 
     public final Identifier BLOCK_ID;
     public final Identifier baseBlock;
@@ -42,7 +43,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
     public GenericStorageBlock(Identifier baseBlock, boolean isBaggedItem) {
         this(
             FabricBlockSettings.of(Material.AGGREGATE).strength(1.0f),
-            new Identifier(ModInfo.MOD_ID, "storage/compressed_" + baseBlock.getPath()),
+            new Identifier(ModInfo.MOD_ID, "storage/compressed/" + baseBlock.getPath()),
             baseBlock,
             isBaggedItem
         );
@@ -55,20 +56,20 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
         this.baseBlock = baseBlock;
         this.isBaggedItem = isBaggedItem;
 
-        setDefaultState(getStateManager().getDefaultState().with(IS_PLACED, false));
+        setDefaultState(getStateManager().getDefaultState().with(IS_BAGGED, false));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(IS_PLACED);
+        builder.add(IS_BAGGED);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         if (isBaggedItem) {
-            return (BlockState) this.getDefaultState().with(IS_PLACED, true);
+            return (BlockState) this.getDefaultState().with(IS_BAGGED, true);
         }
 
-        return (BlockState) this.getDefaultState().with(IS_PLACED, false);
+        return (BlockState) this.getDefaultState().with(IS_BAGGED, false);
     }
 
     @Override
@@ -88,7 +89,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
     public void setupResources() {
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
         Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
-        Identifier PLACED_MODEL_ID = new Identifier(MODEL_ID.getNamespace(), MODEL_ID.getPath() + "_placed");
+        Identifier BAGGED_MODEL_ID = new Identifier(MODEL_ID.getNamespace(), MODEL_ID.getPath() + "_bagged");
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
@@ -113,14 +114,14 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
         JTextures placedTextures = new JTextures().var("contents", Texture.getBlockTextureID(BLOCK_ID).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minecraft:block/cube_all").textures(textures), MODEL_ID);
-        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(String.format("%s:block/storage/placed_compressed_block", ModInfo.MOD_ID)).textures(placedTextures), PLACED_MODEL_ID);
+        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(String.format("%s:block/storage/bagged_block", ModInfo.MOD_ID)).textures(placedTextures), BAGGED_MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
             JState.state(
                 JState.variant()
                     .put("is_placed=false", new JBlockModel(MODEL_ID))
-                    .put("is_placed=true", new JBlockModel(PLACED_MODEL_ID))
+                    .put("is_placed=true", new JBlockModel(BAGGED_MODEL_ID))
             ),
             BLOCK_ID
         );

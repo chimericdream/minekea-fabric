@@ -1,17 +1,18 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
-import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.furniture.seating.GenericChair.ChairSettings;
+import com.chimericdream.minekea.block.furniture.seating.GenericStool.StoolSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.mounts.SeatEntity;
+import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.List;
-import java.util.Map;
 
 public class Seats implements MinekeaBlockCategory {
     public static final GenericChair ACACIA_CHAIR;
@@ -35,119 +36,23 @@ public class Seats implements MinekeaBlockCategory {
     public static EntityType<SeatEntity> SEAT_ENTITY;
 
     static {
-        ACACIA_CHAIR = new GenericChair(
-            "acacia",
-            Map.of(
-                "planks", new Identifier("minecraft:acacia_planks"),
-                "log", new Identifier("minecraft:acacia_log")
-            )
-        );
-        BIRCH_CHAIR = new GenericChair(
-            "birch",
-            Map.of(
-                "planks", new Identifier("minecraft:birch_planks"),
-                "log", new Identifier("minecraft:birch_log")
-            )
-        );
-        CRIMSON_CHAIR = new GenericChair(
-            "crimson",
-            Map.of(
-                "planks", new Identifier("minecraft:crimson_planks"),
-                "log", new Identifier("minecraft:crimson_stem")
-            )
-        );
-        DARK_OAK_CHAIR = new GenericChair(
-            "dark_oak",
-            Map.of(
-                "planks", new Identifier("minecraft:dark_oak_planks"),
-                "log", new Identifier("minecraft:dark_oak_log")
-            )
-        );
-        JUNGLE_CHAIR = new GenericChair(
-            "jungle",
-            Map.of(
-                "planks", new Identifier("minecraft:jungle_planks"),
-                "log", new Identifier("minecraft:jungle_log")
-            )
-        );
-        OAK_CHAIR = new GenericChair(
-            "oak",
-            Map.of(
-                "planks", new Identifier("minecraft:oak_planks"),
-                "log", new Identifier("minecraft:oak_log")
-            )
-        );
-        SPRUCE_CHAIR = new GenericChair(
-            "spruce",
-            Map.of(
-                "planks", new Identifier("minecraft:spruce_planks"),
-                "log", new Identifier("minecraft:spruce_log")
-            )
-        );
-        WARPED_CHAIR = new GenericChair(
-            "warped",
-            Map.of(
-                "planks", new Identifier("minecraft:warped_planks"),
-                "log", new Identifier("minecraft:warped_stem")
-            )
-        );
+        ACACIA_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.ACACIA));
+        BIRCH_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.CRIMSON));
+        DARK_OAK_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.DARK_OAK));
+        JUNGLE_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.JUNGLE));
+        OAK_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.OAK));
+        SPRUCE_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.SPRUCE));
+        WARPED_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.WARPED));
 
-        ACACIA_STOOL = new GenericStool(
-            "acacia",
-            Map.of(
-                "planks", new Identifier("minecraft:acacia_planks"),
-                "log", new Identifier("minecraft:acacia_log")
-            )
-        );
-        BIRCH_STOOL = new GenericStool(
-            "birch",
-            Map.of(
-                "planks", new Identifier("minecraft:birch_planks"),
-                "log", new Identifier("minecraft:birch_log")
-            )
-        );
-        CRIMSON_STOOL = new GenericStool(
-            "crimson",
-            Map.of(
-                "planks", new Identifier("minecraft:crimson_planks"),
-                "log", new Identifier("minecraft:crimson_stem")
-            )
-        );
-        DARK_OAK_STOOL = new GenericStool(
-            "dark_oak",
-            Map.of(
-                "planks", new Identifier("minecraft:dark_oak_planks"),
-                "log", new Identifier("minecraft:dark_oak_log")
-            )
-        );
-        JUNGLE_STOOL = new GenericStool(
-            "jungle",
-            Map.of(
-                "planks", new Identifier("minecraft:jungle_planks"),
-                "log", new Identifier("minecraft:jungle_log")
-            )
-        );
-        OAK_STOOL = new GenericStool(
-            "oak",
-            Map.of(
-                "planks", new Identifier("minecraft:oak_planks"),
-                "log", new Identifier("minecraft:oak_log")
-            )
-        );
-        SPRUCE_STOOL = new GenericStool(
-            "spruce",
-            Map.of(
-                "planks", new Identifier("minecraft:spruce_planks"),
-                "log", new Identifier("minecraft:spruce_log")
-            )
-        );
-        WARPED_STOOL = new GenericStool(
-            "warped",
-            Map.of(
-                "planks", new Identifier("minecraft:warped_planks"),
-                "log", new Identifier("minecraft:warped_stem")
-            )
-        );
+        ACACIA_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.ACACIA));
+        BIRCH_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.BIRCH));
+        CRIMSON_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.CRIMSON));
+        DARK_OAK_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.DARK_OAK));
+        JUNGLE_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.JUNGLE));
+        OAK_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.OAK));
+        SPRUCE_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.SPRUCE));
+        WARPED_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.WARPED));
     }
 
     @Override
@@ -177,7 +82,7 @@ public class Seats implements MinekeaBlockCategory {
 
         SEAT_ENTITY = Registry.register(
             Registry.ENTITY_TYPE,
-            new Identifier(ModInfo.MOD_ID, "seats/seat_entity"),
+            SeatEntity.ENTITY_ID,
             FabricEntityTypeBuilder.<SeatEntity>create(SpawnGroup.MISC, SeatEntity::new).build()
         );
     }

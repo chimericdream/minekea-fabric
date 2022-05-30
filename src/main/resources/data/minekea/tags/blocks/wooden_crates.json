@@ -1,14 +1,14 @@
 {
     "replace": false,
     "values": [
-        "minekea:crates/acacia_crate",
-        "minekea:crates/birch_crate",
-        "minekea:crates/crimson_crate",
-        "minekea:crates/dark_oak_crate",
-        "minekea:crates/jungle_crate",
-        "minekea:crates/oak_crate",
-        "minekea:crates/spruce_crate",
-        "minekea:crates/warped_crate",
+        "minekea:containers/crates/acacia",
+        "minekea:containers/crates/birch",
+        "minekea:containers/crates/crimson",
+        "minekea:containers/crates/dark_oak",
+        "minekea:containers/crates/jungle",
+        "minekea:containers/crates/oak",
+        "minekea:containers/crates/spruce",
+        "minekea:containers/crates/warped",
         {"id": "#minekea:byg/wooden_crates", "required": false}
     ]
 }

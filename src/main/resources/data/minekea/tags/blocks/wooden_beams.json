@@ -9,13 +9,13 @@
         "minekea:beams/oak_log_beam",
         "minekea:beams/spruce_log_beam",
         "minekea:beams/warped_stem_beam",
-        "minekea:beams/acacia_plank_beam",
-        "minekea:beams/birch_plank_beam",
-        "minekea:beams/crimson_plank_beam",
-        "minekea:beams/dark_oak_plank_beam",
-        "minekea:beams/jungle_plank_beam",
-        "minekea:beams/oak_plank_beam",
-        "minekea:beams/spruce_plank_beam",
-        "minekea:beams/warped_plank_beam"
+        "minekea:beams/acacia_beam",
+        "minekea:beams/birch_beam",
+        "minekea:beams/crimson_beam",
+        "minekea:beams/dark_oak_beam",
+        "minekea:beams/jungle_beam",
+        "minekea:beams/oak_beam",
+        "minekea:beams/spruce_beam",
+        "minekea:beams/warped_beam"
     ]
 }
