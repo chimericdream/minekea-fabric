@@ -92,10 +92,18 @@ public class IdentifierMixin {
             case "shelves/shelf_block_entity" -> id[1] = "entities/blocks/furniture/shelf";
 
             case "building/cobbled_end_stone_wall" -> id[1] = "building/walls/cobbled_end_stone";
+
+            case "crops/warped_wart_block" -> id[1] = "crops/warped_wart/block";
+
+            case "wrench" -> id[1] = "tools/wrench";
+            case "honey_bucket" -> id[1] = "containers/honey_bucket";
+            case "milk_cauldron" -> id[1] = "containers/cauldrons/milk";
+            case "honey_cauldron" -> id[1] = "containers/cauldrons/honey";
         }
 
         Map<String, String> replacements = new LinkedHashMap<>();
 
+        replacements.put("^beams/([^/]+/)?([./_a-z]+)_plank_beam$", "$1building/beams/$2");
         replacements.put("^beams/([^/]+/)?([./_a-z]+)_beam$", "$1building/beams/$2");
         replacements.put("^slabs/([^/]+/)?([./_a-z]+)_bookshelf_slab$", "$1building/slabs/bookshelves/$2");
         replacements.put("^slabs/([^/]+/)?([./_a-z]+)_slab$", "$1building/slabs/$2");

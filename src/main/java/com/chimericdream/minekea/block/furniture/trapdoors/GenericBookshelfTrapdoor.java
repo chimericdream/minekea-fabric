@@ -55,6 +55,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
         Map<String, Identifier> materials = ((BookshelfTrapdoorSettings) this.settings).getMaterials();
 
         Identifier shelf = materials.get("bookshelf");
+        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -75,7 +76,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.getLootTableID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
-            .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+            .var("material", Texture.getBlockTextureID(planks).toString())
             .var("shelf", "minekea:block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(

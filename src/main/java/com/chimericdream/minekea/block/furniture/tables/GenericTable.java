@@ -247,8 +247,8 @@ public class GenericTable extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         JTextures textures = new JTextures()
-            .var("log", Texture.getBlockTextureID(materials.get("log")).toString())
-            .var("planks", Texture.getBlockTextureID(materials.get("planks")).toString());
+            .var("log", Texture.getBlockTextureID(LOG_MATERIAL).toString())
+            .var("planks", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minekea:block/furniture/table").textures(textures), MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(NORTH_CONN).textures(textures), OTHER_MODEL_IDS.get("north"));

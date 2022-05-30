@@ -1,6 +1,7 @@
-package com.chimericdream.minekea.item;
+package com.chimericdream.minekea.item.tools;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.item.Items;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry.BlockColor;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;

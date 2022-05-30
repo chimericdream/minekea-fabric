@@ -1,5 +1,7 @@
-package com.chimericdream.minekea.fluid;
+package com.chimericdream.minekea.block.containers;
 
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.fluid.Fluids;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractCauldronBlock;
 import net.minecraft.block.BlockState;
@@ -10,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -18,6 +21,7 @@ import java.util.Map;
 import static net.minecraft.block.cauldron.CauldronBehavior.*;
 
 public class MilkCauldronBlock extends AbstractCauldronBlock {
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "containers/cauldrons/milk");
     public static Map<Item, CauldronBehavior> BEHAVIORS = createMap();
 
     public static final CauldronBehavior FILL_WITH_MILK;

@@ -59,6 +59,7 @@ public class GenericBookshelfDoor extends DoorBlock implements MinekeaBlock {
         Map<String, Identifier> materials = ((BookshelfDoorSettings) this.settings).getMaterials();
 
         Identifier shelf = materials.get("bookshelf");
+        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -102,11 +103,11 @@ public class GenericBookshelfDoor extends DoorBlock implements MinekeaBlock {
         );
 
         JTextures doorBottom = new JTextures()
-            .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+            .var("material", Texture.getBlockTextureID(planks).toString())
             .var("shelf", "minekea:block/furniture/bookshelves/shelf0");
 
         JTextures doorTop = new JTextures()
-            .var("material", Texture.getBlockTextureID(materials.get("planks")).toString())
+            .var("material", Texture.getBlockTextureID(planks).toString())
             .var("shelf", "minekea:block/furniture/bookshelves/shelf1");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(

@@ -1,7 +1,8 @@
-package com.chimericdream.minekea.item;
+package com.chimericdream.minekea.item.tools;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.beams.GenericBeamBlock;
+import com.chimericdream.minekea.item.Items;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.util.MinekeaItem;
 import net.devtech.arrp.json.recipe.*;
@@ -33,7 +34,7 @@ public class WrenchItem extends Item implements MinekeaItem {
     public WrenchItem() {
         super(new FabricItemSettings().group(ItemGroup.TOOLS));
 
-        this.ITEM_ID = new Identifier(ModInfo.MOD_ID, "wrench");
+        this.ITEM_ID = new Identifier(ModInfo.MOD_ID, "tools/wrench");
     }
 
     @Override

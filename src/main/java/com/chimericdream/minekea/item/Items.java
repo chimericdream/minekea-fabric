@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.item;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.item.tools.PainterItem;
+import com.chimericdream.minekea.item.tools.WrenchItem;
 import com.chimericdream.minekea.screen.item.BlockPainterScreen;
 import com.chimericdream.minekea.screen.item.BlockPainterScreenHandler;
 import net.fabricmc.api.EnvType;

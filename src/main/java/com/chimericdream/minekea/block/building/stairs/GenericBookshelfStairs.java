@@ -55,7 +55,7 @@ public class GenericBookshelfStairs extends StairsBlock implements MinekeaBlock 
         Map<String, Identifier> materials = ((BookshelfStairsSettings) this.settings).getMaterials();
 
         Identifier shelf = materials.get("bookshelf");
-        Identifier planks = materials.get("planks");
+        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
 
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 

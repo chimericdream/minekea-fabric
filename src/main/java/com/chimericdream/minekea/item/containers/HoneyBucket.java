@@ -1,6 +1,7 @@
-package com.chimericdream.minekea.fluid;
+package com.chimericdream.minekea.item.containers;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.fluid.Fluids;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
@@ -15,10 +16,10 @@ import net.minecraft.world.event.GameEvent;
 
 import javax.annotation.Nullable;
 
-public class HoneyBucketItem extends BucketItem {
-    public static Identifier ITEM_ID = new Identifier(ModInfo.MOD_ID, "honey_bucket");
+public class HoneyBucket extends BucketItem {
+    public static Identifier ITEM_ID = new Identifier(ModInfo.MOD_ID, "containers/honey_bucket");
 
-    public HoneyBucketItem() {
+    public HoneyBucket() {
         super(Fluids.HONEY, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(ItemGroup.MISC));
     }
 

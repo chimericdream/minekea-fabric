@@ -1,5 +1,7 @@
-package com.chimericdream.minekea.fluid;
+package com.chimericdream.minekea.block.containers;
 
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.fluid.Fluids;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeveledCauldronBlock;
 import net.minecraft.block.cauldron.CauldronBehavior;
@@ -16,6 +18,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
@@ -25,6 +28,7 @@ import java.util.Map;
 import static net.minecraft.block.cauldron.CauldronBehavior.*;
 
 public class HoneyCauldronBlock extends LeveledCauldronBlock {
+    public static final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "containers/cauldrons/honey");
     public static Map<Item, CauldronBehavior> BEHAVIORS = createMap();
 
     public static final CauldronBehavior FILL_WITH_HONEY;

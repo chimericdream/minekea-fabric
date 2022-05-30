@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.fluid;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.containers.HoneyCauldronBlock;
+import com.chimericdream.minekea.block.containers.MilkCauldronBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.item.containers.HoneyBucket;
 import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
@@ -76,8 +79,8 @@ public class Fluids implements MinekeaBlockCategory {
 
         HONEY_BUCKET = Registry.register(
             Registry.ITEM,
-            HoneyBucketItem.ITEM_ID,
-            new HoneyBucketItem()
+            HoneyBucket.ITEM_ID,
+            new HoneyBucket()
         );
         HONEY_CAULDRON = Registry.register(
             Registry.BLOCK,

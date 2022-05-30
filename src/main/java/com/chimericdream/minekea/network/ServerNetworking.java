@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.network;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.item.PainterItem;
+import com.chimericdream.minekea.item.tools.PainterItem;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.util.StreamUtils;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
