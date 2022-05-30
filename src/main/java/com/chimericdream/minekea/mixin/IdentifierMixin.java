@@ -109,6 +109,7 @@ public class IdentifierMixin {
         replacements.put("^slabs/([^/]+/)?([./_a-z]+)_slab$", "$1building/slabs/$2");
         replacements.put("^stairs/([^/]+/)?([./_a-z]+)_bookshelf_stairs$", "$1building/stairs/bookshelves/$2");
         replacements.put("^stairs/([^/]+/)?([./_a-z]+)_stairs$", "$1building/stairs/$2");
+        replacements.put("^covers/([^/]+/)?([./_a-z]+)_plank_cover$", "$1building/covers/$2");
         replacements.put("^covers/([^/]+/)?([./_a-z]+)_cover$", "$1building/covers/$2");
         replacements.put("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_bookshelf_stairs$", "$1building/stairs/vertical/bookshelves/$2");
         replacements.put("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2");
