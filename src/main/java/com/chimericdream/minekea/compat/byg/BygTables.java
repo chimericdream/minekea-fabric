@@ -17,6 +17,7 @@ public class BygTables {
     public static final GenericTable FIR_TABLE;
     public static final GenericTable GREEN_ENCHANTED_TABLE;
     public static final GenericTable HOLLY_TABLE;
+    public static final GenericTable IMPARIUS_TABLE;
     public static final GenericTable JACARANDA_TABLE;
     public static final GenericTable LAMENT_TABLE;
     public static final GenericTable MAHOGANY_TABLE;
@@ -47,6 +48,7 @@ public class BygTables {
         FIR_TABLE = new GenericTable(new TableSettings(BygBlockSettings.FIR));
         GREEN_ENCHANTED_TABLE = new GenericTable(new TableSettings(BygBlockSettings.GREEN_ENCHANTED));
         HOLLY_TABLE = new GenericTable(new TableSettings(BygBlockSettings.HOLLY));
+        IMPARIUS_TABLE = new GenericTable(new TableSettings(BygBlockSettings.IMPARIUS));
         JACARANDA_TABLE = new GenericTable(new TableSettings(BygBlockSettings.JACARANDA));
         LAMENT_TABLE = new GenericTable(new TableSettings(BygBlockSettings.LAMENT));
         MAHOGANY_TABLE = new GenericTable(new TableSettings(BygBlockSettings.MAHOGANY));
@@ -78,6 +80,7 @@ public class BygTables {
         FIR_TABLE.register();
         GREEN_ENCHANTED_TABLE.register();
         HOLLY_TABLE.register();
+        IMPARIUS_TABLE.register();
         JACARANDA_TABLE.register();
         LAMENT_TABLE.register();
         MAHOGANY_TABLE.register();

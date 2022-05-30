@@ -18,6 +18,7 @@ public class BygTrapdoors {
     public static final GenericBookshelfTrapdoor FIR_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor GREEN_ENCHANTED_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor HOLLY_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor IMPARIUS_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor JACARANDA_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor LAMENT_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor MAHOGANY_BOOKSHELF_TRAPDOOR;
@@ -48,6 +49,7 @@ public class BygTrapdoors {
         FIR_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.FIR).addMaterial("bookshelf", new Identifier("byg:fir_bookshelf")));
         GREEN_ENCHANTED_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.GREEN_ENCHANTED).addMaterial("bookshelf", new Identifier("byg:green_enchanted_bookshelf")));
         HOLLY_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.HOLLY).addMaterial("bookshelf", new Identifier("byg:holly_bookshelf")));
+        IMPARIUS_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.IMPARIUS).addMaterial("bookshelf", new Identifier("byg:imparius_bookshelf")));
         JACARANDA_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
         LAMENT_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
         MAHOGANY_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
@@ -79,6 +81,7 @@ public class BygTrapdoors {
         FIR_BOOKSHELF_TRAPDOOR.register();
         GREEN_ENCHANTED_BOOKSHELF_TRAPDOOR.register();
         HOLLY_BOOKSHELF_TRAPDOOR.register();
+        IMPARIUS_BOOKSHELF_TRAPDOOR.register();
         JACARANDA_BOOKSHELF_TRAPDOOR.register();
         LAMENT_BOOKSHELF_TRAPDOOR.register();
         MAHOGANY_BOOKSHELF_TRAPDOOR.register();

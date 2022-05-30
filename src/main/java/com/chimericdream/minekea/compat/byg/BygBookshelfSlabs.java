@@ -18,6 +18,7 @@ public class BygBookshelfSlabs {
     public static final GenericBookshelfSlab FIR_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab GREEN_ENCHANTED_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab HOLLY_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab IMPARIUS_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab JACARANDA_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab LAMENT_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab MAHOGANY_BOOKSHELF_SLAB;
@@ -99,6 +100,11 @@ public class BygBookshelfSlabs {
             new BookshelfSlabSettings(BygBlockSettings.HOLLY)
                 .addMaterial("bookshelf", new Identifier("byg:holly_bookshelf"))
                 .addMaterial("model", new Identifier("byg:block/holly_bookshelf"))
+        );
+        IMPARIUS_BOOKSHELF_SLAB = new GenericBookshelfSlab(
+            new BookshelfSlabSettings(BygBlockSettings.IMPARIUS)
+                .addMaterial("bookshelf", new Identifier("byg:imparius_bookshelf"))
+                .addMaterial("model", new Identifier("byg:block/imparius_bookshelf"))
         );
         JACARANDA_BOOKSHELF_SLAB = new GenericBookshelfSlab(
             new BookshelfSlabSettings(BygBlockSettings.JACARANDA)
@@ -191,6 +197,7 @@ public class BygBookshelfSlabs {
         FIR_BOOKSHELF_SLAB.register();
         GREEN_ENCHANTED_BOOKSHELF_SLAB.register();
         HOLLY_BOOKSHELF_SLAB.register();
+        IMPARIUS_BOOKSHELF_SLAB.register();
         JACARANDA_BOOKSHELF_SLAB.register();
         LAMENT_BOOKSHELF_SLAB.register();
         MAHOGANY_BOOKSHELF_SLAB.register();

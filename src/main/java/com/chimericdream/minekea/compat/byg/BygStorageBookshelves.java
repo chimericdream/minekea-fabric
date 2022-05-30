@@ -18,6 +18,7 @@ public class BygStorageBookshelves {
     public static final GenericStorageBookshelf FIR_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf GREEN_ENCHANTED_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf HOLLY_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf IMPARIUS_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf JACARANDA_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf LAMENT_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf MAHOGANY_STORAGE_BOOKSHELF;
@@ -48,6 +49,7 @@ public class BygStorageBookshelves {
         FIR_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.FIR).addMaterial("bookshelf", new Identifier("byg:fir_bookshelf")));
         GREEN_ENCHANTED_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.GREEN_ENCHANTED).addMaterial("bookshelf", new Identifier("byg:green_enchanted_bookshelf")));
         HOLLY_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.HOLLY).addMaterial("bookshelf", new Identifier("byg:holly_bookshelf")));
+        IMPARIUS_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.IMPARIUS).addMaterial("bookshelf", new Identifier("byg:imparius_bookshelf")));
         JACARANDA_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
         LAMENT_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
         MAHOGANY_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
@@ -79,6 +81,7 @@ public class BygStorageBookshelves {
         FIR_STORAGE_BOOKSHELF.register();
         GREEN_ENCHANTED_STORAGE_BOOKSHELF.register();
         HOLLY_STORAGE_BOOKSHELF.register();
+        IMPARIUS_STORAGE_BOOKSHELF.register();
         JACARANDA_STORAGE_BOOKSHELF.register();
         LAMENT_STORAGE_BOOKSHELF.register();
         MAHOGANY_STORAGE_BOOKSHELF.register();

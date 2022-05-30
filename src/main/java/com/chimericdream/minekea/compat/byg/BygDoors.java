@@ -18,6 +18,7 @@ public class BygDoors {
     public static final GenericBookshelfDoor FIR_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor GREEN_ENCHANTED_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor HOLLY_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor IMPARIUS_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor JACARANDA_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor LAMENT_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor MAHOGANY_BOOKSHELF_DOOR;
@@ -48,6 +49,7 @@ public class BygDoors {
         FIR_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.FIR).addMaterial("bookshelf", new Identifier("byg:fir_bookshelf")));
         GREEN_ENCHANTED_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.GREEN_ENCHANTED).addMaterial("bookshelf", new Identifier("byg:green_enchanted_bookshelf")));
         HOLLY_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.HOLLY).addMaterial("bookshelf", new Identifier("byg:holly_bookshelf")));
+        IMPARIUS_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.IMPARIUS).addMaterial("bookshelf", new Identifier("byg:imparius_bookshelf")));
         JACARANDA_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
         LAMENT_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
         MAHOGANY_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
@@ -79,6 +81,7 @@ public class BygDoors {
         FIR_BOOKSHELF_DOOR.register();
         GREEN_ENCHANTED_BOOKSHELF_DOOR.register();
         HOLLY_BOOKSHELF_DOOR.register();
+        IMPARIUS_BOOKSHELF_DOOR.register();
         JACARANDA_BOOKSHELF_DOOR.register();
         LAMENT_BOOKSHELF_DOOR.register();
         MAHOGANY_BOOKSHELF_DOOR.register();

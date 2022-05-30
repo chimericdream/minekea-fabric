@@ -17,6 +17,7 @@ public class BygDisplayCases {
     public static final GenericDisplayCase FIR_DISPLAY_CASE;
     public static final GenericDisplayCase GREEN_ENCHANTED_DISPLAY_CASE;
     public static final GenericDisplayCase HOLLY_DISPLAY_CASE;
+    public static final GenericDisplayCase IMPARIUS_DISPLAY_CASE;
     public static final GenericDisplayCase JACARANDA_DISPLAY_CASE;
     public static final GenericDisplayCase LAMENT_DISPLAY_CASE;
     public static final GenericDisplayCase MAHOGANY_DISPLAY_CASE;
@@ -46,6 +47,7 @@ public class BygDisplayCases {
     public static final GenericDisplayCase STRIPPED_FIR_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_GREEN_ENCHANTED_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_HOLLY_DISPLAY_CASE;
+    public static final GenericDisplayCase STRIPPED_IMPARIUS_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_JACARANDA_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_LAMENT_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_MAHOGANY_DISPLAY_CASE;
@@ -76,6 +78,7 @@ public class BygDisplayCases {
         FIR_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.FIR));
         GREEN_ENCHANTED_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.GREEN_ENCHANTED));
         HOLLY_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.HOLLY));
+        IMPARIUS_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.IMPARIUS));
         JACARANDA_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.JACARANDA));
         LAMENT_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.LAMENT));
         MAHOGANY_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.MAHOGANY));
@@ -105,6 +108,7 @@ public class BygDisplayCases {
         STRIPPED_FIR_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.FIR).stripped());
         STRIPPED_GREEN_ENCHANTED_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.GREEN_ENCHANTED).stripped());
         STRIPPED_HOLLY_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.HOLLY).stripped());
+        STRIPPED_IMPARIUS_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.IMPARIUS).stripped());
         STRIPPED_JACARANDA_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.JACARANDA).stripped());
         STRIPPED_LAMENT_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.LAMENT).stripped());
         STRIPPED_MAHOGANY_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.MAHOGANY).stripped());
@@ -136,6 +140,7 @@ public class BygDisplayCases {
         FIR_DISPLAY_CASE.register();
         GREEN_ENCHANTED_DISPLAY_CASE.register();
         HOLLY_DISPLAY_CASE.register();
+        IMPARIUS_DISPLAY_CASE.register();
         JACARANDA_DISPLAY_CASE.register();
         LAMENT_DISPLAY_CASE.register();
         MAHOGANY_DISPLAY_CASE.register();
@@ -165,6 +170,7 @@ public class BygDisplayCases {
         STRIPPED_FIR_DISPLAY_CASE.register();
         STRIPPED_GREEN_ENCHANTED_DISPLAY_CASE.register();
         STRIPPED_HOLLY_DISPLAY_CASE.register();
+        STRIPPED_IMPARIUS_DISPLAY_CASE.register();
         STRIPPED_JACARANDA_DISPLAY_CASE.register();
         STRIPPED_LAMENT_DISPLAY_CASE.register();
         STRIPPED_MAHOGANY_DISPLAY_CASE.register();

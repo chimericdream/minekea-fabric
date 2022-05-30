@@ -2,6 +2,8 @@ package com.chimericdream.minekea.compat.byg;
 
 import com.chimericdream.minekea.block.building.stairs.GenericBookshelfStairs;
 import com.chimericdream.minekea.block.building.stairs.GenericBookshelfStairs.BookshelfStairsSettings;
+import com.chimericdream.minekea.block.building.stairs.GenericVerticalBookshelfStairs;
+import com.chimericdream.minekea.block.building.stairs.GenericVerticalBookshelfStairs.VerticalBookshelfStairsSettings;
 import net.minecraft.util.Identifier;
 
 public class BygBookshelfStairs {
@@ -18,6 +20,7 @@ public class BygBookshelfStairs {
     public static final GenericBookshelfStairs FIR_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs GREEN_ENCHANTED_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs HOLLY_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs IMPARIUS_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs JACARANDA_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs LAMENT_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs MAHOGANY_BOOKSHELF_STAIRS;
@@ -34,6 +37,36 @@ public class BygBookshelfStairs {
     public static final GenericBookshelfStairs WITCH_HAZEL_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs ZELKOVA_BOOKSHELF_STAIRS;
 
+    public static final GenericVerticalBookshelfStairs ASPEN_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs BAOBAB_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs BLUE_ENCHANTED_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs BULBIS_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs CHERRY_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs CIKA_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs CYPRESS_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs EBONY_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs EMBUR_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs ETHER_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs FIR_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs GREEN_ENCHANTED_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs HOLLY_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs IMPARIUS_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs JACARANDA_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs LAMENT_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs MAHOGANY_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs MANGROVE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs MAPLE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs NIGHTSHADE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs PALM_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs PINE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs RAINBOW_EUCALYPTUS_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs REDWOOD_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs SKYRIS_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs SYTHIAN_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs WILLOW_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs WITCH_HAZEL_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs ZELKOVA_VERTICAL_BOOKSHELF_STAIRS;
+
     static {
         ASPEN_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.ASPEN).addMaterial("bookshelf", new Identifier("byg:aspen_bookshelf")));
         BAOBAB_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.BAOBAB).addMaterial("bookshelf", new Identifier("byg:baobab_bookshelf")));
@@ -48,6 +81,7 @@ public class BygBookshelfStairs {
         FIR_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.FIR).addMaterial("bookshelf", new Identifier("byg:fir_bookshelf")));
         GREEN_ENCHANTED_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.GREEN_ENCHANTED).addMaterial("bookshelf", new Identifier("byg:green_enchanted_bookshelf")));
         HOLLY_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.HOLLY).addMaterial("bookshelf", new Identifier("byg:holly_bookshelf")));
+        IMPARIUS_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.IMPARIUS).addMaterial("bookshelf", new Identifier("byg:imparius_bookshelf")));
         JACARANDA_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
         LAMENT_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
         MAHOGANY_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
@@ -63,6 +97,36 @@ public class BygBookshelfStairs {
         WILLOW_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.WILLOW).addMaterial("bookshelf", new Identifier("byg:willow_bookshelf")));
         WITCH_HAZEL_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.WITCH_HAZEL).addMaterial("bookshelf", new Identifier("byg:witch_hazel_bookshelf")));
         ZELKOVA_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.ZELKOVA).addMaterial("bookshelf", new Identifier("byg:zelkova_bookshelf")));
+
+        ASPEN_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.ASPEN).addMaterial("bookshelf", new Identifier("byg:aspen_bookshelf")).addMaterial("model", new Identifier("byg:aspen_bookshelf")));
+        BAOBAB_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.BAOBAB).addMaterial("bookshelf", new Identifier("byg:baobab_bookshelf")).addMaterial("model", new Identifier("byg:baobab_bookshelf")));
+        BLUE_ENCHANTED_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.BLUE_ENCHANTED).addMaterial("bookshelf", new Identifier("byg:blue_enchanted_bookshelf")).addMaterial("model", new Identifier("byg:blue_enchanted_bookshelf")));
+        BULBIS_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.BULBIS).addMaterial("bookshelf", new Identifier("byg:bulbis_bookshelf")).addMaterial("model", new Identifier("byg:bulbis_bookshelf")));
+        CHERRY_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.CHERRY).addMaterial("bookshelf", new Identifier("byg:cherry_bookshelf")).addMaterial("model", new Identifier("byg:cherry_bookshelf")));
+        CIKA_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.CIKA).addMaterial("bookshelf", new Identifier("byg:cika_bookshelf")).addMaterial("model", new Identifier("byg:cika_bookshelf")));
+        CYPRESS_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.CYPRESS).addMaterial("bookshelf", new Identifier("byg:cypress_bookshelf")).addMaterial("model", new Identifier("byg:cypress_bookshelf")));
+        EBONY_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.EBONY).addMaterial("bookshelf", new Identifier("byg:ebony_bookshelf")).addMaterial("model", new Identifier("byg:ebony_bookshelf")));
+        EMBUR_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.EMBUR).addMaterial("bookshelf", new Identifier("byg:embur_bookshelf")).addMaterial("model", new Identifier("byg:embur_bookshelf")));
+        ETHER_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.ETHER).addMaterial("bookshelf", new Identifier("byg:ether_bookshelf")).addMaterial("model", new Identifier("byg:ether_bookshelf")));
+        FIR_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.FIR).addMaterial("bookshelf", new Identifier("byg:fir_bookshelf")).addMaterial("model", new Identifier("byg:fir_bookshelf")));
+        GREEN_ENCHANTED_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.GREEN_ENCHANTED).addMaterial("bookshelf", new Identifier("byg:green_enchanted_bookshelf")).addMaterial("model", new Identifier("byg:green_enchanted_bookshelf")));
+        HOLLY_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.HOLLY).addMaterial("bookshelf", new Identifier("byg:holly_bookshelf")).addMaterial("model", new Identifier("byg:holly_bookshelf")));
+        IMPARIUS_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.IMPARIUS).addMaterial("bookshelf", new Identifier("byg:imparius_bookshelf")).addMaterial("model", new Identifier("byg:imparius_bookshelf")));
+        JACARANDA_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")).addMaterial("model", new Identifier("byg:jacaranda_bookshelf")));
+        LAMENT_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")).addMaterial("model", new Identifier("byg:lament_bookshelf")));
+        MAHOGANY_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")).addMaterial("model", new Identifier("byg:mahogany_bookshelf")));
+        MANGROVE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.MANGROVE).addMaterial("bookshelf", new Identifier("byg:mangrove_bookshelf")).addMaterial("model", new Identifier("byg:mangrove_bookshelf")));
+        MAPLE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.MAPLE).addMaterial("bookshelf", new Identifier("byg:maple_bookshelf")).addMaterial("model", new Identifier("byg:maple_bookshelf")));
+        NIGHTSHADE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.NIGHTSHADE).addMaterial("bookshelf", new Identifier("byg:nightshade_bookshelf")).addMaterial("model", new Identifier("byg:nightshade_bookshelf")));
+        PALM_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.PALM).addMaterial("bookshelf", new Identifier("byg:palm_bookshelf")).addMaterial("model", new Identifier("byg:palm_bookshelf")));
+        PINE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.PINE).addMaterial("bookshelf", new Identifier("byg:pine_bookshelf")).addMaterial("model", new Identifier("byg:pine_bookshelf")));
+        RAINBOW_EUCALYPTUS_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.RAINBOW_EUCALYPTUS).addMaterial("bookshelf", new Identifier("byg:rainbow_eucalyptus_bookshelf")).addMaterial("model", new Identifier("byg:rainbow_eucalyptus_bookshelf")));
+        REDWOOD_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.REDWOOD).addMaterial("bookshelf", new Identifier("byg:redwood_bookshelf")).addMaterial("model", new Identifier("byg:redwood_bookshelf")));
+        SKYRIS_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.SKYRIS).addMaterial("bookshelf", new Identifier("byg:skyris_bookshelf")).addMaterial("model", new Identifier("byg:skyris_bookshelf")));
+        SYTHIAN_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.SYTHIAN).addMaterial("bookshelf", new Identifier("byg:sythian_bookshelf")).addMaterial("model", new Identifier("byg:sythian_bookshelf")));
+        WILLOW_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.WILLOW).addMaterial("bookshelf", new Identifier("byg:willow_bookshelf")).addMaterial("model", new Identifier("byg:willow_bookshelf")));
+        WITCH_HAZEL_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.WITCH_HAZEL).addMaterial("bookshelf", new Identifier("byg:witch_hazel_bookshelf")).addMaterial("model", new Identifier("byg:witch_hazel_bookshelf")));
+        ZELKOVA_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.ZELKOVA).addMaterial("bookshelf", new Identifier("byg:zelkova_bookshelf")).addMaterial("model", new Identifier("byg:zelkova_bookshelf")));
     }
 
     public void register() {
@@ -79,6 +143,7 @@ public class BygBookshelfStairs {
         FIR_BOOKSHELF_STAIRS.register();
         GREEN_ENCHANTED_BOOKSHELF_STAIRS.register();
         HOLLY_BOOKSHELF_STAIRS.register();
+        IMPARIUS_BOOKSHELF_STAIRS.register();
         JACARANDA_BOOKSHELF_STAIRS.register();
         LAMENT_BOOKSHELF_STAIRS.register();
         MAHOGANY_BOOKSHELF_STAIRS.register();
@@ -94,5 +159,35 @@ public class BygBookshelfStairs {
         WILLOW_BOOKSHELF_STAIRS.register();
         WITCH_HAZEL_BOOKSHELF_STAIRS.register();
         ZELKOVA_BOOKSHELF_STAIRS.register();
+
+        ASPEN_VERTICAL_BOOKSHELF_STAIRS.register();
+        BAOBAB_VERTICAL_BOOKSHELF_STAIRS.register();
+        BLUE_ENCHANTED_VERTICAL_BOOKSHELF_STAIRS.register();
+        BULBIS_VERTICAL_BOOKSHELF_STAIRS.register();
+        CHERRY_VERTICAL_BOOKSHELF_STAIRS.register();
+        CIKA_VERTICAL_BOOKSHELF_STAIRS.register();
+        CYPRESS_VERTICAL_BOOKSHELF_STAIRS.register();
+        EBONY_VERTICAL_BOOKSHELF_STAIRS.register();
+        EMBUR_VERTICAL_BOOKSHELF_STAIRS.register();
+        ETHER_VERTICAL_BOOKSHELF_STAIRS.register();
+        FIR_VERTICAL_BOOKSHELF_STAIRS.register();
+        GREEN_ENCHANTED_VERTICAL_BOOKSHELF_STAIRS.register();
+        HOLLY_VERTICAL_BOOKSHELF_STAIRS.register();
+        IMPARIUS_VERTICAL_BOOKSHELF_STAIRS.register();
+        JACARANDA_VERTICAL_BOOKSHELF_STAIRS.register();
+        LAMENT_VERTICAL_BOOKSHELF_STAIRS.register();
+        MAHOGANY_VERTICAL_BOOKSHELF_STAIRS.register();
+        MANGROVE_VERTICAL_BOOKSHELF_STAIRS.register();
+        MAPLE_VERTICAL_BOOKSHELF_STAIRS.register();
+        NIGHTSHADE_VERTICAL_BOOKSHELF_STAIRS.register();
+        PALM_VERTICAL_BOOKSHELF_STAIRS.register();
+        PINE_VERTICAL_BOOKSHELF_STAIRS.register();
+        RAINBOW_EUCALYPTUS_VERTICAL_BOOKSHELF_STAIRS.register();
+        REDWOOD_VERTICAL_BOOKSHELF_STAIRS.register();
+        SKYRIS_VERTICAL_BOOKSHELF_STAIRS.register();
+        SYTHIAN_VERTICAL_BOOKSHELF_STAIRS.register();
+        WILLOW_VERTICAL_BOOKSHELF_STAIRS.register();
+        WITCH_HAZEL_VERTICAL_BOOKSHELF_STAIRS.register();
+        ZELKOVA_VERTICAL_BOOKSHELF_STAIRS.register();
     }
 }

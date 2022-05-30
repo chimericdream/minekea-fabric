@@ -19,6 +19,7 @@ public class BygSeats {
     public static final GenericChair FIR_CHAIR;
     public static final GenericChair GREEN_ENCHANTED_CHAIR;
     public static final GenericChair HOLLY_CHAIR;
+    public static final GenericChair IMPARIUS_CHAIR;
     public static final GenericChair JACARANDA_CHAIR;
     public static final GenericChair LAMENT_CHAIR;
     public static final GenericChair MAHOGANY_CHAIR;
@@ -48,6 +49,7 @@ public class BygSeats {
     public static final GenericStool FIR_STOOL;
     public static final GenericStool GREEN_ENCHANTED_STOOL;
     public static final GenericStool HOLLY_STOOL;
+    public static final GenericStool IMPARIUS_STOOL;
     public static final GenericStool JACARANDA_STOOL;
     public static final GenericStool LAMENT_STOOL;
     public static final GenericStool MAHOGANY_STOOL;
@@ -78,6 +80,7 @@ public class BygSeats {
         FIR_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.FIR));
         GREEN_ENCHANTED_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.GREEN_ENCHANTED));
         HOLLY_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.HOLLY));
+        IMPARIUS_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.IMPARIUS));
         JACARANDA_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.JACARANDA));
         LAMENT_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.LAMENT));
         MAHOGANY_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.MAHOGANY));
@@ -107,6 +110,7 @@ public class BygSeats {
         FIR_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.FIR));
         GREEN_ENCHANTED_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.GREEN_ENCHANTED));
         HOLLY_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.HOLLY));
+        IMPARIUS_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.IMPARIUS));
         JACARANDA_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.JACARANDA));
         LAMENT_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.LAMENT));
         MAHOGANY_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.MAHOGANY));
@@ -138,6 +142,7 @@ public class BygSeats {
         FIR_CHAIR.register();
         GREEN_ENCHANTED_CHAIR.register();
         HOLLY_CHAIR.register();
+        IMPARIUS_CHAIR.register();
         JACARANDA_CHAIR.register();
         LAMENT_CHAIR.register();
         MAHOGANY_CHAIR.register();
@@ -167,6 +172,7 @@ public class BygSeats {
         FIR_STOOL.register();
         GREEN_ENCHANTED_STOOL.register();
         HOLLY_STOOL.register();
+        IMPARIUS_STOOL.register();
         JACARANDA_STOOL.register();
         LAMENT_STOOL.register();
         MAHOGANY_STOOL.register();

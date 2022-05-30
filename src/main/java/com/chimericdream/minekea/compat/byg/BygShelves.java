@@ -19,6 +19,7 @@ public class BygShelves {
     public static final GenericShelf FIR_SHELF;
     public static final GenericShelf GREEN_ENCHANTED_SHELF;
     public static final GenericShelf HOLLY_SHELF;
+    public static final GenericShelf IMPARIUS_SHELF;
     public static final GenericShelf JACARANDA_SHELF;
     public static final GenericShelf LAMENT_SHELF;
     public static final GenericShelf MAHOGANY_SHELF;
@@ -48,6 +49,7 @@ public class BygShelves {
     public static final GenericFloatingShelf FIR_FLOATING_SHELF;
     public static final GenericFloatingShelf GREEN_ENCHANTED_FLOATING_SHELF;
     public static final GenericFloatingShelf HOLLY_FLOATING_SHELF;
+    public static final GenericFloatingShelf IMPARIUS_FLOATING_SHELF;
     public static final GenericFloatingShelf JACARANDA_FLOATING_SHELF;
     public static final GenericFloatingShelf LAMENT_FLOATING_SHELF;
     public static final GenericFloatingShelf MAHOGANY_FLOATING_SHELF;
@@ -78,6 +80,7 @@ public class BygShelves {
         FIR_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.FIR));
         GREEN_ENCHANTED_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.GREEN_ENCHANTED));
         HOLLY_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.HOLLY));
+        IMPARIUS_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.IMPARIUS));
         JACARANDA_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.JACARANDA));
         LAMENT_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.LAMENT));
         MAHOGANY_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.MAHOGANY));
@@ -107,6 +110,7 @@ public class BygShelves {
         FIR_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.FIR));
         GREEN_ENCHANTED_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.GREEN_ENCHANTED));
         HOLLY_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.HOLLY));
+        IMPARIUS_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.IMPARIUS));
         JACARANDA_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.JACARANDA));
         LAMENT_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.LAMENT));
         MAHOGANY_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.MAHOGANY));
@@ -138,6 +142,7 @@ public class BygShelves {
         FIR_SHELF.register();
         GREEN_ENCHANTED_SHELF.register();
         HOLLY_SHELF.register();
+        IMPARIUS_SHELF.register();
         JACARANDA_SHELF.register();
         LAMENT_SHELF.register();
         MAHOGANY_SHELF.register();
@@ -167,6 +172,7 @@ public class BygShelves {
         FIR_FLOATING_SHELF.register();
         GREEN_ENCHANTED_FLOATING_SHELF.register();
         HOLLY_FLOATING_SHELF.register();
+        IMPARIUS_FLOATING_SHELF.register();
         JACARANDA_FLOATING_SHELF.register();
         LAMENT_FLOATING_SHELF.register();
         MAHOGANY_FLOATING_SHELF.register();

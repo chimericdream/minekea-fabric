@@ -163,6 +163,18 @@ public class BygBlockSettings {
             )
         );
 
+    public static DefaultSettings IMPARIUS = new DefaultSettings(Blocks.OAK_PLANKS)
+        .modId("byg")
+        .material("imparius")
+        .translation("Imparius")
+        .materials(
+            Map.of(
+                "main", new Identifier("byg:imparius_planks"),
+                "slab", new Identifier("byg:imparius_slab"),
+                "log", new Identifier("byg:imparius_stem")
+            )
+        );
+
     public static DefaultSettings JACARANDA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("jacaranda")
