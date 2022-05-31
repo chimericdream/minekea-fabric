@@ -283,6 +283,9 @@ public class Bookshelves implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.entry(StorageBookshelfScreenHandler.SCREEN_ID.toString(), "Storage Bookshelf");
+        MinekeaResourcePack.EN_US.entry("block.minecraft.bookshelf", "Oak Bookshelf");
+
         for (int i = 0; i <= 6; i++) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(
                 JModel.model("minekea:block/furniture/bookshelves/bookshelf")

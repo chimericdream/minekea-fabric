@@ -5,6 +5,7 @@ import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
@@ -76,6 +77,8 @@ public class GenericFloatingShelf extends GenericShelf {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Floating Shelf", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((FloatingShelfSettings) this.settings).getMaterials();
 
         Identifier planks = materials.getOrDefault("planks", materials.get("main"));

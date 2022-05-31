@@ -160,6 +160,8 @@ public class GenericChair extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Chair", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((ChairSettings) this.settings).getMaterials();
 
         Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));

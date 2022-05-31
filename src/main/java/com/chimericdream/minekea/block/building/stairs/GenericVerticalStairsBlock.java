@@ -124,6 +124,8 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Vertical Stairs", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((VerticalStairsSettings) this.settings).getMaterials();
 
         Identifier main = materials.get("main");

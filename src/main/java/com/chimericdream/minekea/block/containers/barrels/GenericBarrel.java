@@ -51,6 +51,8 @@ public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
     }
 
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Barrel", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((BarrelSettings) this.settings).getMaterials();
 
         String PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main")).toString();

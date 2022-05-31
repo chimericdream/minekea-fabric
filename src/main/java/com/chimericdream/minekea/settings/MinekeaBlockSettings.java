@@ -53,12 +53,17 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.isFlammable = settings.isFlammable;
         this.isTranslucent = settings.isTranslucent;
         this.baseBlock = settings.baseBlock;
+        this.defaultTranslation = settings.defaultTranslation;
     }
 
     abstract public Identifier getBlockId();
 
     public String getModId() {
         return this.modId;
+    }
+
+    public String getDefaultTranslation() {
+        return this.defaultTranslation;
     }
 
     public String getMainMaterial() {

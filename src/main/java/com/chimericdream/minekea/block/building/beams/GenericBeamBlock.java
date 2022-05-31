@@ -179,6 +179,8 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Beam", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((BeamSettings) this.settings).getMaterials();
 
         Identifier end = materials.getOrDefault("end", materials.get("main"));

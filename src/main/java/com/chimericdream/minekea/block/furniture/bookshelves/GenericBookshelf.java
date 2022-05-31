@@ -56,6 +56,8 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Bookshelf", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((BookshelfSettings) this.settings).getMaterials();
 
         Identifier ingredient = materials.getOrDefault(

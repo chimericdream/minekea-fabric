@@ -111,6 +111,8 @@ public class GenericStool extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Stool", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((StoolSettings) this.settings).getMaterials();
 
         Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));

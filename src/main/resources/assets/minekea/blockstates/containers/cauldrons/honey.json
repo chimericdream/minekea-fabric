@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "level=1": {
+            "model": "minekea:block/containers/cauldrons/honey/level1"
+        },
+        "level=2": {
+            "model": "minekea:block/containers/cauldrons/honey/level2"
+        },
+        "level=3": {
+            "model": "minekea:block/containers/cauldrons/honey/full"
+        }
+    }
+}

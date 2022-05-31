@@ -19,6 +19,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -51,6 +52,8 @@ public class DyeStorageBlock extends GenericStorageBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("Compressed %s", Registry.ITEM.get(this.baseBlock).getName().getString()));
+
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
         Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
 

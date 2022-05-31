@@ -52,6 +52,8 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Bookshelf Trapdoor", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((BookshelfTrapdoorSettings) this.settings).getMaterials();
 
         Identifier shelf = materials.get("bookshelf");

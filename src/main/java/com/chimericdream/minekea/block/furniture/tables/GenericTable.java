@@ -37,6 +37,8 @@ import java.util.List;
 import java.util.Map;
 
 public class GenericTable extends Block implements MinekeaBlock {
+    public static final String TOOLTIP_KEY = "block.minekea.furniture.tables.tooltip";
+
     public static final BooleanProperty NORTH_CONNECTED;
     public static final BooleanProperty SOUTH_CONNECTED;
     public static final BooleanProperty EAST_CONNECTED;
@@ -97,7 +99,7 @@ public class GenericTable extends Block implements MinekeaBlock {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        tooltip.add(TextHelpers.getTooltip("block.minekea.tables.table_tooltip"));
+        tooltip.add(TextHelpers.getTooltip(TOOLTIP_KEY));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -198,6 +200,8 @@ public class GenericTable extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Table", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((TableSettings) this.settings).getMaterials();
 
         Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));

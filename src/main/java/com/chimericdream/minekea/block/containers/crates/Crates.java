@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.containers.crates;
 import com.chimericdream.minekea.block.containers.crates.GenericCrate.CrateSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.crate.CrateScreen;
 import com.chimericdream.minekea.screen.crate.CrateScreenHandler;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
@@ -99,5 +100,6 @@ public class Crates implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.entry(CrateScreenHandler.SCREEN_ID.toString(), "Crate");
     }
 }

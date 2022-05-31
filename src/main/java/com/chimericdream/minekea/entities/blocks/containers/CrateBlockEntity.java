@@ -80,7 +80,7 @@ public class CrateBlockEntity extends BlockEntity implements NamedScreenHandlerF
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText("container.minekea.crate");
+        return new TranslatableText(CrateScreenHandler.SCREEN_ID.toString());
     }
 
     @Override

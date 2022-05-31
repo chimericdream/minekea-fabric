@@ -40,6 +40,8 @@ public class DoomLantern extends LanternBlock implements MinekeaBlock {
     }
 
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, "Doom Lantern");
+
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(

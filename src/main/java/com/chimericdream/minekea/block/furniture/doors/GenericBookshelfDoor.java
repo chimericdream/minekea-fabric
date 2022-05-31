@@ -56,6 +56,8 @@ public class GenericBookshelfDoor extends DoorBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Bookshelf Door", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((BookshelfDoorSettings) this.settings).getMaterials();
 
         Identifier shelf = materials.get("bookshelf");

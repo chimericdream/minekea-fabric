@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.furniture.tables;
 
 import com.chimericdream.minekea.block.furniture.tables.GenericTable.TableSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 
@@ -54,5 +55,6 @@ public class Tables implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.entry(GenericTable.TOOLTIP_KEY, "Simple design, but somehow LACKing...");
     }
 }

@@ -52,6 +52,8 @@ public class GenericBookshelfSlab extends SlabBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Bookshelf Slab", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         BookshelfSlabSettings settings = (BookshelfSlabSettings) this.settings;
 
         Map<String, Identifier> materials = settings.getMaterials();

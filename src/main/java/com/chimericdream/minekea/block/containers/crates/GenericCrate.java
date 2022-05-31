@@ -165,6 +165,8 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     }
 
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Crate", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((CrateSettings) this.settings).getMaterials();
 
         Identifier log = materials.getOrDefault("log", materials.get("main"));

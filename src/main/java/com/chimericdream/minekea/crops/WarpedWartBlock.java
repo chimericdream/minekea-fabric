@@ -85,6 +85,8 @@ public class WarpedWartBlock extends PlantBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, "Warped Wart");
+
         Identifier BASE_MODEL_ID = Model.getBlockModelID(BLOCK_ID);
         Identifier STAGE0_MODEL_ID = new Identifier(BASE_MODEL_ID.getNamespace(), BASE_MODEL_ID.getPath() + "_stage0");
         Identifier STAGE1_MODEL_ID = new Identifier(BASE_MODEL_ID.getNamespace(), BASE_MODEL_ID.getPath() + "_stage1");

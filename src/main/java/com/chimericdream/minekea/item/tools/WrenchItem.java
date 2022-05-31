@@ -50,6 +50,8 @@ public class WrenchItem extends Item implements MinekeaItem {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.itemRespect(this, "Wrench");
+
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             ITEM_ID,
             JRecipe.shaped(

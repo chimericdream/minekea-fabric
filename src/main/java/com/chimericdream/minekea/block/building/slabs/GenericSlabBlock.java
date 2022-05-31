@@ -52,6 +52,8 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Slab", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((SlabSettings) this.settings).getMaterials();
 
         Identifier end = materials.getOrDefault("end", materials.get("main"));

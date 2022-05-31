@@ -52,6 +52,8 @@ public class GenericStairsBlock extends StairsBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Stairs", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((StairsSettings) this.settings).getMaterials();
 
         Identifier end = materials.getOrDefault("end", materials.get("main"));

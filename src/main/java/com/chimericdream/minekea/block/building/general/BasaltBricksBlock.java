@@ -42,6 +42,8 @@ public class BasaltBricksBlock extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, "Basalt Bricks");
+
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
         Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
 

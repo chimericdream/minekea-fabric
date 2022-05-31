@@ -34,6 +34,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class FakeCake extends CakeBlock implements MinekeaBlock {
+    public final static String TOOLTIP_KEY = "block.minekea.decorations.misc.fake_cake.tooltip";
     private final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "decorations/misc/fake_cake");
 
     public FakeCake() {
@@ -47,7 +48,7 @@ public class FakeCake extends CakeBlock implements MinekeaBlock {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        tooltip.add(TextHelpers.getTooltip("block.minekea.decorations.fake_cake.tooltip"));
+        tooltip.add(TextHelpers.getTooltip(TOOLTIP_KEY));
     }
 
     public Identifier getBlockID() {
@@ -62,6 +63,9 @@ public class FakeCake extends CakeBlock implements MinekeaBlock {
     }
 
     public void setupResources() {
+        MinekeaResourcePack.EN_US.entry(TOOLTIP_KEY, "This cake is a lie!");
+        MinekeaResourcePack.EN_US.blockRespect(this, "Cake");
+
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
         Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
 

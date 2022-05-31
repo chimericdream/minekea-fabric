@@ -178,6 +178,8 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Storage Bookshelf", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         StorageBookshelfSettings settings = (StorageBookshelfSettings) this.settings;
 
         Map<String, Identifier> materials = settings.getMaterials();

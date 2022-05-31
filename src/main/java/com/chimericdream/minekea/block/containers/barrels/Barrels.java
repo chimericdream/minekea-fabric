@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.containers.barrels;
 
 import com.chimericdream.minekea.block.containers.barrels.GenericBarrel.BarrelSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
@@ -68,5 +69,6 @@ public class Barrels implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.entry("block.minecraft.barrel", "Oak Barrel");
     }
 }

@@ -52,6 +52,8 @@ public class GenericBookshelfStairs extends StairsBlock implements MinekeaBlock 
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Bookshelf Stairs", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((BookshelfStairsSettings) this.settings).getMaterials();
 
         Identifier shelf = materials.get("bookshelf");

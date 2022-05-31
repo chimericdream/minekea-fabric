@@ -109,7 +109,7 @@ public class StorageBookshelfBlockEntity extends BlockEntity implements NamedScr
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText("container.minekea.storage_bookshelf");
+        return new TranslatableText(StorageBookshelfScreenHandler.SCREEN_ID.toString());
     }
 
     @Override

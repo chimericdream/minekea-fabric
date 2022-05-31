@@ -34,6 +34,8 @@ public class WarpedWartItem extends AliasedBlockItem implements MinekeaItem {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.itemRespect(this, "Warped Wart");
+
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             ITEM_ID,
             JRecipe.shapeless(

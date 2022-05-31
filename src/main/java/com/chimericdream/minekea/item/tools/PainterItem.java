@@ -109,6 +109,8 @@ public class PainterItem extends Item implements MinekeaItem {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.itemRespect(this, "Block Painter");
+
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             ITEM_ID,
             JRecipe.shaped(

@@ -205,6 +205,8 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock 
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Display Case", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((DisplayCaseSettings) this.settings).getMaterials();
         boolean isStripped = ((DisplayCaseSettings) this.settings).isStripped;
 

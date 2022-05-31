@@ -345,6 +345,8 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     }
 
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, "Glass Jar");
+
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(

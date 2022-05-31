@@ -75,6 +75,8 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Cover", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((CoverSettings) this.settings).getMaterials();
         Identifier end = materials.getOrDefault("end", materials.get("main"));
         Identifier side = materials.get("main");

@@ -5,6 +5,7 @@ import com.chimericdream.minekea.block.containers.HoneyCauldronBlock;
 import com.chimericdream.minekea.block.containers.MilkCauldronBlock;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.item.containers.HoneyBucket;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
@@ -109,6 +110,13 @@ public class Fluids implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.itemRespect(HONEY_BUCKET, "Honey Bucket");
+        MinekeaResourcePack.EN_US.blockRespect(HONEY_CAULDRON, "Honey Cauldron");
+        MinekeaResourcePack.EN_US.blockRespect(MILK_CAULDRON, "Milk Cauldron");
+        MinekeaResourcePack.EN_US.fluid(MILK, "Milk");
+        MinekeaResourcePack.EN_US.fluid(HONEY, "Honey");
+        MinekeaResourcePack.EN_US.blockRespect(MILK_SOURCE_BLOCK, "Milk");
+        MinekeaResourcePack.EN_US.blockRespect(HONEY_SOURCE_BLOCK, "Honey");
     }
 
     private void setupMilkHandlers() {

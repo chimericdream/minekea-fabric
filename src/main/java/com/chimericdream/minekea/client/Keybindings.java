@@ -12,16 +12,19 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 
+import static com.chimericdream.minekea.resource.MinekeaResourcePack.CYCLE_PAINTER_KEYBIND;
+import static com.chimericdream.minekea.resource.MinekeaResourcePack.MINEKEA_CATEGORY;
+
 @Environment(EnvType.CLIENT)
 public class Keybindings {
     public static final KeyBinding CYCLE_PAINTER_COLOR;
 
     static {
         CYCLE_PAINTER_COLOR = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-            "key.minekea.items.painter.cycle_color",
+            CYCLE_PAINTER_KEYBIND,
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_EQUAL,
-            "category.minekea"
+            MINEKEA_CATEGORY
         ));
     }
 

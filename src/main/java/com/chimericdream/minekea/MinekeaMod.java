@@ -111,7 +111,9 @@ public class MinekeaMod implements ModInitializer {
             category.registerEntities(OTHER_MODS);
         }
 
+        LOGGER.info("[minekea] Registering items");
         ITEMS.register();
+        ITEMS.setupResources();
 
         LOGGER.info("[minekea] Registering colored blocks");
         registerVanillaColoredBlocks();

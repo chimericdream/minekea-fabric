@@ -3,6 +3,7 @@ package com.chimericdream.minekea.item;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.tools.PainterItem;
 import com.chimericdream.minekea.item.tools.WrenchItem;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.item.BlockPainterScreen;
 import com.chimericdream.minekea.screen.item.BlockPainterScreenHandler;
 import net.fabricmc.api.EnvType;
@@ -36,5 +37,9 @@ public class Items {
     @Environment(EnvType.CLIENT)
     public void initializeClient() {
         ScreenRegistry.register(BLOCK_PAINTER_SCREEN_HANDLER, BlockPainterScreen::new);
+    }
+
+    public void setupResources() {
+        MinekeaResourcePack.EN_US.entry("category.minekea", "Minekea");
     }
 }

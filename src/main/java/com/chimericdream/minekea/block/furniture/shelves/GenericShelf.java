@@ -254,6 +254,8 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Shelf", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+
         Map<String, Identifier> materials = ((SupportedShelfSettings) this.settings).getMaterials();
 
         Identifier log = materials.getOrDefault("log", materials.get("main"));
