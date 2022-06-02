@@ -1,2 +1,3 @@
 accessWidener	v1	named
 accessible	field	net/minecraft/block/AbstractBlock	settings	Lnet/minecraft/block/AbstractBlock$Settings;
+mutable	field	net/minecraft/block/Block	translationKey	Ljava/lang/String;

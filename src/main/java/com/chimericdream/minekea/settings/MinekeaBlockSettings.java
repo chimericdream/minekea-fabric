@@ -17,6 +17,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected int burnSpread = 0;
     protected int burnTime = 0;
     protected int fuelTime = 0;
+    protected boolean isColumn = false;
     protected boolean isFlammable = false;
     protected boolean isTranslucent = false;
     protected String defaultTranslation;
@@ -54,9 +55,18 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.isTranslucent = settings.isTranslucent;
         this.baseBlock = settings.baseBlock;
         this.defaultTranslation = settings.defaultTranslation;
+        this.isColumn = settings.isColumn;
     }
 
     abstract public Identifier getBlockId();
+
+    public float getHardness() {
+        return this.getBaseBlock().getHardness();
+    }
+
+    public float getResistance() {
+        return this.getBaseBlock().getBlastResistance();
+    }
 
     public String getModId() {
         return this.modId;
@@ -76,6 +86,10 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public Block getBaseBlock() {
         return this.baseBlock;
+    }
+
+    public boolean isColumn() {
+        return this.isColumn;
     }
 
     public boolean isFlammable() {
@@ -112,6 +126,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public T fuelTime(int time) {
         this.fuelTime = time;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T column() {
+        this.isColumn = true;
         // noinspection unchecked
         return (T) this;
     }

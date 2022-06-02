@@ -85,6 +85,15 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings CLAY = new DefaultSettings(Blocks.CLAY)
+        .material("clay")
+        .translation("Clay")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:clay")
+            )
+        );
+
     public static DefaultSettings COBBLED_DEEPSLATE = new DefaultSettings(Blocks.COBBLED_DEEPSLATE)
         .material("cobbled_deepslate")
         .translation("Cobbled Deepslate")
@@ -229,6 +238,15 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings DIRT = new DefaultSettings(Blocks.DIRT)
+        .material("dirt")
+        .translation("Dirt")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:dirt")
+            )
+        );
+
     public static DefaultSettings END_STONE_BRICK = new DefaultSettings(Blocks.END_STONE_BRICKS)
         .material("end_stone_brick")
         .translation("End Stone Brick")
@@ -253,6 +271,24 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:granite")
+            )
+        );
+
+    public static DefaultSettings GRAVEL = new DefaultSettings(Blocks.GRAVEL)
+        .material("gravel")
+        .translation("Gravel")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:gravel")
+            )
+        );
+
+    public static DefaultSettings IRON_BLOCK = new DefaultSettings(Blocks.IRON_BLOCK)
+        .material("iron_block")
+        .translation("Iron Block")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:iron_block")
             )
         );
 
@@ -448,6 +484,15 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings SAND = new DefaultSettings(Blocks.SAND)
+        .material("sand")
+        .translation("Sand")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:sand")
+            )
+        );
+
     public static DefaultSettings SANDSTONE = new DefaultSettings(Blocks.SANDSTONE)
         .material("sandstone")
         .translation("Sandstone")
@@ -502,6 +547,15 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:smooth_stone")
+            )
+        );
+
+    public static DefaultSettings SOUL_SAND = new DefaultSettings(Blocks.SOUL_SAND)
+        .material("soul_sand")
+        .translation("Soul Sand")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:soul_sand")
             )
         );
 

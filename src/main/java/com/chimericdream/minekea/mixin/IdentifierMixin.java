@@ -16,6 +16,8 @@ public class IdentifierMixin {
         updateIdsV1V2(id);
         updateIdsV2V3(id);
 
+        convertPannotiasParcelsIdsV1(id);
+
         return id;
     }
 
@@ -131,6 +133,24 @@ public class IdentifierMixin {
 
         replacements.forEach((String match, String replace) -> {
             if (id[1].matches(match)) {
+                id[1] = id[1].replaceAll(match, replace);
+            }
+        });
+    }
+
+    // Blocks moved over in 2.8.0
+    private static void convertPannotiasParcelsIdsV1(String[] id) {
+        if (!id[0].equals("pannotiasparcels")) {
+            return;
+        }
+
+        Map<String, String> replacements = new LinkedHashMap<>();
+
+        replacements.put("^compressed_([a-zA-Z_-]+)_([0-9])x$", "building/compressed/$1/$2x");
+
+        replacements.forEach((String match, String replace) -> {
+            if (id[1].matches(match)) {
+                id[0] = ModInfo.MOD_ID;
                 id[1] = id[1].replaceAll(match, replace);
             }
         });
