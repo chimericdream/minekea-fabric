@@ -54,6 +54,7 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
     @Override
     public void setupResources() {
         MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Wall", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaResourcePack.WALL_TAG.add(getBlockID());
 
         Map<String, Identifier> materials = ((WallSettings) this.settings).getMaterials();
 
