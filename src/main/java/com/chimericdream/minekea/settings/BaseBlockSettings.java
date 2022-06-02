@@ -121,6 +121,15 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings COPPER_BLOCK = new DefaultSettings(Blocks.COPPER_BLOCK)
+        .material("copper_block")
+        .translation("Copper Block")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:copper_block")
+            )
+        );
+
     public static DefaultSettings CRACKED_BASALT_BRICK = new DefaultSettings(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK)
         .material("cracked_basalt_brick")
         .translation("Cracked Basalt Brick")
@@ -229,6 +238,15 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings DIAMOND_BLOCK = new DefaultSettings(Blocks.DIAMOND_BLOCK)
+        .material("diamond_block")
+        .translation("Diamond Block")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:diamond_block")
+            )
+        );
+
     public static DefaultSettings DIORITE = new DefaultSettings(Blocks.DIORITE)
         .material("diorite")
         .translation("Diorite")
@@ -265,6 +283,15 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings GOLD_BLOCK = new DefaultSettings(Blocks.GOLD_BLOCK)
+        .material("gold_block")
+        .translation("Gold Block")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:gold_block")
+            )
+        );
+
     public static DefaultSettings GRANITE = new DefaultSettings(Blocks.GRANITE)
         .material("granite")
         .translation("Granite")
@@ -289,6 +316,15 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:iron_block")
+            )
+        );
+
+    public static DefaultSettings LAPIS_BLOCK = new DefaultSettings(Blocks.LAPIS_BLOCK)
+        .material("lapis_block")
+        .translation("Lapis Block")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:lapis_block")
             )
         );
 
@@ -334,6 +370,15 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:nether_bricks")
+            )
+        );
+
+    public static DefaultSettings NETHERITE_BLOCK = new DefaultSettings(Blocks.NETHERITE_BLOCK)
+        .material("netherite_block")
+        .translation("Netherite Block")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:netherite_block")
             )
         );
 
@@ -481,6 +526,15 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:red_sandstone")
+            )
+        );
+
+    public static DefaultSettings REDSTONE_BLOCK = new DefaultSettings(Blocks.REDSTONE_BLOCK)
+        .material("redstone_block")
+        .translation("Redstone Block")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:redstone_block")
             )
         );
 

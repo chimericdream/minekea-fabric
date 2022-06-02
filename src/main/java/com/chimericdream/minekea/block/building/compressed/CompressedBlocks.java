@@ -88,7 +88,13 @@ public class CompressedBlocks implements MinekeaBlockCategory {
     public static final List<GenericCompressedBlock> WARPED_BASALT_BRICK = new ArrayList<>();
     public static final List<GenericCompressedBlock> WARPED_NETHER_BRICK = new ArrayList<>();
 
+    public static final List<GenericCompressedBlock> COPPER_BLOCK = new ArrayList<>();
+    public static final List<GenericCompressedBlock> DIAMOND_BLOCK = new ArrayList<>();
+    public static final List<GenericCompressedBlock> GOLD_BLOCK = new ArrayList<>();
     public static final List<GenericCompressedBlock> IRON_BLOCK = new ArrayList<>();
+    public static final List<GenericCompressedBlock> LAPIS_BLOCK = new ArrayList<>();
+    public static final List<GenericCompressedBlock> NETHERITE_BLOCK = new ArrayList<>();
+    public static final List<GenericCompressedBlock> REDSTONE_BLOCK = new ArrayList<>();
 
     public static final List<GenericCompressedBlock> WHITE_TERRACOTTA = new ArrayList<>();
     public static final List<GenericCompressedBlock> ORANGE_TERRACOTTA = new ArrayList<>();
@@ -241,7 +247,13 @@ public class CompressedBlocks implements MinekeaBlockCategory {
             WARPED_BASALT_BRICK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.WARPED_BASALT_BRICK).compressionLevel(i)));
             WARPED_NETHER_BRICK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.WARPED_NETHER_BRICK).compressionLevel(i)));
 
+            COPPER_BLOCK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.COPPER_BLOCK).compressionLevel(i)));
+            DIAMOND_BLOCK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.DIAMOND_BLOCK).compressionLevel(i)));
+            GOLD_BLOCK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.GOLD_BLOCK).compressionLevel(i)));
             IRON_BLOCK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.IRON_BLOCK).compressionLevel(i)));
+            LAPIS_BLOCK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.LAPIS_BLOCK).compressionLevel(i)));
+            NETHERITE_BLOCK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.NETHERITE_BLOCK).compressionLevel(i)));
+            REDSTONE_BLOCK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.REDSTONE_BLOCK).compressionLevel(i)));
 
             WHITE_TERRACOTTA.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.WHITE_TERRACOTTA).compressionLevel(i)));
             ORANGE_TERRACOTTA.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.ORANGE_TERRACOTTA).compressionLevel(i)));
@@ -391,7 +403,13 @@ public class CompressedBlocks implements MinekeaBlockCategory {
         BLOCKS.addAll(WARPED_BASALT_BRICK);
         BLOCKS.addAll(WARPED_NETHER_BRICK);
 
+        BLOCKS.addAll(COPPER_BLOCK);
+        BLOCKS.addAll(DIAMOND_BLOCK);
+        BLOCKS.addAll(GOLD_BLOCK);
         BLOCKS.addAll(IRON_BLOCK);
+        BLOCKS.addAll(LAPIS_BLOCK);
+        BLOCKS.addAll(NETHERITE_BLOCK);
+        BLOCKS.addAll(REDSTONE_BLOCK);
 
         BLOCKS.addAll(WHITE_TERRACOTTA);
         BLOCKS.addAll(ORANGE_TERRACOTTA);
