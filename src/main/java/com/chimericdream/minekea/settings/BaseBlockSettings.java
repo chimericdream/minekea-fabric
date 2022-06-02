@@ -94,6 +94,15 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings COARSE_DIRT = new DefaultSettings(Blocks.COARSE_DIRT)
+        .material("coarse_dirt")
+        .translation("Coarse Dirt")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:coarse_dirt")
+            )
+        );
+
     public static DefaultSettings COBBLED_DEEPSLATE = new DefaultSettings(Blocks.COBBLED_DEEPSLATE)
         .material("cobbled_deepslate")
         .translation("Cobbled Deepslate")
@@ -529,12 +538,30 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings RED_SAND = new DefaultSettings(Blocks.RED_SAND)
+        .material("red_sand")
+        .translation("Red Sand")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:red_sand")
+            )
+        );
+
     public static DefaultSettings REDSTONE_BLOCK = new DefaultSettings(Blocks.REDSTONE_BLOCK)
         .material("redstone_block")
         .translation("Redstone Block")
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:redstone_block")
+            )
+        );
+
+    public static DefaultSettings ROOTED_DIRT = new DefaultSettings(Blocks.ROOTED_DIRT)
+        .material("rooted_dirt")
+        .translation("Rooted Dirt")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:rooted_dirt")
             )
         );
 

@@ -20,6 +20,7 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock BONE_COVER;
     public static final GenericCoverBlock BRICK_COVER;
     public static final GenericCoverBlock CALCITE_COVER;
+    public static final GenericCoverBlock COARSE_DIRT_COVER;
     public static final GenericCoverBlock COBBLED_DEEPSLATE_COVER;
     public static final GenericCoverBlock COBBLED_END_STONE_COVER;
     public static final GenericCoverBlock COBBLESTONE_COVER;
@@ -36,6 +37,7 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock DEEPSLATE_COVER;
     public static final GenericCoverBlock DEEPSLATE_TILE_COVER;
     public static final GenericCoverBlock DIORITE_COVER;
+    public static final GenericCoverBlock DIRT_COVER;
     public static final GenericCoverBlock END_STONE_BRICK_COVER;
     public static final GenericCoverBlock END_STONE_COVER;
     public static final GenericCoverBlock GRANITE_COVER;
@@ -58,6 +60,7 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock PURPUR_PILLAR_COVER;
     public static final GenericCoverBlock RED_NETHER_BRICK_COVER;
     public static final GenericCoverBlock RED_SANDSTONE_COVER;
+    public static final GenericCoverBlock ROOTED_DIRT_COVER;
     public static final GenericCoverBlock SANDSTONE_COVER;
     public static final GenericCoverBlock SMOOTH_BASALT_COVER;
     public static final GenericCoverBlock SMOOTH_RED_SANDSTONE_COVER;
@@ -165,6 +168,7 @@ public class Covers implements MinekeaBlockCategory {
         BONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.BONE));
         BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.BRICK));
         CALCITE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.CALCITE));
+        COARSE_DIRT_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.COARSE_DIRT));
         COBBLED_DEEPSLATE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.COBBLED_DEEPSLATE));
         COBBLED_END_STONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.COBBLED_END_STONE));
         COBBLESTONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.COBBLESTONE));
@@ -181,6 +185,7 @@ public class Covers implements MinekeaBlockCategory {
         DEEPSLATE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.DEEPSLATE));
         DEEPSLATE_TILE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.DEEPSLATE_TILE));
         DIORITE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.DIORITE));
+        DIRT_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.DIRT));
         END_STONE_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.END_STONE_BRICK));
         END_STONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.END_STONE));
         GRANITE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.GRANITE));
@@ -203,6 +208,7 @@ public class Covers implements MinekeaBlockCategory {
         PURPUR_PILLAR_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.PURPUR_PILLAR));
         RED_NETHER_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.RED_NETHER_BRICK));
         RED_SANDSTONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.RED_SANDSTONE));
+        ROOTED_DIRT_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.ROOTED_DIRT));
         SANDSTONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.SANDSTONE));
         SMOOTH_BASALT_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.SMOOTH_BASALT));
         SMOOTH_RED_SANDSTONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.SMOOTH_RED_SANDSTONE));
@@ -308,6 +314,7 @@ public class Covers implements MinekeaBlockCategory {
             BONE_COVER,
             BRICK_COVER,
             CALCITE_COVER,
+            COARSE_DIRT_COVER,
             COBBLED_DEEPSLATE_COVER,
             COBBLED_END_STONE_COVER,
             COBBLESTONE_COVER,
@@ -324,6 +331,7 @@ public class Covers implements MinekeaBlockCategory {
             DEEPSLATE_COVER,
             DEEPSLATE_TILE_COVER,
             DIORITE_COVER,
+            DIRT_COVER,
             END_STONE_BRICK_COVER,
             END_STONE_COVER,
             GRANITE_COVER,
@@ -346,6 +354,7 @@ public class Covers implements MinekeaBlockCategory {
             PURPUR_PILLAR_COVER,
             RED_NETHER_BRICK_COVER,
             RED_SANDSTONE_COVER,
+            ROOTED_DIRT_COVER,
             SANDSTONE_COVER,
             SMOOTH_BASALT_COVER,
             SMOOTH_RED_SANDSTONE_COVER,
