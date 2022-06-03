@@ -1,6 +1,6 @@
 {
-    "name": "Compressed Item Blocks",
-    "icon": "minekea:storage/compressed_ender_pearl",
+    "name": "Item Storage Blocks",
+    "icon": "minekea:storage/compressed/ender_pearl",
     "category": "minekea:building_blocks",
     "read_by_default": true,
     "pages": [
@@ -10,19 +10,19 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:storage/compressed_ender_pearl",
-            "recipe2": "minekea:storage/compressed_blaze_powder",
+            "recipe": "minekea:storage/compressed/ender_pearl",
+            "recipe2": "minekea:storage/compressed/blaze_powder",
             "title": "Example Recipes"
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:storage/compressed_sugar",
-            "recipe2": "minekea:storage/compressed_potato",
+            "recipe": "minekea:storage/compressed/sugar",
+            "recipe2": "minekea:storage/compressed/potato",
             "title": "Example Recipes"
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:storage/dyes/compressed_white_dye",
+            "recipe": "minekea:storage/dyes/white_dye",
             "title": "Example Recipes",
             "text": "All dyes can be compressed into gooey blocks which behave much like honey. They slow entities down and prevent jumping. However, they cannot be used in redstone contraptions."
         }

@@ -1,6 +1,6 @@
 {
     "name": "Warped Nether Bricks",
-    "icon": "minekea:building/warped_nether_bricks",
+    "icon": "minekea:building/general/warped_nether_bricks",
     "category": "minekea:building_blocks",
     "read_by_default": true,
     "pages": [
@@ -10,14 +10,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:building/warped_nether_bricks",
-            "recipe2": "minekea:building/warped_nether_brick_stairs",
-            "title": "Recipes"
-        },
-        {
-            "type": "patchouli:crafting",
-            "recipe": "minekea:building/warped_nether_brick_slab",
-            "title": "Recipes"
+            "recipe": "minekea:building/general/warped_nether_bricks",
+            "title": "Recipe"
         }
     ]
 }

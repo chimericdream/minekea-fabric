@@ -1,6 +1,6 @@
 {
     "name": "Stairs, Slabs, and Walls",
-    "icon": "minekea:stairs/oak_bookshelf_stairs",
+    "icon": "minekea:building/stairs/amethyst",
     "category": "minekea:building_blocks",
     "read_by_default": true,
     "pages": [
@@ -10,13 +10,14 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:stairs/oak_bookshelf_stairs",
-            "recipe2": "minekea:slabs/oak_bookshelf_slab",
+            "recipe": "minekea:building/stairs/amethyst",
+            "recipe2": "minekea:building/stairs/vertical/obsidian",
             "title": "Example Recipes"
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:building/stairs/oak_vertical_bookshelf_stairs",
+            "recipe": "minekea:building/slabs/bone",
+            "recipe2": "minekea:building/walls/white_terracotta",
             "title": "Example Recipes"
         }
     ]

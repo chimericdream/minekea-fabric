@@ -1,0 +1,17 @@
+{
+    "name": "Block Painter",
+    "icon": "minekea:tools/painter",
+    "category": "minekea:tools",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Did you place some dyed blocks, then decide you want a different color? Don't tear down your build. Load up the block painter with the dye of your choice and go to town!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:tools/painter",
+            "title": "Recipe"
+        }
+    ]
+}
