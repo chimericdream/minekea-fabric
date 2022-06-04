@@ -39,6 +39,29 @@ public class LootTable {
             );
     }
 
+    public static JLootTable doubleBlockLootTable(Identifier blockID) {
+        JsonObject lowerHalf = new JsonObject();
+        lowerHalf.addProperty("half", "lower");
+
+        return JLootTable.loot("minecraft:block")
+            .pool(
+                JLootTable.pool()
+                    .rolls(1)
+                    .entry(
+                        new JEntry()
+                            .type("minecraft:item")
+                            .name(blockID.toString())
+                            .condition(
+                                new JCondition()
+                                    .condition("minecraft:block_state_property")
+                                    .parameter("block", blockID)
+                                    .parameter("properties", lowerHalf)
+                            )
+                    )
+                    .condition(new JCondition().condition("minecraft:survives_explosion"))
+            );
+    }
+
     public static JsonObject silkTouchPredicate() {
         var level = new JsonObject();
         level.addProperty("min", 1);

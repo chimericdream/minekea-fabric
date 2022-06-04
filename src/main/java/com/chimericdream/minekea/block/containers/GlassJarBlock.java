@@ -53,8 +53,6 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     public GlassJarBlock(String modId) {
         super(Settings.copy(Blocks.GLASS).nonOpaque());
 
-        validateMaterials(null);
-
         this.modId = modId;
     }
 
