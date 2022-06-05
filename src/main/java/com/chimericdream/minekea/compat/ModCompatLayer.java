@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.compat;
 
 import com.chimericdream.minekea.block.containers.crates.GenericCrate;
+import com.chimericdream.minekea.block.furniture.armoires.GenericArmoireBlock;
 import com.chimericdream.minekea.block.furniture.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
 import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
@@ -14,6 +15,8 @@ public interface ModCompatLayer {
 
     default void setupResources() {
     }
+
+    List<GenericArmoireBlock> getArmoires();
 
     List<GenericCrate> getCrates();
 

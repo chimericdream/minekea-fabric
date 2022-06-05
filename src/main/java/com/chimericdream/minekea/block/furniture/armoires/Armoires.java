@@ -1,10 +1,18 @@
 package com.chimericdream.minekea.block.furniture.armoires;
 
 import com.chimericdream.minekea.block.furniture.armoires.GenericArmoireBlock.ArmoireSettings;
+import com.chimericdream.minekea.client.render.block.ArmoireBlockEntityRenderer;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.entities.blocks.furniture.ArmoireBlockEntity;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.util.registry.Registry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Armoires implements MinekeaBlockCategory {
@@ -16,6 +24,8 @@ public class Armoires implements MinekeaBlockCategory {
     public static final GenericArmoireBlock OAK_ARMOIRE;
     public static final GenericArmoireBlock SPRUCE_ARMOIRE;
     public static final GenericArmoireBlock WARPED_ARMOIRE;
+
+    public static BlockEntityType<ArmoireBlockEntity> ARMOIRE_BLOCK_ENTITY;
 
     static {
         ACACIA_ARMOIRE = new GenericArmoireBlock(new ArmoireSettings(BaseBlockSettings.ACACIA));
@@ -30,6 +40,7 @@ public class Armoires implements MinekeaBlockCategory {
 
     @Override
     public void initializeClient() {
+        BlockEntityRendererRegistry.INSTANCE.register(ARMOIRE_BLOCK_ENTITY, ArmoireBlockEntityRenderer::new);
     }
 
     @Override
@@ -46,6 +57,29 @@ public class Armoires implements MinekeaBlockCategory {
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
+        List<GenericArmoireBlock> armoires = new ArrayList<>(List.of(
+            ACACIA_ARMOIRE,
+            BIRCH_ARMOIRE,
+            CRIMSON_ARMOIRE,
+            DARK_OAK_ARMOIRE,
+            JUNGLE_ARMOIRE,
+            OAK_ARMOIRE,
+            SPRUCE_ARMOIRE,
+            WARPED_ARMOIRE
+        ));
+
+        for (ModCompatLayer mod : otherMods) {
+            armoires.addAll(mod.getArmoires());
+        }
+
+        ARMOIRE_BLOCK_ENTITY = Registry.register(
+            Registry.BLOCK_ENTITY_TYPE,
+            ArmoireBlockEntity.ENTITY_ID,
+            FabricBlockEntityTypeBuilder.create(
+                ArmoireBlockEntity::new,
+                armoires.toArray(new Block[0])
+            ).build(null)
+        );
     }
 
     @Override

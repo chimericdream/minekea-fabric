@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.compat.byg;
 
 import com.chimericdream.minekea.block.containers.crates.GenericCrate;
+import com.chimericdream.minekea.block.furniture.armoires.GenericArmoireBlock;
 import com.chimericdream.minekea.block.furniture.bookshelves.GenericStorageBookshelf;
 import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
 import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
@@ -152,6 +153,11 @@ public class BygBlocks implements ModCompatLayer {
         SHELVES.register();
         TABLES.register();
         SEATS.register();
+    }
+
+    @Override
+    public List<GenericArmoireBlock> getArmoires() {
+        return List.of();
     }
 
     @Override

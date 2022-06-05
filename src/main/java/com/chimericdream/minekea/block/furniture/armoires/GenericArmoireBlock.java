@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.block.furniture.armoires;
 
+import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.blocks.furniture.ArmoireBlockEntity;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
@@ -15,6 +17,7 @@ import net.devtech.arrp.json.recipe.*;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.LivingEntity;
@@ -24,9 +27,14 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -37,7 +45,7 @@ import net.minecraft.world.WorldView;
 
 import java.util.Map;
 
-public class GenericArmoireBlock extends Block implements MinekeaBlock {
+public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock {
     public static final EnumProperty<DoubleBlockHalf> HALF;
     public static final DirectionProperty FACING;
 
@@ -297,10 +305,10 @@ public class GenericArmoireBlock extends Block implements MinekeaBlock {
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Direction direction = state.get(FACING);
+        Direction facing = state.get(FACING);
         DoubleBlockHalf half = state.get(HALF);
 
-        return switch (direction) {
+        return switch (facing) {
             case EAST -> half == DoubleBlockHalf.LOWER ? EAST_BOTTOM_SHAPE : EAST_TOP_SHAPE;
             case SOUTH -> half == DoubleBlockHalf.LOWER ? SOUTH_BOTTOM_SHAPE : SOUTH_TOP_SHAPE;
             case WEST -> half == DoubleBlockHalf.LOWER ? WEST_BOTTOM_SHAPE : WEST_TOP_SHAPE;
@@ -310,6 +318,250 @@ public class GenericArmoireBlock extends Block implements MinekeaBlock {
 
     public PistonBehavior getPistonBehavior(BlockState state) {
         return PistonBehavior.IGNORE;
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new ArmoireBlockEntity(pos, state);
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    /*
+     * Slot arrangement:
+     * 0  - left: chestplate
+     * 1  - left: leggings
+     * 2  - left: helmet
+     * 3  - left: boots
+     * 4  - middle-left: chestplate
+     * 5  - middle-left: leggings
+     * 6  - middle-left: helmet
+     * 7  - middle-left: boots
+     * 8  - middle-right: chestplate
+     * 9  - middle-right: leggings
+     * 10 - middle-right: helmet
+     * 11 - middle-right: boots
+     * 12 - right: chestplate
+     * 13 - right: leggings
+     * 14 - right: helmet
+     * 15 - right: boots
+     */
+    private int getTargetSlot(BlockState state, BlockHitResult hit) {
+        Direction facing = state.get(FACING);
+        DoubleBlockHalf half = state.get(HALF);
+        Vec3d localCoords = hit.getPos().subtract(Vec3d.of(hit.getBlockPos()));
+
+        int targetStand = 0; // 0, 1, 2, 3 -> left, middle-left, middle-right, right
+        int targetItem = -1; // -1, 0, 1, 2, 3 -> none, chestplate, leggings, helmet, boots
+
+        double x = localCoords.getX();
+        double y = localCoords.getY();
+        double z = localCoords.getZ();
+
+        /*
+         * East
+         * z 0.06250 -> 0.28125 (far left)
+         * z 0.28126 -> 0.50000 (middle left)
+         * z 0.50001 -> 0.71875 (middle right)
+         * z 0.71876 -> 0.93750 (far right)
+         *
+         * West
+         * z 0.06250 -> 0.28125 (far right)
+         * z 0.28126 -> 0.50000 (middle right)
+         * z 0.50001 -> 0.71875 (middle left)
+         * z 0.71876 -> 0.93750 (far left)
+         *
+         * South
+         * x 0.06250 -> 0.28125 (far right)
+         * x 0.28126 -> 0.50000 (middle right)
+         * x 0.50001 -> 0.71875 (middle left)
+         * x 0.71876 -> 0.93750 (far left)
+         *
+         * North
+         * x 0.06250 -> 0.28125 (far left)
+         * x 0.28126 -> 0.50000 (middle left)
+         * x 0.50001 -> 0.71875 (middle right)
+         * x 0.71876 -> 0.93750 (far right)
+         *
+         *
+         *
+         * Top
+         * y  0.07501 -> 0.75000 (chestplate)
+         * y -0.43125 -> 0.07500 (leggings)
+         *
+         * Bottom
+         * y 0.56876 -> 1.0 (leggings)
+         * y 0.25001 -> 0.56875 (helmet)
+         * y 0.00001 -> 0.25000 (boots)
+         */
+        switch (facing) {
+            case NORTH:
+                if (x > 0.71875) {
+                    targetStand = 3;
+                } else if (x > 0.5) {
+                    targetStand = 2;
+                } else if (x > 0.28125) {
+                    targetStand = 1;
+                }
+                break;
+            case EAST:
+                if (z > 0.71875) {
+                    targetStand = 3;
+                } else if (z > 0.5) {
+                    targetStand = 2;
+                } else if (z > 0.28125) {
+                    targetStand = 1;
+                }
+                break;
+            case SOUTH:
+                if (x <= 0.28125) {
+                    targetStand = 3;
+                } else if (x <= 0.5) {
+                    targetStand = 2;
+                } else if (x <= 0.71875) {
+                    targetStand = 1;
+                }
+                break;
+            case WEST:
+                if (z <= 0.28125) {
+                    targetStand = 3;
+                } else if (z <= 0.5) {
+                    targetStand = 2;
+                } else if (z <= 0.71875) {
+                    targetStand = 1;
+                }
+                break;
+        }
+
+        if (half == DoubleBlockHalf.UPPER) {
+            if (y <= 0.075) {
+                targetItem = 1;
+            } else if (y <= 0.75) {
+                targetItem = 0;
+            }
+        } else {
+            if (y > 0.56875) {
+                targetItem = 1;
+            } else if (y > 0.25) {
+                targetItem = 2;
+            } else {
+                targetItem = 3;
+            }
+        }
+
+        if (targetItem == -1) {
+            return -1;
+        }
+
+        /*
+         * stand	item	slot
+         * 0    	0   	0
+         * 0    	1   	1
+         * 0    	2   	2
+         * 0    	3   	3
+         * 1    	0   	4
+         * 1    	1   	5
+         * 1    	2   	6
+         * 1    	3   	7
+         * 2    	0   	8
+         * 2    	1   	9
+         * 2    	2   	10
+         * 2    	3   	11
+         * 3    	0   	12
+         * 3    	1   	13
+         * 3    	2   	14
+         * 3    	3   	15
+         */
+        return (targetStand * 3) + targetStand + targetItem;
+    }
+
+    private void logTargetSlot(int slot) {
+        switch (slot) {
+            case 0 -> MinekeaMod.LOGGER.info("Target slot: left: chestplate");
+            case 1 -> MinekeaMod.LOGGER.info("Target slot: left: leggings");
+            case 2 -> MinekeaMod.LOGGER.info("Target slot: left: helmet");
+            case 3 -> MinekeaMod.LOGGER.info("Target slot: left: boots");
+            case 4 -> MinekeaMod.LOGGER.info("Target slot: middle-left: chestplate");
+            case 5 -> MinekeaMod.LOGGER.info("Target slot: middle-left: leggings");
+            case 6 -> MinekeaMod.LOGGER.info("Target slot: middle-left: helmet");
+            case 7 -> MinekeaMod.LOGGER.info("Target slot: middle-left: boots");
+            case 8 -> MinekeaMod.LOGGER.info("Target slot: middle-right: chestplate");
+            case 9 -> MinekeaMod.LOGGER.info("Target slot: middle-right: leggings");
+            case 10 -> MinekeaMod.LOGGER.info("Target slot: middle-right: helmet");
+            case 11 -> MinekeaMod.LOGGER.info("Target slot: middle-right: boots");
+            case 12 -> MinekeaMod.LOGGER.info("Target slot: right: chestplate");
+            case 13 -> MinekeaMod.LOGGER.info("Target slot: right: leggings");
+            case 14 -> MinekeaMod.LOGGER.info("Target slot: right: helmet");
+            case 15 -> MinekeaMod.LOGGER.info("Target slot: right: boots");
+            default -> MinekeaMod.LOGGER.info("Target slot: none");
+        }
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (world.isClient()) {
+            return ActionResult.SUCCESS;
+        }
+
+        ArmoireBlockEntity entity;
+        ArmoireBlockEntity lowerHalf;
+
+        try {
+            entity = (ArmoireBlockEntity) world.getBlockEntity(pos);
+            if (state.get(HALF) == DoubleBlockHalf.UPPER) {
+                lowerHalf = (ArmoireBlockEntity) world.getBlockEntity(pos.down());
+            } else {
+                lowerHalf = entity;
+            }
+
+            assert entity != null;
+            assert lowerHalf != null;
+        } catch (Exception e) {
+            MinekeaMod.LOGGER.error(String.format("The armoire at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+
+            return ActionResult.FAIL;
+        }
+
+        int slot = getTargetSlot(state, hit);
+
+        if (slot == -1) {
+            return ActionResult.PASS;
+        }
+
+        if (!player.getMainHandStack().isEmpty()) {
+            // Try to insert the item in the player's hand into the targeted slot in the armoire
+            player.setStackInHand(hand, lowerHalf.tryInsert(slot, player.getStackInHand(hand)));
+        } else if (player.isSneaking() && player.getMainHandStack().isEmpty()) {
+            if (!lowerHalf.getStack(slot).isEmpty()) {
+                ItemScatterer.spawn(
+                    world,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    lowerHalf.removeStack(slot)
+                );
+            }
+        }
+
+        entity.markDirty();
+        world.markDirty(pos);
+
+        return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof ArmoireBlockEntity) {
+                ItemScatterer.spawn(world, pos, (ArmoireBlockEntity) blockEntity);
+                world.updateComparators(pos, this);
+            }
+            super.onStateReplaced(state, world, pos, newState, moved);
+        }
     }
 
     @Override
