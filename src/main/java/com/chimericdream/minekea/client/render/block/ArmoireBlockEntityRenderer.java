@@ -6,10 +6,14 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
+import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Quaternion;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
@@ -17,9 +21,45 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class ArmoireBlockEntityRenderer<T extends ArmoireBlockEntity> implements BlockEntityRenderer<T> {
-    private final ItemRenderer renderer = MinecraftClient.getInstance().getItemRenderer();
+    private final ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
+    private final EntityRenderer<ArmorStandEntity> armorStandRenderer;
+    private final ArmorStandEntity armorStand1;
+    private final ArmorStandEntity armorStand2;
+    private final ArmorStandEntity armorStand3;
+    private final ArmorStandEntity armorStand4;
 
     public ArmoireBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+        armorStand1 = new ArmorStandEntity(EntityType.ARMOR_STAND, ctx.getRenderDispatcher().world);
+        armorStand2 = new ArmorStandEntity(EntityType.ARMOR_STAND, ctx.getRenderDispatcher().world);
+        armorStand3 = new ArmorStandEntity(EntityType.ARMOR_STAND, ctx.getRenderDispatcher().world);
+        armorStand4 = new ArmorStandEntity(EntityType.ARMOR_STAND, ctx.getRenderDispatcher().world);
+        armorStandRenderer = (EntityRenderer<ArmorStandEntity>) MinecraftClient.getInstance().getEntityRenderDispatcher().getRenderer(armorStand1);
+
+        setupArmorStands();
+    }
+
+    private void setupArmorStands() {
+        /*
+         * There doesn't seem to be a simple way to make the armor stand entity small without modifying the NBT in a
+         * roundabout way...
+         */
+        NbtCompound nbt = new NbtCompound();
+        armorStand1.writeCustomDataToNbt(nbt);
+        nbt.putBoolean("Small", true);
+
+        List<ArmorStandEntity> stands = List.of(
+            armorStand1,
+            armorStand2,
+            armorStand3,
+            armorStand4
+        );
+
+        for (ArmorStandEntity stand : stands) {
+            stand.readCustomDataFromNbt(nbt);
+            stand.setInvisible(true);
+            stand.setNoGravity(true);
+            stand.setInvulnerable(true);
+        }
     }
 
     @Override
@@ -28,6 +68,7 @@ public class ArmoireBlockEntityRenderer<T extends ArmoireBlockEntity> implements
 
         World world = entity.getWorld();
 
+//        world.getEntitiesByType()
         if (world == null || world.getBlockEntity(entity.getPos()) != entity) {
             return;
         }
@@ -74,7 +115,7 @@ public class ArmoireBlockEntityRenderer<T extends ArmoireBlockEntity> implements
 
         matrices.multiply(new Quaternion(new Vec3f(0, 1, 0), 180, true));
 
-        renderer.renderItem(stack, ModelTransformation.Mode.GROUND, light, overlay, matrices, vertexConsumers, 0);
+        itemRenderer.renderItem(stack, ModelTransformation.Mode.GROUND, light, overlay, matrices, vertexConsumers, 0);
 
         matrices.pop();
     }

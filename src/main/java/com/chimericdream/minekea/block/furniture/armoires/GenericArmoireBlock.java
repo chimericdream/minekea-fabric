@@ -322,6 +322,10 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        if (state.get(HALF) == DoubleBlockHalf.UPPER) {
+            return null;
+        }
+
         return new ArmoireBlockEntity(pos, state);
     }
 
@@ -507,18 +511,15 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
         }
 
         ArmoireBlockEntity entity;
-        ArmoireBlockEntity lowerHalf;
 
         try {
-            entity = (ArmoireBlockEntity) world.getBlockEntity(pos);
             if (state.get(HALF) == DoubleBlockHalf.UPPER) {
-                lowerHalf = (ArmoireBlockEntity) world.getBlockEntity(pos.down());
+                entity = (ArmoireBlockEntity) world.getBlockEntity(pos.down());
             } else {
-                lowerHalf = entity;
+                entity = (ArmoireBlockEntity) world.getBlockEntity(pos);
             }
 
             assert entity != null;
-            assert lowerHalf != null;
         } catch (Exception e) {
             MinekeaMod.LOGGER.error(String.format("The armoire at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
 
@@ -533,15 +534,15 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
 
         if (!player.getMainHandStack().isEmpty()) {
             // Try to insert the item in the player's hand into the targeted slot in the armoire
-            player.setStackInHand(hand, lowerHalf.tryInsert(slot, player.getStackInHand(hand)));
+            player.setStackInHand(hand, entity.tryInsert(slot, player.getStackInHand(hand)));
         } else if (player.isSneaking() && player.getMainHandStack().isEmpty()) {
-            if (!lowerHalf.getStack(slot).isEmpty()) {
+            if (!entity.getStack(slot).isEmpty()) {
                 ItemScatterer.spawn(
                     world,
                     player.getX(),
                     player.getY(),
                     player.getZ(),
-                    lowerHalf.removeStack(slot)
+                    entity.removeStack(slot)
                 );
             }
         }
