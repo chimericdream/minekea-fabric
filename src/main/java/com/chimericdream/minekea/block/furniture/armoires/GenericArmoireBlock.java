@@ -66,175 +66,175 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
         HALF = Properties.DOUBLE_BLOCK_HALF;
 
         NORTH_TOP_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(0.0, 0.0, 0.0, 1.0, 16.0, 10.0),           // left
-            Block.createCuboidShape(15.0, 0.0, 0.0, 16.0, 16.0, 10.0),         // right
-            Block.createCuboidShape(1.0, 0.0, 0.0, 15.0, 16.0, 1.0),           // back
-            Block.createCuboidShape(1.0, 15.0, 1.0, 15.0, 16.0, 10.0),         // top
-            Block.createCuboidShape(1.0, 12.0, 5.0, 15.0, 13.0, 6.0),          // pole
-            Block.createCuboidShape(12.75, 8.40, 4.60, 13.75, 12.00, 6.40),    // Armor stand 1, head
-            Block.createCuboidShape(12.50, 5.70, 1.00, 14.00, 8.40, 10.00),    // Armor stand 1, shoulders
-            Block.createCuboidShape(12.75, 1.20, 2.80, 13.75, 5.70, 4.60),     // Armor stand 1, left arm
-            Block.createCuboidShape(12.75, 1.20, 6.40, 13.75, 5.70, 8.20),     // Armor stand 1, right arm
-            Block.createCuboidShape(12.75, -0.60, 1.90, 13.75, 1.20, 9.10),    // Armor stand 1, waist
-            Block.createCuboidShape(12.75, -6.90, 2.80, 13.75, -0.60, 4.60),   // Armor stand 1, left leg
-            Block.createCuboidShape(12.75, -6.90, 6.40, 13.75, -0.60, 8.20),   // Armor stand 1, right leg
-            Block.createCuboidShape(9.25, 8.40, 4.60, 10.25, 12.00, 6.40),     // Armor stand 2, head
-            Block.createCuboidShape(9.00, 5.70, 1.00, 10.50, 8.40, 10.00),     // Armor stand 2, shoulders
-            Block.createCuboidShape(9.25, 1.20, 2.80, 10.25, 5.70, 4.60),      // Armor stand 2, left arm
-            Block.createCuboidShape(9.25, 1.20, 6.40, 10.25, 5.70, 8.20),      // Armor stand 2, right arm
-            Block.createCuboidShape(9.25, -0.60, 1.90, 10.25, 1.20, 9.10),     // Armor stand 2, waist
-            Block.createCuboidShape(9.25, -6.90, 2.80, 10.25, -0.60, 4.60),    // Armor stand 2, left leg
-            Block.createCuboidShape(9.25, -6.90, 6.40, 10.25, -0.60, 8.20),    // Armor stand 2, right leg
-            Block.createCuboidShape(5.75, 8.40, 4.60, 6.75, 12.00, 6.40),      // Armor stand 3, head
-            Block.createCuboidShape(5.50, 5.70, 1.00, 7.00, 8.40, 10.00),      // Armor stand 3, shoulders
-            Block.createCuboidShape(5.75, 1.20, 2.80, 6.75, 5.70, 4.60),       // Armor stand 3, left arm
-            Block.createCuboidShape(5.75, 1.20, 6.40, 6.75, 5.70, 8.20),       // Armor stand 3, right arm
-            Block.createCuboidShape(5.75, -0.60, 1.90, 6.75, 1.20, 9.10),      // Armor stand 3, waist
-            Block.createCuboidShape(5.75, -6.90, 2.80, 6.75, -0.60, 4.60),     // Armor stand 3, left leg
-            Block.createCuboidShape(5.75, -6.90, 6.40, 6.75, -0.60, 8.20),     // Armor stand 3, right leg
-            Block.createCuboidShape(2.25, 8.40, 4.60, 3.25, 12.00, 6.40),      // Armor stand 4, head
-            Block.createCuboidShape(2.00, 5.70, 1.00, 3.50, 8.40, 10.00),      // Armor stand 4, shoulders
-            Block.createCuboidShape(2.25, 1.20, 2.80, 3.25, 5.70, 4.60),       // Armor stand 4, left arm
-            Block.createCuboidShape(2.25, 1.20, 6.40, 3.25, 5.70, 8.20),       // Armor stand 4, right arm
-            Block.createCuboidShape(2.25, -0.60, 1.90, 3.25, 1.20, 9.10),      // Armor stand 4, waist
-            Block.createCuboidShape(2.25, -6.90, 2.80, 3.25, -0.60, 4.60),     // Armor stand 4, left leg
-            Block.createCuboidShape(2.25, -6.90, 6.40, 3.25, -0.60, 8.20)      // Armor stand 4, right leg
+            Block.createCuboidShape(15.00, 0.00, 0.00, 16.00, 16.00, 12.00),   // left
+            Block.createCuboidShape(0.00, 0.00, 0.00, 1.00, 16.00, 12.00),     // right
+            Block.createCuboidShape(1.00, 15.00, 1.00, 15.00, 16.00, 12.00),   // back
+            Block.createCuboidShape(1.00, 0.00, 0.00, 15.00, 16.00, 1.00),     // top
+            Block.createCuboidShape(1.00, 12.00, 6.00, 15.00, 13.00, 7.00),    // pole
+            Block.createCuboidShape(12.75, 8.40, 5.60, 13.75, 12.00, 7.40),    // Armor stand 1, head
+            Block.createCuboidShape(12.50, 5.70, 2.00, 14.00, 8.40, 11.00),    // Armor stand 1, shoulders
+            Block.createCuboidShape(12.75, 1.20, 4.10, 13.75, 5.70, 5.60),     // Armor stand 1, left arm
+            Block.createCuboidShape(12.75, 1.20, 7.40, 13.75, 5.70, 8.90),     // Armor stand 1, right arm
+            Block.createCuboidShape(12.75, -0.60, 3.53, 13.75, 1.20, 9.48),    // Armor stand 1, waist
+            Block.createCuboidShape(12.75, -6.90, 4.10, 13.75, -0.60, 5.60),   // Armor stand 1, left leg
+            Block.createCuboidShape(12.75, -6.90, 7.40, 13.75, -0.60, 8.90),   // Armor stand 1, right leg
+            Block.createCuboidShape(9.25, 8.40, 5.60, 10.25, 12.00, 7.40),     // Armor stand 2, head
+            Block.createCuboidShape(9.00, 5.70, 2.00, 10.50, 8.40, 11.00),     // Armor stand 2, shoulders
+            Block.createCuboidShape(9.25, 1.20, 4.10, 10.25, 5.70, 5.60),      // Armor stand 2, left arm
+            Block.createCuboidShape(9.25, 1.20, 7.40, 10.25, 5.70, 8.90),      // Armor stand 2, right arm
+            Block.createCuboidShape(9.25, -0.60, 3.53, 10.25, 1.20, 9.48),     // Armor stand 2, waist
+            Block.createCuboidShape(9.25, -6.90, 4.10, 10.25, -0.60, 5.60),    // Armor stand 2, left leg
+            Block.createCuboidShape(9.25, -6.90, 7.40, 10.25, -0.60, 8.90),    // Armor stand 2, right leg
+            Block.createCuboidShape(5.75, 8.40, 5.60, 6.75, 12.00, 7.40),      // Armor stand 3, head
+            Block.createCuboidShape(5.50, 5.70, 2.00, 7.00, 8.40, 11.00),      // Armor stand 3, shoulders
+            Block.createCuboidShape(5.75, 1.20, 4.10, 6.75, 5.70, 5.60),       // Armor stand 3, left arm
+            Block.createCuboidShape(5.75, 1.20, 7.40, 6.75, 5.70, 8.90),       // Armor stand 3, right arm
+            Block.createCuboidShape(5.75, -0.60, 3.53, 6.75, 1.20, 9.48),      // Armor stand 3, waist
+            Block.createCuboidShape(5.75, -6.90, 4.10, 6.75, -0.60, 5.60),     // Armor stand 3, left leg
+            Block.createCuboidShape(5.75, -6.90, 7.40, 6.75, -0.60, 8.90),     // Armor stand 3, right leg
+            Block.createCuboidShape(2.25, 8.40, 5.60, 3.25, 12.00, 7.40),      // Armor stand 4, head
+            Block.createCuboidShape(2.00, 5.70, 2.00, 3.50, 8.40, 11.00),      // Armor stand 4, shoulders
+            Block.createCuboidShape(2.25, 1.20, 4.10, 3.25, 5.70, 5.60),       // Armor stand 4, left arm
+            Block.createCuboidShape(2.25, 1.20, 7.40, 3.25, 5.70, 8.90),       // Armor stand 4, right arm
+            Block.createCuboidShape(2.25, -0.60, 3.53, 3.25, 1.20, 9.48),      // Armor stand 4, waist
+            Block.createCuboidShape(2.25, -6.90, 4.10, 3.25, -0.60, 5.60),     // Armor stand 4, left leg
+            Block.createCuboidShape(2.25, -6.90, 7.40, 3.25, -0.60, 8.90)      // Armor stand 4, right leg
         );
         NORTH_BOTTOM_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 1.0, 10.0),           // bottom
-            Block.createCuboidShape(1.0, 4.0, 1.0, 15.0, 5.0, 9.0),            // shelf
-            Block.createCuboidShape(15.0, 1.0, 0.0, 16.0, 16.0, 10.0),         // right
-            Block.createCuboidShape(0.0, 1.0, 0.0, 1.0, 16.0, 10.0),           // left
-            Block.createCuboidShape(1.0, 1.0, 0.0, 15.0, 16.0, 1.0)            // back
+            Block.createCuboidShape(0.00, 0.00, 0.00, 16.00, 1.00, 12.00),     // bottom
+            Block.createCuboidShape(15.00, 1.00, 0.00, 16.00, 16.00, 12.00),   // shelf
+            Block.createCuboidShape(0.00, 1.00, 0.00, 1.00, 16.00, 12.00),     // right
+            Block.createCuboidShape(1.00, 1.00, 0.00, 15.00, 16.00, 1.00),     // left
+            Block.createCuboidShape(1.00, 4.50, 1.00, 15.00, 5.50, 11.00)      // back
         );
 
         SOUTH_TOP_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(0.0, 0.0, 6.0, 1.0, 16.0, 16.0),           // left
-            Block.createCuboidShape(15.0, 0.0, 6.0, 16.0, 16.0, 16.0),         // right
-            Block.createCuboidShape(1.0, 0.0, 15.0, 15.0, 16.0, 16.0),         // back
-            Block.createCuboidShape(1.0, 15.0, 6.0, 15.0, 16.0, 15.0),         // top
-            Block.createCuboidShape(1.0, 12.0, 10.0, 15.0, 13.0, 11.0),        // pole
-            Block.createCuboidShape(2.25, 8.4, 9.6, 3.25, 12, 11.4),           // Armor stand 1, head
-            Block.createCuboidShape(2.0, 5.7, 6.0, 3.5, 8.4, 15.0),            // Armor stand 1, shoulders
-            Block.createCuboidShape(2.25, 1.2, 11.4, 3.25, 5.7, 13.2),         // Armor stand 1, left arm
-            Block.createCuboidShape(2.25, 1.2, 7.8, 3.25, 5.7, 9.6),           // Armor stand 1, right arm
-            Block.createCuboidShape(2.25, -0.6, 6.9, 3.25, 1.2, 14.1),         // Armor stand 1, waist
-            Block.createCuboidShape(2.25, -6.9, 11.4, 3.25, -0.6, 13.2),       // Armor stand 1, left leg
-            Block.createCuboidShape(2.25, -6.9, 7.8, 3.25, -0.6, 9.6),         // Armor stand 1, right leg
-            Block.createCuboidShape(5.75, 8.4, 9.6, 6.75, 12, 11.4),           // Armor stand 2, head
-            Block.createCuboidShape(5.5, 5.7, 6.0, 7.0, 8.4, 15.0),            // Armor stand 2, shoulders
-            Block.createCuboidShape(5.75, 1.2, 11.4, 6.75, 5.7, 13.2),         // Armor stand 2, left arm
-            Block.createCuboidShape(5.75, 1.2, 7.8, 6.75, 5.7, 9.6),           // Armor stand 2, right arm
-            Block.createCuboidShape(5.75, -0.6, 6.9, 6.75, 1.2, 14.1),         // Armor stand 2, waist
-            Block.createCuboidShape(5.75, -6.9, 11.4, 6.75, -0.6, 13.2),       // Armor stand 2, left leg
-            Block.createCuboidShape(5.75, -6.9, 7.8, 6.75, -0.6, 9.6),         // Armor stand 2, right leg
-            Block.createCuboidShape(9.25, 8.4, 9.6, 10.25, 12, 11.4),          // Armor stand 3, head
-            Block.createCuboidShape(9.0, 5.7, 6.0, 10.5, 8.4, 15.0),           // Armor stand 3, shoulders
-            Block.createCuboidShape(9.25, 1.2, 11.4, 10.25, 5.7, 13.2),        // Armor stand 3, left arm
-            Block.createCuboidShape(9.25, 1.2, 7.8, 10.25, 5.7, 9.6),          // Armor stand 3, right arm
-            Block.createCuboidShape(9.25, -0.6, 6.9, 10.25, 1.2, 14.1),        // Armor stand 3, waist
-            Block.createCuboidShape(9.25, -6.9, 11.4, 10.25, -0.6, 13.2),      // Armor stand 3, left leg
-            Block.createCuboidShape(9.25, -6.9, 7.8, 10.25, -0.6, 9.6),        // Armor stand 3, right leg
-            Block.createCuboidShape(12.75, 8.4, 9.6, 13.75, 12, 11.4),         // Armor stand 4, head
-            Block.createCuboidShape(12.5, 5.7, 6.0, 14.0, 8.4, 15.0),          // Armor stand 4, shoulders
-            Block.createCuboidShape(12.75, 1.2, 11.4, 13.75, 5.7, 13.2),       // Armor stand 4, left arm
-            Block.createCuboidShape(12.75, 1.2, 7.8, 13.75, 5.7, 9.6),         // Armor stand 4, right arm
-            Block.createCuboidShape(12.75, -0.6, 6.9, 13.75, 1.2, 14.1),       // Armor stand 4, waist
-            Block.createCuboidShape(12.75, -6.9, 11.4, 13.75, -0.6, 13.2),     // Armor stand 4, left leg
-            Block.createCuboidShape(12.75, -6.9, 7.8, 13.75, -0.6, 9.6)        // Armor stand 4, right leg
+            Block.createCuboidShape(0.00, 0.00, 4.00, 1.00, 16.00, 16.00),     // left
+            Block.createCuboidShape(15.00, 0.00, 4.00, 16.00, 16.00, 16.00),   // right
+            Block.createCuboidShape(1.00, 15.00, 4.00, 15.00, 16.00, 15.00),   // back
+            Block.createCuboidShape(1.00, 0.00, 15.00, 15.00, 16.00, 16.00),   // top
+            Block.createCuboidShape(1.00, 12.00, 9.00, 15.00, 13.00, 10.00),   // pole
+            Block.createCuboidShape(2.25, 8.40, 8.60, 3.25, 12.00, 10.40),     // Armor stand 1, head
+            Block.createCuboidShape(2.00, 5.70, 5.00, 3.50, 8.40, 14.00),      // Armor stand 1, shoulders
+            Block.createCuboidShape(2.25, 1.20, 10.40, 3.25, 5.70, 11.90),     // Armor stand 1, left arm
+            Block.createCuboidShape(2.25, 1.20, 7.10, 3.25, 5.70, 8.60),       // Armor stand 1, right arm
+            Block.createCuboidShape(2.25, -0.60, 6.53, 3.25, 1.20, 12.48),     // Armor stand 1, waist
+            Block.createCuboidShape(2.25, -6.90, 10.40, 3.25, -0.60, 11.90),   // Armor stand 1, left leg
+            Block.createCuboidShape(2.25, -6.90, 7.10, 3.25, -0.60, 8.60),     // Armor stand 1, right leg
+            Block.createCuboidShape(5.75, 8.40, 8.60, 6.75, 12.00, 10.40),     // Armor stand 2, head
+            Block.createCuboidShape(5.50, 5.70, 5.00, 7.00, 8.40, 14.00),      // Armor stand 2, shoulders
+            Block.createCuboidShape(5.75, 1.20, 10.40, 6.75, 5.70, 11.90),     // Armor stand 2, left arm
+            Block.createCuboidShape(5.75, 1.20, 7.10, 6.75, 5.70, 8.60),       // Armor stand 2, right arm
+            Block.createCuboidShape(5.75, -0.60, 6.53, 6.75, 1.20, 12.48),     // Armor stand 2, waist
+            Block.createCuboidShape(5.75, -6.90, 10.40, 6.75, -0.60, 11.90),   // Armor stand 2, left leg
+            Block.createCuboidShape(5.75, -6.90, 7.10, 6.75, -0.60, 8.60),     // Armor stand 2, right leg
+            Block.createCuboidShape(9.25, 8.40, 8.60, 10.25, 12.00, 10.40),    // Armor stand 3, head
+            Block.createCuboidShape(9.00, 5.70, 5.00, 10.50, 8.40, 14.00),     // Armor stand 3, shoulders
+            Block.createCuboidShape(9.25, 1.20, 10.40, 10.25, 5.70, 11.90),    // Armor stand 3, left arm
+            Block.createCuboidShape(9.25, 1.20, 7.10, 10.25, 5.70, 8.60),      // Armor stand 3, right arm
+            Block.createCuboidShape(9.25, -0.60, 6.53, 10.25, 1.20, 12.48),    // Armor stand 3, waist
+            Block.createCuboidShape(9.25, -6.90, 10.40, 10.25, -0.60, 11.90),  // Armor stand 3, left leg
+            Block.createCuboidShape(9.25, -6.90, 7.10, 10.25, -0.60, 8.60),    // Armor stand 3, right leg
+            Block.createCuboidShape(12.75, 8.40, 8.60, 13.75, 12.00, 10.40),   // Armor stand 4, head
+            Block.createCuboidShape(12.50, 5.70, 5.00, 14.00, 8.40, 14.00),    // Armor stand 4, shoulders
+            Block.createCuboidShape(12.75, 1.20, 10.40, 13.75, 5.70, 11.90),   // Armor stand 4, left arm
+            Block.createCuboidShape(12.75, 1.20, 7.10, 13.75, 5.70, 8.60),     // Armor stand 4, right arm
+            Block.createCuboidShape(12.75, -0.60, 6.53, 13.75, 1.20, 12.48),   // Armor stand 4, waist
+            Block.createCuboidShape(12.75, -6.90, 10.40, 13.75, -0.60, 11.90), // Armor stand 4, left leg
+            Block.createCuboidShape(12.75, -6.90, 7.10, 13.75, -0.60, 8.60)    // Armor stand 4, right leg
         );
         SOUTH_BOTTOM_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(0.0, 0.0, 6.0, 16.0, 1.0, 16.0),           // bottom
-            Block.createCuboidShape(1.0, 4.0, 7.0, 15.0, 5.0, 15.0),           // shelf
-            Block.createCuboidShape(15.0, 1.0, 6.0, 16.0, 16.0, 16.0),         // right
-            Block.createCuboidShape(0.0, 1.0, 6.0, 1.0, 16.0, 16.0),           // left
-            Block.createCuboidShape(1.0, 1.0, 15.0, 15.0, 16.0, 16.0)          // back
+            Block.createCuboidShape(0.00, 0.00, 4.00, 16.00, 1.00, 16.00),     // bottom
+            Block.createCuboidShape(1.00, 4.50, 5.00, 15.00, 5.50, 15.00),     // shelf
+            Block.createCuboidShape(0.00, 1.00, 4.00, 1.00, 16.00, 16.00),     // right
+            Block.createCuboidShape(15.00, 1.00, 4.00, 16.00, 16.00, 16.00),   // left
+            Block.createCuboidShape(1.00, 1.00, 15.00, 15.00, 16.00, 16.00)    // back
         );
 
         EAST_TOP_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(6.0, 0.0, 0.0, 16.0, 16.0, 1.0),           // left
-            Block.createCuboidShape(6.0, 0.0, 15.0, 16.0, 16.0, 16.0),         // right
-            Block.createCuboidShape(15.0, 0.0, 1.0, 16.0, 16.0, 15.0),         // back
-            Block.createCuboidShape(6.0, 15.0, 1.0, 15.0, 16.0, 15.0),         // top
-            Block.createCuboidShape(10.0, 12.0, 1.0, 11.0, 13.0, 15.0),        // pole
-            Block.createCuboidShape(9.60, 8.40, 12.75, 11.40, 12.00, 13.75),   // Armor stand 1, head
-            Block.createCuboidShape(6.00, 5.70, 12.50, 15.00, 8.40, 14.00),    // Armor stand 1, shoulders
-            Block.createCuboidShape(11.40, 1.20, 12.75, 13.20, 5.70, 13.75),   // Armor stand 1, left arm
-            Block.createCuboidShape(7.80, 1.20, 12.75, 9.60, 5.70, 13.75),     // Armor stand 1, right arm
-            Block.createCuboidShape(6.90, -0.60, 12.75, 14.10, 1.20, 13.75),   // Armor stand 1, waist
-            Block.createCuboidShape(11.40, -6.90, 12.75, 13.20, -0.60, 13.75), // Armor stand 1, left leg
-            Block.createCuboidShape(7.80, -6.90, 12.75, 9.60, -0.60, 13.75),   // Armor stand 1, right leg
-            Block.createCuboidShape(9.60, 8.40, 9.25, 11.40, 12.00, 10.25),    // Armor stand 2, head
-            Block.createCuboidShape(6.00, 5.70, 9.00, 15.00, 8.40, 10.50),     // Armor stand 2, shoulders
-            Block.createCuboidShape(11.40, 1.20, 9.25, 13.20, 5.70, 10.25),    // Armor stand 2, left arm
-            Block.createCuboidShape(7.80, 1.20, 9.25, 9.60, 5.70, 10.25),      // Armor stand 2, right arm
-            Block.createCuboidShape(6.90, -0.60, 9.25, 14.10, 1.20, 10.25),    // Armor stand 2, waist
-            Block.createCuboidShape(11.40, -6.90, 9.25, 13.20, -0.60, 10.25),  // Armor stand 2, left leg
-            Block.createCuboidShape(7.80, -6.90, 9.25, 9.60, -0.60, 10.25),    // Armor stand 2, right leg
-            Block.createCuboidShape(9.60, 8.40, 5.75, 11.40, 12.00, 6.75),     // Armor stand 3, head
-            Block.createCuboidShape(6.00, 5.70, 5.50, 15.00, 8.40, 7.00),      // Armor stand 3, shoulders
-            Block.createCuboidShape(11.40, 1.20, 5.75, 13.20, 5.70, 6.75),     // Armor stand 3, left arm
-            Block.createCuboidShape(7.80, 1.20, 5.75, 9.60, 5.70, 6.75),       // Armor stand 3, right arm
-            Block.createCuboidShape(6.90, -0.60, 5.75, 14.10, 1.20, 6.75),     // Armor stand 3, waist
-            Block.createCuboidShape(11.40, -6.90, 5.75, 13.20, -0.60, 6.75),   // Armor stand 3, left leg
-            Block.createCuboidShape(7.80, -6.90, 5.75, 9.60, -0.60, 6.75),     // Armor stand 3, right leg
-            Block.createCuboidShape(9.60, 8.40, 2.25, 11.40, 12.00, 3.25),     // Armor stand 4, head
-            Block.createCuboidShape(6.00, 5.70, 2.00, 15.00, 8.40, 3.50),      // Armor stand 4, shoulders
-            Block.createCuboidShape(11.40, 1.20, 2.25, 13.20, 5.70, 3.25),     // Armor stand 4, left arm
-            Block.createCuboidShape(7.80, 1.20, 2.25, 9.60, 5.70, 3.25),       // Armor stand 4, right arm
-            Block.createCuboidShape(6.90, -0.60, 2.25, 14.10, 1.20, 3.25),     // Armor stand 4, waist
-            Block.createCuboidShape(11.40, -6.90, 2.25, 13.20, -0.60, 3.25),   // Armor stand 4, left leg
-            Block.createCuboidShape(7.80, -6.90, 2.25, 9.60, -0.60, 3.25)      // Armor stand 4, right leg
+            Block.createCuboidShape(4.00, 0.00, 15.00, 16.00, 16.00, 16.00),   // left
+            Block.createCuboidShape(4.00, 0.00, 0.00, 16.00, 16.00, 1.00),     // right
+            Block.createCuboidShape(4.00, 15.00, 1.00, 15.00, 16.00, 15.00),   // back
+            Block.createCuboidShape(15.00, 0.00, 1.00, 16.00, 16.00, 15.00),   // top
+            Block.createCuboidShape(9.00, 12.00, 1.00, 10.00, 13.00, 15.00),   // pole
+            Block.createCuboidShape(8.60, 8.40, 12.75, 10.40, 12.00, 13.75),   // Armor stand 1, head
+            Block.createCuboidShape(5.00, 5.70, 12.50, 14.00, 8.40, 14.00),    // Armor stand 1, shoulders
+            Block.createCuboidShape(10.40, 1.20, 12.75, 11.90, 5.70, 13.75),   // Armor stand 1, left arm
+            Block.createCuboidShape(7.10, 1.20, 12.75, 8.60, 5.70, 13.75),     // Armor stand 1, right arm
+            Block.createCuboidShape(6.53, -0.60, 12.75, 12.48, 1.20, 13.75),   // Armor stand 1, waist
+            Block.createCuboidShape(10.40, -6.90, 12.75, 11.90, -0.60, 13.75), // Armor stand 1, left leg
+            Block.createCuboidShape(7.10, -6.90, 12.75, 8.60, -0.60, 13.75),   // Armor stand 1, right leg
+            Block.createCuboidShape(8.60, 8.40, 9.25, 10.40, 12.00, 10.25),    // Armor stand 2, head
+            Block.createCuboidShape(5.00, 5.70, 9.00, 14.00, 8.40, 10.50),     // Armor stand 2, shoulders
+            Block.createCuboidShape(10.40, 1.20, 9.25, 11.90, 5.70, 10.25),    // Armor stand 2, left arm
+            Block.createCuboidShape(7.10, 1.20, 9.25, 8.60, 5.70, 10.25),      // Armor stand 2, right arm
+            Block.createCuboidShape(6.53, -0.60, 9.25, 12.48, 1.20, 10.25),    // Armor stand 2, waist
+            Block.createCuboidShape(10.40, -6.90, 9.25, 11.90, -0.60, 10.25),  // Armor stand 2, left leg
+            Block.createCuboidShape(7.10, -6.90, 9.25, 8.60, -0.60, 10.25),    // Armor stand 2, right leg
+            Block.createCuboidShape(8.60, 8.40, 5.75, 10.40, 12.00, 6.75),     // Armor stand 3, head
+            Block.createCuboidShape(5.00, 5.70, 5.50, 14.00, 8.40, 7.00),      // Armor stand 3, shoulders
+            Block.createCuboidShape(10.40, 1.20, 5.75, 11.90, 5.70, 6.75),     // Armor stand 3, left arm
+            Block.createCuboidShape(7.10, 1.20, 5.75, 8.60, 5.70, 6.75),       // Armor stand 3, right arm
+            Block.createCuboidShape(6.53, -0.60, 5.75, 12.48, 1.20, 6.75),     // Armor stand 3, waist
+            Block.createCuboidShape(10.40, -6.90, 5.75, 11.90, -0.60, 6.75),   // Armor stand 3, left leg
+            Block.createCuboidShape(7.10, -6.90, 5.75, 8.60, -0.60, 6.75),     // Armor stand 3, right leg
+            Block.createCuboidShape(8.60, 8.40, 2.25, 10.40, 12.00, 3.25),     // Armor stand 4, head
+            Block.createCuboidShape(5.00, 5.70, 2.00, 14.00, 8.40, 3.50),      // Armor stand 4, shoulders
+            Block.createCuboidShape(10.40, 1.20, 2.25, 11.90, 5.70, 3.25),     // Armor stand 4, left arm
+            Block.createCuboidShape(7.10, 1.20, 2.25, 8.60, 5.70, 3.25),       // Armor stand 4, right arm
+            Block.createCuboidShape(6.53, -0.60, 2.25, 12.48, 1.20, 3.25),     // Armor stand 4, waist
+            Block.createCuboidShape(10.40, -6.90, 2.25, 11.90, -0.60, 3.25),   // Armor stand 4, left leg
+            Block.createCuboidShape(7.10, -6.90, 2.25, 8.60, -0.60, 3.25)      // Armor stand 4, right leg
         );
         EAST_BOTTOM_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(6.0, 0.0, 0.0, 16.0, 1.0, 16.0),           // bottom
-            Block.createCuboidShape(7.0, 4.0, 1.0, 15.0, 5.0, 15.0),           // shelf
-            Block.createCuboidShape(6.0, 1.0, 15.0, 16.0, 16.0, 16.0),         // right
-            Block.createCuboidShape(6.0, 1.0, 0.0, 16.0, 16.0, 1.0),           // left
-            Block.createCuboidShape(15.0, 1.0, 1.0, 16.0, 16.0, 15.0)          // back
+            Block.createCuboidShape(4.00, 0.00, 0.00, 16.00, 1.00, 16.00),     // bottom
+            Block.createCuboidShape(4.00, 1.00, 15.00, 16.00, 16.00, 16.00),   // shelf
+            Block.createCuboidShape(4.00, 1.00, 0.00, 16.00, 16.00, 1.00),     // right
+            Block.createCuboidShape(15.00, 1.00, 1.00, 16.00, 16.00, 15.00),   // left
+            Block.createCuboidShape(5.00, 4.50, 1.00, 15.00, 5.50, 15.00)      // back
         );
 
         WEST_TOP_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(0.0, 0.0, 15.0, 10.0, 16.0, 16.0),         // left
-            Block.createCuboidShape(0.0, 0.0, 0.0, 10.0, 16.0, 1.0),           // right
-            Block.createCuboidShape(0.0, 0.0, 1.0, 1.0, 16.0, 15.0),           // back
-            Block.createCuboidShape(1.0, 15.0, 1.0, 10.0, 16.0, 15.0),         // top
-            Block.createCuboidShape(5.0, 12.0, 1.0, 6.0, 13.0, 15.0),          // pole
-            Block.createCuboidShape(4.60, 8.40, 2.25, 6.40, 12.00, 3.25),      // Armor stand 1, head
-            Block.createCuboidShape(1.00, 5.70, 2.00, 10.00, 8.40, 3.50),      // Armor stand 1, shoulders
-            Block.createCuboidShape(2.80, 1.20, 2.25, 4.60, 5.70, 3.25),       // Armor stand 1, left arm
-            Block.createCuboidShape(6.40, 1.20, 2.25, 8.20, 5.70, 3.25),       // Armor stand 1, right arm
-            Block.createCuboidShape(1.90, -0.60, 2.25, 9.10, 1.20, 3.25),      // Armor stand 1, waist
-            Block.createCuboidShape(2.80, -6.90, 2.25, 4.60, -0.60, 3.25),     // Armor stand 1, left leg
-            Block.createCuboidShape(6.40, -6.90, 2.25, 8.20, -0.60, 3.25),     // Armor stand 1, right leg
-            Block.createCuboidShape(4.60, 8.40, 5.75, 6.40, 12.00, 6.75),      // Armor stand 2, head
-            Block.createCuboidShape(1.00, 5.70, 5.50, 10.00, 8.40, 7.00),      // Armor stand 2, shoulders
-            Block.createCuboidShape(2.80, 1.20, 5.75, 4.60, 5.70, 6.75),       // Armor stand 2, left arm
-            Block.createCuboidShape(6.40, 1.20, 5.75, 8.20, 5.70, 6.75),       // Armor stand 2, right arm
-            Block.createCuboidShape(1.90, -0.60, 5.75, 9.10, 1.20, 6.75),      // Armor stand 2, waist
-            Block.createCuboidShape(2.80, -6.90, 5.75, 4.60, -0.60, 6.75),     // Armor stand 2, left leg
-            Block.createCuboidShape(6.40, -6.90, 5.75, 8.20, -0.60, 6.75),     // Armor stand 2, right leg
-            Block.createCuboidShape(4.60, 8.40, 9.25, 6.40, 12.00, 10.25),     // Armor stand 3, head
-            Block.createCuboidShape(1.00, 5.70, 9.00, 10.00, 8.40, 10.50),     // Armor stand 3, shoulders
-            Block.createCuboidShape(2.80, 1.20, 9.25, 4.60, 5.70, 10.25),      // Armor stand 3, left arm
-            Block.createCuboidShape(6.40, 1.20, 9.25, 8.20, 5.70, 10.25),      // Armor stand 3, right arm
-            Block.createCuboidShape(1.90, -0.60, 9.25, 9.10, 1.20, 10.25),     // Armor stand 3, waist
-            Block.createCuboidShape(2.80, -6.90, 9.25, 4.60, -0.60, 10.25),    // Armor stand 3, left leg
-            Block.createCuboidShape(6.40, -6.90, 9.25, 8.20, -0.60, 10.25),    // Armor stand 3, right leg
-            Block.createCuboidShape(4.60, 8.40, 12.75, 6.40, 12.00, 13.75),    // Armor stand 4, head
-            Block.createCuboidShape(1.00, 5.70, 12.50, 10.00, 8.40, 14.00),    // Armor stand 4, shoulders
-            Block.createCuboidShape(2.80, 1.20, 12.75, 4.60, 5.70, 13.75),     // Armor stand 4, left arm
-            Block.createCuboidShape(6.40, 1.20, 12.75, 8.20, 5.70, 13.75),     // Armor stand 4, right arm
-            Block.createCuboidShape(1.90, -0.60, 12.75, 9.10, 1.20, 13.75),    // Armor stand 4, waist
-            Block.createCuboidShape(2.80, -6.90, 12.75, 4.60, -0.60, 13.75),   // Armor stand 4, left leg
-            Block.createCuboidShape(6.40, -6.90, 12.75, 8.20, -0.60, 13.75)    // Armor stand 4, right leg
+            Block.createCuboidShape(0.00, 0.00, 0.00, 12.00, 16.00, 1.00),     // left
+            Block.createCuboidShape(0.00, 0.00, 15.00, 12.00, 16.00, 16.00),   // right
+            Block.createCuboidShape(1.00, 15.00, 1.00, 12.00, 16.00, 15.00),   // back
+            Block.createCuboidShape(0.00, 0.00, 1.00, 1.00, 16.00, 15.00),     // top
+            Block.createCuboidShape(6.00, 12.00, 1.00, 7.00, 13.00, 15.00),    // pole
+            Block.createCuboidShape(5.60, 8.40, 2.25, 7.40, 12.00, 3.25),      // Armor stand 1, head
+            Block.createCuboidShape(2.00, 5.70, 2.00, 11.00, 8.40, 3.50),      // Armor stand 1, shoulders
+            Block.createCuboidShape(4.10, 1.20, 2.25, 5.60, 5.70, 3.25),       // Armor stand 1, left arm
+            Block.createCuboidShape(7.40, 1.20, 2.25, 8.90, 5.70, 3.25),       // Armor stand 1, right arm
+            Block.createCuboidShape(3.53, -0.60, 2.25, 9.48, 1.20, 3.25),      // Armor stand 1, waist
+            Block.createCuboidShape(4.10, -6.90, 2.25, 5.60, -0.60, 3.25),     // Armor stand 1, left leg
+            Block.createCuboidShape(7.40, -6.90, 2.25, 8.90, -0.60, 3.25),     // Armor stand 1, right leg
+            Block.createCuboidShape(5.60, 8.40, 5.75, 7.40, 12.00, 6.75),      // Armor stand 2, head
+            Block.createCuboidShape(2.00, 5.70, 5.50, 11.00, 8.40, 7.00),      // Armor stand 2, shoulders
+            Block.createCuboidShape(4.10, 1.20, 5.75, 5.60, 5.70, 6.75),       // Armor stand 2, left arm
+            Block.createCuboidShape(7.40, 1.20, 5.75, 8.90, 5.70, 6.75),       // Armor stand 2, right arm
+            Block.createCuboidShape(3.53, -0.60, 5.75, 9.48, 1.20, 6.75),      // Armor stand 2, waist
+            Block.createCuboidShape(4.10, -6.90, 5.75, 5.60, -0.60, 6.75),     // Armor stand 2, left leg
+            Block.createCuboidShape(7.40, -6.90, 5.75, 8.90, -0.60, 6.75),     // Armor stand 2, right leg
+            Block.createCuboidShape(5.60, 8.40, 9.25, 7.40, 12.00, 10.25),     // Armor stand 3, head
+            Block.createCuboidShape(2.00, 5.70, 9.00, 11.00, 8.40, 10.50),     // Armor stand 3, shoulders
+            Block.createCuboidShape(4.10, 1.20, 9.25, 5.60, 5.70, 10.25),      // Armor stand 3, left arm
+            Block.createCuboidShape(7.40, 1.20, 9.25, 8.90, 5.70, 10.25),      // Armor stand 3, right arm
+            Block.createCuboidShape(3.53, -0.60, 9.25, 9.48, 1.20, 10.25),     // Armor stand 3, waist
+            Block.createCuboidShape(4.10, -6.90, 9.25, 5.60, -0.60, 10.25),    // Armor stand 3, left leg
+            Block.createCuboidShape(7.40, -6.90, 9.25, 8.90, -0.60, 10.25),    // Armor stand 3, right leg
+            Block.createCuboidShape(5.60, 8.40, 12.75, 7.40, 12.00, 13.75),    // Armor stand 4, head
+            Block.createCuboidShape(2.00, 5.70, 12.50, 11.00, 8.40, 14.00),    // Armor stand 4, shoulders
+            Block.createCuboidShape(4.10, 1.20, 12.75, 5.60, 5.70, 13.75),     // Armor stand 4, left arm
+            Block.createCuboidShape(7.40, 1.20, 12.75, 8.90, 5.70, 13.75),     // Armor stand 4, right arm
+            Block.createCuboidShape(3.53, -0.60, 12.75, 9.48, 1.20, 13.75),    // Armor stand 4, waist
+            Block.createCuboidShape(4.10, -6.90, 12.75, 5.60, -0.60, 13.75),   // Armor stand 4, left leg
+            Block.createCuboidShape(7.40, -6.90, 12.75, 8.90, -0.60, 13.75)    // Armor stand 4, right leg
         );
         WEST_BOTTOM_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(0.0, 0.0, 0.0, 10.0, 1.0, 16.0),           // bottom
-            Block.createCuboidShape(1.0, 4.0, 1.0, 9.0, 5.0, 15.0),            // shelf
-            Block.createCuboidShape(0.0, 1.0, 0.0, 10.0, 16.0, 1.0),           // right
-            Block.createCuboidShape(0.0, 1.0, 15.0, 10.0, 16.0, 16.0),         // left
-            Block.createCuboidShape(0.0, 1.0, 1.0, 1.0, 16.0, 15.0)            // back
+            Block.createCuboidShape(0.00, 0.00, 0.00, 12.00, 1.00, 16.00),     // bottom
+            Block.createCuboidShape(0.00, 1.00, 0.00, 12.00, 16.00, 1.00),     // shelf
+            Block.createCuboidShape(0.00, 1.00, 15.00, 12.00, 16.00, 16.00),   // right
+            Block.createCuboidShape(0.00, 1.00, 1.00, 1.00, 16.00, 15.00),     // left
+            Block.createCuboidShape(1.00, 4.50, 1.00, 11.00, 5.50, 15.00)      // back
         );
     }
 
