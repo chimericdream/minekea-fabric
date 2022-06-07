@@ -106,6 +106,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         return (T) this;
     }
 
+    public T defaultTranslation(String defaultTranslation) {
+        this.defaultTranslation = defaultTranslation;
+        // noinspection unchecked
+        return (T) this;
+    }
+
     public T baseBlock(Block baseBlock) {
         this.baseBlock = baseBlock;
         // noinspection unchecked

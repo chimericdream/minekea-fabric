@@ -2,6 +2,7 @@
     "replace": false,
     "values": [
         "minecraft:amethyst_shard",
+        "minecraft:bamboo",
         "minecraft:blaze_powder",
         "minecraft:dried_kelp",
         "minecraft:ender_pearl",
@@ -13,7 +14,9 @@
         "minecraft:redstone",
         "minecraft:sand",
         "minecraft:slime_ball",
+        "minecraft:stick",
         "minecraft:sugar",
+        "minecraft:sugar_cane",
         "#c:dyes",
         "#c:concrete_powders",
         "#c:crops"

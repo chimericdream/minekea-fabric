@@ -332,8 +332,17 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
             case "minecraft:honeycomb":
                 return Items.HONEYCOMB_BLOCK.getDefaultStack();
 
+            case "minecraft:bamboo":
+                return new ItemStack(StorageBlocks.BAMBOO_BLOCK.asItem());
+
+            case "minecraft:stick":
+                return new ItemStack(StorageBlocks.STICK_BLOCK.asItem());
+
             case "minecraft:sugar":
                 return new ItemStack(StorageBlocks.SUGAR_BLOCK.asItem());
+
+            case "minecraft:sugar_cane":
+                return new ItemStack(StorageBlocks.SUGAR_CANE_BLOCK.asItem());
 
             case "minecraft:white_dye":
                 return new ItemStack(StorageBlocks.WHITE_DYE_BLOCK.asItem());

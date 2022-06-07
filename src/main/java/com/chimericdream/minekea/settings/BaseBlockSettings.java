@@ -1572,4 +1572,264 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:warped_planks")
             )
         );
+
+    public static DefaultSettings BAMBOO = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("bamboo")
+        .translation("Bamboo")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:bamboo"),
+                "ingredient", new Identifier("minecraft:bamboo")
+            )
+        );
+
+    public static DefaultSettings BEETROOT = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("beetroot")
+        .translation("Beetroot")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:beetroot"),
+                "ingredient", new Identifier("minecraft:beetroot")
+            )
+        );
+
+    public static DefaultSettings BLAZE_POWDER = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("blaze_powder")
+        .translation("Blaze Powder")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:blaze_powder"),
+                "ingredient", new Identifier("minecraft:blaze_powder")
+            )
+        );
+
+    public static DefaultSettings CARROT = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("carrot")
+        .translation("Carrot")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:carrot"),
+                "ingredient", new Identifier("minecraft:carrot")
+            )
+        );
+
+    public static DefaultSettings CHORUS_FRUIT = new DefaultSettings(Blocks.PURPUR_BLOCK)
+        .material("chorus_fruit")
+        .translation("Chorus Fruit")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:chorus_fruit"),
+                "ingredient", new Identifier("minecraft:chorus_fruit")
+            )
+        );
+
+    public static DefaultSettings ENDER_PEARL = new DefaultSettings(Blocks.PURPUR_BLOCK)
+        .material("ender_pearl")
+        .translation("Ender Pearl")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:ender_pearl"),
+                "ingredient", new Identifier("minecraft:ender_pearl")
+            )
+        );
+
+    public static DefaultSettings POTATO = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("potato")
+        .translation("Potato")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:potato"),
+                "ingredient", new Identifier("minecraft:potato")
+            )
+        );
+
+    public static DefaultSettings STICK = new DefaultSettings(Blocks.OAK_PLANKS)
+        .material("stick")
+        .translation("Stick")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:stick"),
+                "ingredient", new Identifier("minecraft:stick")
+            )
+        );
+
+    public static DefaultSettings SUGAR = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("sugar")
+        .translation("Sugar")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:sugar"),
+                "ingredient", new Identifier("minecraft:sugar")
+            )
+        );
+
+    public static DefaultSettings SUGAR_CANE = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("sugar_cane")
+        .translation("Sugar Cane")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:sugar_cane"),
+                "ingredient", new Identifier("minecraft:sugar_cane")
+            )
+        );
+
+    public static DefaultSettings WHITE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("white_dye")
+        .translation("White Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:white_dye"),
+                "ingredient", new Identifier("minecraft:white_dye")
+            )
+        );
+
+    public static DefaultSettings ORANGE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("orange_dye")
+        .translation("Orange Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:orange_dye"),
+                "ingredient", new Identifier("minecraft:orange_dye")
+            )
+        );
+
+    public static DefaultSettings MAGENTA_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("magenta_dye")
+        .translation("Magenta Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:magenta_dye"),
+                "ingredient", new Identifier("minecraft:magenta_dye")
+            )
+        );
+
+    public static DefaultSettings LIGHT_BLUE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("light_blue_dye")
+        .translation("Light Blue Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:light_blue_dye"),
+                "ingredient", new Identifier("minecraft:light_blue_dye")
+            )
+        );
+
+    public static DefaultSettings YELLOW_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("yellow_dye")
+        .translation("Yellow Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:yellow_dye"),
+                "ingredient", new Identifier("minecraft:yellow_dye")
+            )
+        );
+
+    public static DefaultSettings LIME_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("lime_dye")
+        .translation("Lime Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:lime_dye"),
+                "ingredient", new Identifier("minecraft:lime_dye")
+            )
+        );
+
+    public static DefaultSettings PINK_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("pink_dye")
+        .translation("Pink Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:pink_dye"),
+                "ingredient", new Identifier("minecraft:pink_dye")
+            )
+        );
+
+    public static DefaultSettings GRAY_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("gray_dye")
+        .translation("Gray Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:gray_dye"),
+                "ingredient", new Identifier("minecraft:gray_dye")
+            )
+        );
+
+    public static DefaultSettings LIGHT_GRAY_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("light_gray_dye")
+        .translation("Light Gray Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:light_gray_dye"),
+                "ingredient", new Identifier("minecraft:light_gray_dye")
+            )
+        );
+
+    public static DefaultSettings CYAN_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("cyan_dye")
+        .translation("Cyan Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:cyan_dye"),
+                "ingredient", new Identifier("minecraft:cyan_dye")
+            )
+        );
+
+    public static DefaultSettings PURPLE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("purple_dye")
+        .translation("Purple Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:purple_dye"),
+                "ingredient", new Identifier("minecraft:purple_dye")
+            )
+        );
+
+    public static DefaultSettings BLUE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("blue_dye")
+        .translation("Blue Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:blue_dye"),
+                "ingredient", new Identifier("minecraft:blue_dye")
+            )
+        );
+
+    public static DefaultSettings BROWN_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("brown_dye")
+        .translation("Brown Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:brown_dye"),
+                "ingredient", new Identifier("minecraft:brown_dye")
+            )
+        );
+
+    public static DefaultSettings GREEN_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("green_dye")
+        .translation("Green Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:green_dye"),
+                "ingredient", new Identifier("minecraft:green_dye")
+            )
+        );
+
+    public static DefaultSettings RED_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("red_dye")
+        .translation("Red Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:red_dye"),
+                "ingredient", new Identifier("minecraft:red_dye")
+            )
+        );
+
+    public static DefaultSettings BLACK_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
+        .material("black_dye")
+        .translation("Black Dye")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:black_dye"),
+                "ingredient", new Identifier("minecraft:black_dye")
+            )
+        );
 }

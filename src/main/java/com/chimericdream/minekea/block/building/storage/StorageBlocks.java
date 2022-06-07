@@ -1,66 +1,74 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.minekea.block.building.storage.DyeBlock.DyeBlockSettings;
+import com.chimericdream.minekea.block.building.storage.GenericStorageBlock.StorageBlockSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.util.Identifier;
 
 import java.util.List;
 
 public class StorageBlocks implements MinekeaBlockCategory {
-    public static final GenericStorageBlock WHITE_DYE_BLOCK;
-    public static final GenericStorageBlock ORANGE_DYE_BLOCK;
-    public static final GenericStorageBlock MAGENTA_DYE_BLOCK;
-    public static final GenericStorageBlock LIGHT_BLUE_DYE_BLOCK;
-    public static final GenericStorageBlock YELLOW_DYE_BLOCK;
-    public static final GenericStorageBlock LIME_DYE_BLOCK;
-    public static final GenericStorageBlock PINK_DYE_BLOCK;
-    public static final GenericStorageBlock GRAY_DYE_BLOCK;
-    public static final GenericStorageBlock LIGHT_GRAY_DYE_BLOCK;
-    public static final GenericStorageBlock CYAN_DYE_BLOCK;
-    public static final GenericStorageBlock PURPLE_DYE_BLOCK;
-    public static final GenericStorageBlock BLUE_DYE_BLOCK;
-    public static final GenericStorageBlock BROWN_DYE_BLOCK;
-    public static final GenericStorageBlock GREEN_DYE_BLOCK;
-    public static final GenericStorageBlock RED_DYE_BLOCK;
-    public static final GenericStorageBlock BLACK_DYE_BLOCK;
+    public static final DyeBlock WHITE_DYE_BLOCK;
+    public static final DyeBlock ORANGE_DYE_BLOCK;
+    public static final DyeBlock MAGENTA_DYE_BLOCK;
+    public static final DyeBlock LIGHT_BLUE_DYE_BLOCK;
+    public static final DyeBlock YELLOW_DYE_BLOCK;
+    public static final DyeBlock LIME_DYE_BLOCK;
+    public static final DyeBlock PINK_DYE_BLOCK;
+    public static final DyeBlock GRAY_DYE_BLOCK;
+    public static final DyeBlock LIGHT_GRAY_DYE_BLOCK;
+    public static final DyeBlock CYAN_DYE_BLOCK;
+    public static final DyeBlock PURPLE_DYE_BLOCK;
+    public static final DyeBlock BLUE_DYE_BLOCK;
+    public static final DyeBlock BROWN_DYE_BLOCK;
+    public static final DyeBlock GREEN_DYE_BLOCK;
+    public static final DyeBlock RED_DYE_BLOCK;
+    public static final DyeBlock BLACK_DYE_BLOCK;
 
-    public static final GenericStorageBlock SUGAR_BLOCK;
-    public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
-    public static final GenericStorageBlock POTATO_BLOCK;
-    public static final GenericStorageBlock ENDER_PEARL_BLOCK;
-    public static final GenericStorageBlock CARROT_BLOCK;
+    public static final GenericStorageBlock BAMBOO_BLOCK;
     public static final GenericStorageBlock BEETROOT_BLOCK;
+    public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
+    public static final GenericStorageBlock CARROT_BLOCK;
     public static final GenericStorageBlock CHORUS_FRUIT_BLOCK;
+    public static final GenericStorageBlock ENDER_PEARL_BLOCK;
+    public static final GenericStorageBlock POTATO_BLOCK;
+    public static final GenericStorageBlock STICK_BLOCK;
+    public static final GenericStorageBlock SUGAR_BLOCK;
+    public static final GenericStorageBlock SUGAR_CANE_BLOCK;
 
     static {
-        WHITE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:white_dye"), "white");
-        ORANGE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:orange_dye"), "orange");
-        MAGENTA_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:magenta_dye"), "magenta");
-        LIGHT_BLUE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:light_blue_dye"), "light_blue");
-        YELLOW_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:yellow_dye"), "yellow");
-        LIME_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:lime_dye"), "lime");
-        PINK_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:pink_dye"), "pink");
-        GRAY_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:gray_dye"), "gray");
-        LIGHT_GRAY_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:light_gray_dye"), "light_gray");
-        CYAN_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:cyan_dye"), "cyan");
-        PURPLE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:purple_dye"), "purple");
-        BLUE_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:blue_dye"), "blue");
-        BROWN_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:brown_dye"), "brown");
-        GREEN_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:green_dye"), "green");
-        RED_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:red_dye"), "red");
-        BLACK_DYE_BLOCK = new DyeStorageBlock(new Identifier("minecraft:black_dye"), "black");
+        WHITE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.WHITE_DYE).color("white"));
+        ORANGE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.ORANGE_DYE).color("orange"));
+        MAGENTA_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.MAGENTA_DYE).color("magenta"));
+        LIGHT_BLUE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.LIGHT_BLUE_DYE).color("light_blue"));
+        YELLOW_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.YELLOW_DYE).color("yellow"));
+        LIME_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.LIME_DYE).color("lime"));
+        PINK_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.PINK_DYE).color("pink"));
+        GRAY_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.GRAY_DYE).color("gray"));
+        LIGHT_GRAY_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.LIGHT_GRAY_DYE).color("light_gray"));
+        CYAN_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.CYAN_DYE).color("cyan"));
+        PURPLE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.PURPLE_DYE).color("purple"));
+        BLUE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BLUE_DYE).color("blue"));
+        BROWN_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BROWN_DYE).color("brown"));
+        GREEN_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.GREEN_DYE).color("green"));
+        RED_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.RED_DYE).color("red"));
+        BLACK_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BLACK_DYE).color("black"));
 
-        SUGAR_BLOCK = new GenericStorageBlock(new Identifier("minecraft:sugar"));
-        BLAZE_POWDER_BLOCK = new GenericStorageBlock(new Identifier("minecraft:blaze_powder"));
-        POTATO_BLOCK = new GenericStorageBlock(new Identifier("minecraft:potato"), true);
-        ENDER_PEARL_BLOCK = new GenericStorageBlock(new Identifier("minecraft:ender_pearl"));
-        CARROT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:carrot"), true);
-        BEETROOT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:beetroot"), true);
-        CHORUS_FRUIT_BLOCK = new GenericStorageBlock(new Identifier("minecraft:chorus_fruit"), true);
+        BAMBOO_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.BAMBOO).column());
+        BEETROOT_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.BEETROOT).bagged());
+        BLAZE_POWDER_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.BLAZE_POWDER));
+        CARROT_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.CARROT).bagged());
+        CHORUS_FRUIT_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.CHORUS_FRUIT).bagged());
+        ENDER_PEARL_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.ENDER_PEARL));
+        POTATO_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.POTATO).bagged());
+        STICK_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.STICK).column().defaultTranslation("Sticks"));
+        SUGAR_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.SUGAR));
+        SUGAR_CANE_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).column());
     }
 
     @Environment(EnvType.CLIENT)
@@ -93,7 +101,6 @@ public class StorageBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        SUGAR_BLOCK.register();
         WHITE_DYE_BLOCK.register();
         ORANGE_DYE_BLOCK.register();
         MAGENTA_DYE_BLOCK.register();
@@ -110,12 +117,17 @@ public class StorageBlocks implements MinekeaBlockCategory {
         GREEN_DYE_BLOCK.register();
         RED_DYE_BLOCK.register();
         BLACK_DYE_BLOCK.register();
-        BLAZE_POWDER_BLOCK.register();
-        POTATO_BLOCK.register();
-        ENDER_PEARL_BLOCK.register();
-        CARROT_BLOCK.register();
+
+        BAMBOO_BLOCK.register();
         BEETROOT_BLOCK.register();
+        BLAZE_POWDER_BLOCK.register();
+        CARROT_BLOCK.register();
         CHORUS_FRUIT_BLOCK.register();
+        ENDER_PEARL_BLOCK.register();
+        POTATO_BLOCK.register();
+        STICK_BLOCK.register();
+        SUGAR_BLOCK.register();
+        SUGAR_CANE_BLOCK.register();
     }
 
     @Override
