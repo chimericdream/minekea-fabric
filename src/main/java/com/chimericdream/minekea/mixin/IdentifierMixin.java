@@ -147,6 +147,9 @@ public class IdentifierMixin {
         Map<String, String> replacements = new LinkedHashMap<>();
 
         replacements.put("^compressed_([a-zA-Z_-]+)_([0-9])x$", "building/compressed/$1/$2x");
+        replacements.put("^bamboo_bundle$", "storage/compressed/bamboo");
+        replacements.put("^cane_bundle$", "storage/compressed/sugar_cane");
+        replacements.put("^stick_bundle$", "storage/compressed/stick");
 
         replacements.forEach((String match, String replace) -> {
             if (id[1].matches(match)) {
