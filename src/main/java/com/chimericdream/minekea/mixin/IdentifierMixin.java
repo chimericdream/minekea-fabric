@@ -16,7 +16,7 @@ public class IdentifierMixin {
         updateIdsV1V2(id);
         updateIdsV2V3(id);
 
-        convertPannotiasParcelsIdsV1(id);
+        convertPannotiasParcelsIds(id);
 
         return id;
     }
@@ -139,7 +139,7 @@ public class IdentifierMixin {
     }
 
     // Blocks moved over in 2.8.0
-    private static void convertPannotiasParcelsIdsV1(String[] id) {
+    private static void convertPannotiasParcelsIds(String[] id) {
         if (!id[0].equals("pannotiasparcels")) {
             return;
         }
