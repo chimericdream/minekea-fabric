@@ -22,7 +22,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
@@ -90,8 +89,8 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
 
         DecimalFormat df = new DecimalFormat("###,###,###");
 
-        tooltip.add(new TranslatableText(TOOLTIP_LEVEL, settings.getCompressionLevel()));
-        tooltip.add(new TranslatableText(TOOLTIP_COUNT, df.format(Math.pow(9, settings.getCompressionLevel()))));
+        tooltip.add(Text.translatable(TOOLTIP_LEVEL, settings.getCompressionLevel()));
+        tooltip.add(Text.translatable(TOOLTIP_COUNT, df.format(Math.pow(9, settings.getCompressionLevel()))));
     }
 
     @Override

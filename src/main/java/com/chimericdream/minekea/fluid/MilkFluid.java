@@ -45,7 +45,8 @@ public class MilkFluid extends FlowableFluid {
         Block.dropStacks(state, world, pos, blockEntity);
     }
 
-    @Override
+    // Removed/made protected in 1.19?
+    // @Override
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
         if (!state.isStill() && !(Boolean) state.get(FALLING)) {
             if (random.nextInt(64) == 0) {

@@ -27,10 +27,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -92,7 +90,7 @@ public class PainterItem extends Item implements MinekeaItem {
         String stackColor = nbt.getString("current_color");
         BlockColor color = BlockColor.get(stackColor);
 
-        MutableText text = new LiteralText(String.format("Current color: %s", color));
+        MutableText text = Text.literal(String.format("Current color: %s", color));
         tooltip.add(text);
     }
 
@@ -172,7 +170,7 @@ public class PainterItem extends Item implements MinekeaItem {
 
                 @Override
                 public Text getDisplayName() {
-                    return new TranslatableText(painter.getItem().getTranslationKey());
+                    return Text.translatable(painter.getItem().getTranslationKey());
                 }
 
                 @Override

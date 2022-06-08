@@ -9,7 +9,7 @@ import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
@@ -62,7 +62,7 @@ public class Shelves implements MinekeaBlockCategory {
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
-        BlockEntityRendererRegistry.INSTANCE.register(SHELF_BLOCK_ENTITY, ShelfBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(SHELF_BLOCK_ENTITY, ShelfBlockEntityRenderer::new);
     }
 
     @Override

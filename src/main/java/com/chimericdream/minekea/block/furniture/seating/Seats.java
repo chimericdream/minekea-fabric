@@ -6,7 +6,7 @@ import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -57,7 +57,7 @@ public class Seats implements MinekeaBlockCategory {
 
     @Override
     public void initializeClient() {
-        EntityRendererRegistry.INSTANCE.register(SEAT_ENTITY, SeatEntity.EmptyRenderer::new);
+        EntityRendererRegistry.register(SEAT_ENTITY, SeatEntity.EmptyRenderer::new);
     }
 
     @Override

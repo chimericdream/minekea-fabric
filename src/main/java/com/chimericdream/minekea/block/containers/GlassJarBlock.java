@@ -239,7 +239,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                 Fluid fluid = Registry.FLUID.get(new Identifier(storedFluid));
 
                 if (fluid != Fluids.EMPTY) {
-                    MutableText text = FluidHelpers.getFluidName(fluid).shallowCopy().formatted(Formatting.GREEN);
+                    MutableText text = FluidHelpers.getFluidName(fluid).copy().formatted(Formatting.GREEN);
 
                     double fluidAmount = nbt.getDouble(GlassJarBlockEntity.FLUID_AMT_KEY);
 
@@ -261,7 +261,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                     int fullStacks = nbt.getInt(GlassJarBlockEntity.ITEM_AMT_KEY);
                     int total = storedItem.getCount() + (fullStacks * storedItem.getMaxCount());
 
-                    MutableText text = storedItem.getName().shallowCopy().formatted(Formatting.GREEN);
+                    MutableText text = storedItem.getName().copy().formatted(Formatting.GREEN);
                     text.append(String.format(" (%d)", total));
 
                     tooltip.add(text);
