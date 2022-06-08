@@ -22,6 +22,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBlock {
     public GenericBookshelfTrapdoor(BookshelfTrapdoorSettings settings) {
@@ -52,9 +53,10 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Bookshelf Trapdoor", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((BookshelfTrapdoorSettings) this.settings).getMaterials();
+        Map<String, Identifier> materials = settings.getMaterials();
 
         Identifier shelf = materials.get("bookshelf");
         Identifier planks = materials.getOrDefault("planks", materials.get("main"));
@@ -125,6 +127,10 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
     public static class BookshelfTrapdoorSettings extends MinekeaBlockSettings<BookshelfTrapdoorSettings> {
         public BookshelfTrapdoorSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Bookshelf Trapdoor");
         }
 
         @Override

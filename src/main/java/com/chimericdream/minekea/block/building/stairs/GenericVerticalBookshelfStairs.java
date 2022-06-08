@@ -32,6 +32,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericVerticalBookshelfStairs extends Block implements MinekeaBlock {
     public static final DirectionProperty FACING;
@@ -98,7 +99,8 @@ public class GenericVerticalBookshelfStairs extends Block implements MinekeaBloc
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Vertical Bookshelf Stairs", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Map<String, Identifier> materials = ((VerticalBookshelfStairsSettings) this.settings).getMaterials();
         Identifier shelf = materials.get("bookshelf");
@@ -145,6 +147,10 @@ public class GenericVerticalBookshelfStairs extends Block implements MinekeaBloc
     public static class VerticalBookshelfStairsSettings extends MinekeaBlockSettings<VerticalBookshelfStairsSettings> {
         public VerticalBookshelfStairsSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "Vertical %s Bookshelf Stairs");
         }
 
         @Override

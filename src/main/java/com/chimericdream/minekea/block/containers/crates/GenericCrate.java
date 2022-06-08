@@ -42,6 +42,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     public static final Integer ROW_COUNT = 6;
@@ -165,7 +166,8 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     }
 
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Crate", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Map<String, Identifier> materials = ((CrateSettings) this.settings).getMaterials();
 
@@ -216,6 +218,10 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     public static class CrateSettings extends MinekeaBlockSettings<CrateSettings> {
         public CrateSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Crate");
         }
 
         @Override

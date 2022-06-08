@@ -52,6 +52,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaBlock {
     public static final Integer ROW_COUNT = 1;
@@ -178,9 +179,8 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Storage Bookshelf", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
-
-        StorageBookshelfSettings settings = (StorageBookshelfSettings) this.settings;
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Map<String, Identifier> materials = settings.getMaterials();
 
@@ -191,7 +191,7 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
         Identifier ONE_HALF_SHELF_MODEL_ID = new Identifier(BASE_MODEL_ID + "_one_half");
         Identifier ONE_QUARTER_SHELF_MODEL_ID = new Identifier(BASE_MODEL_ID + "_one_quarter");
         Identifier THREE_QUARTERS_SHELF_MODEL_ID = new Identifier(BASE_MODEL_ID + "_three_quarters");
-        Identifier FULL_SHELF_MODEL_ID = settings.getBaseShelfBlockId();
+        Identifier FULL_SHELF_MODEL_ID = ((StorageBookshelfSettings) settings).getBaseShelfBlockId();
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             getBlockID(),
@@ -318,6 +318,10 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
     public static class StorageBookshelfSettings extends MinekeaBlockSettings<StorageBookshelfSettings> {
         public StorageBookshelfSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Storage Bookshelf");
         }
 
         public Identifier getBaseShelfBlockId() {

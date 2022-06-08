@@ -37,6 +37,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
     public static final DirectionProperty WALL_SIDE;
@@ -254,9 +255,10 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Shelf", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((SupportedShelfSettings) this.settings).getMaterials();
+        Map<String, Identifier> materials = settings.getMaterials();
 
         Identifier log = materials.getOrDefault("log", materials.get("main"));
         Identifier planks = materials.getOrDefault("planks", materials.get("main"));
@@ -306,6 +308,10 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
     public static class SupportedShelfSettings extends MinekeaBlockSettings<SupportedShelfSettings> {
         public SupportedShelfSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Shelf");
         }
 
         @Override

@@ -39,6 +39,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericTable extends Block implements MinekeaBlock {
     public static final String TOOLTIP_KEY = "block.minekea.furniture.tables.tooltip";
@@ -204,9 +205,10 @@ public class GenericTable extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Table", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((TableSettings) this.settings).getMaterials();
+        Map<String, Identifier> materials = settings.getMaterials();
 
         Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));
         Identifier LOG_MATERIAL = materials.getOrDefault("log", materials.get("main"));
@@ -292,7 +294,6 @@ public class GenericTable extends Block implements MinekeaBlock {
                     .put("east_connected=true,north_connected=true,south_connected=true,west_connected=false", new JBlockModel(OTHER_MODEL_IDS.get("all")))
                     .put("east_connected=false,north_connected=true,south_connected=true,west_connected=true", new JBlockModel(OTHER_MODEL_IDS.get("all")))
                     .put("east_connected=true,north_connected=true,south_connected=true,west_connected=true", new JBlockModel(OTHER_MODEL_IDS.get("all")))
-
             ),
             getBlockID()
         );
@@ -301,6 +302,10 @@ public class GenericTable extends Block implements MinekeaBlock {
     public static class TableSettings extends MinekeaBlockSettings<TableSettings> {
         public TableSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Table");
         }
 
         @Override

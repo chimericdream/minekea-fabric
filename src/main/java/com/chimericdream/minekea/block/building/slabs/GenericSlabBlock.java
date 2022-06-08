@@ -22,6 +22,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
     public GenericSlabBlock(SlabSettings settings) {
@@ -52,7 +53,8 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Slab", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Map<String, Identifier> materials = ((SlabSettings) this.settings).getMaterials();
 
@@ -107,6 +109,10 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
     public static class SlabSettings extends MinekeaBlockSettings<SlabSettings> {
         public SlabSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Slab");
         }
 
         @Override

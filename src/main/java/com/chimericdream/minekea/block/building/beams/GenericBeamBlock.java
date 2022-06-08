@@ -36,6 +36,7 @@ import net.minecraft.world.BlockView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericBeamBlock extends Block implements MinekeaBlock {
     protected static final VoxelShape CORE_SHAPE = Block.createCuboidShape(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
@@ -179,7 +180,8 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Beam", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Map<String, Identifier> materials = ((BeamSettings) this.settings).getMaterials();
 
@@ -271,6 +273,10 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
     public static class BeamSettings extends MinekeaBlockSettings<BeamSettings> {
         public BeamSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Beam");
         }
 
         @Override

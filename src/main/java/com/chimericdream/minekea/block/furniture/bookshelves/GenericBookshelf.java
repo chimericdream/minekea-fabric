@@ -26,6 +26,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericBookshelf extends Block implements MinekeaBlock {
     public GenericBookshelf(BookshelfSettings settings) {
@@ -56,7 +57,8 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Bookshelf", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Map<String, Identifier> materials = ((BookshelfSettings) this.settings).getMaterials();
 
@@ -156,6 +158,10 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
     public static class BookshelfSettings extends MinekeaBlockSettings<BookshelfSettings> {
         public BookshelfSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Bookshelf");
         }
 
         @Override

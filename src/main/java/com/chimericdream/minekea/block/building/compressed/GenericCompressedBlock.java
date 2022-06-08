@@ -195,5 +195,10 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
 
             return blockId;
         }
+
+        @Override
+        public String getNamePattern() {
+            return null;
+        }
     }
 }

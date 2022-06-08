@@ -27,6 +27,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericFloatingShelf extends GenericShelf {
     public GenericFloatingShelf(FloatingShelfSettings settings) {
@@ -77,9 +78,10 @@ public class GenericFloatingShelf extends GenericShelf {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Floating Shelf", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((FloatingShelfSettings) this.settings).getMaterials();
+        Map<String, Identifier> materials = settings.getMaterials();
 
         Identifier planks = materials.getOrDefault("planks", materials.get("main"));
         Identifier slab = materials.getOrDefault("slab", materials.get("main"));
@@ -124,6 +126,10 @@ public class GenericFloatingShelf extends GenericShelf {
     public static class FloatingShelfSettings extends SupportedShelfSettings {
         public FloatingShelfSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Floating Shelf");
         }
 
         @Override

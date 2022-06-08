@@ -27,6 +27,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericStorageBlock extends Block implements MinekeaBlock {
     public static final EnumProperty<Direction.Axis> AXIS;
@@ -84,9 +85,9 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
         StorageBlockSettings settings = (StorageBlockSettings) this.settings;
         Map<String, Identifier> materials = settings.getMaterials();
 
-        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("Compressed %s", Registry.ITEM.get(ingredient).getName().getString()));
+        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier HORIZONTAL_MODEL_ID = new Identifier(MODEL_ID + "_horizontal");
@@ -169,6 +170,10 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
         public StorageBlockSettings column() {
             this.isColumnBlock = true;
             return this;
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "Compressed %s");
         }
 
         @Override

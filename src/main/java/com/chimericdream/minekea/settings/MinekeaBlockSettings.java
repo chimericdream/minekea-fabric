@@ -5,14 +5,13 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> extends FabricBlockSettings {
-    protected String mainMaterial;
-    protected Map<String, Identifier> materials;
-    protected String modId = ModInfo.MOD_ID;
+    protected Block baseBlock;
     protected Identifier blockId;
     protected int burnSpread = 0;
     protected int burnTime = 0;
@@ -20,8 +19,11 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected boolean isColumn = false;
     protected boolean isFlammable = false;
     protected boolean isTranslucent = false;
-    protected String defaultTranslation;
-    protected Block baseBlock;
+    protected String mainMaterial;
+    protected Map<String, Identifier> materials;
+    protected String modId = ModInfo.MOD_ID;
+    protected String name = null;
+    protected String namePatternOverride = null;
 
     protected MinekeaBlockSettings(Block block) {
         this(FabricBlockSettings.copyOf(block));
@@ -44,21 +46,33 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     }
 
     protected void copySettings(DefaultSettings settings) {
-        this.mainMaterial = settings.mainMaterial;
-        this.materials = settings.materials;
-        this.modId = settings.modId;
+        this.baseBlock = settings.baseBlock;
         this.blockId = settings.blockId;
         this.burnSpread = settings.burnSpread;
         this.burnTime = settings.burnTime;
         this.fuelTime = settings.fuelTime;
+        this.isColumn = settings.isColumn;
         this.isFlammable = settings.isFlammable;
         this.isTranslucent = settings.isTranslucent;
-        this.baseBlock = settings.baseBlock;
-        this.defaultTranslation = settings.defaultTranslation;
-        this.isColumn = settings.isColumn;
+        this.mainMaterial = settings.mainMaterial;
+        this.materials = settings.materials;
+        this.modId = settings.modId;
+        this.name = settings.name;
     }
 
     abstract public Identifier getBlockId();
+
+    abstract public String getNamePattern();
+
+    public String getIngredientName() {
+        if (this.name != null) {
+            return this.name;
+        }
+
+        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+
+        return Registry.ITEM.get(ingredient).getName().getString();
+    }
 
     public float getHardness() {
         return this.getBaseBlock().getHardness();
@@ -70,10 +84,6 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public String getModId() {
         return this.modId;
-    }
-
-    public String getDefaultTranslation() {
-        return this.defaultTranslation;
     }
 
     public String getMainMaterial() {
@@ -106,8 +116,14 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         return (T) this;
     }
 
-    public T defaultTranslation(String defaultTranslation) {
-        this.defaultTranslation = defaultTranslation;
+    public T namePattern(String pattern) {
+        this.namePatternOverride = pattern;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T ingredientName(String name) {
+        this.name = name;
         // noinspection unchecked
         return (T) this;
     }
@@ -191,12 +207,6 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         return (T) this;
     }
 
-    public T translation(String defaultTranslation) {
-        this.defaultTranslation = defaultTranslation;
-        // noinspection unchecked
-        return (T) this;
-    }
-
     public void validateMaterials(Map<String, Identifier> materials) {
         String[] keys = new String[]{"main"};
 
@@ -214,6 +224,11 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
         @Override
         public Identifier getBlockId() {
+            return null;
+        }
+
+        @Override
+        public String getNamePattern() {
             return null;
         }
     }

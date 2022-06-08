@@ -28,6 +28,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class DyeBlock extends Block implements MinekeaBlock {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
@@ -65,11 +66,11 @@ public class DyeBlock extends Block implements MinekeaBlock {
     @Override
     public void setupResources() {
         DyeBlockSettings settings = (DyeBlockSettings) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
+
         Map<String, Identifier> materials = settings.getMaterials();
 
         Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
-
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("Compressed %s", Registry.ITEM.get(ingredient).getName().getString()));
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -121,6 +122,10 @@ public class DyeBlock extends Block implements MinekeaBlock {
         public DyeBlockSettings color(String color) {
             this.color = color;
             return this;
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "Compressed %s");
         }
 
         @Override

@@ -10,7 +10,7 @@ public class BygBlockSettings {
     public static DefaultSettings ASPEN = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("aspen")
-        .translation("Aspen")
+        .ingredientName("Aspen")
         .materials(
             Map.of(
                 "main", new Identifier("byg:aspen_planks"),
@@ -22,7 +22,7 @@ public class BygBlockSettings {
     public static DefaultSettings BAOBAB = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("baobab")
-        .translation("Baobab")
+        .ingredientName("Baobab")
         .materials(
             Map.of(
                 "main", new Identifier("byg:baobab_planks"),
@@ -34,7 +34,7 @@ public class BygBlockSettings {
     public static DefaultSettings BLUE_ENCHANTED = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("blue_enchanted")
-        .translation("Blue Enchanted")
+        .ingredientName("Blue Enchanted")
         .materials(
             Map.of(
                 "main", new Identifier("byg:blue_enchanted_planks"),
@@ -46,7 +46,7 @@ public class BygBlockSettings {
     public static DefaultSettings BULBIS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("bulbis")
-        .translation("Bulbis")
+        .ingredientName("Bulbis")
         .materials(
             Map.of(
                 "main", new Identifier("byg:bulbis_planks"),
@@ -58,7 +58,7 @@ public class BygBlockSettings {
     public static DefaultSettings CHERRY = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("cherry")
-        .translation("Cherry")
+        .ingredientName("Cherry")
         .materials(
             Map.of(
                 "main", new Identifier("byg:cherry_planks"),
@@ -70,7 +70,7 @@ public class BygBlockSettings {
     public static DefaultSettings CIKA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("cika")
-        .translation("Cika")
+        .ingredientName("Cika")
         .materials(
             Map.of(
                 "main", new Identifier("byg:cika_planks"),
@@ -82,7 +82,7 @@ public class BygBlockSettings {
     public static DefaultSettings CYPRESS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("cypress")
-        .translation("Cypress")
+        .ingredientName("Cypress")
         .materials(
             Map.of(
                 "main", new Identifier("byg:cypress_planks"),
@@ -94,7 +94,7 @@ public class BygBlockSettings {
     public static DefaultSettings EBONY = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("ebony")
-        .translation("Ebony")
+        .ingredientName("Ebony")
         .materials(
             Map.of(
                 "main", new Identifier("byg:ebony_planks"),
@@ -106,7 +106,7 @@ public class BygBlockSettings {
     public static DefaultSettings EMBUR = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("embur")
-        .translation("Embur")
+        .ingredientName("Embur")
         .materials(
             Map.of(
                 "main", new Identifier("byg:embur_planks"),
@@ -118,7 +118,7 @@ public class BygBlockSettings {
     public static DefaultSettings ETHER = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("ether")
-        .translation("Ether")
+        .ingredientName("Ether")
         .materials(
             Map.of(
                 "main", new Identifier("byg:ether_planks"),
@@ -130,7 +130,7 @@ public class BygBlockSettings {
     public static DefaultSettings FIR = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("fir")
-        .translation("Fir")
+        .ingredientName("Fir")
         .materials(
             Map.of(
                 "main", new Identifier("byg:fir_planks"),
@@ -142,7 +142,7 @@ public class BygBlockSettings {
     public static DefaultSettings GREEN_ENCHANTED = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("green_enchanted")
-        .translation("Green Enchanted")
+        .ingredientName("Green Enchanted")
         .materials(
             Map.of(
                 "main", new Identifier("byg:green_enchanted_planks"),
@@ -154,7 +154,7 @@ public class BygBlockSettings {
     public static DefaultSettings HOLLY = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("holly")
-        .translation("Holly")
+        .ingredientName("Holly")
         .materials(
             Map.of(
                 "main", new Identifier("byg:holly_planks"),
@@ -166,7 +166,7 @@ public class BygBlockSettings {
     public static DefaultSettings IMPARIUS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("imparius")
-        .translation("Imparius")
+        .ingredientName("Imparius")
         .materials(
             Map.of(
                 "main", new Identifier("byg:imparius_planks"),
@@ -178,7 +178,7 @@ public class BygBlockSettings {
     public static DefaultSettings JACARANDA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("jacaranda")
-        .translation("Jacaranda")
+        .ingredientName("Jacaranda")
         .materials(
             Map.of(
                 "main", new Identifier("byg:jacaranda_planks"),
@@ -190,7 +190,7 @@ public class BygBlockSettings {
     public static DefaultSettings LAMENT = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("lament")
-        .translation("Lament")
+        .ingredientName("Lament")
         .materials(
             Map.of(
                 "main", new Identifier("byg:lament_planks"),
@@ -202,7 +202,7 @@ public class BygBlockSettings {
     public static DefaultSettings MAHOGANY = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("mahogany")
-        .translation("Mahogany")
+        .ingredientName("Mahogany")
         .materials(
             Map.of(
                 "main", new Identifier("byg:mahogany_planks"),
@@ -214,7 +214,7 @@ public class BygBlockSettings {
     public static DefaultSettings MANGROVE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("mangrove")
-        .translation("Mangrove")
+        .ingredientName("Mangrove")
         .materials(
             Map.of(
                 "main", new Identifier("byg:mangrove_planks"),
@@ -226,7 +226,7 @@ public class BygBlockSettings {
     public static DefaultSettings MAPLE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("maple")
-        .translation("Maple")
+        .ingredientName("Maple")
         .materials(
             Map.of(
                 "main", new Identifier("byg:maple_planks"),
@@ -238,7 +238,7 @@ public class BygBlockSettings {
     public static DefaultSettings NIGHTSHADE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("nightshade")
-        .translation("Nightshade")
+        .ingredientName("Nightshade")
         .materials(
             Map.of(
                 "main", new Identifier("byg:nightshade_planks"),
@@ -250,7 +250,7 @@ public class BygBlockSettings {
     public static DefaultSettings PALM = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("palm")
-        .translation("Palm")
+        .ingredientName("Palm")
         .materials(
             Map.of(
                 "main", new Identifier("byg:palm_planks"),
@@ -262,7 +262,7 @@ public class BygBlockSettings {
     public static DefaultSettings PINE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("pine")
-        .translation("Pine")
+        .ingredientName("Pine")
         .materials(
             Map.of(
                 "main", new Identifier("byg:pine_planks"),
@@ -274,7 +274,7 @@ public class BygBlockSettings {
     public static DefaultSettings RAINBOW_EUCALYPTUS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("rainbow_eucalyptus")
-        .translation("Rainbow Eucalyptus")
+        .ingredientName("Rainbow Eucalyptus")
         .materials(
             Map.of(
                 "main", new Identifier("byg:rainbow_eucalyptus_planks"),
@@ -286,7 +286,7 @@ public class BygBlockSettings {
     public static DefaultSettings REDWOOD = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("redwood")
-        .translation("Redwood")
+        .ingredientName("Redwood")
         .materials(
             Map.of(
                 "main", new Identifier("byg:redwood_planks"),
@@ -298,7 +298,7 @@ public class BygBlockSettings {
     public static DefaultSettings SKYRIS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("skyris")
-        .translation("Skyris")
+        .ingredientName("Skyris")
         .materials(
             Map.of(
                 "main", new Identifier("byg:skyris_planks"),
@@ -310,7 +310,7 @@ public class BygBlockSettings {
     public static DefaultSettings SYTHIAN = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("sythian")
-        .translation("Sythian")
+        .ingredientName("Sythian")
         .materials(
             Map.of(
                 "main", new Identifier("byg:sythian_planks"),
@@ -322,7 +322,7 @@ public class BygBlockSettings {
     public static DefaultSettings WILLOW = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("willow")
-        .translation("Willow")
+        .ingredientName("Willow")
         .materials(
             Map.of(
                 "main", new Identifier("byg:willow_planks"),
@@ -334,7 +334,7 @@ public class BygBlockSettings {
     public static DefaultSettings WITCH_HAZEL = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("witch_hazel")
-        .translation("Witch Hazel")
+        .ingredientName("Witch Hazel")
         .materials(
             Map.of(
                 "main", new Identifier("byg:witch_hazel_planks"),
@@ -346,7 +346,7 @@ public class BygBlockSettings {
     public static DefaultSettings ZELKOVA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .material("zelkova")
-        .translation("Zelkova")
+        .ingredientName("Zelkova")
         .materials(
             Map.of(
                 "main", new Identifier("byg:zelkova_planks"),

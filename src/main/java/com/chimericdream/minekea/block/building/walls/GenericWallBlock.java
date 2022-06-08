@@ -23,6 +23,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericWallBlock extends WallBlock implements MinekeaBlock {
     public GenericWallBlock(WallSettings settings) {
@@ -53,7 +54,9 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Wall", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
+
         MinekeaResourcePack.WALL_TAG.add(getBlockID());
 
         Map<String, Identifier> materials = ((WallSettings) this.settings).getMaterials();
@@ -130,6 +133,10 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
     public static class WallSettings extends MinekeaBlockSettings<WallSettings> {
         public WallSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Wall");
         }
 
         @Override

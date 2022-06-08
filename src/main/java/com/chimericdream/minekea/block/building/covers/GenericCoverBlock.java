@@ -29,6 +29,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
     public static final DirectionProperty FACING;
@@ -75,7 +76,8 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Cover", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Map<String, Identifier> materials = ((CoverSettings) this.settings).getMaterials();
         Identifier end = materials.getOrDefault("end", materials.get("main"));
@@ -122,6 +124,10 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
     public static class CoverSettings extends MinekeaBlockSettings<CoverSettings> {
         public CoverSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Cover");
         }
 
         @Override

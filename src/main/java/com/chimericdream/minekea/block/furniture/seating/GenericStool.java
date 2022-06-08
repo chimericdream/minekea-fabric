@@ -37,6 +37,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericStool extends Block implements MinekeaBlock {
     private static final VoxelShape SEAT_SHAPE;
@@ -111,9 +112,10 @@ public class GenericStool extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Stool", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((StoolSettings) this.settings).getMaterials();
+        Map<String, Identifier> materials = settings.getMaterials();
 
         Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));
         Identifier LOG_MATERIAL = materials.getOrDefault("log", materials.get("main"));
@@ -153,6 +155,10 @@ public class GenericStool extends Block implements MinekeaBlock {
     public static class StoolSettings extends MinekeaBlockSettings<StoolSettings> {
         public StoolSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Stool");
         }
 
         @Override

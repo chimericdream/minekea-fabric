@@ -22,6 +22,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericBookshelfSlab extends SlabBlock implements MinekeaBlock {
     public GenericBookshelfSlab(BookshelfSlabSettings settings) {
@@ -52,9 +53,8 @@ public class GenericBookshelfSlab extends SlabBlock implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Bookshelf Slab", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
-
-        BookshelfSlabSettings settings = (BookshelfSlabSettings) this.settings;
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Map<String, Identifier> materials = settings.getMaterials();
         Identifier shelf = materials.get("bookshelf");
@@ -110,6 +110,10 @@ public class GenericBookshelfSlab extends SlabBlock implements MinekeaBlock {
     public static class BookshelfSlabSettings extends MinekeaBlockSettings<BookshelfSlabSettings> {
         public BookshelfSlabSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Bookshelf Slab");
         }
 
         @Override

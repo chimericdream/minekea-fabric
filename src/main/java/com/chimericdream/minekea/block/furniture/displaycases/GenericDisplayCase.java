@@ -40,6 +40,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock {
     public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 8);
@@ -205,10 +206,11 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock 
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format("%s Display Case", ((MinekeaBlockSettings<?>) this.settings).getDefaultTranslation()));
+        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((DisplayCaseSettings) this.settings).getMaterials();
-        boolean isStripped = ((DisplayCaseSettings) this.settings).isStripped;
+        Map<String, Identifier> materials = settings.getMaterials();
+        boolean isStripped = ((DisplayCaseSettings) settings).isStripped;
 
         Identifier planks = materials.getOrDefault("planks", materials.get("main"));
         Identifier log = materials.getOrDefault("log", materials.get("main"));
@@ -253,6 +255,10 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock 
 
         public DisplayCaseSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public String getNamePattern() {
+            return Objects.requireNonNullElse(namePatternOverride, "%s Display Case");
         }
 
         public boolean isStripped() {
