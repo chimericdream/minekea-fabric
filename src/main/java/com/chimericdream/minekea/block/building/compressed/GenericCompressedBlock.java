@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.building.compressed;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.*;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -31,8 +32,6 @@ import org.jetbrains.annotations.Nullable;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
-
-import static com.chimericdream.minekea.block.building.compressed.CompressedBlocks.COMPRESSED_BLOCK_GROUP;
 
 public class GenericCompressedBlock extends Block implements MinekeaBlock {
     protected final Identifier BLOCK_ID;
@@ -110,7 +109,7 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
 
     public void register() {
         Registry.register(Registry.BLOCK, BLOCK_ID, this);
-        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(COMPRESSED_BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroups.COMPRESSED_BLOCKS)));
 
         setupResources();
     }

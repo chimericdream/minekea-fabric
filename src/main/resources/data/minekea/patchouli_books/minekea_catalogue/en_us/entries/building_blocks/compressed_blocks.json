@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "Some items tend to take up a large amount of space in your inventory or storage system. Minekea adds 1x-9x compressed versions of over a hundred block types to help you stay organized!"
+            "text": "Some items tend to take up a large amount of space in your inventory or storage system. Minekea adds 1x-9x compressed versions of over a hundred block types to help you stay organized!$(br2)$(br)$(o)Fun fact: the Nether contains an estimated 5 trillion ancient debris, so you need fortunable debris or multiple Nethers for a single 9x netherite block."
         },
         {
             "type": "patchouli:crafting",

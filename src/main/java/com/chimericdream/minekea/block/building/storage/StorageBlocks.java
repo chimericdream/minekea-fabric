@@ -9,6 +9,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.List;
 
@@ -59,16 +60,16 @@ public class StorageBlocks implements MinekeaBlockCategory {
         RED_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.RED_DYE).color("red"));
         BLACK_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BLACK_DYE).color("black"));
 
-        BAMBOO_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.BAMBOO).column());
-        BEETROOT_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.BEETROOT).bagged());
-        BLAZE_POWDER_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.BLAZE_POWDER));
-        CARROT_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.CARROT).bagged());
-        CHORUS_FRUIT_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.CHORUS_FRUIT).bagged());
-        ENDER_PEARL_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.ENDER_PEARL));
-        POTATO_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.POTATO).bagged());
-        STICK_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.STICK).column().defaultTranslation("Sticks"));
-        SUGAR_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.SUGAR));
-        SUGAR_CANE_BLOCK = new GenericStorageBlock(new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).column());
+        BAMBOO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BAMBOO).column().sounds(BlockSoundGroup.BAMBOO));
+        BEETROOT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT).bagged().sounds(BlockSoundGroup.CROP));
+        BLAZE_POWDER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BLAZE_POWDER).sounds(BlockSoundGroup.NETHER_STEM));
+        CARROT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.CARROT).bagged().sounds(BlockSoundGroup.CROP));
+        CHORUS_FRUIT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.CHORUS_FRUIT).bagged().sounds(BlockSoundGroup.WOOD));
+        ENDER_PEARL_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.ENDER_PEARL).sounds(BlockSoundGroup.SHROOMLIGHT));
+        POTATO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.POTATO).bagged().sounds(BlockSoundGroup.CROP));
+        STICK_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.STICK).column().defaultTranslation("Sticks").sounds(BlockSoundGroup.WOOD));
+        SUGAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR).sounds(BlockSoundGroup.SAND));
+        SUGAR_CANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).column().sounds(BlockSoundGroup.GRASS));
     }
 
     @Environment(EnvType.CLIENT)

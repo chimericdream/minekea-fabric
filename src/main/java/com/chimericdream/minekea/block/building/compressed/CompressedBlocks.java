@@ -1,18 +1,13 @@
 package com.chimericdream.minekea.block.building.compressed;
 
-import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.compressed.GenericCompressedBlock.CompressedBlockSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +16,6 @@ import static com.chimericdream.minekea.block.building.compressed.GenericCompres
 import static com.chimericdream.minekea.block.building.compressed.GenericCompressedBlock.TOOLTIP_LEVEL;
 
 public class CompressedBlocks implements MinekeaBlockCategory {
-    public static final ItemGroup COMPRESSED_BLOCK_GROUP = FabricItemGroupBuilder
-        .create(new Identifier(ModInfo.MOD_ID, "blocks.compressed"))
-        .icon(() -> new ItemStack(CompressedBlocks.COBBLESTONE.get(8)))
-        .build();
-
     public static final List<GenericCompressedBlock> AMETHYST = new ArrayList<>();
     public static final List<GenericCompressedBlock> ANDESITE = new ArrayList<>();
     public static final List<GenericCompressedBlock> BASALT = new ArrayList<>();
@@ -519,7 +509,6 @@ public class CompressedBlocks implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.EN_US.entry("itemGroup.minekea.blocks.compressed", "Compressed Blocks");
         MinekeaResourcePack.EN_US.entry(TOOLTIP_LEVEL, "%dx Compressed");
         MinekeaResourcePack.EN_US.entry(TOOLTIP_COUNT, "(%s blocks)");
     }

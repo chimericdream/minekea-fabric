@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.furniture.shelves;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
+import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
@@ -21,7 +22,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
@@ -63,7 +63,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
 
     public void register(boolean isFlammable) {
         Registry.register(Registry.BLOCK, getBlockID(), this);
-        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroups.FURNITURE)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);

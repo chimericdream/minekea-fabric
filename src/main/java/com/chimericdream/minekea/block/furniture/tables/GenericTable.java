@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.furniture.tables;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
@@ -19,7 +20,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.text.Text;
@@ -87,7 +91,7 @@ public class GenericTable extends Block implements MinekeaBlock {
 
     public void register(boolean isFlammable) {
         Registry.register(Registry.BLOCK, getBlockID(), this);
-        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroups.FURNITURE)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);

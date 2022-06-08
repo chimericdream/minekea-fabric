@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "Just like regular stairs, but sideways!$(br2)$(br2)$(br2)$(br2)$(o)(Minekea makes no promise or guarantee regarding the suitability of these blocks for actual staircases.)"
+            "text": "Just like regular stairs, but sideways!$(br2)$(br2)$(br2)$(br2)$(o)Minekea makes no promise or guarantee regarding the suitability of these blocks for actual staircases."
         },
         {
             "type": "patchouli:crafting",

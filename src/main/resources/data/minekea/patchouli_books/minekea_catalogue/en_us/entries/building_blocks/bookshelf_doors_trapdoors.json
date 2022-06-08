@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "In addition to providing a number of variations of bookshelves, you can now use them to create secret doors and trapdoors!$(br)$(br)All bookshelf variants include a door and trapdoor as well."
+            "text": "In addition to providing a number of variations of bookshelves, you can now use them to create secret doors and trapdoors!$(br)$(br)The vanilla wood bookshelf variants include a door and trapdoor as well."
         },
         {
             "type": "patchouli:crafting",

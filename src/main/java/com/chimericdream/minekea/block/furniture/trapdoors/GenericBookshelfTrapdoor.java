@@ -40,7 +40,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
 
     public void register(boolean isFlammable) {
         Registry.register(Registry.BLOCK, getBlockID(), this);
-        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.REDSTONE)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);

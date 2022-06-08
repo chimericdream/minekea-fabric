@@ -41,7 +41,7 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
 
     public void register(boolean isFlammable) {
         Registry.register(Registry.BLOCK, getBlockID(), this);
-        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);

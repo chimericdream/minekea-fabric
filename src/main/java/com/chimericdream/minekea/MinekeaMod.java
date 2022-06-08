@@ -9,6 +9,7 @@ import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
+import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.item.Items;
 import com.chimericdream.minekea.network.ServerNetworking;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
@@ -41,6 +42,7 @@ public class MinekeaMod implements ModInitializer {
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
     public static final Items ITEMS;
+    public static final ItemGroups ITEM_GROUPS;
 
     public static final CommonBlockTags COMMON_TAGS;
     public static final MinekeaTags TAGS;
@@ -70,6 +72,7 @@ public class MinekeaMod implements ModInitializer {
         };
 
         ITEMS = new Items();
+        ITEM_GROUPS = new ItemGroups();
 
         COMMON_TAGS = new CommonBlockTags();
         TAGS = new MinekeaTags();
@@ -114,6 +117,7 @@ public class MinekeaMod implements ModInitializer {
         LOGGER.info("[minekea] Registering items");
         ITEMS.register();
         ITEMS.setupResources();
+        ITEM_GROUPS.setupResources();
 
         LOGGER.info("[minekea] Registering colored blocks");
         registerVanillaColoredBlocks();

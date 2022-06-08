@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.furniture.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
+import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
@@ -32,7 +33,6 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
@@ -84,7 +84,7 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
 
     public void register(boolean isFlammable) {
         Registry.register(Registry.BLOCK, getBlockID(), this);
-        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroups.FURNITURE)));
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);
