@@ -400,6 +400,15 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings NETHER_WART = new DefaultSettings(Blocks.NETHER_WART_BLOCK)
+        .material("nether_wart")
+        .ingredientName("Nether Wart")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:nether_wart_block")
+            )
+        );
+
     public static DefaultSettings NETHERITE_BLOCK = new DefaultSettings(Blocks.NETHERITE_BLOCK)
         .material("netherite_block")
         .ingredientName("Netherite Block")
@@ -709,6 +718,15 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", WarpedNetherBricksBlock.BLOCK_ID
+            )
+        );
+
+    public static DefaultSettings WARPED_WART = new DefaultSettings(Blocks.WARPED_WART_BLOCK)
+        .material("warped_wart")
+        .ingredientName("Warped Wart")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:warped_wart_block")
             )
         );
 
@@ -1380,6 +1398,17 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings ACACIA_LEAVES = new DefaultSettings(Blocks.ACACIA_LEAVES)
+        .material("acacia_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Acacia Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:acacia_leaves")
+            )
+        );
+
     public static DefaultSettings ACACIA_LOG = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia_log")
         .flammable()
@@ -1405,6 +1434,28 @@ public class BaseBlockSettings {
                 "stripped_log", new Identifier("minecraft:stripped_acacia_log"),
                 "planks", new Identifier("minecraft:acacia_planks"),
                 "slab", new Identifier("minecraft:acacia_slab")
+            )
+        );
+
+    public static DefaultSettings AZALEA_LEAVES = new DefaultSettings(Blocks.AZALEA_LEAVES)
+        .material("azalea_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Azalea Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:azalea_leaves")
+            )
+        );
+
+    public static DefaultSettings BIRCH_LEAVES = new DefaultSettings(Blocks.BIRCH_LEAVES)
+        .material("birch_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Birch Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:birch_leaves")
             )
         );
 
@@ -1462,6 +1513,17 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings DARK_OAK_LEAVES = new DefaultSettings(Blocks.DARK_OAK_LEAVES)
+        .material("dark_oak_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Dark Oak Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:dark_oak_leaves")
+            )
+        );
+
     public static DefaultSettings DARK_OAK_LOG = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak_log")
         .flammable()
@@ -1487,6 +1549,28 @@ public class BaseBlockSettings {
                 "stripped_log", new Identifier("minecraft:stripped_dark_oak_log"),
                 "planks", new Identifier("minecraft:dark_oak_planks"),
                 "slab", new Identifier("minecraft:dark_oak_slab")
+            )
+        );
+
+    public static DefaultSettings FLOWERING_AZALEA_LEAVES = new DefaultSettings(Blocks.FLOWERING_AZALEA_LEAVES)
+        .material("flowering_azalea_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Flowering Azalea Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:flowering_azalea_leaves")
+            )
+        );
+
+    public static DefaultSettings JUNGLE_LEAVES = new DefaultSettings(Blocks.JUNGLE_LEAVES)
+        .material("jungle_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Jungle Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:jungle_leaves")
             )
         );
 
@@ -1518,6 +1602,17 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings MANGROVE_LEAVES = new DefaultSettings(Blocks.MANGROVE_LEAVES)
+        .material("mangrove_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Mangrove Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:mangrove_leaves")
+            )
+        );
+
     public static DefaultSettings MANGROVE_LOG = new DefaultSettings(Blocks.MANGROVE_PLANKS)
         .material("mangrove_log")
         .flammable()
@@ -1546,6 +1641,17 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings OAK_LEAVES = new DefaultSettings(Blocks.OAK_LEAVES)
+        .material("oak_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Oak Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:oak_leaves")
+            )
+        );
+
     public static DefaultSettings OAK_LOG = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_log")
         .flammable()
@@ -1571,6 +1677,17 @@ public class BaseBlockSettings {
                 "stripped_log", new Identifier("minecraft:stripped_oak_log"),
                 "planks", new Identifier("minecraft:oak_planks"),
                 "slab", new Identifier("minecraft:oak_slab")
+            )
+        );
+
+    public static DefaultSettings SPRUCE_LEAVES = new DefaultSettings(Blocks.SPRUCE_LEAVES)
+        .material("spruce_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Spruce Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:spruce_leaves")
             )
         );
 

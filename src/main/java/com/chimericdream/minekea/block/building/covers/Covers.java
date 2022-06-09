@@ -49,6 +49,7 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock MUD_BRICK_COVER;
     public static final GenericCoverBlock NETHERRACK_COVER;
     public static final GenericCoverBlock NETHER_BRICK_COVER;
+    public static final GenericCoverBlock NETHER_WART_COVER;
     public static final GenericCoverBlock OBSIDIAN_COVER;
     public static final GenericCoverBlock PACKED_MUD_COVER;
     public static final GenericCoverBlock POLISHED_ANDESITE_COVER;
@@ -75,6 +76,7 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock TUFF_COVER;
     public static final GenericCoverBlock WARPED_BASALT_BRICK_COVER;
     public static final GenericCoverBlock WARPED_NETHER_BRICK_COVER;
+    public static final GenericCoverBlock WARPED_WART_COVER;
 
     public static final GenericCoverBlock WHITE_TERRACOTTA_COVER;
     public static final GenericCoverBlock ORANGE_TERRACOTTA_COVER;
@@ -203,6 +205,7 @@ public class Covers implements MinekeaBlockCategory {
         MUD_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.MUD_BRICK));
         NETHERRACK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.NETHERRACK));
         NETHER_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.NETHER_BRICK));
+        NETHER_WART_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.NETHER_WART));
         OBSIDIAN_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.OBSIDIAN));
         PACKED_MUD_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.PACKED_MUD));
         POLISHED_ANDESITE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.POLISHED_ANDESITE));
@@ -229,6 +232,7 @@ public class Covers implements MinekeaBlockCategory {
         TUFF_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.TUFF));
         WARPED_BASALT_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WARPED_BASALT_BRICK));
         WARPED_NETHER_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WARPED_NETHER_BRICK));
+        WARPED_WART_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WARPED_WART));
 
         WHITE_TERRACOTTA_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.WHITE_TERRACOTTA));
         ORANGE_TERRACOTTA_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.ORANGE_TERRACOTTA));
@@ -355,6 +359,7 @@ public class Covers implements MinekeaBlockCategory {
             MUD_BRICK_COVER,
             NETHERRACK_COVER,
             NETHER_BRICK_COVER,
+            NETHER_WART_COVER,
             OBSIDIAN_COVER,
             PACKED_MUD_COVER,
             POLISHED_ANDESITE_COVER,
@@ -381,6 +386,7 @@ public class Covers implements MinekeaBlockCategory {
             TUFF_COVER,
             WARPED_BASALT_BRICK_COVER,
             WARPED_NETHER_BRICK_COVER,
+            WARPED_WART_COVER,
 
             WHITE_TERRACOTTA_COVER,
             ORANGE_TERRACOTTA_COVER,
