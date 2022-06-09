@@ -353,7 +353,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                 JPattern.pattern(" L ", "G G", "GGG"),
                 JKeys.keys()
                     .key("G", JIngredient.ingredient().item("minecraft:glass_pane"))
-                    .key("L", JIngredient.ingredient().item("minecraft:acacia_planks")),
+                    .key("L", JIngredient.ingredient().tag("minecraft:planks")),
                 JResult.stackedResult(BLOCK_ID.toString(), 3)
             )
         );
