@@ -118,6 +118,7 @@ public class Slabs implements MinekeaBlockCategory {
     public static final GenericSlabBlock CRIMSON_STEM_SLAB;
     public static final GenericSlabBlock DARK_OAK_LOG_SLAB;
     public static final GenericSlabBlock JUNGLE_LOG_SLAB;
+    public static final GenericSlabBlock MANGROVE_LOG_SLAB;
     public static final GenericSlabBlock OAK_LOG_SLAB;
     public static final GenericSlabBlock SPRUCE_LOG_SLAB;
     public static final GenericSlabBlock WARPED_STEM_SLAB;
@@ -127,6 +128,7 @@ public class Slabs implements MinekeaBlockCategory {
     public static final GenericBookshelfSlab CRIMSON_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab DARK_OAK_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab JUNGLE_BOOKSHELF_SLAB;
+    public static final GenericBookshelfSlab MANGROVE_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab OAK_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab SPRUCE_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab WARPED_BOOKSHELF_SLAB;
@@ -240,6 +242,7 @@ public class Slabs implements MinekeaBlockCategory {
         BIRCH_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BIRCH_LOG));
         DARK_OAK_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.DARK_OAK_LOG));
         JUNGLE_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.JUNGLE_LOG));
+        MANGROVE_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.MANGROVE_LOG));
         OAK_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.OAK_LOG));
         SPRUCE_LOG_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.SPRUCE_LOG));
 
@@ -248,6 +251,7 @@ public class Slabs implements MinekeaBlockCategory {
         CRIMSON_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID()));
         DARK_OAK_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID()));
         JUNGLE_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID()));
+        MANGROVE_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.MANGROVE).addMaterial("bookshelf", Bookshelves.MANGROVE_BOOKSHELF.getBlockID()));
         OAK_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")).addMaterial("model", new Identifier("minecraft:block/bookshelf")));
         SPRUCE_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID()));
         WARPED_BOOKSHELF_SLAB = new GenericBookshelfSlab(new BookshelfSlabSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID()));
@@ -356,6 +360,7 @@ public class Slabs implements MinekeaBlockCategory {
             CRIMSON_STEM_SLAB,
             DARK_OAK_LOG_SLAB,
             JUNGLE_LOG_SLAB,
+            MANGROVE_LOG_SLAB,
             OAK_LOG_SLAB,
             SPRUCE_LOG_SLAB,
             WARPED_STEM_SLAB
@@ -367,6 +372,7 @@ public class Slabs implements MinekeaBlockCategory {
             CRIMSON_BOOKSHELF_SLAB,
             DARK_OAK_BOOKSHELF_SLAB,
             JUNGLE_BOOKSHELF_SLAB,
+            MANGROVE_BOOKSHELF_SLAB,
             OAK_BOOKSHELF_SLAB,
             SPRUCE_BOOKSHELF_SLAB,
             WARPED_BOOKSHELF_SLAB

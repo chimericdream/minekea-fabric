@@ -24,6 +24,7 @@ public class Shelves implements MinekeaBlockCategory {
     public static final GenericShelf CRIMSON_SHELF;
     public static final GenericShelf DARK_OAK_SHELF;
     public static final GenericShelf JUNGLE_SHELF;
+    public static final GenericShelf MANGROVE_SHELF;
     public static final GenericShelf OAK_SHELF;
     public static final GenericShelf SPRUCE_SHELF;
     public static final GenericShelf WARPED_SHELF;
@@ -33,6 +34,7 @@ public class Shelves implements MinekeaBlockCategory {
     public static final GenericFloatingShelf CRIMSON_FLOATING_SHELF;
     public static final GenericFloatingShelf DARK_OAK_FLOATING_SHELF;
     public static final GenericFloatingShelf JUNGLE_FLOATING_SHELF;
+    public static final GenericFloatingShelf MANGROVE_FLOATING_SHELF;
     public static final GenericFloatingShelf OAK_FLOATING_SHELF;
     public static final GenericFloatingShelf SPRUCE_FLOATING_SHELF;
     public static final GenericFloatingShelf WARPED_FLOATING_SHELF;
@@ -45,6 +47,7 @@ public class Shelves implements MinekeaBlockCategory {
         CRIMSON_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.MANGROVE));
         OAK_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.OAK));
         SPRUCE_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.SPRUCE));
         WARPED_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.WARPED));
@@ -54,6 +57,7 @@ public class Shelves implements MinekeaBlockCategory {
         CRIMSON_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.MANGROVE));
         OAK_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.OAK));
         SPRUCE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.SPRUCE));
         WARPED_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.WARPED));
@@ -72,6 +76,7 @@ public class Shelves implements MinekeaBlockCategory {
         CRIMSON_SHELF.register();
         DARK_OAK_SHELF.register();
         JUNGLE_SHELF.register();
+        MANGROVE_SHELF.register();
         OAK_SHELF.register();
         SPRUCE_SHELF.register();
         WARPED_SHELF.register();
@@ -81,6 +86,7 @@ public class Shelves implements MinekeaBlockCategory {
         CRIMSON_FLOATING_SHELF.register();
         DARK_OAK_FLOATING_SHELF.register();
         JUNGLE_FLOATING_SHELF.register();
+        MANGROVE_FLOATING_SHELF.register();
         OAK_FLOATING_SHELF.register();
         SPRUCE_FLOATING_SHELF.register();
         WARPED_FLOATING_SHELF.register();

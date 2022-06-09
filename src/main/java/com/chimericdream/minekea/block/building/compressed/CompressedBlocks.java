@@ -164,6 +164,8 @@ public class CompressedBlocks implements MinekeaBlockCategory {
     public static final List<GenericCompressedBlock> DARK_OAK_PLANK = new ArrayList<>();
     public static final List<GenericCompressedBlock> JUNGLE_LOG = new ArrayList<>();
     public static final List<GenericCompressedBlock> JUNGLE_PLANK = new ArrayList<>();
+    public static final List<GenericCompressedBlock> MANGROVE_LOG = new ArrayList<>();
+    public static final List<GenericCompressedBlock> MANGROVE_PLANK = new ArrayList<>();
     public static final List<GenericCompressedBlock> OAK_LOG = new ArrayList<>();
     public static final List<GenericCompressedBlock> OAK_PLANK = new ArrayList<>();
     public static final List<GenericCompressedBlock> SPRUCE_LOG = new ArrayList<>();
@@ -323,6 +325,8 @@ public class CompressedBlocks implements MinekeaBlockCategory {
             DARK_OAK_PLANK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.DARK_OAK).compressionLevel(i)));
             JUNGLE_LOG.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.JUNGLE_LOG).compressionLevel(i)));
             JUNGLE_PLANK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.JUNGLE).compressionLevel(i)));
+            MANGROVE_LOG.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.MANGROVE_LOG).compressionLevel(i)));
+            MANGROVE_PLANK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.MANGROVE).compressionLevel(i)));
             OAK_LOG.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.OAK_LOG).compressionLevel(i)));
             OAK_PLANK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.OAK).compressionLevel(i)));
             SPRUCE_LOG.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.SPRUCE_LOG).compressionLevel(i)));
@@ -479,6 +483,8 @@ public class CompressedBlocks implements MinekeaBlockCategory {
         BLOCKS.addAll(DARK_OAK_PLANK);
         BLOCKS.addAll(JUNGLE_LOG);
         BLOCKS.addAll(JUNGLE_PLANK);
+        BLOCKS.addAll(MANGROVE_LOG);
+        BLOCKS.addAll(MANGROVE_PLANK);
         BLOCKS.addAll(OAK_LOG);
         BLOCKS.addAll(OAK_PLANK);
         BLOCKS.addAll(SPRUCE_LOG);

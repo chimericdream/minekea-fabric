@@ -169,6 +169,8 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalStairsBlock DARK_OAK_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock JUNGLE_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock JUNGLE_LOG_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock MANGROVE_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock MANGROVE_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock OAK_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock OAK_LOG_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock SPRUCE_VERTICAL_STAIRS;
@@ -181,6 +183,7 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalBookshelfStairs CRIMSON_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs DARK_OAK_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs JUNGLE_VERTICAL_BOOKSHELF_STAIRS;
+    public static final GenericVerticalBookshelfStairs MANGROVE_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs OAK_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs SPRUCE_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs WARPED_VERTICAL_BOOKSHELF_STAIRS;
@@ -291,6 +294,7 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericStairsBlock CRIMSON_STEM_STAIRS;
     public static final GenericStairsBlock DARK_OAK_LOG_STAIRS;
     public static final GenericStairsBlock JUNGLE_LOG_STAIRS;
+    public static final GenericStairsBlock MANGROVE_LOG_STAIRS;
     public static final GenericStairsBlock OAK_LOG_STAIRS;
     public static final GenericStairsBlock SPRUCE_LOG_STAIRS;
     public static final GenericStairsBlock WARPED_STEM_STAIRS;
@@ -300,6 +304,7 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericBookshelfStairs CRIMSON_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs DARK_OAK_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs JUNGLE_BOOKSHELF_STAIRS;
+    public static final GenericBookshelfStairs MANGROVE_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs OAK_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs SPRUCE_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs WARPED_BOOKSHELF_STAIRS;
@@ -460,6 +465,8 @@ public class Stairs implements MinekeaBlockCategory {
         DARK_OAK_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.DARK_OAK_LOG));
         JUNGLE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.JUNGLE));
         JUNGLE_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.JUNGLE_LOG));
+        MANGROVE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MANGROVE));
+        MANGROVE_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MANGROVE_LOG));
         OAK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OAK));
         OAK_LOG_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OAK_LOG));
         SPRUCE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.SPRUCE));
@@ -472,6 +479,7 @@ public class Stairs implements MinekeaBlockCategory {
         CRIMSON_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID()));
         DARK_OAK_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID()));
         JUNGLE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID()));
+        MANGROVE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.MANGROVE).addMaterial("bookshelf", Bookshelves.MANGROVE_BOOKSHELF.getBlockID()));
         OAK_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")).addMaterial("model", new Identifier("minecraft:block/bookshelf")));
         SPRUCE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID()));
         WARPED_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID()));
@@ -629,6 +637,8 @@ public class Stairs implements MinekeaBlockCategory {
             DARK_OAK_LOG_VERTICAL_STAIRS,
             JUNGLE_VERTICAL_STAIRS,
             JUNGLE_LOG_VERTICAL_STAIRS,
+            MANGROVE_VERTICAL_STAIRS,
+            MANGROVE_LOG_VERTICAL_STAIRS,
             OAK_VERTICAL_STAIRS,
             OAK_LOG_VERTICAL_STAIRS,
             SPRUCE_VERTICAL_STAIRS,
@@ -743,6 +753,7 @@ public class Stairs implements MinekeaBlockCategory {
         CRIMSON_STEM_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRIMSON_STEM));
         DARK_OAK_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.DARK_OAK_LOG));
         JUNGLE_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.JUNGLE_LOG));
+        MANGROVE_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.MANGROVE_LOG));
         OAK_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.OAK_LOG));
         SPRUCE_LOG_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.SPRUCE_LOG));
         WARPED_STEM_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.WARPED_STEM));
@@ -752,6 +763,7 @@ public class Stairs implements MinekeaBlockCategory {
         CRIMSON_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID()));
         DARK_OAK_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID()));
         JUNGLE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID()));
+        MANGROVE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.MANGROVE).addMaterial("bookshelf", Bookshelves.MANGROVE_BOOKSHELF.getBlockID()));
         OAK_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")).addMaterial("model", new Identifier("minecraft:block/bookshelf")));
         SPRUCE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID()));
         WARPED_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID()));
@@ -863,6 +875,7 @@ public class Stairs implements MinekeaBlockCategory {
             CRIMSON_STEM_STAIRS,
             DARK_OAK_LOG_STAIRS,
             JUNGLE_LOG_STAIRS,
+            MANGROVE_LOG_STAIRS,
             OAK_LOG_STAIRS,
             SPRUCE_LOG_STAIRS,
             WARPED_STEM_STAIRS
@@ -903,6 +916,7 @@ public class Stairs implements MinekeaBlockCategory {
         CRIMSON_BOOKSHELF_STAIRS.register();
         DARK_OAK_BOOKSHELF_STAIRS.register();
         JUNGLE_BOOKSHELF_STAIRS.register();
+        MANGROVE_BOOKSHELF_STAIRS.register();
         OAK_BOOKSHELF_STAIRS.register();
         SPRUCE_BOOKSHELF_STAIRS.register();
         WARPED_BOOKSHELF_STAIRS.register();
@@ -912,6 +926,7 @@ public class Stairs implements MinekeaBlockCategory {
         CRIMSON_VERTICAL_BOOKSHELF_STAIRS.register();
         DARK_OAK_VERTICAL_BOOKSHELF_STAIRS.register();
         JUNGLE_VERTICAL_BOOKSHELF_STAIRS.register();
+        MANGROVE_VERTICAL_BOOKSHELF_STAIRS.register();
         OAK_VERTICAL_BOOKSHELF_STAIRS.register();
         SPRUCE_VERTICAL_BOOKSHELF_STAIRS.register();
         WARPED_VERTICAL_BOOKSHELF_STAIRS.register();

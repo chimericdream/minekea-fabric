@@ -20,6 +20,7 @@ public class Seats implements MinekeaBlockCategory {
     public static final GenericChair CRIMSON_CHAIR;
     public static final GenericChair DARK_OAK_CHAIR;
     public static final GenericChair JUNGLE_CHAIR;
+    public static final GenericChair MANGROVE_CHAIR;
     public static final GenericChair OAK_CHAIR;
     public static final GenericChair SPRUCE_CHAIR;
     public static final GenericChair WARPED_CHAIR;
@@ -29,6 +30,7 @@ public class Seats implements MinekeaBlockCategory {
     public static final GenericStool CRIMSON_STOOL;
     public static final GenericStool DARK_OAK_STOOL;
     public static final GenericStool JUNGLE_STOOL;
+    public static final GenericStool MANGROVE_STOOL;
     public static final GenericStool OAK_STOOL;
     public static final GenericStool SPRUCE_STOOL;
     public static final GenericStool WARPED_STOOL;
@@ -41,6 +43,7 @@ public class Seats implements MinekeaBlockCategory {
         CRIMSON_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.MANGROVE));
         OAK_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.OAK));
         SPRUCE_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.SPRUCE));
         WARPED_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.WARPED));
@@ -50,6 +53,7 @@ public class Seats implements MinekeaBlockCategory {
         CRIMSON_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.MANGROVE));
         OAK_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.OAK));
         SPRUCE_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.SPRUCE));
         WARPED_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.WARPED));
@@ -67,6 +71,7 @@ public class Seats implements MinekeaBlockCategory {
         CRIMSON_CHAIR.register();
         DARK_OAK_CHAIR.register();
         JUNGLE_CHAIR.register();
+        MANGROVE_CHAIR.register();
         OAK_CHAIR.register();
         SPRUCE_CHAIR.register();
         WARPED_CHAIR.register();
@@ -76,6 +81,7 @@ public class Seats implements MinekeaBlockCategory {
         CRIMSON_STOOL.register();
         DARK_OAK_STOOL.register();
         JUNGLE_STOOL.register();
+        MANGROVE_STOOL.register();
         OAK_STOOL.register();
         SPRUCE_STOOL.register();
         WARPED_STOOL.register();

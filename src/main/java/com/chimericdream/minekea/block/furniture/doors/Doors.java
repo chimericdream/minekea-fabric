@@ -15,6 +15,7 @@ public class Doors implements MinekeaBlockCategory {
     public static final GenericBookshelfDoor CRIMSON_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor DARK_OAK_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor JUNGLE_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor MANGROVE_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor OAK_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor SPRUCE_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor WARPED_BOOKSHELF_DOOR;
@@ -25,6 +26,7 @@ public class Doors implements MinekeaBlockCategory {
         CRIMSON_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID()));
         DARK_OAK_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID()));
         JUNGLE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID()));
+        MANGROVE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.MANGROVE).addMaterial("bookshelf", Bookshelves.MANGROVE_BOOKSHELF.getBlockID()));
         OAK_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")));
         SPRUCE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID()));
         WARPED_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID()));
@@ -41,6 +43,7 @@ public class Doors implements MinekeaBlockCategory {
         CRIMSON_BOOKSHELF_DOOR.register();
         DARK_OAK_BOOKSHELF_DOOR.register();
         JUNGLE_BOOKSHELF_DOOR.register();
+        MANGROVE_BOOKSHELF_DOOR.register();
         OAK_BOOKSHELF_DOOR.register();
         SPRUCE_BOOKSHELF_DOOR.register();
         WARPED_BOOKSHELF_DOOR.register();

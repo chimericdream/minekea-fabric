@@ -27,6 +27,7 @@ public class Crates implements MinekeaBlockCategory {
     public static final GenericCrate CRIMSON_CRATE;
     public static final GenericCrate DARK_OAK_CRATE;
     public static final GenericCrate JUNGLE_CRATE;
+    public static final GenericCrate MANGROVE_CRATE;
     public static final GenericCrate OAK_CRATE;
     public static final GenericCrate SPRUCE_CRATE;
     public static final GenericCrate WARPED_CRATE;
@@ -42,6 +43,7 @@ public class Crates implements MinekeaBlockCategory {
         CRIMSON_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.MANGROVE));
         OAK_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.OAK));
         SPRUCE_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.SPRUCE));
         WARPED_CRATE = new GenericCrate(new CrateSettings(BaseBlockSettings.WARPED));
@@ -52,6 +54,7 @@ public class Crates implements MinekeaBlockCategory {
             CRIMSON_CRATE,
             DARK_OAK_CRATE,
             JUNGLE_CRATE,
+            MANGROVE_CRATE,
             OAK_CRATE,
             SPRUCE_CRATE,
             WARPED_CRATE

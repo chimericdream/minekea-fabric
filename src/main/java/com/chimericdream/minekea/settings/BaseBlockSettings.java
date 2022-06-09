@@ -1491,6 +1491,34 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings MANGROVE_LOG = new DefaultSettings(Blocks.MANGROVE_PLANKS)
+        .material("mangrove_log")
+        .flammable()
+        .ingredientName("Mangrove Log")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:mangrove_log"),
+                "end", new Identifier("minecraft:mangrove_log_top"),
+                "log", new Identifier("minecraft:mangrove_log"),
+                "stripped_log", new Identifier("minecraft:stripped_mangrove_log"),
+                "planks", new Identifier("minecraft:mangrove_planks")
+            )
+        );
+
+    public static DefaultSettings MANGROVE = new DefaultSettings(Blocks.MANGROVE_PLANKS)
+        .material("mangrove")
+        .flammable()
+        .ingredientName("Mangrove")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:mangrove_planks"),
+                "log", new Identifier("minecraft:mangrove_log"),
+                "stripped_log", new Identifier("minecraft:stripped_mangrove_log"),
+                "planks", new Identifier("minecraft:mangrove_planks"),
+                "slab", new Identifier("minecraft:mangrove_slab")
+            )
+        );
+
     public static DefaultSettings OAK_LOG = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_log")
         .flammable()

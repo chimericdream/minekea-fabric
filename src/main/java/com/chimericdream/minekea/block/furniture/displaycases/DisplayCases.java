@@ -26,6 +26,7 @@ public class DisplayCases implements MinekeaBlockCategory {
     public static final GenericDisplayCase CRIMSON_DISPLAY_CASE;
     public static final GenericDisplayCase DARK_OAK_DISPLAY_CASE;
     public static final GenericDisplayCase JUNGLE_DISPLAY_CASE;
+    public static final GenericDisplayCase MANGROVE_DISPLAY_CASE;
     public static final GenericDisplayCase OAK_DISPLAY_CASE;
     public static final GenericDisplayCase SPRUCE_DISPLAY_CASE;
     public static final GenericDisplayCase WARPED_DISPLAY_CASE;
@@ -35,6 +36,7 @@ public class DisplayCases implements MinekeaBlockCategory {
     public static final GenericDisplayCase STRIPPED_CRIMSON_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_DARK_OAK_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_JUNGLE_DISPLAY_CASE;
+    public static final GenericDisplayCase STRIPPED_MANGROVE_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_OAK_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_SPRUCE_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_WARPED_DISPLAY_CASE;
@@ -49,6 +51,7 @@ public class DisplayCases implements MinekeaBlockCategory {
         CRIMSON_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.MANGROVE));
         OAK_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.OAK));
         SPRUCE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.SPRUCE));
         WARPED_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.WARPED));
@@ -58,6 +61,7 @@ public class DisplayCases implements MinekeaBlockCategory {
         STRIPPED_CRIMSON_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.CRIMSON).stripped());
         STRIPPED_DARK_OAK_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.DARK_OAK).stripped());
         STRIPPED_JUNGLE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.JUNGLE).stripped());
+        STRIPPED_MANGROVE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.MANGROVE).stripped());
         STRIPPED_OAK_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.OAK).stripped());
         STRIPPED_SPRUCE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.SPRUCE).stripped());
         STRIPPED_WARPED_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.WARPED).stripped());
@@ -68,6 +72,7 @@ public class DisplayCases implements MinekeaBlockCategory {
             CRIMSON_DISPLAY_CASE,
             DARK_OAK_DISPLAY_CASE,
             JUNGLE_DISPLAY_CASE,
+            MANGROVE_DISPLAY_CASE,
             OAK_DISPLAY_CASE,
             SPRUCE_DISPLAY_CASE,
             WARPED_DISPLAY_CASE,
@@ -77,6 +82,7 @@ public class DisplayCases implements MinekeaBlockCategory {
             STRIPPED_CRIMSON_DISPLAY_CASE,
             STRIPPED_DARK_OAK_DISPLAY_CASE,
             STRIPPED_JUNGLE_DISPLAY_CASE,
+            STRIPPED_MANGROVE_DISPLAY_CASE,
             STRIPPED_OAK_DISPLAY_CASE,
             STRIPPED_SPRUCE_DISPLAY_CASE,
             STRIPPED_WARPED_DISPLAY_CASE

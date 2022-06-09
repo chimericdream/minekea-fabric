@@ -19,6 +19,7 @@ public class Barrels implements MinekeaBlockCategory {
     public static final GenericBarrel CRIMSON_BARREL;
     public static final GenericBarrel DARK_OAK_BARREL;
     public static final GenericBarrel JUNGLE_BARREL;
+    public static final GenericBarrel MANGROVE_BARREL;
     public static final GenericBarrel SPRUCE_BARREL;
     public static final GenericBarrel WARPED_BARREL;
 
@@ -28,6 +29,7 @@ public class Barrels implements MinekeaBlockCategory {
         CRIMSON_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.MANGROVE));
         SPRUCE_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.SPRUCE));
         WARPED_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.WARPED));
     }
@@ -43,6 +45,7 @@ public class Barrels implements MinekeaBlockCategory {
             CRIMSON_BARREL,
             DARK_OAK_BARREL,
             JUNGLE_BARREL,
+            MANGROVE_BARREL,
             SPRUCE_BARREL,
             WARPED_BARREL
         );
@@ -55,6 +58,7 @@ public class Barrels implements MinekeaBlockCategory {
         CRIMSON_BARREL.register();
         DARK_OAK_BARREL.register();
         JUNGLE_BARREL.register();
+        MANGROVE_BARREL.register();
         SPRUCE_BARREL.register();
         WARPED_BARREL.register();
     }

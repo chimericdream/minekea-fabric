@@ -147,6 +147,8 @@ public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock DARK_OAK_PLANK_BEAM;
     public static final GenericBeamBlock JUNGLE_LOG_BEAM;
     public static final GenericBeamBlock JUNGLE_PLANK_BEAM;
+    public static final GenericBeamBlock MANGROVE_LOG_BEAM;
+    public static final GenericBeamBlock MANGROVE_PLANK_BEAM;
     public static final GenericBeamBlock OAK_LOG_BEAM;
     public static final GenericBeamBlock OAK_PLANK_BEAM;
     public static final GenericBeamBlock SPRUCE_LOG_BEAM;
@@ -292,6 +294,8 @@ public class Beams implements MinekeaBlockCategory {
         DARK_OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.JUNGLE_LOG));
         JUNGLE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.MANGROVE_LOG));
+        MANGROVE_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.MANGROVE));
         OAK_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OAK_LOG));
         OAK_PLANK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OAK));
         SPRUCE_LOG_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.SPRUCE_LOG));
@@ -435,6 +439,8 @@ public class Beams implements MinekeaBlockCategory {
             DARK_OAK_PLANK_BEAM,
             JUNGLE_LOG_BEAM,
             JUNGLE_PLANK_BEAM,
+            MANGROVE_LOG_BEAM,
+            MANGROVE_PLANK_BEAM,
             OAK_LOG_BEAM,
             OAK_PLANK_BEAM,
             SPRUCE_LOG_BEAM,

@@ -150,6 +150,8 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock DARK_OAK_PLANK_COVER;
     public static final GenericCoverBlock JUNGLE_LOG_COVER;
     public static final GenericCoverBlock JUNGLE_PLANK_COVER;
+    public static final GenericCoverBlock MANGROVE_LOG_COVER;
+    public static final GenericCoverBlock MANGROVE_PLANK_COVER;
     public static final GenericCoverBlock OAK_LOG_COVER;
     public static final GenericCoverBlock OAK_PLANK_COVER;
     public static final GenericCoverBlock SPRUCE_LOG_COVER;
@@ -298,6 +300,8 @@ public class Covers implements MinekeaBlockCategory {
         DARK_OAK_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.JUNGLE_LOG));
         JUNGLE_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.MANGROVE_LOG));
+        MANGROVE_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.MANGROVE));
         OAK_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.OAK_LOG));
         OAK_PLANK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.OAK));
         SPRUCE_LOG_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.SPRUCE_LOG));
@@ -444,6 +448,8 @@ public class Covers implements MinekeaBlockCategory {
             DARK_OAK_PLANK_COVER,
             JUNGLE_LOG_COVER,
             JUNGLE_PLANK_COVER,
+            MANGROVE_LOG_COVER,
+            MANGROVE_PLANK_COVER,
             OAK_LOG_COVER,
             OAK_PLANK_COVER,
             SPRUCE_LOG_COVER,

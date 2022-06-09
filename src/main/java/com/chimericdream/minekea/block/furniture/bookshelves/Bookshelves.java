@@ -32,6 +32,7 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericBookshelf CRIMSON_BOOKSHELF;
     public static final GenericBookshelf DARK_OAK_BOOKSHELF;
     public static final GenericBookshelf JUNGLE_BOOKSHELF;
+    public static final GenericBookshelf MANGROVE_BOOKSHELF;
     public static final GenericBookshelf SPRUCE_BOOKSHELF;
     public static final GenericBookshelf WARPED_BOOKSHELF;
 
@@ -62,6 +63,7 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static final GenericStorageBookshelf CRIMSON_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf DARK_OAK_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf JUNGLE_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf MANGROVE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf OAK_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf SPRUCE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf WARPED_STORAGE_BOOKSHELF;
@@ -97,6 +99,7 @@ public class Bookshelves implements MinekeaBlockCategory {
         CRIMSON_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.MANGROVE));
         SPRUCE_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.SPRUCE));
         WARPED_BOOKSHELF = new GenericBookshelf(new BookshelfSettings(BaseBlockSettings.WARPED));
 
@@ -127,6 +130,7 @@ public class Bookshelves implements MinekeaBlockCategory {
         CRIMSON_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", CRIMSON_BOOKSHELF.getBlockID()));
         DARK_OAK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", DARK_OAK_BOOKSHELF.getBlockID()));
         JUNGLE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", JUNGLE_BOOKSHELF.getBlockID()));
+        MANGROVE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BaseBlockSettings.MANGROVE).addMaterial("bookshelf", MANGROVE_BOOKSHELF.getBlockID()));
         OAK_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")));
         SPRUCE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", SPRUCE_BOOKSHELF.getBlockID()));
         WARPED_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", WARPED_BOOKSHELF.getBlockID()));
@@ -172,6 +176,7 @@ public class Bookshelves implements MinekeaBlockCategory {
         CRIMSON_BOOKSHELF.register(false);
         DARK_OAK_BOOKSHELF.register();
         JUNGLE_BOOKSHELF.register();
+        MANGROVE_BOOKSHELF.register();
         SPRUCE_BOOKSHELF.register();
         WARPED_BOOKSHELF.register(false);
 
@@ -202,6 +207,7 @@ public class Bookshelves implements MinekeaBlockCategory {
         CRIMSON_STORAGE_BOOKSHELF.register(false);
         DARK_OAK_STORAGE_BOOKSHELF.register();
         JUNGLE_STORAGE_BOOKSHELF.register();
+        MANGROVE_STORAGE_BOOKSHELF.register();
         OAK_STORAGE_BOOKSHELF.register();
         SPRUCE_STORAGE_BOOKSHELF.register();
         WARPED_STORAGE_BOOKSHELF.register(false);
@@ -237,6 +243,7 @@ public class Bookshelves implements MinekeaBlockCategory {
             CRIMSON_STORAGE_BOOKSHELF,
             DARK_OAK_STORAGE_BOOKSHELF,
             JUNGLE_STORAGE_BOOKSHELF,
+            MANGROVE_STORAGE_BOOKSHELF,
             OAK_STORAGE_BOOKSHELF,
             SPRUCE_STORAGE_BOOKSHELF,
             WARPED_STORAGE_BOOKSHELF,

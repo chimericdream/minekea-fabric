@@ -14,6 +14,7 @@ public class Tables implements MinekeaBlockCategory {
     public static final GenericTable CRIMSON_TABLE;
     public static final GenericTable DARK_OAK_TABLE;
     public static final GenericTable JUNGLE_TABLE;
+    public static final GenericTable MANGROVE_TABLE;
     public static final GenericTable OAK_TABLE;
     public static final GenericTable SPRUCE_TABLE;
     public static final GenericTable WARPED_TABLE;
@@ -24,6 +25,7 @@ public class Tables implements MinekeaBlockCategory {
         CRIMSON_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.CRIMSON));
         DARK_OAK_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.DARK_OAK));
         JUNGLE_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.JUNGLE));
+        MANGROVE_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.MANGROVE));
         OAK_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.OAK));
         SPRUCE_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.SPRUCE));
         WARPED_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.WARPED));
@@ -40,6 +42,7 @@ public class Tables implements MinekeaBlockCategory {
         CRIMSON_TABLE.register();
         DARK_OAK_TABLE.register();
         JUNGLE_TABLE.register();
+        MANGROVE_TABLE.register();
         OAK_TABLE.register();
         SPRUCE_TABLE.register();
         WARPED_TABLE.register();
