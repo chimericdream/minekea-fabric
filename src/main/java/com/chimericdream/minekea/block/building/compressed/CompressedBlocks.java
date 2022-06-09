@@ -49,9 +49,12 @@ public class CompressedBlocks implements MinekeaBlockCategory {
     public static final List<GenericCompressedBlock> MOSSY_BASALT_BRICK = new ArrayList<>();
     public static final List<GenericCompressedBlock> MOSSY_COBBLESTONE = new ArrayList<>();
     public static final List<GenericCompressedBlock> MOSSY_STONE_BRICK = new ArrayList<>();
+    public static final List<GenericCompressedBlock> MUD = new ArrayList<>();
+    public static final List<GenericCompressedBlock> MUD_BRICK = new ArrayList<>();
     public static final List<GenericCompressedBlock> NETHERRACK = new ArrayList<>();
     public static final List<GenericCompressedBlock> NETHER_BRICK = new ArrayList<>();
     public static final List<GenericCompressedBlock> OBSIDIAN = new ArrayList<>();
+    public static final List<GenericCompressedBlock> PACKED_MUD = new ArrayList<>();
     public static final List<GenericCompressedBlock> POLISHED_ANDESITE = new ArrayList<>();
     public static final List<GenericCompressedBlock> POLISHED_BASALT = new ArrayList<>();
     public static final List<GenericCompressedBlock> POLISHED_BLACKSTONE = new ArrayList<>();
@@ -210,9 +213,12 @@ public class CompressedBlocks implements MinekeaBlockCategory {
             MOSSY_BASALT_BRICK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.MOSSY_BASALT_BRICK).compressionLevel(i)));
             MOSSY_COBBLESTONE.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.MOSSY_COBBLESTONE).compressionLevel(i)));
             MOSSY_STONE_BRICK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.MOSSY_STONE_BRICK).compressionLevel(i)));
+            MUD.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.MUD).compressionLevel(i)));
+            MUD_BRICK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.MUD_BRICK).compressionLevel(i)));
             NETHERRACK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.NETHERRACK).compressionLevel(i)));
             NETHER_BRICK.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.NETHER_BRICK).compressionLevel(i)));
             OBSIDIAN.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.OBSIDIAN).compressionLevel(i)));
+            PACKED_MUD.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.PACKED_MUD).compressionLevel(i)));
             POLISHED_ANDESITE.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.POLISHED_ANDESITE).compressionLevel(i)));
             POLISHED_BASALT.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.POLISHED_BASALT).compressionLevel(i)));
             POLISHED_BLACKSTONE.add(new GenericCompressedBlock(new CompressedBlockSettings(BaseBlockSettings.POLISHED_BLACKSTONE).compressionLevel(i)));
@@ -368,9 +374,12 @@ public class CompressedBlocks implements MinekeaBlockCategory {
         BLOCKS.addAll(MOSSY_BASALT_BRICK);
         BLOCKS.addAll(MOSSY_COBBLESTONE);
         BLOCKS.addAll(MOSSY_STONE_BRICK);
+        BLOCKS.addAll(MUD);
+        BLOCKS.addAll(MUD_BRICK);
         BLOCKS.addAll(NETHERRACK);
         BLOCKS.addAll(NETHER_BRICK);
         BLOCKS.addAll(OBSIDIAN);
+        BLOCKS.addAll(PACKED_MUD);
         BLOCKS.addAll(POLISHED_ANDESITE);
         BLOCKS.addAll(POLISHED_BASALT);
         BLOCKS.addAll(POLISHED_BLACKSTONE);

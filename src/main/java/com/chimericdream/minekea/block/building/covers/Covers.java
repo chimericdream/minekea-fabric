@@ -20,6 +20,7 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock BONE_COVER;
     public static final GenericCoverBlock BRICK_COVER;
     public static final GenericCoverBlock CALCITE_COVER;
+    public static final GenericCoverBlock CLAY_COVER;
     public static final GenericCoverBlock COARSE_DIRT_COVER;
     public static final GenericCoverBlock COBBLED_DEEPSLATE_COVER;
     public static final GenericCoverBlock COBBLED_END_STONE_COVER;
@@ -44,9 +45,12 @@ public class Covers implements MinekeaBlockCategory {
     public static final GenericCoverBlock MOSSY_BASALT_BRICK_COVER;
     public static final GenericCoverBlock MOSSY_COBBLESTONE_COVER;
     public static final GenericCoverBlock MOSSY_STONE_BRICK_COVER;
+    public static final GenericCoverBlock MUD_COVER;
+    public static final GenericCoverBlock MUD_BRICK_COVER;
     public static final GenericCoverBlock NETHERRACK_COVER;
     public static final GenericCoverBlock NETHER_BRICK_COVER;
     public static final GenericCoverBlock OBSIDIAN_COVER;
+    public static final GenericCoverBlock PACKED_MUD_COVER;
     public static final GenericCoverBlock POLISHED_ANDESITE_COVER;
     public static final GenericCoverBlock POLISHED_BASALT_COVER;
     public static final GenericCoverBlock POLISHED_BLACKSTONE_BRICK_COVER;
@@ -170,6 +174,7 @@ public class Covers implements MinekeaBlockCategory {
         BONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.BONE));
         BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.BRICK));
         CALCITE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.CALCITE));
+        CLAY_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.CLAY));
         COARSE_DIRT_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.COARSE_DIRT));
         COBBLED_DEEPSLATE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.COBBLED_DEEPSLATE));
         COBBLED_END_STONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.COBBLED_END_STONE));
@@ -194,9 +199,12 @@ public class Covers implements MinekeaBlockCategory {
         MOSSY_BASALT_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
         MOSSY_COBBLESTONE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.MOSSY_COBBLESTONE));
         MOSSY_STONE_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.MOSSY_STONE_BRICK));
+        MUD_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.MUD));
+        MUD_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.MUD_BRICK));
         NETHERRACK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.NETHERRACK));
         NETHER_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.NETHER_BRICK));
         OBSIDIAN_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.OBSIDIAN));
+        PACKED_MUD_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.PACKED_MUD));
         POLISHED_ANDESITE_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.POLISHED_ANDESITE));
         POLISHED_BASALT_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.POLISHED_BASALT));
         POLISHED_BLACKSTONE_BRICK_COVER = new GenericCoverBlock(new CoverSettings(BaseBlockSettings.POLISHED_BLACKSTONE_BRICK));
@@ -318,6 +326,7 @@ public class Covers implements MinekeaBlockCategory {
             BONE_COVER,
             BRICK_COVER,
             CALCITE_COVER,
+            CLAY_COVER,
             COARSE_DIRT_COVER,
             COBBLED_DEEPSLATE_COVER,
             COBBLED_END_STONE_COVER,
@@ -342,9 +351,12 @@ public class Covers implements MinekeaBlockCategory {
             MOSSY_BASALT_BRICK_COVER,
             MOSSY_COBBLESTONE_COVER,
             MOSSY_STONE_BRICK_COVER,
+            MUD_COVER,
+            MUD_BRICK_COVER,
             NETHERRACK_COVER,
             NETHER_BRICK_COVER,
             OBSIDIAN_COVER,
+            PACKED_MUD_COVER,
             POLISHED_ANDESITE_COVER,
             POLISHED_BASALT_COVER,
             POLISHED_BLACKSTONE_BRICK_COVER,

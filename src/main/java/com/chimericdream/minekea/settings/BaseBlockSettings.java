@@ -364,6 +364,24 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings MUD = new DefaultSettings(Blocks.MUD)
+        .material("mud")
+        .ingredientName("Mud")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:mud")
+            )
+        );
+
+    public static DefaultSettings MUD_BRICK = new DefaultSettings(Blocks.MUD_BRICKS)
+        .material("mud_brick")
+        .ingredientName("Mud Brick")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:mud_bricks")
+            )
+        );
+
     public static DefaultSettings NETHERRACK = new DefaultSettings(Blocks.NETHERRACK)
         .material("netherrack")
         .ingredientName("Netherrack")
@@ -397,6 +415,15 @@ public class BaseBlockSettings {
         .materials(
             Map.of(
                 "main", new Identifier("minecraft:obsidian")
+            )
+        );
+
+    public static DefaultSettings PACKED_MUD = new DefaultSettings(Blocks.PACKED_MUD)
+        .material("packed_mud")
+        .ingredientName("Packed Mud")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:packed_mud")
             )
         );
 

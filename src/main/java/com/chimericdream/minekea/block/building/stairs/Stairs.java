@@ -25,6 +25,7 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalStairsBlock BONE_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock BRICK_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock CALCITE_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock CLAY_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock COARSE_DIRT_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock COBBLED_DEEPSLATE_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock COBBLED_END_STONE_VERTICAL_STAIRS;
@@ -50,9 +51,12 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericVerticalStairsBlock MOSSY_BASALT_BRICK_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock MOSSY_COBBLESTONE_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock MOSSY_STONE_BRICK_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock MUD_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock MUD_BRICK_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock NETHER_BRICK_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock NETHERRACK_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock OBSIDIAN_VERTICAL_STAIRS;
+    public static final GenericVerticalStairsBlock PACKED_MUD_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock POLISHED_ANDESITE_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock POLISHED_BASALT_VERTICAL_STAIRS;
     public static final GenericVerticalStairsBlock POLISHED_BLACKSTONE_BRICK_VERTICAL_STAIRS;
@@ -193,6 +197,7 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericStairsBlock BASALT_STAIRS;
     public static final GenericStairsBlock BONE_STAIRS;
     public static final GenericStairsBlock CALCITE_STAIRS;
+    public static final GenericStairsBlock CLAY_STAIRS;
     public static final GenericStairsBlock COARSE_DIRT_STAIRS;
     public static final GenericStairsBlock COBBLED_END_STONE_STAIRS;
     public static final GenericStairsBlock CRACKED_BASALT_BRICK_STAIRS;
@@ -208,8 +213,10 @@ public class Stairs implements MinekeaBlockCategory {
     public static final GenericStairsBlock END_STONE_STAIRS;
     public static final GenericStairsBlock GRAVEL_STAIRS;
     public static final GenericStairsBlock MOSSY_BASALT_BRICK_STAIRS;
+    public static final GenericStairsBlock MUD_STAIRS;
     public static final GenericStairsBlock NETHERRACK_STAIRS;
     public static final GenericStairsBlock OBSIDIAN_STAIRS;
+    public static final GenericStairsBlock PACKED_MUD_STAIRS;
     public static final GenericStairsBlock POLISHED_BASALT_STAIRS;
     public static final GenericStairsBlock PURPUR_PILLAR_STAIRS;
     public static final GenericStairsBlock RED_SAND_STAIRS;
@@ -321,6 +328,7 @@ public class Stairs implements MinekeaBlockCategory {
         BONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BONE));
         BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.BRICK));
         CALCITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CALCITE));
+        CLAY_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.CLAY));
         COARSE_DIRT_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.COARSE_DIRT));
         COBBLED_DEEPSLATE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.COBBLED_DEEPSLATE));
         COBBLED_END_STONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.COBBLED_END_STONE));
@@ -346,9 +354,12 @@ public class Stairs implements MinekeaBlockCategory {
         MOSSY_BASALT_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
         MOSSY_COBBLESTONE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MOSSY_COBBLESTONE));
         MOSSY_STONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MOSSY_STONE_BRICK));
+        MUD_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MUD));
+        MUD_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.MUD_BRICK));
         NETHER_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.NETHER_BRICK));
         NETHERRACK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.NETHERRACK));
         OBSIDIAN_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.OBSIDIAN));
+        PACKED_MUD_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.PACKED_MUD));
         POLISHED_ANDESITE_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_ANDESITE));
         POLISHED_BASALT_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_BASALT));
         POLISHED_BLACKSTONE_BRICK_VERTICAL_STAIRS = new GenericVerticalStairsBlock(new VerticalStairsSettings(BaseBlockSettings.POLISHED_BLACKSTONE_BRICK));
@@ -493,6 +504,7 @@ public class Stairs implements MinekeaBlockCategory {
             BONE_VERTICAL_STAIRS,
             BRICK_VERTICAL_STAIRS,
             CALCITE_VERTICAL_STAIRS,
+            CLAY_VERTICAL_STAIRS,
             COARSE_DIRT_VERTICAL_STAIRS,
             COBBLED_DEEPSLATE_VERTICAL_STAIRS,
             COBBLED_END_STONE_VERTICAL_STAIRS,
@@ -518,9 +530,12 @@ public class Stairs implements MinekeaBlockCategory {
             MOSSY_BASALT_BRICK_VERTICAL_STAIRS,
             MOSSY_COBBLESTONE_VERTICAL_STAIRS,
             MOSSY_STONE_BRICK_VERTICAL_STAIRS,
+            MUD_VERTICAL_STAIRS,
+            MUD_BRICK_VERTICAL_STAIRS,
             NETHER_BRICK_VERTICAL_STAIRS,
             NETHERRACK_VERTICAL_STAIRS,
             OBSIDIAN_VERTICAL_STAIRS,
+            PACKED_MUD_VERTICAL_STAIRS,
             POLISHED_ANDESITE_VERTICAL_STAIRS,
             POLISHED_BASALT_VERTICAL_STAIRS,
             POLISHED_BLACKSTONE_BRICK_VERTICAL_STAIRS,
@@ -652,6 +667,7 @@ public class Stairs implements MinekeaBlockCategory {
         BASALT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BASALT));
         BONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.BONE));
         CALCITE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CALCITE));
+        CLAY_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CLAY));
         COARSE_DIRT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.COARSE_DIRT));
         COBBLED_END_STONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.COBBLED_END_STONE));
         CRACKED_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.CRACKED_BASALT_BRICK));
@@ -667,8 +683,10 @@ public class Stairs implements MinekeaBlockCategory {
         END_STONE_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.END_STONE));
         GRAVEL_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.GRAVEL));
         MOSSY_BASALT_BRICK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
+        MUD_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.MUD));
         NETHERRACK_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.NETHERRACK));
         OBSIDIAN_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.OBSIDIAN));
+        PACKED_MUD_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.PACKED_MUD));
         POLISHED_BASALT_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.POLISHED_BASALT));
         PURPUR_PILLAR_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.PURPUR_PILLAR));
         RED_SAND_STAIRS = new GenericStairsBlock(new StairsSettings(BaseBlockSettings.RED_SAND));
@@ -774,6 +792,7 @@ public class Stairs implements MinekeaBlockCategory {
             BASALT_STAIRS,
             BONE_STAIRS,
             CALCITE_STAIRS,
+            CLAY_STAIRS,
             COARSE_DIRT_STAIRS,
             COBBLED_END_STONE_STAIRS,
             CRACKED_BASALT_BRICK_STAIRS,
@@ -789,8 +808,10 @@ public class Stairs implements MinekeaBlockCategory {
             END_STONE_STAIRS,
             GRAVEL_STAIRS,
             MOSSY_BASALT_BRICK_STAIRS,
+            MUD_STAIRS,
             NETHERRACK_STAIRS,
             OBSIDIAN_STAIRS,
+            PACKED_MUD_STAIRS,
             POLISHED_BASALT_STAIRS,
             PURPUR_PILLAR_STAIRS,
             RED_SAND_STAIRS,

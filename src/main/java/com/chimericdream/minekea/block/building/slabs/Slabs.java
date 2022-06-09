@@ -20,6 +20,7 @@ public class Slabs implements MinekeaBlockCategory {
     public static final GenericSlabBlock BASALT_SLAB;
     public static final GenericSlabBlock BONE_SLAB;
     public static final GenericSlabBlock CALCITE_SLAB;
+    public static final GenericSlabBlock CLAY_SLAB;
     public static final GenericSlabBlock COARSE_DIRT_SLAB;
     public static final GenericSlabBlock COBBLED_END_STONE_SLAB;
     public static final GenericSlabBlock CRACKED_BASALT_BRICK_SLAB;
@@ -33,8 +34,10 @@ public class Slabs implements MinekeaBlockCategory {
     public static final GenericSlabBlock END_STONE_SLAB;
     public static final GenericSlabBlock GRAVEL_SLAB;
     public static final GenericSlabBlock MOSSY_BASALT_BRICK_SLAB;
+    public static final GenericSlabBlock MUD_SLAB;
     public static final GenericSlabBlock NETHERRACK_SLAB;
     public static final GenericSlabBlock OBSIDIAN_SLAB;
+    public static final GenericSlabBlock PACKED_MUD_SLAB;
     public static final GenericSlabBlock POLISHED_BASALT_SLAB;
     public static final GenericSlabBlock PURPUR_PILLAR_SLAB;
     public static final GenericSlabBlock RED_SAND_SLAB;
@@ -142,6 +145,7 @@ public class Slabs implements MinekeaBlockCategory {
         BASALT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BASALT));
         BONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.BONE));
         CALCITE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CALCITE));
+        CLAY_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CLAY));
         COARSE_DIRT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.COARSE_DIRT));
         COBBLED_END_STONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.COBBLED_END_STONE));
         CRACKED_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.CRACKED_BASALT_BRICK));
@@ -155,8 +159,10 @@ public class Slabs implements MinekeaBlockCategory {
         END_STONE_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.END_STONE));
         GRAVEL_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.GRAVEL));
         MOSSY_BASALT_BRICK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
+        MUD_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.MUD));
         NETHERRACK_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.NETHERRACK));
         OBSIDIAN_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.OBSIDIAN));
+        PACKED_MUD_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.PACKED_MUD));
         POLISHED_BASALT_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.POLISHED_BASALT));
         PURPUR_PILLAR_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.PURPUR_PILLAR));
         RED_SAND_SLAB = new GenericSlabBlock(new SlabSettings(BaseBlockSettings.RED_SAND));
@@ -262,6 +268,7 @@ public class Slabs implements MinekeaBlockCategory {
             BASALT_SLAB,
             BONE_SLAB,
             CALCITE_SLAB,
+            CLAY_SLAB,
             COARSE_DIRT_SLAB,
             COBBLED_END_STONE_SLAB,
             CRACKED_BASALT_BRICK_SLAB,
@@ -275,8 +282,10 @@ public class Slabs implements MinekeaBlockCategory {
             END_STONE_SLAB,
             GRAVEL_SLAB,
             MOSSY_BASALT_BRICK_SLAB,
+            MUD_SLAB,
             NETHERRACK_SLAB,
             OBSIDIAN_SLAB,
+            PACKED_MUD_SLAB,
             POLISHED_BASALT_SLAB,
             PURPUR_PILLAR_SLAB,
             RED_SAND_SLAB,

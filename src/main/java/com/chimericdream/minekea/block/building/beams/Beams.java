@@ -42,9 +42,11 @@ public class Beams implements MinekeaBlockCategory {
     public static final GenericBeamBlock MOSSY_BASALT_BRICK_BEAM;
     public static final GenericBeamBlock MOSSY_COBBLESTONE_BEAM;
     public static final GenericBeamBlock MOSSY_STONE_BRICK_BEAM;
+    public static final GenericBeamBlock MUD_BRICK_BEAM;
     public static final GenericBeamBlock NETHERRACK_BEAM;
     public static final GenericBeamBlock NETHER_BRICK_BEAM;
     public static final GenericBeamBlock OBSIDIAN_BEAM;
+    public static final GenericBeamBlock PACKED_MUD_BEAM;
     public static final GenericBeamBlock POLISHED_ANDESITE_BEAM;
     public static final GenericBeamBlock POLISHED_BASALT_BEAM;
     public static final GenericBeamBlock POLISHED_BLACKSTONE_BEAM;
@@ -189,9 +191,11 @@ public class Beams implements MinekeaBlockCategory {
         MOSSY_BASALT_BRICK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.MOSSY_BASALT_BRICK));
         MOSSY_COBBLESTONE_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.MOSSY_COBBLESTONE));
         MOSSY_STONE_BRICK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.MOSSY_STONE_BRICK));
+        MUD_BRICK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.MUD_BRICK));
         NETHERRACK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.NETHERRACK));
         NETHER_BRICK_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.NETHER_BRICK));
         OBSIDIAN_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.OBSIDIAN));
+        PACKED_MUD_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.PACKED_MUD));
         POLISHED_ANDESITE_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.POLISHED_ANDESITE));
         POLISHED_BASALT_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.POLISHED_BASALT));
         POLISHED_BLACKSTONE_BEAM = new GenericBeamBlock(new BeamSettings(BaseBlockSettings.POLISHED_BLACKSTONE));
@@ -334,9 +338,11 @@ public class Beams implements MinekeaBlockCategory {
             MOSSY_BASALT_BRICK_BEAM,
             MOSSY_COBBLESTONE_BEAM,
             MOSSY_STONE_BRICK_BEAM,
+            MUD_BRICK_BEAM,
             NETHERRACK_BEAM,
             NETHER_BRICK_BEAM,
             OBSIDIAN_BEAM,
+            PACKED_MUD_BEAM,
             POLISHED_ANDESITE_BEAM,
             POLISHED_BASALT_BEAM,
             POLISHED_BLACKSTONE_BEAM,
