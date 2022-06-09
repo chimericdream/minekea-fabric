@@ -28,7 +28,7 @@ public class Keybindings {
         ));
     }
 
-    public void initialize() {
+    public static void initialize() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (CYCLE_PAINTER_COLOR.wasPressed()) {
                 ClientPlayNetworking.send(ServerNetworking.CYCLE_PAINTER_COLOR, new PacketByteBuf(Unpooled.buffer()));
