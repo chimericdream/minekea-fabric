@@ -50,8 +50,6 @@ public class MinekeaMod implements ModInitializer {
 
     public static final List<ModCompatLayer> OTHER_MODS = new ArrayList<>();
 
-    public static final Keybindings KEYBINDINGS;
-
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
 
@@ -77,8 +75,6 @@ public class MinekeaMod implements ModInitializer {
         COMMON_TAGS = new CommonBlockTags();
         TAGS = new MinekeaTags();
         RESOURCES = new MinekeaResourcePack();
-
-        KEYBINDINGS = new Keybindings();
 
         FabricLoader loader = FabricLoader.getInstance();
 
@@ -219,7 +215,7 @@ public class MinekeaMod implements ModInitializer {
     public static void onInitializeClient() {
         LOGGER.info("[minekea] Initializing client code");
 
-        KEYBINDINGS.initialize();
+        Keybindings.initialize();
 
         ITEMS.initializeClient();
 
