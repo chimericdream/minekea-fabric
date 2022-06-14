@@ -11,7 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +19,7 @@ import static com.chimericdream.minekea.block.building.compressed.GenericCompres
 import static com.chimericdream.minekea.block.building.compressed.GenericCompressedBlock.TOOLTIP_LEVEL;
 
 public class CompressedBlocks implements MinekeaBlockCategory {
-    public static final Map<String, List<GenericCompressedBlock>> BLOCK_MAP = new HashMap<>();
+    public static final Map<String, List<GenericCompressedBlock>> BLOCK_MAP = new LinkedHashMap<>();
     public static final List<GenericCompressedBlock> BLOCKS = new ArrayList<>();
 
     static {

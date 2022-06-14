@@ -18,90 +18,37 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.registry.Registry;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DisplayCases implements MinekeaBlockCategory {
-    public static final GenericDisplayCase ACACIA_DISPLAY_CASE;
-    public static final GenericDisplayCase BIRCH_DISPLAY_CASE;
-    public static final GenericDisplayCase CRIMSON_DISPLAY_CASE;
-    public static final GenericDisplayCase DARK_OAK_DISPLAY_CASE;
-    public static final GenericDisplayCase JUNGLE_DISPLAY_CASE;
-    public static final GenericDisplayCase MANGROVE_DISPLAY_CASE;
-    public static final GenericDisplayCase OAK_DISPLAY_CASE;
-    public static final GenericDisplayCase SPRUCE_DISPLAY_CASE;
-    public static final GenericDisplayCase WARPED_DISPLAY_CASE;
-
-    public static final GenericDisplayCase STRIPPED_ACACIA_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_BIRCH_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_CRIMSON_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_DARK_OAK_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_JUNGLE_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_MANGROVE_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_OAK_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_SPRUCE_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_WARPED_DISPLAY_CASE;
-
-    public static final List<GenericDisplayCase> DISPLAY_CASES = new ArrayList<>();
+    public static final Map<String, GenericDisplayCase> DISPLAY_CASES = new LinkedHashMap<>();
 
     public static BlockEntityType<DisplayCaseBlockEntity> DISPLAY_CASE_BLOCK_ENTITY;
 
     static {
-        ACACIA_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.ACACIA));
-        BIRCH_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.BIRCH));
-        CRIMSON_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.CRIMSON));
-        DARK_OAK_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.DARK_OAK));
-        JUNGLE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.JUNGLE));
-        MANGROVE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.MANGROVE));
-        OAK_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.OAK));
-        SPRUCE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.SPRUCE));
-        WARPED_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.WARPED));
+        for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
+            if (blockSettings.hasDisplayCase()) {
+                DISPLAY_CASES.put(blockSettings.getMainMaterial(), new GenericDisplayCase(new DisplayCaseSettings(blockSettings)));
+            }
 
-        STRIPPED_ACACIA_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.ACACIA).stripped());
-        STRIPPED_BIRCH_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.BIRCH).stripped());
-        STRIPPED_CRIMSON_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.CRIMSON).stripped());
-        STRIPPED_DARK_OAK_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.DARK_OAK).stripped());
-        STRIPPED_JUNGLE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.JUNGLE).stripped());
-        STRIPPED_MANGROVE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.MANGROVE).stripped());
-        STRIPPED_OAK_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.OAK).stripped());
-        STRIPPED_SPRUCE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.SPRUCE).stripped());
-        STRIPPED_WARPED_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BaseBlockSettings.WARPED).stripped());
-
-        DISPLAY_CASES.addAll(List.of(
-            ACACIA_DISPLAY_CASE,
-            BIRCH_DISPLAY_CASE,
-            CRIMSON_DISPLAY_CASE,
-            DARK_OAK_DISPLAY_CASE,
-            JUNGLE_DISPLAY_CASE,
-            MANGROVE_DISPLAY_CASE,
-            OAK_DISPLAY_CASE,
-            SPRUCE_DISPLAY_CASE,
-            WARPED_DISPLAY_CASE,
-
-            STRIPPED_ACACIA_DISPLAY_CASE,
-            STRIPPED_BIRCH_DISPLAY_CASE,
-            STRIPPED_CRIMSON_DISPLAY_CASE,
-            STRIPPED_DARK_OAK_DISPLAY_CASE,
-            STRIPPED_JUNGLE_DISPLAY_CASE,
-            STRIPPED_MANGROVE_DISPLAY_CASE,
-            STRIPPED_OAK_DISPLAY_CASE,
-            STRIPPED_SPRUCE_DISPLAY_CASE,
-            STRIPPED_WARPED_DISPLAY_CASE
-        ));
+            if (blockSettings.hasStrippedDisplayCase()) {
+                DISPLAY_CASES.put("stripped_" + blockSettings.getMainMaterial(), new GenericDisplayCase(new DisplayCaseSettings(blockSettings).stripped()));
+            }
+        }
     }
 
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
-        for (GenericDisplayCase block : DISPLAY_CASES) {
-            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
-        }
-
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), DISPLAY_CASES.values().toArray(new Block[0]));
         BlockEntityRendererRegistry.register(DISPLAY_CASE_BLOCK_ENTITY, DisplayCaseBlockEntityRenderer::new);
     }
 
     @Override
     public void registerBlocks() {
-        for (GenericDisplayCase block : DISPLAY_CASES) {
+        for (GenericDisplayCase block : DISPLAY_CASES.values()) {
             MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
             block.register(settings.isFlammable());
         }
@@ -109,7 +56,7 @@ public class DisplayCases implements MinekeaBlockCategory {
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
-        List<GenericDisplayCase> displayCases = new ArrayList<>(DISPLAY_CASES);
+        List<GenericDisplayCase> displayCases = new ArrayList<>(DISPLAY_CASES.values());
 
         for (ModCompatLayer mod : otherMods) {
             displayCases.addAll(mod.getDisplayCases());

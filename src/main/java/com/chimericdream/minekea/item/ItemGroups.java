@@ -24,12 +24,12 @@ public class ItemGroups {
 
     public static final ItemGroup COVERS = FabricItemGroupBuilder
         .create(new Identifier(ModInfo.MOD_ID, "blocks.building.covers"))
-        .icon(() -> new ItemStack(Covers.CRIMSON_STEM_COVER))
+        .icon(() -> new ItemStack(Covers.BLOCKS.get("crimson_stem")))
         .build();
 
     public static final ItemGroup FURNITURE = FabricItemGroupBuilder
         .create(new Identifier(ModInfo.MOD_ID, "blocks.furniture"))
-        .icon(() -> new ItemStack(Seats.ACACIA_CHAIR))
+        .icon(() -> new ItemStack(Seats.CHAIRS.get("acacia")))
         .build();
 
     public void setupResources() {

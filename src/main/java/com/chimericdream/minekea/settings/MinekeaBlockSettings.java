@@ -218,16 +218,21 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     }
 
     public static class DefaultSettings extends MinekeaBlockSettings<DefaultSettings> {
+        public String bookshelfId = null;
+        public String bookshelfModel = null;
+
         private boolean hasBeam = false;
         private boolean hasCompressedBlock = false;
         private boolean hasCover = false;
         private boolean hasSlab = false;
+        private boolean hasBookshelfSlab = false;
         private boolean hasStairs = false;
         private boolean hasVerticalStairs = false;
         private boolean hasWall = false;
         private boolean hasBookshelf = false;
         private boolean hasStorageBookshelf = false;
         private boolean hasDisplayCase = false;
+        private boolean hasStrippedDisplayCase = false;
         private boolean hasDoor = false;
         private boolean hasChair = false;
         private boolean hasStool = false;
@@ -239,6 +244,24 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         public DefaultSettings(Block block) {
             super(block);
         }
+
+//        public DefaultSettings bookshelfId(String id) {
+//            this.bookshelfId = id;
+//            return this;
+//        }
+//
+//        public DefaultSettings bookshelfModel(String id) {
+//            this.bookshelfModel = id;
+//            return this;
+//        }
+//
+//        public Identifier getBookshelfId() {
+//            if (this.bookshelfId != null) {
+//                return new Identifier(this.bookshelfId);
+//            }
+//
+//            return Bookshelves.SHELVES.get(this.mainMaterial).getBlockID();
+//        }
 
         public boolean hasBeam() {
             return this.hasBeam;
@@ -273,6 +296,15 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
         public DefaultSettings withSlab() {
             this.hasSlab = true;
+            return this;
+        }
+
+        public boolean hasBookshelfSlab() {
+            return this.hasBookshelfSlab;
+        }
+
+        public DefaultSettings withBookshelfSlab() {
+            this.hasBookshelfSlab = true;
             return this;
         }
 
@@ -327,6 +359,15 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
         public DefaultSettings withDisplayCase() {
             this.hasDisplayCase = true;
+            return this;
+        }
+
+        public boolean hasStrippedDisplayCase() {
+            return this.hasStrippedDisplayCase;
+        }
+
+        public DefaultSettings withStrippedDisplayCase() {
+            this.hasStrippedDisplayCase = true;
             return this;
         }
 

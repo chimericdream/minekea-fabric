@@ -8,12 +8,12 @@ import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Beams implements MinekeaBlockCategory {
-    public static final Map<String, GenericBeamBlock> BLOCKS = new HashMap<>();
+    public static final Map<String, GenericBeamBlock> BLOCKS = new LinkedHashMap<>();
 
     static {
         for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {

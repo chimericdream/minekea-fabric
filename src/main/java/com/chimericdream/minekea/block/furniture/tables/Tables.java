@@ -4,31 +4,22 @@ import com.chimericdream.minekea.block.furniture.tables.GenericTable.TableSettin
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Tables implements MinekeaBlockCategory {
-    public static final GenericTable ACACIA_TABLE;
-    public static final GenericTable BIRCH_TABLE;
-    public static final GenericTable CRIMSON_TABLE;
-    public static final GenericTable DARK_OAK_TABLE;
-    public static final GenericTable JUNGLE_TABLE;
-    public static final GenericTable MANGROVE_TABLE;
-    public static final GenericTable OAK_TABLE;
-    public static final GenericTable SPRUCE_TABLE;
-    public static final GenericTable WARPED_TABLE;
+    public static final Map<String, GenericTable> TABLES = new LinkedHashMap<>();
 
     static {
-        ACACIA_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.ACACIA));
-        BIRCH_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.BIRCH));
-        CRIMSON_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.CRIMSON));
-        DARK_OAK_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.DARK_OAK));
-        JUNGLE_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.JUNGLE));
-        MANGROVE_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.MANGROVE));
-        OAK_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.OAK));
-        SPRUCE_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.SPRUCE));
-        WARPED_TABLE = new GenericTable(new TableSettings(BaseBlockSettings.WARPED));
+        for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
+            if (blockSettings.hasTable()) {
+                TABLES.put(blockSettings.getMainMaterial(), new GenericTable(new TableSettings(blockSettings)));
+            }
+        }
     }
 
     @Override
@@ -37,15 +28,10 @@ public class Tables implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        ACACIA_TABLE.register();
-        BIRCH_TABLE.register();
-        CRIMSON_TABLE.register();
-        DARK_OAK_TABLE.register();
-        JUNGLE_TABLE.register();
-        MANGROVE_TABLE.register();
-        OAK_TABLE.register();
-        SPRUCE_TABLE.register();
-        WARPED_TABLE.register();
+        for (GenericTable block : TABLES.values()) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
+        }
     }
 
     @Override

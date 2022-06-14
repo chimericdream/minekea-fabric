@@ -5,6 +5,7 @@ import com.chimericdream.minekea.block.furniture.seating.GenericStool.StoolSetti
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -12,51 +13,26 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.registry.Registry;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Seats implements MinekeaBlockCategory {
-    public static final GenericChair ACACIA_CHAIR;
-    public static final GenericChair BIRCH_CHAIR;
-    public static final GenericChair CRIMSON_CHAIR;
-    public static final GenericChair DARK_OAK_CHAIR;
-    public static final GenericChair JUNGLE_CHAIR;
-    public static final GenericChair MANGROVE_CHAIR;
-    public static final GenericChair OAK_CHAIR;
-    public static final GenericChair SPRUCE_CHAIR;
-    public static final GenericChair WARPED_CHAIR;
-
-    public static final GenericStool ACACIA_STOOL;
-    public static final GenericStool BIRCH_STOOL;
-    public static final GenericStool CRIMSON_STOOL;
-    public static final GenericStool DARK_OAK_STOOL;
-    public static final GenericStool JUNGLE_STOOL;
-    public static final GenericStool MANGROVE_STOOL;
-    public static final GenericStool OAK_STOOL;
-    public static final GenericStool SPRUCE_STOOL;
-    public static final GenericStool WARPED_STOOL;
+    public static final Map<String, GenericChair> CHAIRS = new LinkedHashMap<>();
+    public static final Map<String, GenericStool> STOOLS = new LinkedHashMap<>();
 
     public static EntityType<SeatEntity> SEAT_ENTITY;
 
     static {
-        ACACIA_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.ACACIA));
-        BIRCH_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.BIRCH));
-        CRIMSON_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.CRIMSON));
-        DARK_OAK_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.DARK_OAK));
-        JUNGLE_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.JUNGLE));
-        MANGROVE_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.MANGROVE));
-        OAK_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.OAK));
-        SPRUCE_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.SPRUCE));
-        WARPED_CHAIR = new GenericChair(new ChairSettings(BaseBlockSettings.WARPED));
+        for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
+            if (blockSettings.hasChair()) {
+                CHAIRS.put(blockSettings.getMainMaterial(), new GenericChair(new ChairSettings(blockSettings)));
+            }
 
-        ACACIA_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.ACACIA));
-        BIRCH_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.BIRCH));
-        CRIMSON_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.CRIMSON));
-        DARK_OAK_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.DARK_OAK));
-        JUNGLE_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.JUNGLE));
-        MANGROVE_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.MANGROVE));
-        OAK_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.OAK));
-        SPRUCE_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.SPRUCE));
-        WARPED_STOOL = new GenericStool(new StoolSettings(BaseBlockSettings.WARPED));
+            if (blockSettings.hasStool()) {
+                STOOLS.put(blockSettings.getMainMaterial(), new GenericStool(new StoolSettings(blockSettings)));
+            }
+        }
     }
 
     @Override
@@ -66,25 +42,15 @@ public class Seats implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        ACACIA_CHAIR.register();
-        BIRCH_CHAIR.register();
-        CRIMSON_CHAIR.register();
-        DARK_OAK_CHAIR.register();
-        JUNGLE_CHAIR.register();
-        MANGROVE_CHAIR.register();
-        OAK_CHAIR.register();
-        SPRUCE_CHAIR.register();
-        WARPED_CHAIR.register();
+        for (GenericChair block : CHAIRS.values()) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
+        }
 
-        ACACIA_STOOL.register();
-        BIRCH_STOOL.register();
-        CRIMSON_STOOL.register();
-        DARK_OAK_STOOL.register();
-        JUNGLE_STOOL.register();
-        MANGROVE_STOOL.register();
-        OAK_STOOL.register();
-        SPRUCE_STOOL.register();
-        WARPED_STOOL.register();
+        for (GenericStool block : STOOLS.values()) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
+        }
 
         SEAT_ENTITY = Registry.register(
             Registry.ENTITY_TYPE,

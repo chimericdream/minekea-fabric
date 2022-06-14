@@ -19,7 +19,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings ANDESITE = new DefaultSettings(Blocks.ANDESITE)
         .material("andesite")
@@ -30,7 +32,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings BASALT = new DefaultSettings(Blocks.BASALT)
         .material("basalt")
@@ -43,7 +46,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BASALT_BRICK = new DefaultSettings(BuildingBlocks.BASALT_BRICKS_BLOCK)
         .material("basalt_brick")
@@ -54,7 +59,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLACKSTONE = new DefaultSettings(Blocks.BLACKSTONE)
         .material("blackstone")
@@ -65,7 +72,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings BONE = new DefaultSettings(Blocks.BONE_BLOCK)
         .material("bone")
@@ -78,7 +86,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BRICK = new DefaultSettings(Blocks.BRICKS)
         .material("brick")
@@ -89,7 +99,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings CALCITE = new DefaultSettings(Blocks.CALCITE)
         .material("calcite")
@@ -100,7 +111,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CLAY = new DefaultSettings(Blocks.CLAY)
         .material("clay")
@@ -110,7 +123,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:clay")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings COARSE_DIRT = new DefaultSettings(Blocks.COARSE_DIRT)
         .material("coarse_dirt")
@@ -120,7 +135,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:coarse_dirt")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings COBBLED_DEEPSLATE = new DefaultSettings(Blocks.COBBLED_DEEPSLATE)
         .material("cobbled_deepslate")
@@ -131,7 +148,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings COBBLED_END_STONE = new DefaultSettings(BuildingBlocks.COBBLED_END_STONE_BLOCK)
         .material("cobbled_end_stone")
@@ -142,7 +160,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings COBBLESTONE = new DefaultSettings(Blocks.COBBLESTONE)
         .material("cobblestone")
@@ -153,7 +173,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings CRACKED_BASALT_BRICK = new DefaultSettings(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK)
         .material("cracked_basalt_brick")
@@ -164,7 +185,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CRACKED_DEEPSLATE_BRICK = new DefaultSettings(Blocks.CRACKED_DEEPSLATE_BRICKS)
         .material("cracked_deepslate_brick")
@@ -175,7 +198,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CRACKED_DEEPSLATE_TILE = new DefaultSettings(Blocks.CRACKED_DEEPSLATE_TILES)
         .material("cracked_deepslate_tile")
@@ -186,7 +211,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CRACKED_STONE_BRICK = new DefaultSettings(Blocks.CRACKED_STONE_BRICKS)
         .material("cracked_stone_brick")
@@ -197,7 +224,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CRIMSON_BASALT_BRICK = new DefaultSettings(BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK)
         .material("crimson_basalt_brick")
@@ -208,7 +237,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CRYING_OBSIDIAN = new DefaultSettings(Blocks.CRYING_OBSIDIAN)
         .material("crying_obsidian")
@@ -219,7 +250,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CUT_RED_SANDSTONE = new DefaultSettings(Blocks.CUT_RED_SANDSTONE)
         .material("cut_red_sandstone")
@@ -230,7 +263,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings CUT_SANDSTONE = new DefaultSettings(Blocks.CUT_SANDSTONE)
         .material("cut_sandstone")
@@ -241,7 +275,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings DARK_PRISMARINE = new DefaultSettings(Blocks.DARK_PRISMARINE)
         .material("dark_prismarine")
@@ -252,7 +287,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings DEEPSLATE = new DefaultSettings(Blocks.DEEPSLATE)
         .material("deepslate")
@@ -263,7 +299,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings DEEPSLATE_BRICK = new DefaultSettings(Blocks.DEEPSLATE_BRICKS)
         .material("deepslate_brick")
@@ -274,7 +312,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings DEEPSLATE_TILE = new DefaultSettings(Blocks.DEEPSLATE_TILES)
         .material("deepslate_tile")
@@ -285,7 +324,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings DIORITE = new DefaultSettings(Blocks.DIORITE)
         .material("diorite")
@@ -296,7 +336,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings DIRT = new DefaultSettings(Blocks.DIRT)
         .material("dirt")
@@ -306,7 +347,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:dirt")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings END_STONE = new DefaultSettings(Blocks.END_STONE)
         .material("end_stone")
@@ -317,7 +360,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings END_STONE_BRICK = new DefaultSettings(Blocks.END_STONE_BRICKS)
         .material("end_stone_brick")
@@ -328,7 +373,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings GRANITE = new DefaultSettings(Blocks.GRANITE)
         .material("granite")
@@ -339,7 +385,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings GRAVEL = new DefaultSettings(Blocks.GRAVEL)
         .material("gravel")
@@ -349,7 +396,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:gravel")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings MOSSY_BASALT_BRICK = new DefaultSettings(BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK)
         .material("mossy_basalt_brick")
@@ -360,7 +409,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings MOSSY_COBBLESTONE = new DefaultSettings(Blocks.MOSSY_COBBLESTONE)
         .material("mossy_cobblestone")
@@ -371,7 +422,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings MOSSY_STONE_BRICK = new DefaultSettings(Blocks.MOSSY_STONE_BRICKS)
         .material("mossy_stone_brick")
@@ -382,7 +434,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings MUD = new DefaultSettings(Blocks.MUD)
         .material("mud")
@@ -392,7 +445,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:mud")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings MUD_BRICK = new DefaultSettings(Blocks.MUD_BRICKS)
         .material("mud_brick")
@@ -403,7 +458,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings NETHERRACK = new DefaultSettings(Blocks.NETHERRACK)
         .material("netherrack")
@@ -414,7 +470,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings NETHER_BRICK = new DefaultSettings(Blocks.NETHER_BRICKS)
         .material("nether_brick")
@@ -425,7 +483,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings NETHER_WART = new DefaultSettings(Blocks.NETHER_WART_BLOCK)
         .material("nether_wart")
@@ -434,7 +493,8 @@ public class BaseBlockSettings {
             Map.of(
                 "main", new Identifier("minecraft:nether_wart_block")
             )
-        );
+        )
+        .withCover();
 
     public static DefaultSettings OBSIDIAN = new DefaultSettings(Blocks.OBSIDIAN)
         .material("obsidian")
@@ -445,7 +505,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PACKED_MUD = new DefaultSettings(Blocks.PACKED_MUD)
         .material("packed_mud")
@@ -456,7 +518,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings POLISHED_ANDESITE = new DefaultSettings(Blocks.POLISHED_ANDESITE)
         .material("polished_andesite")
@@ -467,7 +531,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings POLISHED_BASALT = new DefaultSettings(Blocks.POLISHED_BASALT)
         .material("polished_basalt")
@@ -480,7 +545,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings POLISHED_BLACKSTONE = new DefaultSettings(Blocks.POLISHED_BLACKSTONE)
         .material("polished_blackstone")
@@ -491,7 +558,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings POLISHED_BLACKSTONE_BRICK = new DefaultSettings(Blocks.POLISHED_BLACKSTONE_BRICKS)
         .material("polished_blackstone_brick")
@@ -502,7 +570,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings POLISHED_DEEPSLATE = new DefaultSettings(Blocks.POLISHED_DEEPSLATE)
         .material("polished_deepslate")
@@ -513,7 +582,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings POLISHED_DIORITE = new DefaultSettings(Blocks.POLISHED_DIORITE)
         .material("polished_diorite")
@@ -524,7 +594,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings POLISHED_GRANITE = new DefaultSettings(Blocks.POLISHED_GRANITE)
         .material("polished_granite")
@@ -535,7 +606,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings PRISMARINE = new DefaultSettings(Blocks.PRISMARINE)
         .material("prismarine")
@@ -546,7 +618,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings PRISMARINE_BRICK = new DefaultSettings(Blocks.PRISMARINE_BRICKS)
         .material("prismarine_brick")
@@ -557,7 +630,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings PURPUR = new DefaultSettings(Blocks.PURPUR_BLOCK)
         .material("purpur")
@@ -568,7 +642,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings PURPUR_PILLAR = new DefaultSettings(Blocks.PURPUR_PILLAR)
         .material("purpur_pillar")
@@ -579,7 +654,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings QUARTZ = new DefaultSettings(Blocks.QUARTZ_BLOCK)
         .material("quartz")
@@ -590,7 +667,8 @@ public class BaseBlockSettings {
                 "ingredient", new Identifier("minecraft:quartz_block")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings QUARTZ_BRICK = new DefaultSettings(Blocks.QUARTZ_BRICKS)
         .material("quartz_brick")
@@ -600,7 +678,8 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:quartz_bricks")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings RED_NETHER_BRICK = new DefaultSettings(Blocks.RED_NETHER_BRICKS)
         .material("red_nether_brick")
@@ -611,7 +690,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings RED_SANDSTONE = new DefaultSettings(Blocks.RED_SANDSTONE)
         .material("red_sandstone")
@@ -622,7 +702,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings RED_SAND = new DefaultSettings(Blocks.RED_SAND)
         .material("red_sand")
@@ -632,7 +713,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:red_sand")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings ROOTED_DIRT = new DefaultSettings(Blocks.ROOTED_DIRT)
         .material("rooted_dirt")
@@ -642,7 +725,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:rooted_dirt")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings SAND = new DefaultSettings(Blocks.SAND)
         .material("sand")
@@ -652,7 +737,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:sand")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings SANDSTONE = new DefaultSettings(Blocks.SANDSTONE)
         .material("sandstone")
@@ -663,7 +750,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings SMOOTH_BASALT = new DefaultSettings(Blocks.SMOOTH_BASALT)
         .material("smooth_basalt")
@@ -674,7 +762,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings SMOOTH_QUARTZ = new DefaultSettings(Blocks.SMOOTH_QUARTZ)
         .material("smooth_quartz")
@@ -685,7 +775,8 @@ public class BaseBlockSettings {
                 "ingredient", new Identifier("minecraft:smooth_quartz")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings SMOOTH_RED_SANDSTONE = new DefaultSettings(Blocks.SMOOTH_RED_SANDSTONE)
         .material("smooth_red_sandstone")
@@ -697,7 +788,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings SMOOTH_SANDSTONE = new DefaultSettings(Blocks.SMOOTH_SANDSTONE)
         .material("smooth_sandstone")
@@ -709,7 +801,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings SMOOTH_STONE = new DefaultSettings(Blocks.SMOOTH_STONE)
         .material("smooth_stone")
@@ -720,7 +813,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings SOUL_SAND = new DefaultSettings(Blocks.SOUL_SAND)
         .material("soul_sand")
@@ -730,7 +824,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:soul_sand")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings STONE = new DefaultSettings(Blocks.STONE)
         .material("stone")
@@ -741,7 +837,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings STONE_BRICK = new DefaultSettings(Blocks.STONE_BRICKS)
         .material("stone_brick")
@@ -752,7 +849,8 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover();
 
     public static DefaultSettings TUFF = new DefaultSettings(Blocks.TUFF)
         .material("tuff")
@@ -763,7 +861,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings WARPED_BASALT_BRICK = new DefaultSettings(BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK)
         .material("warped_basalt_brick")
@@ -774,7 +874,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings WARPED_NETHER_BRICK = new DefaultSettings(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK)
         .material("warped_nether_brick")
@@ -785,7 +887,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings WARPED_WART = new DefaultSettings(Blocks.WARPED_WART_BLOCK)
         .material("warped_wart")
@@ -806,7 +910,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:copper_block")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings DIAMOND_BLOCK = new DefaultSettings(Blocks.DIAMOND_BLOCK)
         .material("diamond_block")
@@ -816,7 +922,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:diamond_block")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GOLD_BLOCK = new DefaultSettings(Blocks.GOLD_BLOCK)
         .material("gold_block")
@@ -826,7 +934,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:gold_block")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings IRON_BLOCK = new DefaultSettings(Blocks.IRON_BLOCK)
         .material("iron_block")
@@ -836,7 +946,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:iron_block")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LAPIS_BLOCK = new DefaultSettings(Blocks.LAPIS_BLOCK)
         .material("lapis_block")
@@ -846,7 +958,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:lapis_block")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings NETHERITE_BLOCK = new DefaultSettings(Blocks.NETHERITE_BLOCK)
         .material("netherite_block")
@@ -856,7 +970,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:netherite_block")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings REDSTONE_BLOCK = new DefaultSettings(Blocks.REDSTONE_BLOCK)
         .material("redstone_block")
@@ -866,7 +982,9 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:redstone_block")
             )
         )
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     /******************************************************************************************************************/
 
@@ -957,7 +1075,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings ORANGE_TERRACOTTA = new DefaultSettings(Blocks.ORANGE_TERRACOTTA)
         .material("orange_terracotta")
@@ -968,7 +1088,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings MAGENTA_TERRACOTTA = new DefaultSettings(Blocks.MAGENTA_TERRACOTTA)
         .material("magenta_terracotta")
@@ -979,7 +1101,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIGHT_BLUE_TERRACOTTA = new DefaultSettings(Blocks.LIGHT_BLUE_TERRACOTTA)
         .material("light_blue_terracotta")
@@ -990,7 +1114,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings YELLOW_TERRACOTTA = new DefaultSettings(Blocks.YELLOW_TERRACOTTA)
         .material("yellow_terracotta")
@@ -1001,7 +1127,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIME_TERRACOTTA = new DefaultSettings(Blocks.LIME_TERRACOTTA)
         .material("lime_terracotta")
@@ -1012,7 +1140,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PINK_TERRACOTTA = new DefaultSettings(Blocks.PINK_TERRACOTTA)
         .material("pink_terracotta")
@@ -1023,7 +1153,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GRAY_TERRACOTTA = new DefaultSettings(Blocks.GRAY_TERRACOTTA)
         .material("gray_terracotta")
@@ -1034,7 +1166,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIGHT_GRAY_TERRACOTTA = new DefaultSettings(Blocks.LIGHT_GRAY_TERRACOTTA)
         .material("light_gray_terracotta")
@@ -1045,7 +1179,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CYAN_TERRACOTTA = new DefaultSettings(Blocks.CYAN_TERRACOTTA)
         .material("cyan_terracotta")
@@ -1056,7 +1192,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PURPLE_TERRACOTTA = new DefaultSettings(Blocks.PURPLE_TERRACOTTA)
         .material("purple_terracotta")
@@ -1067,7 +1205,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLUE_TERRACOTTA = new DefaultSettings(Blocks.BLUE_TERRACOTTA)
         .material("blue_terracotta")
@@ -1078,7 +1218,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BROWN_TERRACOTTA = new DefaultSettings(Blocks.BROWN_TERRACOTTA)
         .material("brown_terracotta")
@@ -1089,7 +1231,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GREEN_TERRACOTTA = new DefaultSettings(Blocks.GREEN_TERRACOTTA)
         .material("green_terracotta")
@@ -1100,7 +1244,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings RED_TERRACOTTA = new DefaultSettings(Blocks.RED_TERRACOTTA)
         .material("red_terracotta")
@@ -1111,7 +1257,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLACK_TERRACOTTA = new DefaultSettings(Blocks.BLACK_TERRACOTTA)
         .material("black_terracotta")
@@ -1122,7 +1270,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     /******************************************************************************************************************/
 
@@ -1135,7 +1285,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings ORANGE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.ORANGE_GLAZED_TERRACOTTA)
         .material("orange_glazed_terracotta")
@@ -1146,7 +1298,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings MAGENTA_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.MAGENTA_GLAZED_TERRACOTTA)
         .material("magenta_glazed_terracotta")
@@ -1157,7 +1311,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIGHT_BLUE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA)
         .material("light_blue_glazed_terracotta")
@@ -1168,7 +1324,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings YELLOW_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.YELLOW_GLAZED_TERRACOTTA)
         .material("yellow_glazed_terracotta")
@@ -1179,7 +1337,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIME_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.LIME_GLAZED_TERRACOTTA)
         .material("lime_glazed_terracotta")
@@ -1190,7 +1350,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PINK_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.PINK_GLAZED_TERRACOTTA)
         .material("pink_glazed_terracotta")
@@ -1201,7 +1363,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GRAY_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.GRAY_GLAZED_TERRACOTTA)
         .material("gray_glazed_terracotta")
@@ -1212,7 +1376,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIGHT_GRAY_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA)
         .material("light_gray_glazed_terracotta")
@@ -1223,7 +1389,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CYAN_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.CYAN_GLAZED_TERRACOTTA)
         .material("cyan_glazed_terracotta")
@@ -1234,7 +1402,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PURPLE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.PURPLE_GLAZED_TERRACOTTA)
         .material("purple_glazed_terracotta")
@@ -1245,7 +1415,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLUE_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.BLUE_GLAZED_TERRACOTTA)
         .material("blue_glazed_terracotta")
@@ -1256,7 +1428,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BROWN_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.BROWN_GLAZED_TERRACOTTA)
         .material("brown_glazed_terracotta")
@@ -1267,7 +1441,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GREEN_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.GREEN_GLAZED_TERRACOTTA)
         .material("green_glazed_terracotta")
@@ -1278,7 +1454,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings RED_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.RED_GLAZED_TERRACOTTA)
         .material("red_glazed_terracotta")
@@ -1289,7 +1467,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLACK_GLAZED_TERRACOTTA = new DefaultSettings(Blocks.BLACK_GLAZED_TERRACOTTA)
         .material("black_glazed_terracotta")
@@ -1300,7 +1480,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     /******************************************************************************************************************/
 
@@ -1313,7 +1495,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings ORANGE_CONCRETE = new DefaultSettings(Blocks.ORANGE_CONCRETE)
         .material("orange_concrete")
@@ -1324,7 +1508,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings MAGENTA_CONCRETE = new DefaultSettings(Blocks.MAGENTA_CONCRETE)
         .material("magenta_concrete")
@@ -1335,7 +1521,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIGHT_BLUE_CONCRETE = new DefaultSettings(Blocks.LIGHT_BLUE_CONCRETE)
         .material("light_blue_concrete")
@@ -1346,7 +1534,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings YELLOW_CONCRETE = new DefaultSettings(Blocks.YELLOW_CONCRETE)
         .material("yellow_concrete")
@@ -1357,7 +1547,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIME_CONCRETE = new DefaultSettings(Blocks.LIME_CONCRETE)
         .material("lime_concrete")
@@ -1368,7 +1560,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PINK_CONCRETE = new DefaultSettings(Blocks.PINK_CONCRETE)
         .material("pink_concrete")
@@ -1379,7 +1573,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GRAY_CONCRETE = new DefaultSettings(Blocks.GRAY_CONCRETE)
         .material("gray_concrete")
@@ -1390,7 +1586,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIGHT_GRAY_CONCRETE = new DefaultSettings(Blocks.LIGHT_GRAY_CONCRETE)
         .material("light_gray_concrete")
@@ -1401,7 +1599,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CYAN_CONCRETE = new DefaultSettings(Blocks.CYAN_CONCRETE)
         .material("cyan_concrete")
@@ -1412,7 +1612,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PURPLE_CONCRETE = new DefaultSettings(Blocks.PURPLE_CONCRETE)
         .material("purple_concrete")
@@ -1423,7 +1625,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLUE_CONCRETE = new DefaultSettings(Blocks.BLUE_CONCRETE)
         .material("blue_concrete")
@@ -1434,7 +1638,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BROWN_CONCRETE = new DefaultSettings(Blocks.BROWN_CONCRETE)
         .material("brown_concrete")
@@ -1445,7 +1651,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GREEN_CONCRETE = new DefaultSettings(Blocks.GREEN_CONCRETE)
         .material("green_concrete")
@@ -1456,7 +1664,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings RED_CONCRETE = new DefaultSettings(Blocks.RED_CONCRETE)
         .material("red_concrete")
@@ -1467,7 +1677,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLACK_CONCRETE = new DefaultSettings(Blocks.BLACK_CONCRETE)
         .material("black_concrete")
@@ -1478,7 +1690,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     /******************************************************************************************************************/
 
@@ -1492,7 +1706,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings ORANGE_STAINED_GLASS = new DefaultSettings(Blocks.ORANGE_STAINED_GLASS)
         .material("orange_stained_glass")
@@ -1504,7 +1720,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings MAGENTA_STAINED_GLASS = new DefaultSettings(Blocks.MAGENTA_STAINED_GLASS)
         .material("magenta_stained_glass")
@@ -1516,7 +1734,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIGHT_BLUE_STAINED_GLASS = new DefaultSettings(Blocks.LIGHT_BLUE_STAINED_GLASS)
         .material("light_blue_stained_glass")
@@ -1528,7 +1748,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings YELLOW_STAINED_GLASS = new DefaultSettings(Blocks.YELLOW_STAINED_GLASS)
         .material("yellow_stained_glass")
@@ -1540,7 +1762,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIME_STAINED_GLASS = new DefaultSettings(Blocks.LIME_STAINED_GLASS)
         .material("lime_stained_glass")
@@ -1552,7 +1776,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PINK_STAINED_GLASS = new DefaultSettings(Blocks.PINK_STAINED_GLASS)
         .material("pink_stained_glass")
@@ -1564,7 +1790,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GRAY_STAINED_GLASS = new DefaultSettings(Blocks.GRAY_STAINED_GLASS)
         .material("gray_stained_glass")
@@ -1576,7 +1804,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings LIGHT_GRAY_STAINED_GLASS = new DefaultSettings(Blocks.LIGHT_GRAY_STAINED_GLASS)
         .material("light_gray_stained_glass")
@@ -1588,7 +1818,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings CYAN_STAINED_GLASS = new DefaultSettings(Blocks.CYAN_STAINED_GLASS)
         .material("cyan_stained_glass")
@@ -1600,7 +1832,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings PURPLE_STAINED_GLASS = new DefaultSettings(Blocks.PURPLE_STAINED_GLASS)
         .material("purple_stained_glass")
@@ -1612,7 +1846,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLUE_STAINED_GLASS = new DefaultSettings(Blocks.BLUE_STAINED_GLASS)
         .material("blue_stained_glass")
@@ -1624,7 +1860,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BROWN_STAINED_GLASS = new DefaultSettings(Blocks.BROWN_STAINED_GLASS)
         .material("brown_stained_glass")
@@ -1636,7 +1874,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings GREEN_STAINED_GLASS = new DefaultSettings(Blocks.GREEN_STAINED_GLASS)
         .material("green_stained_glass")
@@ -1648,7 +1888,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings RED_STAINED_GLASS = new DefaultSettings(Blocks.RED_STAINED_GLASS)
         .material("red_stained_glass")
@@ -1660,7 +1902,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings BLACK_STAINED_GLASS = new DefaultSettings(Blocks.BLACK_STAINED_GLASS)
         .material("black_stained_glass")
@@ -1672,9 +1916,35 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     /******************************************************************************************************************/
+
+    public static DefaultSettings ACACIA = new DefaultSettings(Blocks.ACACIA_PLANKS)
+        .material("acacia")
+        .flammable()
+        .ingredientName("Acacia")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:acacia_planks"),
+                "log", new Identifier("minecraft:acacia_log"),
+                "stripped_log", new Identifier("minecraft:stripped_acacia_log"),
+                "planks", new Identifier("minecraft:acacia_planks"),
+                "slab", new Identifier("minecraft:acacia_slab")
+            )
+        )
+        .withBeam()
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
 
     public static DefaultSettings ACACIA_LEAVES = new DefaultSettings(Blocks.ACACIA_LEAVES)
         .material("acacia_leaves")
@@ -1701,23 +1971,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
-
-    public static DefaultSettings ACACIA = new DefaultSettings(Blocks.ACACIA_PLANKS)
-        .material("acacia")
-        .flammable()
-        .ingredientName("Acacia")
-        .materials(
-            Map.of(
-                "main", new Identifier("minecraft:acacia_planks"),
-                "log", new Identifier("minecraft:acacia_log"),
-                "stripped_log", new Identifier("minecraft:stripped_acacia_log"),
-                "planks", new Identifier("minecraft:acacia_planks"),
-                "slab", new Identifier("minecraft:acacia_slab")
-            )
-        )
-        .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings AZALEA_LEAVES = new DefaultSettings(Blocks.AZALEA_LEAVES)
         .material("azalea_leaves")
@@ -1729,33 +1985,6 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:azalea_leaves")
             )
         );
-
-    public static DefaultSettings BIRCH_LEAVES = new DefaultSettings(Blocks.BIRCH_LEAVES)
-        .material("birch_leaves")
-        .flammable()
-        .translucent()
-        .ingredientName("Birch Leaf")
-        .materials(
-            Map.of(
-                "main", new Identifier("minecraft:birch_leaves")
-            )
-        );
-
-    public static DefaultSettings BIRCH_LOG = new DefaultSettings(Blocks.BIRCH_PLANKS)
-        .material("birch_log")
-        .flammable()
-        .ingredientName("Birch Log")
-        .materials(
-            Map.of(
-                "main", new Identifier("minecraft:birch_log"),
-                "end", new Identifier("minecraft:birch_log_top"),
-                "log", new Identifier("minecraft:birch_log"),
-                "stripped_log", new Identifier("minecraft:stripped_birch_log"),
-                "planks", new Identifier("minecraft:birch_planks")
-            )
-        )
-        .withBeam()
-        .withCompressedBlock();
 
     public static DefaultSettings BIRCH = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch")
@@ -1771,7 +2000,44 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
+
+    public static DefaultSettings BIRCH_LOG = new DefaultSettings(Blocks.BIRCH_PLANKS)
+        .material("birch_log")
+        .flammable()
+        .ingredientName("Birch Log")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:birch_log"),
+                "end", new Identifier("minecraft:birch_log_top"),
+                "log", new Identifier("minecraft:birch_log"),
+                "stripped_log", new Identifier("minecraft:stripped_birch_log"),
+                "planks", new Identifier("minecraft:birch_planks")
+            )
+        )
+        .withBeam()
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
+
+    public static DefaultSettings BIRCH_LEAVES = new DefaultSettings(Blocks.BIRCH_LEAVES)
+        .material("birch_leaves")
+        .flammable()
+        .translucent()
+        .ingredientName("Birch Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:birch_leaves")
+            )
+        );
 
     public static DefaultSettings CRIMSON = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson")
@@ -1786,7 +2052,15 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
 
     public static DefaultSettings CRIMSON_STEM = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson_stem")
@@ -1801,7 +2075,33 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
+
+    public static DefaultSettings DARK_OAK = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
+        .material("dark_oak")
+        .flammable()
+        .ingredientName("Dark Oak")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:dark_oak_planks"),
+                "log", new Identifier("minecraft:dark_oak_log"),
+                "stripped_log", new Identifier("minecraft:stripped_dark_oak_log"),
+                "planks", new Identifier("minecraft:dark_oak_planks"),
+                "slab", new Identifier("minecraft:dark_oak_slab")
+            )
+        )
+        .withBeam()
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
 
     public static DefaultSettings DARK_OAK_LEAVES = new DefaultSettings(Blocks.DARK_OAK_LEAVES)
         .material("dark_oak_leaves")
@@ -1828,23 +2128,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
-
-    public static DefaultSettings DARK_OAK = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
-        .material("dark_oak")
-        .flammable()
-        .ingredientName("Dark Oak")
-        .materials(
-            Map.of(
-                "main", new Identifier("minecraft:dark_oak_planks"),
-                "log", new Identifier("minecraft:dark_oak_log"),
-                "stripped_log", new Identifier("minecraft:stripped_dark_oak_log"),
-                "planks", new Identifier("minecraft:dark_oak_planks"),
-                "slab", new Identifier("minecraft:dark_oak_slab")
-            )
-        )
-        .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings FLOWERING_AZALEA_LEAVES = new DefaultSettings(Blocks.FLOWERING_AZALEA_LEAVES)
         .material("flowering_azalea_leaves")
@@ -1856,6 +2142,30 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:flowering_azalea_leaves")
             )
         );
+
+    public static DefaultSettings JUNGLE = new DefaultSettings(Blocks.JUNGLE_PLANKS)
+        .material("jungle")
+        .flammable()
+        .ingredientName("Jungle")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:jungle_planks"),
+                "log", new Identifier("minecraft:jungle_log"),
+                "stripped_log", new Identifier("minecraft:stripped_jungle_log"),
+                "planks", new Identifier("minecraft:jungle_planks"),
+                "slab", new Identifier("minecraft:jungle_slab")
+            )
+        )
+        .withBeam()
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
 
     public static DefaultSettings JUNGLE_LEAVES = new DefaultSettings(Blocks.JUNGLE_LEAVES)
         .material("jungle_leaves")
@@ -1882,23 +2192,33 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
-    public static DefaultSettings JUNGLE = new DefaultSettings(Blocks.JUNGLE_PLANKS)
-        .material("jungle")
+    public static DefaultSettings MANGROVE = new DefaultSettings(Blocks.MANGROVE_PLANKS)
+        .material("mangrove")
         .flammable()
-        .ingredientName("Jungle")
+        .ingredientName("Mangrove")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:jungle_planks"),
-                "log", new Identifier("minecraft:jungle_log"),
-                "stripped_log", new Identifier("minecraft:stripped_jungle_log"),
-                "planks", new Identifier("minecraft:jungle_planks"),
-                "slab", new Identifier("minecraft:jungle_slab")
+                "main", new Identifier("minecraft:mangrove_planks"),
+                "log", new Identifier("minecraft:mangrove_log"),
+                "stripped_log", new Identifier("minecraft:stripped_mangrove_log"),
+                "planks", new Identifier("minecraft:mangrove_planks"),
+                "slab", new Identifier("minecraft:mangrove_slab")
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
 
     public static DefaultSettings MANGROVE_LEAVES = new DefaultSettings(Blocks.MANGROVE_LEAVES)
         .material("mangrove_leaves")
@@ -1925,23 +2245,33 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
-    public static DefaultSettings MANGROVE = new DefaultSettings(Blocks.MANGROVE_PLANKS)
-        .material("mangrove")
+    public static DefaultSettings OAK = new DefaultSettings(Blocks.OAK_PLANKS)
+        .material("oak")
         .flammable()
-        .ingredientName("Mangrove")
+        .ingredientName("Oak")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:mangrove_planks"),
-                "log", new Identifier("minecraft:mangrove_log"),
-                "stripped_log", new Identifier("minecraft:stripped_mangrove_log"),
-                "planks", new Identifier("minecraft:mangrove_planks"),
-                "slab", new Identifier("minecraft:mangrove_slab")
+                "main", new Identifier("minecraft:oak_planks"),
+                "log", new Identifier("minecraft:oak_log"),
+                "stripped_log", new Identifier("minecraft:stripped_oak_log"),
+                "planks", new Identifier("minecraft:oak_planks"),
+                "slab", new Identifier("minecraft:oak_slab")
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
 
     public static DefaultSettings OAK_LEAVES = new DefaultSettings(Blocks.OAK_LEAVES)
         .material("oak_leaves")
@@ -1968,23 +2298,33 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
-    public static DefaultSettings OAK = new DefaultSettings(Blocks.OAK_PLANKS)
-        .material("oak")
+    public static DefaultSettings SPRUCE = new DefaultSettings(Blocks.SPRUCE_PLANKS)
+        .material("spruce")
         .flammable()
-        .ingredientName("Oak")
+        .ingredientName("Spruce")
         .materials(
             Map.of(
-                "main", new Identifier("minecraft:oak_planks"),
-                "log", new Identifier("minecraft:oak_log"),
-                "stripped_log", new Identifier("minecraft:stripped_oak_log"),
-                "planks", new Identifier("minecraft:oak_planks"),
-                "slab", new Identifier("minecraft:oak_slab")
+                "main", new Identifier("minecraft:spruce_planks"),
+                "log", new Identifier("minecraft:spruce_log"),
+                "stripped_log", new Identifier("minecraft:stripped_spruce_log"),
+                "planks", new Identifier("minecraft:spruce_planks"),
+                "slab", new Identifier("minecraft:spruce_slab")
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
 
     public static DefaultSettings SPRUCE_LEAVES = new DefaultSettings(Blocks.SPRUCE_LEAVES)
         .material("spruce_leaves")
@@ -2011,23 +2351,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
-
-    public static DefaultSettings SPRUCE = new DefaultSettings(Blocks.SPRUCE_PLANKS)
-        .material("spruce")
-        .flammable()
-        .ingredientName("Spruce")
-        .materials(
-            Map.of(
-                "main", new Identifier("minecraft:spruce_planks"),
-                "log", new Identifier("minecraft:spruce_log"),
-                "stripped_log", new Identifier("minecraft:stripped_spruce_log"),
-                "planks", new Identifier("minecraft:spruce_planks"),
-                "slab", new Identifier("minecraft:spruce_slab")
-            )
-        )
-        .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     public static DefaultSettings WARPED = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped")
@@ -2042,7 +2368,15 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withDisplayCase()
+        .withStrippedDisplayCase()
+        .withChair()
+        .withStool()
+        .withShelf()
+        .withFloatingShelf()
+        .withTable();
 
     public static DefaultSettings WARPED_STEM = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped_stem")
@@ -2057,7 +2391,9 @@ public class BaseBlockSettings {
             )
         )
         .withBeam()
-        .withCompressedBlock();
+        .withCompressedBlock()
+        .withCover()
+        .withSlab();
 
     /******************************************************************************************************************/
 
@@ -2339,7 +2675,6 @@ public class BaseBlockSettings {
         COBBLED_DEEPSLATE,
         COBBLED_END_STONE,
         COBBLESTONE,
-        COPPER_BLOCK,
         CRACKED_BASALT_BRICK,
         CRACKED_DEEPSLATE_BRICK,
         CRACKED_DEEPSLATE_TILE,
@@ -2352,16 +2687,12 @@ public class BaseBlockSettings {
         DEEPSLATE,
         DEEPSLATE_BRICK,
         DEEPSLATE_TILE,
-        DIAMOND_BLOCK,
         DIORITE,
         DIRT,
         END_STONE,
         END_STONE_BRICK,
-        GOLD_BLOCK,
         GRANITE,
         GRAVEL,
-        IRON_BLOCK,
-        LAPIS_BLOCK,
         MOSSY_BASALT_BRICK,
         MOSSY_COBBLESTONE,
         MOSSY_STONE_BRICK,
@@ -2370,7 +2701,6 @@ public class BaseBlockSettings {
         NETHERRACK,
         NETHER_BRICK,
         NETHER_WART,
-        NETHERITE_BLOCK,
         OBSIDIAN,
         PACKED_MUD,
         POLISHED_ANDESITE,
@@ -2389,7 +2719,6 @@ public class BaseBlockSettings {
         RED_NETHER_BRICK,
         RED_SANDSTONE,
         RED_SAND,
-        REDSTONE_BLOCK,
         ROOTED_DIRT,
         SAND,
         SANDSTONE,
@@ -2405,6 +2734,14 @@ public class BaseBlockSettings {
         WARPED_BASALT_BRICK,
         WARPED_NETHER_BRICK,
         WARPED_WART,
+
+        COPPER_BLOCK,
+        DIAMOND_BLOCK,
+        GOLD_BLOCK,
+        IRON_BLOCK,
+        LAPIS_BLOCK,
+        NETHERITE_BLOCK,
+        REDSTONE_BLOCK,
 
         CUT_COPPER,
         EXPOSED_CUT_COPPER,
@@ -2483,31 +2820,31 @@ public class BaseBlockSettings {
         RED_STAINED_GLASS,
         BLACK_STAINED_GLASS,
 
+        ACACIA,
         ACACIA_LEAVES,
         ACACIA_LOG,
-        ACACIA,
         AZALEA_LEAVES,
+        BIRCH,
         BIRCH_LEAVES,
         BIRCH_LOG,
-        BIRCH,
         CRIMSON,
         CRIMSON_STEM,
+        DARK_OAK,
         DARK_OAK_LEAVES,
         DARK_OAK_LOG,
-        DARK_OAK,
         FLOWERING_AZALEA_LEAVES,
+        JUNGLE,
         JUNGLE_LEAVES,
         JUNGLE_LOG,
-        JUNGLE,
+        MANGROVE,
         MANGROVE_LEAVES,
         MANGROVE_LOG,
-        MANGROVE,
+        OAK,
         OAK_LEAVES,
         OAK_LOG,
-        OAK,
+        SPRUCE,
         SPRUCE_LEAVES,
         SPRUCE_LOG,
-        SPRUCE,
         WARPED,
         WARPED_STEM,
 

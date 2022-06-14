@@ -6,6 +6,7 @@ import com.chimericdream.minekea.client.render.block.ShelfBlockEntityRenderer;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -16,51 +17,26 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.registry.Registry;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Shelves implements MinekeaBlockCategory {
-    public static final GenericShelf ACACIA_SHELF;
-    public static final GenericShelf BIRCH_SHELF;
-    public static final GenericShelf CRIMSON_SHELF;
-    public static final GenericShelf DARK_OAK_SHELF;
-    public static final GenericShelf JUNGLE_SHELF;
-    public static final GenericShelf MANGROVE_SHELF;
-    public static final GenericShelf OAK_SHELF;
-    public static final GenericShelf SPRUCE_SHELF;
-    public static final GenericShelf WARPED_SHELF;
-
-    public static final GenericFloatingShelf ACACIA_FLOATING_SHELF;
-    public static final GenericFloatingShelf BIRCH_FLOATING_SHELF;
-    public static final GenericFloatingShelf CRIMSON_FLOATING_SHELF;
-    public static final GenericFloatingShelf DARK_OAK_FLOATING_SHELF;
-    public static final GenericFloatingShelf JUNGLE_FLOATING_SHELF;
-    public static final GenericFloatingShelf MANGROVE_FLOATING_SHELF;
-    public static final GenericFloatingShelf OAK_FLOATING_SHELF;
-    public static final GenericFloatingShelf SPRUCE_FLOATING_SHELF;
-    public static final GenericFloatingShelf WARPED_FLOATING_SHELF;
+    public static final Map<String, GenericShelf> SHELVES = new LinkedHashMap<>();
+    public static final Map<String, GenericFloatingShelf> FLOATING_SHELVES = new LinkedHashMap<>();
 
     public static BlockEntityType<ShelfBlockEntity> SHELF_BLOCK_ENTITY;
 
     static {
-        ACACIA_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.ACACIA));
-        BIRCH_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.BIRCH));
-        CRIMSON_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.CRIMSON));
-        DARK_OAK_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.DARK_OAK));
-        JUNGLE_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.JUNGLE));
-        MANGROVE_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.MANGROVE));
-        OAK_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.OAK));
-        SPRUCE_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.SPRUCE));
-        WARPED_SHELF = new GenericShelf(new SupportedShelfSettings(BaseBlockSettings.WARPED));
+        for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
+            if (blockSettings.hasShelf()) {
+                SHELVES.put(blockSettings.getMainMaterial(), new GenericShelf(new SupportedShelfSettings(blockSettings)));
+            }
 
-        ACACIA_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.ACACIA));
-        BIRCH_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.BIRCH));
-        CRIMSON_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.CRIMSON));
-        DARK_OAK_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.DARK_OAK));
-        JUNGLE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.JUNGLE));
-        MANGROVE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.MANGROVE));
-        OAK_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.OAK));
-        SPRUCE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.SPRUCE));
-        WARPED_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BaseBlockSettings.WARPED));
+            if (blockSettings.hasFloatingShelf()) {
+                FLOATING_SHELVES.put(blockSettings.getMainMaterial(), new GenericFloatingShelf(new FloatingShelfSettings(blockSettings)));
+            }
+        }
     }
 
     @Environment(EnvType.CLIENT)
@@ -71,47 +47,23 @@ public class Shelves implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        ACACIA_SHELF.register();
-        BIRCH_SHELF.register();
-        CRIMSON_SHELF.register();
-        DARK_OAK_SHELF.register();
-        JUNGLE_SHELF.register();
-        MANGROVE_SHELF.register();
-        OAK_SHELF.register();
-        SPRUCE_SHELF.register();
-        WARPED_SHELF.register();
+        for (GenericShelf block : SHELVES.values()) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
+        }
 
-        ACACIA_FLOATING_SHELF.register();
-        BIRCH_FLOATING_SHELF.register();
-        CRIMSON_FLOATING_SHELF.register();
-        DARK_OAK_FLOATING_SHELF.register();
-        JUNGLE_FLOATING_SHELF.register();
-        MANGROVE_FLOATING_SHELF.register();
-        OAK_FLOATING_SHELF.register();
-        SPRUCE_FLOATING_SHELF.register();
-        WARPED_FLOATING_SHELF.register();
+        for (GenericFloatingShelf block : FLOATING_SHELVES.values()) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
+        }
     }
 
     @Override
     public void registerBlockEntities(List<ModCompatLayer> otherMods) {
-        List<GenericShelf> shelves = new ArrayList<>(List.of(
-            ACACIA_SHELF,
-            BIRCH_SHELF,
-            CRIMSON_SHELF,
-            DARK_OAK_SHELF,
-            JUNGLE_SHELF,
-            OAK_SHELF,
-            SPRUCE_SHELF,
-            WARPED_SHELF,
-            ACACIA_FLOATING_SHELF,
-            BIRCH_FLOATING_SHELF,
-            CRIMSON_FLOATING_SHELF,
-            DARK_OAK_FLOATING_SHELF,
-            JUNGLE_FLOATING_SHELF,
-            OAK_FLOATING_SHELF,
-            SPRUCE_FLOATING_SHELF,
-            WARPED_FLOATING_SHELF
-        ));
+        List<GenericShelf> shelves = new ArrayList<>();
+
+        shelves.addAll(SHELVES.values());
+        shelves.addAll(FLOATING_SHELVES.values());
 
         for (ModCompatLayer mod : otherMods) {
             shelves.addAll(mod.getShelves());
