@@ -14,12 +14,12 @@ import net.minecraft.util.Identifier;
 public class ItemGroups {
     public static final ItemGroup BEAMS = FabricItemGroupBuilder
         .create(new Identifier(ModInfo.MOD_ID, "blocks.building.beams"))
-        .icon(() -> new ItemStack(Beams.AMETHYST_BEAM))
+        .icon(() -> new ItemStack(Beams.BLOCKS.get("amethyst")))
         .build();
 
     public static final ItemGroup COMPRESSED_BLOCKS = FabricItemGroupBuilder
         .create(new Identifier(ModInfo.MOD_ID, "blocks.building.compressed"))
-        .icon(() -> new ItemStack(CompressedBlocks.COBBLESTONE.get(8)))
+        .icon(() -> new ItemStack(CompressedBlocks.BLOCK_MAP.get("cobblestone").get(8)))
         .build();
 
     public static final ItemGroup COVERS = FabricItemGroupBuilder

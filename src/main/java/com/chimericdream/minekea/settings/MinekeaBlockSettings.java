@@ -218,8 +218,179 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     }
 
     public static class DefaultSettings extends MinekeaBlockSettings<DefaultSettings> {
+        private boolean hasBeam = false;
+        private boolean hasCompressedBlock = false;
+        private boolean hasCover = false;
+        private boolean hasSlab = false;
+        private boolean hasStairs = false;
+        private boolean hasVerticalStairs = false;
+        private boolean hasWall = false;
+        private boolean hasBookshelf = false;
+        private boolean hasStorageBookshelf = false;
+        private boolean hasDisplayCase = false;
+        private boolean hasDoor = false;
+        private boolean hasChair = false;
+        private boolean hasStool = false;
+        private boolean hasShelf = false;
+        private boolean hasFloatingShelf = false;
+        private boolean hasTable = false;
+        private boolean hasTrapdoor = false;
+
         public DefaultSettings(Block block) {
             super(block);
+        }
+
+        public boolean hasBeam() {
+            return this.hasBeam;
+        }
+
+        public DefaultSettings withBeam() {
+            this.hasBeam = true;
+            return this;
+        }
+
+        public boolean hasCompressedBlock() {
+            return this.hasCompressedBlock;
+        }
+
+        public DefaultSettings withCompressedBlock() {
+            this.hasCompressedBlock = true;
+            return this;
+        }
+
+        public boolean hasCover() {
+            return this.hasCover;
+        }
+
+        public DefaultSettings withCover() {
+            this.hasCover = true;
+            return this;
+        }
+
+        public boolean hasSlab() {
+            return this.hasSlab;
+        }
+
+        public DefaultSettings withSlab() {
+            this.hasSlab = true;
+            return this;
+        }
+
+        public boolean hasStairs() {
+            return this.hasStairs;
+        }
+
+        public DefaultSettings withStairs() {
+            this.hasStairs = true;
+            return this;
+        }
+
+        public boolean hasVerticalStairs() {
+            return this.hasVerticalStairs;
+        }
+
+        public DefaultSettings withVerticalStairs() {
+            this.hasVerticalStairs = true;
+            return this;
+        }
+
+        public boolean hasWall() {
+            return this.hasWall;
+        }
+
+        public DefaultSettings withWall() {
+            this.hasWall = true;
+            return this;
+        }
+
+        public boolean hasBookshelf() {
+            return this.hasBookshelf;
+        }
+
+        public DefaultSettings withBookshelf() {
+            this.hasBookshelf = true;
+            return this;
+        }
+
+        public boolean hasStorageBookshelf() {
+            return this.hasStorageBookshelf;
+        }
+
+        public DefaultSettings withStorageBookshelf() {
+            this.hasStorageBookshelf = true;
+            return this;
+        }
+
+        public boolean hasDisplayCase() {
+            return this.hasDisplayCase;
+        }
+
+        public DefaultSettings withDisplayCase() {
+            this.hasDisplayCase = true;
+            return this;
+        }
+
+        public boolean hasDoor() {
+            return this.hasDoor;
+        }
+
+        public DefaultSettings withDoor() {
+            this.hasDoor = true;
+            return this;
+        }
+
+        public boolean hasChair() {
+            return this.hasChair;
+        }
+
+        public DefaultSettings withChair() {
+            this.hasChair = true;
+            return this;
+        }
+
+        public boolean hasStool() {
+            return this.hasStool;
+        }
+
+        public DefaultSettings withStool() {
+            this.hasStool = true;
+            return this;
+        }
+
+        public boolean hasShelf() {
+            return this.hasShelf;
+        }
+
+        public DefaultSettings withShelf() {
+            this.hasShelf = true;
+            return this;
+        }
+
+        public boolean hasFloatingShelf() {
+            return this.hasFloatingShelf;
+        }
+
+        public DefaultSettings withFloatingShelf() {
+            this.hasFloatingShelf = true;
+            return this;
+        }
+
+        public boolean hasTable() {
+            return this.hasTable;
+        }
+
+        public DefaultSettings withTable() {
+            this.hasTable = true;
+            return this;
+        }
+
+        public boolean hasTrapdoor() {
+            return this.hasTrapdoor;
+        }
+
+        public DefaultSettings withTrapdoor() {
+            this.hasTrapdoor = true;
+            return this;
         }
 
         @Override
