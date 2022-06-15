@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.settings;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -228,40 +229,50 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         private boolean hasBookshelfSlab = false;
         private boolean hasStairs = false;
         private boolean hasVerticalStairs = false;
+        private boolean hasBookshelfStairs = false;
+        private boolean hasVerticalBookshelfStairs = false;
         private boolean hasWall = false;
         private boolean hasBookshelf = false;
         private boolean hasStorageBookshelf = false;
         private boolean hasDisplayCase = false;
         private boolean hasStrippedDisplayCase = false;
-        private boolean hasDoor = false;
+        private boolean hasBookshelfDoor = false;
         private boolean hasChair = false;
         private boolean hasStool = false;
         private boolean hasShelf = false;
         private boolean hasFloatingShelf = false;
         private boolean hasTable = false;
-        private boolean hasTrapdoor = false;
+        private boolean hasBookshelfTrapdoor = false;
 
         public DefaultSettings(Block block) {
             super(block);
         }
 
-//        public DefaultSettings bookshelfId(String id) {
-//            this.bookshelfId = id;
-//            return this;
-//        }
-//
-//        public DefaultSettings bookshelfModel(String id) {
-//            this.bookshelfModel = id;
-//            return this;
-//        }
-//
-//        public Identifier getBookshelfId() {
-//            if (this.bookshelfId != null) {
-//                return new Identifier(this.bookshelfId);
-//            }
-//
-//            return Bookshelves.SHELVES.get(this.mainMaterial).getBlockID();
-//        }
+        public DefaultSettings bookshelfId(String id) {
+            this.bookshelfId = id;
+            return this;
+        }
+
+        public DefaultSettings bookshelfModel(String id) {
+            this.bookshelfModel = id;
+            return this;
+        }
+
+        public Identifier getBookshelfId() {
+            if (this.bookshelfId != null) {
+                return new Identifier(this.bookshelfId);
+            }
+
+            return Bookshelves.BOOKSHELVES.get(this.mainMaterial).getBlockID();
+        }
+
+        public Identifier getBookshelfModel() {
+            if (this.bookshelfModel != null) {
+                return new Identifier(this.bookshelfModel);
+            }
+
+            return null;
+        }
 
         public boolean hasBeam() {
             return this.hasBeam;
@@ -326,6 +337,24 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
             return this;
         }
 
+        public boolean hasBookshelfStairs() {
+            return this.hasBookshelfStairs;
+        }
+
+        public DefaultSettings withBookshelfStairs() {
+            this.hasBookshelfStairs = true;
+            return this;
+        }
+
+        public boolean hasVerticalBookshelfStairs() {
+            return this.hasVerticalBookshelfStairs;
+        }
+
+        public DefaultSettings withVerticalBookshelfStairs() {
+            this.hasVerticalBookshelfStairs = true;
+            return this;
+        }
+
         public boolean hasWall() {
             return this.hasWall;
         }
@@ -371,12 +400,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
             return this;
         }
 
-        public boolean hasDoor() {
-            return this.hasDoor;
+        public boolean hasBookshelfDoor() {
+            return this.hasBookshelfDoor;
         }
 
-        public DefaultSettings withDoor() {
-            this.hasDoor = true;
+        public DefaultSettings withBookshelfDoor() {
+            this.hasBookshelfDoor = true;
             return this;
         }
 
@@ -425,12 +454,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
             return this;
         }
 
-        public boolean hasTrapdoor() {
-            return this.hasTrapdoor;
+        public boolean hasBookshelfTrapdoor() {
+            return this.hasBookshelfTrapdoor;
         }
 
-        public DefaultSettings withTrapdoor() {
-            this.hasTrapdoor = true;
+        public DefaultSettings withBookshelfTrapdoor() {
+            this.hasBookshelfTrapdoor = true;
             return this;
         }
 

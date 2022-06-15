@@ -62,12 +62,15 @@ public class GenericBookshelfSlab extends SlabBlock implements MinekeaBlock {
 
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
+        Identifier defaultDoubleModelId = new Identifier(ModInfo.MOD_ID, String.format("block/%sfurniture/bookshelves/%s0", ModInfo.getModPrefix(settings.getModId()), settings.getMainMaterial()));
+
         Identifier SLAB_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier TOP_SLAB_MODEL_ID = new Identifier(SLAB_MODEL_ID + "_top");
-        Identifier DOUBLE_MODEL_ID = materials.getOrDefault(
-            "model",
-            new Identifier(ModInfo.MOD_ID, String.format("block/%sfurniture/bookshelves/%s0", ModInfo.getModPrefix(settings.getModId()), settings.getMainMaterial()))
-        );
+        Identifier DOUBLE_MODEL_ID = materials.getOrDefault("model", defaultDoubleModelId);
+
+        if (DOUBLE_MODEL_ID == null) {
+            DOUBLE_MODEL_ID = defaultDoubleModelId;
+        }
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             getBlockID(),

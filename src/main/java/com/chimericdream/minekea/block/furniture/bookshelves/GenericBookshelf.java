@@ -66,7 +66,7 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
             "ingredient",
             materials.getOrDefault("planks", materials.get("main"))
         );
-        Identifier sideTexture = materials.getOrDefault("side_texture", ingredient);
+        Identifier sideTexture = materials.getOrDefault("side_texture", materials.get("main"));
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -134,25 +134,18 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(String.format("%s0", BASE_MODEL_ID)), ITEM_MODEL_ID);
 
         MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-            JState.state(JState.variant(new JBlockModel(new Identifier(String.format("%s0", BASE_MODEL_ID))))),
+            JState.state(
+                JState.variant()
+                    .put("", new JBlockModel(new Identifier(String.format("%s0", BASE_MODEL_ID))))
+                    .put("", new JBlockModel(new Identifier(String.format("%s1", BASE_MODEL_ID))))
+                    .put("", new JBlockModel(new Identifier(String.format("%s2", BASE_MODEL_ID))))
+                    .put("", new JBlockModel(new Identifier(String.format("%s3", BASE_MODEL_ID))))
+                    .put("", new JBlockModel(new Identifier(String.format("%s4", BASE_MODEL_ID))))
+                    .put("", new JBlockModel(new Identifier(String.format("%s5", BASE_MODEL_ID))))
+                    .put("", new JBlockModel(new Identifier(String.format("%s6", BASE_MODEL_ID))))
+            ),
             getBlockID()
         );
-
-        // This is bugged in ARRP
-        // See: https://github.com/Devan-Kerman/ARRP/issues/62
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(
-//                JState.variant()
-//                    .put("", new JBlockModel(new Identifier(String.format("%s0", BASE_MODEL_ID))))
-//                    .put("", new JBlockModel(new Identifier(String.format("%s1", BASE_MODEL_ID))))
-//                    .put("", new JBlockModel(new Identifier(String.format("%s2", BASE_MODEL_ID))))
-//                    .put("", new JBlockModel(new Identifier(String.format("%s3", BASE_MODEL_ID))))
-//                    .put("", new JBlockModel(new Identifier(String.format("%s4", BASE_MODEL_ID))))
-//                    .put("", new JBlockModel(new Identifier(String.format("%s5", BASE_MODEL_ID))))
-//                    .put("", new JBlockModel(new Identifier(String.format("%s6", BASE_MODEL_ID))))
-//            ),
-//            getBlockID()
-//        );
     }
 
     public static class BookshelfSettings extends MinekeaBlockSettings<BookshelfSettings> {
@@ -171,6 +164,10 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
             }
 
             return blockId;
+        }
+
+        public static Identifier makeBlockId(String modId, String material) {
+            return new Identifier(ModInfo.MOD_ID, String.format("%sfurniture/bookshelves/%s", ModInfo.getModPrefix(modId), material));
         }
     }
 }

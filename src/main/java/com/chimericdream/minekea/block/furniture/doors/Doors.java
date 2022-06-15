@@ -1,35 +1,24 @@
 package com.chimericdream.minekea.block.furniture.doors;
 
-import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.furniture.doors.GenericBookshelfDoor.BookshelfDoorSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
-import net.minecraft.util.Identifier;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Doors implements MinekeaBlockCategory {
-    public static final GenericBookshelfDoor ACACIA_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor BIRCH_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor CRIMSON_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor DARK_OAK_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor JUNGLE_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor MANGROVE_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor OAK_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor SPRUCE_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor WARPED_BOOKSHELF_DOOR;
+    public static final Map<String, GenericBookshelfDoor> BOOKSHELF_DOORS = new LinkedHashMap<>();
 
     static {
-        ACACIA_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.ACACIA).addMaterial("bookshelf", Bookshelves.ACACIA_BOOKSHELF.getBlockID()));
-        BIRCH_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.BIRCH).addMaterial("bookshelf", Bookshelves.BIRCH_BOOKSHELF.getBlockID()));
-        CRIMSON_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.CRIMSON).addMaterial("bookshelf", Bookshelves.CRIMSON_BOOKSHELF.getBlockID()));
-        DARK_OAK_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.DARK_OAK).addMaterial("bookshelf", Bookshelves.DARK_OAK_BOOKSHELF.getBlockID()));
-        JUNGLE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.JUNGLE).addMaterial("bookshelf", Bookshelves.JUNGLE_BOOKSHELF.getBlockID()));
-        MANGROVE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.MANGROVE).addMaterial("bookshelf", Bookshelves.MANGROVE_BOOKSHELF.getBlockID()));
-        OAK_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.OAK).addMaterial("bookshelf", new Identifier("minecraft:bookshelf")));
-        SPRUCE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.SPRUCE).addMaterial("bookshelf", Bookshelves.SPRUCE_BOOKSHELF.getBlockID()));
-        WARPED_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BaseBlockSettings.WARPED).addMaterial("bookshelf", Bookshelves.WARPED_BOOKSHELF.getBlockID()));
+        for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
+            if (blockSettings.hasBookshelfDoor()) {
+                BOOKSHELF_DOORS.put(blockSettings.getMainMaterial(), new GenericBookshelfDoor(new BookshelfDoorSettings(blockSettings).addMaterial("bookshelf", blockSettings.getBookshelfId())));
+            }
+        }
     }
 
     @Override
@@ -38,15 +27,10 @@ public class Doors implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        ACACIA_BOOKSHELF_DOOR.register();
-        BIRCH_BOOKSHELF_DOOR.register();
-        CRIMSON_BOOKSHELF_DOOR.register();
-        DARK_OAK_BOOKSHELF_DOOR.register();
-        JUNGLE_BOOKSHELF_DOOR.register();
-        MANGROVE_BOOKSHELF_DOOR.register();
-        OAK_BOOKSHELF_DOOR.register();
-        SPRUCE_BOOKSHELF_DOOR.register();
-        WARPED_BOOKSHELF_DOOR.register();
+        for (GenericBookshelfDoor block : BOOKSHELF_DOORS.values()) {
+            MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) block.settings;
+            block.register(settings.isFlammable());
+        }
     }
 
     @Override
