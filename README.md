@@ -73,7 +73,28 @@ repository on GitHub and were created by user malcomriley. They are licensed und
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) and are used
 according to the permissions outlined by the artist and the license.
 
-![Wrench](https://github.com/malcolmriley/unused-textures/blob/master/items/tool_spanner_iron.png?raw=true) Wrench ([tool_spanner_iron.png](https://github.com/malcolmriley/unused-textures/blob/master/items/tool_spanner_iron.png); added in 3.1.0)
+* Wrench ([tool_spanner_iron.png](https://github.com/malcolmriley/unused-textures/blob/master/items/tool_spanner_iron.png); updated in 3.1.0)
+
+The following textures and icons were created by [cesar_zorak](https://www.curseforge.com/members/cesar_zorak/projects) and are used with permission from the artist.
+
+* Burlap sack texture used by some compressed items (updated in 3.1.0)
+* Compressed beetroot block
+* Compressed potato block
+* Compressed flint block
+* Compressed leather block
+* Compressed nether star block
+* Compressed beetroot seeds block
+* Compressed gunpowder block
+* Compressed melon seeds block
+* Compressed pumpkin seeds block
+* Compressed wheat seeds block
+* Compressed phantom membrane block
+* Set of eggs block
+* Compressed totem block
+* Compressed apple block
+* Compressed golden apple block
+* Compressed blaze rod block
+* Compressed sugar
 
 ## License
 

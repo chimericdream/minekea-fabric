@@ -189,8 +189,8 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             return stack;
         }
 
-        // You can't insert different things or non-stackable things
-        if (!stack.isStackable() || !stack.isItemEqual(storedItem)) {
+        // You can't insert different things
+        if (!stack.isItemEqual(storedItem)) {
             return stack;
         }
 
@@ -234,7 +234,7 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
 
         ItemStack stack = this.items.get(0).copy();
 
-        if (fullItemStacks > 0) {
+        if (fullItemStacks > 1 || (fullItemStacks == 1 && stack.isStackable())) {
             stack.setCount(stack.getMaxCount());
             fullItemStacks -= 1;
 
@@ -242,6 +242,7 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         }
 
         this.items.set(0, ItemStack.EMPTY);
+        fullItemStacks = 0;
 
         return stack;
     }

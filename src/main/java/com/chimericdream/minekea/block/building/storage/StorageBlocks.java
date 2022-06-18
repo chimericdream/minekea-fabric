@@ -31,16 +31,29 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final DyeBlock RED_DYE_BLOCK;
     public static final DyeBlock BLACK_DYE_BLOCK;
 
+    public static final GenericStorageBlock APPLE_BLOCK;
     public static final GenericStorageBlock BAMBOO_BLOCK;
     public static final GenericStorageBlock BEETROOT_BLOCK;
+    public static final GenericStorageBlock BEETROOT_SEEDS_BLOCK;
     public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
+    public static final GenericStorageBlock BLAZE_ROD_BLOCK;
     public static final GenericStorageBlock CARROT_BLOCK;
     public static final GenericStorageBlock CHORUS_FRUIT_BLOCK;
     public static final GenericStorageBlock ENDER_PEARL_BLOCK;
+    public static final GenericStorageBlock FLINT_BLOCK;
+    public static final GenericStorageBlock GOLDEN_APPLE_BLOCK;
+    public static final GenericStorageBlock LEATHER_BLOCK;
+    public static final GenericStorageBlock MELON_SEEDS_BLOCK;
+    public static final GenericStorageBlock NETHER_STAR_BLOCK;
+    public static final GenericStorageBlock PHANTOM_MEMBRANE_BLOCK;
     public static final GenericStorageBlock POTATO_BLOCK;
+    public static final GenericStorageBlock PUMPKIN_SEEDS_BLOCK;
+    public static final SetOfEggsBlock SET_OF_EGGS_BLOCK;
     public static final GenericStorageBlock STICK_BLOCK;
     public static final GenericStorageBlock SUGAR_BLOCK;
     public static final GenericStorageBlock SUGAR_CANE_BLOCK;
+    public static final GenericStorageBlock TOTEM_BLOCK;
+    public static final GenericStorageBlock WHEAT_SEEDS_BLOCK;
 
     static {
         WHITE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.WHITE_DYE).color("white"));
@@ -60,21 +73,39 @@ public class StorageBlocks implements MinekeaBlockCategory {
         RED_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.RED_DYE).color("red"));
         BLACK_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BLACK_DYE).color("black"));
 
+        APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.APPLE).column().separateTop().sounds(BlockSoundGroup.WOOD));
         BAMBOO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BAMBOO).namePattern("Bundle of %s").column().sounds(BlockSoundGroup.BAMBOO));
         BEETROOT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT).bagged().sounds(BlockSoundGroup.CROP));
+        BEETROOT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT_SEEDS).bagged().sounds(BlockSoundGroup.CROP));
         BLAZE_POWDER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BLAZE_POWDER).sounds(BlockSoundGroup.NETHER_STEM));
+        BLAZE_ROD_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BLAZE_ROD).sounds(BlockSoundGroup.NETHER_STEM));
         CARROT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.CARROT).bagged().sounds(BlockSoundGroup.CROP));
         CHORUS_FRUIT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.CHORUS_FRUIT).bagged().sounds(BlockSoundGroup.WOOD));
         ENDER_PEARL_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.ENDER_PEARL).sounds(BlockSoundGroup.SHROOMLIGHT));
+        FLINT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.FLINT).sounds(BlockSoundGroup.STONE));
+        GOLDEN_APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.GOLDEN_APPLE).column().separateTop().sounds(BlockSoundGroup.WOOD));
+        LEATHER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.LEATHER).sounds(BlockSoundGroup.WOOL));
+        MELON_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.MELON_SEEDS).bagged().sounds(BlockSoundGroup.CROP));
+        NETHER_STAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.NETHER_STAR).sounds(BlockSoundGroup.METAL));
+        PHANTOM_MEMBRANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PHANTOM_MEMBRANE).sounds(BlockSoundGroup.NETHER_WART));
         POTATO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.POTATO).bagged().sounds(BlockSoundGroup.CROP));
+        PUMPKIN_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PUMPKIN_SEEDS).bagged().sounds(BlockSoundGroup.CROP));
+        SET_OF_EGGS_BLOCK = new SetOfEggsBlock();
         STICK_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.STICK).column().namePattern("Bundle of %s").ingredientName("Sticks").sounds(BlockSoundGroup.WOOD));
-        SUGAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR).sounds(BlockSoundGroup.SAND));
+        SUGAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR).bagged().sounds(BlockSoundGroup.SAND));
         SUGAR_CANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).namePattern("Bundle of %s").column().sounds(BlockSoundGroup.GRASS));
+        TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).column().sounds(BlockSoundGroup.METAL));
+        WHEAT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.WHEAT_SEEDS).bagged().sounds(BlockSoundGroup.CROP));
     }
 
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getCutout(),
+            SET_OF_EGGS_BLOCK
+        );
+
         BlockRenderLayerMap.INSTANCE.putBlocks(
             RenderLayer.getTranslucent(),
             WHITE_DYE_BLOCK,
@@ -92,11 +123,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
             BROWN_DYE_BLOCK,
             GREEN_DYE_BLOCK,
             RED_DYE_BLOCK,
-            BLACK_DYE_BLOCK,
-            POTATO_BLOCK,
-            CARROT_BLOCK,
-            BEETROOT_BLOCK,
-            CHORUS_FRUIT_BLOCK
+            BLACK_DYE_BLOCK
         );
     }
 
@@ -119,16 +146,29 @@ public class StorageBlocks implements MinekeaBlockCategory {
         RED_DYE_BLOCK.register();
         BLACK_DYE_BLOCK.register();
 
+        APPLE_BLOCK.register();
         BAMBOO_BLOCK.register();
         BEETROOT_BLOCK.register();
+        BEETROOT_SEEDS_BLOCK.register();
         BLAZE_POWDER_BLOCK.register();
+        BLAZE_ROD_BLOCK.register();
         CARROT_BLOCK.register();
         CHORUS_FRUIT_BLOCK.register();
         ENDER_PEARL_BLOCK.register();
+        FLINT_BLOCK.register();
+        GOLDEN_APPLE_BLOCK.register();
+        LEATHER_BLOCK.register();
+        MELON_SEEDS_BLOCK.register();
+        NETHER_STAR_BLOCK.register();
+        PHANTOM_MEMBRANE_BLOCK.register();
         POTATO_BLOCK.register();
+        PUMPKIN_SEEDS_BLOCK.register();
+        SET_OF_EGGS_BLOCK.register();
         STICK_BLOCK.register();
         SUGAR_BLOCK.register();
         SUGAR_CANE_BLOCK.register();
+        TOTEM_BLOCK.register();
+        WHEAT_SEEDS_BLOCK.register();
     }
 
     @Override

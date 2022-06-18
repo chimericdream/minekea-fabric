@@ -14,6 +14,7 @@ import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -23,8 +24,12 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 
 import java.util.Map;
 import java.util.Objects;
@@ -48,6 +53,22 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
                 .with(AXIS, Direction.Axis.Y)
                 .with(IS_BAGGED, false)
         );
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        StorageBlockSettings settings = (StorageBlockSettings) this.settings;
+
+        if (settings.isBaggedItem) {
+            return VoxelShapes.union(
+                Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 9.0, 16.0),
+                Block.createCuboidShape(1.0, 9.0, 1.0, 15.0, 10.0, 15.0),
+                Block.createCuboidShape(0.0, 10.0, 0.0, 16.0, 13.0, 16.0),
+                Block.createCuboidShape(1.0, 13.0, 1.0, 15.0, 16.0, 15.0)
+            );
+        }
+
+        return VoxelShapes.fullCube();
     }
 
     @Override
@@ -115,16 +136,29 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
 
         Identifier blockTexture = Texture.getBlockTextureID(getBlockID());
 
-        JTextures textures = new JTextures()
-            .var("all", blockTexture.toString())
-            .var("end", new Identifier(blockTexture + "_end").toString())
-            .var("side", new Identifier(blockTexture + "_side").toString());
+        JTextures textures = new JTextures();
+
+        if (settings.isColumnBlock) {
+            if (settings.hasSeparateTop) {
+                textures
+                    .var("down", new Identifier(blockTexture + "_bottom").toString())
+                    .var("up", new Identifier(blockTexture + "_top").toString());
+            } else {
+                textures
+                    .var("down", new Identifier(blockTexture + "_end").toString())
+                    .var("up", new Identifier(blockTexture + "_end").toString());
+            }
+
+            textures.var("side", new Identifier(blockTexture + "_side").toString());
+        } else {
+            textures.var("all", blockTexture.toString());
+        }
 
         JTextures baggedTextures = new JTextures().var("contents", blockTexture.toString());
 
         if (settings.isColumnBlock) {
-            MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minecraft:block/cube_column").textures(textures), MODEL_ID);
-            MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minecraft:block/cube_column_horizontal").textures(textures), HORIZONTAL_MODEL_ID);
+            MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/storage/compressed_column").textures(textures), MODEL_ID);
+            MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/storage/compressed_column_horizontal").textures(textures), HORIZONTAL_MODEL_ID);
         } else {
             MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minecraft:block/cube_all").textures(textures), MODEL_ID);
         }
@@ -157,9 +191,15 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
     public static class StorageBlockSettings extends MinekeaBlockSettings<StorageBlockSettings> {
         protected boolean isBaggedItem = false;
         protected boolean isColumnBlock = false;
+        protected boolean hasSeparateTop = false;
 
         public StorageBlockSettings(DefaultSettings settings) {
             super((DefaultSettings) settings.nonOpaque());
+        }
+
+        public StorageBlockSettings separateTop() {
+            this.hasSeparateTop = true;
+            return this;
         }
 
         public StorageBlockSettings bagged() {

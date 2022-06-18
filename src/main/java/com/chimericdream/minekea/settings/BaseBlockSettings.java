@@ -2853,6 +2853,16 @@ public class BaseBlockSettings {
 
     /******************************************************************************************************************/
 
+    public static DefaultSettings APPLE = new DefaultSettings(Blocks.MELON)
+        .material("apple")
+        .ingredientName("Apple")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:apple"),
+                "ingredient", new Identifier("minecraft:apple")
+            )
+        );
+
     public static DefaultSettings BAMBOO = new DefaultSettings(Blocks.HAY_BLOCK)
         .material("bamboo")
         .ingredientName("Bamboo")
@@ -2873,6 +2883,16 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings BEETROOT_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("beetroot_seeds")
+        .ingredientName("Beetroot Seeds")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:beetroot_seeds"),
+                "ingredient", new Identifier("minecraft:beetroot_seeds")
+            )
+        );
+
     public static DefaultSettings BLAZE_POWDER = new DefaultSettings(Blocks.HAY_BLOCK)
         .material("blaze_powder")
         .ingredientName("Blaze Powder")
@@ -2880,6 +2900,16 @@ public class BaseBlockSettings {
             Map.of(
                 "main", new Identifier("minecraft:blaze_powder"),
                 "ingredient", new Identifier("minecraft:blaze_powder")
+            )
+        );
+
+    public static DefaultSettings BLAZE_ROD = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("blaze_rod")
+        .ingredientName("Blaze Rod")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:blaze_rod"),
+                "ingredient", new Identifier("minecraft:blaze_rod")
             )
         );
 
@@ -2913,6 +2943,66 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings FLINT = new DefaultSettings(Blocks.COBBLESTONE)
+        .material("flint")
+        .ingredientName("Flint")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:flint"),
+                "ingredient", new Identifier("minecraft:flint")
+            )
+        );
+
+    public static DefaultSettings GOLDEN_APPLE = new DefaultSettings(Blocks.MELON)
+        .material("golden_apple")
+        .ingredientName("Golden Apple")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:golden_apple"),
+                "ingredient", new Identifier("minecraft:golden_apple")
+            )
+        );
+
+    public static DefaultSettings LEATHER = new DefaultSettings(Blocks.WHITE_WOOL)
+        .material("leather")
+        .ingredientName("Leather")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:leather"),
+                "ingredient", new Identifier("minecraft:leather")
+            )
+        );
+
+    public static DefaultSettings MELON_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("melon_seeds")
+        .ingredientName("Melon Seeds")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:melon_seeds"),
+                "ingredient", new Identifier("minecraft:melon_seeds")
+            )
+        );
+
+    public static DefaultSettings NETHER_STAR = new DefaultSettings(Blocks.DIAMOND_BLOCK)
+        .material("nether_star")
+        .ingredientName("Nether Star")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:nether_star"),
+                "ingredient", new Identifier("minecraft:nether_star")
+            )
+        );
+
+    public static DefaultSettings PHANTOM_MEMBRANE = new DefaultSettings(Blocks.NETHER_WART_BLOCK)
+        .material("phantom_membrane")
+        .ingredientName("Phantom Membrane")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:phantom_membrane"),
+                "ingredient", new Identifier("minecraft:phantom_membrane")
+            )
+        );
+
     public static DefaultSettings POTATO = new DefaultSettings(Blocks.HAY_BLOCK)
         .material("potato")
         .ingredientName("Potato")
@@ -2920,6 +3010,16 @@ public class BaseBlockSettings {
             Map.of(
                 "main", new Identifier("minecraft:potato"),
                 "ingredient", new Identifier("minecraft:potato")
+            )
+        );
+
+    public static DefaultSettings PUMPKIN_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("pumpkin_seeds")
+        .ingredientName("Pumpkin Seeds")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:pumpkin_seeds"),
+                "ingredient", new Identifier("minecraft:pumpkin_seeds")
             )
         );
 
@@ -2950,6 +3050,26 @@ public class BaseBlockSettings {
             Map.of(
                 "main", new Identifier("minecraft:sugar_cane"),
                 "ingredient", new Identifier("minecraft:sugar_cane")
+            )
+        );
+
+    public static DefaultSettings TOTEM = new DefaultSettings(Blocks.GOLD_BLOCK)
+        .material("totem_of_undying")
+        .ingredientName("Totem of Undying")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:totem_of_undying"),
+                "ingredient", new Identifier("minecraft:totem_of_undying")
+            )
+        );
+
+    public static DefaultSettings WHEAT_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("wheat_seeds")
+        .ingredientName("Wheat Seeds")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:wheat_seeds"),
+                "ingredient", new Identifier("minecraft:wheat_seeds")
             )
         );
 

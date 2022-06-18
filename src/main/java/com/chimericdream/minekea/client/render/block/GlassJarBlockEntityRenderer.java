@@ -419,6 +419,45 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
             case "minecraft:melon_slice":
                 return new ItemStack(Blocks.MELON.asItem());
 
+            case "minecraft:flint":
+                return new ItemStack(StorageBlocks.FLINT_BLOCK.asItem());
+
+            case "minecraft:leather":
+                return new ItemStack(StorageBlocks.LEATHER_BLOCK.asItem());
+
+            case "minecraft:nether_star":
+                return new ItemStack(StorageBlocks.NETHER_STAR_BLOCK.asItem());
+
+            case "minecraft:beetroot_seeds":
+                return new ItemStack(StorageBlocks.BEETROOT_SEEDS_BLOCK.asItem());
+
+            case "minecraft:melon_seeds":
+                return new ItemStack(StorageBlocks.MELON_SEEDS_BLOCK.asItem());
+
+            case "minecraft:pumpkin_seeds":
+                return new ItemStack(StorageBlocks.PUMPKIN_SEEDS_BLOCK.asItem());
+
+            case "minecraft:wheat_seeds":
+                return new ItemStack(StorageBlocks.WHEAT_SEEDS_BLOCK.asItem());
+
+            case "minecraft:phantom_membrane":
+                return new ItemStack(StorageBlocks.PHANTOM_MEMBRANE_BLOCK.asItem());
+
+            case "minecraft:egg":
+                return new ItemStack(StorageBlocks.SET_OF_EGGS_BLOCK.asItem());
+
+            case "minecraft:totem_of_undying":
+                return new ItemStack(StorageBlocks.TOTEM_BLOCK.asItem());
+
+            case "minecraft:apple":
+                return new ItemStack(StorageBlocks.APPLE_BLOCK.asItem());
+
+            case "minecraft:golden_apple":
+                return new ItemStack(StorageBlocks.GOLDEN_APPLE_BLOCK.asItem());
+
+            case "minecraft:blaze_rod":
+                return new ItemStack(StorageBlocks.BLAZE_ROD_BLOCK.asItem());
+
             default:
                 return stack;
         }
