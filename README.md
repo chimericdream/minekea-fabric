@@ -48,7 +48,7 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 
 ### Mod Support
 
-* Oh, the Biomes You'll Go (1.18.x only)
+* Oh, the Biomes You'll Go (1.18+ only)
 
 ## Issues & Suggestions
 
@@ -64,6 +64,16 @@ thanks go to the developers of the Fabric mod loader.
 I originally got the idea for this mod after using the
 [Shelf Storage datapack by Technodono](https://www.planetminecraft.com/data-pack/shelf-storage/). They have my sincere
 thanks for creating such an awesome datapack and inspiring this mod!
+
+### Textures
+
+The following textures and icons were downloaded from
+the [Unused Textures](https://github.com/malcolmriley/unused-textures)
+repository on GitHub and were created by user malcomriley. They are licensed under the
+[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) and are used
+according to the permissions outlined by the artist and the license.
+
+![Wrench](https://github.com/malcolmriley/unused-textures/blob/master/items/tool_spanner_iron.png?raw=true) Wrench ([tool_spanner_iron.png](https://github.com/malcolmriley/unused-textures/blob/master/items/tool_spanner_iron.png); added in 3.1.0)
 
 ## License
 
