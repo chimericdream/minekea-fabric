@@ -5,7 +5,6 @@ import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -28,7 +27,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
@@ -79,10 +77,10 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((CoverSettings) this.settings).getMaterials();
-        Identifier end = materials.getOrDefault("end", materials.get("main"));
-        Identifier side = materials.get("main");
-        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+        Identifier ingredient = settings.getMaterial("ingredient");
+
+        Identifier endTexture = settings.getBlockTexture("end");
+        Identifier sideTexture = settings.getBlockTexture("main");
 
         Identifier MODEL_ID = Model.getBlockModelID(((CoverSettings) this.settings).getBlockId());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(((CoverSettings) this.settings).getBlockId());
@@ -99,8 +97,8 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(((CoverSettings) this.settings).getBlockId()), LootTable.dropSelf(((CoverSettings) this.settings).getBlockId()));
 
         JTextures textures = new JTextures()
-            .var("end", Texture.getBlockTextureID(end).toString())
-            .var("side", Texture.getBlockTextureID(side).toString());
+            .var("end", endTexture.toString())
+            .var("side", sideTexture.toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model(ModInfo.MOD_ID + ":block/building/cover").textures(textures),

@@ -5,7 +5,6 @@ import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -183,11 +182,10 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((BeamSettings) this.settings).getMaterials();
+        Identifier ingredient = settings.getMaterial("ingredient");
 
-        Identifier end = materials.getOrDefault("end", materials.get("main"));
-        Identifier side = materials.get("main");
-        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+        Identifier endTexture = settings.getBlockTexture("end");
+        Identifier sideTexture = settings.getBlockTexture("main");
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -213,8 +211,8 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
-            .var("end", Texture.getBlockTextureID(end).toString())
-            .var("side", Texture.getBlockTextureID(side).toString());
+            .var("end", endTexture.toString())
+            .var("side", sideTexture.toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model(ModInfo.MOD_ID + ":item/building/beam").textures(textures),

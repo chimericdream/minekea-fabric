@@ -2,6 +2,7 @@ package com.chimericdream.minekea.settings;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
+import com.chimericdream.minekea.resource.Texture;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -22,6 +23,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected boolean isTranslucent = false;
     protected String mainMaterial;
     protected Map<String, Identifier> materials;
+    protected Map<String, Identifier> blockTextures = new HashMap<>();
     protected String modId = ModInfo.MOD_ID;
     protected String name = null;
     protected String namePatternOverride = null;
@@ -57,6 +59,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.isTranslucent = settings.isTranslucent;
         this.mainMaterial = settings.mainMaterial;
         this.materials = settings.materials;
+        this.blockTextures = settings.blockTextures;
         this.modId = settings.modId;
         this.name = settings.name;
     }
@@ -89,6 +92,72 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public String getMainMaterial() {
         return this.mainMaterial;
+    }
+
+    public Identifier getMaterial(String key) {
+        if (this.materials.containsKey(key)) {
+            return this.materials.get(key);
+        }
+
+        return this.materials.get("main");
+    }
+
+    public Identifier getMaterial(String key, String fallback) {
+        if (this.materials.containsKey(key)) {
+            return this.materials.get(key);
+        }
+
+        if (this.materials.containsKey(fallback)) {
+            return this.materials.get(fallback);
+        }
+
+        return this.materials.get("main");
+    }
+
+    public Identifier getMaterial(String key, Identifier fallback) {
+        if (this.materials.containsKey(key)) {
+            return this.materials.get(key);
+        }
+
+        return fallback;
+    }
+
+    public Identifier getBlockTexture(String key) {
+        if (this.blockTextures.containsKey(key)) {
+            return this.blockTextures.get(key);
+        }
+
+        Identifier textureId = Texture.getBlockTextureID(this.getMaterial(key));
+
+        this.blockTextures.put(key, textureId);
+
+        return textureId;
+    }
+
+    public Identifier getBlockTexture(String key, String fallback) {
+        if (this.blockTextures.containsKey(key)) {
+            return this.blockTextures.get(key);
+        }
+
+        if (this.blockTextures.containsKey(fallback)) {
+            return this.blockTextures.get(fallback);
+        }
+
+        Identifier textureId = Texture.getBlockTextureID(this.getMaterial(key, fallback));
+
+        if (this.materials.containsKey(key)) {
+            this.blockTextures.put(key, textureId);
+        } else if (this.materials.containsKey(fallback)) {
+            this.blockTextures.put(fallback, textureId);
+        }
+
+        return textureId;
+    }
+
+    public T texture(String key, Identifier id) {
+        this.blockTextures.put(key, id);
+        // noinspection unchecked
+        return (T) this;
     }
 
     public Map<String, Identifier> getMaterials() {

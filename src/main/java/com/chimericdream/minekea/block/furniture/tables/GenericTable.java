@@ -5,7 +5,6 @@ import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.TextHelpers;
@@ -208,10 +207,11 @@ public class GenericTable extends Block implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = settings.getMaterials();
+        Identifier PLANK_MATERIAL = settings.getMaterial("planks");
+        Identifier LOG_MATERIAL = settings.getMaterial("log");
 
-        Identifier PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main"));
-        Identifier LOG_MATERIAL = materials.getOrDefault("log", materials.get("main"));
+        Identifier plankTexture = settings.getBlockTexture("planks");
+        Identifier logTexture = settings.getBlockTexture("log");
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -257,8 +257,8 @@ public class GenericTable extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         JTextures textures = new JTextures()
-            .var("log", Texture.getBlockTextureID(LOG_MATERIAL).toString())
-            .var("planks", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
+            .var("log", logTexture.toString())
+            .var("planks", plankTexture.toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minekea:block/furniture/table").textures(textures), MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(NORTH_CONN).textures(textures), OTHER_MODEL_IDS.get("north"));

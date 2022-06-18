@@ -6,6 +6,7 @@ import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.client.Keybindings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
 import com.chimericdream.minekea.item.ItemGroups;
@@ -77,11 +78,10 @@ public class MinekeaMod implements ModInitializer {
 
         FabricLoader loader = FabricLoader.getInstance();
 
-        // BYG isn't on 1.19 yet
-        // if (loader.isModLoaded("byg")) {
-        //     LOGGER.info("[minekea][compat] BYG detected! initializing mod compat layer");
-        //     OTHER_MODS.add(new BygBlocks());
-        // }
+        if (loader.isModLoaded("byg")) {
+            LOGGER.info("[minekea][compat] BYG detected! initializing mod compat layer");
+            OTHER_MODS.add(new BygBlocks());
+        }
     }
 
     @Override

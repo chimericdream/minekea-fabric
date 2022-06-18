@@ -41,7 +41,6 @@ import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
@@ -169,11 +168,11 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((CrateSettings) this.settings).getMaterials();
+        Identifier log = settings.getMaterial("log");
+        Identifier planks = settings.getMaterial("planks");
 
-        Identifier log = materials.getOrDefault("log", materials.get("main"));
-        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
-        Identifier stripped_log = materials.getOrDefault("stripped_log", materials.get("main"));
+        Identifier plankTexture = settings.getBlockTexture("planks");
+        Identifier strippedLogTexture = settings.getBlockTexture("stripped_log");
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier HORIZONTAL_MODEL_ID = new Identifier(MODEL_ID + "_horizontal");
@@ -195,8 +194,8 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         JTextures textures = new JTextures()
-            .var("brace", Model.getBlockModelID(stripped_log).toString())
-            .var("planks", Model.getBlockModelID(planks).toString());
+            .var("brace", strippedLogTexture.toString())
+            .var("planks", plankTexture.toString());
 
         JModel mainModel = JModel.model("minekea:block/containers/crate").textures(textures);
         JModel horizontalModel = JModel.model("minekea:block/containers/crate_horizontal").textures(textures);

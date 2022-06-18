@@ -22,7 +22,6 @@ public class BygDoors {
     public static final GenericBookshelfDoor JACARANDA_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor LAMENT_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor MAHOGANY_BOOKSHELF_DOOR;
-    public static final GenericBookshelfDoor MANGROVE_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor MAPLE_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor NIGHTSHADE_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor PALM_BOOKSHELF_DOOR;
@@ -53,7 +52,6 @@ public class BygDoors {
         JACARANDA_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
         LAMENT_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
         MAHOGANY_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
-        MANGROVE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.MANGROVE).addMaterial("bookshelf", new Identifier("byg:mangrove_bookshelf")));
         MAPLE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.MAPLE).addMaterial("bookshelf", new Identifier("byg:maple_bookshelf")));
         NIGHTSHADE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.NIGHTSHADE).addMaterial("bookshelf", new Identifier("byg:nightshade_bookshelf")));
         PALM_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.PALM).addMaterial("bookshelf", new Identifier("byg:palm_bookshelf")));
@@ -85,7 +83,6 @@ public class BygDoors {
         JACARANDA_BOOKSHELF_DOOR.register();
         LAMENT_BOOKSHELF_DOOR.register();
         MAHOGANY_BOOKSHELF_DOOR.register();
-        MANGROVE_BOOKSHELF_DOOR.register();
         MAPLE_BOOKSHELF_DOOR.register();
         NIGHTSHADE_BOOKSHELF_DOOR.register();
         PALM_BOOKSHELF_DOOR.register();

@@ -5,7 +5,6 @@ import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -26,7 +25,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericFloatingShelf extends GenericShelf {
@@ -81,10 +79,9 @@ public class GenericFloatingShelf extends GenericShelf {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = settings.getMaterials();
+        Identifier slab = settings.getMaterial("slab");
 
-        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
-        Identifier slab = materials.getOrDefault("slab", materials.get("main"));
+        Identifier plankTexture = settings.getBlockTexture("planks");
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -107,7 +104,7 @@ public class GenericFloatingShelf extends GenericShelf {
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel
                 .model(ModInfo.MOD_ID + ":block/furniture/shelves/floating")
-                .textures(new JTextures().var("planks", Texture.getBlockTextureID(planks).toString())),
+                .textures(new JTextures().var("planks", plankTexture.toString())),
             MODEL_ID
         );
 

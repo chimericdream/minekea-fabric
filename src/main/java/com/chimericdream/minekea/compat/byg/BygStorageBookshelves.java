@@ -22,7 +22,6 @@ public class BygStorageBookshelves {
     public static final GenericStorageBookshelf JACARANDA_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf LAMENT_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf MAHOGANY_STORAGE_BOOKSHELF;
-    public static final GenericStorageBookshelf MANGROVE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf MAPLE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf NIGHTSHADE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf PALM_STORAGE_BOOKSHELF;
@@ -53,7 +52,6 @@ public class BygStorageBookshelves {
         JACARANDA_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
         LAMENT_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
         MAHOGANY_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
-        MANGROVE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.MANGROVE).addMaterial("bookshelf", new Identifier("byg:mangrove_bookshelf")));
         MAPLE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.MAPLE).addMaterial("bookshelf", new Identifier("byg:maple_bookshelf")));
         NIGHTSHADE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.NIGHTSHADE).addMaterial("bookshelf", new Identifier("byg:nightshade_bookshelf")));
         PALM_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.PALM).addMaterial("bookshelf", new Identifier("byg:palm_bookshelf")));
@@ -85,7 +83,6 @@ public class BygStorageBookshelves {
         JACARANDA_STORAGE_BOOKSHELF.register();
         LAMENT_STORAGE_BOOKSHELF.register();
         MAHOGANY_STORAGE_BOOKSHELF.register();
-        MANGROVE_STORAGE_BOOKSHELF.register();
         MAPLE_STORAGE_BOOKSHELF.register();
         NIGHTSHADE_STORAGE_BOOKSHELF.register();
         PALM_STORAGE_BOOKSHELF.register();

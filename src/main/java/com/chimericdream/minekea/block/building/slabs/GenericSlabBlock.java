@@ -4,7 +4,6 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -21,7 +20,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
@@ -56,11 +54,9 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((SlabSettings) this.settings).getMaterials();
-
-        Identifier end = materials.getOrDefault("end", materials.get("main"));
-        Identifier side = materials.get("main");
-        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+        Identifier ingredient = settings.getMaterial("ingredient");
+        Identifier endTexture = settings.getBlockTexture("end");
+        Identifier sideTexture = settings.getBlockTexture("main");
 
         Identifier SLAB_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier TOP_SLAB_MODEL_ID = new Identifier(ModInfo.MOD_ID, SLAB_MODEL_ID.getPath() + "_top");
@@ -79,9 +75,9 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.getLootTableID(getBlockID()), LootTable.slabLootTable(getBlockID()));
 
         JTextures textures = new JTextures()
-            .var("bottom", Texture.getBlockTextureID(end).toString())
-            .var("top", Texture.getBlockTextureID(end).toString())
-            .var("side", Texture.getBlockTextureID(side).toString());
+            .var("bottom", endTexture.toString())
+            .var("top", endTexture.toString())
+            .var("side", sideTexture.toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minecraft:block/slab").textures(textures),

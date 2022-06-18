@@ -25,7 +25,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericBookshelf extends Block implements MinekeaBlock {
@@ -60,13 +59,9 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((BookshelfSettings) this.settings).getMaterials();
-
-        Identifier ingredient = materials.getOrDefault(
-            "ingredient",
-            materials.getOrDefault("planks", materials.get("main"))
-        );
-        Identifier sideTexture = materials.getOrDefault("side_texture", materials.get("main"));
+        Identifier ingredient = settings.getMaterial("ingredient", "planks");
+        // @TODO: refactor this to use the getBlockTexture thing I just added
+        Identifier sideTexture = settings.getMaterial("side_texture");
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());

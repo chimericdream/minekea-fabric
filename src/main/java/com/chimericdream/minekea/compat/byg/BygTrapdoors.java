@@ -22,7 +22,6 @@ public class BygTrapdoors {
     public static final GenericBookshelfTrapdoor JACARANDA_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor LAMENT_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor MAHOGANY_BOOKSHELF_TRAPDOOR;
-    public static final GenericBookshelfTrapdoor MANGROVE_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor MAPLE_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor NIGHTSHADE_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor PALM_BOOKSHELF_TRAPDOOR;
@@ -53,7 +52,6 @@ public class BygTrapdoors {
         JACARANDA_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
         LAMENT_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
         MAHOGANY_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
-        MANGROVE_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.MANGROVE).addMaterial("bookshelf", new Identifier("byg:mangrove_bookshelf")));
         MAPLE_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.MAPLE).addMaterial("bookshelf", new Identifier("byg:maple_bookshelf")));
         NIGHTSHADE_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.NIGHTSHADE).addMaterial("bookshelf", new Identifier("byg:nightshade_bookshelf")));
         PALM_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.PALM).addMaterial("bookshelf", new Identifier("byg:palm_bookshelf")));
@@ -85,7 +83,6 @@ public class BygTrapdoors {
         JACARANDA_BOOKSHELF_TRAPDOOR.register();
         LAMENT_BOOKSHELF_TRAPDOOR.register();
         MAHOGANY_BOOKSHELF_TRAPDOOR.register();
-        MANGROVE_BOOKSHELF_TRAPDOOR.register();
         MAPLE_BOOKSHELF_TRAPDOOR.register();
         NIGHTSHADE_BOOKSHELF_TRAPDOOR.register();
         PALM_BOOKSHELF_TRAPDOOR.register();

@@ -24,7 +24,6 @@ public class BygBookshelfStairs {
     public static final GenericBookshelfStairs JACARANDA_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs LAMENT_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs MAHOGANY_BOOKSHELF_STAIRS;
-    public static final GenericBookshelfStairs MANGROVE_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs MAPLE_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs NIGHTSHADE_BOOKSHELF_STAIRS;
     public static final GenericBookshelfStairs PALM_BOOKSHELF_STAIRS;
@@ -54,7 +53,6 @@ public class BygBookshelfStairs {
     public static final GenericVerticalBookshelfStairs JACARANDA_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs LAMENT_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs MAHOGANY_VERTICAL_BOOKSHELF_STAIRS;
-    public static final GenericVerticalBookshelfStairs MANGROVE_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs MAPLE_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs NIGHTSHADE_VERTICAL_BOOKSHELF_STAIRS;
     public static final GenericVerticalBookshelfStairs PALM_VERTICAL_BOOKSHELF_STAIRS;
@@ -85,7 +83,6 @@ public class BygBookshelfStairs {
         JACARANDA_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")));
         LAMENT_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")));
         MAHOGANY_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")));
-        MANGROVE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.MANGROVE).addMaterial("bookshelf", new Identifier("byg:mangrove_bookshelf")));
         MAPLE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.MAPLE).addMaterial("bookshelf", new Identifier("byg:maple_bookshelf")));
         NIGHTSHADE_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.NIGHTSHADE).addMaterial("bookshelf", new Identifier("byg:nightshade_bookshelf")));
         PALM_BOOKSHELF_STAIRS = new GenericBookshelfStairs(new BookshelfStairsSettings(BygBlockSettings.PALM).addMaterial("bookshelf", new Identifier("byg:palm_bookshelf")));
@@ -115,7 +112,6 @@ public class BygBookshelfStairs {
         JACARANDA_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.JACARANDA).addMaterial("bookshelf", new Identifier("byg:jacaranda_bookshelf")).addMaterial("model", new Identifier("byg:block/jacaranda_bookshelf")));
         LAMENT_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.LAMENT).addMaterial("bookshelf", new Identifier("byg:lament_bookshelf")).addMaterial("model", new Identifier("byg:block/lament_bookshelf")));
         MAHOGANY_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.MAHOGANY).addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf")).addMaterial("model", new Identifier("byg:block/mahogany_bookshelf")));
-        MANGROVE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.MANGROVE).addMaterial("bookshelf", new Identifier("byg:mangrove_bookshelf")).addMaterial("model", new Identifier("byg:block/mangrove_bookshelf")));
         MAPLE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.MAPLE).addMaterial("bookshelf", new Identifier("byg:maple_bookshelf")).addMaterial("model", new Identifier("byg:block/maple_bookshelf")));
         NIGHTSHADE_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.NIGHTSHADE).addMaterial("bookshelf", new Identifier("byg:nightshade_bookshelf")).addMaterial("model", new Identifier("byg:block/nightshade_bookshelf")));
         PALM_VERTICAL_BOOKSHELF_STAIRS = new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(BygBlockSettings.PALM).addMaterial("bookshelf", new Identifier("byg:palm_bookshelf")).addMaterial("model", new Identifier("byg:block/palm_bookshelf")));
@@ -147,7 +143,6 @@ public class BygBookshelfStairs {
         JACARANDA_BOOKSHELF_STAIRS.register();
         LAMENT_BOOKSHELF_STAIRS.register();
         MAHOGANY_BOOKSHELF_STAIRS.register();
-        MANGROVE_BOOKSHELF_STAIRS.register();
         MAPLE_BOOKSHELF_STAIRS.register();
         NIGHTSHADE_BOOKSHELF_STAIRS.register();
         PALM_BOOKSHELF_STAIRS.register();
@@ -177,7 +172,6 @@ public class BygBookshelfStairs {
         JACARANDA_VERTICAL_BOOKSHELF_STAIRS.register();
         LAMENT_VERTICAL_BOOKSHELF_STAIRS.register();
         MAHOGANY_VERTICAL_BOOKSHELF_STAIRS.register();
-        MANGROVE_VERTICAL_BOOKSHELF_STAIRS.register();
         MAPLE_VERTICAL_BOOKSHELF_STAIRS.register();
         NIGHTSHADE_VERTICAL_BOOKSHELF_STAIRS.register();
         PALM_VERTICAL_BOOKSHELF_STAIRS.register();

@@ -6,7 +6,6 @@ import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -184,6 +183,8 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
 
         Map<String, Identifier> materials = settings.getMaterials();
 
+        Identifier shelf = settings.getMaterial("bookshelf");
+
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
@@ -198,7 +199,7 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
             JRecipe.shapeless(
                 JIngredients.ingredients()
                     .add(JIngredient.ingredient().item("minecraft:chest"))
-                    .add(JIngredient.ingredient().item(materials.get("bookshelf").toString())),
+                    .add(JIngredient.ingredient().item(shelf.toString())),
                 JResult.result(getBlockID().toString())
             )
         );
@@ -238,12 +239,7 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
                 )
         );
 
-        String sideTexture = Texture.getBlockTextureID(
-            materials.getOrDefault(
-                "side_texture",
-                materials.getOrDefault("planks", materials.get("main"))
-            )
-        ).toString();
+        String sideTexture = settings.getBlockTexture("side_texture", "planks").toString();
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/furniture/bookshelves/bookshelf")

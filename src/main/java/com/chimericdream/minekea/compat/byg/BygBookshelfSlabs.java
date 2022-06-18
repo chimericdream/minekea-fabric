@@ -22,7 +22,6 @@ public class BygBookshelfSlabs {
     public static final GenericBookshelfSlab JACARANDA_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab LAMENT_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab MAHOGANY_BOOKSHELF_SLAB;
-    public static final GenericBookshelfSlab MANGROVE_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab MAPLE_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab NIGHTSHADE_BOOKSHELF_SLAB;
     public static final GenericBookshelfSlab PALM_BOOKSHELF_SLAB;
@@ -121,11 +120,6 @@ public class BygBookshelfSlabs {
                 .addMaterial("bookshelf", new Identifier("byg:mahogany_bookshelf"))
                 .addMaterial("model", new Identifier("byg:block/mahogany_bookshelf"))
         );
-        MANGROVE_BOOKSHELF_SLAB = new GenericBookshelfSlab(
-            new BookshelfSlabSettings(BygBlockSettings.MANGROVE)
-                .addMaterial("bookshelf", new Identifier("byg:mangrove_bookshelf"))
-                .addMaterial("model", new Identifier("byg:block/mangrove_bookshelf"))
-        );
         MAPLE_BOOKSHELF_SLAB = new GenericBookshelfSlab(
             new BookshelfSlabSettings(BygBlockSettings.MAPLE)
                 .addMaterial("bookshelf", new Identifier("byg:maple_bookshelf"))
@@ -201,7 +195,6 @@ public class BygBookshelfSlabs {
         JACARANDA_BOOKSHELF_SLAB.register();
         LAMENT_BOOKSHELF_SLAB.register();
         MAHOGANY_BOOKSHELF_SLAB.register();
-        MANGROVE_BOOKSHELF_SLAB.register();
         MAPLE_BOOKSHELF_SLAB.register();
         NIGHTSHADE_BOOKSHELF_SLAB.register();
         PALM_BOOKSHELF_SLAB.register();

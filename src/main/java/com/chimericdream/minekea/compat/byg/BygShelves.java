@@ -23,7 +23,6 @@ public class BygShelves {
     public static final GenericShelf JACARANDA_SHELF;
     public static final GenericShelf LAMENT_SHELF;
     public static final GenericShelf MAHOGANY_SHELF;
-    public static final GenericShelf MANGROVE_SHELF;
     public static final GenericShelf MAPLE_SHELF;
     public static final GenericShelf NIGHTSHADE_SHELF;
     public static final GenericShelf PALM_SHELF;
@@ -53,7 +52,6 @@ public class BygShelves {
     public static final GenericFloatingShelf JACARANDA_FLOATING_SHELF;
     public static final GenericFloatingShelf LAMENT_FLOATING_SHELF;
     public static final GenericFloatingShelf MAHOGANY_FLOATING_SHELF;
-    public static final GenericFloatingShelf MANGROVE_FLOATING_SHELF;
     public static final GenericFloatingShelf MAPLE_FLOATING_SHELF;
     public static final GenericFloatingShelf NIGHTSHADE_FLOATING_SHELF;
     public static final GenericFloatingShelf PALM_FLOATING_SHELF;
@@ -84,7 +82,6 @@ public class BygShelves {
         JACARANDA_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.JACARANDA));
         LAMENT_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.LAMENT));
         MAHOGANY_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.MAHOGANY));
-        MANGROVE_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.MANGROVE));
         MAPLE_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.MAPLE));
         NIGHTSHADE_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.NIGHTSHADE));
         PALM_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.PALM));
@@ -114,7 +111,6 @@ public class BygShelves {
         JACARANDA_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.JACARANDA));
         LAMENT_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.LAMENT));
         MAHOGANY_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.MAHOGANY));
-        MANGROVE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.MANGROVE));
         MAPLE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.MAPLE));
         NIGHTSHADE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.NIGHTSHADE));
         PALM_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.PALM));
@@ -146,7 +142,6 @@ public class BygShelves {
         JACARANDA_SHELF.register();
         LAMENT_SHELF.register();
         MAHOGANY_SHELF.register();
-        MANGROVE_SHELF.register();
         MAPLE_SHELF.register();
         NIGHTSHADE_SHELF.register();
         PALM_SHELF.register();
@@ -176,7 +171,6 @@ public class BygShelves {
         JACARANDA_FLOATING_SHELF.register();
         LAMENT_FLOATING_SHELF.register();
         MAHOGANY_FLOATING_SHELF.register();
-        MANGROVE_FLOATING_SHELF.register();
         MAPLE_FLOATING_SHELF.register();
         NIGHTSHADE_FLOATING_SHELF.register();
         PALM_FLOATING_SHELF.register();

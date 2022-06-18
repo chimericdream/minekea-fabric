@@ -4,7 +4,6 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -21,7 +20,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBlock {
@@ -56,10 +54,8 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = settings.getMaterials();
-
-        Identifier shelf = materials.get("bookshelf");
-        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
+        Identifier shelf = settings.getMaterial("bookshelf");
+        Identifier plankTexture = settings.getBlockTexture("planks");
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -80,7 +76,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.getLootTableID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
-            .var("material", Texture.getBlockTextureID(planks).toString())
+            .var("material", plankTexture.toString())
             .var("shelf", "minekea:block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(

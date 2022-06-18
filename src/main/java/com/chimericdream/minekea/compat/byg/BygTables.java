@@ -21,7 +21,6 @@ public class BygTables {
     public static final GenericTable JACARANDA_TABLE;
     public static final GenericTable LAMENT_TABLE;
     public static final GenericTable MAHOGANY_TABLE;
-    public static final GenericTable MANGROVE_TABLE;
     public static final GenericTable MAPLE_TABLE;
     public static final GenericTable NIGHTSHADE_TABLE;
     public static final GenericTable PALM_TABLE;
@@ -52,7 +51,6 @@ public class BygTables {
         JACARANDA_TABLE = new GenericTable(new TableSettings(BygBlockSettings.JACARANDA));
         LAMENT_TABLE = new GenericTable(new TableSettings(BygBlockSettings.LAMENT));
         MAHOGANY_TABLE = new GenericTable(new TableSettings(BygBlockSettings.MAHOGANY));
-        MANGROVE_TABLE = new GenericTable(new TableSettings(BygBlockSettings.MANGROVE));
         MAPLE_TABLE = new GenericTable(new TableSettings(BygBlockSettings.MAPLE));
         NIGHTSHADE_TABLE = new GenericTable(new TableSettings(BygBlockSettings.NIGHTSHADE));
         PALM_TABLE = new GenericTable(new TableSettings(BygBlockSettings.PALM));
@@ -84,7 +82,6 @@ public class BygTables {
         JACARANDA_TABLE.register();
         LAMENT_TABLE.register();
         MAHOGANY_TABLE.register();
-        MANGROVE_TABLE.register();
         MAPLE_TABLE.register();
         NIGHTSHADE_TABLE.register();
         PALM_TABLE.register();

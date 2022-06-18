@@ -3,7 +3,6 @@ package com.chimericdream.minekea.block.building.stairs;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -128,10 +127,8 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((VerticalStairsSettings) this.settings).getMaterials();
-
-        Identifier main = materials.get("main");
-        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+        Identifier ingredient = settings.getMaterial("ingredient");
+        Identifier mainTexture = settings.getBlockTexture("main");
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -147,7 +144,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/building/stairs/vertical")
-                .textures(new JTextures().var("main", Texture.getBlockTextureID(main).toString())),
+                .textures(new JTextures().var("main", mainTexture.toString())),
             MODEL_ID
         );
 

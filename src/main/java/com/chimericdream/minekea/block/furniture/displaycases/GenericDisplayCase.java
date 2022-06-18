@@ -7,7 +7,6 @@ import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -39,7 +38,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock {
@@ -209,12 +207,14 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock 
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = settings.getMaterials();
         boolean isStripped = ((DisplayCaseSettings) settings).isStripped;
 
-        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
-        Identifier log = materials.getOrDefault("log", materials.get("main"));
-        Identifier stripped_log = materials.getOrDefault("stripped_log", materials.get("main"));
+        Identifier planks = settings.getMaterial("planks");
+        Identifier log = settings.getMaterial("log");
+        Identifier stripped_log = settings.getMaterial("stripped_log");
+
+        Identifier logTexture = settings.getBlockTexture("log");
+        Identifier strippedLogTexture = settings.getBlockTexture("stripped_log");
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -236,9 +236,9 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         JTextures textures = new JTextures()
-            .var("stripped_material", Texture.getBlockTextureID(stripped_log).toString())
-            .var("material", isStripped ? Texture.getBlockTextureID(stripped_log).toString() : Texture.getBlockTextureID(log).toString())
-            .var("particle", Texture.getBlockTextureID(stripped_log).toString());
+            .var("stripped_material", strippedLogTexture.toString())
+            .var("material", isStripped ? strippedLogTexture.toString() : logTexture.toString())
+            .var("particle", strippedLogTexture.toString());
 
         JModel model = JModel.model("minekea:block/furniture/display_case").textures(textures);
 
@@ -258,6 +258,10 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock 
         }
 
         public String getNamePattern() {
+            if (isStripped) {
+                return Objects.requireNonNullElse(namePatternOverride, "Stripped %s Display Case");
+            }
+
             return Objects.requireNonNullElse(namePatternOverride, "%s Display Case");
         }
 

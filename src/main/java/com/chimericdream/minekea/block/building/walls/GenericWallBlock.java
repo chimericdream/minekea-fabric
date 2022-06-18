@@ -4,7 +4,6 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -22,7 +21,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericWallBlock extends WallBlock implements MinekeaBlock {
@@ -59,10 +57,8 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
 
         MinekeaResourcePack.WALL_TAG.add(getBlockID());
 
-        Map<String, Identifier> materials = ((WallSettings) this.settings).getMaterials();
-
-        Identifier main = materials.get("main");
-        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+        Identifier ingredient = settings.getMaterial("ingredient");
+        Identifier mainTexture = settings.getBlockTexture("main");
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -84,7 +80,7 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
 
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
-        JTextures textures = new JTextures().var("wall", Texture.getBlockTextureID(main).toString());
+        JTextures textures = new JTextures().var("wall", mainTexture.toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minecraft:block/wall_inventory").textures(textures),

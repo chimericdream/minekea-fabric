@@ -23,7 +23,6 @@ public class BygSeats {
     public static final GenericChair JACARANDA_CHAIR;
     public static final GenericChair LAMENT_CHAIR;
     public static final GenericChair MAHOGANY_CHAIR;
-    public static final GenericChair MANGROVE_CHAIR;
     public static final GenericChair MAPLE_CHAIR;
     public static final GenericChair NIGHTSHADE_CHAIR;
     public static final GenericChair PALM_CHAIR;
@@ -53,7 +52,6 @@ public class BygSeats {
     public static final GenericStool JACARANDA_STOOL;
     public static final GenericStool LAMENT_STOOL;
     public static final GenericStool MAHOGANY_STOOL;
-    public static final GenericStool MANGROVE_STOOL;
     public static final GenericStool MAPLE_STOOL;
     public static final GenericStool NIGHTSHADE_STOOL;
     public static final GenericStool PALM_STOOL;
@@ -84,7 +82,6 @@ public class BygSeats {
         JACARANDA_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.JACARANDA));
         LAMENT_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.LAMENT));
         MAHOGANY_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.MAHOGANY));
-        MANGROVE_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.MANGROVE));
         MAPLE_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.MAPLE));
         NIGHTSHADE_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.NIGHTSHADE));
         PALM_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.PALM));
@@ -114,7 +111,6 @@ public class BygSeats {
         JACARANDA_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.JACARANDA));
         LAMENT_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.LAMENT));
         MAHOGANY_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.MAHOGANY));
-        MANGROVE_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.MANGROVE));
         MAPLE_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.MAPLE));
         NIGHTSHADE_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.NIGHTSHADE));
         PALM_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.PALM));
@@ -146,7 +142,6 @@ public class BygSeats {
         JACARANDA_CHAIR.register();
         LAMENT_CHAIR.register();
         MAHOGANY_CHAIR.register();
-        MANGROVE_CHAIR.register();
         MAPLE_CHAIR.register();
         NIGHTSHADE_CHAIR.register();
         PALM_CHAIR.register();
@@ -176,7 +171,6 @@ public class BygSeats {
         JACARANDA_STOOL.register();
         LAMENT_STOOL.register();
         MAHOGANY_STOOL.register();
-        MANGROVE_STOOL.register();
         MAPLE_STOOL.register();
         NIGHTSHADE_STOOL.register();
         PALM_STOOL.register();

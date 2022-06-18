@@ -4,7 +4,6 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -21,7 +20,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
@@ -55,11 +53,11 @@ public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((BarrelSettings) this.settings).getMaterials();
+        String PLANK_MATERIAL = settings.getMaterial("planks").toString();
+        String SLAB_MATERIAL = settings.getMaterial("slab").toString();
 
-        String PLANK_MATERIAL = materials.getOrDefault("planks", materials.get("main")).toString();
-        String SLAB_MATERIAL = materials.getOrDefault("slab", materials.get("main")).toString();
-        String LOG_MATERIAL = materials.getOrDefault("stripped_log", materials.get("main")).toString();
+        Identifier LOG_TEXTURE = settings.getBlockTexture("stripped_log");
+        Identifier PLANK_TEXTURE = settings.getBlockTexture("planks");
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -79,8 +77,8 @@ public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
-            .var("face", Texture.getBlockTextureID(LOG_MATERIAL).toString())
-            .var("sides", Texture.getBlockTextureID(PLANK_MATERIAL).toString());
+            .var("face", LOG_TEXTURE.toString())
+            .var("sides", PLANK_TEXTURE.toString());
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
             JModel.model("minekea:block/containers/barrel").textures(textures),

@@ -4,7 +4,6 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -21,7 +20,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericBookshelfStairs extends StairsBlock implements MinekeaBlock {
@@ -56,10 +54,8 @@ public class GenericBookshelfStairs extends StairsBlock implements MinekeaBlock 
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = ((BookshelfStairsSettings) this.settings).getMaterials();
-
-        Identifier shelf = materials.get("bookshelf");
-        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
+        Identifier shelf = settings.getMaterial("bookshelf");
+        Identifier plankTexture = settings.getBlockTexture("planks");
 
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
 
@@ -79,7 +75,7 @@ public class GenericBookshelfStairs extends StairsBlock implements MinekeaBlock 
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
-            .var("planks", Texture.getBlockTextureID(planks).toString())
+            .var("planks", plankTexture.toString())
             .var("shelf", ModInfo.MOD_ID + ":block/furniture/bookshelves/shelf0");
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(

@@ -21,7 +21,6 @@ public class BygCrates {
     public static final GenericCrate JACARANDA_CRATE;
     public static final GenericCrate LAMENT_CRATE;
     public static final GenericCrate MAHOGANY_CRATE;
-    public static final GenericCrate MANGROVE_CRATE;
     public static final GenericCrate MAPLE_CRATE;
     public static final GenericCrate NIGHTSHADE_CRATE;
     public static final GenericCrate PALM_CRATE;
@@ -52,7 +51,6 @@ public class BygCrates {
         JACARANDA_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.JACARANDA));
         LAMENT_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.LAMENT));
         MAHOGANY_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.MAHOGANY));
-        MANGROVE_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.MANGROVE));
         MAPLE_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.MAPLE));
         NIGHTSHADE_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.NIGHTSHADE));
         PALM_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.PALM));
@@ -84,7 +82,6 @@ public class BygCrates {
         JACARANDA_CRATE.register();
         LAMENT_CRATE.register();
         MAHOGANY_CRATE.register();
-        MANGROVE_CRATE.register();
         MAPLE_CRATE.register();
         NIGHTSHADE_CRATE.register();
         PALM_CRATE.register();

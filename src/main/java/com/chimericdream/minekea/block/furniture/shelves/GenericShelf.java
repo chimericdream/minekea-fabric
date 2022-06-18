@@ -7,7 +7,6 @@ import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -36,7 +35,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
@@ -258,11 +256,10 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Map<String, Identifier> materials = settings.getMaterials();
+        Identifier slab = settings.getMaterial("slab");
 
-        Identifier log = materials.getOrDefault("log", materials.get("main"));
-        Identifier planks = materials.getOrDefault("planks", materials.get("main"));
-        Identifier slab = materials.getOrDefault("slab", materials.get("main"));
+        Identifier plankTexture = settings.getBlockTexture("planks");
+        Identifier logTexture = settings.getBlockTexture("log");
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -287,8 +284,8 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
                 .model(ModInfo.MOD_ID + ":block/furniture/shelves/supported")
                 .textures(
                     new JTextures()
-                        .var("planks", Texture.getBlockTextureID(planks).toString())
-                        .var("log", Texture.getBlockTextureID(log).toString())
+                        .var("planks", plankTexture.toString())
+                        .var("log", logTexture.toString())
                 ),
             MODEL_ID
         );

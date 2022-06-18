@@ -21,7 +21,6 @@ public class BygDisplayCases {
     public static final GenericDisplayCase JACARANDA_DISPLAY_CASE;
     public static final GenericDisplayCase LAMENT_DISPLAY_CASE;
     public static final GenericDisplayCase MAHOGANY_DISPLAY_CASE;
-    public static final GenericDisplayCase MANGROVE_DISPLAY_CASE;
     public static final GenericDisplayCase MAPLE_DISPLAY_CASE;
     public static final GenericDisplayCase NIGHTSHADE_DISPLAY_CASE;
     public static final GenericDisplayCase PALM_DISPLAY_CASE;
@@ -51,7 +50,6 @@ public class BygDisplayCases {
     public static final GenericDisplayCase STRIPPED_JACARANDA_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_LAMENT_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_MAHOGANY_DISPLAY_CASE;
-    public static final GenericDisplayCase STRIPPED_MANGROVE_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_MAPLE_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_NIGHTSHADE_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_PALM_DISPLAY_CASE;
@@ -82,7 +80,6 @@ public class BygDisplayCases {
         JACARANDA_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.JACARANDA));
         LAMENT_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.LAMENT));
         MAHOGANY_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.MAHOGANY));
-        MANGROVE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.MANGROVE));
         MAPLE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.MAPLE));
         NIGHTSHADE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.NIGHTSHADE));
         PALM_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.PALM));
@@ -112,7 +109,6 @@ public class BygDisplayCases {
         STRIPPED_JACARANDA_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.JACARANDA).stripped());
         STRIPPED_LAMENT_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.LAMENT).stripped());
         STRIPPED_MAHOGANY_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.MAHOGANY).stripped());
-        STRIPPED_MANGROVE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.MANGROVE).stripped());
         STRIPPED_MAPLE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.MAPLE).stripped());
         STRIPPED_NIGHTSHADE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.NIGHTSHADE).stripped());
         STRIPPED_PALM_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.PALM).stripped());
@@ -144,7 +140,6 @@ public class BygDisplayCases {
         JACARANDA_DISPLAY_CASE.register();
         LAMENT_DISPLAY_CASE.register();
         MAHOGANY_DISPLAY_CASE.register();
-        MANGROVE_DISPLAY_CASE.register();
         MAPLE_DISPLAY_CASE.register();
         NIGHTSHADE_DISPLAY_CASE.register();
         PALM_DISPLAY_CASE.register();
@@ -174,7 +169,6 @@ public class BygDisplayCases {
         STRIPPED_JACARANDA_DISPLAY_CASE.register();
         STRIPPED_LAMENT_DISPLAY_CASE.register();
         STRIPPED_MAHOGANY_DISPLAY_CASE.register();
-        STRIPPED_MANGROVE_DISPLAY_CASE.register();
         STRIPPED_MAPLE_DISPLAY_CASE.register();
         STRIPPED_NIGHTSHADE_DISPLAY_CASE.register();
         STRIPPED_PALM_DISPLAY_CASE.register();

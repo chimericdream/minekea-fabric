@@ -21,7 +21,6 @@ public class BygBarrels {
     public static final GenericBarrel JACARANDA_BARREL;
     public static final GenericBarrel LAMENT_BARREL;
     public static final GenericBarrel MAHOGANY_BARREL;
-    public static final GenericBarrel MANGROVE_BARREL;
     public static final GenericBarrel MAPLE_BARREL;
     public static final GenericBarrel NIGHTSHADE_BARREL;
     public static final GenericBarrel PALM_BARREL;
@@ -52,7 +51,6 @@ public class BygBarrels {
         JACARANDA_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.JACARANDA));
         LAMENT_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.LAMENT));
         MAHOGANY_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.MAHOGANY));
-        MANGROVE_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.MANGROVE));
         MAPLE_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.MAPLE));
         NIGHTSHADE_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.NIGHTSHADE));
         PALM_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.PALM));
@@ -84,7 +82,6 @@ public class BygBarrels {
         JACARANDA_BARREL.register();
         LAMENT_BARREL.register();
         MAHOGANY_BARREL.register();
-        MANGROVE_BARREL.register();
         MAPLE_BARREL.register();
         NIGHTSHADE_BARREL.register();
         PALM_BARREL.register();
