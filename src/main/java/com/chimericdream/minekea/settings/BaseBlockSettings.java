@@ -1255,6 +1255,88 @@ public class BaseBlockSettings {
 
     /******************************************************************************************************************/
 
+    public static DefaultSettings WHITE_WOOL = new DefaultSettings(Blocks.WHITE_WOOL)
+        .material("white_wool")
+        .ingredientName("White Wool")
+        .materials(Map.of("main", new Identifier("minecraft:white_wool")));
+
+    public static DefaultSettings ORANGE_WOOL = new DefaultSettings(Blocks.ORANGE_WOOL)
+        .material("orange_wool")
+        .ingredientName("Orange Wool")
+        .materials(Map.of("main", new Identifier("minecraft:orange_wool")));
+
+    public static DefaultSettings MAGENTA_WOOL = new DefaultSettings(Blocks.MAGENTA_WOOL)
+        .material("magenta_wool")
+        .ingredientName("Magenta Wool")
+        .materials(Map.of("main", new Identifier("minecraft:magenta_wool")));
+
+    public static DefaultSettings LIGHT_BLUE_WOOL = new DefaultSettings(Blocks.LIGHT_BLUE_WOOL)
+        .material("light_blue_wool")
+        .ingredientName("Light Blue Wool")
+        .materials(Map.of("main", new Identifier("minecraft:light_blue_wool")));
+
+    public static DefaultSettings YELLOW_WOOL = new DefaultSettings(Blocks.YELLOW_WOOL)
+        .material("yellow_wool")
+        .ingredientName("Yellow Wool")
+        .materials(Map.of("main", new Identifier("minecraft:yellow_wool")));
+
+    public static DefaultSettings LIME_WOOL = new DefaultSettings(Blocks.LIME_WOOL)
+        .material("lime_wool")
+        .ingredientName("Lime Wool")
+        .materials(Map.of("main", new Identifier("minecraft:lime_wool")));
+
+    public static DefaultSettings PINK_WOOL = new DefaultSettings(Blocks.PINK_WOOL)
+        .material("pink_wool")
+        .ingredientName("Pink Wool")
+        .materials(Map.of("main", new Identifier("minecraft:pink_wool")));
+
+    public static DefaultSettings GRAY_WOOL = new DefaultSettings(Blocks.GRAY_WOOL)
+        .material("gray_wool")
+        .ingredientName("Gray Wool")
+        .materials(Map.of("main", new Identifier("minecraft:gray_wool")));
+
+    public static DefaultSettings LIGHT_GRAY_WOOL = new DefaultSettings(Blocks.LIGHT_GRAY_WOOL)
+        .material("light_gray_wool")
+        .ingredientName("Light Gray Wool")
+        .materials(Map.of("main", new Identifier("minecraft:light_gray_wool")));
+
+    public static DefaultSettings CYAN_WOOL = new DefaultSettings(Blocks.CYAN_WOOL)
+        .material("cyan_wool")
+        .ingredientName("Cyan Wool")
+        .materials(Map.of("main", new Identifier("minecraft:cyan_wool")));
+
+    public static DefaultSettings PURPLE_WOOL = new DefaultSettings(Blocks.PURPLE_WOOL)
+        .material("purple_wool")
+        .ingredientName("Purple Wool")
+        .materials(Map.of("main", new Identifier("minecraft:purple_wool")));
+
+    public static DefaultSettings BLUE_WOOL = new DefaultSettings(Blocks.BLUE_WOOL)
+        .material("blue_wool")
+        .ingredientName("Blue Wool")
+        .materials(Map.of("main", new Identifier("minecraft:blue_wool")));
+
+    public static DefaultSettings BROWN_WOOL = new DefaultSettings(Blocks.BROWN_WOOL)
+        .material("brown_wool")
+        .ingredientName("Brown Wool")
+        .materials(Map.of("main", new Identifier("minecraft:brown_wool")));
+
+    public static DefaultSettings GREEN_WOOL = new DefaultSettings(Blocks.GREEN_WOOL)
+        .material("green_wool")
+        .ingredientName("Green Wool")
+        .materials(Map.of("main", new Identifier("minecraft:green_wool")));
+
+    public static DefaultSettings RED_WOOL = new DefaultSettings(Blocks.RED_WOOL)
+        .material("red_wool")
+        .ingredientName("Red Wool")
+        .materials(Map.of("main", new Identifier("minecraft:red_wool")));
+
+    public static DefaultSettings BLACK_WOOL = new DefaultSettings(Blocks.BLACK_WOOL)
+        .material("black_wool")
+        .ingredientName("Black Wool")
+        .materials(Map.of("main", new Identifier("minecraft:black_wool")));
+
+    /******************************************************************************************************************/
+
     public static DefaultSettings WHITE_TERRACOTTA = new DefaultSettings(Blocks.WHITE_TERRACOTTA)
         .material("white_terracotta")
         .ingredientName("White Terracotta")
@@ -2990,6 +3072,16 @@ public class BaseBlockSettings {
             Map.of(
                 "main", new Identifier("minecraft:nether_star"),
                 "ingredient", new Identifier("minecraft:nether_star")
+            )
+        );
+
+    public static DefaultSettings PAPER = new DefaultSettings(Blocks.HAY_BLOCK)
+        .material("paper")
+        .ingredientName("Paper")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:paper"),
+                "ingredient", new Identifier("minecraft:paper")
             )
         );
 

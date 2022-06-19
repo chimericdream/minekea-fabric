@@ -21,6 +21,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -36,10 +37,12 @@ import java.util.Objects;
 
 public class GenericStorageBlock extends Block implements MinekeaBlock {
     public static final EnumProperty<Direction.Axis> AXIS;
+    public static final DirectionProperty FACING;
     public static final BooleanProperty IS_BAGGED;
 
     static {
         AXIS = Properties.AXIS;
+        FACING = Properties.FACING;
         // @TODO: change this to `is_bagged` instead of `is_placed`
         IS_BAGGED = BooleanProperty.of("is_placed");
     }
@@ -73,13 +76,15 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(AXIS, IS_BAGGED);
+        builder.add(AXIS, FACING, IS_BAGGED);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         StorageBlockSettings settings = (StorageBlockSettings) this.settings;
 
-        BlockState state = this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
+        BlockState state = this.getDefaultState()
+            .with(AXIS, ctx.getSide().getAxis())
+            .with(FACING, ctx.getPlayerLookDirection().getOpposite());
 
         if (settings.isBaggedItem) {
             return state.with(IS_BAGGED, true);
@@ -167,15 +172,30 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
         if (settings.isColumnBlock) {
-            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-                JState.state(
-                    JState.variant()
-                        .put("axis=x", new JBlockModel(HORIZONTAL_MODEL_ID).x(90).y(90))
-                        .put("axis=y", new JBlockModel(MODEL_ID))
-                        .put("axis=z", new JBlockModel(HORIZONTAL_MODEL_ID).x(90))
-                ),
-                getBlockID()
-            );
+            if (settings.hasSeparateTop) {
+                MinekeaResourcePack.RESOURCE_PACK.addBlockState(
+                    JState.state(
+                        JState.variant()
+                            .put("facing=north", new JBlockModel(MODEL_ID).x(90))
+                            .put("facing=east", new JBlockModel(MODEL_ID).x(90).y(90))
+                            .put("facing=south", new JBlockModel(MODEL_ID).x(270))
+                            .put("facing=west", new JBlockModel(MODEL_ID).x(90).y(270))
+                            .put("facing=up", new JBlockModel(MODEL_ID))
+                            .put("facing=down", new JBlockModel(MODEL_ID).x(180))
+                    ),
+                    getBlockID()
+                );
+            } else {
+                MinekeaResourcePack.RESOURCE_PACK.addBlockState(
+                    JState.state(
+                        JState.variant()
+                            .put("axis=x", new JBlockModel(HORIZONTAL_MODEL_ID).x(90).y(90))
+                            .put("axis=y", new JBlockModel(MODEL_ID))
+                            .put("axis=z", new JBlockModel(HORIZONTAL_MODEL_ID).x(90))
+                    ),
+                    getBlockID()
+                );
+            }
         } else {
             MinekeaResourcePack.RESOURCE_PACK.addBlockState(
                 JState.state(

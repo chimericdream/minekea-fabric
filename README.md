@@ -95,6 +95,9 @@ The following textures and icons were created by [cesar_zorak](https://www.curse
 * Compressed golden apple block
 * Compressed blaze rod block
 * Compressed sugar
+* Wallpaper
+* Compressed ender pearl
+* Original pillow texture
 
 ## License
 

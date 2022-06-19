@@ -53,6 +53,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock SUGAR_BLOCK;
     public static final GenericStorageBlock SUGAR_CANE_BLOCK;
     public static final GenericStorageBlock TOTEM_BLOCK;
+    public static final GenericStorageBlock WALLPAPER_BLOCK;
     public static final GenericStorageBlock WHEAT_SEEDS_BLOCK;
 
     static {
@@ -95,6 +96,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         SUGAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR).bagged().sounds(BlockSoundGroup.SAND));
         SUGAR_CANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).namePattern("Bundle of %s").column().sounds(BlockSoundGroup.GRASS));
         TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).column().sounds(BlockSoundGroup.METAL));
+        WALLPAPER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PAPER).namePattern("Wallpaper").sounds(BlockSoundGroup.LADDER));
         WHEAT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.WHEAT_SEEDS).bagged().sounds(BlockSoundGroup.CROP));
     }
 
@@ -168,6 +170,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         SUGAR_BLOCK.register();
         SUGAR_CANE_BLOCK.register();
         TOTEM_BLOCK.register();
+        WALLPAPER_BLOCK.register();
         WHEAT_SEEDS_BLOCK.register();
     }
 

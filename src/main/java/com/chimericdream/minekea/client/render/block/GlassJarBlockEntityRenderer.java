@@ -458,6 +458,9 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
             case "minecraft:blaze_rod":
                 return new ItemStack(StorageBlocks.BLAZE_ROD_BLOCK.asItem());
 
+            case "minecraft:paper":
+                return new ItemStack(StorageBlocks.WALLPAPER_BLOCK.asItem());
+
             default:
                 return stack;
         }

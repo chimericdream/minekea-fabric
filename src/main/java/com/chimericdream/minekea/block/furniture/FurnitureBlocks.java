@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.furniture;
 import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.furniture.doors.Doors;
+import com.chimericdream.minekea.block.furniture.pillows.Pillows;
 import com.chimericdream.minekea.block.furniture.seating.Seats;
 import com.chimericdream.minekea.block.furniture.shelves.Shelves;
 import com.chimericdream.minekea.block.furniture.tables.Tables;
@@ -18,6 +19,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
     public static final Bookshelves BOOKSHELVES;
     public static final DisplayCases DISPLAY_CASES;
     public static final Doors DOORS;
+    public static final Pillows PILLOWS;
     public static final Seats SEATS;
     public static final Shelves SHELVES;
     public static final Tables TABLES;
@@ -27,6 +29,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
         BOOKSHELVES = new Bookshelves();
         DISPLAY_CASES = new DisplayCases();
         DOORS = new Doors();
+        PILLOWS = new Pillows();
         SEATS = new Seats();
         SHELVES = new Shelves();
         TABLES = new Tables();
@@ -39,6 +42,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
         BOOKSHELVES.initializeClient();
         DISPLAY_CASES.initializeClient();
         DOORS.initializeClient();
+        PILLOWS.initializeClient();
         SEATS.initializeClient();
         SHELVES.initializeClient();
         TABLES.initializeClient();
@@ -50,6 +54,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
         BOOKSHELVES.registerBlocks();
         DISPLAY_CASES.registerBlocks();
         DOORS.registerBlocks();
+        PILLOWS.registerBlocks();
         SEATS.registerBlocks();
         SHELVES.registerBlocks();
         TABLES.registerBlocks();
@@ -61,6 +66,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
         BOOKSHELVES.registerBlockEntities(otherMods);
         DISPLAY_CASES.registerBlockEntities(otherMods);
         DOORS.registerBlockEntities(otherMods);
+        PILLOWS.registerBlockEntities(otherMods);
         SEATS.registerBlockEntities(otherMods);
         SHELVES.registerBlockEntities(otherMods);
         TABLES.registerBlockEntities(otherMods);
@@ -72,6 +78,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
         BOOKSHELVES.registerEntities(otherMods);
         DISPLAY_CASES.registerEntities(otherMods);
         DOORS.registerEntities(otherMods);
+        PILLOWS.registerEntities(otherMods);
         SEATS.registerEntities(otherMods);
         SHELVES.registerEntities(otherMods);
         TABLES.registerEntities(otherMods);
@@ -83,6 +90,7 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
         BOOKSHELVES.setupResources();
         DISPLAY_CASES.setupResources();
         DOORS.setupResources();
+        PILLOWS.setupResources();
         SEATS.setupResources();
         SHELVES.setupResources();
         TABLES.setupResources();
