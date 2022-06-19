@@ -15,22 +15,26 @@ import net.devtech.arrp.json.recipe.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.*;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 import java.util.Map;
 import java.util.Objects;
@@ -60,9 +64,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        StorageBlockSettings settings = (StorageBlockSettings) this.settings;
-
-        if (settings.isBaggedItem) {
+        if (state.get(IS_BAGGED)) {
             return VoxelShapes.union(
                 Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 9.0, 16.0),
                 Block.createCuboidShape(1.0, 9.0, 1.0, 15.0, 10.0, 15.0),
@@ -91,6 +93,24 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
         }
 
         return state.with(IS_BAGGED, false);
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack heldItem = player.getStackInHand(hand);
+
+        if (state.get(IS_BAGGED) && heldItem.isItemEqual(Items.SHEARS.getDefaultStack())) {
+            if (world.isClient()) {
+                world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            } else {
+                world.setBlockState(pos, state.with(IS_BAGGED, false));
+                world.markDirty(pos);
+            }
+
+            return ActionResult.SUCCESS;
+        }
+
+        return ActionResult.PASS;
     }
 
     @Override
