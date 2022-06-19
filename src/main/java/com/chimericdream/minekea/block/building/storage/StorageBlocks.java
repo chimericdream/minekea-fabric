@@ -41,7 +41,9 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock CHORUS_FRUIT_BLOCK;
     public static final GenericStorageBlock ENDER_PEARL_BLOCK;
     public static final GenericStorageBlock FLINT_BLOCK;
+    public static final GenericStorageBlock GOLD_NUGGET_SACK;
     public static final GenericStorageBlock GOLDEN_APPLE_BLOCK;
+    public static final GenericStorageBlock IRON_NUGGET_SACK;
     public static final GenericStorageBlock LEATHER_BLOCK;
     public static final GenericStorageBlock MELON_SEEDS_BLOCK;
     public static final GenericStorageBlock NETHER_STAR_BLOCK;
@@ -84,7 +86,9 @@ public class StorageBlocks implements MinekeaBlockCategory {
         CHORUS_FRUIT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.CHORUS_FRUIT).bagged().sounds(BlockSoundGroup.WOOD));
         ENDER_PEARL_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.ENDER_PEARL).sounds(BlockSoundGroup.SHROOMLIGHT));
         FLINT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.FLINT).sounds(BlockSoundGroup.STONE));
+        GOLD_NUGGET_SACK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.GOLD_BLOCK).material("gold").ingredientName("Gold Nugget").namePattern("%s sack").bagged().addMaterial("ingredient", "minekea:currency/gold_nugget_bag").sounds(BlockSoundGroup.METAL));
         GOLDEN_APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.GOLDEN_APPLE).column().separateTop().sounds(BlockSoundGroup.WOOD));
+        IRON_NUGGET_SACK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.IRON_BLOCK).material("iron").ingredientName("Iron Nugget").namePattern("%s sack").bagged().addMaterial("ingredient", "minekea:currency/iron_nugget_bag").sounds(BlockSoundGroup.METAL));
         LEATHER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.LEATHER).sounds(BlockSoundGroup.WOOL));
         MELON_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.MELON_SEEDS).bagged().sounds(BlockSoundGroup.CROP));
         NETHER_STAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.NETHER_STAR).sounds(BlockSoundGroup.METAL));
@@ -92,9 +96,9 @@ public class StorageBlocks implements MinekeaBlockCategory {
         POTATO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.POTATO).bagged().sounds(BlockSoundGroup.CROP));
         PUMPKIN_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PUMPKIN_SEEDS).bagged().sounds(BlockSoundGroup.CROP));
         SET_OF_EGGS_BLOCK = new SetOfEggsBlock();
-        STICK_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.STICK).column().namePattern("Bundle of %s").ingredientName("Sticks").sounds(BlockSoundGroup.WOOD));
+        STICK_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.STICK).namePattern("Bundle of %s").ingredientName("Sticks").sounds(BlockSoundGroup.WOOD));
         SUGAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR).bagged().sounds(BlockSoundGroup.SAND));
-        SUGAR_CANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).namePattern("Bundle of %s").column().sounds(BlockSoundGroup.GRASS));
+        SUGAR_CANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).namePattern("Bundle of %s").sounds(BlockSoundGroup.GRASS));
         TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).column().sounds(BlockSoundGroup.METAL));
         WALLPAPER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PAPER).namePattern("Wallpaper").sounds(BlockSoundGroup.LADDER));
         WHEAT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.WHEAT_SEEDS).bagged().sounds(BlockSoundGroup.CROP));
@@ -125,7 +129,8 @@ public class StorageBlocks implements MinekeaBlockCategory {
             BROWN_DYE_BLOCK,
             GREEN_DYE_BLOCK,
             RED_DYE_BLOCK,
-            BLACK_DYE_BLOCK
+            BLACK_DYE_BLOCK,
+            SUGAR_CANE_BLOCK
         );
     }
 
@@ -158,7 +163,9 @@ public class StorageBlocks implements MinekeaBlockCategory {
         CHORUS_FRUIT_BLOCK.register();
         ENDER_PEARL_BLOCK.register();
         FLINT_BLOCK.register();
+        GOLD_NUGGET_SACK.register();
         GOLDEN_APPLE_BLOCK.register();
+        IRON_NUGGET_SACK.register();
         LEATHER_BLOCK.register();
         MELON_SEEDS_BLOCK.register();
         NETHER_STAR_BLOCK.register();

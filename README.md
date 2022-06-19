@@ -98,6 +98,8 @@ The following textures and icons were created by [cesar_zorak](https://www.curse
 * Wallpaper
 * Compressed ender pearl
 * Original pillow texture
+* Gold and iron nugget bags
+* Compressed gold and iron nugget blocks
 
 ## License
 

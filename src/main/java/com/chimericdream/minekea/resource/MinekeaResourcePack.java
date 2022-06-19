@@ -18,8 +18,8 @@ public class MinekeaResourcePack {
     public static final RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create(new Identifier(ModInfo.MOD_ID, "dynamic_resources"));
 
     public void register() {
-        MinekeaResourcePack.EN_US.entry(MINEKEA_CATEGORY, "Minekea");
-        MinekeaResourcePack.EN_US.entry(CYCLE_PAINTER_KEYBIND, "Block Painter: Cycle Color");
+        EN_US.entry(MINEKEA_CATEGORY, "Minekea");
+        EN_US.entry(CYCLE_PAINTER_KEYBIND, "Block Painter: Cycle Color");
 
         RESOURCE_PACK.addLang(new Identifier(ModInfo.MOD_ID, "en_us"), EN_US);
         RESOURCE_PACK.addTag(new Identifier(ModInfo.MOD_ID, "blocks/walls"), WALL_TAG);
