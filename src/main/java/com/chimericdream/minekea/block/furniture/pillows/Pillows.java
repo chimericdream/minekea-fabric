@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.furniture.pillows;
 
 import com.chimericdream.minekea.block.furniture.pillows.PillowBlock.PillowBlockSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 
@@ -87,5 +88,6 @@ public class Pillows implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.entry(PillowBlock.TRANSLATION_KEY, "Pillow");
     }
 }

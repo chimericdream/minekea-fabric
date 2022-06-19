@@ -12,4 +12,8 @@ public class TextHelpers {
     public static MutableText formatTooltip(MutableText tooltipText) {
         return tooltipText.formatted(Formatting.AQUA).formatted(Formatting.ITALIC);
     }
+
+    public static String getColorTranslationKey(String color) {
+        return String.format("color.minecraft.%s", color);
+    }
 }

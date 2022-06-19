@@ -7,6 +7,7 @@ import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.TextHelpers;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
@@ -20,6 +21,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -31,6 +33,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class PillowBlock extends Block implements MinekeaBlock {
+    public static final String TRANSLATION_KEY = "block.minekea.furniture.pillow";
+
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
     public PillowBlock(PillowBlockSettings settings) {
@@ -66,7 +70,10 @@ public class PillowBlock extends Block implements MinekeaBlock {
     @Override
     public void setupResources() {
         PillowBlockSettings settings = (PillowBlockSettings) this.settings;
-        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getColor()));
+        MinekeaResourcePack.EN_US.blockRespect(
+            this,
+            String.format(settings.getNamePattern(), Text.translatable(TextHelpers.getColorTranslationKey(settings.getColor())).getString())
+        );
 
         Map<String, Identifier> materials = settings.getMaterials();
 
@@ -95,7 +102,7 @@ public class PillowBlock extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         JTextures textures = new JTextures()
-            .var("all", String.format("%s:block/furniture/pillows/%s_opt2", ModInfo.MOD_ID, settings.getColor()));
+            .var("all", String.format("%s:block/furniture/pillows/%s", ModInfo.MOD_ID, settings.getColor()));
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minecraft:block/cube_all").textures(textures), MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
