@@ -4,7 +4,6 @@ import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
-import com.chimericdream.minekea.client.Keybindings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.crops.Crops;
@@ -18,8 +17,6 @@ import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.tag.CommonBlockTags;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Blocks;
@@ -209,18 +206,5 @@ public class MinekeaMod implements ModInitializer {
         ColoredBlocksRegistry.addBlock(Blocks.GREEN_STAINED_GLASS, "minecraft:stained_glass", BlockColor.GREEN);
         ColoredBlocksRegistry.addBlock(Blocks.RED_STAINED_GLASS, "minecraft:stained_glass", BlockColor.RED);
         ColoredBlocksRegistry.addBlock(Blocks.BLACK_STAINED_GLASS, "minecraft:stained_glass", BlockColor.BLACK);
-    }
-
-    @Environment(EnvType.CLIENT)
-    public static void onInitializeClient() {
-        LOGGER.info("[minekea] Initializing client code");
-
-        Keybindings.initialize();
-
-        ITEMS.initializeClient();
-
-        for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
-            category.initializeClient();
-        }
     }
 }
