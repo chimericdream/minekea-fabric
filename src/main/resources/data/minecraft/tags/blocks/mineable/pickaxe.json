@@ -1,29 +1,4 @@
 {
     "replace": false,
-    "values": [
-        "minekea:building/basalt_bricks",
-        "minekea:building/basalt_brick_slab",
-        "minekea:building/basalt_brick_stairs",
-        "minekea:building/chiseled_basalt_bricks",
-        "minekea:building/cracked_basalt_bricks",
-        "minekea:building/cracked_basalt_brick_slab",
-        "minekea:building/cracked_basalt_brick_stairs",
-        "minekea:building/crimson_basalt_bricks",
-        "minekea:building/crimson_basalt_brick_slab",
-        "minekea:building/crimson_basalt_brick_stairs",
-        "minekea:building/mossy_basalt_bricks",
-        "minekea:building/mossy_basalt_brick_slab",
-        "minekea:building/mossy_basalt_brick_stairs",
-        "minekea:building/warped_basalt_bricks",
-        "minekea:building/warped_basalt_brick_slab",
-        "minekea:building/warped_basalt_brick_stairs",
-        "minekea:building/warped_nether_bricks",
-        "minekea:building/warped_nether_brick_slab",
-        "minekea:building/warped_nether_brick_stairs",
-        "minekea:storage/compressed_ender_pearl",
-        "#minekea:lanterns",
-        "#minekea:non_wooden_beams",
-        "#minekea:non_wooden_bookshelves",
-        "#minekea:non_wooden_vertical_stairs"
-    ]
+    "values": ["#minekea:mineable/pickaxe"]
 }

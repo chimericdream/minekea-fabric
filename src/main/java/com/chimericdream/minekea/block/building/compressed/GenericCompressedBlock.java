@@ -117,7 +117,7 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
     @Override
     public void setupResources() {
         CompressedBlockSettings settings = (CompressedBlockSettings) this.settings;
-
+        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
         Map<String, Identifier> materials = settings.getMaterials();
 
         Identifier end = materials.getOrDefault("end", materials.get("main"));

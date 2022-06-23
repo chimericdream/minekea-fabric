@@ -83,6 +83,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
     @Override
     public void setupResources() {
         StorageBlockSettings settings = (StorageBlockSettings) this.settings;
+        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
         Map<String, Identifier> materials = settings.getMaterials();
 
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));

@@ -1,17 +1,4 @@
 {
     "replace": false,
-    "values": [
-        "#minekea:wooden_barrels",
-        "#minekea:wooden_bookshelves",
-        "#minekea:wooden_chairs",
-        "#minekea:wooden_crates",
-        "#minekea:wooden_display_cases",
-        "#minekea:wooden_floating_shelves",
-        "#minekea:wooden_shelves",
-        "#minekea:wooden_stools",
-        "#minekea:wooden_storage_bookshelves",
-        "#minekea:wooden_tables",
-        "#minekea:wooden_beams",
-        "#minekea:wooden_vertical_stairs"
-    ]
+    "values": ["#minekea:mineable/axe"]
 }

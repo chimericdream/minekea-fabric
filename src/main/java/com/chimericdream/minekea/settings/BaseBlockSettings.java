@@ -3,6 +3,7 @@ package com.chimericdream.minekea.settings;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.*;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
+import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 
@@ -87,6 +88,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CLAY = new DefaultSettings(Blocks.CLAY)
         .material("clay")
+        .tool(Tool.SHOVEL)
         .ingredientName("Clay")
         .materials(
             Map.of(
@@ -96,6 +98,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings COARSE_DIRT = new DefaultSettings(Blocks.COARSE_DIRT)
         .material("coarse_dirt")
+        .tool(Tool.SHOVEL)
         .ingredientName("Coarse Dirt")
         .materials(
             Map.of(
@@ -267,6 +270,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DIRT = new DefaultSettings(Blocks.DIRT)
         .material("dirt")
+        .tool(Tool.SHOVEL)
         .ingredientName("Dirt")
         .materials(
             Map.of(
@@ -312,6 +316,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GRAVEL = new DefaultSettings(Blocks.GRAVEL)
         .material("gravel")
+        .tool(Tool.SHOVEL)
         .ingredientName("Gravel")
         .materials(
             Map.of(
@@ -540,6 +545,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings RED_SAND = new DefaultSettings(Blocks.RED_SAND)
         .material("red_sand")
+        .tool(Tool.SHOVEL)
         .ingredientName("Red Sand")
         .materials(
             Map.of(
@@ -558,6 +564,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ROOTED_DIRT = new DefaultSettings(Blocks.ROOTED_DIRT)
         .material("rooted_dirt")
+        .tool(Tool.SHOVEL)
         .ingredientName("Rooted Dirt")
         .materials(
             Map.of(
@@ -567,6 +574,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SAND = new DefaultSettings(Blocks.SAND)
         .material("sand")
+        .tool(Tool.SHOVEL)
         .ingredientName("Sand")
         .materials(
             Map.of(
@@ -633,6 +641,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SOUL_SAND = new DefaultSettings(Blocks.SOUL_SAND)
         .material("soul_sand")
+        .tool(Tool.SHOVEL)
         .ingredientName("Soul Sand")
         .materials(
             Map.of(
@@ -1355,6 +1364,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA_LOG = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Acacia Log")
         .materials(
@@ -1369,6 +1379,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Acacia")
         .materials(
@@ -1383,6 +1394,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH_LOG = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Birch Log")
         .materials(
@@ -1397,6 +1409,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Birch")
         .materials(
@@ -1411,6 +1424,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRIMSON = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson")
+        .tool(Tool.AXE)
         .ingredientName("Crimson")
         .materials(
             Map.of(
@@ -1424,6 +1438,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRIMSON_STEM = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson_stem")
+        .tool(Tool.AXE)
         .ingredientName("Crimson Stem")
         .materials(
             Map.of(
@@ -1437,6 +1452,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK_LOG = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Dark Oak Log")
         .materials(
@@ -1451,6 +1467,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Dark Oak")
         .materials(
@@ -1465,6 +1482,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE_LOG = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Jungle Log")
         .materials(
@@ -1479,6 +1497,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Jungle")
         .materials(
@@ -1493,6 +1512,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK_LOG = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Oak Log")
         .materials(
@@ -1507,6 +1527,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Oak")
         .materials(
@@ -1521,6 +1542,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE_LOG = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Spruce Log")
         .materials(
@@ -1535,6 +1557,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Spruce")
         .materials(
@@ -1549,6 +1572,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped")
+        .tool(Tool.AXE)
         .ingredientName("Warped")
         .materials(
             Map.of(
@@ -1562,6 +1586,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED_STEM = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped_stem")
+        .tool(Tool.AXE)
         .ingredientName("Warped Stem")
         .materials(
             Map.of(
