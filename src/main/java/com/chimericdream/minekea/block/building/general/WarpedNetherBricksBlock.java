@@ -7,6 +7,7 @@ import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.resource.Texture;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.Tool;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
@@ -43,6 +44,7 @@ public class WarpedNetherBricksBlock extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.addToolTag(Tool.PICKAXE, getBlockID());
         MinekeaResourcePack.EN_US.blockRespect(this, "Warped Nether Bricks");
 
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);

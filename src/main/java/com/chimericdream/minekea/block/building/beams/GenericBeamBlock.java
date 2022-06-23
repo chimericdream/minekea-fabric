@@ -182,6 +182,8 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
+        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
+
         Identifier ingredient = settings.getMaterial("ingredient");
 
         Identifier endTexture = settings.getBlockTexture("end");

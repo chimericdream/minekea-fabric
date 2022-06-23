@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.building.stairs;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
@@ -125,6 +126,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
     @Override
     public void setupResources() {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Identifier ingredient = settings.getMaterial("ingredient");
@@ -132,6 +134,8 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock {
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
+
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             getBlockID(),

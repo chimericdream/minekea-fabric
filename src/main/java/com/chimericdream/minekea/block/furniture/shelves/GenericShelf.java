@@ -254,6 +254,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock {
     @Override
     public void setupResources() {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Identifier slab = settings.getMaterial("slab");

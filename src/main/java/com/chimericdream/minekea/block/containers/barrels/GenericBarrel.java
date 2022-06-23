@@ -51,6 +51,7 @@ public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
 
     public void setupResources() {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         String PLANK_MATERIAL = settings.getMaterial("planks").toString();

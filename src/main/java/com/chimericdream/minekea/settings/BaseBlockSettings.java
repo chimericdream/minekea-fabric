@@ -3,6 +3,7 @@ package com.chimericdream.minekea.settings;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.*;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
+import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 
@@ -137,6 +138,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CLAY = new DefaultSettings(Blocks.CLAY)
         .material("clay")
+        .tool(Tool.SHOVEL)
         .ingredientName("Clay")
         .materials(
             Map.of(
@@ -151,6 +153,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings COARSE_DIRT = new DefaultSettings(Blocks.COARSE_DIRT)
         .material("coarse_dirt")
+        .tool(Tool.SHOVEL)
         .ingredientName("Coarse Dirt")
         .materials(
             Map.of(
@@ -406,6 +409,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DIRT = new DefaultSettings(Blocks.DIRT)
         .material("dirt")
+        .tool(Tool.SHOVEL)
         .ingredientName("Dirt")
         .materials(
             Map.of(
@@ -464,6 +468,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings GRAVEL = new DefaultSettings(Blocks.GRAVEL)
         .material("gravel")
+        .tool(Tool.SHOVEL)
         .ingredientName("Gravel")
         .materials(
             Map.of(
@@ -520,6 +525,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MUD = new DefaultSettings(Blocks.MUD)
         .material("mud")
+        .tool(Tool.SHOVEL)
         .ingredientName("Mud")
         .materials(
             Map.of(
@@ -578,6 +584,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings NETHER_WART = new DefaultSettings(Blocks.NETHER_WART_BLOCK)
         .material("nether_wart")
+        .tool(Tool.HOE)
         .ingredientName("Nether Wart")
         .materials(
             Map.of(
@@ -848,6 +855,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings RED_SAND = new DefaultSettings(Blocks.RED_SAND)
         .material("red_sand")
+        .tool(Tool.SHOVEL)
         .ingredientName("Red Sand")
         .materials(
             Map.of(
@@ -862,6 +870,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ROOTED_DIRT = new DefaultSettings(Blocks.ROOTED_DIRT)
         .material("rooted_dirt")
+        .tool(Tool.SHOVEL)
         .ingredientName("Rooted Dirt")
         .materials(
             Map.of(
@@ -876,6 +885,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SAND = new DefaultSettings(Blocks.SAND)
         .material("sand")
+        .tool(Tool.SHOVEL)
         .ingredientName("Sand")
         .materials(
             Map.of(
@@ -981,6 +991,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SOUL_SAND = new DefaultSettings(Blocks.SOUL_SAND)
         .material("soul_sand")
+        .tool(Tool.SHOVEL)
         .ingredientName("Soul Sand")
         .materials(
             Map.of(
@@ -1074,6 +1085,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED_WART = new DefaultSettings(Blocks.WARPED_WART_BLOCK)
         .material("warped_wart")
+        .tool(Tool.HOE)
         .ingredientName("Warped Wart")
         .materials(
             Map.of(
@@ -1257,81 +1269,97 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WHITE_WOOL = new DefaultSettings(Blocks.WHITE_WOOL)
         .material("white_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("White Wool")
         .materials(Map.of("main", new Identifier("minecraft:white_wool")));
 
     public static DefaultSettings ORANGE_WOOL = new DefaultSettings(Blocks.ORANGE_WOOL)
         .material("orange_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Orange Wool")
         .materials(Map.of("main", new Identifier("minecraft:orange_wool")));
 
     public static DefaultSettings MAGENTA_WOOL = new DefaultSettings(Blocks.MAGENTA_WOOL)
         .material("magenta_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Magenta Wool")
         .materials(Map.of("main", new Identifier("minecraft:magenta_wool")));
 
     public static DefaultSettings LIGHT_BLUE_WOOL = new DefaultSettings(Blocks.LIGHT_BLUE_WOOL)
         .material("light_blue_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Light Blue Wool")
         .materials(Map.of("main", new Identifier("minecraft:light_blue_wool")));
 
     public static DefaultSettings YELLOW_WOOL = new DefaultSettings(Blocks.YELLOW_WOOL)
         .material("yellow_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Yellow Wool")
         .materials(Map.of("main", new Identifier("minecraft:yellow_wool")));
 
     public static DefaultSettings LIME_WOOL = new DefaultSettings(Blocks.LIME_WOOL)
         .material("lime_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Lime Wool")
         .materials(Map.of("main", new Identifier("minecraft:lime_wool")));
 
     public static DefaultSettings PINK_WOOL = new DefaultSettings(Blocks.PINK_WOOL)
         .material("pink_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Pink Wool")
         .materials(Map.of("main", new Identifier("minecraft:pink_wool")));
 
     public static DefaultSettings GRAY_WOOL = new DefaultSettings(Blocks.GRAY_WOOL)
         .material("gray_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Gray Wool")
         .materials(Map.of("main", new Identifier("minecraft:gray_wool")));
 
     public static DefaultSettings LIGHT_GRAY_WOOL = new DefaultSettings(Blocks.LIGHT_GRAY_WOOL)
         .material("light_gray_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Light Gray Wool")
         .materials(Map.of("main", new Identifier("minecraft:light_gray_wool")));
 
     public static DefaultSettings CYAN_WOOL = new DefaultSettings(Blocks.CYAN_WOOL)
         .material("cyan_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Cyan Wool")
         .materials(Map.of("main", new Identifier("minecraft:cyan_wool")));
 
     public static DefaultSettings PURPLE_WOOL = new DefaultSettings(Blocks.PURPLE_WOOL)
         .material("purple_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Purple Wool")
         .materials(Map.of("main", new Identifier("minecraft:purple_wool")));
 
     public static DefaultSettings BLUE_WOOL = new DefaultSettings(Blocks.BLUE_WOOL)
         .material("blue_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Blue Wool")
         .materials(Map.of("main", new Identifier("minecraft:blue_wool")));
 
     public static DefaultSettings BROWN_WOOL = new DefaultSettings(Blocks.BROWN_WOOL)
         .material("brown_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Brown Wool")
         .materials(Map.of("main", new Identifier("minecraft:brown_wool")));
 
     public static DefaultSettings GREEN_WOOL = new DefaultSettings(Blocks.GREEN_WOOL)
         .material("green_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Green Wool")
         .materials(Map.of("main", new Identifier("minecraft:green_wool")));
 
     public static DefaultSettings RED_WOOL = new DefaultSettings(Blocks.RED_WOOL)
         .material("red_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Red Wool")
         .materials(Map.of("main", new Identifier("minecraft:red_wool")));
 
     public static DefaultSettings BLACK_WOOL = new DefaultSettings(Blocks.BLACK_WOOL)
         .material("black_wool")
+        .tool(Tool.SHEARS)
         .ingredientName("Black Wool")
         .materials(Map.of("main", new Identifier("minecraft:black_wool")));
 
@@ -2371,6 +2399,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Acacia")
         .materials(
@@ -2403,6 +2432,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA_LEAVES = new DefaultSettings(Blocks.ACACIA_LEAVES)
         .material("acacia_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Acacia Leaf")
@@ -2414,6 +2444,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA_LOG = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Acacia Log")
         .materials(
@@ -2434,6 +2465,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings AZALEA_LEAVES = new DefaultSettings(Blocks.AZALEA_LEAVES)
         .material("azalea_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Azalea Leaf")
@@ -2445,6 +2477,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Birch")
         .materials(
@@ -2477,6 +2510,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH_LOG = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Birch Log")
         .materials(
@@ -2497,6 +2531,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH_LEAVES = new DefaultSettings(Blocks.BIRCH_LEAVES)
         .material("birch_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Birch Leaf")
@@ -2508,6 +2543,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRIMSON = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson")
+        .tool(Tool.AXE)
         .ingredientName("Crimson")
         .materials(
             Map.of(
@@ -2539,6 +2575,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRIMSON_STEM = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson_stem")
+        .tool(Tool.AXE)
         .ingredientName("Crimson Stem")
         .materials(
             Map.of(
@@ -2558,6 +2595,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Dark Oak")
         .materials(
@@ -2590,6 +2628,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK_LEAVES = new DefaultSettings(Blocks.DARK_OAK_LEAVES)
         .material("dark_oak_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Dark Oak Leaf")
@@ -2601,6 +2640,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK_LOG = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Dark Oak Log")
         .materials(
@@ -2621,6 +2661,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings FLOWERING_AZALEA_LEAVES = new DefaultSettings(Blocks.FLOWERING_AZALEA_LEAVES)
         .material("flowering_azalea_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Flowering Azalea Leaf")
@@ -2632,6 +2673,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Jungle")
         .materials(
@@ -2664,6 +2706,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE_LEAVES = new DefaultSettings(Blocks.JUNGLE_LEAVES)
         .material("jungle_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Jungle Leaf")
@@ -2675,6 +2718,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE_LOG = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Jungle Log")
         .materials(
@@ -2695,6 +2739,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MANGROVE = new DefaultSettings(Blocks.MANGROVE_PLANKS)
         .material("mangrove")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Mangrove")
         .materials(
@@ -2727,6 +2772,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MANGROVE_LEAVES = new DefaultSettings(Blocks.MANGROVE_LEAVES)
         .material("mangrove_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Mangrove Leaf")
@@ -2738,6 +2784,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MANGROVE_LOG = new DefaultSettings(Blocks.MANGROVE_PLANKS)
         .material("mangrove_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Mangrove Log")
         .materials(
@@ -2758,6 +2805,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Oak")
         .materials(
@@ -2791,6 +2839,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK_LEAVES = new DefaultSettings(Blocks.OAK_LEAVES)
         .material("oak_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Oak Leaf")
@@ -2802,6 +2851,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK_LOG = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Oak Log")
         .materials(
@@ -2822,6 +2872,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Spruce")
         .materials(
@@ -2854,6 +2905,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE_LEAVES = new DefaultSettings(Blocks.SPRUCE_LEAVES)
         .material("spruce_leaves")
+        .tool(Tool.SHEARS)
         .flammable()
         .translucent()
         .ingredientName("Spruce Leaf")
@@ -2865,6 +2917,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE_LOG = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce_log")
+        .tool(Tool.AXE)
         .flammable()
         .ingredientName("Spruce Log")
         .materials(
@@ -2885,6 +2938,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped")
+        .tool(Tool.AXE)
         .ingredientName("Warped")
         .materials(
             Map.of(
@@ -2916,6 +2970,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED_STEM = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped_stem")
+        .tool(Tool.AXE)
         .ingredientName("Warped Stem")
         .materials(
             Map.of(

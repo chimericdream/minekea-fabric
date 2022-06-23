@@ -3,6 +3,7 @@ package com.chimericdream.minekea.settings;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -27,6 +28,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected String modId = ModInfo.MOD_ID;
     protected String name = null;
     protected String namePatternOverride = null;
+    protected Tool tool = Tool.PICKAXE;
 
     protected MinekeaBlockSettings(Block block) {
         this(FabricBlockSettings.copyOf(block));
@@ -62,6 +64,8 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.blockTextures = settings.blockTextures;
         this.modId = settings.modId;
         this.name = settings.name;
+        this.namePatternOverride = settings.namePatternOverride;
+        this.tool = settings.tool;
     }
 
     abstract public Identifier getBlockId();
@@ -92,6 +96,10 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public String getMainMaterial() {
         return this.mainMaterial;
+    }
+
+    public Tool getTool() {
+        return this.tool;
     }
 
     public Identifier getMaterial(String key) {
@@ -200,6 +208,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public T baseBlock(Block baseBlock) {
         this.baseBlock = baseBlock;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T tool(Tool tool) {
+        this.tool = tool;
         // noinspection unchecked
         return (T) this;
     }
