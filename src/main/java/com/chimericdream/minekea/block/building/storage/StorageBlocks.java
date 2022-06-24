@@ -97,9 +97,9 @@ public class StorageBlocks implements MinekeaBlockCategory {
         POTATO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.POTATO).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
         PUMPKIN_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PUMPKIN_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
         SET_OF_EGGS_BLOCK = new SetOfEggsBlock();
-        STICK_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.STICK).namePattern("Bundle of %s").ingredientName("Sticks").sounds(BlockSoundGroup.WOOD));
+        STICK_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.STICK).namePattern("Bundle of %s").tool(Tool.AXE).ingredientName("Sticks").sounds(BlockSoundGroup.WOOD));
         SUGAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR).tool(Tool.SHOVEL).bagged().sounds(BlockSoundGroup.SAND));
-        SUGAR_CANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).tool(Tool.SHOVEL).namePattern("Bundle of %s").sounds(BlockSoundGroup.GRASS));
+        SUGAR_CANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).tool(Tool.AXE).namePattern("Bundle of %s").sounds(BlockSoundGroup.GRASS));
         TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).column().sounds(BlockSoundGroup.METAL));
         WALLPAPER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PAPER).tool(Tool.SHEARS).namePattern("Wallpaper").sounds(BlockSoundGroup.LADDER));
         WHEAT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.WHEAT_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
