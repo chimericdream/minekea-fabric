@@ -5,6 +5,7 @@ import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.MinekeaTags;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -50,7 +51,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
-import java.util.Map;
 import java.util.Objects;
 
 public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaBlock {
@@ -105,7 +105,7 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, Bookshelves.STORAGE_SHELF_BLOCK_ENTITY, StorageBookshelfBlockEntity::tick);
+        return checkType(type, StorageBookshelves.STORAGE_SHELF_BLOCK_ENTITY, StorageBookshelfBlockEntity::tick);
     }
 
     @Override
@@ -179,10 +179,10 @@ public class GenericStorageBookshelf extends BlockWithEntity implements MinekeaB
     @Override
     public void setupResources() {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
-        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.BOOKSHELVES.add(getBlockID(), settings.isWooden());
+        MinekeaTags.STORAGE_BOOKSHELVES.add(getBlockID(), settings.isWooden());
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
-
-        Map<String, Identifier> materials = settings.getMaterials();
 
         Identifier shelf = settings.getMaterial("bookshelf");
 

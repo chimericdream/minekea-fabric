@@ -1,10 +1,7 @@
 package com.chimericdream.minekea.block.building.general;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.resource.LootTable;
-import com.chimericdream.minekea.resource.MinekeaResourcePack;
-import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.resource.*;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.Tool;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -46,7 +43,7 @@ public class CrimsonBasaltBricksBlock extends Block implements MinekeaBlock {
 
     @Override
     public void setupResources() {
-        MinekeaResourcePack.addToolTag(Tool.PICKAXE, getBlockID());
+        MinekeaTags.addToolTag(Tool.PICKAXE, getBlockID());
         MinekeaResourcePack.EN_US.blockRespect(this, "Crimson Basalt Bricks");
 
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);

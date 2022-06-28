@@ -4,6 +4,8 @@ import com.chimericdream.minekea.block.furniture.shelves.GenericFloatingShelf.Fl
 import com.chimericdream.minekea.block.furniture.shelves.GenericShelf.SupportedShelfSettings;
 import com.chimericdream.minekea.client.render.block.ShelfBlockEntityRenderer;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.config.ConfigManager;
+import com.chimericdream.minekea.config.MinekeaConfig;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
@@ -28,6 +30,8 @@ public class Shelves implements MinekeaBlockCategory {
     public static BlockEntityType<ShelfBlockEntity> SHELF_BLOCK_ENTITY;
 
     static {
+        MinekeaConfig config = ConfigManager.getConfig();
+
         for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
             if (blockSettings.hasShelf()) {
                 SHELVES.put(blockSettings.getMainMaterial(), new GenericShelf(new SupportedShelfSettings(blockSettings)));

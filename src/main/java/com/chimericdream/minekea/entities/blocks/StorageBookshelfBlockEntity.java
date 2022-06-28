@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.entities.blocks;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.furniture.bookshelves.GenericStorageBookshelf;
+import com.chimericdream.minekea.block.furniture.bookshelves.StorageBookshelves;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -35,7 +35,7 @@ public class StorageBookshelfBlockEntity extends BlockEntity implements NamedScr
     private final ViewerCountManager stateManager;
 
     public StorageBookshelfBlockEntity(BlockPos pos, BlockState state) {
-        this(Bookshelves.STORAGE_SHELF_BLOCK_ENTITY, pos, state);
+        this(StorageBookshelves.STORAGE_SHELF_BLOCK_ENTITY, pos, state);
     }
 
     public StorageBookshelfBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -74,7 +74,7 @@ public class StorageBookshelfBlockEntity extends BlockEntity implements NamedScr
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new StorageBookshelfScreenHandler(Bookshelves.STORAGE_SHELF_SCREEN_HANDLER, syncId, playerInventory, this);
+        return new StorageBookshelfScreenHandler(StorageBookshelves.STORAGE_SHELF_SCREEN_HANDLER, syncId, playerInventory, this);
     }
 
     public void onOpen(PlayerEntity player) {

@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.decorations.lighting;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.MinekeaTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.recipe.JIngredient;
 import net.devtech.arrp.json.recipe.JIngredients;
@@ -37,6 +38,7 @@ public class EndlessRod extends EndRodBlock implements MinekeaBlock {
 
     public void setupResources() {
         MinekeaResourcePack.EN_US.blockRespect(this, "End(less) Rod");
+        MinekeaTags.LANTERNS.add(getBlockID());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,

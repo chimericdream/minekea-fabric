@@ -6,6 +6,7 @@ import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
+import com.chimericdream.minekea.config.ConfigManager;
 import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
 import com.chimericdream.minekea.item.ItemGroups;
@@ -49,6 +50,9 @@ public class MinekeaMod implements ModInitializer {
 
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
+
+        LOGGER.info("[minekea] Registering auto-config");
+        ConfigManager.registerAutoConfig();
 
         BUILDING_BLOCKS = new BuildingBlocks();
         CONTAINER_BLOCKS = new ContainerBlocks();

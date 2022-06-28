@@ -4,6 +4,7 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.MinekeaTags;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -77,7 +78,9 @@ public class GenericFloatingShelf extends GenericShelf {
     @Override
     public void setupResources() {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
-        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.FLOATING_SHELVES.add(getBlockID(), settings.isWooden());
+        MinekeaTags.SHELVES.add(getBlockID(), settings.isWooden());
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Identifier slab = settings.getMaterial("slab");

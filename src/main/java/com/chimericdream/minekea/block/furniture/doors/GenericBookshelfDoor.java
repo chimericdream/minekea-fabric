@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.furniture.doors;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.LootTable;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.MinekeaTags;
 import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -56,7 +57,8 @@ public class GenericBookshelfDoor extends DoorBlock implements MinekeaBlock {
     @Override
     public void setupResources() {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
-        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.DOORS.add(getBlockID(), settings.isWooden());
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Identifier shelf = settings.getMaterial("bookshelf");

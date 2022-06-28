@@ -1,9 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        "minecraft:lantern",
-        "minecraft:soul_lantern",
-        "minekea:decorations/doom_lantern",
-        "minekea:decorations/end_lantern"
-    ]
-}

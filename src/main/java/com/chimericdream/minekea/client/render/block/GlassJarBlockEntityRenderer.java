@@ -1,13 +1,11 @@
 package com.chimericdream.minekea.client.render.block;
 
-import com.chimericdream.minekea.block.building.storage.StorageBlocks;
+import com.chimericdream.minekea.block.containers.GlassJarBlock;
 import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
-import com.chimericdream.minekea.util.ItemHelpers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -20,7 +18,6 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -293,7 +290,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
             return;
         }
 
-        ItemStack stack = getStackToRender(storedStack);
+        ItemStack stack = GlassJarBlock.getStackToRender(storedStack);
 
         if (stack.isItemEqual(Items.AIR.getDefaultStack())) {
             return;
@@ -311,159 +308,6 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         renderer.renderItem(stack, ModelTransformation.Mode.FIXED, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, 0);
 
         matrices.pop();
-    }
-
-    private ItemStack getStackToRender(ItemStack stack) {
-        Identifier stackId = ItemHelpers.getIdentifier(stack);
-
-        switch (stackId.toString()) {
-            case "minecraft:slime_ball":
-                return Items.SLIME_BLOCK.getDefaultStack();
-
-            case "minecraft:wheat":
-                return Items.HAY_BLOCK.getDefaultStack();
-
-            case "minecraft:redstone":
-                return Items.REDSTONE_BLOCK.getDefaultStack();
-
-            case "minecraft:glowstone_dust":
-                return Items.GLOWSTONE.getDefaultStack();
-
-            case "minecraft:honeycomb":
-                return Items.HONEYCOMB_BLOCK.getDefaultStack();
-
-            case "minecraft:bamboo":
-                return new ItemStack(StorageBlocks.BAMBOO_BLOCK.asItem());
-
-            case "minecraft:stick":
-                return new ItemStack(StorageBlocks.STICK_BLOCK.asItem());
-
-            case "minecraft:sugar":
-                return new ItemStack(StorageBlocks.SUGAR_BLOCK.asItem());
-
-            case "minecraft:sugar_cane":
-                return new ItemStack(StorageBlocks.SUGAR_CANE_BLOCK.asItem());
-
-            case "minecraft:white_dye":
-                return new ItemStack(StorageBlocks.WHITE_DYE_BLOCK.asItem());
-
-            case "minecraft:orange_dye":
-                return new ItemStack(StorageBlocks.ORANGE_DYE_BLOCK.asItem());
-
-            case "minecraft:magenta_dye":
-                return new ItemStack(StorageBlocks.MAGENTA_DYE_BLOCK.asItem());
-
-            case "minecraft:light_blue_dye":
-                return new ItemStack(StorageBlocks.LIGHT_BLUE_DYE_BLOCK.asItem());
-
-            case "minecraft:yellow_dye":
-                return new ItemStack(StorageBlocks.YELLOW_DYE_BLOCK.asItem());
-
-            case "minecraft:lime_dye":
-                return new ItemStack(StorageBlocks.LIME_DYE_BLOCK.asItem());
-
-            case "minecraft:pink_dye":
-                return new ItemStack(StorageBlocks.PINK_DYE_BLOCK.asItem());
-
-            case "minecraft:gray_dye":
-                return new ItemStack(StorageBlocks.GRAY_DYE_BLOCK.asItem());
-
-            case "minecraft:light_gray_dye":
-                return new ItemStack(StorageBlocks.LIGHT_GRAY_DYE_BLOCK.asItem());
-
-            case "minecraft:cyan_dye":
-                return new ItemStack(StorageBlocks.CYAN_DYE_BLOCK.asItem());
-
-            case "minecraft:purple_dye":
-                return new ItemStack(StorageBlocks.PURPLE_DYE_BLOCK.asItem());
-
-            case "minecraft:blue_dye":
-                return new ItemStack(StorageBlocks.BLUE_DYE_BLOCK.asItem());
-
-            case "minecraft:brown_dye":
-                return new ItemStack(StorageBlocks.BROWN_DYE_BLOCK.asItem());
-
-            case "minecraft:green_dye":
-                return new ItemStack(StorageBlocks.GREEN_DYE_BLOCK.asItem());
-
-            case "minecraft:red_dye":
-                return new ItemStack(StorageBlocks.RED_DYE_BLOCK.asItem());
-
-            case "minecraft:black_dye":
-                return new ItemStack(StorageBlocks.BLACK_DYE_BLOCK.asItem());
-
-            case "minecraft:blaze_powder":
-                return new ItemStack(StorageBlocks.BLAZE_POWDER_BLOCK.asItem());
-
-            case "minecraft:ender_pearl":
-                return new ItemStack(StorageBlocks.ENDER_PEARL_BLOCK.asItem());
-
-            case "minecraft:potato":
-                return new ItemStack(StorageBlocks.POTATO_BLOCK.asItem());
-
-            case "minecraft:carrot":
-                return new ItemStack(StorageBlocks.CARROT_BLOCK.asItem());
-
-            case "minecraft:beetroot":
-                return new ItemStack(StorageBlocks.BEETROOT_BLOCK.asItem());
-
-            case "minecraft:chorus_fruit":
-                return new ItemStack(StorageBlocks.CHORUS_FRUIT_BLOCK.asItem());
-
-            case "minecraft:amethyst_shard":
-                return new ItemStack(Blocks.AMETHYST_BLOCK.asItem());
-
-            case "minecraft:dried_kelp":
-                return new ItemStack(Blocks.DRIED_KELP_BLOCK.asItem());
-
-            case "minecraft:melon_slice":
-                return new ItemStack(Blocks.MELON.asItem());
-
-            case "minecraft:flint":
-                return new ItemStack(StorageBlocks.FLINT_BLOCK.asItem());
-
-            case "minecraft:leather":
-                return new ItemStack(StorageBlocks.LEATHER_BLOCK.asItem());
-
-            case "minecraft:nether_star":
-                return new ItemStack(StorageBlocks.NETHER_STAR_BLOCK.asItem());
-
-            case "minecraft:beetroot_seeds":
-                return new ItemStack(StorageBlocks.BEETROOT_SEEDS_BLOCK.asItem());
-
-            case "minecraft:melon_seeds":
-                return new ItemStack(StorageBlocks.MELON_SEEDS_BLOCK.asItem());
-
-            case "minecraft:pumpkin_seeds":
-                return new ItemStack(StorageBlocks.PUMPKIN_SEEDS_BLOCK.asItem());
-
-            case "minecraft:wheat_seeds":
-                return new ItemStack(StorageBlocks.WHEAT_SEEDS_BLOCK.asItem());
-
-            case "minecraft:phantom_membrane":
-                return new ItemStack(StorageBlocks.PHANTOM_MEMBRANE_BLOCK.asItem());
-
-            case "minecraft:egg":
-                return new ItemStack(StorageBlocks.SET_OF_EGGS_BLOCK.asItem());
-
-            case "minecraft:totem_of_undying":
-                return new ItemStack(StorageBlocks.TOTEM_BLOCK.asItem());
-
-            case "minecraft:apple":
-                return new ItemStack(StorageBlocks.APPLE_BLOCK.asItem());
-
-            case "minecraft:golden_apple":
-                return new ItemStack(StorageBlocks.GOLDEN_APPLE_BLOCK.asItem());
-
-            case "minecraft:blaze_rod":
-                return new ItemStack(StorageBlocks.BLAZE_ROD_BLOCK.asItem());
-
-            case "minecraft:paper":
-                return new ItemStack(StorageBlocks.WALLPAPER_BLOCK.asItem());
-
-            default:
-                return stack;
-        }
     }
 
     private Sprite getFluidTexture(Fluid fluid) {

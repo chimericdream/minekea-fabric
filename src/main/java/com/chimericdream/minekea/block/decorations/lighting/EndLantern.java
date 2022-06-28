@@ -1,10 +1,7 @@
 package com.chimericdream.minekea.block.decorations.lighting;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.resource.LootTable;
-import com.chimericdream.minekea.resource.MinekeaResourcePack;
-import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.resource.*;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
@@ -41,6 +38,7 @@ public class EndLantern extends LanternBlock implements MinekeaBlock {
 
     public void setupResources() {
         MinekeaResourcePack.EN_US.blockRespect(this, "End Lantern");
+        MinekeaTags.LANTERNS.add(getBlockID());
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,

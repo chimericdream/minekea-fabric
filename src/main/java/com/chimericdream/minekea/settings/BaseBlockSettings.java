@@ -2,6 +2,7 @@ package com.chimericdream.minekea.settings;
 
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.*;
+import com.chimericdream.minekea.config.ConfigManager;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
 import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.Blocks;
@@ -179,8 +180,9 @@ public class BaseBlockSettings {
         .withCover()
         .withVerticalStairs();
 
-    public static DefaultSettings COBBLED_END_STONE = new DefaultSettings(BuildingBlocks.COBBLED_END_STONE_BLOCK)
+    public static DefaultSettings COBBLED_END_STONE = new DefaultSettings(Blocks.END_STONE)
         .material("cobbled_end_stone")
+        .enabled(() -> ConfigManager.getConfig().enableCobbledEndStone)
         .ingredientName("Cobbled End Stone")
         .materials(
             Map.of(
@@ -2399,6 +2401,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Acacia")
@@ -2444,6 +2447,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings ACACIA_LOG = new DefaultSettings(Blocks.ACACIA_PLANKS)
         .material("acacia_log")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Acacia Log")
@@ -2477,6 +2481,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings BIRCH = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Birch")
@@ -2508,8 +2513,21 @@ public class BaseBlockSettings {
         .withTable()
         .withBookshelfTrapdoor();
 
+    public static DefaultSettings BIRCH_LEAVES = new DefaultSettings(Blocks.BIRCH_LEAVES)
+        .material("birch_leaves")
+        .tool(Tool.SHEARS)
+        .flammable()
+        .translucent()
+        .ingredientName("Birch Leaf")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:birch_leaves")
+            )
+        );
+
     public static DefaultSettings BIRCH_LOG = new DefaultSettings(Blocks.BIRCH_PLANKS)
         .material("birch_log")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Birch Log")
@@ -2529,20 +2547,9 @@ public class BaseBlockSettings {
         .withStairs()
         .withVerticalStairs();
 
-    public static DefaultSettings BIRCH_LEAVES = new DefaultSettings(Blocks.BIRCH_LEAVES)
-        .material("birch_leaves")
-        .tool(Tool.SHEARS)
-        .flammable()
-        .translucent()
-        .ingredientName("Birch Leaf")
-        .materials(
-            Map.of(
-                "main", new Identifier("minecraft:birch_leaves")
-            )
-        );
-
     public static DefaultSettings CRIMSON = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson")
+        .wooden()
         .tool(Tool.AXE)
         .ingredientName("Crimson")
         .materials(
@@ -2575,6 +2582,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings CRIMSON_STEM = new DefaultSettings(Blocks.CRIMSON_PLANKS)
         .material("crimson_stem")
+        .wooden()
         .tool(Tool.AXE)
         .ingredientName("Crimson Stem")
         .materials(
@@ -2595,6 +2603,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Dark Oak")
@@ -2640,6 +2649,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings DARK_OAK_LOG = new DefaultSettings(Blocks.DARK_OAK_PLANKS)
         .material("dark_oak_log")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Dark Oak Log")
@@ -2673,6 +2683,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Jungle")
@@ -2718,6 +2729,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings JUNGLE_LOG = new DefaultSettings(Blocks.JUNGLE_PLANKS)
         .material("jungle_log")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Jungle Log")
@@ -2739,6 +2751,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MANGROVE = new DefaultSettings(Blocks.MANGROVE_PLANKS)
         .material("mangrove")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Mangrove")
@@ -2784,6 +2797,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings MANGROVE_LOG = new DefaultSettings(Blocks.MANGROVE_PLANKS)
         .material("mangrove_log")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Mangrove Log")
@@ -2805,6 +2819,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Oak")
@@ -2851,6 +2866,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings OAK_LOG = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("oak_log")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Oak Log")
@@ -2872,6 +2888,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Spruce")
@@ -2917,6 +2934,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings SPRUCE_LOG = new DefaultSettings(Blocks.SPRUCE_PLANKS)
         .material("spruce_log")
+        .wooden()
         .tool(Tool.AXE)
         .flammable()
         .ingredientName("Spruce Log")
@@ -2938,6 +2956,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped")
+        .wooden()
         .tool(Tool.AXE)
         .ingredientName("Warped")
         .materials(
@@ -2970,6 +2989,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WARPED_STEM = new DefaultSettings(Blocks.WARPED_PLANKS)
         .material("warped_stem")
+        .wooden()
         .tool(Tool.AXE)
         .ingredientName("Warped Stem")
         .materials(
@@ -3172,6 +3192,7 @@ public class BaseBlockSettings {
 
     public static DefaultSettings STICK = new DefaultSettings(Blocks.OAK_PLANKS)
         .material("stick")
+        .wooden()
         .ingredientName("Stick")
         .materials(
             Map.of(

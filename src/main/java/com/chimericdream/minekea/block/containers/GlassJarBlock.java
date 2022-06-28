@@ -4,7 +4,9 @@ import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.MinekeaTags;
 import com.chimericdream.minekea.util.FluidHelpers;
+import com.chimericdream.minekea.util.ItemHelpers;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.recipe.*;
 import net.minecraft.block.*;
@@ -32,30 +34,98 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import static java.util.Map.entry;
+
 public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider {
+    public static final Map<String, String> ALLOWED_ITEMS = new HashMap<>();
+
     private final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "containers/glass_jar");
-    private final String modId;
+
     private static final VoxelShape MAIN_SHAPE;
     private static final VoxelShape LID_SHAPE;
 
     static {
+        ALLOWED_ITEMS.putAll(Map.<String, String>ofEntries(
+            entry("minecraft:amethyst_shard", "minecraft:amethyst_block"),
+            entry("minecraft:apple", "minekea:storage/compressed/apple"),
+            entry("minecraft:bamboo", "minekea:storage/compressed/bamboo"),
+            entry("minecraft:beetroot", "minekea:storage/compressed/beetroot"),
+            entry("minecraft:beetroot_seeds", "minekea:storage/compressed/beetroot_seeds"),
+            entry("minecraft:black_concrete_powder", "minecraft:black_concrete_powder"),
+            entry("minecraft:black_dye", "minekea:storage/dyes/black_dye"),
+            entry("minecraft:blaze_powder", "minekea:storage/compressed/blaze_powder"),
+            entry("minecraft:blaze_rod", "minekea:storage/compressed/blaze_rod"),
+            entry("minecraft:blue_concrete_powder", "minecraft:blue_concrete_powder"),
+            entry("minecraft:blue_dye", "minekea:storage/dyes/blue_dye"),
+            entry("minecraft:brown_concrete_powder", "minecraft:brown_concrete_powder"),
+            entry("minecraft:brown_dye", "minekea:storage/dyes/brown_dye"),
+            entry("minecraft:carrot", "minekea:storage/compressed/carrot"),
+            entry("minecraft:chorus_fruit", "minekea:storage/compressed/chorus_fruit"),
+            entry("minecraft:cyan_concrete_powder", "minecraft:cyan_concrete_powder"),
+            entry("minecraft:cyan_dye", "minekea:storage/dyes/cyan_dye"),
+            entry("minecraft:dried_kelp", "minecraft:dried_kelp_block"),
+            entry("minecraft:egg", "minekea:storage/compressed/set_of_eggs"),
+            entry("minecraft:ender_pearl", "minekea:storage/compressed/ender_pearl"),
+            entry("minecraft:flint", "minekea:storage/compressed/flint"),
+            entry("minecraft:glowstone_dust", "minecraft:glowstone"),
+            entry("minecraft:golden_apple", "minekea:storage/compressed/golden_apple"),
+            entry("minecraft:gravel", "minecraft:gravel"),
+            entry("minecraft:gray_concrete_powder", "minecraft:gray_concrete_powder"),
+            entry("minecraft:gray_dye", "minekea:storage/dyes/gray_dye"),
+            entry("minecraft:green_concrete_powder", "minecraft:green_concrete_powder"),
+            entry("minecraft:green_dye", "minekea:storage/dyes/green_dye"),
+            entry("minecraft:honeycomb", "minecraft:honeycomb_block"),
+            entry("minecraft:leather", "minekea:storage/compressed/leather"),
+            entry("minecraft:light_blue_concrete_powder", "minecraft:light_blue_concrete_powder"),
+            entry("minecraft:light_blue_dye", "minekea:storage/dyes/light_blue_dye"),
+            entry("minecraft:light_gray_concrete_powder", "minecraft:light_gray_concrete_powder"),
+            entry("minecraft:light_gray_dye", "minekea:storage/dyes/light_gray_dye"),
+            entry("minecraft:lime_concrete_powder", "minecraft:lime_concrete_powder"),
+            entry("minecraft:lime_dye", "minekea:storage/dyes/lime_dye"),
+            entry("minecraft:magenta_concrete_powder", "minecraft:magenta_concrete_powder"),
+            entry("minecraft:magenta_dye", "minekea:storage/dyes/magenta_dye"),
+            entry("minecraft:melon_seeds", "minekea:storage/compressed/melon_seeds"),
+            entry("minecraft:melon_slice", "minecraft:melon"),
+            entry("minecraft:nether_star", "minekea:storage/compressed/nether_star"),
+            entry("minecraft:orange_concrete_powder", "minecraft:orange_concrete_powder"),
+            entry("minecraft:orange_dye", "minekea:storage/dyes/orange_dye"),
+            entry("minecraft:paper", "minekea:storage/compressed/wallpaper"),
+            entry("minecraft:phantom_membrane", "minekea:storage/compressed/phantom_membrane"),
+            entry("minecraft:pink_concrete_powder", "minecraft:pink_concrete_powder"),
+            entry("minecraft:pink_dye", "minekea:storage/dyes/pink_dye"),
+            entry("minecraft:potato", "minekea:storage/compressed/potato"),
+            entry("minecraft:pumpkin_seeds", "minekea:storage/compressed/pumpkin_seeds"),
+            entry("minecraft:purple_concrete_powder", "minecraft:purple_concrete_powder"),
+            entry("minecraft:purple_dye", "minekea:storage/dyes/purple_dye"),
+            entry("minecraft:red_concrete_powder", "minecraft:red_concrete_powder"),
+            entry("minecraft:red_dye", "minekea:storage/dyes/red_dye"),
+            entry("minecraft:red_sand", "minecraft:red_sand"),
+            entry("minecraft:redstone", "minecraft:redstone_block"),
+            entry("minecraft:sand", "minecraft:sand"),
+            entry("minecraft:slime_ball", "minecraft:slime_block"),
+            entry("minecraft:stick", "minekea:storage/compressed/stick"),
+            entry("minecraft:sugar", "minekea:storage/compressed/sugar"),
+            entry("minecraft:sugar_cane", "minekea:storage/compressed/sugar_cane"),
+            entry("minecraft:totem_of_undying", "minekea:storage/compressed/totem"),
+            entry("minecraft:wheat", "minecraft:hay_block"),
+            entry("minecraft:wheat_seeds", "minekea:storage/compressed/wheat_seeds"),
+            entry("minecraft:white_concrete_powder", "minecraft:white_concrete_powder"),
+            entry("minecraft:white_dye", "minekea:storage/dyes/white_dye"),
+            entry("minecraft:yellow_concrete_powder", "minecraft:yellow_concrete_powder"),
+            entry("minecraft:yellow_dye", "minekea:storage/dyes/yellow_dye")
+        ));
+
         MAIN_SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 9.0, 11.0);
         LID_SHAPE = Block.createCuboidShape(6.0, 9.0, 6.0, 10.0, 10.0, 10.0);
     }
 
     public GlassJarBlock() {
-        this(ModInfo.MOD_ID);
-    }
-
-    public GlassJarBlock(String modId) {
         super(Settings.copy(Blocks.GLASS).nonOpaque());
-
-        validateMaterials(null);
-
-        this.modId = modId;
     }
 
     @Override
@@ -347,6 +417,10 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     public void setupResources() {
         MinekeaResourcePack.EN_US.blockRespect(this, "Glass Jar");
 
+        for (String id : ALLOWED_ITEMS.keySet()) {
+            MinekeaTags.JAR_STORABLE.add(new Identifier(id));
+        }
+
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             BLOCK_ID,
             JRecipe.shaped(
@@ -357,5 +431,15 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                 JResult.stackedResult(BLOCK_ID.toString(), 3)
             )
         );
+    }
+
+    public static ItemStack getStackToRender(ItemStack stack) {
+        Identifier stackId = ItemHelpers.getIdentifier(stack);
+
+        if (!ALLOWED_ITEMS.containsKey(stackId.toString())) {
+            return stack;
+        }
+
+        return Registry.ITEM.get(new Identifier(ALLOWED_ITEMS.get(stackId.toString()))).getDefaultStack();
     }
 }

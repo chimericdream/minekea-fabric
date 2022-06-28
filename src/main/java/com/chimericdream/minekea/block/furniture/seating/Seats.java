@@ -3,6 +3,8 @@ package com.chimericdream.minekea.block.furniture.seating;
 import com.chimericdream.minekea.block.furniture.seating.GenericChair.ChairSettings;
 import com.chimericdream.minekea.block.furniture.seating.GenericStool.StoolSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.config.ConfigManager;
+import com.chimericdream.minekea.config.MinekeaConfig;
 import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
@@ -24,12 +26,14 @@ public class Seats implements MinekeaBlockCategory {
     public static EntityType<SeatEntity> SEAT_ENTITY;
 
     static {
+        MinekeaConfig config = ConfigManager.getConfig();
+
         for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
-            if (blockSettings.hasChair()) {
+            if (blockSettings.hasChair() && config.enableChairs) {
                 CHAIRS.put(blockSettings.getMainMaterial(), new GenericChair(new ChairSettings(blockSettings)));
             }
 
-            if (blockSettings.hasStool()) {
+            if (blockSettings.hasStool() && config.enableStools) {
                 STOOLS.put(blockSettings.getMainMaterial(), new GenericStool(new StoolSettings(blockSettings)));
             }
         }

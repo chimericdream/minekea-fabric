@@ -12,6 +12,7 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> extends FabricBlockSettings {
     protected Block baseBlock;
@@ -22,6 +23,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected boolean isColumn = false;
     protected boolean isFlammable = false;
     protected boolean isTranslucent = false;
+    protected boolean isWooden = false;
     protected String mainMaterial;
     protected Map<String, Identifier> materials;
     protected Map<String, Identifier> blockTextures = new HashMap<>();
@@ -29,6 +31,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected String name = null;
     protected String namePatternOverride = null;
     protected Tool tool = Tool.PICKAXE;
+    protected Supplier<Boolean> isEnabled = () -> true;
 
     protected MinekeaBlockSettings(Block block) {
         this(FabricBlockSettings.copyOf(block));
@@ -59,6 +62,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.isColumn = settings.isColumn;
         this.isFlammable = settings.isFlammable;
         this.isTranslucent = settings.isTranslucent;
+        this.isWooden = settings.isWooden;
         this.mainMaterial = settings.mainMaterial;
         this.materials = settings.materials;
         this.blockTextures = settings.blockTextures;
@@ -100,6 +104,10 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public Tool getTool() {
         return this.tool;
+    }
+
+    public boolean isEnabled() {
+        return true;
     }
 
     public Identifier getMaterial(String key) {
@@ -188,8 +196,18 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         return this.isTranslucent;
     }
 
+    public boolean isWooden() {
+        return this.isWooden;
+    }
+
     public T modId(String modId) {
         this.modId = modId;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T enabled(Supplier<Boolean> predicate) {
+        this.isEnabled = predicate;
         // noinspection unchecked
         return (T) this;
     }
@@ -214,6 +232,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public T tool(Tool tool) {
         this.tool = tool;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T wooden() {
+        this.isWooden = true;
         // noinspection unchecked
         return (T) this;
     }
@@ -358,7 +382,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasBeam() {
-            return this.hasBeam;
+            return this.isEnabled() && this.hasBeam;
         }
 
         public DefaultSettings withBeam() {
@@ -367,7 +391,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasCompressedBlock() {
-            return this.hasCompressedBlock;
+            return this.isEnabled() && this.hasCompressedBlock;
         }
 
         public DefaultSettings withCompressedBlock() {
@@ -376,7 +400,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasCover() {
-            return this.hasCover;
+            return this.isEnabled() && this.hasCover;
         }
 
         public DefaultSettings withCover() {
@@ -385,7 +409,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasSlab() {
-            return this.hasSlab;
+            return this.isEnabled() && this.hasSlab;
         }
 
         public DefaultSettings withSlab() {
@@ -394,7 +418,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasBookshelfSlab() {
-            return this.hasBookshelfSlab;
+            return this.isEnabled() && this.hasBookshelfSlab;
         }
 
         public DefaultSettings withBookshelfSlab() {
@@ -403,7 +427,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasStairs() {
-            return this.hasStairs;
+            return this.isEnabled() && this.hasStairs;
         }
 
         public DefaultSettings withStairs() {
@@ -412,7 +436,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasVerticalStairs() {
-            return this.hasVerticalStairs;
+            return this.isEnabled() && this.hasVerticalStairs;
         }
 
         public DefaultSettings withVerticalStairs() {
@@ -421,7 +445,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasBookshelfStairs() {
-            return this.hasBookshelfStairs;
+            return this.isEnabled() && this.hasBookshelfStairs;
         }
 
         public DefaultSettings withBookshelfStairs() {
@@ -430,7 +454,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasVerticalBookshelfStairs() {
-            return this.hasVerticalBookshelfStairs;
+            return this.isEnabled() && this.hasVerticalBookshelfStairs;
         }
 
         public DefaultSettings withVerticalBookshelfStairs() {
@@ -439,7 +463,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasWall() {
-            return this.hasWall;
+            return this.isEnabled() && this.hasWall;
         }
 
         public DefaultSettings withWall() {
@@ -448,7 +472,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasBookshelf() {
-            return this.hasBookshelf;
+            return this.isEnabled() && this.hasBookshelf;
         }
 
         public DefaultSettings withBookshelf() {
@@ -457,7 +481,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasStorageBookshelf() {
-            return this.hasStorageBookshelf;
+            return this.isEnabled() && this.hasStorageBookshelf;
         }
 
         public DefaultSettings withStorageBookshelf() {
@@ -466,7 +490,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasDisplayCase() {
-            return this.hasDisplayCase;
+            return this.isEnabled() && this.hasDisplayCase;
         }
 
         public DefaultSettings withDisplayCase() {
@@ -475,7 +499,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasStrippedDisplayCase() {
-            return this.hasStrippedDisplayCase;
+            return this.isEnabled() && this.hasStrippedDisplayCase;
         }
 
         public DefaultSettings withStrippedDisplayCase() {
@@ -484,7 +508,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasBookshelfDoor() {
-            return this.hasBookshelfDoor;
+            return this.isEnabled() && this.hasBookshelfDoor;
         }
 
         public DefaultSettings withBookshelfDoor() {
@@ -493,7 +517,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasChair() {
-            return this.hasChair;
+            return this.isEnabled() && this.hasChair;
         }
 
         public DefaultSettings withChair() {
@@ -502,7 +526,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasStool() {
-            return this.hasStool;
+            return this.isEnabled() && this.hasStool;
         }
 
         public DefaultSettings withStool() {
@@ -511,7 +535,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasShelf() {
-            return this.hasShelf;
+            return this.isEnabled() && this.hasShelf;
         }
 
         public DefaultSettings withShelf() {
@@ -520,7 +544,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasFloatingShelf() {
-            return this.hasFloatingShelf;
+            return this.isEnabled() && this.hasFloatingShelf;
         }
 
         public DefaultSettings withFloatingShelf() {
@@ -529,7 +553,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasTable() {
-            return this.hasTable;
+            return this.isEnabled() && this.hasTable;
         }
 
         public DefaultSettings withTable() {
@@ -538,7 +562,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         public boolean hasBookshelfTrapdoor() {
-            return this.hasBookshelfTrapdoor;
+            return this.isEnabled() && this.hasBookshelfTrapdoor;
         }
 
         public DefaultSettings withBookshelfTrapdoor() {

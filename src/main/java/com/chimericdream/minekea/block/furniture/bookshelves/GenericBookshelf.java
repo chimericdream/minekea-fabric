@@ -1,10 +1,7 @@
 package com.chimericdream.minekea.block.furniture.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.resource.LootTable;
-import com.chimericdream.minekea.resource.MinekeaResourcePack;
-import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.resource.*;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -57,7 +54,8 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
     @Override
     public void setupResources() {
         MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
-        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.BOOKSHELVES.add(getBlockID(), settings.isWooden());
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Identifier ingredient = settings.getMaterial("ingredient", "planks");

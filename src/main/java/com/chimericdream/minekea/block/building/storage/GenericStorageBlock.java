@@ -1,10 +1,7 @@
 package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.resource.LootTable;
-import com.chimericdream.minekea.resource.MinekeaResourcePack;
-import com.chimericdream.minekea.resource.Model;
-import com.chimericdream.minekea.resource.Texture;
+import com.chimericdream.minekea.resource.*;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -129,7 +126,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
     @Override
     public void setupResources() {
         StorageBlockSettings settings = (StorageBlockSettings) this.settings;
-        MinekeaResourcePack.addToolTag(settings.getTool(), getBlockID());
+        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
         Map<String, Identifier> materials = settings.getMaterials();
 
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
