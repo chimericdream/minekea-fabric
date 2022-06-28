@@ -39,6 +39,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
     public static final GenericStorageBlock BLAZE_ROD_BLOCK;
     public static final GenericStorageBlock CARROT_BLOCK;
+    public static final GenericStorageBlock CHARCOAL_BLOCK;
     public static final GenericStorageBlock CHORUS_FRUIT_BLOCK;
     public static final GenericStorageBlock ENDER_PEARL_BLOCK;
     public static final GenericStorageBlock FLINT_BLOCK;
@@ -84,6 +85,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         BLAZE_POWDER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BLAZE_POWDER).tool(Tool.SHOVEL).sounds(BlockSoundGroup.NETHER_STEM));
         BLAZE_ROD_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BLAZE_ROD).tool(Tool.AXE).sounds(BlockSoundGroup.NETHER_STEM));
         CARROT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.CARROT).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
+        CHARCOAL_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.CHARCOAL).tool(Tool.SHOVEL).sounds(BlockSoundGroup.TUFF));
         CHORUS_FRUIT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.CHORUS_FRUIT).tool(Tool.AXE).bagged().sounds(BlockSoundGroup.WOOD));
         ENDER_PEARL_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.ENDER_PEARL).sounds(BlockSoundGroup.SHROOMLIGHT));
         FLINT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.FLINT).sounds(BlockSoundGroup.STONE));
@@ -161,6 +163,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         BLAZE_POWDER_BLOCK.register();
         BLAZE_ROD_BLOCK.register();
         CARROT_BLOCK.register();
+        CHARCOAL_BLOCK.register();
         CHORUS_FRUIT_BLOCK.register();
         ENDER_PEARL_BLOCK.register();
         FLINT_BLOCK.register();

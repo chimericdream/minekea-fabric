@@ -3080,6 +3080,16 @@ public class BaseBlockSettings {
             )
         );
 
+    public static DefaultSettings CHARCOAL = new DefaultSettings(Blocks.COAL_BLOCK)
+        .material("charcoal")
+        .ingredientName("Charcoal")
+        .materials(
+            Map.of(
+                "main", new Identifier("minecraft:charcoal"),
+                "ingredient", new Identifier("minecraft:charcoal")
+            )
+        );
+
     public static DefaultSettings CHORUS_FRUIT = new DefaultSettings(Blocks.PURPUR_BLOCK)
         .material("chorus_fruit")
         .ingredientName("Chorus Fruit")
