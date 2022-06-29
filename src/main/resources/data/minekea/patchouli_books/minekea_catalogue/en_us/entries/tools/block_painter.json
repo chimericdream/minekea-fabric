@@ -12,6 +12,44 @@
             "type": "patchouli:crafting",
             "recipe": "minekea:tools/painter",
             "title": "Recipe"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/painter-inventory.png",
+                "minekea:textures/gui/patchouli/painter-inventory-full.png"
+            ],
+            "text": "Right-click to open the painter GUI and fill it with up to a stack of each dye color."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/painter-white.png",
+                "minekea:textures/gui/patchouli/painter-orange.png",
+                "minekea:textures/gui/patchouli/painter-magenta.png",
+                "minekea:textures/gui/patchouli/painter-light-blue.png",
+                "minekea:textures/gui/patchouli/painter-yellow.png",
+                "minekea:textures/gui/patchouli/painter-lime.png",
+                "minekea:textures/gui/patchouli/painter-pink.png",
+                "minekea:textures/gui/patchouli/painter-gray.png",
+                "minekea:textures/gui/patchouli/painter-light-gray.png",
+                "minekea:textures/gui/patchouli/painter-cyan.png",
+                "minekea:textures/gui/patchouli/painter-purple.png",
+                "minekea:textures/gui/patchouli/painter-blue.png",
+                "minekea:textures/gui/patchouli/painter-brown.png",
+                "minekea:textures/gui/patchouli/painter-green.png",
+                "minekea:textures/gui/patchouli/painter-red.png",
+                "minekea:textures/gui/patchouli/painter-black.png"
+            ],
+            "text": "Press '=' to cycle between colors. The durability indicates how much of the current color is left."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/painter-before.png",
+                "minekea:textures/gui/patchouli/painter-after.png"
+            ],
+            "text": "Right-click on a colored block to re-color it!"
         }
     ]
 }
