@@ -8,6 +8,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 public class MinekeaConfig implements ConfigData {
     public String reset = "";
     public boolean enableBeams = true;
+    public boolean enableButtons = true;
     public boolean enableCompressedBlocks = true;
     public boolean enableCovers = true;
     public boolean enableSlabs = true;

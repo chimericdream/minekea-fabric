@@ -4,6 +4,7 @@ import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
+import com.chimericdream.minekea.block.redstone.RedstoneBlocks;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.config.ConfigManager;
@@ -36,6 +37,7 @@ public class MinekeaMod implements ModInitializer {
     public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Fluids FLUIDS;
     public static final FurnitureBlocks FURNITURE_BLOCKS;
+    public static final RedstoneBlocks REDSTONE_BLOCKS;
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
@@ -60,6 +62,7 @@ public class MinekeaMod implements ModInitializer {
         DECORATION_BLOCKS = new DecorationBlocks();
         FLUIDS = new Fluids();
         FURNITURE_BLOCKS = new FurnitureBlocks();
+        REDSTONE_BLOCKS = new RedstoneBlocks();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
             BUILDING_BLOCKS,
@@ -67,7 +70,8 @@ public class MinekeaMod implements ModInitializer {
             CROPS,
             DECORATION_BLOCKS,
             FLUIDS,
-            FURNITURE_BLOCKS
+            FURNITURE_BLOCKS,
+            REDSTONE_BLOCKS
         };
 
         ITEMS = new Items();

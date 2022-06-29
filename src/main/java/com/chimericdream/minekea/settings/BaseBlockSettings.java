@@ -1271,99 +1271,131 @@ public class BaseBlockSettings {
 
     public static DefaultSettings WHITE_WOOL = new DefaultSettings(Blocks.WHITE_WOOL)
         .material("white_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("White Wool")
-        .materials(Map.of("main", new Identifier("minecraft:white_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:white_wool")))
+        .withButton();
 
     public static DefaultSettings ORANGE_WOOL = new DefaultSettings(Blocks.ORANGE_WOOL)
         .material("orange_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Orange Wool")
-        .materials(Map.of("main", new Identifier("minecraft:orange_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:orange_wool")))
+        .withButton();
 
     public static DefaultSettings MAGENTA_WOOL = new DefaultSettings(Blocks.MAGENTA_WOOL)
         .material("magenta_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Magenta Wool")
-        .materials(Map.of("main", new Identifier("minecraft:magenta_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:magenta_wool")))
+        .withButton();
 
     public static DefaultSettings LIGHT_BLUE_WOOL = new DefaultSettings(Blocks.LIGHT_BLUE_WOOL)
         .material("light_blue_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Light Blue Wool")
-        .materials(Map.of("main", new Identifier("minecraft:light_blue_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:light_blue_wool")))
+        .withButton();
 
     public static DefaultSettings YELLOW_WOOL = new DefaultSettings(Blocks.YELLOW_WOOL)
         .material("yellow_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Yellow Wool")
-        .materials(Map.of("main", new Identifier("minecraft:yellow_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:yellow_wool")))
+        .withButton();
 
     public static DefaultSettings LIME_WOOL = new DefaultSettings(Blocks.LIME_WOOL)
         .material("lime_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Lime Wool")
-        .materials(Map.of("main", new Identifier("minecraft:lime_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:lime_wool")))
+        .withButton();
 
     public static DefaultSettings PINK_WOOL = new DefaultSettings(Blocks.PINK_WOOL)
         .material("pink_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Pink Wool")
-        .materials(Map.of("main", new Identifier("minecraft:pink_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:pink_wool")))
+        .withButton();
 
     public static DefaultSettings GRAY_WOOL = new DefaultSettings(Blocks.GRAY_WOOL)
         .material("gray_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Gray Wool")
-        .materials(Map.of("main", new Identifier("minecraft:gray_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:gray_wool")))
+        .withButton();
 
     public static DefaultSettings LIGHT_GRAY_WOOL = new DefaultSettings(Blocks.LIGHT_GRAY_WOOL)
         .material("light_gray_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Light Gray Wool")
-        .materials(Map.of("main", new Identifier("minecraft:light_gray_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:light_gray_wool")))
+        .withButton();
 
     public static DefaultSettings CYAN_WOOL = new DefaultSettings(Blocks.CYAN_WOOL)
         .material("cyan_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Cyan Wool")
-        .materials(Map.of("main", new Identifier("minecraft:cyan_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:cyan_wool")))
+        .withButton();
 
     public static DefaultSettings PURPLE_WOOL = new DefaultSettings(Blocks.PURPLE_WOOL)
         .material("purple_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Purple Wool")
-        .materials(Map.of("main", new Identifier("minecraft:purple_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:purple_wool")))
+        .withButton();
 
     public static DefaultSettings BLUE_WOOL = new DefaultSettings(Blocks.BLUE_WOOL)
         .material("blue_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Blue Wool")
-        .materials(Map.of("main", new Identifier("minecraft:blue_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:blue_wool")))
+        .withButton();
 
     public static DefaultSettings BROWN_WOOL = new DefaultSettings(Blocks.BROWN_WOOL)
         .material("brown_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Brown Wool")
-        .materials(Map.of("main", new Identifier("minecraft:brown_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:brown_wool")))
+        .withButton();
 
     public static DefaultSettings GREEN_WOOL = new DefaultSettings(Blocks.GREEN_WOOL)
         .material("green_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Green Wool")
-        .materials(Map.of("main", new Identifier("minecraft:green_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:green_wool")))
+        .withButton();
 
     public static DefaultSettings RED_WOOL = new DefaultSettings(Blocks.RED_WOOL)
         .material("red_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Red Wool")
-        .materials(Map.of("main", new Identifier("minecraft:red_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:red_wool")))
+        .withButton();
 
     public static DefaultSettings BLACK_WOOL = new DefaultSettings(Blocks.BLACK_WOOL)
         .material("black_wool")
+        .wool()
         .tool(Tool.SHEARS)
         .ingredientName("Black Wool")
-        .materials(Map.of("main", new Identifier("minecraft:black_wool")));
+        .materials(Map.of("main", new Identifier("minecraft:black_wool")))
+        .withButton();
 
     /******************************************************************************************************************/
 
@@ -3505,6 +3537,23 @@ public class BaseBlockSettings {
         WAXED_EXPOSED_CUT_COPPER,
         WAXED_WEATHERED_CUT_COPPER,
         WAXED_OXIDIZED_CUT_COPPER,
+
+        WHITE_WOOL,
+        ORANGE_WOOL,
+        MAGENTA_WOOL,
+        LIGHT_BLUE_WOOL,
+        YELLOW_WOOL,
+        LIME_WOOL,
+        PINK_WOOL,
+        GRAY_WOOL,
+        LIGHT_GRAY_WOOL,
+        CYAN_WOOL,
+        PURPLE_WOOL,
+        BLUE_WOOL,
+        BROWN_WOOL,
+        GREEN_WOOL,
+        RED_WOOL,
+        BLACK_WOOL,
 
         WHITE_TERRACOTTA,
         ORANGE_TERRACOTTA,

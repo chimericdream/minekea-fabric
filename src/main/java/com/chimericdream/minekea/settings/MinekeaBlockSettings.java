@@ -24,6 +24,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected boolean isFlammable = false;
     protected boolean isTranslucent = false;
     protected boolean isWooden = false;
+    protected boolean isWool = false;
     protected String mainMaterial;
     protected Map<String, Identifier> materials;
     protected Map<String, Identifier> blockTextures = new HashMap<>();
@@ -63,6 +64,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.isFlammable = settings.isFlammable;
         this.isTranslucent = settings.isTranslucent;
         this.isWooden = settings.isWooden;
+        this.isWool = settings.isWool;
         this.mainMaterial = settings.mainMaterial;
         this.materials = settings.materials;
         this.blockTextures = settings.blockTextures;
@@ -200,6 +202,10 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         return this.isWooden;
     }
 
+    public boolean isWool() {
+        return this.isWool;
+    }
+
     public T modId(String modId) {
         this.modId = modId;
         // noinspection unchecked
@@ -238,6 +244,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
     public T wooden() {
         this.isWooden = true;
+        // noinspection unchecked
+        return (T) this;
+    }
+
+    public T wool() {
+        this.isWool = true;
         // noinspection unchecked
         return (T) this;
     }
@@ -330,6 +342,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         public String bookshelfModel = null;
 
         private boolean hasBeam = false;
+        private boolean hasButton = false;
         private boolean hasCompressedBlock = false;
         private boolean hasCover = false;
         private boolean hasSlab = false;
@@ -387,6 +400,15 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
         public DefaultSettings withBeam() {
             this.hasBeam = true;
+            return this;
+        }
+
+        public boolean hasButton() {
+            return this.isEnabled() && this.hasButton;
+        }
+
+        public DefaultSettings withButton() {
+            this.hasButton = true;
             return this;
         }
 

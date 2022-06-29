@@ -15,6 +15,7 @@ public class ConfigManager {
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.title", "Minekea Configuration");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.reset", "Restore Defaults");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableBeams", "Enable Beams");
+        MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableButtons", "Enable Buttons");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableCompressedBlocks", "Enable Compressed Blocks");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableCovers", "Enable Covers");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableSlabs", "Enable Slabs");
@@ -42,6 +43,7 @@ public class ConfigManager {
     public static final Consumer<MinekeaConfig> DEFAULT = (config) -> {
         config.reset = "Erase to reset";
         config.enableBeams = true;
+        config.enableButtons = true;
         config.enableCompressedBlocks = true;
         config.enableCovers = true;
         config.enableSlabs = true;

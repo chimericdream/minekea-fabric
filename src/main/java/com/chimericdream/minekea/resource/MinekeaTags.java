@@ -20,6 +20,7 @@ public class MinekeaTags {
     public static final BlockTagGroup BARRELS = new BlockTagGroup("barrels");
     public static final BlockTagGroup BEAMS = new BlockTagGroup("beams");
     public static final BlockTagGroup BOOKSHELVES = new BlockTagGroup("bookshelves");
+    public static final BlockTagGroup BUTTONS = new BlockTagGroup("buttons");
     public static final BlockTagGroup CHAIRS = new BlockTagGroup("chairs");
     public static final BlockTagGroup COVERS = new BlockTagGroup("covers");
     public static final BlockTagGroup CRATES = new BlockTagGroup("crates");
@@ -62,6 +63,7 @@ public class MinekeaTags {
         BARRELS.register();
         BEAMS.register();
         BOOKSHELVES.register();
+        BUTTONS.register();
         CHAIRS.register();
         COVERS.register();
         CRATES.register();
