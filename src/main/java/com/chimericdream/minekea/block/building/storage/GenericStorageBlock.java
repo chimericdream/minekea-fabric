@@ -94,6 +94,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        StorageBlockSettings settings = (StorageBlockSettings) this.settings;
         ItemStack heldItem = player.getStackInHand(hand);
 
         if (state.get(IS_BAGGED) && heldItem.isItemEqual(Items.SHEARS.getDefaultStack())) {
@@ -101,6 +102,22 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
                 world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } else {
                 world.setBlockState(pos, state.with(IS_BAGGED, false));
+                world.markDirty(pos);
+            }
+
+            return ActionResult.SUCCESS;
+        }
+
+        if (!state.get(IS_BAGGED) && settings.isBaggedItem && heldItem.isItemEqual(Items.LEATHER.getDefaultStack())) {
+            if (world.isClient()) {
+                world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_BUNDLE_INSERT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            } else {
+                if (!player.isCreative()) {
+                    heldItem.decrement(1);
+                    player.setStackInHand(hand, heldItem);
+                }
+
+                world.setBlockState(pos, state.with(IS_BAGGED, true));
                 world.markDirty(pos);
             }
 

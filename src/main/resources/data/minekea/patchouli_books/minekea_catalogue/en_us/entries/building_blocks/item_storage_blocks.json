@@ -25,6 +25,18 @@
             "recipe": "minekea:storage/dyes/white_dye",
             "title": "Example Recipes",
             "text": "All dyes can be compressed into gooey blocks which behave much like honey. They slow entities down and prevent jumping. However, they cannot be used in redstone contraptions."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "When placed, some blocks render inside a brown sack. To remove the sack, right-click the block with a pair of shears. To put the block back into a bag, right-click with a piece of leather."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/bagged-blocks.png",
+                "minekea:textures/gui/patchouli/unbagged-blocks.png",
+                "minekea:textures/gui/patchouli/re-bagged-blocks.png"
+            ]
         }
     ]
 }
