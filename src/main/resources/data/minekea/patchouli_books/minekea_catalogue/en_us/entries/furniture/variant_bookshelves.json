@@ -1,6 +1,7 @@
 {
     "name": "Bookshelf Variants",
     "icon": "minekea:bookshelves/crimson_bookshelf",
+    "flag": "minekea:enableBookshelves",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [

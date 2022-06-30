@@ -1,6 +1,7 @@
 {
     "name": "Covers",
     "icon": "minekea:covers/cobblestone_cover",
+    "flag": "minekea:enableCovers",
     "category": "minekea:building_blocks",
     "read_by_default": true,
     "pages": [

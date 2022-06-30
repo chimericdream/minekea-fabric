@@ -1,6 +1,7 @@
 {
     "name": "Cobbled End Stone",
     "icon": "minekea:building/general/cobbled_end_stone",
+    "flag": "minekea:enableCobbledEndStone",
     "category": "minekea:building_blocks",
     "read_by_default": true,
     "pages": [

@@ -6,6 +6,7 @@ import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.block.redstone.RedstoneBlocks;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.compat.PatchouliCompat;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.config.ConfigManager;
 import com.chimericdream.minekea.crops.Crops;
@@ -122,6 +123,12 @@ public class MinekeaMod implements ModInitializer {
 
         LOGGER.info("[minekea] Registering colored blocks");
         registerVanillaColoredBlocks();
+
+        FabricLoader loader = FabricLoader.getInstance();
+
+        if (loader.isModLoaded("patchouli")) {
+            PatchouliCompat.init();
+        }
 
         LOGGER.info("[minekea] Registering dynamic resource pack");
         // This _must_ be the last thing

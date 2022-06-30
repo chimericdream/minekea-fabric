@@ -1,6 +1,7 @@
 {
     "name": "Display Cases",
     "icon": "minekea:displaycases/oak_display_case",
+    "flag": "minekea:enableDisplayCases",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [

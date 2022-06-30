@@ -1,5 +1,5 @@
 {
     "name": "Tools",
     "description": "Minekea has a wide selection of tools for every possible job you can think of!$(br2)$(br2)$(br2)$(br2)$(o)As long as that job requires a wrench or some dye",
-    "icon": "minekea:wrench"
+    "icon": "minekea:tools/wrench"
 }

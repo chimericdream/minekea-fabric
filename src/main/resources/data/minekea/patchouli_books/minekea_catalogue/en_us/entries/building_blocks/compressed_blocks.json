@@ -1,6 +1,7 @@
 {
     "name": "Compressed Blocks",
     "icon": "minekea:building/compressed/cobblestone/9x",
+    "flag": "minekea:enableCompressedBlocks",
     "category": "minekea:building_blocks",
     "read_by_default": true,
     "pages": [

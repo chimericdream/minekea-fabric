@@ -1,0 +1,19 @@
+{
+    "name": "Slabs",
+    "icon": "minekea:building/slabs/bone",
+    "flag": "minekea:enableSlabs",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Minekea adds slabs for a large number of vanilla blocks which don't already have them. All new blocks follow the standard recipe."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/slabs/amethyst",
+            "recipe2": "minekea:building/slabs/jungle_bookshelf",
+            "title": "Example Recipes"
+        }
+    ]
+}

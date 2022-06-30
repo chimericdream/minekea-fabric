@@ -1,6 +1,7 @@
 {
     "name": "Crates",
     "icon": "minekea:crates/oak_crate",
+    "flag": "minekea:enableCrates",
     "category": "minekea:containers_and_storage",
     "read_by_default": true,
     "pages": [

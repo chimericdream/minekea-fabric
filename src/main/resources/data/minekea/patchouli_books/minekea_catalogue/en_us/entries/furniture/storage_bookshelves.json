@@ -1,6 +1,7 @@
 {
     "name": "Storage Bookshelves",
     "icon": "minekea:bookshelves/storage/oak_storage_shelf",
+    "flag": "minekea:enableStorageBookshelves",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [

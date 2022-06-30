@@ -1,6 +1,7 @@
 {
     "name": "Vertical Stairs",
     "icon": "minekea:building/stairs/cobblestone_vertical_stairs",
+    "flag": "minekea:enableVerticalStairs",
     "category": "minekea:building_blocks",
     "read_by_default": true,
     "pages": [

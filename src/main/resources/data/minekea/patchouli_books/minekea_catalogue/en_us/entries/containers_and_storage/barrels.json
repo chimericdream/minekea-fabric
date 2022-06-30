@@ -1,6 +1,7 @@
 {
     "name": "Barrels",
     "icon": "minecraft:barrel",
+    "flag": "minekea:enableBarrels",
     "category": "minekea:containers_and_storage",
     "read_by_default": true,
     "pages": [

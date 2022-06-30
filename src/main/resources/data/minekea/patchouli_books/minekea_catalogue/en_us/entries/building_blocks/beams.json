@@ -1,6 +1,7 @@
 {
     "name": "Beams",
     "icon": "minekea:beams/cobblestone_beam",
+    "flag": "minekea:enableBeams",
     "category": "minekea:building_blocks",
     "read_by_default": true,
     "pages": [

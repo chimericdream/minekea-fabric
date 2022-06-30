@@ -1,0 +1,19 @@
+{
+    "name": "Walls",
+    "icon": "minekea:building/walls/white_terracotta",
+    "flag": "minekea:enableWalls",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Minekea adds walls for a large number of vanilla blocks which don't already have them. All new blocks follow the standard recipe."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/walls/amethyst",
+            "recipe2": "minekea:building/walls/white_terracotta",
+            "title": "Example Recipes"
+        }
+    ]
+}

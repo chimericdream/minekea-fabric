@@ -1,6 +1,7 @@
 {
     "name": "Shelves",
     "icon": "minekea:shelves/oak_supported_shelf",
+    "flag": "minekea:enableShelves",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [

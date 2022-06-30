@@ -1,6 +1,7 @@
 {
     "name": "Tables",
     "icon": "minekea:tables/oak_table",
+    "flag": "minekea:enableTables",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [
