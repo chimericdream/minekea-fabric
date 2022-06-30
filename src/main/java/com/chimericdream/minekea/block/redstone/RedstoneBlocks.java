@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.redstone;
 
 import com.chimericdream.minekea.block.redstone.buttons.Buttons;
+import com.chimericdream.minekea.block.redstone.pressure_plates.PressurePlates;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.config.ConfigManager;
 import com.chimericdream.minekea.config.MinekeaConfig;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class RedstoneBlocks implements MinekeaBlockCategory {
     public static Buttons BUTTONS = null;
+    public static PressurePlates PRESSURE_PLATES = null;
 
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
 
@@ -22,6 +24,11 @@ public class RedstoneBlocks implements MinekeaBlockCategory {
         if (config.enableButtons) {
             BUTTONS = new Buttons();
             BLOCK_GROUPS.add(BUTTONS);
+        }
+
+        if (config.enablePressurePlates) {
+            PRESSURE_PLATES = new PressurePlates();
+            BLOCK_GROUPS.add(PRESSURE_PLATES);
         }
     }
 

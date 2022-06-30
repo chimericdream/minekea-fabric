@@ -8,7 +8,6 @@ import me.shedaniel.autoconfig.annotation.Config;
 public class MinekeaConfig implements ConfigData {
     public String reset = "";
     public boolean enableBeams = true;
-    public boolean enableButtons = true;
     public boolean enableCompressedBlocks = true;
     public boolean enableCovers = true;
     public boolean enableSlabs = true;
@@ -27,6 +26,8 @@ public class MinekeaConfig implements ConfigData {
     public boolean enableShelves = true;
     public boolean enableTables = true;
     public boolean enableTrapdoors = true;
+    public boolean enableButtons = true;
+    public boolean enablePressurePlates = true;
 
     public boolean overrideVanillaBarrelTexture = true;
     public boolean overrideVanillaBookshelfTexture = true;

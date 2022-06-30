@@ -342,7 +342,6 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         public String bookshelfModel = null;
 
         private boolean hasBeam = false;
-        private boolean hasButton = false;
         private boolean hasCompressedBlock = false;
         private boolean hasCover = false;
         private boolean hasSlab = false;
@@ -363,6 +362,8 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         private boolean hasFloatingShelf = false;
         private boolean hasTable = false;
         private boolean hasBookshelfTrapdoor = false;
+        private boolean hasButton = false;
+        private boolean hasPressurePlate = false;
 
         public DefaultSettings(Block block) {
             super(block);
@@ -409,6 +410,15 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
         public DefaultSettings withButton() {
             this.hasButton = true;
+            return this;
+        }
+
+        public boolean hasPressurePlate() {
+            return this.isEnabled() && this.hasPressurePlate;
+        }
+
+        public DefaultSettings withPressurePlate() {
+            this.hasPressurePlate = true;
             return this;
         }
 

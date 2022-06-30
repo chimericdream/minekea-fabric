@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 public class GenericButton extends AbstractButtonBlock implements MinekeaBlock {
-    public GenericButton(MinekeaBlockSettings<?> settings) {
+    public GenericButton(ButtonSettings settings) {
         // Wool buttons behave like wood ones
         super(settings.isWooden() || settings.isWool(), settings);
     }

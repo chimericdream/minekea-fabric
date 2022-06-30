@@ -1275,7 +1275,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("White Wool")
         .materials(Map.of("main", new Identifier("minecraft:white_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings ORANGE_WOOL = new DefaultSettings(Blocks.ORANGE_WOOL)
         .material("orange_wool")
@@ -1283,7 +1284,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Orange Wool")
         .materials(Map.of("main", new Identifier("minecraft:orange_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings MAGENTA_WOOL = new DefaultSettings(Blocks.MAGENTA_WOOL)
         .material("magenta_wool")
@@ -1291,7 +1293,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Magenta Wool")
         .materials(Map.of("main", new Identifier("minecraft:magenta_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings LIGHT_BLUE_WOOL = new DefaultSettings(Blocks.LIGHT_BLUE_WOOL)
         .material("light_blue_wool")
@@ -1299,7 +1302,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Light Blue Wool")
         .materials(Map.of("main", new Identifier("minecraft:light_blue_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings YELLOW_WOOL = new DefaultSettings(Blocks.YELLOW_WOOL)
         .material("yellow_wool")
@@ -1307,7 +1311,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Yellow Wool")
         .materials(Map.of("main", new Identifier("minecraft:yellow_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings LIME_WOOL = new DefaultSettings(Blocks.LIME_WOOL)
         .material("lime_wool")
@@ -1315,7 +1320,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Lime Wool")
         .materials(Map.of("main", new Identifier("minecraft:lime_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings PINK_WOOL = new DefaultSettings(Blocks.PINK_WOOL)
         .material("pink_wool")
@@ -1323,7 +1329,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Pink Wool")
         .materials(Map.of("main", new Identifier("minecraft:pink_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings GRAY_WOOL = new DefaultSettings(Blocks.GRAY_WOOL)
         .material("gray_wool")
@@ -1331,7 +1338,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Gray Wool")
         .materials(Map.of("main", new Identifier("minecraft:gray_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings LIGHT_GRAY_WOOL = new DefaultSettings(Blocks.LIGHT_GRAY_WOOL)
         .material("light_gray_wool")
@@ -1339,7 +1347,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Light Gray Wool")
         .materials(Map.of("main", new Identifier("minecraft:light_gray_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings CYAN_WOOL = new DefaultSettings(Blocks.CYAN_WOOL)
         .material("cyan_wool")
@@ -1347,7 +1356,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Cyan Wool")
         .materials(Map.of("main", new Identifier("minecraft:cyan_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings PURPLE_WOOL = new DefaultSettings(Blocks.PURPLE_WOOL)
         .material("purple_wool")
@@ -1355,7 +1365,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Purple Wool")
         .materials(Map.of("main", new Identifier("minecraft:purple_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings BLUE_WOOL = new DefaultSettings(Blocks.BLUE_WOOL)
         .material("blue_wool")
@@ -1363,7 +1374,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Blue Wool")
         .materials(Map.of("main", new Identifier("minecraft:blue_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings BROWN_WOOL = new DefaultSettings(Blocks.BROWN_WOOL)
         .material("brown_wool")
@@ -1371,7 +1383,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Brown Wool")
         .materials(Map.of("main", new Identifier("minecraft:brown_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings GREEN_WOOL = new DefaultSettings(Blocks.GREEN_WOOL)
         .material("green_wool")
@@ -1379,7 +1392,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Green Wool")
         .materials(Map.of("main", new Identifier("minecraft:green_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings RED_WOOL = new DefaultSettings(Blocks.RED_WOOL)
         .material("red_wool")
@@ -1387,7 +1401,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Red Wool")
         .materials(Map.of("main", new Identifier("minecraft:red_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     public static DefaultSettings BLACK_WOOL = new DefaultSettings(Blocks.BLACK_WOOL)
         .material("black_wool")
@@ -1395,7 +1410,8 @@ public class BaseBlockSettings {
         .tool(Tool.SHEARS)
         .ingredientName("Black Wool")
         .materials(Map.of("main", new Identifier("minecraft:black_wool")))
-        .withButton();
+        .withButton()
+        .withPressurePlate();
 
     /******************************************************************************************************************/
 
