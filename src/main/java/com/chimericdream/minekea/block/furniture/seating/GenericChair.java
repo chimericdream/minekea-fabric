@@ -19,12 +19,17 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -38,13 +43,16 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class GenericChair extends Block implements MinekeaBlock {
+public class GenericChair extends Block implements MinekeaBlock, Waterloggable {
     public static final DirectionProperty FACING;
+
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     private static final VoxelShape SEAT_SHAPE;
     private static final VoxelShape[] LEG_SHAPES;
@@ -71,7 +79,11 @@ public class GenericChair extends Block implements MinekeaBlock {
     public GenericChair(ChairSettings settings) {
         super(settings);
 
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(
+            this.stateManager.getDefaultState()
+                .with(FACING, Direction.NORTH)
+                .with(WATERLOGGED, false)
+        );
     }
 
     @Override
@@ -97,17 +109,33 @@ public class GenericChair extends Block implements MinekeaBlock {
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING, WATERLOGGED);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Direction lookDirection = ctx.getPlayerLookDirection();
 
         if (lookDirection == Direction.DOWN || lookDirection == Direction.UP) {
-            return (BlockState) this.getDefaultState().with(FACING, Direction.NORTH);
+            return (BlockState) this.getDefaultState().with(FACING, Direction.NORTH)
+                .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
         }
 
-        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerLookDirection());
+        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerLookDirection())
+            .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

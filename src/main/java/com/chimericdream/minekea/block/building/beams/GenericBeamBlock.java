@@ -19,13 +19,17 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.ai.pathing.NavigationType;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -33,12 +37,13 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldAccess;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class GenericBeamBlock extends Block implements MinekeaBlock {
+public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggable {
     protected static final VoxelShape CORE_SHAPE = Block.createCuboidShape(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
     protected static final VoxelShape CONNECTED_NORTH_SHAPE = Block.createCuboidShape(5.0, 5.0, 0.0, 11.0, 11.0, 5.0);
     protected static final VoxelShape CONNECTED_EAST_SHAPE = Block.createCuboidShape(11.0, 5.0, 5.0, 16.0, 11.0, 11.0);
@@ -53,6 +58,8 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
     public static final BooleanProperty CONNECTED_WEST;
     public static final BooleanProperty CONNECTED_UP;
     public static final BooleanProperty CONNECTED_DOWN;
+
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     static {
         CONNECTED_NORTH = BooleanProperty.of("connected_north");
@@ -75,13 +82,15 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
                 .with(CONNECTED_WEST, false)
                 .with(CONNECTED_UP, false)
                 .with(CONNECTED_DOWN, false)
+                .with(WATERLOGGED, false)
         );
     }
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Direction hitSide = ctx.getSide();
-        BlockState blockState = this.getDefaultState();
+        BlockState blockState = this.getDefaultState()
+            .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
 
         blockState = switch (hitSide) {
             case NORTH, SOUTH -> blockState.with(CONNECTED_NORTH, true).with(CONNECTED_SOUTH, true);
@@ -90,6 +99,20 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
         };
 
         return blockState;
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     public static BooleanProperty getConnectionProperty(Direction direction) {
@@ -110,7 +133,8 @@ public class GenericBeamBlock extends Block implements MinekeaBlock {
             CONNECTED_SOUTH,
             CONNECTED_WEST,
             CONNECTED_UP,
-            CONNECTED_DOWN
+            CONNECTED_DOWN,
+            WATERLOGGED
         );
     }
 

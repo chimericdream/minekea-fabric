@@ -15,23 +15,29 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -41,8 +47,10 @@ import java.util.Optional;
 
 import static java.util.Map.entry;
 
-public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider {
+public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider, Waterloggable {
     public static final Map<String, String> ALLOWED_ITEMS = new HashMap<>();
+
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     private final Identifier BLOCK_ID = new Identifier(ModInfo.MOD_ID, "containers/glass_jar");
 
@@ -128,6 +136,31 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
     public GlassJarBlock() {
         super(Settings.copy(Blocks.GLASS).nonOpaque());
+
+        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
+    }
+
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(WATERLOGGED);
+    }
+
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return (BlockState) this.getDefaultState()
+            .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
