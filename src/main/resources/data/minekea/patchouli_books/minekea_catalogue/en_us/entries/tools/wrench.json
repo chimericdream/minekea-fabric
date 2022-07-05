@@ -1,6 +1,6 @@
 {
     "name": "Wrench",
-    "icon": "minekea:wrench",
+    "icon": "minekea:tools/wrench",
     "category": "minekea:tools",
     "read_by_default": true,
     "pages": [
@@ -10,7 +10,7 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:wrench",
+            "recipe": "minekea:tools/wrench",
             "title": "Recipe"
         }
     ]

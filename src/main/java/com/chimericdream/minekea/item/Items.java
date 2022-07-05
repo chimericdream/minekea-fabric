@@ -3,21 +3,32 @@ package com.chimericdream.minekea.item;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.currency.NuggetBag;
 import com.chimericdream.minekea.item.currency.NuggetBag.NuggetSettings;
+import com.chimericdream.minekea.item.tools.HammerItem;
+import com.chimericdream.minekea.item.tools.HammerItem.HammerSettings;
 import com.chimericdream.minekea.item.tools.PainterItem;
 import com.chimericdream.minekea.item.tools.WrenchItem;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.item.BlockPainterScreen;
 import com.chimericdream.minekea.screen.item.BlockPainterScreenHandler;
+import net.devtech.arrp.json.recipe.JIngredient;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 public class Items {
     public static final NuggetBag GOLD_NUGGET_BAG;
     public static final NuggetBag IRON_NUGGET_BAG;
+
+    public static final HammerItem STONE_HAMMER_ITEM;
+    public static final HammerItem IRON_HAMMER_ITEM;
+    public static final HammerItem GOLD_HAMMER_ITEM;
+    public static final HammerItem DIAMOND_HAMMER_ITEM;
+    public static final HammerItem NETHERITE_HAMMER_ITEM;
     public static final PainterItem PAINTER_ITEM;
     public static final WrenchItem WRENCH_ITEM;
 
@@ -26,6 +37,44 @@ public class Items {
     static {
         GOLD_NUGGET_BAG = new NuggetBag(new NuggetSettings("gold", new Identifier("minecraft:gold_nugget")));
         IRON_NUGGET_BAG = new NuggetBag(new NuggetSettings("iron", new Identifier("minecraft:iron_nugget")));
+
+        STONE_HAMMER_ITEM = new HammerItem(
+            new HammerSettings()
+                .material(ToolMaterials.STONE)
+                .maxSlots(4)
+                .materialName("Stone")
+                .ingredient(JIngredient.ingredient().tag(ItemTags.STONE_TOOL_MATERIALS.id().toString()))
+        );
+        IRON_HAMMER_ITEM = new HammerItem(
+            new HammerSettings()
+                .material(ToolMaterials.IRON)
+                .maxSlots(5)
+                .materialName("Iron")
+                .ingredient(JIngredient.ingredient().item(net.minecraft.item.Items.IRON_INGOT))
+        );
+        GOLD_HAMMER_ITEM = new HammerItem(
+            new HammerSettings()
+                .material(ToolMaterials.GOLD)
+                .maxSlots(6)
+                .materialName("Gold")
+                .ingredient(JIngredient.ingredient().item(net.minecraft.item.Items.GOLD_INGOT))
+        );
+        DIAMOND_HAMMER_ITEM = new HammerItem(
+            new HammerSettings()
+                .material(ToolMaterials.DIAMOND)
+                .maxSlots(7)
+                .materialName("Diamond")
+                .ingredient(JIngredient.ingredient().item(net.minecraft.item.Items.DIAMOND))
+        );
+        NETHERITE_HAMMER_ITEM = new HammerItem(
+            (HammerSettings) new HammerSettings()
+                .material(ToolMaterials.NETHERITE)
+                .maxSlots(8)
+                .materialName("Netherite")
+                .ingredient(JIngredient.ingredient().item(net.minecraft.item.Items.NETHERITE_INGOT))
+                .smithingIngredient(JIngredient.ingredient().item(new Identifier(ModInfo.MOD_ID, "tools/hammers/diamond").toString()))
+                .fireproof()
+        );
         PAINTER_ITEM = new PainterItem();
         WRENCH_ITEM = new WrenchItem();
 
@@ -38,6 +87,12 @@ public class Items {
     public void register() {
         GOLD_NUGGET_BAG.register(GOLD_NUGGET_BAG);
         IRON_NUGGET_BAG.register(IRON_NUGGET_BAG);
+
+        STONE_HAMMER_ITEM.register();
+        IRON_HAMMER_ITEM.register();
+        GOLD_HAMMER_ITEM.register();
+        DIAMOND_HAMMER_ITEM.register();
+        NETHERITE_HAMMER_ITEM.register();
         PAINTER_ITEM.register();
         WRENCH_ITEM.register();
     }
