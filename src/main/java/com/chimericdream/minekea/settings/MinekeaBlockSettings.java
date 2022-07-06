@@ -360,6 +360,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         private boolean hasBookshelfStairs = false;
         private boolean hasVerticalBookshelfStairs = false;
         private boolean hasWall = false;
+        private boolean hasCrate = false;
         private boolean hasBookshelf = false;
         private boolean hasStorageBookshelf = false;
         private boolean hasDisplayCase = false;
@@ -524,6 +525,15 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
         public DefaultSettings withWall() {
             this.hasWall = true;
+            return this;
+        }
+
+        public boolean hasCrate() {
+            return this.isEnabled() && this.hasCrate;
+        }
+
+        public DefaultSettings withCrate() {
+            this.hasCrate = true;
             return this;
         }
 
