@@ -432,6 +432,22 @@ public class BygBlockSettings {
         .texture("stripped_log", new Identifier("byg:block/sythian/stripped_log"))
         .texture("log", new Identifier("byg:block/sythian/log"));
 
+    public static DefaultSettings WHITE_MANGROVE = new DefaultSettings(Blocks.OAK_PLANKS)
+        .modId("byg")
+        .material("white_mangrove")
+        .ingredientName("White Mangrove")
+        .materials(
+            Map.of(
+                "main", new Identifier("byg:white_mangrove_planks"),
+                "slab", new Identifier("byg:white_mangrove_slab"),
+                "log", new Identifier("byg:white_mangrove_log")
+            )
+        )
+        .texture("planks", new Identifier("byg:block/white_mangrove/planks"))
+        .texture("main", new Identifier("byg:block/white_mangrove/planks"))
+        .texture("stripped_log", new Identifier("byg:block/white_mangrove/stripped_log"))
+        .texture("log", new Identifier("byg:block/white_mangrove/log"));
+
     public static DefaultSettings WILLOW = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()

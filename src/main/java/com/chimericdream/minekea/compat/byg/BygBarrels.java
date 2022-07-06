@@ -29,6 +29,7 @@ public class BygBarrels {
     public static final GenericBarrel REDWOOD_BARREL;
     public static final GenericBarrel SKYRIS_BARREL;
     public static final GenericBarrel SYTHIAN_BARREL;
+    public static final GenericBarrel WHITE_MANGROVE_BARREL;
     public static final GenericBarrel WILLOW_BARREL;
     public static final GenericBarrel WITCH_HAZEL_BARREL;
     public static final GenericBarrel ZELKOVA_BARREL;
@@ -59,6 +60,7 @@ public class BygBarrels {
         REDWOOD_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.REDWOOD));
         SKYRIS_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.SKYRIS));
         SYTHIAN_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.SYTHIAN));
+        WHITE_MANGROVE_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.WHITE_MANGROVE));
         WILLOW_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.ZELKOVA));
@@ -90,6 +92,7 @@ public class BygBarrels {
         REDWOOD_BARREL.register();
         SKYRIS_BARREL.register();
         SYTHIAN_BARREL.register();
+        WHITE_MANGROVE_BARREL.register();
         WILLOW_BARREL.register();
         WITCH_HAZEL_BARREL.register();
         ZELKOVA_BARREL.register();

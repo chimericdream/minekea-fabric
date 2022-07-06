@@ -30,6 +30,7 @@ public class BygTrapdoors {
     public static final GenericBookshelfTrapdoor REDWOOD_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor SKYRIS_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor SYTHIAN_BOOKSHELF_TRAPDOOR;
+    public static final GenericBookshelfTrapdoor WHITE_MANGROVE_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor WILLOW_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor WITCH_HAZEL_BOOKSHELF_TRAPDOOR;
     public static final GenericBookshelfTrapdoor ZELKOVA_BOOKSHELF_TRAPDOOR;
@@ -60,6 +61,7 @@ public class BygTrapdoors {
         REDWOOD_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.REDWOOD).addMaterial("bookshelf", new Identifier("byg:redwood_bookshelf")));
         SKYRIS_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.SKYRIS).addMaterial("bookshelf", new Identifier("byg:skyris_bookshelf")));
         SYTHIAN_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.SYTHIAN).addMaterial("bookshelf", new Identifier("byg:sythian_bookshelf")));
+        WHITE_MANGROVE_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.WHITE_MANGROVE).addMaterial("bookshelf", new Identifier("byg:white_mangrove_bookshelf")));
         WILLOW_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.WILLOW).addMaterial("bookshelf", new Identifier("byg:willow_bookshelf")));
         WITCH_HAZEL_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.WITCH_HAZEL).addMaterial("bookshelf", new Identifier("byg:witch_hazel_bookshelf")));
         ZELKOVA_BOOKSHELF_TRAPDOOR = new GenericBookshelfTrapdoor(new BookshelfTrapdoorSettings(BygBlockSettings.ZELKOVA).addMaterial("bookshelf", new Identifier("byg:zelkova_bookshelf")));
@@ -91,6 +93,7 @@ public class BygTrapdoors {
         REDWOOD_BOOKSHELF_TRAPDOOR.register();
         SKYRIS_BOOKSHELF_TRAPDOOR.register();
         SYTHIAN_BOOKSHELF_TRAPDOOR.register();
+        WHITE_MANGROVE_BOOKSHELF_TRAPDOOR.register();
         WILLOW_BOOKSHELF_TRAPDOOR.register();
         WITCH_HAZEL_BOOKSHELF_TRAPDOOR.register();
         ZELKOVA_BOOKSHELF_TRAPDOOR.register();

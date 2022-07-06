@@ -29,6 +29,7 @@ public class BygCrates {
     public static final GenericCrate REDWOOD_CRATE;
     public static final GenericCrate SKYRIS_CRATE;
     public static final GenericCrate SYTHIAN_CRATE;
+    public static final GenericCrate WHITE_MANGROVE_CRATE;
     public static final GenericCrate WILLOW_CRATE;
     public static final GenericCrate WITCH_HAZEL_CRATE;
     public static final GenericCrate ZELKOVA_CRATE;
@@ -59,6 +60,7 @@ public class BygCrates {
         REDWOOD_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.REDWOOD));
         SKYRIS_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.SKYRIS));
         SYTHIAN_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.SYTHIAN));
+        WHITE_MANGROVE_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.WHITE_MANGROVE));
         WILLOW_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_CRATE = new GenericCrate(new CrateSettings(BygBlockSettings.ZELKOVA));
@@ -90,6 +92,7 @@ public class BygCrates {
         REDWOOD_CRATE.register();
         SKYRIS_CRATE.register();
         SYTHIAN_CRATE.register();
+        WHITE_MANGROVE_CRATE.register();
         WILLOW_CRATE.register();
         WITCH_HAZEL_CRATE.register();
         ZELKOVA_CRATE.register();

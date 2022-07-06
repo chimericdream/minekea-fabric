@@ -43,6 +43,7 @@ public class BygBlocks implements ModCompatLayer {
         SEATS = new BygSeats();
     }
 
+    @Override
     public void initializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(
             RenderLayer.getCutout(),
@@ -71,6 +72,7 @@ public class BygBlocks implements ModCompatLayer {
             REDWOOD_DISPLAY_CASE,
             SKYRIS_DISPLAY_CASE,
             SYTHIAN_DISPLAY_CASE,
+            WHITE_MANGROVE_DISPLAY_CASE,
             WILLOW_DISPLAY_CASE,
             WITCH_HAZEL_DISPLAY_CASE,
             ZELKOVA_DISPLAY_CASE,
@@ -99,6 +101,7 @@ public class BygBlocks implements ModCompatLayer {
             STRIPPED_REDWOOD_DISPLAY_CASE,
             STRIPPED_SKYRIS_DISPLAY_CASE,
             STRIPPED_SYTHIAN_DISPLAY_CASE,
+            STRIPPED_WHITE_MANGROVE_DISPLAY_CASE,
             STRIPPED_WILLOW_DISPLAY_CASE,
             STRIPPED_WITCH_HAZEL_DISPLAY_CASE,
             STRIPPED_ZELKOVA_DISPLAY_CASE
@@ -131,12 +134,14 @@ public class BygBlocks implements ModCompatLayer {
             REDWOOD_BARREL,
             SKYRIS_BARREL,
             SYTHIAN_BARREL,
+            WHITE_MANGROVE_BARREL,
             WILLOW_BARREL,
             WITCH_HAZEL_BARREL,
             ZELKOVA_BARREL
         );
     }
 
+    @Override
     public void register() {
         BARRELS.register();
         CRATES.register();
@@ -179,6 +184,7 @@ public class BygBlocks implements ModCompatLayer {
             REDWOOD_CRATE,
             SKYRIS_CRATE,
             SYTHIAN_CRATE,
+            WHITE_MANGROVE_CRATE,
             WILLOW_CRATE,
             WITCH_HAZEL_CRATE,
             ZELKOVA_CRATE
@@ -213,6 +219,7 @@ public class BygBlocks implements ModCompatLayer {
             REDWOOD_DISPLAY_CASE,
             SKYRIS_DISPLAY_CASE,
             SYTHIAN_DISPLAY_CASE,
+            WHITE_MANGROVE_DISPLAY_CASE,
             WILLOW_DISPLAY_CASE,
             WITCH_HAZEL_DISPLAY_CASE,
             ZELKOVA_DISPLAY_CASE,
@@ -241,6 +248,7 @@ public class BygBlocks implements ModCompatLayer {
             STRIPPED_REDWOOD_DISPLAY_CASE,
             STRIPPED_SKYRIS_DISPLAY_CASE,
             STRIPPED_SYTHIAN_DISPLAY_CASE,
+            STRIPPED_WHITE_MANGROVE_DISPLAY_CASE,
             STRIPPED_WILLOW_DISPLAY_CASE,
             STRIPPED_WITCH_HAZEL_DISPLAY_CASE,
             STRIPPED_ZELKOVA_DISPLAY_CASE
@@ -274,6 +282,7 @@ public class BygBlocks implements ModCompatLayer {
             REDWOOD_SHELF,
             SKYRIS_SHELF,
             SYTHIAN_SHELF,
+            WHITE_MANGROVE_SHELF,
             WILLOW_SHELF,
             WITCH_HAZEL_SHELF,
             ZELKOVA_SHELF,
@@ -302,6 +311,7 @@ public class BygBlocks implements ModCompatLayer {
             REDWOOD_FLOATING_SHELF,
             SKYRIS_FLOATING_SHELF,
             SYTHIAN_FLOATING_SHELF,
+            WHITE_MANGROVE_FLOATING_SHELF,
             WILLOW_FLOATING_SHELF,
             WITCH_HAZEL_FLOATING_SHELF,
             ZELKOVA_FLOATING_SHELF
@@ -336,6 +346,7 @@ public class BygBlocks implements ModCompatLayer {
             REDWOOD_STORAGE_BOOKSHELF,
             SKYRIS_STORAGE_BOOKSHELF,
             SYTHIAN_STORAGE_BOOKSHELF,
+            WHITE_MANGROVE_STORAGE_BOOKSHELF,
             WILLOW_STORAGE_BOOKSHELF,
             WITCH_HAZEL_STORAGE_BOOKSHELF,
             ZELKOVA_STORAGE_BOOKSHELF

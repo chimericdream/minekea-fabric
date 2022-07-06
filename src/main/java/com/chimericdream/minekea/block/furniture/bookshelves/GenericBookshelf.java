@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.furniture.bookshelves;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.resource.*;
+import com.chimericdream.minekea.resource.LootTable;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.MinekeaTags;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.devtech.arrp.json.blockstate.JBlockModel;
@@ -59,8 +62,7 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
         Identifier ingredient = settings.getMaterial("ingredient", "planks");
-        // @TODO: refactor this to use the getBlockTexture thing I just added
-        Identifier sideTexture = settings.getMaterial("side_texture");
+        Identifier sideTexture = settings.getBlockTexture("side_texture", "planks");
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -117,7 +119,7 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
                 JModel.model("minekea:block/furniture/bookshelves/bookshelf")
                     .textures(
                         new JTextures()
-                            .var("material", Texture.getBlockTextureID(sideTexture).toString())
+                            .var("material", sideTexture.toString())
                             .var("shelf", String.format("minekea:block/furniture/bookshelves/shelf%d", i))
                     ),
                 new Identifier(String.format("%s%d", BASE_MODEL_ID, i))

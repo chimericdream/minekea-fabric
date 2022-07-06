@@ -31,6 +31,7 @@ public class BygSeats {
     public static final GenericChair REDWOOD_CHAIR;
     public static final GenericChair SKYRIS_CHAIR;
     public static final GenericChair SYTHIAN_CHAIR;
+    public static final GenericChair WHITE_MANGROVE_CHAIR;
     public static final GenericChair WILLOW_CHAIR;
     public static final GenericChair WITCH_HAZEL_CHAIR;
     public static final GenericChair ZELKOVA_CHAIR;
@@ -60,6 +61,7 @@ public class BygSeats {
     public static final GenericStool REDWOOD_STOOL;
     public static final GenericStool SKYRIS_STOOL;
     public static final GenericStool SYTHIAN_STOOL;
+    public static final GenericStool WHITE_MANGROVE_STOOL;
     public static final GenericStool WILLOW_STOOL;
     public static final GenericStool WITCH_HAZEL_STOOL;
     public static final GenericStool ZELKOVA_STOOL;
@@ -90,6 +92,7 @@ public class BygSeats {
         REDWOOD_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.REDWOOD));
         SKYRIS_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.SKYRIS));
         SYTHIAN_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.SYTHIAN));
+        WHITE_MANGROVE_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.WHITE_MANGROVE));
         WILLOW_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_CHAIR = new GenericChair(new ChairSettings(BygBlockSettings.ZELKOVA));
@@ -119,6 +122,7 @@ public class BygSeats {
         REDWOOD_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.REDWOOD));
         SKYRIS_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.SKYRIS));
         SYTHIAN_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.SYTHIAN));
+        WHITE_MANGROVE_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.WHITE_MANGROVE));
         WILLOW_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_STOOL = new GenericStool(new StoolSettings(BygBlockSettings.ZELKOVA));
@@ -150,6 +154,7 @@ public class BygSeats {
         REDWOOD_CHAIR.register();
         SKYRIS_CHAIR.register();
         SYTHIAN_CHAIR.register();
+        WHITE_MANGROVE_CHAIR.register();
         WILLOW_CHAIR.register();
         WITCH_HAZEL_CHAIR.register();
         ZELKOVA_CHAIR.register();
@@ -179,6 +184,7 @@ public class BygSeats {
         REDWOOD_STOOL.register();
         SKYRIS_STOOL.register();
         SYTHIAN_STOOL.register();
+        WHITE_MANGROVE_STOOL.register();
         WILLOW_STOOL.register();
         WITCH_HAZEL_STOOL.register();
         ZELKOVA_STOOL.register();

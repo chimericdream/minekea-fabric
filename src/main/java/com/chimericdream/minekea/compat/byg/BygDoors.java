@@ -30,6 +30,7 @@ public class BygDoors {
     public static final GenericBookshelfDoor REDWOOD_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor SKYRIS_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor SYTHIAN_BOOKSHELF_DOOR;
+    public static final GenericBookshelfDoor WHITE_MANGROVE_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor WILLOW_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor WITCH_HAZEL_BOOKSHELF_DOOR;
     public static final GenericBookshelfDoor ZELKOVA_BOOKSHELF_DOOR;
@@ -60,6 +61,7 @@ public class BygDoors {
         REDWOOD_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.REDWOOD).addMaterial("bookshelf", new Identifier("byg:redwood_bookshelf")));
         SKYRIS_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.SKYRIS).addMaterial("bookshelf", new Identifier("byg:skyris_bookshelf")));
         SYTHIAN_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.SYTHIAN).addMaterial("bookshelf", new Identifier("byg:sythian_bookshelf")));
+        WHITE_MANGROVE_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.WHITE_MANGROVE).addMaterial("bookshelf", new Identifier("byg:white_mangrove_bookshelf")));
         WILLOW_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.WILLOW).addMaterial("bookshelf", new Identifier("byg:willow_bookshelf")));
         WITCH_HAZEL_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.WITCH_HAZEL).addMaterial("bookshelf", new Identifier("byg:witch_hazel_bookshelf")));
         ZELKOVA_BOOKSHELF_DOOR = new GenericBookshelfDoor(new BookshelfDoorSettings(BygBlockSettings.ZELKOVA).addMaterial("bookshelf", new Identifier("byg:zelkova_bookshelf")));
@@ -91,6 +93,7 @@ public class BygDoors {
         REDWOOD_BOOKSHELF_DOOR.register();
         SKYRIS_BOOKSHELF_DOOR.register();
         SYTHIAN_BOOKSHELF_DOOR.register();
+        WHITE_MANGROVE_BOOKSHELF_DOOR.register();
         WILLOW_BOOKSHELF_DOOR.register();
         WITCH_HAZEL_BOOKSHELF_DOOR.register();
         ZELKOVA_BOOKSHELF_DOOR.register();

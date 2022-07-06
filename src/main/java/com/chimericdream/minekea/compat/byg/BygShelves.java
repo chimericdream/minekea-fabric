@@ -31,6 +31,7 @@ public class BygShelves {
     public static final GenericShelf REDWOOD_SHELF;
     public static final GenericShelf SKYRIS_SHELF;
     public static final GenericShelf SYTHIAN_SHELF;
+    public static final GenericShelf WHITE_MANGROVE_SHELF;
     public static final GenericShelf WILLOW_SHELF;
     public static final GenericShelf WITCH_HAZEL_SHELF;
     public static final GenericShelf ZELKOVA_SHELF;
@@ -60,6 +61,7 @@ public class BygShelves {
     public static final GenericFloatingShelf REDWOOD_FLOATING_SHELF;
     public static final GenericFloatingShelf SKYRIS_FLOATING_SHELF;
     public static final GenericFloatingShelf SYTHIAN_FLOATING_SHELF;
+    public static final GenericFloatingShelf WHITE_MANGROVE_FLOATING_SHELF;
     public static final GenericFloatingShelf WILLOW_FLOATING_SHELF;
     public static final GenericFloatingShelf WITCH_HAZEL_FLOATING_SHELF;
     public static final GenericFloatingShelf ZELKOVA_FLOATING_SHELF;
@@ -90,6 +92,7 @@ public class BygShelves {
         REDWOOD_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.REDWOOD));
         SKYRIS_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.SKYRIS));
         SYTHIAN_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.SYTHIAN));
+        WHITE_MANGROVE_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.WHITE_MANGROVE));
         WILLOW_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_SHELF = new GenericShelf(new SupportedShelfSettings(BygBlockSettings.ZELKOVA));
@@ -119,6 +122,7 @@ public class BygShelves {
         REDWOOD_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.REDWOOD));
         SKYRIS_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.SKYRIS));
         SYTHIAN_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.SYTHIAN));
+        WHITE_MANGROVE_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.WHITE_MANGROVE));
         WILLOW_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_FLOATING_SHELF = new GenericFloatingShelf(new FloatingShelfSettings(BygBlockSettings.ZELKOVA));
@@ -150,6 +154,7 @@ public class BygShelves {
         REDWOOD_SHELF.register();
         SKYRIS_SHELF.register();
         SYTHIAN_SHELF.register();
+        WHITE_MANGROVE_SHELF.register();
         WILLOW_SHELF.register();
         WITCH_HAZEL_SHELF.register();
         ZELKOVA_SHELF.register();
@@ -179,6 +184,7 @@ public class BygShelves {
         REDWOOD_FLOATING_SHELF.register();
         SKYRIS_FLOATING_SHELF.register();
         SYTHIAN_FLOATING_SHELF.register();
+        WHITE_MANGROVE_FLOATING_SHELF.register();
         WILLOW_FLOATING_SHELF.register();
         WITCH_HAZEL_FLOATING_SHELF.register();
         ZELKOVA_FLOATING_SHELF.register();

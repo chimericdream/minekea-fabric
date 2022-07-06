@@ -30,6 +30,7 @@ public class BygStorageBookshelves {
     public static final GenericStorageBookshelf REDWOOD_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf SKYRIS_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf SYTHIAN_STORAGE_BOOKSHELF;
+    public static final GenericStorageBookshelf WHITE_MANGROVE_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf WILLOW_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf WITCH_HAZEL_STORAGE_BOOKSHELF;
     public static final GenericStorageBookshelf ZELKOVA_STORAGE_BOOKSHELF;
@@ -60,6 +61,7 @@ public class BygStorageBookshelves {
         REDWOOD_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.REDWOOD).addMaterial("bookshelf", new Identifier("byg:redwood_bookshelf")));
         SKYRIS_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.SKYRIS).addMaterial("bookshelf", new Identifier("byg:skyris_bookshelf")));
         SYTHIAN_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.SYTHIAN).addMaterial("bookshelf", new Identifier("byg:sythian_bookshelf")));
+        WHITE_MANGROVE_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.WHITE_MANGROVE).addMaterial("bookshelf", new Identifier("byg:white_mangrove_bookshelf")));
         WILLOW_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.WILLOW).addMaterial("bookshelf", new Identifier("byg:willow_bookshelf")));
         WITCH_HAZEL_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.WITCH_HAZEL).addMaterial("bookshelf", new Identifier("byg:witch_hazel_bookshelf")));
         ZELKOVA_STORAGE_BOOKSHELF = new GenericStorageBookshelf(new StorageBookshelfSettings(BygBlockSettings.ZELKOVA).addMaterial("bookshelf", new Identifier("byg:zelkova_bookshelf")));
@@ -91,6 +93,7 @@ public class BygStorageBookshelves {
         REDWOOD_STORAGE_BOOKSHELF.register();
         SKYRIS_STORAGE_BOOKSHELF.register();
         SYTHIAN_STORAGE_BOOKSHELF.register();
+        WHITE_MANGROVE_STORAGE_BOOKSHELF.register();
         WILLOW_STORAGE_BOOKSHELF.register();
         WITCH_HAZEL_STORAGE_BOOKSHELF.register();
         ZELKOVA_STORAGE_BOOKSHELF.register();

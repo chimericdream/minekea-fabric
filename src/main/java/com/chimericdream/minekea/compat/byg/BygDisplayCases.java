@@ -29,6 +29,7 @@ public class BygDisplayCases {
     public static final GenericDisplayCase REDWOOD_DISPLAY_CASE;
     public static final GenericDisplayCase SKYRIS_DISPLAY_CASE;
     public static final GenericDisplayCase SYTHIAN_DISPLAY_CASE;
+    public static final GenericDisplayCase WHITE_MANGROVE_DISPLAY_CASE;
     public static final GenericDisplayCase WILLOW_DISPLAY_CASE;
     public static final GenericDisplayCase WITCH_HAZEL_DISPLAY_CASE;
     public static final GenericDisplayCase ZELKOVA_DISPLAY_CASE;
@@ -58,6 +59,7 @@ public class BygDisplayCases {
     public static final GenericDisplayCase STRIPPED_REDWOOD_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_SKYRIS_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_SYTHIAN_DISPLAY_CASE;
+    public static final GenericDisplayCase STRIPPED_WHITE_MANGROVE_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_WILLOW_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_WITCH_HAZEL_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_ZELKOVA_DISPLAY_CASE;
@@ -88,6 +90,7 @@ public class BygDisplayCases {
         REDWOOD_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.REDWOOD));
         SKYRIS_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.SKYRIS));
         SYTHIAN_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.SYTHIAN));
+        WHITE_MANGROVE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.WHITE_MANGROVE));
         WILLOW_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.ZELKOVA));
@@ -117,6 +120,7 @@ public class BygDisplayCases {
         STRIPPED_REDWOOD_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.REDWOOD).stripped());
         STRIPPED_SKYRIS_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.SKYRIS).stripped());
         STRIPPED_SYTHIAN_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.SYTHIAN).stripped());
+        STRIPPED_WHITE_MANGROVE_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.WHITE_MANGROVE).stripped());
         STRIPPED_WILLOW_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.WILLOW).stripped());
         STRIPPED_WITCH_HAZEL_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.WITCH_HAZEL).stripped());
         STRIPPED_ZELKOVA_DISPLAY_CASE = new GenericDisplayCase(new DisplayCaseSettings(BygBlockSettings.ZELKOVA).stripped());
@@ -148,6 +152,7 @@ public class BygDisplayCases {
         REDWOOD_DISPLAY_CASE.register();
         SKYRIS_DISPLAY_CASE.register();
         SYTHIAN_DISPLAY_CASE.register();
+        WHITE_MANGROVE_DISPLAY_CASE.register();
         WILLOW_DISPLAY_CASE.register();
         WITCH_HAZEL_DISPLAY_CASE.register();
         ZELKOVA_DISPLAY_CASE.register();
@@ -177,6 +182,7 @@ public class BygDisplayCases {
         STRIPPED_REDWOOD_DISPLAY_CASE.register();
         STRIPPED_SKYRIS_DISPLAY_CASE.register();
         STRIPPED_SYTHIAN_DISPLAY_CASE.register();
+        STRIPPED_WHITE_MANGROVE_DISPLAY_CASE.register();
         STRIPPED_WILLOW_DISPLAY_CASE.register();
         STRIPPED_WITCH_HAZEL_DISPLAY_CASE.register();
         STRIPPED_ZELKOVA_DISPLAY_CASE.register();

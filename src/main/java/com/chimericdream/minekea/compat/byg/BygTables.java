@@ -29,6 +29,7 @@ public class BygTables {
     public static final GenericTable REDWOOD_TABLE;
     public static final GenericTable SKYRIS_TABLE;
     public static final GenericTable SYTHIAN_TABLE;
+    public static final GenericTable WHITE_MANGROVE_TABLE;
     public static final GenericTable WILLOW_TABLE;
     public static final GenericTable WITCH_HAZEL_TABLE;
     public static final GenericTable ZELKOVA_TABLE;
@@ -59,6 +60,7 @@ public class BygTables {
         REDWOOD_TABLE = new GenericTable(new TableSettings(BygBlockSettings.REDWOOD));
         SKYRIS_TABLE = new GenericTable(new TableSettings(BygBlockSettings.SKYRIS));
         SYTHIAN_TABLE = new GenericTable(new TableSettings(BygBlockSettings.SYTHIAN));
+        WHITE_MANGROVE_TABLE = new GenericTable(new TableSettings(BygBlockSettings.WHITE_MANGROVE));
         WILLOW_TABLE = new GenericTable(new TableSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_TABLE = new GenericTable(new TableSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_TABLE = new GenericTable(new TableSettings(BygBlockSettings.ZELKOVA));
@@ -90,6 +92,7 @@ public class BygTables {
         REDWOOD_TABLE.register();
         SKYRIS_TABLE.register();
         SYTHIAN_TABLE.register();
+        WHITE_MANGROVE_TABLE.register();
         WILLOW_TABLE.register();
         WITCH_HAZEL_TABLE.register();
         ZELKOVA_TABLE.register();
