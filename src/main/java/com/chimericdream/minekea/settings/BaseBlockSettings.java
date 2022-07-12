@@ -2478,6 +2478,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 
@@ -2558,6 +2559,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 
@@ -2625,6 +2627,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 
@@ -2680,6 +2683,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 
@@ -2760,6 +2764,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 
@@ -2828,6 +2833,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 
@@ -2897,6 +2903,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 
@@ -2965,6 +2972,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 
@@ -3032,6 +3040,7 @@ public class BaseBlockSettings {
         .withStool()
         .withShelf()
         .withFloatingShelf()
+        .withShutters()
         .withTable()
         .withBookshelfTrapdoor();
 

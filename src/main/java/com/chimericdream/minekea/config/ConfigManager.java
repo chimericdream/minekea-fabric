@@ -31,6 +31,7 @@ public class ConfigManager {
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableChairs", "Enable Chairs");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableStools", "Enable Stools");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableShelves", "Enable Shelves");
+        MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableShutters", "Enable Shutters");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableTables", "Enable Tables");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableTrapdoors", "Enable Trapdoors");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableButtons", "Enable Buttons");
@@ -60,6 +61,7 @@ public class ConfigManager {
         config.enableChairs = true;
         config.enableStools = true;
         config.enableShelves = true;
+        config.enableShutters = true;
         config.enableTables = true;
         config.enableTrapdoors = true;
         config.enableButtons = true;

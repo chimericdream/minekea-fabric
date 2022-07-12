@@ -360,6 +360,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         private boolean hasStool = false;
         private boolean hasShelf = false;
         private boolean hasFloatingShelf = false;
+        private boolean hasShutters = false;
         private boolean hasTable = false;
         private boolean hasBookshelfTrapdoor = false;
         private boolean hasButton = false;
@@ -581,6 +582,15 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
         public DefaultSettings withFloatingShelf() {
             this.hasFloatingShelf = true;
+            return this;
+        }
+
+        public boolean hasShutters() {
+            return this.isEnabled() && this.hasShutters;
+        }
+
+        public DefaultSettings withShutters() {
+            this.hasShutters = true;
             return this;
         }
 

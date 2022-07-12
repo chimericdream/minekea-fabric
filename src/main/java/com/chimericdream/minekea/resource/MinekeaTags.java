@@ -29,6 +29,7 @@ public class MinekeaTags {
     public static final BlockTagGroup FLOATING_SHELVES = new BlockTagGroup("floating_shelves");
     public static final BlockTagGroup SEATING = new BlockTagGroup("seating");
     public static final BlockTagGroup SHELVES = new BlockTagGroup("shelves");
+    public static final BlockTagGroup SHUTTERS = new BlockTagGroup("shutters");
     public static final BlockTagGroup SLABS = new BlockTagGroup("slabs");
     public static final BlockTagGroup STAIRS = new BlockTagGroup("stairs");
     public static final BlockTagGroup STOOLS = new BlockTagGroup("stools");
@@ -72,6 +73,7 @@ public class MinekeaTags {
         FLOATING_SHELVES.register();
         SEATING.register();
         SHELVES.register();
+        SHUTTERS.register();
         SLABS.register();
         STAIRS.register();
         STOOLS.register();

@@ -24,6 +24,7 @@ public class MinekeaConfig implements ConfigData {
     public boolean enableChairs = true;
     public boolean enableStools = true;
     public boolean enableShelves = true;
+    public boolean enableShutters = true;
     public boolean enableTables = true;
     public boolean enableTrapdoors = true;
     public boolean enableButtons = true;
