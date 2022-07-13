@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.building;
 import com.chimericdream.minekea.block.building.beams.Beams;
 import com.chimericdream.minekea.block.building.compressed.CompressedBlocks;
 import com.chimericdream.minekea.block.building.covers.Covers;
+import com.chimericdream.minekea.block.building.dyed.DyedBlocks;
 import com.chimericdream.minekea.block.building.general.*;
 import com.chimericdream.minekea.block.building.slabs.Slabs;
 import com.chimericdream.minekea.block.building.stairs.Stairs;
@@ -31,6 +32,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
     public static Beams BEAMS = null;
     public static CompressedBlocks COMPRESSED_BLOCKS = null;
+    public static DyedBlocks DYED_BLOCKS = null;
     public static Covers COVERS = null;
     public static Slabs SLABS = null;
     public static Stairs STAIRS = null;
@@ -72,6 +74,9 @@ public class BuildingBlocks implements MinekeaBlockCategory {
             BEAMS = new Beams();
             BLOCK_GROUPS.add(BEAMS);
         }
+
+        DYED_BLOCKS = new DyedBlocks();
+        BLOCK_GROUPS.add(DYED_BLOCKS);
 
         if (config.enableCompressedBlocks) {
             COMPRESSED_BLOCKS = new CompressedBlocks();

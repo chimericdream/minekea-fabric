@@ -15,6 +15,8 @@ public class MinekeaTags {
     public static final JTag MINEABLE_SHOVEL = new JTag();
 
     public static final JTag JAR_STORABLE = new JTag();
+
+    public static final JTag DARK_PRISMARINE = new JTag();
     public static final JTag LANTERNS = new JTag();
 
     public static final BlockTagGroup BARRELS = new BlockTagGroup("barrels");
@@ -39,6 +41,10 @@ public class MinekeaTags {
     public static final BlockTagGroup VERTICAL_STAIRS = new BlockTagGroup("vertical_stairs");
     public static final BlockTagGroup WALLS = new BlockTagGroup("walls");
 
+    static {
+        DARK_PRISMARINE.add(new Identifier("minecraft:dark_prismarine"));
+    }
+
     public static void addToolTag(Tool tool, Identifier blockId) {
         switch (tool) {
             case AXE -> MINEABLE_AXE.add(blockId);
@@ -59,6 +65,8 @@ public class MinekeaTags {
         RESOURCE_PACK.addTag(new Identifier(ModInfo.MOD_ID, "blocks/mineable/shovel"), MINEABLE_SHOVEL);
 
         RESOURCE_PACK.addTag(new Identifier(ModInfo.MOD_ID, "items/glass_jar_storable"), JAR_STORABLE);
+
+        RESOURCE_PACK.addTag(new Identifier(ModInfo.MOD_ID, "blocks/dark_prismarine"), DARK_PRISMARINE);
         RESOURCE_PACK.addTag(new Identifier(ModInfo.MOD_ID, "blocks/lanterns"), LANTERNS);
 
         BARRELS.register();
