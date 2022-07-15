@@ -365,6 +365,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         private boolean hasBookshelfTrapdoor = false;
         private boolean hasButton = false;
         private boolean hasPressurePlate = false;
+        private boolean hasDyedBlock = false;
 
         public DefaultSettings(Block block) {
             super(block);
@@ -394,6 +395,15 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
             }
 
             return null;
+        }
+
+        public boolean hasDyedBlock() {
+            return this.isEnabled() && this.hasDyedBlock;
+        }
+
+        public DefaultSettings withDyedBlock() {
+            this.hasDyedBlock = true;
+            return this;
         }
 
         public boolean hasBeam() {
