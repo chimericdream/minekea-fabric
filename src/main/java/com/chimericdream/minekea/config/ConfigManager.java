@@ -36,6 +36,7 @@ public class ConfigManager {
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableTrapdoors", "Enable Trapdoors");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableButtons", "Enable Buttons");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enablePressurePlates", "Enable Pressure Plates");
+        MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.enableDyedBlocks", "Enable Dyed Blocks");
 
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.overrideVanillaBarrelTexture", "Override Vanilla Barrel Texture");
         MinekeaResourcePack.EN_US.entry("text.autoconfig.minekea.option.overrideVanillaBookshelfTexture", "Override Vanilla Bookshelf Texture");
@@ -66,6 +67,7 @@ public class ConfigManager {
         config.enableTrapdoors = true;
         config.enableButtons = true;
         config.enablePressurePlates = true;
+        config.enableDyedBlocks = true;
 
         config.overrideVanillaBarrelTexture = true;
         config.overrideVanillaBookshelfTexture = true;

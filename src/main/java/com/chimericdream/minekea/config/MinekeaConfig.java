@@ -29,6 +29,7 @@ public class MinekeaConfig implements ConfigData {
     public boolean enableTrapdoors = true;
     public boolean enableButtons = true;
     public boolean enablePressurePlates = true;
+    public boolean enableDyedBlocks = true;
 
     public boolean overrideVanillaBarrelTexture = true;
     public boolean overrideVanillaBookshelfTexture = true;

@@ -79,13 +79,22 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     abstract public String getNamePattern();
 
     public String getIngredientName() {
+        return getIngredientName(true);
+    }
+
+    public String getIngredientName(boolean singular) {
+        Identifier ingredient = getMaterial("ingredient");
+        String name = Registry.ITEM.get(ingredient).getName().getString();
+
         if (this.name != null) {
-            return this.name;
+            name = this.name;
         }
 
-        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
+        if (singular) {
+            return name.replaceAll("(.+)Bricks$", "$1Brick");
+        }
 
-        return Registry.ITEM.get(ingredient).getName().getString();
+        return name;
     }
 
     public float getHardness() {

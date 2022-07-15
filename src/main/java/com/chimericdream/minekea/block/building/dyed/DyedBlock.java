@@ -11,6 +11,9 @@ import net.devtech.arrp.json.models.JTextures;
 import net.devtech.arrp.json.recipe.*;
 import net.devtech.arrp.json.tags.JTag;
 import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -21,6 +24,10 @@ public class DyedBlock extends Block implements MinekeaBlock {
         super(settings);
     }
 
+    public DyedBlockSettings getSettings() {
+        return (DyedBlockSettings) this.settings;
+    }
+
     @Override
     public Identifier getBlockID() {
         return ((MinekeaBlockSettings<?>) this.settings).getBlockId();
@@ -29,6 +36,7 @@ public class DyedBlock extends Block implements MinekeaBlock {
     @Override
     public void register() {
         Registry.register(Registry.BLOCK, getBlockID(), this);
+        Registry.register(Registry.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 
         setupResources();
     }
@@ -43,7 +51,7 @@ public class DyedBlock extends Block implements MinekeaBlock {
 
         MinekeaResourcePack.EN_US.blockRespect(
             this,
-            String.format(settings.getNamePattern(), settings.getColorName(), settings.getBlockName())
+            String.format(settings.getNamePattern(), settings.getColorName(), settings.getIngredientName(false))
         );
 
         Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
@@ -52,7 +60,6 @@ public class DyedBlock extends Block implements MinekeaBlock {
         Identifier dye = settings.getDye();
 
         Identifier ingredient = settings.getMaterial("ingredient");
-        Identifier main = settings.getMaterial("main");
 
         MinekeaResourcePack.RESOURCE_PACK.addRecipe(
             getBlockID(),
@@ -68,8 +75,8 @@ public class DyedBlock extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(
-            JModel.model("minekea:block/dyed_block")
-                .textures(new JTextures().var("all", Texture.getBlockTextureID(main).toString())),
+            JModel.model("minecraft:block/cube_all")
+                .textures(new JTextures().var("all", Texture.getBlockTextureID(getBlockID()).toString())),
             MODEL_ID
         );
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
@@ -80,9 +87,7 @@ public class DyedBlock extends Block implements MinekeaBlock {
         );
     }
 
-    public static class DyedBlockSettings extends MinekeaBlockSettings<DyedBlocks.DyedBlockSettings> {
-        protected Identifier baseBlock;
-        protected String blockName = "";
+    public static class DyedBlockSettings extends MinekeaBlockSettings<DyedBlockSettings> {
         protected String color = "";
         protected String colorName = "";
         protected Identifier dye = null;
@@ -90,15 +95,6 @@ public class DyedBlock extends Block implements MinekeaBlock {
 
         public DyedBlockSettings(DefaultSettings settings) {
             super(settings);
-        }
-
-        public String getBlockName() {
-            return this.blockName;
-        }
-
-        public DyedBlockSettings blockName(String blockName) {
-            this.blockName = blockName;
-            return this;
         }
 
         public String getColor() {
@@ -145,7 +141,7 @@ public class DyedBlock extends Block implements MinekeaBlock {
         public Identifier getBlockId() {
 
             if (blockId == null) {
-                blockId = new Identifier(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", getMainMaterial(), color));
+                blockId = new Identifier(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", getMaterial("ingredient").getPath(), color));
             }
 
             return blockId;
