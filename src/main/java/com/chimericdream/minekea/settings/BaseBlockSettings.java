@@ -48,6 +48,7 @@ public class BaseBlockSettings {
                 "ingredient", new Identifier("minecraft:basalt")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -93,6 +94,7 @@ public class BaseBlockSettings {
                 "ingredient", new Identifier("minecraft:bone_block")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -408,6 +410,18 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:end_stone")
             )
         )
+        .texture(
+            "end",
+            ConfigManager.getConfig().enableCobbledEndStone
+                ? new Identifier("minekea:block/building/general/end_stone")
+                : new Identifier("minekea:block/building/general/cobbled_end_stone")
+        )
+        .texture(
+            "main",
+            ConfigManager.getConfig().enableCobbledEndStone
+                ? new Identifier("minekea:block/building/general/end_stone")
+                : new Identifier("minekea:block/building/general/cobbled_end_stone")
+        )
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -614,6 +628,7 @@ public class BaseBlockSettings {
                 "ingredient", new Identifier("minecraft:polished_basalt")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2348,6 +2363,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:acacia_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2425,6 +2441,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:birch_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2478,6 +2495,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:crimson_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2544,6 +2562,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:dark_oak_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2621,6 +2640,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:jungle_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2687,6 +2707,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:mangrove_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2754,6 +2775,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:oak_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2820,6 +2842,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:spruce_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2873,6 +2896,7 @@ public class BaseBlockSettings {
                 "planks", new Identifier("minecraft:warped_planks")
             )
         )
+        .column()
         .withBeam()
         .withCompressedBlock()
         .withCover()
@@ -2889,7 +2913,8 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:apple"),
                 "ingredient", new Identifier("minecraft:apple")
             )
-        );
+        )
+        .column();
 
     public static DefaultSettings BAMBOO = new DefaultSettings(Blocks.HAY_BLOCK)
         .material("bamboo")
@@ -2898,7 +2923,8 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:bamboo"),
                 "ingredient", new Identifier("minecraft:bamboo")
             )
-        );
+        )
+        .column();
 
     public static DefaultSettings BEETROOT = new DefaultSettings(Blocks.HAY_BLOCK)
         .material("beetroot")
@@ -2988,7 +3014,8 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:golden_apple"),
                 "ingredient", new Identifier("minecraft:golden_apple")
             )
-        );
+        )
+        .column();
 
     public static DefaultSettings LEATHER = new DefaultSettings(Blocks.WHITE_WOOL)
         .material("leather")
@@ -3088,7 +3115,8 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:totem_of_undying"),
                 "ingredient", new Identifier("minecraft:totem_of_undying")
             )
-        );
+        )
+        .column();
 
     public static DefaultSettings WHEAT_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
         .material("wheat_seeds")

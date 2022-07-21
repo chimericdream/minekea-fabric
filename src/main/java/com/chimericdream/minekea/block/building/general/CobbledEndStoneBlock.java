@@ -6,9 +6,6 @@ import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.Tool;
 import net.devtech.arrp.json.blockstate.JBlockModel;
 import net.devtech.arrp.json.blockstate.JState;
-import net.devtech.arrp.json.loot.JCondition;
-import net.devtech.arrp.json.loot.JEntry;
-import net.devtech.arrp.json.loot.JLootTable;
 import net.devtech.arrp.json.models.JModel;
 import net.devtech.arrp.json.models.JTextures;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -48,30 +45,6 @@ public class CobbledEndStoneBlock extends Block implements MinekeaBlock {
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
         Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
 
-        MinekeaResourcePack.RESOURCE_PACK.addLootTable(
-            LootTable.blockID(new Identifier("minecraft:end_stone")),
-            JLootTable.loot("minecraft:block")
-                .pool(
-                    JLootTable.pool()
-                        .rolls(1)
-                        .entry(
-                            new JEntry()
-                                .type("minecraft:alternatives")
-                                .child(
-                                    new JEntry()
-                                        .type("minecraft:item")
-                                        .name("minecraft:end_stone")
-                                        .condition(
-                                            new JCondition()
-                                                .condition("minecraft:match_tool")
-                                                .parameter("predicate", LootTable.silkTouchPredicate())
-                                        )
-                                )
-                                .child(new JEntry().type("minecraft:item").name(getBlockID().toString()))
-                        )
-                        .condition(new JCondition().condition("minecraft:survives_explosion"))
-                )
-        );
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(

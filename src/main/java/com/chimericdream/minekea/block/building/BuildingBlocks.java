@@ -12,10 +12,19 @@ import com.chimericdream.minekea.block.building.walls.Walls;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.config.ConfigManager;
 import com.chimericdream.minekea.config.MinekeaConfig;
+import com.chimericdream.minekea.resource.LootTable;
+import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.resource.Model;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.devtech.arrp.json.loot.JCondition;
+import net.devtech.arrp.json.loot.JEntry;
+import net.devtech.arrp.json.loot.JLootTable;
+import net.devtech.arrp.json.models.JModel;
+import net.devtech.arrp.json.models.JTextures;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,8 +151,57 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
     @Override
     public void setupResources() {
+        MinekeaConfig config = ConfigManager.getConfig();
+
         for (MinekeaBlockCategory group : BLOCK_GROUPS) {
             group.setupResources();
+        }
+
+        Identifier myEndStone = new Identifier("minekea:end_stone");
+
+        if (config.enableCobbledEndStone) {
+            MinekeaResourcePack.RESOURCE_PACK.addModel(
+                JModel.model("minecraft:block/cube_all")
+                    .textures(
+                        new JTextures().var("all", "minekea:block/building/general/end_stone")
+                    ),
+                Model.getBlockModelID(myEndStone)
+            );
+
+            MinekeaResourcePack.RESOURCE_PACK.addLootTable(
+                LootTable.blockID(myEndStone),
+                JLootTable.loot("minecraft:block")
+                    .pool(
+                        JLootTable.pool()
+                            .rolls(1)
+                            .entry(
+                                new JEntry()
+                                    .type("minecraft:alternatives")
+                                    .child(
+                                        new JEntry()
+                                            .type("minecraft:item")
+                                            .name("minecraft:end_stone")
+                                            .condition(
+                                                new JCondition()
+                                                    .condition("minecraft:match_tool")
+                                                    .parameter("predicate", LootTable.silkTouchPredicate())
+                                            )
+                                    )
+                                    .child(new JEntry().type("minecraft:item").name(COBBLED_END_STONE_BLOCK.getBlockID().toString()))
+                            )
+                            .condition(new JCondition().condition("minecraft:survives_explosion"))
+                    )
+            );
+        } else {
+            MinekeaResourcePack.RESOURCE_PACK.addModel(
+                JModel.model("minecraft:block/cube_all")
+                    .textures(
+                        new JTextures().var("all", "minekea:block/building/general/cobbled_end_stone")
+                    ),
+                Model.getBlockModelID(myEndStone)
+            );
+
+            MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(myEndStone), LootTable.dropSelf(myEndStone));
         }
     }
 }

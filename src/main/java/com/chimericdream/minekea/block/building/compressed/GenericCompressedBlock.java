@@ -30,7 +30,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
 
 public class GenericCompressedBlock extends Block implements MinekeaBlock {
     protected final Identifier BLOCK_ID;
@@ -119,10 +118,8 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
 
         MinekeaTags.addToolTag(settings.getTool(), getBlockID());
 
-        Map<String, Identifier> materials = settings.getMaterials();
-
-        Identifier end = materials.getOrDefault("end", materials.get("main"));
-        Identifier side = materials.get("main");
+        Identifier endTexture = settings.getBlockTexture("end");
+        Identifier sideTexture = settings.getBlockTexture("main");
 
         Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
         Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
@@ -147,8 +144,8 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.getLootTableID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
 
         JTextures textures = new JTextures()
-            .var("side", Texture.getBlockTextureID(side).toString())
-            .var("end", Texture.getBlockTextureID(end).toString())
+            .var("side", sideTexture.toString())
+            .var("end", endTexture.toString())
             .var("overlay", String.format(ModInfo.MOD_ID + ":block/building/compressed/level-%d", settings.getCompressionLevel()));
 
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/building/compressed_block").textures(textures), MODEL_ID);

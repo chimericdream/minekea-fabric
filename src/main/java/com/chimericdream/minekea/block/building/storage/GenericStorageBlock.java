@@ -178,7 +178,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
 
         JTextures textures = new JTextures();
 
-        if (settings.isColumnBlock) {
+        if (settings.isColumn()) {
             if (settings.hasSeparateTop) {
                 textures
                     .var("down", new Identifier(blockTexture + "_bottom").toString())
@@ -196,7 +196,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
 
         JTextures baggedTextures = new JTextures().var("contents", blockTexture.toString());
 
-        if (settings.isColumnBlock) {
+        if (settings.isColumn()) {
             MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/storage/compressed_column").textures(textures), MODEL_ID);
             MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/storage/compressed_column_horizontal").textures(textures), HORIZONTAL_MODEL_ID);
         } else {
@@ -206,7 +206,7 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(String.format("%s:block/storage/bagged_block", ModInfo.MOD_ID)).textures(baggedTextures), BAGGED_MODEL_ID);
         MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
 
-        if (settings.isColumnBlock) {
+        if (settings.isColumn()) {
             if (settings.hasSeparateTop) {
                 MinekeaResourcePack.RESOURCE_PACK.addBlockState(
                     JState.state(
@@ -245,7 +245,6 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
 
     public static class StorageBlockSettings extends MinekeaBlockSettings<StorageBlockSettings> {
         protected boolean isBaggedItem = false;
-        protected boolean isColumnBlock = false;
         protected boolean hasSeparateTop = false;
 
         public StorageBlockSettings(DefaultSettings settings) {
@@ -259,11 +258,6 @@ public class GenericStorageBlock extends Block implements MinekeaBlock {
 
         public StorageBlockSettings bagged() {
             this.isBaggedItem = true;
-            return this;
-        }
-
-        public StorageBlockSettings column() {
-            this.isColumnBlock = true;
             return this;
         }
 
