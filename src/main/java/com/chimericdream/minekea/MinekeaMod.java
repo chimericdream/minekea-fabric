@@ -7,6 +7,8 @@ import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.block.redstone.RedstoneBlocks;
 import com.chimericdream.minekea.compat.ModCompatLayer;
 import com.chimericdream.minekea.compat.PatchouliCompat;
+import com.chimericdream.minekea.compat.betterend.BetterEndBlocks;
+import com.chimericdream.minekea.compat.betternether.BetterNetherBlocks;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.config.ConfigManager;
 import com.chimericdream.minekea.crops.Crops;
@@ -83,6 +85,16 @@ public class MinekeaMod implements ModInitializer {
         RESOURCES = new MinekeaResourcePack();
 
         FabricLoader loader = FabricLoader.getInstance();
+
+        if (loader.isModLoaded("betterend")) {
+            LOGGER.info("[minekea][compat] BetterEnd detected! initializing mod compat layer");
+            OTHER_MODS.add(new BetterEndBlocks());
+        }
+
+        if (loader.isModLoaded("betternether")) {
+            LOGGER.info("[minekea][compat] BetterNether detected! initializing mod compat layer");
+            OTHER_MODS.add(new BetterNetherBlocks());
+        }
 
         if (loader.isModLoaded("byg")) {
             LOGGER.info("[minekea][compat] BYG detected! initializing mod compat layer");
