@@ -1,12 +1,17 @@
 package com.chimericdream.minekea.block.building.stairs;
 
+import com.chimericdream.minekea.block.building.dyed.DyedBlock.DyedBlockSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericBookshelfStairs.BookshelfStairsSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericStairsBlock.StairsSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericVerticalBookshelfStairs.VerticalBookshelfStairsSettings;
 import com.chimericdream.minekea.block.building.stairs.GenericVerticalStairsBlock.VerticalStairsSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.config.ConfigManager;
+import com.chimericdream.minekea.config.MinekeaConfig;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
+import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
@@ -22,21 +27,30 @@ public class Stairs implements MinekeaBlockCategory {
     public static final Map<String, GenericVerticalBookshelfStairs> VERTICAL_BOOKSHELF_STAIRS = new LinkedHashMap<>();
 
     static {
-        for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
-            if (blockSettings.hasStairs()) {
-                STAIRS.put(blockSettings.getMainMaterial(), new GenericStairsBlock(new StairsSettings(blockSettings)));
+        MinekeaConfig config = ConfigManager.getConfig();
+
+        for (DefaultSettings settings : BaseBlockSettings.ALL_SETTINGS) {
+            if (settings.hasStairs()) {
+                STAIRS.put(settings.getMainMaterial(), new GenericStairsBlock(new StairsSettings(settings)));
             }
 
-            if (blockSettings.hasBookshelfStairs()) {
-                BOOKSHELF_STAIRS.put(blockSettings.getMainMaterial(), new GenericBookshelfStairs(new BookshelfStairsSettings(blockSettings)));
+            if (settings.hasBookshelfStairs()) {
+                BOOKSHELF_STAIRS.put(settings.getMainMaterial(), new GenericBookshelfStairs(new BookshelfStairsSettings(settings)));
             }
 
-            if (blockSettings.hasVerticalStairs()) {
-                VERTICAL_STAIRS.put(blockSettings.getMainMaterial(), new GenericVerticalStairsBlock(new VerticalStairsSettings(blockSettings)));
+            if (settings.hasVerticalStairs()) {
+                VERTICAL_STAIRS.put(settings.getMainMaterial(), new GenericVerticalStairsBlock(new VerticalStairsSettings(settings)));
             }
 
-            if (blockSettings.hasVerticalBookshelfStairs()) {
-                VERTICAL_BOOKSHELF_STAIRS.put(blockSettings.getMainMaterial(), new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(blockSettings)));
+            if (settings.hasVerticalBookshelfStairs()) {
+                VERTICAL_BOOKSHELF_STAIRS.put(settings.getMainMaterial(), new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(settings)));
+            }
+
+            if (config.enableDyedBlocks && settings.hasDyedBlocks()) {
+                for (String color : Colors.getColors()) {
+                    STAIRS.put(String.format("%s/%s", settings.getMainMaterial(), color), new GenericStairsBlock(new StairsSettings(new DyedBlockSettings(settings).color(color).asDefaultSettings())));
+                    VERTICAL_STAIRS.put(String.format("%s/%s", settings.getMainMaterial(), color), new GenericVerticalStairsBlock(new VerticalStairsSettings(new DyedBlockSettings(settings).color(color).asDefaultSettings())));
+                }
             }
         }
     }

@@ -78,8 +78,8 @@ public class StorageBlocks implements MinekeaBlockCategory {
         RED_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.RED_DYE).color("red"));
         BLACK_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BLACK_DYE).color("black"));
 
-        APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.APPLE).tool(Tool.HOE).column().separateTop().sounds(BlockSoundGroup.WOOD));
-        BAMBOO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BAMBOO).namePattern("Bundle of %s").tool(Tool.AXE).column().sounds(BlockSoundGroup.BAMBOO));
+        APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.APPLE).tool(Tool.HOE).separateTop().sounds(BlockSoundGroup.WOOD));
+        BAMBOO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BAMBOO).namePattern("Bundle of %s").tool(Tool.AXE).sounds(BlockSoundGroup.BAMBOO));
         BEETROOT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
         BEETROOT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
         BLAZE_POWDER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BLAZE_POWDER).tool(Tool.SHOVEL).sounds(BlockSoundGroup.NETHER_STEM));
@@ -90,7 +90,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         ENDER_PEARL_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.ENDER_PEARL).sounds(BlockSoundGroup.SHROOMLIGHT));
         FLINT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.FLINT).sounds(BlockSoundGroup.STONE));
         GOLD_NUGGET_SACK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.GOLD_BLOCK).material("gold").ingredientName("Gold Nugget").namePattern("%s Sack").bagged().addMaterial("ingredient", "minekea:currency/gold_nugget_bag").sounds(BlockSoundGroup.METAL));
-        GOLDEN_APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.GOLDEN_APPLE).tool(Tool.HOE).column().separateTop().sounds(BlockSoundGroup.WOOD));
+        GOLDEN_APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.GOLDEN_APPLE).tool(Tool.HOE).separateTop().sounds(BlockSoundGroup.WOOD));
         IRON_NUGGET_SACK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.IRON_BLOCK).material("iron").ingredientName("Iron Nugget").namePattern("%s Sack").bagged().addMaterial("ingredient", "minekea:currency/iron_nugget_bag").sounds(BlockSoundGroup.METAL));
         LEATHER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.LEATHER).tool(Tool.SHEARS).sounds(BlockSoundGroup.WOOL));
         MELON_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.MELON_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
@@ -102,7 +102,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         STICK_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.STICK).namePattern("Bundle of %s").tool(Tool.AXE).ingredientName("Sticks").sounds(BlockSoundGroup.WOOD));
         SUGAR_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR).tool(Tool.SHOVEL).bagged().sounds(BlockSoundGroup.SAND));
         SUGAR_CANE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.SUGAR_CANE).tool(Tool.AXE).namePattern("Bundle of %s").sounds(BlockSoundGroup.GRASS));
-        TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).column().sounds(BlockSoundGroup.METAL));
+        TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).sounds(BlockSoundGroup.METAL));
         WALLPAPER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PAPER).tool(Tool.SHEARS).namePattern("Wallpaper").sounds(BlockSoundGroup.LADDER));
         WHEAT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.WHEAT_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
     }

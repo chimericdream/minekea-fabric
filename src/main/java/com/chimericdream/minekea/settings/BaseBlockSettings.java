@@ -103,7 +103,8 @@ public class BaseBlockSettings {
         .withSlab()
         .withStairs()
         .withVerticalStairs()
-        .withWall();
+        .withWall()
+        .withDyedBlocks();
 
     public static DefaultSettings BRICK = new DefaultSettings(Blocks.BRICKS)
         .material("brick")
@@ -115,7 +116,8 @@ public class BaseBlockSettings {
         .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withVerticalStairs();
+        .withVerticalStairs()
+        .withDyedBlocks();
 
     public static DefaultSettings CALCITE = new DefaultSettings(Blocks.CALCITE)
         .material("calcite")
@@ -130,7 +132,8 @@ public class BaseBlockSettings {
         .withSlab()
         .withStairs()
         .withVerticalStairs()
-        .withWall();
+        .withWall()
+        .withDyedBlocks();
 
     public static DefaultSettings CLAY = new DefaultSettings(Blocks.CLAY)
         .material("clay")
@@ -198,7 +201,8 @@ public class BaseBlockSettings {
         .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withVerticalStairs();
+        .withVerticalStairs()
+        .withDyedBlocks();
 
     public static DefaultSettings CRACKED_BASALT_BRICK = new DefaultSettings(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK)
         .material("cracked_basalt_brick")
@@ -334,7 +338,7 @@ public class BaseBlockSettings {
         .withWall()
         .withBookshelf()
         .withStorageBookshelf()
-        .withDyedBlock();
+        .withDyedBlocks();
 
     public static DefaultSettings DEEPSLATE = new DefaultSettings(Blocks.DEEPSLATE)
         .material("deepslate")
@@ -534,7 +538,8 @@ public class BaseBlockSettings {
         .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withVerticalStairs();
+        .withVerticalStairs()
+        .withDyedBlocks();
 
     public static DefaultSettings NETHERRACK = new DefaultSettings(Blocks.NETHERRACK)
         .material("netherrack")
@@ -724,7 +729,7 @@ public class BaseBlockSettings {
         .withVerticalStairs()
         .withBookshelf()
         .withStorageBookshelf()
-        .withDyedBlock();
+        .withDyedBlocks();
 
     public static DefaultSettings PRISMARINE_BRICK = new DefaultSettings(Blocks.PRISMARINE_BRICKS)
         .material("prismarine_brick")
@@ -740,7 +745,7 @@ public class BaseBlockSettings {
         .withWall()
         .withBookshelf()
         .withStorageBookshelf()
-        .withDyedBlock();
+        .withDyedBlocks();
 
     public static DefaultSettings PURPUR = new DefaultSettings(Blocks.PURPUR_BLOCK)
         .material("purpur")
@@ -946,7 +951,8 @@ public class BaseBlockSettings {
         .withVerticalStairs()
         .withWall()
         .withBookshelf()
-        .withStorageBookshelf();
+        .withStorageBookshelf()
+        .withDyedBlocks();
 
     public static DefaultSettings SOUL_SAND = new DefaultSettings(Blocks.SOUL_SAND)
         .material("soul_sand")
@@ -973,7 +979,8 @@ public class BaseBlockSettings {
         .withCompressedBlock()
         .withCover()
         .withVerticalStairs()
-        .withWall();
+        .withWall()
+        .withDyedBlocks();
 
     public static DefaultSettings STONE_BRICK = new DefaultSettings(Blocks.STONE_BRICKS)
         .material("stone_brick")
@@ -987,7 +994,8 @@ public class BaseBlockSettings {
         .withCover()
         .withVerticalStairs()
         .withBookshelf()
-        .withStorageBookshelf();
+        .withStorageBookshelf()
+        .withDyedBlocks();
 
     public static DefaultSettings TUFF = new DefaultSettings(Blocks.TUFF)
         .material("tuff")

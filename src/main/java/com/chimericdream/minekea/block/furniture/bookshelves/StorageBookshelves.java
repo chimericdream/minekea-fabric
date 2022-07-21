@@ -1,13 +1,18 @@
 package com.chimericdream.minekea.block.furniture.bookshelves;
 
+import com.chimericdream.minekea.block.building.dyed.DyedBlock.DyedBlockSettings;
 import com.chimericdream.minekea.block.furniture.bookshelves.GenericStorageBookshelf.StorageBookshelfSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.config.ConfigManager;
+import com.chimericdream.minekea.config.MinekeaConfig;
 import com.chimericdream.minekea.entities.blocks.StorageBookshelfBlockEntity;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreen;
 import com.chimericdream.minekea.screen.bookshelf.StorageBookshelfScreenHandler;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
+import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -31,9 +36,17 @@ public class StorageBookshelves implements MinekeaBlockCategory {
     public static ScreenHandlerType<StorageBookshelfScreenHandler> STORAGE_SHELF_SCREEN_HANDLER;
 
     static {
-        for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
-            if (blockSettings.hasStorageBookshelf()) {
-                STORAGE_BOOKSHELVES.put(blockSettings.getMainMaterial(), new GenericStorageBookshelf(new StorageBookshelfSettings(blockSettings).addMaterial("bookshelf", blockSettings.getBookshelfId())));
+        MinekeaConfig config = ConfigManager.getConfig();
+
+        for (DefaultSettings settings : BaseBlockSettings.ALL_SETTINGS) {
+            if (settings.hasStorageBookshelf()) {
+                STORAGE_BOOKSHELVES.put(settings.getMainMaterial(), new GenericStorageBookshelf(new StorageBookshelfSettings(settings).addMaterial("bookshelf", settings.getBookshelfId())));
+            }
+
+            if (config.enableDyedBlocks && settings.hasDyedBlocks()) {
+                for (String color : Colors.getColors()) {
+                    STORAGE_BOOKSHELVES.put(String.format("%s/%s", settings.getMainMaterial(), color), new GenericStorageBookshelf(new StorageBookshelfSettings(new DyedBlockSettings(settings).color(color).asDefaultSettings())));
+                }
             }
         }
 

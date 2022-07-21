@@ -1,9 +1,14 @@
 package com.chimericdream.minekea.block.building.covers;
 
 import com.chimericdream.minekea.block.building.covers.GenericCoverBlock.CoverSettings;
+import com.chimericdream.minekea.block.building.dyed.DyedBlock.DyedBlockSettings;
 import com.chimericdream.minekea.compat.ModCompatLayer;
+import com.chimericdream.minekea.config.ConfigManager;
+import com.chimericdream.minekea.config.MinekeaConfig;
 import com.chimericdream.minekea.settings.BaseBlockSettings;
 import com.chimericdream.minekea.settings.MinekeaBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
+import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
@@ -16,9 +21,17 @@ public class Covers implements MinekeaBlockCategory {
     public static final Map<String, GenericCoverBlock> BLOCKS = new LinkedHashMap<>();
 
     static {
-        for (MinekeaBlockSettings.DefaultSettings blockSettings : BaseBlockSettings.ALL_SETTINGS) {
-            if (blockSettings.hasCover()) {
-                BLOCKS.put(blockSettings.getMainMaterial(), new GenericCoverBlock(new CoverSettings(blockSettings)));
+        MinekeaConfig config = ConfigManager.getConfig();
+
+        for (DefaultSettings settings : BaseBlockSettings.ALL_SETTINGS) {
+            if (settings.hasCover()) {
+                BLOCKS.put(settings.getMainMaterial(), new GenericCoverBlock(new CoverSettings(settings)));
+            }
+
+            if (config.enableDyedBlocks && settings.hasDyedBlocks()) {
+                for (String color : Colors.getColors()) {
+                    BLOCKS.put(String.format("%s/%s", settings.getMainMaterial(), color), new GenericCoverBlock(new CoverSettings(new DyedBlockSettings(settings).color(color).asDefaultSettings())));
+                }
             }
         }
     }

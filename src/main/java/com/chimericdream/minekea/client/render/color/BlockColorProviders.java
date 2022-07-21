@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.client.render.color;
 
+import com.chimericdream.minekea.util.Colors;
 import net.minecraft.client.color.block.BlockColorProvider;
 
 public class BlockColorProviders {

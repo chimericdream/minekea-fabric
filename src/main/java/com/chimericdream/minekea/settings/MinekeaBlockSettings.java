@@ -66,8 +66,8 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.isWooden = settings.isWooden;
         this.isWool = settings.isWool;
         this.mainMaterial = settings.mainMaterial;
-        this.materials = settings.materials;
-        this.blockTextures = settings.blockTextures;
+        this.materials = new HashMap<>(settings.materials);
+        this.blockTextures = new HashMap<>(settings.blockTextures);
         this.modId = settings.modId;
         this.name = settings.name;
         this.namePatternOverride = settings.namePatternOverride;
@@ -374,10 +374,14 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         private boolean hasBookshelfTrapdoor = false;
         private boolean hasButton = false;
         private boolean hasPressurePlate = false;
-        private boolean hasDyedBlock = false;
+        private boolean hasDyedBlocks = false;
 
         public DefaultSettings(Block block) {
             super(block);
+        }
+
+        public DefaultSettings(DefaultSettings settings) {
+            super(settings);
         }
 
         public DefaultSettings bookshelfId(String id) {
@@ -406,12 +410,12 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
             return null;
         }
 
-        public boolean hasDyedBlock() {
-            return this.isEnabled() && this.hasDyedBlock;
+        public boolean hasDyedBlocks() {
+            return this.isEnabled() && this.hasDyedBlocks;
         }
 
-        public DefaultSettings withDyedBlock() {
-            this.hasDyedBlock = true;
+        public DefaultSettings withDyedBlocks() {
+            this.hasDyedBlocks = true;
             return this;
         }
 
