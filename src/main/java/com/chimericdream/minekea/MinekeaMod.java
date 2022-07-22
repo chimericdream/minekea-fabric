@@ -1,6 +1,7 @@
 package com.chimericdream.minekea;
 
 import com.chimericdream.minekea.block.building.BuildingBlocks;
+import com.chimericdream.minekea.block.building.dyed.DyedBlocks;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
@@ -12,6 +13,7 @@ import com.chimericdream.minekea.compat.betternether.BetterNetherBlocks;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
 import com.chimericdream.minekea.compat.mythicmetals.MythicMetalsBlocks;
 import com.chimericdream.minekea.config.ConfigManager;
+import com.chimericdream.minekea.config.MinekeaConfig;
 import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
 import com.chimericdream.minekea.item.ItemGroups;
@@ -20,6 +22,8 @@ import com.chimericdream.minekea.network.ServerNetworking;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry.BlockColor;
 import com.chimericdream.minekea.resource.MinekeaResourcePack;
+import com.chimericdream.minekea.settings.BaseBlockSettings;
+import com.chimericdream.minekea.settings.MinekeaBlockSettings;
 import com.chimericdream.minekea.tag.CommonBlockTags;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -140,6 +144,7 @@ public class MinekeaMod implements ModInitializer {
         ITEM_GROUPS.setupResources();
 
         LOGGER.info("[minekea] Registering colored blocks");
+        registerMinekeaColoredBlocks();
         registerVanillaColoredBlocks();
 
         FabricLoader loader = FabricLoader.getInstance();
@@ -151,6 +156,36 @@ public class MinekeaMod implements ModInitializer {
         LOGGER.info("[minekea] Registering dynamic resource pack");
         // This _must_ be the last thing
         RESOURCES.register();
+    }
+
+    private void registerMinekeaColoredBlocks() {
+        MinekeaConfig config = ConfigManager.getConfig();
+
+        if (!config.enableDyedBlocks) {
+            return;
+        }
+
+        for (MinekeaBlockSettings.DefaultSettings settings : BaseBlockSettings.ALL_SETTINGS) {
+            if (settings.hasDyedBlocks()) {
+                String material = settings.getMainMaterial();
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "white"), "minekea:dyed_" + material, BlockColor.WHITE);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "orange"), "minekea:dyed_" + material, BlockColor.ORANGE);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "magenta"), "minekea:dyed_" + material, BlockColor.MAGENTA);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "light_blue"), "minekea:dyed_" + material, BlockColor.LIGHT_BLUE);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "yellow"), "minekea:dyed_" + material, BlockColor.YELLOW);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "lime"), "minekea:dyed_" + material, BlockColor.LIME);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "pink"), "minekea:dyed_" + material, BlockColor.PINK);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "gray"), "minekea:dyed_" + material, BlockColor.GRAY);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "light_gray"), "minekea:dyed_" + material, BlockColor.LIGHT_GRAY);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "cyan"), "minekea:dyed_" + material, BlockColor.CYAN);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "purple"), "minekea:dyed_" + material, BlockColor.PURPLE);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "blue"), "minekea:dyed_" + material, BlockColor.BLUE);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "brown"), "minekea:dyed_" + material, BlockColor.BROWN);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "green"), "minekea:dyed_" + material, BlockColor.GREEN);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "red"), "minekea:dyed_" + material, BlockColor.RED);
+                ColoredBlocksRegistry.addBlock(DyedBlocks.BLOCKS.get(material + "black"), "minekea:dyed_" + material, BlockColor.BLACK);
+            }
+        }
     }
 
     private void registerVanillaColoredBlocks() {
