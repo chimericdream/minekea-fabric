@@ -4,6 +4,38 @@
     "textures": {
         "particle": "#panel"
     },
+    "display": {
+        "ground": {
+            "rotation": [0, 0, 0],
+            "translation": [0, 3, -3],
+            "scale": [0.4, 0.4, 0.4]
+        },
+        "gui": {
+            "rotation": [22.5, -45, 0],
+            "translation": [3.5, 1.5, 0],
+            "scale": [0.7, 0.7, 0.7]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [75, -90, 30],
+            "translation": [4, 3, 0],
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "thirdperson_righthand": {
+            "rotation": [75, -90, 30],
+            "translation": [4, 3, 0],
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "firstperson_lefthand": {
+            "rotation": [0, 90, 0],
+            "translation": [-2, 3.5, 0],
+            "scale": [0.375, 0.375, 0.375]
+        },
+        "firstperson_righthand": {
+            "rotation": [0, -90, 0],
+            "translation": [2, 3.5, 0],
+            "scale": [0.375, 0.375, 0.375]
+        }
+    },
     "elements": [
         {
             "name": "top",
