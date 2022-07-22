@@ -1064,9 +1064,13 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:copper_block")
             )
         )
+        .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withSlab();
+        .withSlab()
+        .withStairs()
+        .withVerticalStairs()
+        .withWall();
 
     public static DefaultSettings DIAMOND_BLOCK = new DefaultSettings(Blocks.DIAMOND_BLOCK)
         .material("diamond_block")
@@ -1075,9 +1079,13 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:diamond_block")
             )
         )
+        .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withSlab();
+        .withSlab()
+        .withStairs()
+        .withVerticalStairs()
+        .withWall();
 
     public static DefaultSettings GOLD_BLOCK = new DefaultSettings(Blocks.GOLD_BLOCK)
         .material("gold_block")
@@ -1086,9 +1094,13 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:gold_block")
             )
         )
+        .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withSlab();
+        .withSlab()
+        .withStairs()
+        .withVerticalStairs()
+        .withWall();
 
     public static DefaultSettings IRON_BLOCK = new DefaultSettings(Blocks.IRON_BLOCK)
         .material("iron_block")
@@ -1097,9 +1109,13 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:iron_block")
             )
         )
+        .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withSlab();
+        .withSlab()
+        .withStairs()
+        .withVerticalStairs()
+        .withWall();
 
     public static DefaultSettings LAPIS_BLOCK = new DefaultSettings(Blocks.LAPIS_BLOCK)
         .material("lapis_block")
@@ -1108,9 +1124,13 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:lapis_block")
             )
         )
+        .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withSlab();
+        .withSlab()
+        .withStairs()
+        .withVerticalStairs()
+        .withWall();
 
     public static DefaultSettings NETHERITE_BLOCK = new DefaultSettings(Blocks.NETHERITE_BLOCK)
         .material("netherite_block")
@@ -1119,9 +1139,13 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:netherite_block")
             )
         )
+        .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withSlab();
+        .withSlab()
+        .withStairs()
+        .withVerticalStairs()
+        .withWall();
 
     public static DefaultSettings REDSTONE_BLOCK = new DefaultSettings(Blocks.REDSTONE_BLOCK)
         .material("redstone_block")
@@ -1130,9 +1154,13 @@ public class BaseBlockSettings {
                 "main", new Identifier("minecraft:redstone_block")
             )
         )
+        .withBeam()
         .withCompressedBlock()
         .withCover()
-        .withSlab();
+        .withSlab()
+        .withStairs()
+        .withVerticalStairs()
+        .withWall();
 
     /******************************************************************************************************************/
 
