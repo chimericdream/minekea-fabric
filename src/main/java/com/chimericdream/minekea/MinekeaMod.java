@@ -10,6 +10,7 @@ import com.chimericdream.minekea.compat.PatchouliCompat;
 import com.chimericdream.minekea.compat.betterend.BetterEndBlocks;
 import com.chimericdream.minekea.compat.betternether.BetterNetherBlocks;
 import com.chimericdream.minekea.compat.byg.BygBlocks;
+import com.chimericdream.minekea.compat.mythicmetals.MythicMetalsBlocks;
 import com.chimericdream.minekea.config.ConfigManager;
 import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
@@ -99,6 +100,11 @@ public class MinekeaMod implements ModInitializer {
         if (loader.isModLoaded("byg")) {
             LOGGER.info("[minekea][compat] BYG detected! initializing mod compat layer");
             OTHER_MODS.add(new BygBlocks());
+        }
+
+        if (loader.isModLoaded("mythicmetals")) {
+            LOGGER.info("[minekea][compat] Mythic Metals detected! initializing mod compat layer");
+            OTHER_MODS.add(new MythicMetalsBlocks());
         }
     }
 
