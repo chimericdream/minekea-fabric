@@ -32,7 +32,7 @@ public class WrenchItem extends Item implements MinekeaItem {
     private final Identifier ITEM_ID;
 
     public WrenchItem() {
-        super(new FabricItemSettings().group(ItemGroup.TOOLS));
+        super(new FabricItemSettings().group(ItemGroup.TOOLS).maxCount(1));
 
         this.ITEM_ID = new Identifier(ModInfo.MOD_ID, "tools/wrench");
     }
