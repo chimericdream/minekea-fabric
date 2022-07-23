@@ -1,6 +1,6 @@
 {
     "name": "Display Cases",
-    "icon": "minekea:displaycases/oak_display_case",
+    "icon": "minekea:furniture/display_cases/oak",
     "flag": "minekea:enableDisplayCases",
     "category": "minekea:furniture",
     "read_by_default": true,
@@ -11,8 +11,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:displaycases/oak_display_case",
-            "recipe2": "minekea:displaycases/stripped_birch_display_case",
+            "recipe": "minekea:furniture/display_cases/oak",
+            "recipe2": "minekea:furniture/display_cases/stripped/birch",
             "title": "Example Recipes"
         },
         {

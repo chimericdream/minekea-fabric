@@ -1,6 +1,6 @@
 {
     "name": "Crates",
-    "icon": "minekea:crates/oak_crate",
+    "icon": "minekea:containers/crates/oak",
     "flag": "minekea:enableCrates",
     "category": "minekea:containers_and_storage",
     "read_by_default": true,
@@ -11,8 +11,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:crates/oak_crate",
-            "recipe2": "minekea:crates/warped_crate",
+            "recipe": "minekea:containers/crates/oak",
+            "recipe2": "minekea:containers/crates/warped",
             "title": "Example Recipes"
         }
     ]

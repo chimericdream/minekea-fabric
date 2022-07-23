@@ -1,5 +1,5 @@
 {
     "name": "Furniture",
     "description": "Please make sure all furniture is securely anchored to a wall or other stable block. Failure to do so may result in tipping and/or the catastrophic loss of your favorite chicken.$(br2)$(br2)$(o)Mounting hardware and equipment not provided by Minekea.",
-    "icon": "minekea:tables/oak_table"
+    "icon": "minekea:furniture/tables/oak"
 }

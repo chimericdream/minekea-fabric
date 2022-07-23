@@ -1,6 +1,6 @@
 {
     "name": "New Lanterns",
-    "icon": "minekea:decorations/doom_lantern",
+    "icon": "minekea:decorations/lighting/doom_lantern",
     "category": "minekea:decorative_blocks",
     "read_by_default": true,
     "pages": [
@@ -10,8 +10,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:decorations/doom_lantern",
-            "recipe2": "minekea:decorations/end_lantern",
+            "recipe": "minekea:decorations/lighting/doom_lantern",
+            "recipe2": "minekea:decorations/lighting/end_lantern",
             "title": "Recipes"
         }
     ]

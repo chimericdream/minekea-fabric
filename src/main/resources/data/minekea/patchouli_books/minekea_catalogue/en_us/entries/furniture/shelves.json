@@ -1,6 +1,6 @@
 {
     "name": "Shelves",
-    "icon": "minekea:shelves/oak_supported_shelf",
+    "icon": "minekea:furniture/shelves/supported/oak",
     "flag": "minekea:enableShelves",
     "category": "minekea:furniture",
     "read_by_default": true,
@@ -11,8 +11,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:shelves/warped_floating_shelf",
-            "recipe2": "minekea:shelves/oak_supported_shelf",
+            "recipe": "minekea:furniture/shelves/floating/warped",
+            "recipe2": "minekea:furniture/shelves/supported/oak",
             "title": "Example Recipes"
         },
         {

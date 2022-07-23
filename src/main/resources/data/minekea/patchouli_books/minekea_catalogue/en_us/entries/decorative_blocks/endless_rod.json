@@ -1,6 +1,6 @@
 {
     "name": "End(less) Rod",
-    "icon": "minekea:decorations/endless_rod",
+    "icon": "minekea:decorations/lighting/endless_rod",
     "category": "minekea:decorative_blocks",
     "read_by_default": true,
     "pages": [
@@ -10,7 +10,7 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:decorations/endless_rod",
+            "recipe": "minekea:decorations/lighting/endless_rod",
             "title": "Recipe"
         }
     ]

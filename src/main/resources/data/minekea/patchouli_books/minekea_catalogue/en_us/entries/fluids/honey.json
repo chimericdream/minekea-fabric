@@ -1,12 +1,12 @@
 {
     "name": "Honey",
-    "icon": "minekea:honey_bucket",
+    "icon": "minekea:containers/honey_bucket",
     "category": "minekea:fluids",
     "read_by_default": true,
     "pages": [
         {
             "type": "patchouli:spotlight",
-            "item": "minekea:honey_bucket",
+            "item": "minekea:containers/honey_bucket",
             "text": "Honey is a thick, slow-flowing liquid. As long as an entity is touching honey, and for a short while afterward, they are affected with Slowness III."
         },
         {

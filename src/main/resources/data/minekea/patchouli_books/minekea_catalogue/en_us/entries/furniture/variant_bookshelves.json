@@ -1,6 +1,6 @@
 {
     "name": "Bookshelf Variants",
-    "icon": "minekea:bookshelves/crimson_bookshelf",
+    "icon": "minekea:furniture/bookshelves/crimson",
     "flag": "minekea:enableBookshelves",
     "category": "minekea:furniture",
     "read_by_default": true,
@@ -11,8 +11,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:bookshelves/crimson_bookshelf",
-            "recipe2": "minekea:bookshelves/dark_prismarine_bookshelf",
+            "recipe": "minekea:furniture/bookshelves/crimson",
+            "recipe2": "minekea:furniture/bookshelves/dark_prismarine",
             "title": "Example Recipes"
         }
     ]

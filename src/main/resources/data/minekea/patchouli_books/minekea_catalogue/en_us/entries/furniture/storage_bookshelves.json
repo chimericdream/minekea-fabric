@@ -1,6 +1,6 @@
 {
     "name": "Storage Bookshelves",
-    "icon": "minekea:bookshelves/storage/oak_storage_shelf",
+    "icon": "minekea:furniture/bookshelves/storage/oak",
     "flag": "minekea:enableStorageBookshelves",
     "category": "minekea:furniture",
     "read_by_default": true,
@@ -11,8 +11,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:bookshelves/storage/crimson_storage_shelf",
-            "recipe2": "minekea:bookshelves/storage/dark_prismarine_storage_shelf",
+            "recipe": "minekea:furniture/bookshelves/storage/crimson",
+            "recipe2": "minekea:furniture/bookshelves/storage/dark_prismarine",
             "title": "Example Recipes"
         }
     ]

@@ -90,6 +90,8 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
             name = this.name;
         }
 
+        name = name.replaceAll(" Planks", "");
+
         if (singular) {
             return name.replaceAll("(.+)Bricks$", "$1Brick");
         }

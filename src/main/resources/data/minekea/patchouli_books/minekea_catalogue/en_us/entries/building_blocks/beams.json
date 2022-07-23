@@ -1,6 +1,6 @@
 {
     "name": "Beams",
-    "icon": "minekea:beams/cobblestone_beam",
+    "icon": "minekea:building/beams/cobblestone",
     "flag": "minekea:enableBeams",
     "category": "minekea:building_blocks",
     "read_by_default": true,
@@ -11,7 +11,7 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:beams/cobblestone_beam",
+            "recipe": "minekea:building/beams/cobblestone",
             "title": "Recipe",
             "text": "There are over a hundred types of beams, but all follow the same recipe pattern."
         }

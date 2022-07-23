@@ -13,6 +13,7 @@ import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -77,6 +78,11 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
                 .with(WALL_SIDE, Direction.NORTH)
                 .with(WATERLOGGED, false)
         );
+    }
+
+    @Override
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        return new ItemStack(Shutters.SHUTTERS.get(this.shutterSettings.getMainMaterial()));
     }
 
     @Override
@@ -245,6 +251,8 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
 
     @Override
     public void setupResources() {
+        MinekeaResourcePack.EN_US.blockRespect(this, String.format(shutterSettings.getNamePattern(), shutterSettings.getIngredientName()));
+
         Identifier LEFT_MODEL_ID = Model.getBlockModelID(getBlockID() + "_left");
         Identifier RIGHT_MODEL_ID = Model.getBlockModelID(getBlockID() + "_right");
 

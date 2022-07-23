@@ -1,6 +1,6 @@
 {
     "name": "Fake Cake",
-    "icon": "minekea:decorations/fake_cake",
+    "icon": "minekea:decorations/misc/fake_cake",
     "category": "minekea:decorative_blocks",
     "read_by_default": true,
     "pages": [
@@ -10,7 +10,7 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:decorations/fake_cake",
+            "recipe": "minekea:decorations/misc/fake_cake",
             "title": "Recipe"
         }
     ]

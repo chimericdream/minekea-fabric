@@ -29,10 +29,12 @@ public class PatchouliCompat {
         patchouli.setConfigFlag("minekea:enableChairs", config.enableChairs);
         patchouli.setConfigFlag("minekea:enableStools", config.enableStools);
         patchouli.setConfigFlag("minekea:enableShelves", config.enableShelves);
+        patchouli.setConfigFlag("minekea:enableShutters", config.enableShutters);
         patchouli.setConfigFlag("minekea:enableTables", config.enableTables);
         patchouli.setConfigFlag("minekea:enableTrapdoors", config.enableTrapdoors);
         patchouli.setConfigFlag("minekea:overrideVanillaBarrelTexture", config.overrideVanillaBarrelTexture);
         patchouli.setConfigFlag("minekea:overrideVanillaBookshelfTexture", config.overrideVanillaBookshelfTexture);
         patchouli.setConfigFlag("minekea:enableCobbledEndStone", config.enableCobbledEndStone);
+        patchouli.setConfigFlag("minekea:enableDyedBlocks", config.enableDyedBlocks);
     }
 }

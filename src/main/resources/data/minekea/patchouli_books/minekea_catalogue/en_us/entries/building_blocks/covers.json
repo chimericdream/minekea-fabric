@@ -1,6 +1,6 @@
 {
     "name": "Covers",
-    "icon": "minekea:covers/cobblestone_cover",
+    "icon": "minekea:building/covers/cobblestone",
     "flag": "minekea:enableCovers",
     "category": "minekea:building_blocks",
     "read_by_default": true,
@@ -11,7 +11,7 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:covers/cobblestone_cover",
+            "recipe": "minekea:building/covers/cobblestone",
             "title": "Recipe",
             "text": "There are over a hundred types of covers, but all follow the same recipe pattern."
         }

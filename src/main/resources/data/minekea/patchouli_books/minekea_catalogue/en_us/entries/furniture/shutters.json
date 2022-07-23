@@ -1,0 +1,29 @@
+{
+    "name": "Shutters",
+    "icon": "minekea:furniture/shutters/oak",
+    "flag": "minekea:enableShutters",
+    "category": "minekea:furniture",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Shutters function similarly to trapdoors and come in all wood varieties. They open outward from the center of the block and open a full 180 degrees."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:furniture/shutters/oak",
+            "recipe2": "minekea:furniture/shutters/warped",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/shutters-closed.png",
+                "minekea:textures/gui/patchouli/shutters-open.png",
+                "minekea:textures/gui/patchouli/ring-of-shutters.png",
+                "minekea:textures/gui/patchouli/waterlogged-shutters.png"
+            ],
+            "text": "Shutters open 180 degrees. They can also be waterlogged and used for interesting decorative effects!"
+        }
+    ]
+}

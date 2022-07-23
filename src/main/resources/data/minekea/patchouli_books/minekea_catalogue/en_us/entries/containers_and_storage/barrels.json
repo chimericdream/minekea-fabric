@@ -12,7 +12,7 @@
         {
             "type": "patchouli:crafting",
             "recipe": "minecraft:barrel",
-            "recipe2": "minekea:barrels/spruce_barrel",
+            "recipe2": "minekea:containers/barrels/spruce",
             "title": "Example Recipes"
         }
     ]

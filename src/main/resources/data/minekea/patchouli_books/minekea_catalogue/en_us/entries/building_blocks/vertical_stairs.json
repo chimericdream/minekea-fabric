@@ -1,6 +1,6 @@
 {
     "name": "Vertical Stairs",
-    "icon": "minekea:building/stairs/cobblestone_vertical_stairs",
+    "icon": "minekea:building/stairs/vertical/cobblestone",
     "flag": "minekea:enableVerticalStairs",
     "category": "minekea:building_blocks",
     "read_by_default": true,
@@ -11,7 +11,7 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:building/stairs/cobblestone_vertical_stairs",
+            "recipe": "minekea:building/stairs/vertical/cobblestone",
             "title": "Example Recipe",
             "text": "If a block has stairs, it's got vertical ones as well!"
         }

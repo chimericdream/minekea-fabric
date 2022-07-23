@@ -1,6 +1,6 @@
 {
     "name": "Tables",
-    "icon": "minekea:tables/oak_table",
+    "icon": "minekea:furniture/tables/oak",
     "flag": "minekea:enableTables",
     "category": "minekea:furniture",
     "read_by_default": true,
@@ -11,8 +11,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:tables/oak_table",
-            "recipe2": "minekea:tables/spruce_table",
+            "recipe": "minekea:furniture/tables/oak",
+            "recipe2": "minekea:furniture/tables/spruce",
             "title": "Example Recipes"
         },
         {

@@ -1,6 +1,6 @@
 {
     "name": "Chairs and stools",
-    "icon": "minekea:seating/chairs/oak_chair",
+    "icon": "minekea:furniture/seating/chairs/oak",
     "flag": "minekea:enableChairs",
     "category": "minekea:furniture",
     "read_by_default": true,
@@ -11,8 +11,8 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:seating/chairs/oak_chair",
-            "recipe2": "minekea:seating/stools/oak_stool",
+            "recipe": "minekea:furniture/seating/chairs/oak",
+            "recipe2": "minekea:furniture/seating/stools/oak",
             "title": "Example Recipes"
         }
     ]
