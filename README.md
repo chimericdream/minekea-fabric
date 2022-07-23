@@ -1,6 +1,6 @@
 # Minekea (Fabric)
 
-![Version: 3.2.0](https://img.shields.io/badge/version-3.2.0-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
+![Version: 3.3.0](https://img.shields.io/badge/version-3.3.0-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
 
 _Simple, functional, decorative blocks for all your building and storage needs (some assembly required)_
 
@@ -40,6 +40,10 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 * Covers for most building blocks (somewhat like carpets)
 * New basalt brick block and variants
 * Compressed blocks (1x-9x) for nearly all building blocks, even where it's absurd
+* Dyed blocks
+* Wooden window shutters
+* Random block placing tool
+* Block painter
 
 ### Planned/Possible Features
 
@@ -49,6 +53,9 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 ### Mod Support
 
 * Oh, the Biomes You'll Go (1.18+ only)
+* Better End (1.19+ only)
+* Better Nether (1.19+ only)
+* Mythic Metals (1.19+ only)
 
 ## Issues & Suggestions
 
