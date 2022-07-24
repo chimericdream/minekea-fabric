@@ -113,14 +113,13 @@ public class GenericChair extends Block implements MinekeaBlock, Waterloggable {
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        Direction lookDirection = ctx.getPlayerLookDirection();
-
-        if (lookDirection == Direction.DOWN || lookDirection == Direction.UP) {
-            return (BlockState) this.getDefaultState().with(FACING, Direction.NORTH)
-                .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+        Direction dir = Direction.NORTH;60
+        if (ctx.getPlayer() != null) {
+            dir = ctx.getPlayer().getHorizontalFacing();
         }
 
-        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerLookDirection())
+        return this.getDefaultState()
+            .with(FACING, dir)
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
