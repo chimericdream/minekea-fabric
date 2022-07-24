@@ -1,3 +1,8 @@
+### 1.19.0 - 3.3.1
+
+#### Bug Fixes
+* Chair placement: fix issue with placement not behaving as expected when you weren't looking perfectly straight ([#60](https://github.com/chimericdream/minekea-fabric/issues/60))
+
 ### 1.19.0 - 3.3.0
 
 #### Bug Fixes
