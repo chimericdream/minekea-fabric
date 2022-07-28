@@ -35,7 +35,14 @@ public class Stairs implements MinekeaBlockCategory {
             }
 
             if (settings.hasBookshelfStairs()) {
-                BOOKSHELF_STAIRS.put(settings.getMainMaterial(), new GenericBookshelfStairs(new BookshelfStairsSettings(settings)));
+                BOOKSHELF_STAIRS.put(
+                    settings.getMainMaterial(),
+                    new GenericBookshelfStairs(
+                        new BookshelfStairsSettings(settings)
+                            .addMaterial("bookshelf", settings.getBookshelfId())
+                            .addMaterial("model", settings.getBookshelfModel())
+                    )
+                );
             }
 
             if (settings.hasVerticalStairs()) {
@@ -43,7 +50,14 @@ public class Stairs implements MinekeaBlockCategory {
             }
 
             if (settings.hasVerticalBookshelfStairs()) {
-                VERTICAL_BOOKSHELF_STAIRS.put(settings.getMainMaterial(), new GenericVerticalBookshelfStairs(new VerticalBookshelfStairsSettings(settings)));
+                VERTICAL_BOOKSHELF_STAIRS.put(
+                    settings.getMainMaterial(),
+                    new GenericVerticalBookshelfStairs(
+                        new VerticalBookshelfStairsSettings(settings)
+                            .addMaterial("bookshelf", settings.getBookshelfId())
+                            .addMaterial("model", settings.getBookshelfModel())
+                    )
+                );
             }
 
             if (config.enableDyedBlocks && settings.hasDyedBlocks()) {

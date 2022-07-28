@@ -45,7 +45,13 @@ public class StorageBookshelves implements MinekeaBlockCategory {
 
             if (config.enableDyedBlocks && settings.hasDyedBlocks()) {
                 for (String color : Colors.getColors()) {
-                    STORAGE_BOOKSHELVES.put(String.format("%s/%s", settings.getMainMaterial(), color), new GenericStorageBookshelf(new StorageBookshelfSettings(new DyedBlockSettings(settings).color(color).asDefaultSettings())));
+                    STORAGE_BOOKSHELVES.put(
+                        String.format("%s/%s", settings.getMainMaterial(), color),
+                        new GenericStorageBookshelf(
+                            new StorageBookshelfSettings(new DyedBlockSettings(settings).color(color).asDefaultSettings())
+                                .addMaterial("bookshelf", Bookshelves.BOOKSHELVES.get(String.format("%s/%s", settings.getMainMaterial(), color)).getBlockID())
+                        )
+                    );
                 }
             }
         }
