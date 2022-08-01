@@ -1,3 +1,10 @@
+### 1.19.0 - 3.3.3
+
+#### Bug Fixes
+* Fix recipes for bookshelf stairs and vertical stairs for BetterEnd / BetterNether ([#62](https://github.com/chimericdream/minekea-fabric/issues/62))
+* Fix conflicting recipe for wool pressure plates ([#62](https://github.com/chimericdream/minekea-fabric/issues/62))
+
+
 ### 1.19.0 - 3.3.2
 
 #### Bug Fixes
