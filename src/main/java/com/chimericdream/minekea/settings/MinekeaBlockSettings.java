@@ -28,6 +28,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     protected String mainMaterial;
     protected Map<String, Identifier> materials;
     protected Map<String, Identifier> blockTextures = new HashMap<>();
+    protected Map<String, Integer> recipeOutput = new HashMap<>();
     protected String modId = ModInfo.MOD_ID;
     protected String name = null;
     protected String namePatternOverride = null;
@@ -68,6 +69,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         this.mainMaterial = settings.mainMaterial;
         this.materials = new HashMap<>(settings.materials);
         this.blockTextures = new HashMap<>(settings.blockTextures);
+        this.recipeOutput = new HashMap<>(settings.recipeOutput);
         this.modId = settings.modId;
         this.name = settings.name;
         this.namePatternOverride = settings.namePatternOverride;
@@ -136,11 +138,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
             return this.materials.get(key);
         }
 
-        if (this.materials.containsKey(fallback)) {
-            return this.materials.get(fallback);
-        }
-
-        return this.materials.get("main");
+        return this.getMaterial(fallback);
     }
 
     public Identifier getMaterial(String key, Identifier fallback) {
@@ -181,6 +179,10 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
         }
 
         return textureId;
+    }
+
+    public int getRecipeOutput(String key) {
+        return this.recipeOutput.getOrDefault(key, 1);
     }
 
     public T texture(String key, Identifier id) {
@@ -446,7 +448,14 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
 
         public DefaultSettings withPressurePlate() {
             this.hasPressurePlate = true;
+            this.recipeOutput.put("pressure_plate", 1);
             return this;
+        }
+
+        public DefaultSettings withPressurePlate(Identifier plateIngredient, int output) {
+            this.hasPressurePlate = true;
+            this.recipeOutput.put("pressure_plate", output);
+            return this.addMaterial("pressure_plate_ingredient", plateIngredient);
         }
 
         public boolean hasCompressedBlock() {

@@ -148,8 +148,9 @@ public class GenericPressurePlate extends AbstractPressurePlateBlock implements 
         MinekeaTags.BUTTONS.add(getBlockID(), settings.isWooden());
         MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
 
-        Identifier ingredient = settings.getMaterial("ingredient");
+        Identifier ingredient = settings.getMaterial("pressure_plate_ingredient", "ingredient");
         Identifier texture = settings.getBlockTexture("main");
+        int outputCount = settings.getRecipeOutput("pressure_plate");
 
         Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
         Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
@@ -162,7 +163,7 @@ public class GenericPressurePlate extends AbstractPressurePlateBlock implements 
                 JIngredients.ingredients()
                     .add(JIngredient.ingredient().item(ingredient.toString()))
                     .add(JIngredient.ingredient().item(ingredient.toString())),
-                JResult.result(getBlockID().toString())
+                JResult.stackedResult(getBlockID().toString(), outputCount)
             )
         );
 
