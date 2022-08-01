@@ -63,11 +63,25 @@ public class BetterNetherBlocks implements ModCompatLayer {
             }
 
             if (config.enableBookshelves && blockSettings.hasBookshelfStairs()) {
-                BOOKSHELF_STAIRS.put(blockSettings.getMainMaterial(), new GenericBookshelfStairs(new GenericBookshelfStairs.BookshelfStairsSettings(blockSettings)));
+                BOOKSHELF_STAIRS.put(
+                    blockSettings.getMainMaterial(),
+                    new GenericBookshelfStairs(
+                        new GenericBookshelfStairs.BookshelfStairsSettings(blockSettings)
+                            .addMaterial("bookshelf", GenericBookshelf.BookshelfSettings.makeBlockId("betternether", blockSettings.getMainMaterial()))
+                            .addMaterial("model", blockSettings.getBookshelfModel())
+                    )
+                );
             }
 
             if (config.enableBookshelves && blockSettings.hasVerticalBookshelfStairs()) {
-                VERTICAL_BOOKSHELF_STAIRS.put(blockSettings.getMainMaterial(), new GenericVerticalBookshelfStairs(new GenericVerticalBookshelfStairs.VerticalBookshelfStairsSettings(blockSettings)));
+                VERTICAL_BOOKSHELF_STAIRS.put(
+                    blockSettings.getMainMaterial(),
+                    new GenericVerticalBookshelfStairs(
+                        new GenericVerticalBookshelfStairs.VerticalBookshelfStairsSettings(blockSettings)
+                            .addMaterial("bookshelf", GenericBookshelf.BookshelfSettings.makeBlockId("betternether", blockSettings.getMainMaterial()))
+                            .addMaterial("model", blockSettings.getBookshelfModel())
+                    )
+                );
             }
 
             if (blockSettings.hasCrate()) {
@@ -75,7 +89,13 @@ public class BetterNetherBlocks implements ModCompatLayer {
             }
 
             if (config.enableBookshelves && blockSettings.hasBookshelfDoor()) {
-                BOOKSHELF_DOORS.put(blockSettings.getMainMaterial(), new GenericBookshelfDoor(new GenericBookshelfDoor.BookshelfDoorSettings(blockSettings).addMaterial("bookshelf", GenericBookshelf.BookshelfSettings.makeBlockId("betternether", blockSettings.getMainMaterial()))));
+                BOOKSHELF_DOORS.put(
+                    blockSettings.getMainMaterial(),
+                    new GenericBookshelfDoor(
+                        new GenericBookshelfDoor.BookshelfDoorSettings(blockSettings)
+                            .addMaterial("bookshelf", GenericBookshelf.BookshelfSettings.makeBlockId("betternether", blockSettings.getMainMaterial()))
+                    )
+                );
             }
 
             if (config.enableBookshelves && blockSettings.hasBookshelf()) {
@@ -107,7 +127,13 @@ public class BetterNetherBlocks implements ModCompatLayer {
             }
 
             if (config.enableStorageBookshelves && blockSettings.hasStorageBookshelf()) {
-                STORAGE_BOOKSHELVES.put(blockSettings.getMainMaterial(), new GenericStorageBookshelf(new GenericStorageBookshelf.StorageBookshelfSettings(blockSettings).addMaterial("bookshelf", GenericBookshelf.BookshelfSettings.makeBlockId("betternether", blockSettings.getMainMaterial()))));
+                STORAGE_BOOKSHELVES.put(
+                    blockSettings.getMainMaterial(),
+                    new GenericStorageBookshelf(
+                        new GenericStorageBookshelf.StorageBookshelfSettings(blockSettings)
+                            .addMaterial("bookshelf", GenericBookshelf.BookshelfSettings.makeBlockId("betternether", blockSettings.getMainMaterial()))
+                    )
+                );
             }
 
             if (config.enableTables && blockSettings.hasTable()) {
@@ -115,7 +141,13 @@ public class BetterNetherBlocks implements ModCompatLayer {
             }
 
             if (config.enableBookshelves && blockSettings.hasBookshelfTrapdoor()) {
-                BOOKSHELF_TRAPDOORS.put(blockSettings.getMainMaterial(), new GenericBookshelfTrapdoor(new GenericBookshelfTrapdoor.BookshelfTrapdoorSettings(blockSettings).addMaterial("bookshelf", GenericBookshelf.BookshelfSettings.makeBlockId("betternether", blockSettings.getMainMaterial()))));
+                BOOKSHELF_TRAPDOORS.put(
+                    blockSettings.getMainMaterial(),
+                    new GenericBookshelfTrapdoor(
+                        new GenericBookshelfTrapdoor.BookshelfTrapdoorSettings(blockSettings)
+                            .addMaterial("bookshelf", GenericBookshelf.BookshelfSettings.makeBlockId("betternether", blockSettings.getMainMaterial()))
+                    )
+                );
             }
         }
     }
