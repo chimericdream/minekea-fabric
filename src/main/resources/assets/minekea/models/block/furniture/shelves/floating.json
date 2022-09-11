@@ -3,6 +3,11 @@
     "textures": {
         "particle": "#planks"
     },
+    "display": {
+        "fixed": {
+            "translation": [0, 0, -6.5]
+        }
+    },
     "elements": [
         {
             "from": [0, 7, 9],

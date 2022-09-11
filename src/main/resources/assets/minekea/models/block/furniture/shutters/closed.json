@@ -5,6 +5,9 @@
         "particle": "#panel"
     },
     "display": {
+        "fixed": {
+            "translation": [0, 0, -7.5]
+        },
         "ground": {
             "rotation": [0, 0, 0],
             "translation": [0, 3, -3],
