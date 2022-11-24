@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.compat.byg;
 
+import com.chimericdream.minekea.block.containers.barrels.Barrels;
 import com.chimericdream.minekea.block.containers.barrels.GenericBarrel;
 import com.chimericdream.minekea.block.containers.barrels.GenericBarrel.BarrelSettings;
+
+import java.util.List;
 
 public class BygBarrels {
     public static final GenericBarrel ASPEN_BARREL;
@@ -64,6 +67,38 @@ public class BygBarrels {
         WILLOW_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.WILLOW));
         WITCH_HAZEL_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.WITCH_HAZEL));
         ZELKOVA_BARREL = new GenericBarrel(new BarrelSettings(BygBlockSettings.ZELKOVA));
+
+        Barrels.ALL_BARRELS.addAll(List.of(
+            ASPEN_BARREL,
+            BAOBAB_BARREL,
+            BLUE_ENCHANTED_BARREL,
+            BULBIS_BARREL,
+            CHERRY_BARREL,
+            CIKA_BARREL,
+            CYPRESS_BARREL,
+            EBONY_BARREL,
+            EMBUR_BARREL,
+            ETHER_BARREL,
+            FIR_BARREL,
+            GREEN_ENCHANTED_BARREL,
+            HOLLY_BARREL,
+            IMPARIUS_BARREL,
+            JACARANDA_BARREL,
+            LAMENT_BARREL,
+            MAHOGANY_BARREL,
+            MAPLE_BARREL,
+            NIGHTSHADE_BARREL,
+            PALM_BARREL,
+            PINE_BARREL,
+            RAINBOW_EUCALYPTUS_BARREL,
+            REDWOOD_BARREL,
+            SKYRIS_BARREL,
+            SYTHIAN_BARREL,
+            WHITE_MANGROVE_BARREL,
+            WILLOW_BARREL,
+            WITCH_HAZEL_BARREL,
+            ZELKOVA_BARREL
+        ));
     }
 
     public void register() {

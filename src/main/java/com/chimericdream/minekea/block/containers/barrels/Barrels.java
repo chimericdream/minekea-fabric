@@ -11,9 +11,12 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Barrels implements MinekeaBlockCategory {
+    public static final List<GenericBarrel> ALL_BARRELS = new ArrayList<>();
+
     public static final GenericBarrel ACACIA_BARREL;
     public static final GenericBarrel BIRCH_BARREL;
     public static final GenericBarrel CRIMSON_BARREL;
@@ -32,6 +35,17 @@ public class Barrels implements MinekeaBlockCategory {
         MANGROVE_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.MANGROVE));
         SPRUCE_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.SPRUCE));
         WARPED_BARREL = new GenericBarrel(new BarrelSettings(BaseBlockSettings.WARPED));
+
+        ALL_BARRELS.addAll(List.of(
+            ACACIA_BARREL,
+            BIRCH_BARREL,
+            CRIMSON_BARREL,
+            DARK_OAK_BARREL,
+            JUNGLE_BARREL,
+            MANGROVE_BARREL,
+            SPRUCE_BARREL,
+            WARPED_BARREL
+        ));
     }
 
     @Environment(EnvType.CLIENT)

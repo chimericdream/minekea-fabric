@@ -6,7 +6,8 @@
     "mixins": [
         "EnchantingTableBlockMixin",
         "IdentifierMixin",
-        "MilkBucketItemMixin"
+        "MilkBucketItemMixin",
+        "PointOfInterestTypesAccessor"
     ],
     "client": [],
     "injectors": {
