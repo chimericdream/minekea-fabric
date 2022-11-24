@@ -14,7 +14,6 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -34,7 +33,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
@@ -149,15 +147,14 @@ public class PainterItem extends Item implements MinekeaItem {
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        HitResult hit = client.crosshairTarget;
-
-        if (hit != null && hit.getType() == HitResult.Type.MISS) {
-            openScreen(user, user.getStackInHand(hand));
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        if (player.world != null && !player.world.isClient) {
+            if (player.isSneaking()) {
+                openScreen(player, player.getStackInHand(hand));
+            }
         }
 
-        return TypedActionResult.success(user.getStackInHand(hand));
+        return TypedActionResult.success(player.getStackInHand(hand));
     }
 
     public static void openScreen(PlayerEntity player, ItemStack painter) {
@@ -183,7 +180,7 @@ public class PainterItem extends Item implements MinekeaItem {
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        if (context.getWorld().isClient()) {
+        if (context.getWorld().isClient() || (context.getPlayer() != null && context.getPlayer().isSneaking())) {
             return super.useOnBlock(context);
         }
 
