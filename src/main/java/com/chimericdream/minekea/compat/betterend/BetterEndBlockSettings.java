@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.compat.betterend;
 
 import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
+import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 
@@ -11,6 +12,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings MOSSY_GLOWSHROOM = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("mossy_glowshroom")
         .ingredientName("Mossy Glowshroom")
         .materials(
@@ -42,6 +44,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings PYTHADENDRON = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("pythadendron")
         .ingredientName("Pythadendron")
         .materials(
@@ -73,6 +76,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings END_LOTUS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("end_lotus")
         .ingredientName("End Lotus")
         .materials(
@@ -104,6 +108,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings LACUGROVE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("lacugrove")
         .ingredientName("Lacugrove")
         .materials(
@@ -135,6 +140,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings DRAGON_TREE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("dragon_tree")
         .ingredientName("Dragon Tree")
         .materials(
@@ -166,6 +172,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings TENANEA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("tenanea")
         .ingredientName("Tenanea")
         .materials(
@@ -197,6 +204,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings HELIX_TREE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("helix_tree")
         .ingredientName("Helix Tree")
         .materials(
@@ -228,6 +236,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings UMBRELLA_TREE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("umbrella_tree")
         .ingredientName("Umbrella Tree")
         .materials(
@@ -259,6 +268,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings JELLYSHROOM = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("jellyshroom")
         .ingredientName("Jellyshroom")
         .materials(
@@ -290,6 +300,7 @@ public class BetterEndBlockSettings {
     public static DefaultSettings LUCERNIA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betterend")
         .wooden()
+        .tool(Tool.AXE)
         .material("lucernia")
         .ingredientName("Lucernia")
         .materials(

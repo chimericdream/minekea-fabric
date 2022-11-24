@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.compat.betternether;
 
 import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
+import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 
@@ -11,6 +12,7 @@ public class BetterNetherBlockSettings {
     public static DefaultSettings ANCHOR_TREE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betternether")
         .wooden()
+        .tool(Tool.AXE)
         .material("anchor_tree")
         .ingredientName("Anchor Tree")
         .materials(
@@ -42,6 +44,7 @@ public class BetterNetherBlockSettings {
     public static DefaultSettings MUSHROOM_FIR = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betternether")
         .wooden()
+        .tool(Tool.AXE)
         .material("mushroom_fir")
         .ingredientName("Mushroom Fir")
         .materials(
@@ -73,6 +76,7 @@ public class BetterNetherBlockSettings {
     public static DefaultSettings NETHER_REED = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betternether")
         .wooden()
+        .tool(Tool.AXE)
         .material("nether_reed")
         .ingredientName("Nether Reed")
         .materials(
@@ -102,6 +106,7 @@ public class BetterNetherBlockSettings {
     public static DefaultSettings NETHER_SAKURA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betternether")
         .wooden()
+        .tool(Tool.AXE)
         .material("nether_sakura")
         .ingredientName("Nether Sakura")
         .materials(
@@ -133,6 +138,7 @@ public class BetterNetherBlockSettings {
     public static DefaultSettings RUBEUS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betternether")
         .wooden()
+        .tool(Tool.AXE)
         .material("rubeus")
         .ingredientName("Rubeus")
         .materials(
@@ -165,6 +171,7 @@ public class BetterNetherBlockSettings {
     public static DefaultSettings STALAGNATE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betternether")
         .wooden()
+        .tool(Tool.AXE)
         .material("stalagnate")
         .ingredientName("Stalagnate")
         .materials(
@@ -196,6 +203,7 @@ public class BetterNetherBlockSettings {
     public static DefaultSettings WART = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betternether")
         .wooden()
+        .tool(Tool.AXE)
         .material("wart")
         .ingredientName("Wart")
         .materials(
@@ -227,6 +235,7 @@ public class BetterNetherBlockSettings {
     public static DefaultSettings WILLOW = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("betternether")
         .wooden()
+        .tool(Tool.AXE)
         .material("willow")
         .ingredientName("Willow")
         .materials(

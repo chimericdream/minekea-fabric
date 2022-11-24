@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.compat.byg;
 
 import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
+import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 
@@ -10,6 +11,7 @@ public class BygBlockSettings {
     public static DefaultSettings ASPEN = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("aspen")
         .ingredientName("Aspen")
         .materials(
@@ -27,6 +29,7 @@ public class BygBlockSettings {
     public static DefaultSettings BAOBAB = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("baobab")
         .ingredientName("Baobab")
         .materials(
@@ -44,6 +47,7 @@ public class BygBlockSettings {
     public static DefaultSettings BLUE_ENCHANTED = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("blue_enchanted")
         .ingredientName("Blue Enchanted")
         .materials(
@@ -61,6 +65,7 @@ public class BygBlockSettings {
     public static DefaultSettings BULBIS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("bulbis")
         .ingredientName("Bulbis")
         .materials(
@@ -78,6 +83,7 @@ public class BygBlockSettings {
     public static DefaultSettings CHERRY = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("cherry")
         .ingredientName("Cherry")
         .materials(
@@ -95,6 +101,7 @@ public class BygBlockSettings {
     public static DefaultSettings CIKA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("cika")
         .ingredientName("Cika")
         .materials(
@@ -112,6 +119,7 @@ public class BygBlockSettings {
     public static DefaultSettings CYPRESS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("cypress")
         .ingredientName("Cypress")
         .materials(
@@ -129,6 +137,7 @@ public class BygBlockSettings {
     public static DefaultSettings EBONY = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("ebony")
         .ingredientName("Ebony")
         .materials(
@@ -146,6 +155,7 @@ public class BygBlockSettings {
     public static DefaultSettings EMBUR = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("embur")
         .ingredientName("Embur")
         .materials(
@@ -163,6 +173,7 @@ public class BygBlockSettings {
     public static DefaultSettings ETHER = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("ether")
         .ingredientName("Ether")
         .materials(
@@ -180,6 +191,7 @@ public class BygBlockSettings {
     public static DefaultSettings FIR = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("fir")
         .ingredientName("Fir")
         .materials(
@@ -197,6 +209,7 @@ public class BygBlockSettings {
     public static DefaultSettings GREEN_ENCHANTED = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("green_enchanted")
         .ingredientName("Green Enchanted")
         .materials(
@@ -214,6 +227,7 @@ public class BygBlockSettings {
     public static DefaultSettings HOLLY = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("holly")
         .ingredientName("Holly")
         .materials(
@@ -231,6 +245,7 @@ public class BygBlockSettings {
     public static DefaultSettings IMPARIUS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("imparius")
         .ingredientName("Imparius")
         .materials(
@@ -248,6 +263,7 @@ public class BygBlockSettings {
     public static DefaultSettings JACARANDA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("jacaranda")
         .ingredientName("Jacaranda")
         .materials(
@@ -265,6 +281,7 @@ public class BygBlockSettings {
     public static DefaultSettings LAMENT = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("lament")
         .ingredientName("Lament")
         .materials(
@@ -282,6 +299,7 @@ public class BygBlockSettings {
     public static DefaultSettings MAHOGANY = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("mahogany")
         .ingredientName("Mahogany")
         .materials(
@@ -299,6 +317,7 @@ public class BygBlockSettings {
     public static DefaultSettings MAPLE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("maple")
         .ingredientName("Maple")
         .materials(
@@ -316,6 +335,7 @@ public class BygBlockSettings {
     public static DefaultSettings NIGHTSHADE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("nightshade")
         .ingredientName("Nightshade")
         .materials(
@@ -333,6 +353,7 @@ public class BygBlockSettings {
     public static DefaultSettings PALM = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("palm")
         .ingredientName("Palm")
         .materials(
@@ -350,6 +371,7 @@ public class BygBlockSettings {
     public static DefaultSettings PINE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("pine")
         .ingredientName("Pine")
         .materials(
@@ -367,6 +389,7 @@ public class BygBlockSettings {
     public static DefaultSettings RAINBOW_EUCALYPTUS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("rainbow_eucalyptus")
         .ingredientName("Rainbow Eucalyptus")
         .materials(
@@ -384,6 +407,7 @@ public class BygBlockSettings {
     public static DefaultSettings REDWOOD = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("redwood")
         .ingredientName("Redwood")
         .materials(
@@ -401,6 +425,7 @@ public class BygBlockSettings {
     public static DefaultSettings SKYRIS = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("skyris")
         .ingredientName("Skyris")
         .materials(
@@ -418,6 +443,7 @@ public class BygBlockSettings {
     public static DefaultSettings SYTHIAN = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("sythian")
         .ingredientName("Sythian")
         .materials(
@@ -434,6 +460,8 @@ public class BygBlockSettings {
 
     public static DefaultSettings WHITE_MANGROVE = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
+        .wooden()
+        .tool(Tool.AXE)
         .material("white_mangrove")
         .ingredientName("White Mangrove")
         .materials(
@@ -451,6 +479,7 @@ public class BygBlockSettings {
     public static DefaultSettings WILLOW = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("willow")
         .ingredientName("Willow")
         .materials(
@@ -468,6 +497,7 @@ public class BygBlockSettings {
     public static DefaultSettings WITCH_HAZEL = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("witch_hazel")
         .ingredientName("Witch Hazel")
         .materials(
@@ -485,6 +515,7 @@ public class BygBlockSettings {
     public static DefaultSettings ZELKOVA = new DefaultSettings(Blocks.OAK_PLANKS)
         .modId("byg")
         .wooden()
+        .tool(Tool.AXE)
         .material("zelkova")
         .ingredientName("Zelkova")
         .materials(
