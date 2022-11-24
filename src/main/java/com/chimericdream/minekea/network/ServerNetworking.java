@@ -27,7 +27,7 @@ public class ServerNetworking {
 
     private static void receiveCyclePainterColorPacket(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
         server.execute(() -> {
-            ItemStack heldItem = StreamUtils.asStream(player.getItemsHand().iterator())
+            ItemStack heldItem = StreamUtils.asStream(player.getHandItems().iterator())
                 .filter((itemStack) -> itemStack.getItem() instanceof PainterItem)
                 .findFirst()
                 .orElse(ItemStack.EMPTY);
