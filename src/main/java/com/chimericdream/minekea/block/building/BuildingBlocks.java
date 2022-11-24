@@ -201,7 +201,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
                 Model.getBlockModelID(myEndStone)
             );
 
-            MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(myEndStone), LootTable.dropSelf(myEndStone));
+            MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(myEndStone), LootTable.dropSelf(new Identifier("minecraft:end_stone")));
         }
     }
 }
