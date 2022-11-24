@@ -122,7 +122,7 @@ public abstract class MinekeaBlockSettings<T extends MinekeaBlockSettings<?>> ex
     }
 
     public boolean isEnabled() {
-        return true;
+        return this.isEnabled.get();
     }
 
     public Identifier getMaterial(String key) {
