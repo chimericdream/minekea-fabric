@@ -1,3 +1,9 @@
+### 1.19.1-2 - 4.0.1
+
+#### Bug Fixes
+* Fix client crash when trying to put a sandwich from the [Sandwichable](https://www.curseforge.com/minecraft/mc-mods/sandwichable) mod into a display case
+
+
 ### 1.19.1-2 - 4.0.0
 
 First release for 1.19.1-2!
