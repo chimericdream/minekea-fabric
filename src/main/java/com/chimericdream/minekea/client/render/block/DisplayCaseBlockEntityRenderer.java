@@ -75,7 +75,7 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
 
         if (isBlock) {
             Block block = Registry.BLOCK.get(id);
-            double maxY = block.getOutlineShape(block.getDefaultState(), null, null, null).getMax(Direction.Axis.Y);
+            double maxY = block.getOutlineShape(block.getDefaultState(), entity.getWorld(), entity.getPos(), null).getMax(Direction.Axis.Y);
 
             matrices.translate(0.5, 0.65 + Math.min((0.3 * Math.abs(maxY - 1.0)), 0.125), 0.5);
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(rotation * 45));
