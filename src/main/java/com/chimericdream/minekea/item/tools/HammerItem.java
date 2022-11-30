@@ -12,6 +12,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.*;
+import net.minecraft.nbt.NbtLong;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
@@ -28,8 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HammerItem extends PickaxeItem implements MinekeaItem {
-    private final Random rand;
-    private final Random clientRand;
     private final HammerSettings settings;
 
     public HammerItem(HammerSettings settings) {
@@ -41,11 +40,6 @@ public class HammerItem extends PickaxeItem implements MinekeaItem {
         );
 
         this.settings = settings;
-
-        // Create duplicate random number generators so that one can be used each on client/server side and be synced
-        long seed = (long) (Math.random() * (Long.MAX_VALUE / 2));
-        this.rand = Random.create(seed);
-        this.clientRand = Random.create(seed);
     }
 
     public Identifier getItemID() {
@@ -79,14 +73,6 @@ public class HammerItem extends PickaxeItem implements MinekeaItem {
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext ctx) {
-        World world = ctx.getWorld();
-        Random randToUse;
-        if (world.isClient()) {
-            randToUse = clientRand;
-        } else {
-            randToUse = rand;
-        }
-
         PlayerEntity player = ctx.getPlayer();
         if (player == null) {
             return ActionResult.FAIL;
@@ -96,13 +82,18 @@ public class HammerItem extends PickaxeItem implements MinekeaItem {
 
         PlayerInventory inventory = player.getInventory();
 
-        int spadeSlot = inventory.selectedSlot;
-        for (int i = spadeSlot; i < 9 && slots.size() <= settings.maxSlots; i++) {
+        int hammerSlot = inventory.selectedSlot;
+        for (int i = hammerSlot; i < 9 && slots.size() <= settings.maxSlots; i++) {
             ItemStack item = inventory.getStack(i);
             if (!item.isEmpty() && item.getItem() instanceof BlockItem) {
                 slots.add(i);
             }
         }
+
+        ItemStack hammer = inventory.getStack(hammerSlot);
+        long currentSeed = hammer.getOrCreateNbt().getLong("placement_seed");
+
+        Random rand = Random.create(currentSeed);
 
         if (slots.size() == 0) {
             return ActionResult.FAIL;
@@ -113,7 +104,7 @@ public class HammerItem extends PickaxeItem implements MinekeaItem {
             totalBlocks += inventory.getStack(slot).getCount();
         }
 
-        int randomBlock = randToUse.nextBetween(1, totalBlocks);
+        int randomBlock = rand.nextBetween(1, totalBlocks);
 
         int slotToUse = -1;
         for (int slot : slots) {
@@ -139,6 +130,12 @@ public class HammerItem extends PickaxeItem implements MinekeaItem {
 
         if (!placementContext.canPlace()) {
             return ActionResult.FAIL;
+        }
+
+        World world = ctx.getWorld();
+        if (!world.isClient()) {
+            long nextSeed = rand.nextLong();
+            hammer.setSubNbt("placement_seed", NbtLong.of(nextSeed));
         }
 
         ActionResult result = ((BlockItem) toPlace.getItem()).place(placementContext);
