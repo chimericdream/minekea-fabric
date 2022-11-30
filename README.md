@@ -1,6 +1,6 @@
 # Minekea (Fabric)
 
-![Version: 3.4.1](https://img.shields.io/badge/version-3.4.1-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
+![Version: 3.4.2](https://img.shields.io/badge/version-3.4.2-blueviolet?style=flat-square) ![Modloader: Fabric](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square) ![Client: required](https://img.shields.io/badge/client-required-4caf50?style=flat-square) ![Server: required](https://img.shields.io/badge/server-required-4caf50?style=flat-square)
 
 _Simple, functional, decorative blocks for all your building and storage needs (some assembly required)_
 
@@ -10,7 +10,7 @@ This mod contains a wide variety of functional and decorative furniture blocks f
 
 ### Versions
 
-* 1.19.0: supported
+* 1.19: supported
 * 1.18.2: supported
 * 1.18.1: supported up to version 2.6.1
 * 1.17.1: supported up to version 2.6.1

@@ -1,3 +1,9 @@
+### 1.19 - 3.4.2
+
+#### Bug Fixes
+* Fix server/client desync when using hammers on a dedicated server
+
+
 ### 1.19 - 3.4.1
 
 #### Bug Fixes
