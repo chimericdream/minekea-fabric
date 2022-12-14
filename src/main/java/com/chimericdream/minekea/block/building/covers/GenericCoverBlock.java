@@ -49,16 +49,19 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
         super(settings);
 
         this.setDefaultState(
-            this.stateManager.getDefaultState()
+            this.getDefaultState()
                 .with(FACING, Direction.NORTH)
                 .with(WATERLOGGED, false)
         );
     }
 
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
         builder.add(FACING, WATERLOGGED);
     }
 
+    @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite())
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
