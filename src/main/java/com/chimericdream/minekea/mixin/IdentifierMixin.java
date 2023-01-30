@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.mixin;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.util.IdentifierUpdateHelper;
+
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,17 +29,7 @@ public class IdentifierMixin {
             return;
         }
 
-        if (id[1].matches("^bookshelves/storage/[_a-z]+storage_shelf_block_entity$")) {
-            id[1] = "bookshelves/storage/storage_shelf_block_entity";
-        }
-
-        if (id[1].matches("^crates/[_a-z]+crate_block_entity$")) {
-            id[1] = "crates/crate_block_entity";
-        }
-
-        if (id[1].matches("^displaycases/[_a-z]+case_block_entity$")) {
-            id[1] = "displaycases/display_case_block_entity";
-        }
+        IdentifierUpdateHelper.updateIdsV1V2(id);
     }
 
     // Changes made in 2.8.0
@@ -103,39 +95,7 @@ public class IdentifierMixin {
             case "honey_cauldron" -> id[1] = "containers/cauldrons/honey";
         }
 
-        Map<String, String> replacements = new LinkedHashMap<>();
-
-        replacements.put("^beams/([^/]+/)?([./_a-z]+)_plank_beam$", "$1building/beams/$2");
-        replacements.put("^beams/([^/]+/)?([./_a-z]+)_beam$", "$1building/beams/$2");
-        replacements.put("^slabs/([^/]+/)?([./_a-z]+)_bookshelf_slab$", "$1building/slabs/bookshelves/$2");
-        replacements.put("^slabs/([^/]+/)?([./_a-z]+)_slab$", "$1building/slabs/$2");
-        replacements.put("^stairs/([^/]+/)?([./_a-z]+)_bookshelf_stairs$", "$1building/stairs/bookshelves/$2");
-        replacements.put("^stairs/([^/]+/)?([./_a-z]+)_stairs$", "$1building/stairs/$2");
-        replacements.put("^covers/([^/]+/)?([./_a-z]+)_plank_cover$", "$1building/covers/$2");
-        replacements.put("^covers/([^/]+/)?([./_a-z]+)_cover$", "$1building/covers/$2");
-        replacements.put("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_bookshelf_stairs$", "$1building/stairs/vertical/bookshelves/$2");
-        replacements.put("^building/stairs/([^/]+/)?([./_a-z]+)_vertical_stairs$", "$1building/stairs/vertical/$2");
-        replacements.put("^storage/compressed_([./_a-z]+)$", "storage/compressed/$1");
-        replacements.put("^storage/dyes/compressed_([./_a-z]+)$", "storage/dyes/$1");
-        replacements.put("^crates/([^/]+/)?([./_a-z]+)_crate$", "$1containers/crates/$2");
-        replacements.put("^barrels/([^/]+/)?([./_a-z]+)_barrel$", "$1containers/barrels/$2");
-        replacements.put("^displaycases/([^/]+/)?stripped_([./_a-z]+)_display_case$", "$1furniture/display_cases/stripped/$2");
-        replacements.put("^displaycases/([^/]+/)?([./_a-z]+)_display_case$", "$1furniture/display_cases/$2");
-        replacements.put("^seating/stools/([^/]+/)?([./_a-z]+)_stool", "$1furniture/seating/stools/$2");
-        replacements.put("^seating/chairs/([^/]+/)?([./_a-z]+)_chair", "$1furniture/seating/chairs/$2");
-        replacements.put("^tables/([^/]+/)?([./_a-z]+)_table", "$1furniture/tables/$2");
-        replacements.put("^shelves/([^/]+/)?([./_a-z]+)_supported_shelf$", "$1furniture/shelves/supported/$2");
-        replacements.put("^shelves/([^/]+/)?([./_a-z]+)_floating_shelf$", "$1furniture/shelves/floating/$2");
-        replacements.put("^bookshelves/storage/([^/]+/)?([./_a-z]+)_storage_shelf$", "$1furniture/bookshelves/storage/$2");
-        replacements.put("^bookshelves/([^/]+/)?([./_a-z]+)_bookshelf$", "$1furniture/bookshelves/$2");
-        replacements.put("^bookshelves/doors/([^/]+/)?([./_a-z]+)_bookshelf_door$", "$1furniture/doors/bookshelves/$2");
-        replacements.put("^bookshelves/trapdoors/([^/]+/)?([./_a-z]+)_bookshelf_trapdoor$", "$1furniture/trapdoors/bookshelves/$2");
-
-        replacements.forEach((String match, String replace) -> {
-            if (id[1].matches(match)) {
-                id[1] = id[1].replaceAll(match, replace);
-            }
-        });
+        IdentifierUpdateHelper.updateIdsV2V3(id);
     }
 
     // Blocks moved over in 2.8.0
