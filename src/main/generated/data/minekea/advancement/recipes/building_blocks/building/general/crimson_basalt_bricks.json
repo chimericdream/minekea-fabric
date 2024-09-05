@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/general/basalt_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/general/basalt_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/general/crimson_basalt_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_weeping_vines": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:weeping_vines"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/general/basalt_bricks",
+      "has_weeping_vines"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/general/crimson_basalt_bricks"
+    ]
+  }
+}

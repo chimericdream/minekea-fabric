@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minekea:building/general/chiseled_basalt_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "minekea:building/general/basalt_bricks"
+  }
+}

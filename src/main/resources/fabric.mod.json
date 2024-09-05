@@ -4,7 +4,9 @@
     "version": "${version}",
     "name": "Minekea",
     "description": "Simple, functional, decorative blocks for all your building and storage needs (some assembly required)",
-    "authors": ["chimericdream"],
+    "authors": [
+        "chimericdream"
+    ],
     "contact": {
         "homepage": "https://fabricmc.net/",
         "sources": "https://github.com/chimericdream/minekea-fabric"
@@ -13,14 +15,14 @@
     "icon": "assets/minekea/icon.png",
     "environment": "*",
     "entrypoints": {
+        "fabric-datagen": [
+            "com.chimericdream.minekea.data.MinekeaDataGenerator"
+        ],
         "main": [
             "com.chimericdream.minekea.MinekeaMod"
         ],
         "client": [
             "com.chimericdream.minekea.MinekeaClient"
-        ],
-        "modmenu": [
-            "com.chimericdream.minekea.config.ModMenuIntegration"
         ]
     },
     "mixins": [
@@ -28,15 +30,14 @@
     ],
     "accessWidener": "minekea.accesswidener",
     "depends": {
-        "fabricloader": ">=0.14.6",
+        "fabricloader": ">=0.15.0",
+        "minecraft": "~1.21",
+        "java": ">=21",
         "fabric": "*",
-        "minecraft": "~1.19",
-        "java": ">=17",
-        "advanced_runtime_resource_pack": ">=0.6.2",
-        "cloth-config": ">=7.0.65"
+        "cloth-config": ">=15.0.0"
     },
     "recommends": {
-        "modmenu": "*",
+        "modmenu": ">=11",
         "patchouli": "*"
     }
 }

@@ -4,14 +4,9 @@
     "package": "com.chimericdream.minekea.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
-        "EnchantingTableBlockMixin",
-        "IdentifierMixin",
-        "MilkBucketItemMixin",
-        "PointOfInterestTypesAccessor"
     ],
     "client": [],
     "injectors": {
         "defaultRequire": 1
-    },
-    "plugin": "com.chimericdream.minekea.mixin.MixinRegistrationHelper"
+    }
 }

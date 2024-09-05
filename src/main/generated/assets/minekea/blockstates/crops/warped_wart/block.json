@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "minekea:block/crops/warped_wart/block_stage0"
+    },
+    "age=1": {
+      "model": "minekea:block/crops/warped_wart/block_stage1"
+    },
+    "age=2": {
+      "model": "minekea:block/crops/warped_wart/block_stage1"
+    },
+    "age=3": {
+      "model": "minekea:block/crops/warped_wart/block_stage2"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "minekea:block/building/general/cobbled_end_stone"
+    }
+  }
+}

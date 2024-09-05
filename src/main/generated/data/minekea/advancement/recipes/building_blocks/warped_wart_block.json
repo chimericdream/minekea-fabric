@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crops/warped_wart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:crops/warped_wart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:warped_wart_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_crops/warped_wart"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:warped_wart_block"
+    ]
+  }
+}

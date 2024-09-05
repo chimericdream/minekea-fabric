@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/general/basalt_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/general/basalt_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/general/chiseled_basalt_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/general/basalt_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/general/chiseled_basalt_bricks"
+    ]
+  }
+}

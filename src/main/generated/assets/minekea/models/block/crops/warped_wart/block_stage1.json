@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "minekea:block/crops/warped_wart/block_stage1"
+  }
+}
