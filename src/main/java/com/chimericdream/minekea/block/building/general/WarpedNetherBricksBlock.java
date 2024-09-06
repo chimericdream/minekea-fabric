@@ -17,12 +17,7 @@ public class WarpedNetherBricksBlock extends Block implements MinekeaBlock {
     public WarpedNetherBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS));
     }
-
-    @Override
-    public Identifier getBlockID() {
-        return BLOCK_ID;
-    }
-
+    
     @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
