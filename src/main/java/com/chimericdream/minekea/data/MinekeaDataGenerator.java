@@ -13,6 +13,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -38,6 +41,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import static com.chimericdream.minekea.block.building.BuildingBlocks.BASALT_BRICKS_BLOCK;
@@ -48,6 +52,26 @@ import static com.chimericdream.minekea.block.building.BuildingBlocks.CRIMSON_BA
 import static com.chimericdream.minekea.block.building.BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK;
 import static com.chimericdream.minekea.block.building.BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK;
 import static com.chimericdream.minekea.block.building.BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.ACACIA_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.BIRCH_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.CHERRY_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.CRIMSON_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.DARK_OAK_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.JUNGLE_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.MANGROVE_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.OAK_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.SPRUCE_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_ACACIA_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_BIRCH_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_CHERRY_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_CRIMSON_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_DARK_OAK_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_JUNGLE_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_MANGROVE_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_OAK_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_SPRUCE_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_WARPED_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.WARPED_DISPLAY_CASE;
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_ITEM;
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_PLANT_BLOCK;
 
@@ -252,10 +276,49 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 
             translationBuilder.add(WARPED_WART_PLANT_BLOCK, "Warped Wart");
             translationBuilder.add(WARPED_WART_ITEM, "Warped Wart");
+
+            translationBuilder.add("item_group.minekea.blocks.building.beams", "Minekea: Beams");
+            translationBuilder.add("item_group.minekea.blocks.building.compressed", "Minekea: Compressed Blocks");
+            translationBuilder.add("item_group.minekea.blocks.building.covers", "Minekea: Covers");
+            translationBuilder.add("item_group.minekea.blocks.furniture", "Minekea: Furniture");
+
+//            translationBuilder.add(TOOLTIP_LEVEL, "%dx Compressed");
+//            translationBuilder.add(TOOLTIP_COUNT, "(%s blocks)");
+
+            translationBuilder.add(ACACIA_DISPLAY_CASE, "Acacia Display Case");
+            translationBuilder.add(BIRCH_DISPLAY_CASE, "Birch Display Case");
+            translationBuilder.add(CHERRY_DISPLAY_CASE, "Cherry Display Case");
+            translationBuilder.add(CRIMSON_DISPLAY_CASE, "Crimson Display Case");
+            translationBuilder.add(DARK_OAK_DISPLAY_CASE, "Dark Oak Display Case");
+            translationBuilder.add(JUNGLE_DISPLAY_CASE, "Jungle Display Case");
+            translationBuilder.add(MANGROVE_DISPLAY_CASE, "Mangrove Display Case");
+            translationBuilder.add(OAK_DISPLAY_CASE, "Oak Display Case");
+            translationBuilder.add(SPRUCE_DISPLAY_CASE, "Spruce Display Case");
+            translationBuilder.add(WARPED_DISPLAY_CASE, "Warped Display Case");
+            translationBuilder.add(STRIPPED_ACACIA_DISPLAY_CASE, "Stripped Acacia Display Case");
+            translationBuilder.add(STRIPPED_BIRCH_DISPLAY_CASE, "Stripped Birch Display Case");
+            translationBuilder.add(STRIPPED_CHERRY_DISPLAY_CASE, "Stripped Cherry Display Case");
+            translationBuilder.add(STRIPPED_CRIMSON_DISPLAY_CASE, "Stripped Crimson Display Case");
+            translationBuilder.add(STRIPPED_DARK_OAK_DISPLAY_CASE, "Stripped Dark Oak Display Case");
+            translationBuilder.add(STRIPPED_JUNGLE_DISPLAY_CASE, "Stripped Jungle Display Case");
+            translationBuilder.add(STRIPPED_MANGROVE_DISPLAY_CASE, "Stripped Mangrove Display Case");
+            translationBuilder.add(STRIPPED_OAK_DISPLAY_CASE, "Stripped Oak Display Case");
+            translationBuilder.add(STRIPPED_SPRUCE_DISPLAY_CASE, "Stripped Spruce Display Case");
+            translationBuilder.add(STRIPPED_WARPED_DISPLAY_CASE, "Stripped Warped Display Case");
         }
     }
 
     private static class MinekeaModelGenerator extends FabricModelProvider {
+        private final TextureKey MATERIAL = TextureKey.of("material");
+        private final TextureKey STRIPPED_MATERIAL = TextureKey.of("stripped_material");
+
+        private final Model DISPLAY_CASE_MODEL = new Model(
+            Optional.of(Identifier.of("minekea:block/furniture/display_case")),
+            Optional.empty(),
+            MATERIAL,
+            STRIPPED_MATERIAL
+        );
+
         private MinekeaModelGenerator(FabricDataOutput generator) {
             super(generator);
         }
@@ -272,6 +335,206 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             blockStateModelGenerator.registerSimpleCubeAll(WARPED_NETHER_BRICKS_BLOCK);
 
             blockStateModelGenerator.registerCrop(WARPED_WART_PLANT_BLOCK, Properties.AGE_3, 0, 1, 1, 2);
+
+            TextureMap acaciaTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.ACACIA_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_ACACIA_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                ACACIA_DISPLAY_CASE,
+                acaciaTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap birchTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.BIRCH_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_BIRCH_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                BIRCH_DISPLAY_CASE,
+                birchTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap cherryTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.CHERRY_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_CHERRY_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                CHERRY_DISPLAY_CASE,
+                cherryTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap crimsonTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.CRIMSON_STEM))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_CRIMSON_STEM));
+
+            blockStateModelGenerator.registerSingleton(
+                CRIMSON_DISPLAY_CASE,
+                crimsonTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap darkOakTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.DARK_OAK_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_DARK_OAK_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                DARK_OAK_DISPLAY_CASE,
+                darkOakTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap jungleTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.JUNGLE_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_JUNGLE_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                JUNGLE_DISPLAY_CASE,
+                jungleTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap mangroveTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.MANGROVE_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_MANGROVE_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                MANGROVE_DISPLAY_CASE,
+                mangroveTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap oakTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.OAK_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_OAK_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                OAK_DISPLAY_CASE,
+                oakTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap spruceTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.SPRUCE_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_SPRUCE_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                SPRUCE_DISPLAY_CASE,
+                spruceTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap warpedTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.WARPED_STEM))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_WARPED_STEM));
+
+            blockStateModelGenerator.registerSingleton(
+                WARPED_DISPLAY_CASE,
+                warpedTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedAcaciaTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_ACACIA_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_ACACIA_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_ACACIA_DISPLAY_CASE,
+                strippedAcaciaTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedBirchTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_BIRCH_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_BIRCH_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_BIRCH_DISPLAY_CASE,
+                strippedBirchTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedCherryTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_CHERRY_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_CHERRY_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_CHERRY_DISPLAY_CASE,
+                strippedCherryTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedCrimsonTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_CRIMSON_STEM))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_CRIMSON_STEM));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_CRIMSON_DISPLAY_CASE,
+                strippedCrimsonTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedDarkOakTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_DARK_OAK_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_DARK_OAK_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_DARK_OAK_DISPLAY_CASE,
+                strippedDarkOakTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedJungleTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_JUNGLE_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_JUNGLE_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_JUNGLE_DISPLAY_CASE,
+                strippedJungleTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedMangroveTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_MANGROVE_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_MANGROVE_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_MANGROVE_DISPLAY_CASE,
+                strippedMangroveTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedOakTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_OAK_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_OAK_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_OAK_DISPLAY_CASE,
+                strippedOakTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedSpruceTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_SPRUCE_LOG))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_SPRUCE_LOG));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_SPRUCE_DISPLAY_CASE,
+                strippedSpruceTextures,
+                DISPLAY_CASE_MODEL
+            );
+
+            TextureMap strippedWarpedTextures = new TextureMap()
+                .put(MATERIAL, TextureMap.getId(Blocks.STRIPPED_WARPED_STEM))
+                .put(STRIPPED_MATERIAL, TextureMap.getId(Blocks.STRIPPED_WARPED_STEM));
+
+            blockStateModelGenerator.registerSingleton(
+                STRIPPED_WARPED_DISPLAY_CASE,
+                strippedWarpedTextures,
+                DISPLAY_CASE_MODEL
+            );
         }
 
         @Override
@@ -280,3 +543,40 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
         }
     }
 }
+
+/*
+        Identifier myEndStone = Identifier.of("minekea:end_stone");
+
+        MinekeaResourcePack.RESOURCE_PACK.addModel(
+            JModel.model("minecraft:block/cube_all")
+                .textures(
+                    new JTextures().var("all", "minekea:block/building/general/end_stone")
+                ),
+            Model.getBlockModelID(myEndStone)
+        );
+
+        MinekeaResourcePack.RESOURCE_PACK.addLootTable(
+            LootTable.blockID(myEndStone),
+            JLootTable.loot("minecraft:block")
+                .pool(
+                    JLootTable.pool()
+                        .rolls(1)
+                        .entry(
+                            new JEntry()
+                                .type("minecraft:alternatives")
+                                .child(
+                                    new JEntry()
+                                        .type("minecraft:item")
+                                        .name("minecraft:end_stone")
+                                        .condition(
+                                            new JCondition()
+                                                .condition("minecraft:match_tool")
+                                                .parameter("predicate", LootTable.silkTouchPredicate())
+                                        )
+                                )
+                                .child(new JEntry().type("minecraft:item").name(COBBLED_END_STONE_BLOCK.getBlockID().toString()))
+                        )
+                        .condition(new JCondition().condition("minecraft:survives_explosion"))
+                )
+        );
+ */

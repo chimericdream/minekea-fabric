@@ -81,11 +81,6 @@ public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
     }
 
     @Override
-    public Identifier getBlockID() {
-        return BLOCK_ID;
-    }
-
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         setupResources();

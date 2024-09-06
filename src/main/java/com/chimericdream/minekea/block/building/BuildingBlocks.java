@@ -25,7 +25,7 @@ import java.util.List;
 public class BuildingBlocks implements MinekeaBlockCategory {
     public static final BasaltBricksBlock BASALT_BRICKS_BLOCK;
     public static final ChiseledBasaltBricksBlock CHISELED_BASALT_BRICKS_BLOCK;
-    public static CobbledEndStoneBlock COBBLED_END_STONE_BLOCK = null;
+    public static final CobbledEndStoneBlock COBBLED_END_STONE_BLOCK;
     public static final CrackedBasaltBricksBlock CRACKED_BASALT_BRICKS_BLOCK;
     public static final CrimsonBasaltBricksBlock CRIMSON_BASALT_BRICKS_BLOCK;
     public static final MossyBasaltBricksBlock MOSSY_BASALT_BRICKS_BLOCK;

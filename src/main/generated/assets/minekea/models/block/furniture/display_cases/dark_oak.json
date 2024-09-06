@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/display_case",
+  "textures": {
+    "material": "minecraft:block/dark_oak_log",
+    "stripped_material": "minecraft:block/stripped_dark_oak_log"
+  }
+}

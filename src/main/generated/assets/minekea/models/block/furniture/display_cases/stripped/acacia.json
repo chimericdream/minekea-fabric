@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/display_case",
+  "textures": {
+    "material": "minecraft:block/stripped_acacia_log",
+    "stripped_material": "minecraft:block/stripped_acacia_log"
+  }
+}

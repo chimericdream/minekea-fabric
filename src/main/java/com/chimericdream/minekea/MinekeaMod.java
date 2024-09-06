@@ -1,7 +1,9 @@
 package com.chimericdream.minekea;
 
 import com.chimericdream.minekea.block.building.BuildingBlocks;
+import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.crops.Crops;
+import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -13,16 +15,16 @@ public class MinekeaMod implements ModInitializer {
     public static final BuildingBlocks BUILDING_BLOCKS;
     //    public static final ContainerBlocks CONTAINER_BLOCKS;
     public static final Crops CROPS;
-//    public static final DecorationBlocks DECORATION_BLOCKS;
+    //    public static final DecorationBlocks DECORATION_BLOCKS;
 //    public static final Fluids FLUIDS;
-//    public static final FurnitureBlocks FURNITURE_BLOCKS;
+    public static final FurnitureBlocks FURNITURE_BLOCKS;
 //    public static final RedstoneBlocks REDSTONE_BLOCKS;
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
-//    public static final Items ITEMS;
-//    public static final ItemGroups ITEM_GROUPS;
-//
+    //    public static final Items ITEMS;
+    public static final ItemGroups ITEM_GROUPS;
+
 //    public static final CommonBlockTags COMMON_TAGS;
 //    public static final MinekeaTags TAGS;
 
@@ -37,22 +39,22 @@ public class MinekeaMod implements ModInitializer {
         CROPS = new Crops();
 //        DECORATION_BLOCKS = new DecorationBlocks();
 //        FLUIDS = new Fluids();
-//        FURNITURE_BLOCKS = new FurnitureBlocks();
+        FURNITURE_BLOCKS = new FurnitureBlocks();
 //        REDSTONE_BLOCKS = new RedstoneBlocks();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
-//            BUILDING_BLOCKS,
+            BUILDING_BLOCKS,
 //            CONTAINER_BLOCKS,
             CROPS,
 //            DECORATION_BLOCKS,
 //            FLUIDS,
-//            FURNITURE_BLOCKS,
+            FURNITURE_BLOCKS,
 //            REDSTONE_BLOCKS
         };
-//
+
 //        ITEMS = new Items();
-//        ITEM_GROUPS = new ItemGroups();
-//
+        ITEM_GROUPS = new ItemGroups();
+
 //        COMMON_TAGS = new CommonBlockTags();
 //        TAGS = new MinekeaTags();
     }
@@ -66,12 +68,19 @@ public class MinekeaMod implements ModInitializer {
 //        COMMON_TAGS.init();
 //        TAGS.init();
 
+        LOGGER.info("[minekea] Registering item groups");
+        ITEM_GROUPS.register();
+
         LOGGER.info("[minekea] Registering blocks");
-        BUILDING_BLOCKS.registerBlocks();
-        BUILDING_BLOCKS.setupResources();
         for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
             category.registerBlocks();
             category.setupResources();
+        }
+
+        LOGGER.info("[minekea] Registering entities");
+        for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
+            category.registerBlockEntities();
+            category.registerEntities();
         }
 
 //        LOGGER.info("[minekea] Registering villager points of interest");
@@ -80,13 +89,12 @@ public class MinekeaMod implements ModInitializer {
         LOGGER.info("[minekea] Registering items");
 //        ITEMS.register();
 //        ITEMS.setupResources();
-//        ITEM_GROUPS.setupResources();
 
         LOGGER.info("[minekea] Registering colored blocks");
         registerVanillaColoredBlocks();
 
 //        FabricLoader loader = FabricLoader.getInstance();
-//
+
 //        if (loader.isModLoaded("patchouli")) {
 //            PatchouliCompat.init();
 //        }

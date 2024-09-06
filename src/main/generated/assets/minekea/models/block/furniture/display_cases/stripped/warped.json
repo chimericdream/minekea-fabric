@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/display_case",
+  "textures": {
+    "material": "minecraft:block/stripped_warped_stem",
+    "stripped_material": "minecraft:block/stripped_warped_stem"
+  }
+}
