@@ -72,6 +72,22 @@ import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCase
 import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_SPRUCE_DISPLAY_CASE;
 import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.STRIPPED_WARPED_DISPLAY_CASE;
 import static com.chimericdream.minekea.block.furniture.displaycases.DisplayCases.WARPED_DISPLAY_CASE;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.BLACK_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.BLUE_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.BROWN_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.CYAN_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.GRAY_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.GREEN_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.LIGHT_BLUE_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.LIGHT_GRAY_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.LIME_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.MAGENTA_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.ORANGE_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.PINK_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.PURPLE_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.RED_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.WHITE_PILLOW;
+import static com.chimericdream.minekea.block.furniture.pillows.Pillows.YELLOW_PILLOW;
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_ITEM;
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_PLANT_BLOCK;
 
@@ -274,6 +290,24 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             translationBuilder.add(WARPED_BASALT_BRICKS_BLOCK, "Warped Basalt Bricks");
             translationBuilder.add(WARPED_NETHER_BRICKS_BLOCK, "Warped Nether Bricks");
 
+            translationBuilder.add(WHITE_PILLOW, "White Pillow");
+            translationBuilder.add(ORANGE_PILLOW, "Orange Pillow");
+            translationBuilder.add(MAGENTA_PILLOW, "Magenta Pillow");
+            translationBuilder.add(LIGHT_BLUE_PILLOW, "Light Blue Pillow");
+            translationBuilder.add(YELLOW_PILLOW, "Yellow Pillow");
+            translationBuilder.add(LIME_PILLOW, "Lime Pillow");
+            translationBuilder.add(PINK_PILLOW, "Pink Pillow");
+            translationBuilder.add(GRAY_PILLOW, "Gray Pillow");
+            translationBuilder.add(LIGHT_GRAY_PILLOW, "Light Gray Pillow");
+            translationBuilder.add(CYAN_PILLOW, "Cyan Pillow");
+            translationBuilder.add(PURPLE_PILLOW, "Purple Pillow");
+            translationBuilder.add(BLUE_PILLOW, "Blue Pillow");
+            translationBuilder.add(BROWN_PILLOW, "Brown Pillow");
+            translationBuilder.add(GREEN_PILLOW, "Green Pillow");
+            translationBuilder.add(RED_PILLOW, "Red Pillow");
+            translationBuilder.add(BLACK_PILLOW, "Black Pillow");
+
+
             translationBuilder.add(WARPED_WART_PLANT_BLOCK, "Warped Wart");
             translationBuilder.add(WARPED_WART_ITEM, "Warped Wart");
 
@@ -333,6 +367,23 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             blockStateModelGenerator.registerSimpleCubeAll(MOSSY_BASALT_BRICKS_BLOCK);
             blockStateModelGenerator.registerSimpleCubeAll(WARPED_BASALT_BRICKS_BLOCK);
             blockStateModelGenerator.registerSimpleCubeAll(WARPED_NETHER_BRICKS_BLOCK);
+
+            blockStateModelGenerator.registerSimpleCubeAll(WHITE_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(ORANGE_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(MAGENTA_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(LIGHT_BLUE_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(YELLOW_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(LIME_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(PINK_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(GRAY_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(LIGHT_GRAY_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(CYAN_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(PURPLE_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(BLUE_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(BROWN_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(GREEN_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(RED_PILLOW);
+            blockStateModelGenerator.registerSimpleCubeAll(BLACK_PILLOW);
 
             blockStateModelGenerator.registerCrop(WARPED_WART_PLANT_BLOCK, Properties.AGE_3, 0, 1, 1, 2);
 

@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.furniture;
 
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
+import com.chimericdream.minekea.block.furniture.pillows.Pillows;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -11,11 +12,10 @@ import java.util.List;
 public class FurnitureBlocks implements MinekeaBlockCategory {
     //    public static Bookshelves BOOKSHELVES;
     public static DisplayCases DISPLAY_CASES;
-//    public static Doors DOORS;
-//    public static Pillows PILLOWS;
+    //    public static Doors DOORS;
+    public static Pillows PILLOWS;
 //    public static Seats SEATS;
 //    public static Shelves SHELVES;
-//    public static StorageBookshelves STORAGE_BOOKSHELVES;
 //    public static Shutters SHUTTERS;
 //    public static Tables TABLES;
 //    public static Trapdoors TRAPDOORS;
@@ -41,8 +41,8 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
 //        }
 //
 //        if (config.enablePillows) {
-//            PILLOWS = new Pillows();
-//            BLOCK_GROUPS.add(PILLOWS);
+        PILLOWS = new Pillows();
+        BLOCK_GROUPS.add(PILLOWS);
 //        }
 //
 //        if (config.enableChairs || config.enableStools) {
@@ -53,11 +53,6 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
 //        if (config.enableShelves) {
 //            SHELVES = new Shelves();
 //            BLOCK_GROUPS.add(SHELVES);
-//        }
-//
-//        if (config.enableStorageBookshelves) {
-//            STORAGE_BOOKSHELVES = new StorageBookshelves();
-//            BLOCK_GROUPS.add(STORAGE_BOOKSHELVES);
 //        }
 //
 //        if (config.enableShutters) {

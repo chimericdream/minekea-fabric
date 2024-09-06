@@ -1,70 +1,57 @@
-//package com.chimericdream.minekea.block.furniture.pillows;
-//
-//import com.chimericdream.minekea.ModInfo;
-//import com.chimericdream.minekea.item.ItemGroups;
-//import com.chimericdream.minekea.resource.LootTable;
-//import com.chimericdream.minekea.resource.MinekeaResourcePack;
-//import com.chimericdream.minekea.resource.Model;
-//import com.chimericdream.minekea.settings.MinekeaBlockSettings;
-//import com.chimericdream.minekea.util.MinekeaBlock;
-//import com.chimericdream.minekea.util.TextHelpers;
-//import net.minecraft.block.Block;
-//import net.minecraft.block.BlockState;
-//import net.minecraft.block.ShapeContext;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.item.BlockItem;
-//import net.minecraft.item.Item;
-//import net.minecraft.registry.Registries;
-//import net.minecraft.registry.Registry;
-//import net.minecraft.sound.SoundEvents;
-//import net.minecraft.text.Text;
-//import net.minecraft.util.Identifier;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.util.shape.VoxelShape;
-//import net.minecraft.world.BlockView;
-//import net.minecraft.world.World;
-//
-//import java.util.Map;
-//import java.util.Objects;
-//
-//public class PillowBlock extends Block implements MinekeaBlock {
-//    public static final String TRANSLATION_KEY = "block.minekea.furniture.pillow";
-//
-//    protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-//
-//    public PillowBlock(PillowBlockSettings settings) {
-//        super(settings);
-//    }
-//
-//    @Override
-//    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-//        return SHAPE;
-//    }
-//
-//    @Override
-//    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-//        entity.playSound(SoundEvents.BLOCK_WOOL_STEP, 1.0F, 1.0F);
-//        if (entity.handleFallDamage(fallDistance, 0F, DamageSource.FALL)) {
-//            entity.playSound(this.soundGroup.getFallSound(), this.soundGroup.getVolume() * 0.5F, this.soundGroup.getPitch() * 0.75F);
-//        }
-//    }
-//
-//    @Override
-//    public Identifier getBlockID() {
-//        return ((MinekeaBlockSettings<?>) this.settings).getBlockId();
-//    }
-//
-//    @Override
-//    public void register() {
-//        Registry.register(Registries.BLOCK, getBlockID(), this);
-//        Registry.register(Registries.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroups.FURNITURE)));
-//
-//        setupResources();
-//    }
-//
-//    @Override
-//    public void setupResources() {
+package com.chimericdream.minekea.block.furniture.pillows;
+
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.util.MinekeaBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+
+public class PillowBlock extends Block implements MinekeaBlock {
+    public static final String TRANSLATION_KEY = "block.minekea.furniture.pillow";
+    public final Identifier BLOCK_ID;
+
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+
+    public PillowBlock(String color) {
+        super(new Settings());
+
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/pillows/%s", color));
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+        entity.playSound(SoundEvents.BLOCK_WOOL_STEP, 1.0F, 1.0F);
+        if (entity.handleFallDamage(fallDistance, 0F, world.getDamageSources().fall())) {
+            entity.playSound(this.soundGroup.getFallSound(), this.soundGroup.getVolume() * 0.5F, this.soundGroup.getPitch() * 0.75F);
+        }
+    }
+
+    @Override
+    public void register() {
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+
+        setupResources();
+    }
+
+    @Override
+    public void setupResources() {
 //        PillowBlockSettings settings = (PillowBlockSettings) this.settings;
 //        MinekeaResourcePack.EN_US.blockRespect(
 //            this,
@@ -107,8 +94,8 @@
 //            JState.state(JState.variant().put("", new JBlockModel(MODEL_ID))),
 //            getBlockID()
 //        );
-//    }
-//
+    }
+
 //    public static class PillowBlockSettings extends MinekeaBlockSettings<PillowBlockSettings> {
 //        protected String color = "";
 //
@@ -140,4 +127,4 @@
 //            return blockId;
 //        }
 //    }
-//}
+}
