@@ -74,7 +74,6 @@ public class MinekeaMod implements ModInitializer {
         LOGGER.info("[minekea] Registering blocks");
         for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
             category.registerBlocks();
-            category.setupResources();
         }
 
         LOGGER.info("[minekea] Registering entities");

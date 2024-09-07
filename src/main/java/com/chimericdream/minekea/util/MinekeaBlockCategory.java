@@ -1,13 +1,42 @@
 package com.chimericdream.minekea.util;
 
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.registry.RegistryWrapper;
+
 public interface MinekeaBlockCategory {
-    void initializeClient();
+    default void initializeClient() {
+    }
 
-    void registerBlocks();
+    default void registerBlocks() {
+    }
 
-    void registerBlockEntities();
+    default void registerBlockEntities() {
+    }
 
-    void registerEntities();
+    default void registerEntities() {
+    }
 
-    void setupResources();
+    default void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup) {
+    }
+
+    default void configureItemTags(RegistryWrapper.WrapperLookup registryLookup) {
+    }
+
+    default void configureRecipes(RecipeExporter exporter) {
+    }
+
+    default void configureLootTables(RegistryWrapper.WrapperLookup registryLookup) {
+    }
+
+    default void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+    }
+
+    default void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+    }
+
+    default void configureItemModels(ItemModelGenerator itemModelGenerator) {
+    }
 }

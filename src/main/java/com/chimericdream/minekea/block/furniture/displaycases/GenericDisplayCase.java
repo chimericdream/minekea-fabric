@@ -251,8 +251,4 @@ abstract public class GenericDisplayCase extends BlockWithEntity implements Mine
 
         return (rotation * 2) + 1;
     }
-
-    @Override
-    public void setupResources() {
-    }
 }

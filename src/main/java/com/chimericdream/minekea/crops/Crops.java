@@ -32,23 +32,4 @@ public class Crops implements MinekeaBlockCategory {
                 itemGroup.add(WARPED_WART_ITEM);
             });
     }
-
-    @Override
-    public void registerBlockEntities() {
-    }
-
-    @Override
-    public void registerEntities() {
-    }
-
-    @Override
-    public void setupResources() {
-//        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-//            Identifier.of(ModInfo.MOD_ID, "items/nether_wart_from_block"),
-//            JRecipe.shapeless(
-//                JIngredients.ingredients().add(JIngredient.ingredient().item("minecraft:nether_wart_block")),
-//                JResult.stackedResult("minecraft:nether_wart", 9)
-//            )
-//        );
-    }
 }

@@ -172,12 +172,4 @@ public class DisplayCases implements MinekeaBlockCategory {
             ).build(null)
         );
     }
-
-    @Override
-    public void registerEntities() {
-    }
-
-    @Override
-    public void setupResources() {
-    }
 }

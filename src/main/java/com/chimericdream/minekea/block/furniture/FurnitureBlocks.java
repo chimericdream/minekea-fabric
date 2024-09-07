@@ -99,43 +99,4 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
             group.registerEntities();
         }
     }
-
-    @Override
-    public void setupResources() {
-//        MinekeaConfig config = ConfigManager.getConfig();
-//
-//        MinekeaResourcePack.EN_US.entry("block.minecraft.bookshelf", "Oak Bookshelf");
-//
-//        if (config.overrideVanillaBookshelfTexture) {
-//            for (int i = 0; i <= 6; i++) {
-//                MinekeaResourcePack.RESOURCE_PACK.addModel(
-//                    JModel.model("minekea:block/furniture/bookshelves/bookshelf")
-//                        .textures(
-//                            new JTextures()
-//                                .var("material", "minecraft:block/oak_planks")
-//                                .var("shelf", String.format("minekea:block/furniture/bookshelves/shelf%d", i))
-//                        ),
-//                    Identifier.of(ModInfo.MOD_ID, String.format("block/bookshelves/oak/shelf%d", i))
-//                );
-//            }
-//
-//            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                JState.state(
-//                    JState.variant()
-//                        .put("", new JBlockModel(Identifier.of(ModInfo.MOD_ID, "block/bookshelves/oak/shelf0")))
-//                        .put("", new JBlockModel(Identifier.of(ModInfo.MOD_ID, "block/bookshelves/oak/shelf1")))
-//                        .put("", new JBlockModel(Identifier.of(ModInfo.MOD_ID, "block/bookshelves/oak/shelf2")))
-//                        .put("", new JBlockModel(Identifier.of(ModInfo.MOD_ID, "block/bookshelves/oak/shelf3")))
-//                        .put("", new JBlockModel(Identifier.of(ModInfo.MOD_ID, "block/bookshelves/oak/shelf4")))
-//                        .put("", new JBlockModel(Identifier.of(ModInfo.MOD_ID, "block/bookshelves/oak/shelf5")))
-//                        .put("", new JBlockModel(Identifier.of(ModInfo.MOD_ID, "block/bookshelves/oak/shelf6")))
-//                ),
-//                Identifier.of("minecraft:bookshelf")
-//            );
-//        }
-//
-//        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-//            group.setupResources();
-//        }
-    }
 }

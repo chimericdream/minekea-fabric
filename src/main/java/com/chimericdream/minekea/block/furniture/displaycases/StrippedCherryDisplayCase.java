@@ -25,7 +25,5 @@ public class StrippedCherryDisplayCase extends GenericDisplayCase {
 
         FuelRegistry.INSTANCE.add(this, 300);
         FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
-
-        setupResources();
     }
 }

@@ -67,10 +67,6 @@ public class Pillows implements MinekeaBlockCategory {
     }
 
     @Override
-    public void initializeClient() {
-    }
-
-    @Override
     public void registerBlocks() {
         for (PillowBlock block : PILLOWS) {
             block.register();
@@ -94,18 +90,5 @@ public class Pillows implements MinekeaBlockCategory {
             itemGroup.add(RED_PILLOW);
             itemGroup.add(BLACK_PILLOW);
         });
-    }
-
-    @Override
-    public void registerBlockEntities() {
-    }
-
-    @Override
-    public void registerEntities() {
-    }
-
-    @Override
-    public void setupResources() {
-//        MinekeaResourcePack.EN_US.entry(PillowBlock.TRANSLATION_KEY, "Pillow");
     }
 }

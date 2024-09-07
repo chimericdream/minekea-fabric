@@ -17,16 +17,10 @@ public class WarpedNetherBricksBlock extends Block implements MinekeaBlock {
     public WarpedNetherBricksBlock() {
         super(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS));
     }
-    
+
     @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
-
-        setupResources();
-    }
-
-    @Override
-    public void setupResources() {
     }
 }
