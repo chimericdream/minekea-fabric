@@ -1,0 +1,8 @@
+{
+  "parent": "minekea:block/storage/dye_block",
+  "textures": {
+    "bottom": "minekea:block/storage/dyes/white/bottom",
+    "side": "minekea:block/storage/dyes/white/side",
+    "top": "minekea:block/storage/dyes/white/top"
+  }
+}

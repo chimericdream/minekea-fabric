@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.furniture.pillows;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -62,48 +63,6 @@ public class PillowBlock extends Block implements MinekeaBlock {
         }
     }
 
-    private String getColorName() {
-        return switch (color) {
-            case "orange" -> "Orange";
-            case "magenta" -> "Magenta";
-            case "light_blue" -> "Light Blue";
-            case "yellow" -> "Yellow";
-            case "lime" -> "Lime";
-            case "pink" -> "Pink";
-            case "gray" -> "Gray";
-            case "light_gray" -> "Light Gray";
-            case "cyan" -> "Cyan";
-            case "purple" -> "Purple";
-            case "blue" -> "Blue";
-            case "brown" -> "Brown";
-            case "green" -> "Green";
-            case "red" -> "Red";
-            case "black" -> "Black";
-            default -> "White";
-        };
-    }
-
-    private Block getWoolBlock() {
-        return switch (color) {
-            case "orange" -> Blocks.ORANGE_WOOL;
-            case "magenta" -> Blocks.MAGENTA_WOOL;
-            case "light_blue" -> Blocks.LIGHT_BLUE_WOOL;
-            case "yellow" -> Blocks.YELLOW_WOOL;
-            case "lime" -> Blocks.LIME_WOOL;
-            case "pink" -> Blocks.PINK_WOOL;
-            case "gray" -> Blocks.GRAY_WOOL;
-            case "light_gray" -> Blocks.LIGHT_GRAY_WOOL;
-            case "cyan" -> Blocks.CYAN_WOOL;
-            case "purple" -> Blocks.PURPLE_WOOL;
-            case "blue" -> Blocks.BLUE_WOOL;
-            case "brown" -> Blocks.BROWN_WOOL;
-            case "green" -> Blocks.GREEN_WOOL;
-            case "red" -> Blocks.RED_WOOL;
-            case "black" -> Blocks.BLACK_WOOL;
-            default -> Blocks.WHITE_WOOL;
-        };
-    }
-
     @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
@@ -123,7 +82,7 @@ public class PillowBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block wool = getWoolBlock();
+        Block wool = Colors.getWool(color);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern("##")
@@ -147,7 +106,7 @@ public class PillowBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Pillow", getColorName()));
+        translationBuilder.add(this, String.format("%s Pillow", Colors.getName(color)));
     }
 
     @Override

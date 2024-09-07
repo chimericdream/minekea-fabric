@@ -1,109 +1,140 @@
-//package com.chimericdream.minekea.block.building.storage;
-//
-//import com.chimericdream.minekea.ModInfo;
-//import com.chimericdream.minekea.resource.LootTable;
-//import com.chimericdream.minekea.resource.MinekeaResourcePack;
-//import com.chimericdream.minekea.resource.Model;
-//import com.chimericdream.minekea.settings.MinekeaBlockSettings;
-//import com.chimericdream.minekea.util.MinekeaBlock;
-//import net.minecraft.block.Block;
-//import net.minecraft.block.BlockState;
-//import net.minecraft.block.ShapeContext;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.entity.damage.DamageSource;
-//import net.minecraft.item.BlockItem;
-//import net.minecraft.item.Item;
-//import net.minecraft.item.ItemGroup;
-//import net.minecraft.registry.Registries;
-//import net.minecraft.registry.Registry;
-//import net.minecraft.sound.SoundEvents;
-//import net.minecraft.util.Identifier;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.util.shape.VoxelShape;
-//import net.minecraft.world.BlockView;
-//import net.minecraft.world.World;
-//
-//import java.util.Map;
-//import java.util.Objects;
-//
-//public class DyeBlock extends Block implements MinekeaBlock {
-//    protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-//
-//    public DyeBlock(DyeBlockSettings settings) {
-//        super(settings.jumpVelocityMultiplier(0.5F));
-//    }
-//
-//    @Override
-//    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-//        return SHAPE;
-//    }
-//
-//    @Override
-//    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-//        entity.playSound(SoundEvents.BLOCK_HONEY_BLOCK_SLIDE, 1.0F, 1.0F);
-//        if (entity.handleFallDamage(fallDistance, 0.2F, DamageSource.FALL)) {
-//            entity.playSound(this.soundGroup.getFallSound(), this.soundGroup.getVolume() * 0.5F, this.soundGroup.getPitch() * 0.75F);
-//        }
-//    }
-//
-//    @Override
-//    public Identifier getBlockID() {
-//        return ((MinekeaBlockSettings<?>) this.settings).getBlockId();
-//    }
-//
-//    @Override
-//    public void register() {
-//        Registry.register(Registries.BLOCK, getBlockID(), this);
-//        Registry.register(Registries.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-//
-//        setupResources();
-//    }
-//
-//    @Override
-//    public void setupResources() {
-//        DyeBlockSettings settings = (DyeBlockSettings) this.settings;
-//        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
-//
-//        Map<String, Identifier> materials = settings.getMaterials();
-//
-//        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
-//
-//        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-//            getBlockID(),
-//            JRecipe.shaped(
-//                JPattern.pattern("XXX", "XXX", "XXX"),
-//                JKeys.keys().key("X", JIngredient.ingredient().item(ingredient.toString())),
-//                JResult.result(getBlockID().toString())
-//            )
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-//            Identifier.of(ModInfo.MOD_ID, "storage/" + ingredient.getPath() + "_from_compressed"),
-//            JRecipe.shapeless(
-//                JIngredients.ingredients().add(JIngredient.ingredient().item(getBlockID().toString())),
-//                JResult.stackedResult(ingredient.toString(), 9)
-//            )
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
-//
-//        JTextures textures = new JTextures()
-//            .var("bottom", String.format("%s:block/storage/dyes/%s/bottom", ModInfo.MOD_ID, settings.getColor()))
-//            .var("side", String.format("%s:block/storage/dyes/%s/side", ModInfo.MOD_ID, settings.getColor()))
-//            .var("top", String.format("%s:block/storage/dyes/%s/top", ModInfo.MOD_ID, settings.getColor()));
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(String.format("%s:block/storage/dye_block", ModInfo.MOD_ID)).textures(textures), MODEL_ID);
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(JState.variant().put("", new JBlockModel(MODEL_ID))),
-//            getBlockID()
-//        );
-//    }
-//
+package com.chimericdream.minekea.block.building.storage;
+
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.util.Colors;
+import com.chimericdream.minekea.util.MinekeaBlock;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.DyeColor;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+
+import java.util.Optional;
+import java.util.function.Function;
+
+public class DyeBlock extends Block implements MinekeaBlock {
+    private static final Model DYE_BLOCK_MODEL = new Model(
+        Optional.of(Identifier.of("minekea:block/storage/dye_block")),
+        Optional.empty(),
+        TextureKey.BOTTOM,
+        TextureKey.SIDE,
+        TextureKey.TOP
+    );
+    public final Identifier BLOCK_ID;
+    protected final String color;
+
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+
+    public DyeBlock(String color) {
+        super(FabricBlockSettings.copyOf(Blocks.HONEY_BLOCK).materialColor(DyeColor.byName(color, DyeColor.WHITE)).jumpVelocityMultiplier(0.5F));
+
+        this.color = color;
+
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("storage/dyes/%s", color));
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+        entity.playSound(SoundEvents.BLOCK_HONEY_BLOCK_SLIDE, 1.0F, 1.0F);
+        if (entity.handleFallDamage(fallDistance, 0.2F, world.getDamageSources().fall())) {
+            entity.playSound(this.soundGroup.getFallSound(), this.soundGroup.getVolume() * 0.5F, this.soundGroup.getPitch() * 0.75F);
+        }
+    }
+
+    @Override
+    public void register() {
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+    }
+
+    @Override
+    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        Item dye = Colors.getDye(color);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
+            .pattern("###")
+            .pattern("###")
+            .pattern("###")
+            .input('#', dye)
+            .criterion(FabricRecipeProvider.hasItem(dye),
+                FabricRecipeProvider.conditionsFromItem(dye))
+            .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, dye, 9)
+            .input(this)
+            .criterion(FabricRecipeProvider.hasItem(this),
+                FabricRecipeProvider.conditionsFromItem(this))
+            .offerTo(exporter);
+    }
+
+    @Override
+    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        translationBuilder.add(this, String.format("Compressed %s Dye", Colors.getName(color)));
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        TextureMap textures = new TextureMap()
+            .put(TextureKey.BOTTOM, Identifier.of(ModInfo.MOD_ID, String.format("block/storage/dyes/%s/bottom", color)))
+            .put(TextureKey.SIDE, Identifier.of(ModInfo.MOD_ID, String.format("block/storage/dyes/%s/side", color)))
+            .put(TextureKey.TOP, Identifier.of(ModInfo.MOD_ID, String.format("block/storage/dyes/%s/top", color)));
+
+        blockStateModelGenerator.registerSingleton(
+            this,
+            textures,
+            DYE_BLOCK_MODEL
+        );
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+    }
+
 //    public static class DyeBlockSettings extends MinekeaBlockSettings<DyeBlockSettings> {
 //        protected String color = "";
 //
@@ -135,4 +166,4 @@
 //            return blockId;
 //        }
 //    }
-//}
+}

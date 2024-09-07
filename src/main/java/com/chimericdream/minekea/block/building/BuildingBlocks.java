@@ -12,6 +12,7 @@ import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock
 import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
+import com.chimericdream.minekea.block.building.storage.StorageBlocks;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
@@ -43,12 +44,12 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final WarpedBasaltBricksBlock WARPED_BASALT_BRICKS_BLOCK;
     public static final WarpedNetherBricksBlock WARPED_NETHER_BRICKS_BLOCK;
 
-//    public static Beams BEAMS = null;
+    //    public static Beams BEAMS = null;
 //    public static CompressedBlocks COMPRESSED_BLOCKS = null;
 //    public static Covers COVERS = null;
 //    public static Slabs SLABS = null;
 //    public static Stairs STAIRS = null;
-//    public static final StorageBlocks STORAGE_BLOCKS;
+    public static final StorageBlocks STORAGE_BLOCKS;
 //    public static Walls WALLS = null;
 
     private static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
@@ -111,9 +112,9 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 //            WALLS = new Walls();
 //            BLOCK_GROUPS.add(WALLS);
 //        }
-//
-//        STORAGE_BLOCKS = new StorageBlocks();
-//        BLOCK_GROUPS.add(STORAGE_BLOCKS);
+
+        STORAGE_BLOCKS = new StorageBlocks();
+        BLOCK_GROUPS.add(STORAGE_BLOCKS);
     }
 
     @Environment(EnvType.CLIENT)

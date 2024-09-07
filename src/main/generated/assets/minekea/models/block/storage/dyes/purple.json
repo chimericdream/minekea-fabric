@@ -1,0 +1,8 @@
+{
+  "parent": "minekea:block/storage/dye_block",
+  "textures": {
+    "bottom": "minekea:block/storage/dyes/purple/bottom",
+    "side": "minekea:block/storage/dyes/purple/side",
+    "top": "minekea:block/storage/dyes/purple/top"
+  }
+}

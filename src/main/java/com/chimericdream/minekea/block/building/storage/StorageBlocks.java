@@ -1,34 +1,46 @@
-//package com.chimericdream.minekea.block.building.storage;
-//
-//import com.chimericdream.minekea.block.building.storage.DyeBlock.DyeBlockSettings;
-//import com.chimericdream.minekea.block.building.storage.GenericStorageBlock.StorageBlockSettings;
-//import com.chimericdream.minekea.settings.BaseBlockSettings;
-//import com.chimericdream.minekea.util.MinekeaBlockCategory;
-//import com.chimericdream.minekea.util.Tool;
-//import net.fabricmc.api.EnvType;
-//import net.fabricmc.api.Environment;
-//import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-//import net.minecraft.client.render.RenderLayer;
-//import net.minecraft.sound.BlockSoundGroup;
-//
-//public class StorageBlocks implements MinekeaBlockCategory {
-//    public static final DyeBlock WHITE_DYE_BLOCK;
-//    public static final DyeBlock ORANGE_DYE_BLOCK;
-//    public static final DyeBlock MAGENTA_DYE_BLOCK;
-//    public static final DyeBlock LIGHT_BLUE_DYE_BLOCK;
-//    public static final DyeBlock YELLOW_DYE_BLOCK;
-//    public static final DyeBlock LIME_DYE_BLOCK;
-//    public static final DyeBlock PINK_DYE_BLOCK;
-//    public static final DyeBlock GRAY_DYE_BLOCK;
-//    public static final DyeBlock LIGHT_GRAY_DYE_BLOCK;
-//    public static final DyeBlock CYAN_DYE_BLOCK;
-//    public static final DyeBlock PURPLE_DYE_BLOCK;
-//    public static final DyeBlock BLUE_DYE_BLOCK;
-//    public static final DyeBlock BROWN_DYE_BLOCK;
-//    public static final DyeBlock GREEN_DYE_BLOCK;
-//    public static final DyeBlock RED_DYE_BLOCK;
-//    public static final DyeBlock BLACK_DYE_BLOCK;
-//
+package com.chimericdream.minekea.block.building.storage;
+
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.Block;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
+
+import java.util.List;
+import java.util.function.Function;
+
+public class StorageBlocks implements MinekeaBlockCategory {
+    public static final DyeBlock WHITE_DYE_BLOCK;
+    public static final DyeBlock ORANGE_DYE_BLOCK;
+    public static final DyeBlock MAGENTA_DYE_BLOCK;
+    public static final DyeBlock LIGHT_BLUE_DYE_BLOCK;
+    public static final DyeBlock YELLOW_DYE_BLOCK;
+    public static final DyeBlock LIME_DYE_BLOCK;
+    public static final DyeBlock PINK_DYE_BLOCK;
+    public static final DyeBlock GRAY_DYE_BLOCK;
+    public static final DyeBlock LIGHT_GRAY_DYE_BLOCK;
+    public static final DyeBlock CYAN_DYE_BLOCK;
+    public static final DyeBlock PURPLE_DYE_BLOCK;
+    public static final DyeBlock BLUE_DYE_BLOCK;
+    public static final DyeBlock BROWN_DYE_BLOCK;
+    public static final DyeBlock GREEN_DYE_BLOCK;
+    public static final DyeBlock RED_DYE_BLOCK;
+    public static final DyeBlock BLACK_DYE_BLOCK;
+
+    public static final List<DyeBlock> DYE_BLOCKS;
+
 //    public static final GenericStorageBlock APPLE_BLOCK;
 //    public static final GenericStorageBlock BAMBOO_BLOCK;
 //    public static final GenericStorageBlock BEETROOT_BLOCK;
@@ -56,25 +68,44 @@
 //    public static final GenericStorageBlock TOTEM_BLOCK;
 //    public static final GenericStorageBlock WALLPAPER_BLOCK;
 //    public static final GenericStorageBlock WHEAT_SEEDS_BLOCK;
-//
-//    static {
-//        WHITE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.WHITE_DYE).color("white"));
-//        ORANGE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.ORANGE_DYE).color("orange"));
-//        MAGENTA_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.MAGENTA_DYE).color("magenta"));
-//        LIGHT_BLUE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.LIGHT_BLUE_DYE).color("light_blue"));
-//        YELLOW_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.YELLOW_DYE).color("yellow"));
-//        LIME_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.LIME_DYE).color("lime"));
-//        PINK_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.PINK_DYE).color("pink"));
-//        GRAY_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.GRAY_DYE).color("gray"));
-//        LIGHT_GRAY_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.LIGHT_GRAY_DYE).color("light_gray"));
-//        CYAN_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.CYAN_DYE).color("cyan"));
-//        PURPLE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.PURPLE_DYE).color("purple"));
-//        BLUE_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BLUE_DYE).color("blue"));
-//        BROWN_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BROWN_DYE).color("brown"));
-//        GREEN_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.GREEN_DYE).color("green"));
-//        RED_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.RED_DYE).color("red"));
-//        BLACK_DYE_BLOCK = new DyeBlock(new DyeBlockSettings(BaseBlockSettings.BLACK_DYE).color("black"));
-//
+
+    static {
+        WHITE_DYE_BLOCK = new DyeBlock("white");
+        ORANGE_DYE_BLOCK = new DyeBlock("orange");
+        MAGENTA_DYE_BLOCK = new DyeBlock("magenta");
+        LIGHT_BLUE_DYE_BLOCK = new DyeBlock("light_blue");
+        YELLOW_DYE_BLOCK = new DyeBlock("yellow");
+        LIME_DYE_BLOCK = new DyeBlock("lime");
+        PINK_DYE_BLOCK = new DyeBlock("pink");
+        GRAY_DYE_BLOCK = new DyeBlock("gray");
+        LIGHT_GRAY_DYE_BLOCK = new DyeBlock("light_gray");
+        CYAN_DYE_BLOCK = new DyeBlock("cyan");
+        PURPLE_DYE_BLOCK = new DyeBlock("purple");
+        BLUE_DYE_BLOCK = new DyeBlock("blue");
+        BROWN_DYE_BLOCK = new DyeBlock("brown");
+        GREEN_DYE_BLOCK = new DyeBlock("green");
+        RED_DYE_BLOCK = new DyeBlock("red");
+        BLACK_DYE_BLOCK = new DyeBlock("black");
+
+        DYE_BLOCKS = List.of(
+            WHITE_DYE_BLOCK,
+            LIGHT_GRAY_DYE_BLOCK,
+            GRAY_DYE_BLOCK,
+            BLACK_DYE_BLOCK,
+            BROWN_DYE_BLOCK,
+            RED_DYE_BLOCK,
+            ORANGE_DYE_BLOCK,
+            YELLOW_DYE_BLOCK,
+            LIME_DYE_BLOCK,
+            GREEN_DYE_BLOCK,
+            CYAN_DYE_BLOCK,
+            LIGHT_BLUE_DYE_BLOCK,
+            BLUE_DYE_BLOCK,
+            PURPLE_DYE_BLOCK,
+            MAGENTA_DYE_BLOCK,
+            PINK_DYE_BLOCK
+        );
+
 //        APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.APPLE).tool(Tool.HOE).separateTop().sounds(BlockSoundGroup.WOOD));
 //        BAMBOO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BAMBOO).namePattern("Bundle of %s").tool(Tool.AXE).sounds(BlockSoundGroup.BAMBOO));
 //        BEETROOT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
@@ -102,57 +133,26 @@
 //        TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).sounds(BlockSoundGroup.METAL));
 //        WALLPAPER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PAPER).tool(Tool.SHEARS).namePattern("Wallpaper").sounds(BlockSoundGroup.LADDER));
 //        WHEAT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.WHEAT_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
-//    }
-//
-//    @Environment(EnvType.CLIENT)
-//    @Override
-//    public void initializeClient() {
-//        BlockRenderLayerMap.INSTANCE.putBlocks(
-//            RenderLayer.getCutout(),
-//            SET_OF_EGGS_BLOCK
-//        );
-//
-//        BlockRenderLayerMap.INSTANCE.putBlocks(
-//            RenderLayer.getTranslucent(),
-//            WHITE_DYE_BLOCK,
-//            ORANGE_DYE_BLOCK,
-//            MAGENTA_DYE_BLOCK,
-//            LIGHT_BLUE_DYE_BLOCK,
-//            YELLOW_DYE_BLOCK,
-//            LIME_DYE_BLOCK,
-//            PINK_DYE_BLOCK,
-//            GRAY_DYE_BLOCK,
-//            LIGHT_GRAY_DYE_BLOCK,
-//            CYAN_DYE_BLOCK,
-//            PURPLE_DYE_BLOCK,
-//            BLUE_DYE_BLOCK,
-//            BROWN_DYE_BLOCK,
-//            GREEN_DYE_BLOCK,
-//            RED_DYE_BLOCK,
-//            BLACK_DYE_BLOCK,
-//            SUGAR_CANE_BLOCK
-//        );
-//    }
-//
-//    @Override
-//    public void registerBlocks() {
-//        WHITE_DYE_BLOCK.register();
-//        ORANGE_DYE_BLOCK.register();
-//        MAGENTA_DYE_BLOCK.register();
-//        LIGHT_BLUE_DYE_BLOCK.register();
-//        YELLOW_DYE_BLOCK.register();
-//        LIME_DYE_BLOCK.register();
-//        PINK_DYE_BLOCK.register();
-//        GRAY_DYE_BLOCK.register();
-//        LIGHT_GRAY_DYE_BLOCK.register();
-//        CYAN_DYE_BLOCK.register();
-//        PURPLE_DYE_BLOCK.register();
-//        BLUE_DYE_BLOCK.register();
-//        BROWN_DYE_BLOCK.register();
-//        GREEN_DYE_BLOCK.register();
-//        RED_DYE_BLOCK.register();
-//        BLACK_DYE_BLOCK.register();
-//
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        DYE_BLOCKS.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent()));
+
+//        BlockRenderLayerMap.INSTANCE.putBlock(SET_OF_EGGS_BLOCK, RenderLayer.getCutout());
+//        BlockRenderLayerMap.INSTANCE.putBlock(SUGAR_CANE_BLOCK, RenderLayer.getTranslucent());
+    }
+
+    @Override
+    public void registerBlocks() {
+        DYE_BLOCKS.forEach(DyeBlock::register);
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS)
+            .register((itemGroup) -> {
+                DYE_BLOCKS.forEach(itemGroup::add);
+            });
+
 //        APPLE_BLOCK.register();
 //        BAMBOO_BLOCK.register();
 //        BEETROOT_BLOCK.register();
@@ -180,17 +180,48 @@
 //        TOTEM_BLOCK.register();
 //        WALLPAPER_BLOCK.register();
 //        WHEAT_SEEDS_BLOCK.register();
-//    }
-//
-//    @Override
-//    public void registerBlockEntities() {
-//    }
-//
-//    @Override
-//    public void registerEntities() {
-//    }
-//
-//    @Override
-//    public void setupResources() {
-//    }
-//}
+    }
+
+    @Override
+    public void registerBlockEntities() {
+    }
+
+    @Override
+    public void registerEntities() {
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        DYE_BLOCKS.forEach(group -> group.configureBlockTags(registryLookup, getBuilder));
+    }
+
+    @Override
+    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+        DYE_BLOCKS.forEach(group -> group.configureItemTags(registryLookup, getBuilder));
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        DYE_BLOCKS.forEach(group -> group.configureRecipes(exporter));
+    }
+
+    @Override
+    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+        DYE_BLOCKS.forEach(group -> group.configureBlockLootTables(generator));
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        DYE_BLOCKS.forEach(group -> group.configureTranslations(registryLookup, translationBuilder));
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        DYE_BLOCKS.forEach(group -> group.configureBlockStateModels(blockStateModelGenerator));
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        DYE_BLOCKS.forEach(group -> group.configureItemModels(itemModelGenerator));
+    }
+}

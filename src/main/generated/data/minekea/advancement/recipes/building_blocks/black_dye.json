@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_storage/dyes/black": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:storage/dyes/black"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:black_dye"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_storage/dyes/black"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:black_dye"
+    ]
+  }
+}
