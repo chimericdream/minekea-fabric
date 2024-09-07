@@ -41,9 +41,8 @@ public class StorageBlocks implements MinekeaBlockCategory {
 
     public static final List<DyeBlock> DYE_BLOCKS;
 
-//    public static final GenericStorageBlock APPLE_BLOCK;
-//    public static final GenericStorageBlock BAMBOO_BLOCK;
-//    public static final GenericStorageBlock BEETROOT_BLOCK;
+    public static final GenericStorageBlock APPLE_STORAGE_BLOCK;
+    //    public static final GenericStorageBlock BEETROOT_BLOCK;
 //    public static final GenericStorageBlock BEETROOT_SEEDS_BLOCK;
 //    public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
 //    public static final GenericStorageBlock BLAZE_ROD_BLOCK;
@@ -53,7 +52,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
 //    public static final GenericStorageBlock ENDER_PEARL_BLOCK;
 //    public static final GenericStorageBlock FLINT_BLOCK;
 //    public static final GenericStorageBlock GOLD_NUGGET_SACK;
-//    public static final GenericStorageBlock GOLDEN_APPLE_BLOCK;
+    public static final GenericStorageBlock GOLDEN_APPLE_BLOCK;
 //    public static final GenericStorageBlock IRON_NUGGET_SACK;
 //    public static final GenericStorageBlock LEATHER_BLOCK;
 //    public static final GenericStorageBlock MELON_SEEDS_BLOCK;
@@ -61,13 +60,15 @@ public class StorageBlocks implements MinekeaBlockCategory {
 //    public static final GenericStorageBlock PHANTOM_MEMBRANE_BLOCK;
 //    public static final GenericStorageBlock POTATO_BLOCK;
 //    public static final GenericStorageBlock PUMPKIN_SEEDS_BLOCK;
-//    public static final SetOfEggsBlock SET_OF_EGGS_BLOCK;
+    //    public static final SetOfEggsBlock SET_OF_EGGS_BLOCK;
 //    public static final GenericStorageBlock STICK_BLOCK;
 //    public static final GenericStorageBlock SUGAR_BLOCK;
 //    public static final GenericStorageBlock SUGAR_CANE_BLOCK;
 //    public static final GenericStorageBlock TOTEM_BLOCK;
 //    public static final GenericStorageBlock WALLPAPER_BLOCK;
 //    public static final GenericStorageBlock WHEAT_SEEDS_BLOCK;
+
+    public static final List<GenericStorageBlock> STORAGE_BLOCKS;
 
     static {
         WHITE_DYE_BLOCK = new DyeBlock("white");
@@ -106,8 +107,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
             PINK_DYE_BLOCK
         );
 
-//        APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.APPLE).tool(Tool.HOE).separateTop().sounds(BlockSoundGroup.WOOD));
-//        BAMBOO_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BAMBOO).namePattern("Bundle of %s").tool(Tool.AXE).sounds(BlockSoundGroup.BAMBOO));
+        APPLE_STORAGE_BLOCK = new AppleStorageBlock();
 //        BEETROOT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
 //        BEETROOT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
 //        BLAZE_POWDER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BLAZE_POWDER).tool(Tool.SHOVEL).sounds(BlockSoundGroup.NETHER_STEM));
@@ -118,7 +118,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
 //        ENDER_PEARL_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.ENDER_PEARL).sounds(BlockSoundGroup.SHROOMLIGHT));
 //        FLINT_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.FLINT).sounds(BlockSoundGroup.STONE));
 //        GOLD_NUGGET_SACK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.GOLD_BLOCK).material("gold").ingredientName("Gold Nugget").namePattern("%s Sack").bagged().addMaterial("ingredient", "minekea:currency/gold_nugget_bag").sounds(BlockSoundGroup.METAL));
-//        GOLDEN_APPLE_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.GOLDEN_APPLE).tool(Tool.HOE).separateTop().sounds(BlockSoundGroup.WOOD));
+        GOLDEN_APPLE_BLOCK = new GoldenAppleStorageBlock();
 //        IRON_NUGGET_SACK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.IRON_BLOCK).material("iron").ingredientName("Iron Nugget").namePattern("%s Sack").bagged().addMaterial("ingredient", "minekea:currency/iron_nugget_bag").sounds(BlockSoundGroup.METAL));
 //        LEATHER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.LEATHER).tool(Tool.SHEARS).sounds(BlockSoundGroup.WOOL));
 //        MELON_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.MELON_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
@@ -133,6 +133,11 @@ public class StorageBlocks implements MinekeaBlockCategory {
 //        TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).sounds(BlockSoundGroup.METAL));
 //        WALLPAPER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PAPER).tool(Tool.SHEARS).namePattern("Wallpaper").sounds(BlockSoundGroup.LADDER));
 //        WHEAT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.WHEAT_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
+
+        STORAGE_BLOCKS = List.of(
+            APPLE_STORAGE_BLOCK,
+            GOLDEN_APPLE_BLOCK
+        );
     }
 
     @Environment(EnvType.CLIENT)
@@ -147,39 +152,17 @@ public class StorageBlocks implements MinekeaBlockCategory {
     @Override
     public void registerBlocks() {
         DYE_BLOCKS.forEach(DyeBlock::register);
+        STORAGE_BLOCKS.forEach(GenericStorageBlock::register);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS)
             .register((itemGroup) -> {
                 DYE_BLOCKS.forEach(itemGroup::add);
             });
 
-//        APPLE_BLOCK.register();
-//        BAMBOO_BLOCK.register();
-//        BEETROOT_BLOCK.register();
-//        BEETROOT_SEEDS_BLOCK.register();
-//        BLAZE_POWDER_BLOCK.register();
-//        BLAZE_ROD_BLOCK.register();
-//        CARROT_BLOCK.register();
-//        CHARCOAL_BLOCK.register();
-//        CHORUS_FRUIT_BLOCK.register();
-//        ENDER_PEARL_BLOCK.register();
-//        FLINT_BLOCK.register();
-//        GOLD_NUGGET_SACK.register();
-//        GOLDEN_APPLE_BLOCK.register();
-//        IRON_NUGGET_SACK.register();
-//        LEATHER_BLOCK.register();
-//        MELON_SEEDS_BLOCK.register();
-//        NETHER_STAR_BLOCK.register();
-//        PHANTOM_MEMBRANE_BLOCK.register();
-//        POTATO_BLOCK.register();
-//        PUMPKIN_SEEDS_BLOCK.register();
-//        SET_OF_EGGS_BLOCK.register();
-//        STICK_BLOCK.register();
-//        SUGAR_BLOCK.register();
-//        SUGAR_CANE_BLOCK.register();
-//        TOTEM_BLOCK.register();
-//        WALLPAPER_BLOCK.register();
-//        WHEAT_SEEDS_BLOCK.register();
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
+            .register((itemGroup) -> {
+                STORAGE_BLOCKS.forEach(itemGroup::add);
+            });
     }
 
     @Override
@@ -193,35 +176,42 @@ public class StorageBlocks implements MinekeaBlockCategory {
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         DYE_BLOCKS.forEach(group -> group.configureBlockTags(registryLookup, getBuilder));
+        STORAGE_BLOCKS.forEach(group -> group.configureBlockTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
         DYE_BLOCKS.forEach(group -> group.configureItemTags(registryLookup, getBuilder));
+        STORAGE_BLOCKS.forEach(group -> group.configureItemTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
         DYE_BLOCKS.forEach(group -> group.configureRecipes(exporter));
+        STORAGE_BLOCKS.forEach(group -> group.configureRecipes(exporter));
     }
 
     @Override
     public void configureBlockLootTables(BlockLootTableGenerator generator) {
         DYE_BLOCKS.forEach(group -> group.configureBlockLootTables(generator));
+        STORAGE_BLOCKS.forEach(group -> group.configureBlockLootTables(generator));
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         DYE_BLOCKS.forEach(group -> group.configureTranslations(registryLookup, translationBuilder));
+        STORAGE_BLOCKS.forEach(group -> group.configureTranslations(registryLookup, translationBuilder));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         DYE_BLOCKS.forEach(group -> group.configureBlockStateModels(blockStateModelGenerator));
+        STORAGE_BLOCKS.forEach(group -> group.configureBlockStateModels(blockStateModelGenerator));
     }
 
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         DYE_BLOCKS.forEach(group -> group.configureItemModels(itemModelGenerator));
+        STORAGE_BLOCKS.forEach(group -> group.configureItemModels(itemModelGenerator));
     }
 }

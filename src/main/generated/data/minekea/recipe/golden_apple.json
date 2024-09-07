@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:storage/compressed/golden_apple"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:golden_apple"
+  }
+}

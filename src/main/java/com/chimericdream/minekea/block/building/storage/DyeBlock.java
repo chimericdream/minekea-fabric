@@ -134,36 +134,4 @@ public class DyeBlock extends Block implements MinekeaBlock {
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
     }
-
-//    public static class DyeBlockSettings extends MinekeaBlockSettings<DyeBlockSettings> {
-//        protected String color = "";
-//
-//        public DyeBlockSettings(DefaultSettings settings) {
-//            super((DefaultSettings) settings.nonOpaque());
-//        }
-//
-//        public String getColor() {
-//            return this.color;
-//        }
-//
-//        public DyeBlockSettings color(String color) {
-//            this.color = color;
-//            return this;
-//        }
-//
-//        public String getNamePattern() {
-//            return Objects.requireNonNullElse(namePatternOverride, "Compressed %s");
-//        }
-//
-//        @Override
-//        public Identifier getBlockId() {
-//            Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
-//
-//            if (blockId == null) {
-//                blockId = Identifier.of(ModInfo.MOD_ID, String.format("storage/dyes/" + ingredient.getPath()));
-//            }
-//
-//            return blockId;
-//        }
-//    }
 }
