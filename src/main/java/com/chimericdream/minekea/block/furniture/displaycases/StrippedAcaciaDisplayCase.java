@@ -4,6 +4,7 @@ import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -16,6 +17,31 @@ public class StrippedAcaciaDisplayCase extends GenericDisplayCase {
 
     public StrippedAcaciaDisplayCase() {
         super(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS));
+    }
+
+    @Override
+    protected Block getPlanksBlock() {
+        return Blocks.ACACIA_PLANKS;
+    }
+
+    @Override
+    protected Block getLogBlock() {
+        return Blocks.ACACIA_LOG;
+    }
+
+    @Override
+    protected Block getStrippedLogBlock() {
+        return Blocks.STRIPPED_ACACIA_LOG;
+    }
+
+    @Override
+    protected Block getLogForRecipe() {
+        return Blocks.STRIPPED_ACACIA_LOG;
+    }
+
+    @Override
+    protected String getMaterialName() {
+        return "Stripped Acacia";
     }
 
     @Override

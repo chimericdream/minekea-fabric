@@ -16,11 +16,22 @@ import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.Block;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class BuildingBlocks implements MinekeaBlockCategory {
     public static final BasaltBricksBlock BASALT_BRICKS_BLOCK;
@@ -106,22 +117,14 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     }
 
     @Environment(EnvType.CLIENT)
-    @Override
     public void initializeClient() {
-        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-            group.initializeClient();
-        }
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::initializeClient);
     }
 
     @Override
     public void registerBlocks() {
-        for (MinekeaBlock block : BLOCKS) {
-            block.register();
-        }
-
-        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-            group.registerBlocks();
-        }
+        BLOCKS.forEach(MinekeaBlock::register);
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::registerBlocks);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
             .register((itemGroup) -> {
@@ -137,15 +140,53 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerBlockEntities() {
-        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-            group.registerBlockEntities();
-        }
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::registerBlockEntities);
     }
 
     @Override
     public void registerEntities() {
-        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-            group.registerEntities();
-        }
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::registerEntities);
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
+        BLOCK_GROUPS.forEach(group -> group.configureBlockTags(registryLookup, getBuilder));
+    }
+
+    @Override
+    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+        BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
+        BLOCK_GROUPS.forEach(group -> group.configureItemTags(registryLookup, getBuilder));
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        BLOCKS.forEach(block -> block.configureRecipes(exporter));
+        BLOCK_GROUPS.forEach(group -> group.configureRecipes(exporter));
+    }
+
+    @Override
+    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+        BLOCKS.forEach(block -> block.configureBlockLootTables(generator));
+        BLOCK_GROUPS.forEach(group -> group.configureBlockLootTables(generator));
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
+        BLOCK_GROUPS.forEach(group -> group.configureTranslations(registryLookup, translationBuilder));
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
+        BLOCK_GROUPS.forEach(group -> group.configureBlockStateModels(blockStateModelGenerator));
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
+        BLOCK_GROUPS.forEach(group -> group.configureItemModels(itemModelGenerator));
     }
 }

@@ -3,6 +3,8 @@ package com.chimericdream.minekea.crops;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,9 +12,16 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.PlantBlock;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
@@ -23,6 +32,8 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
+
+import java.util.function.Function;
 
 public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
     public static final MapCodec<WarpedWartPlantBlock> CODEC = createCodec(WarpedWartPlantBlock::new);
@@ -83,5 +94,33 @@ public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
     @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+    }
+
+    @Override
+    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+    }
+
+    @Override
+    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
     }
 }

@@ -2,27 +2,45 @@ package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
+import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.MinekeaTextures;
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
@@ -35,7 +53,17 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
+import java.util.Optional;
+import java.util.function.Function;
+
 abstract public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock, Waterloggable {
+    private static final Model DISPLAY_CASE_MODEL = new Model(
+        Optional.of(Identifier.of("minekea:block/furniture/display_case")),
+        Optional.empty(),
+        MinekeaTextures.MATERIAL,
+        MinekeaTextures.STRIPPED_MATERIAL
+    );
+
     public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 8);
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
@@ -57,6 +85,16 @@ abstract public class GenericDisplayCase extends BlockWithEntity implements Mine
                 .with(WATERLOGGED, false)
         );
     }
+
+    abstract protected Block getPlanksBlock();
+
+    abstract protected Block getLogBlock();
+
+    abstract protected Block getStrippedLogBlock();
+
+    abstract protected Block getLogForRecipe();
+
+    abstract protected String getMaterialName();
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return (BlockState) this.getDefaultState()
@@ -250,5 +288,61 @@ abstract public class GenericDisplayCase extends BlockWithEntity implements Mine
         int rotation = state.get(ROTATION);
 
         return (rotation * 2) + 1;
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(MinecraftBlockTags.MINEABLE_AXE)
+            .setReplace(false)
+            .add(this);
+    }
+
+    @Override
+    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
+            .pattern(" G ")
+            .pattern("X X")
+            .pattern("###")
+            .input('G', Blocks.GLASS)
+            .input('X', getPlanksBlock())
+            .input('#', getLogForRecipe())
+            .criterion(FabricRecipeProvider.hasItem(Blocks.GLASS),
+                FabricRecipeProvider.conditionsFromItem(Blocks.GLASS))
+            .criterion(FabricRecipeProvider.hasItem(getPlanksBlock()),
+                FabricRecipeProvider.conditionsFromItem(getPlanksBlock()))
+            .criterion(FabricRecipeProvider.hasItem(getLogForRecipe()),
+                FabricRecipeProvider.conditionsFromItem(getLogForRecipe()))
+            .offerTo(exporter);
+    }
+
+    @Override
+    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        translationBuilder.add(this, String.format("%s Display Case", getMaterialName()));
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        TextureMap textures = new TextureMap()
+            .put(MinekeaTextures.MATERIAL, TextureMap.getId(getLogForRecipe()))
+            .put(MinekeaTextures.STRIPPED_MATERIAL, TextureMap.getId(getStrippedLogBlock()));
+
+        blockStateModelGenerator.registerSingleton(
+            this,
+            textures,
+            DISPLAY_CASE_MODEL
+        );
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
     }
 }

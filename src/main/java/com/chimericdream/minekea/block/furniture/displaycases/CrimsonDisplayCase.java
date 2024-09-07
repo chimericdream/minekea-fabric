@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -14,6 +15,31 @@ public class CrimsonDisplayCase extends GenericDisplayCase {
 
     public CrimsonDisplayCase() {
         super(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS));
+    }
+
+    @Override
+    protected Block getPlanksBlock() {
+        return Blocks.CRIMSON_PLANKS;
+    }
+
+    @Override
+    protected Block getLogBlock() {
+        return Blocks.CRIMSON_STEM;
+    }
+
+    @Override
+    protected Block getStrippedLogBlock() {
+        return Blocks.STRIPPED_CRIMSON_STEM;
+    }
+
+    @Override
+    protected Block getLogForRecipe() {
+        return Blocks.CRIMSON_STEM;
+    }
+
+    @Override
+    protected String getMaterialName() {
+        return "Crimson";
     }
 
     @Override

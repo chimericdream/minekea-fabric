@@ -5,9 +5,20 @@ import com.chimericdream.minekea.block.furniture.pillows.Pillows;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Block;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class FurnitureBlocks implements MinekeaBlockCategory {
     //    public static Bookshelves BOOKSHELVES;
@@ -74,29 +85,56 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
-        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-            group.initializeClient();
-        }
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::initializeClient);
     }
 
     @Override
     public void registerBlocks() {
-        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-            group.registerBlocks();
-        }
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::registerBlocks);
     }
 
     @Override
     public void registerBlockEntities() {
-        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-            group.registerBlockEntities();
-        }
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::registerBlockEntities);
     }
 
     @Override
     public void registerEntities() {
-        for (MinekeaBlockCategory group : BLOCK_GROUPS) {
-            group.registerEntities();
-        }
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::registerEntities);
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        BLOCK_GROUPS.forEach(group -> group.configureBlockTags(registryLookup, getBuilder));
+    }
+
+    @Override
+    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+        BLOCK_GROUPS.forEach(group -> group.configureItemTags(registryLookup, getBuilder));
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        BLOCK_GROUPS.forEach(group -> group.configureRecipes(exporter));
+    }
+
+    @Override
+    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+        BLOCK_GROUPS.forEach(group -> group.configureBlockLootTables(generator));
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        BLOCK_GROUPS.forEach(group -> group.configureTranslations(registryLookup, translationBuilder));
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        BLOCK_GROUPS.forEach(group -> group.configureBlockStateModels(blockStateModelGenerator));
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        BLOCK_GROUPS.forEach(group -> group.configureItemModels(itemModelGenerator));
     }
 }

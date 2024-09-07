@@ -2,17 +2,31 @@ package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.client.render.block.DisplayCaseBlockEntityRenderer;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
+
+import java.util.List;
+import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.ItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
@@ -39,6 +53,9 @@ public class DisplayCases implements MinekeaBlockCategory {
     public static final GenericDisplayCase STRIPPED_SPRUCE_DISPLAY_CASE;
     public static final GenericDisplayCase STRIPPED_WARPED_DISPLAY_CASE;
 
+    public static final List<GenericDisplayCase> DISPLAY_CASES;
+    public static final List<GenericDisplayCase> STRIPPED_DISPLAY_CASES;
+
     public static BlockEntityType<DisplayCaseBlockEntity> DISPLAY_CASE_BLOCK_ENTITY;
 
     static {
@@ -53,6 +70,19 @@ public class DisplayCases implements MinekeaBlockCategory {
         SPRUCE_DISPLAY_CASE = new SpruceDisplayCase();
         WARPED_DISPLAY_CASE = new WarpedDisplayCase();
 
+        DISPLAY_CASES = List.of(
+            ACACIA_DISPLAY_CASE,
+            BIRCH_DISPLAY_CASE,
+            CHERRY_DISPLAY_CASE,
+            CRIMSON_DISPLAY_CASE,
+            DARK_OAK_DISPLAY_CASE,
+            JUNGLE_DISPLAY_CASE,
+            MANGROVE_DISPLAY_CASE,
+            OAK_DISPLAY_CASE,
+            SPRUCE_DISPLAY_CASE,
+            WARPED_DISPLAY_CASE
+        );
+
         STRIPPED_ACACIA_DISPLAY_CASE = new StrippedAcaciaDisplayCase();
         STRIPPED_BIRCH_DISPLAY_CASE = new StrippedBirchDisplayCase();
         STRIPPED_CHERRY_DISPLAY_CASE = new StrippedCherryDisplayCase();
@@ -63,23 +93,8 @@ public class DisplayCases implements MinekeaBlockCategory {
         STRIPPED_OAK_DISPLAY_CASE = new StrippedOakDisplayCase();
         STRIPPED_SPRUCE_DISPLAY_CASE = new StrippedSpruceDisplayCase();
         STRIPPED_WARPED_DISPLAY_CASE = new StrippedWarpedDisplayCase();
-    }
 
-    @Environment(EnvType.CLIENT)
-    @Override
-    public void initializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(
-            RenderLayer.getCutout(),
-            ACACIA_DISPLAY_CASE,
-            BIRCH_DISPLAY_CASE,
-            CHERRY_DISPLAY_CASE,
-            CRIMSON_DISPLAY_CASE,
-            DARK_OAK_DISPLAY_CASE,
-            JUNGLE_DISPLAY_CASE,
-            MANGROVE_DISPLAY_CASE,
-            OAK_DISPLAY_CASE,
-            SPRUCE_DISPLAY_CASE,
-            WARPED_DISPLAY_CASE,
+        STRIPPED_DISPLAY_CASES = List.of(
             STRIPPED_ACACIA_DISPLAY_CASE,
             STRIPPED_BIRCH_DISPLAY_CASE,
             STRIPPED_CHERRY_DISPLAY_CASE,
@@ -91,54 +106,25 @@ public class DisplayCases implements MinekeaBlockCategory {
             STRIPPED_SPRUCE_DISPLAY_CASE,
             STRIPPED_WARPED_DISPLAY_CASE
         );
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void initializeClient() {
+        DISPLAY_CASES.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
+        STRIPPED_DISPLAY_CASES.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
 
         BlockEntityRendererRegistry.register(DISPLAY_CASE_BLOCK_ENTITY, DisplayCaseBlockEntityRenderer::new);
     }
 
     @Override
     public void registerBlocks() {
-        ACACIA_DISPLAY_CASE.register();
-        BIRCH_DISPLAY_CASE.register();
-        CHERRY_DISPLAY_CASE.register();
-        CRIMSON_DISPLAY_CASE.register();
-        DARK_OAK_DISPLAY_CASE.register();
-        JUNGLE_DISPLAY_CASE.register();
-        MANGROVE_DISPLAY_CASE.register();
-        OAK_DISPLAY_CASE.register();
-        SPRUCE_DISPLAY_CASE.register();
-        WARPED_DISPLAY_CASE.register();
-        STRIPPED_ACACIA_DISPLAY_CASE.register();
-        STRIPPED_BIRCH_DISPLAY_CASE.register();
-        STRIPPED_CHERRY_DISPLAY_CASE.register();
-        STRIPPED_CRIMSON_DISPLAY_CASE.register();
-        STRIPPED_DARK_OAK_DISPLAY_CASE.register();
-        STRIPPED_JUNGLE_DISPLAY_CASE.register();
-        STRIPPED_MANGROVE_DISPLAY_CASE.register();
-        STRIPPED_OAK_DISPLAY_CASE.register();
-        STRIPPED_SPRUCE_DISPLAY_CASE.register();
-        STRIPPED_WARPED_DISPLAY_CASE.register();
+        DISPLAY_CASES.forEach(MinekeaBlock::register);
+        STRIPPED_DISPLAY_CASES.forEach(MinekeaBlock::register);
 
         ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> {
-            itemGroup.add(ACACIA_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_ACACIA_DISPLAY_CASE);
-            itemGroup.add(BIRCH_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_BIRCH_DISPLAY_CASE);
-            itemGroup.add(CHERRY_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_CHERRY_DISPLAY_CASE);
-            itemGroup.add(CRIMSON_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_CRIMSON_DISPLAY_CASE);
-            itemGroup.add(DARK_OAK_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_DARK_OAK_DISPLAY_CASE);
-            itemGroup.add(JUNGLE_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_JUNGLE_DISPLAY_CASE);
-            itemGroup.add(MANGROVE_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_MANGROVE_DISPLAY_CASE);
-            itemGroup.add(OAK_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_OAK_DISPLAY_CASE);
-            itemGroup.add(SPRUCE_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_SPRUCE_DISPLAY_CASE);
-            itemGroup.add(WARPED_DISPLAY_CASE);
-            itemGroup.add(STRIPPED_WARPED_DISPLAY_CASE);
+            DISPLAY_CASES.forEach(itemGroup::add);
+            STRIPPED_DISPLAY_CASES.forEach(itemGroup::add);
         });
     }
 
@@ -171,5 +157,47 @@ public class DisplayCases implements MinekeaBlockCategory {
                 STRIPPED_WARPED_DISPLAY_CASE
             ).build(null)
         );
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockTags(registryLookup, getBuilder));
+        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockTags(registryLookup, getBuilder));
+    }
+
+    @Override
+    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+        DISPLAY_CASES.forEach(displayCase -> displayCase.configureItemTags(registryLookup, getBuilder));
+        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureItemTags(registryLookup, getBuilder));
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        DISPLAY_CASES.forEach(displayCase -> displayCase.configureRecipes(exporter));
+        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureRecipes(exporter));
+    }
+
+    @Override
+    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+        DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockLootTables(generator));
+        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockLootTables(generator));
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        DISPLAY_CASES.forEach(displayCase -> displayCase.configureTranslations(registryLookup, translationBuilder));
+        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureTranslations(registryLookup, translationBuilder));
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockStateModels(blockStateModelGenerator));
+        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockStateModels(blockStateModelGenerator));
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        DISPLAY_CASES.forEach(displayCase -> displayCase.configureItemModels(itemModelGenerator));
+        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureItemModels(itemModelGenerator));
     }
 }

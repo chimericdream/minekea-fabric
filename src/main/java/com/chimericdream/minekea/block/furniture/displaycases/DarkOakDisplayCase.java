@@ -4,6 +4,7 @@ import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -16,6 +17,31 @@ public class DarkOakDisplayCase extends GenericDisplayCase {
 
     public DarkOakDisplayCase() {
         super(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS));
+    }
+
+    @Override
+    protected Block getPlanksBlock() {
+        return Blocks.DARK_OAK_PLANKS;
+    }
+
+    @Override
+    protected Block getLogBlock() {
+        return Blocks.DARK_OAK_LOG;
+    }
+
+    @Override
+    protected Block getStrippedLogBlock() {
+        return Blocks.STRIPPED_DARK_OAK_LOG;
+    }
+
+    @Override
+    protected Block getLogForRecipe() {
+        return Blocks.DARK_OAK_LOG;
+    }
+
+    @Override
+    protected String getMaterialName() {
+        return "Dark Oak";
     }
 
     @Override
