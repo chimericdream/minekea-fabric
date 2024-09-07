@@ -1,6 +1,8 @@
 package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -11,7 +13,7 @@ public class StrippedCrimsonDisplayCase extends GenericDisplayCase {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "furniture/display_cases/stripped/crimson");
 
     public StrippedCrimsonDisplayCase() {
-        super();
+        super(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS));
     }
 
     @Override

@@ -48,10 +48,6 @@ abstract public class GenericDisplayCase extends BlockWithEntity implements Mine
         BASEBOARD_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 2.0, 15.0);
     }
 
-    public GenericDisplayCase() {
-        this(new Settings());
-    }
-
     public GenericDisplayCase(Settings settings) {
         super(settings);
 
@@ -172,6 +168,19 @@ abstract public class GenericDisplayCase extends BlockWithEntity implements Mine
                 entity.markDirty();
                 entity.playAddItemSound();
             }
+        } else if (player.isSneaking()) {
+            // If the player is sneaking, get what's in the case
+            ItemScatterer.spawn(
+                world,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                entity.removeStack(0)
+            );
+
+            world.setBlockState(pos, state.with(ROTATION, 0));
+            entity.markDirty();
+            entity.playRemoveItemSound();
         } else {
             // If the player isn't sneaking, or if they have an item in their hand, rotate the item in the case
             int rotation = state.get(ROTATION);
@@ -245,81 +254,5 @@ abstract public class GenericDisplayCase extends BlockWithEntity implements Mine
 
     @Override
     public void setupResources() {
-//        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
-//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
-//        MinekeaTags.DISPLAY_CASES.add(getBlockID(), settings.isWooden());
-//        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
-//
-//        boolean isStripped = ((DisplayCaseSettings) settings).isStripped;
-//
-//        Identifier planks = settings.getMaterial("planks");
-//        Identifier log = settings.getMaterial("log");
-//        Identifier stripped_log = settings.getMaterial("stripped_log");
-//
-//        Identifier logTexture = settings.getBlockTexture("log");
-//        Identifier strippedLogTexture = settings.getBlockTexture("stripped_log");
-//
-//        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-//            getBlockID(),
-//            JRecipe.shaped(
-//                JPattern.pattern(" G ", "X X", "###"),
-//                JKeys.keys()
-//                    .key("G", JIngredient.ingredient().item("minecraft:glass"))
-//                    .key("#", JIngredient.ingredient().item(planks.toString()))
-//                    .key("X", JIngredient.ingredient().item(isStripped ? stripped_log.toString() : log.toString())),
-//                JResult.stackedResult(getBlockID().toString(), 2)
-//            )
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
-//
-//        JTextures textures = new JTextures()
-//            .var("stripped_material", strippedLogTexture.toString())
-//            .var("material", isStripped ? strippedLogTexture.toString() : logTexture.toString())
-//            .var("particle", strippedLogTexture.toString());
-//
-//        JModel model = JModel.model("minekea:block/furniture/display_case").textures(textures);
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(model, MODEL_ID);
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(JState.variant(new JBlockModel(MODEL_ID))),
-//            getBlockID()
-//        );
     }
-
-//    public static class DisplayCaseSettings extends MinekeaBlockSettings<DisplayCaseSettings> {
-//        protected boolean isStripped = false;
-//
-//        public DisplayCaseSettings(DefaultSettings settings) {
-//            super((DefaultSettings) settings.nonOpaque());
-//        }
-//
-//        public String getNamePattern() {
-//            if (isStripped) {
-//                return Objects.requireNonNullElse(namePatternOverride, "Stripped %s Display Case");
-//            }
-//
-//            return Objects.requireNonNullElse(namePatternOverride, "%s Display Case");
-//        }
-//
-//        public boolean isStripped() {
-//            return this.isStripped;
-//        }
-//
-//        public DisplayCaseSettings stripped() {
-//            this.isStripped = true;
-//            return this;
-//        }
-//
-//        public DisplayCaseSettings unstripped() {
-//            this.isStripped = false;
-//            return this;
-//        }
-//    }
 }

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:furniture/pillows/light_blue"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:light_blue_wool"
+  }
+}

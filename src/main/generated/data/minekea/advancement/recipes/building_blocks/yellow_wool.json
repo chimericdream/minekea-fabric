@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_furniture/pillows/yellow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:furniture/pillows/yellow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:yellow_wool"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_furniture/pillows/yellow"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:yellow_wool"
+    ]
+  }
+}

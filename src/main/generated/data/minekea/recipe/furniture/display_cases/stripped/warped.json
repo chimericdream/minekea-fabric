@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:stripped_warped_stem"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "X": {
+      "item": "minecraft:warped_planks"
+    }
+  },
+  "pattern": [
+    " G ",
+    "X X",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minekea:furniture/display_cases/stripped/warped"
+  }
+}

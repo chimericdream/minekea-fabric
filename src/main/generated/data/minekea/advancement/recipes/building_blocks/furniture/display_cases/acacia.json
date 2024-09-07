@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_acacia_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:acacia_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_acacia_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:acacia_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:glass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:furniture/display_cases/acacia"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glass",
+      "has_acacia_planks",
+      "has_acacia_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:furniture/display_cases/acacia"
+    ]
+  }
+}

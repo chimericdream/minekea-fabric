@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:furniture/pillows/lime"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:lime_wool"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_furniture/pillows/white": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:furniture/pillows/white"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:white_wool"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_furniture/pillows/white"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:white_wool"
+    ]
+  }
+}

@@ -1,8 +1,10 @@
 package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -13,7 +15,7 @@ public class DarkOakDisplayCase extends GenericDisplayCase {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "furniture/display_cases/dark_oak");
 
     public DarkOakDisplayCase() {
-        super();
+        super(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS));
     }
 
     @Override
