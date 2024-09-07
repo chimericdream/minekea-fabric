@@ -4,6 +4,7 @@
     "package": "com.chimericdream.minekea.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+        "ShearsItemMixin"
     ],
     "client": [],
     "injectors": {

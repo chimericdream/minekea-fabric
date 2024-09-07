@@ -25,9 +25,6 @@ public class MinekeaMod implements ModInitializer {
     //    public static final Items ITEMS;
     public static final ItemGroups ITEM_GROUPS;
 
-//    public static final CommonBlockTags COMMON_TAGS;
-//    public static final MinekeaTags TAGS;
-
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
 
@@ -54,19 +51,12 @@ public class MinekeaMod implements ModInitializer {
 
 //        ITEMS = new Items();
         ITEM_GROUPS = new ItemGroups();
-
-//        COMMON_TAGS = new CommonBlockTags();
-//        TAGS = new MinekeaTags();
     }
 
     @Override
     public void onInitialize() {
 //        LOGGER.info("[minekea] Initializing server networking");
 //        ServerNetworking.init();
-
-//        LOGGER.info("[minekea] Registering block and item tags");
-//        COMMON_TAGS.init();
-//        TAGS.init();
 
         LOGGER.info("[minekea] Registering item groups");
         ITEM_GROUPS.register();
