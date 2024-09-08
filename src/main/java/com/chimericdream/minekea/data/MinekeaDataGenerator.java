@@ -71,6 +71,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.BUILDING_BLOCKS.configureRecipes(exporter);
             MinekeaMod.CROPS.configureRecipes(exporter);
             MinekeaMod.FURNITURE_BLOCKS.configureRecipes(exporter);
+            MinekeaMod.FLUIDS.configureRecipes(exporter);
 
             ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, CHISELED_BASALT_BRICKS_BLOCK, 4)
                 .pattern("##")
@@ -160,6 +161,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.BUILDING_BLOCKS.configureBlockTags(arg, this::getOrCreateTagBuilder);
             MinekeaMod.CROPS.configureBlockTags(arg, this::getOrCreateTagBuilder);
             MinekeaMod.FURNITURE_BLOCKS.configureBlockTags(arg, this::getOrCreateTagBuilder);
+            MinekeaMod.FLUIDS.configureBlockTags(arg, this::getOrCreateTagBuilder);
 
             getOrCreateTagBuilder(MinecraftBlockTags.MINEABLE_PICKAXE)
                 .setReplace(false)
@@ -183,6 +185,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.BUILDING_BLOCKS.configureBlockLootTables(this);
             MinekeaMod.CROPS.configureBlockLootTables(this);
             MinekeaMod.FURNITURE_BLOCKS.configureBlockLootTables(this);
+            MinekeaMod.FLUIDS.configureBlockLootTables(this);
 
             RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
 
@@ -237,6 +240,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.BUILDING_BLOCKS.configureTranslations(registryLookup, translationBuilder);
             MinekeaMod.CROPS.configureTranslations(registryLookup, translationBuilder);
             MinekeaMod.FURNITURE_BLOCKS.configureTranslations(registryLookup, translationBuilder);
+            MinekeaMod.FLUIDS.configureTranslations(registryLookup, translationBuilder);
 
             translationBuilder.add(BASALT_BRICKS_BLOCK, "Basalt Bricks");
             translationBuilder.add(CHISELED_BASALT_BRICKS_BLOCK, "Chiseled Basalt Bricks");
@@ -270,6 +274,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.BUILDING_BLOCKS.configureBlockStateModels(blockStateModelGenerator);
             MinekeaMod.CROPS.configureBlockStateModels(blockStateModelGenerator);
             MinekeaMod.FURNITURE_BLOCKS.configureBlockStateModels(blockStateModelGenerator);
+            MinekeaMod.FLUIDS.configureBlockStateModels(blockStateModelGenerator);
 
             blockStateModelGenerator.registerSimpleCubeAll(BASALT_BRICKS_BLOCK);
             blockStateModelGenerator.registerSimpleCubeAll(CHISELED_BASALT_BRICKS_BLOCK);

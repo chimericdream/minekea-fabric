@@ -1,8 +1,6 @@
 package com.chimericdream.minekea;
 
-//import com.chimericdream.minekea.client.FluidClientHandlers;
-//import com.chimericdream.minekea.client.Keybindings;
-
+import com.chimericdream.minekea.client.FluidClientHandlers;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -22,9 +20,9 @@ public class MinekeaClient implements ClientModInitializer {
 //        Keybindings.initialize();
 //
 //        ITEMS.initializeClient();
-//
-//        FluidClientHandlers.setupHandlers();
-//
+
+        FluidClientHandlers.setupHandlers();
+
         for (MinekeaBlockCategory category : BLOCK_CATEGORIES) {
             category.initializeClient();
         }
