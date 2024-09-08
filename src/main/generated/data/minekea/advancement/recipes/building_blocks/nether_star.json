@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_storage/compressed/nether_star": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:storage/compressed/nether_star"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:nether_star"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_storage/compressed/nether_star"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:nether_star"
+    ]
+  }
+}

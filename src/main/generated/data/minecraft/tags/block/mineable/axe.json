@@ -1,5 +1,9 @@
 {
   "values": [
+    "minekea:storage/compressed/blaze_rod",
+    "minekea:storage/compressed/chorus_fruit",
+    "minekea:storage/compressed/stick",
+    "minekea:storage/compressed/sugar_cane",
     "minekea:furniture/display_cases/acacia",
     "minekea:furniture/display_cases/birch",
     "minekea:furniture/display_cases/cherry",

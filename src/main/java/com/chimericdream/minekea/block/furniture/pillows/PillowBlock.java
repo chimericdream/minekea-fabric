@@ -74,6 +74,10 @@ public class PillowBlock extends Block implements MinekeaBlock {
         getBuilder.apply(MinekeaTags.PILLOWS)
             .setReplace(false)
             .add(this);
+
+        getBuilder.apply(MinekeaTags.MINEABLE_SHEARS)
+            .setReplace(false)
+            .add(this);
     }
 
     @Override

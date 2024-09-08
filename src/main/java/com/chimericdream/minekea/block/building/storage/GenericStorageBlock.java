@@ -1,15 +1,23 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.Models;
+import net.minecraft.data.client.MultipartBlockStateSupplier;
 import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.client.VariantSettings;
+import net.minecraft.data.client.When;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -59,6 +67,11 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
         TextureKey.SIDE,
         TextureKey.TOP
     );
+    protected static final Model BAGGED_BLOCK_MODEL = new Model(
+        Optional.of(Identifier.of("minekea:block/storage/bagged_block")),
+        Optional.empty(),
+        MinekeaTextures.CONTENTS
+    );
 
     public static final EnumProperty<Direction.Axis> AXIS;
     public static final DirectionProperty FACING;
@@ -81,6 +94,9 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
     public GenericStorageBlock(AbstractBlock.Settings settings, Item baseItem, String baseItemName, boolean isBaggedItem) {
         super(settings);
 
+        MinekeaMod.LOGGER.info(String.format("Checking item %s", baseItemName));
+        MinekeaMod.LOGGER.info(String.format("Items.(ITEM): %s", baseItem));
+
         setDefaultState(
             getStateManager()
                 .getDefaultState()
@@ -88,8 +104,8 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
                 .with(IS_BAGGED, false)
         );
 
-        BASE_ITEM = baseItem;
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("storage/compressed/%s", baseItemName));
+        this.BASE_ITEM = baseItem;
+        this.BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("storage/compressed/%s", baseItemName));
         this.isBaggedItem = isBaggedItem;
     }
 
@@ -141,11 +157,6 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
             if (world.isClient()) {
                 world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_BUNDLE_INSERT, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } else {
-                if (!player.isCreative()) {
-                    stack.decrement(1);
-                    player.setStackInHand(hand, stack);
-                }
-
                 world.setBlockState(pos, state.with(IS_BAGGED, true));
                 world.markDirty(pos);
             }
@@ -183,6 +194,31 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
     @Override
     public void configureBlockLootTables(BlockLootTableGenerator generator) {
         generator.addDrop(this);
+    }
+
+
+    public void configureBaggedBlockModels(BlockStateModelGenerator blockStateModelGenerator) {
+        TextureMap textures = new TextureMap()
+            .put(MinekeaTextures.CONTENTS, Identifier.of(ModInfo.MOD_ID, String.format("block/%s", BLOCK_ID.getPath())))
+            .put(TextureKey.ALL, Identifier.of(ModInfo.MOD_ID, String.format("block/%s", BLOCK_ID.getPath())));
+
+        Identifier baggedModelId = blockStateModelGenerator.createSubModel(this, "_bagged", BAGGED_BLOCK_MODEL, unused -> textures);
+        Identifier baseModelId = blockStateModelGenerator.createSubModel(this, "", Models.CUBE_ALL, unused -> textures);
+
+        blockStateModelGenerator.blockStateCollector
+            .accept(
+                MultipartBlockStateSupplier.create(this)
+                    .with(
+                        When.create().set(IS_BAGGED, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, baggedModelId)
+                    )
+                    .with(
+                        When.create().set(IS_BAGGED, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, baseModelId)
+                    )
+            );
     }
 
 //    @Override

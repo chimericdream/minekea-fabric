@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_storage/compressed/sugar_cane": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:storage/compressed/sugar_cane"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:sugar_cane"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_storage/compressed/sugar_cane"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:sugar_cane"
+    ]
+  }
+}

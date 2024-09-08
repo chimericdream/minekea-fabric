@@ -1,6 +1,8 @@
 {
   "values": [
     "minekea:building/general/basalt_bricks",
+    "minekea:storage/compressed/flint",
+    "minekea:storage/compressed/nether_star",
     "minekea:building/general/chiseled_basalt_bricks",
     "minekea:building/general/cobbled_end_stone",
     "minekea:building/general/cracked_basalt_bricks",

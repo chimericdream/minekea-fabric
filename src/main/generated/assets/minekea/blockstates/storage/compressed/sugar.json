@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/storage/compressed/sugar_bagged"
+      },
+      "when": {
+        "is_bagged": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/storage/compressed/sugar"
+      },
+      "when": {
+        "is_bagged": "false"
+      }
+    }
+  ]
+}

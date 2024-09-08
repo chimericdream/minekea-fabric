@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_storage/compressed/phantom_membrane": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:storage/compressed/phantom_membrane"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:phantom_membrane"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_storage/compressed/phantom_membrane"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:phantom_membrane"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/storage/compressed/potato_bagged"
+      },
+      "when": {
+        "is_bagged": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/storage/compressed/potato"
+      },
+      "when": {
+        "is_bagged": "false"
+      }
+    }
+  ]
+}

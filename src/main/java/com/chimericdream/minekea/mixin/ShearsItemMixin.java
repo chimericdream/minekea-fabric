@@ -18,11 +18,11 @@ public class ShearsItemMixin {
         at = @At(value = "RETURN"),
         cancellable = true
     )
-    private static void addPillowsToRuleList(CallbackInfoReturnable<ToolComponent> cir) {
+    private static void addBlocksToRuleList(CallbackInfoReturnable<ToolComponent> cir) {
         ToolComponent original = cir.getReturnValue();
 
         List<ToolComponent.Rule> rules = new ArrayList<>(original.rules());
-        rules.add(ToolComponent.Rule.of(MinekeaTags.PILLOWS, 5.0F));
+        rules.add(ToolComponent.Rule.of(MinekeaTags.MINEABLE_SHEARS, 5.0F));
 
         cir.setReturnValue(new ToolComponent(rules, original.defaultMiningSpeed(), original.damagePerBlock()));
     }

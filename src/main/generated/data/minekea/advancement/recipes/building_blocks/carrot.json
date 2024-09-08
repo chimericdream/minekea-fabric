@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_storage/compressed/carrot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:storage/compressed/carrot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:carrot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_storage/compressed/carrot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:carrot"
+    ]
+  }
+}
