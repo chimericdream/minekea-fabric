@@ -1,0 +1,8 @@
+{
+  "parent": "minekea:block/storage/compressed_column",
+  "textures": {
+    "bottom": "minekea:block/storage/compressed/totem_of_undying_end",
+    "side": "minekea:block/storage/compressed/totem_of_undying_side",
+    "top": "minekea:block/storage/compressed/totem_of_undying_end"
+  }
+}

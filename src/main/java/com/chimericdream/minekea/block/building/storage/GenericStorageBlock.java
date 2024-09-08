@@ -184,11 +184,15 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
                 FabricRecipeProvider.conditionsFromItem(BASE_ITEM))
             .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BASE_ITEM, 9)
-            .input(this)
-            .criterion(FabricRecipeProvider.hasItem(this),
-                FabricRecipeProvider.conditionsFromItem(this))
-            .offerTo(exporter);
+        // This means that things like totems won't be uncraftable; modpacks which have some method to override
+        // the max stack size can re-add these recipes in a datapack
+        if (BASE_ITEM.getMaxCount() >= 9) {
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BASE_ITEM, 9)
+                .input(this)
+                .criterion(FabricRecipeProvider.hasItem(this),
+                    FabricRecipeProvider.conditionsFromItem(this))
+                .offerTo(exporter);
+        }
     }
 
     @Override
@@ -196,12 +200,15 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
         generator.addDrop(this);
     }
 
-
     public void configureBaggedBlockModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.CONTENTS, Identifier.of(ModInfo.MOD_ID, String.format("block/%s", BLOCK_ID.getPath())))
             .put(TextureKey.ALL, Identifier.of(ModInfo.MOD_ID, String.format("block/%s", BLOCK_ID.getPath())));
 
+        this.configureBaggedBlockModels(blockStateModelGenerator, textures);
+    }
+
+    public void configureBaggedBlockModels(BlockStateModelGenerator blockStateModelGenerator, TextureMap textures) {
         Identifier baggedModelId = blockStateModelGenerator.createSubModel(this, "_bagged", BAGGED_BLOCK_MODEL, unused -> textures);
         Identifier baseModelId = blockStateModelGenerator.createSubModel(this, "", Models.CUBE_ALL, unused -> textures);
 

@@ -1,0 +1,6 @@
+{
+  "parent": "minekea:block/storage/bagged_block",
+  "textures": {
+    "contents": "minekea:block/storage/compressed/currency/gold_nugget_bag"
+  }
+}

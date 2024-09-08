@@ -2,7 +2,10 @@
   "values": [
     "minekea:building/general/basalt_bricks",
     "minekea:storage/compressed/flint",
+    "minekea:storage/compressed/gold_nugget",
+    "minekea:storage/compressed/iron_nugget",
     "minekea:storage/compressed/nether_star",
+    "minekea:storage/compressed/totem_of_undying",
     "minekea:building/general/chiseled_basalt_bricks",
     "minekea:building/general/cobbled_end_stone",
     "minekea:building/general/cracked_basalt_bricks",
