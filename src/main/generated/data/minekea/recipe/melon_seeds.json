@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:storage/compressed/melon_seeds"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:melon_seeds"
+  }
+}

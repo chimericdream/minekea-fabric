@@ -2,9 +2,13 @@
   "values": [
     "minekea:storage/compressed/apple",
     "minekea:storage/compressed/beetroot",
+    "minekea:storage/compressed/beetroot_seeds",
     "minekea:storage/compressed/carrot",
     "minekea:storage/compressed/golden_apple",
+    "minekea:storage/compressed/melon_seeds",
     "minekea:storage/compressed/phantom_membrane",
-    "minekea:storage/compressed/potato"
+    "minekea:storage/compressed/potato",
+    "minekea:storage/compressed/pumpkin_seeds",
+    "minekea:storage/compressed/wheat_seeds"
   ]
 }

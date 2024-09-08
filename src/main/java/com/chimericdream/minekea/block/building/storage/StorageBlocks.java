@@ -44,7 +44,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
 
     public static final GenericStorageBlock APPLE_STORAGE_BLOCK;
     public static final GenericStorageBlock BEETROOT_BLOCK;
-    //    public static final GenericStorageBlock BEETROOT_SEEDS_BLOCK;
+    public static final GenericStorageBlock BEETROOT_SEEDS_BLOCK;
     public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
     public static final GenericStorageBlock BLAZE_ROD_BLOCK;
     public static final GenericStorageBlock CARROT_BLOCK;
@@ -56,18 +56,18 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock GOLDEN_APPLE_BLOCK;
     //    public static final GenericStorageBlock IRON_NUGGET_SACK;
     public static final GenericStorageBlock LEATHER_BLOCK;
-    //    public static final GenericStorageBlock MELON_SEEDS_BLOCK;
+    public static final GenericStorageBlock MELON_SEEDS_BLOCK;
     public static final GenericStorageBlock NETHER_STAR_BLOCK;
     public static final GenericStorageBlock PHANTOM_MEMBRANE_BLOCK;
     public static final GenericStorageBlock POTATO_BLOCK;
-    //    public static final GenericStorageBlock PUMPKIN_SEEDS_BLOCK;
+    public static final GenericStorageBlock PUMPKIN_SEEDS_BLOCK;
     //    public static final SetOfEggsBlock SET_OF_EGGS_BLOCK;
     public static final GenericStorageBlock STICK_BLOCK;
     public static final GenericStorageBlock SUGAR_BLOCK;
     public static final GenericStorageBlock SUGAR_CANE_BLOCK;
-//    public static final GenericStorageBlock TOTEM_BLOCK;
+    //    public static final GenericStorageBlock TOTEM_BLOCK;
 //    public static final GenericStorageBlock WALLPAPER_BLOCK;
-//    public static final GenericStorageBlock WHEAT_SEEDS_BLOCK;
+    public static final GenericStorageBlock WHEAT_SEEDS_BLOCK;
 
     public static final List<GenericStorageBlock> STORAGE_BLOCKS;
     public static final List<GenericStorageBlock> BAGGED_BLOCKS;
@@ -111,7 +111,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
 
         APPLE_STORAGE_BLOCK = new AppleStorageBlock();
         BEETROOT_BLOCK = new BeetrootStorageBlock();
-//        BEETROOT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.BEETROOT_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
+        BEETROOT_SEEDS_BLOCK = new BeetrootSeedsStorageBlock();
         BLAZE_POWDER_BLOCK = new BlazePowderStorageBlock();
         BLAZE_ROD_BLOCK = new BlazeRodStorageBlock();
         CARROT_BLOCK = new CarrotStorageBlock();
@@ -123,22 +123,23 @@ public class StorageBlocks implements MinekeaBlockCategory {
         GOLDEN_APPLE_BLOCK = new GoldenAppleStorageBlock();
 //        IRON_NUGGET_SACK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.IRON_BLOCK).material("iron").ingredientName("Iron Nugget").namePattern("%s Sack").bagged().addMaterial("ingredient", "minekea:currency/iron_nugget_bag").sounds(BlockSoundGroup.METAL));
         LEATHER_BLOCK = new LeatherStorageBlock();
-//        MELON_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.MELON_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
+        MELON_SEEDS_BLOCK = new MelonSeedsStorageBlock();
         NETHER_STAR_BLOCK = new NetherStarStorageBlock();
         PHANTOM_MEMBRANE_BLOCK = new PhantomMembraneStorageBlock();
         POTATO_BLOCK = new PotatoStorageBlock();
-//        PUMPKIN_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PUMPKIN_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
+        PUMPKIN_SEEDS_BLOCK = new PumpkinSeedsStorageBlock();
 //        SET_OF_EGGS_BLOCK = new SetOfEggsBlock();
         STICK_BLOCK = new StickStorageBlock();
         SUGAR_BLOCK = new SugarStorageBlock();
         SUGAR_CANE_BLOCK = new SugarCaneStorageBlock();
 //        TOTEM_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.TOTEM).sounds(BlockSoundGroup.METAL));
 //        WALLPAPER_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.PAPER).tool(Tool.SHEARS).namePattern("Wallpaper").sounds(BlockSoundGroup.LADDER));
-//        WHEAT_SEEDS_BLOCK = new GenericStorageBlock((StorageBlockSettings) new StorageBlockSettings(BaseBlockSettings.WHEAT_SEEDS).tool(Tool.HOE).bagged().sounds(BlockSoundGroup.CROP));
+        WHEAT_SEEDS_BLOCK = new WheatSeedsStorageBlock();
 
         STORAGE_BLOCKS = List.of(
             APPLE_STORAGE_BLOCK,
             BEETROOT_BLOCK,
+            BEETROOT_SEEDS_BLOCK,
             BLAZE_POWDER_BLOCK,
             BLAZE_ROD_BLOCK,
             CARROT_BLOCK,
@@ -148,21 +149,28 @@ public class StorageBlocks implements MinekeaBlockCategory {
             FLINT_BLOCK,
             GOLDEN_APPLE_BLOCK,
             LEATHER_BLOCK,
+            MELON_SEEDS_BLOCK,
             NETHER_STAR_BLOCK,
             PHANTOM_MEMBRANE_BLOCK,
             POTATO_BLOCK,
+            PUMPKIN_SEEDS_BLOCK,
             STICK_BLOCK,
             SUGAR_BLOCK,
-            SUGAR_CANE_BLOCK
+            SUGAR_CANE_BLOCK,
+            WHEAT_SEEDS_BLOCK
         );
 
         BAGGED_BLOCKS = List.of(
             BEETROOT_BLOCK,
+            BEETROOT_SEEDS_BLOCK,
             CARROT_BLOCK,
             CHORUS_FRUIT_BLOCK,
+            MELON_SEEDS_BLOCK,
             PHANTOM_MEMBRANE_BLOCK,
             POTATO_BLOCK,
-            SUGAR_BLOCK
+            PUMPKIN_SEEDS_BLOCK,
+            SUGAR_BLOCK,
+            WHEAT_SEEDS_BLOCK
         );
     }
 
