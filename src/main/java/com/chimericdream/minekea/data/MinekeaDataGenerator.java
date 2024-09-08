@@ -58,6 +58,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MinekeaEnglishLangProvider::new);
         pack.addProvider(MinekeaBlockLootTables::new);
         pack.addProvider(MinekeaBlockTagGenerator::new);
+        pack.addProvider(MinekeaItemTagGenerator::new);
         pack.addProvider(MinekeaRecipeGenerator::new);
     }
 
@@ -72,6 +73,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.CROPS.configureRecipes(exporter);
             MinekeaMod.FURNITURE_BLOCKS.configureRecipes(exporter);
             MinekeaMod.FLUIDS.configureRecipes(exporter);
+            MinekeaMod.CONTAINER_BLOCKS.configureRecipes(exporter);
 
             ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, CHISELED_BASALT_BRICKS_BLOCK, 4)
                 .pattern("##")
@@ -162,6 +164,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.CROPS.configureBlockTags(arg, this::getOrCreateTagBuilder);
             MinekeaMod.FURNITURE_BLOCKS.configureBlockTags(arg, this::getOrCreateTagBuilder);
             MinekeaMod.FLUIDS.configureBlockTags(arg, this::getOrCreateTagBuilder);
+            MinekeaMod.CONTAINER_BLOCKS.configureBlockTags(arg, this::getOrCreateTagBuilder);
 
             getOrCreateTagBuilder(MinecraftBlockTags.MINEABLE_PICKAXE)
                 .setReplace(false)
@@ -172,6 +175,21 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
                 .add(MOSSY_BASALT_BRICKS_BLOCK)
                 .add(WARPED_BASALT_BRICKS_BLOCK)
                 .add(WARPED_NETHER_BRICKS_BLOCK);
+        }
+    }
+
+    private static class MinekeaItemTagGenerator extends FabricTagProvider.ItemTagProvider {
+        public MinekeaItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
+            super(output, completableFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup arg) {
+            MinekeaMod.BUILDING_BLOCKS.configureItemTags(arg, this::getOrCreateTagBuilder);
+            MinekeaMod.CROPS.configureItemTags(arg, this::getOrCreateTagBuilder);
+            MinekeaMod.FURNITURE_BLOCKS.configureItemTags(arg, this::getOrCreateTagBuilder);
+            MinekeaMod.FLUIDS.configureItemTags(arg, this::getOrCreateTagBuilder);
+            MinekeaMod.CONTAINER_BLOCKS.configureItemTags(arg, this::getOrCreateTagBuilder);
         }
     }
 
@@ -186,6 +204,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.CROPS.configureBlockLootTables(this);
             MinekeaMod.FURNITURE_BLOCKS.configureBlockLootTables(this);
             MinekeaMod.FLUIDS.configureBlockLootTables(this);
+            MinekeaMod.CONTAINER_BLOCKS.configureBlockLootTables(this);
 
             RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
 
@@ -241,6 +260,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.CROPS.configureTranslations(registryLookup, translationBuilder);
             MinekeaMod.FURNITURE_BLOCKS.configureTranslations(registryLookup, translationBuilder);
             MinekeaMod.FLUIDS.configureTranslations(registryLookup, translationBuilder);
+            MinekeaMod.CONTAINER_BLOCKS.configureTranslations(registryLookup, translationBuilder);
 
             translationBuilder.add(BASALT_BRICKS_BLOCK, "Basalt Bricks");
             translationBuilder.add(CHISELED_BASALT_BRICKS_BLOCK, "Chiseled Basalt Bricks");
@@ -275,6 +295,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             MinekeaMod.CROPS.configureBlockStateModels(blockStateModelGenerator);
             MinekeaMod.FURNITURE_BLOCKS.configureBlockStateModels(blockStateModelGenerator);
             MinekeaMod.FLUIDS.configureBlockStateModels(blockStateModelGenerator);
+            MinekeaMod.CONTAINER_BLOCKS.configureBlockStateModels(blockStateModelGenerator);
 
             blockStateModelGenerator.registerSimpleCubeAll(BASALT_BRICKS_BLOCK);
             blockStateModelGenerator.registerSimpleCubeAll(CHISELED_BASALT_BRICKS_BLOCK);

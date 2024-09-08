@@ -1,6 +1,7 @@
 package com.chimericdream.minekea;
 
 import com.chimericdream.minekea.block.building.BuildingBlocks;
+import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
@@ -14,7 +15,7 @@ public class MinekeaMod implements ModInitializer {
     public static final Logger LOGGER;
 
     public static final BuildingBlocks BUILDING_BLOCKS;
-    //    public static final ContainerBlocks CONTAINER_BLOCKS;
+    public static final ContainerBlocks CONTAINER_BLOCKS;
     public static final Crops CROPS;
     //    public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Fluids FLUIDS;
@@ -33,7 +34,7 @@ public class MinekeaMod implements ModInitializer {
 //        ConfigManager.registerAutoConfig();
 
         BUILDING_BLOCKS = new BuildingBlocks();
-//        CONTAINER_BLOCKS = new ContainerBlocks();
+        CONTAINER_BLOCKS = new ContainerBlocks();
         CROPS = new Crops();
 //        DECORATION_BLOCKS = new DecorationBlocks();
         FLUIDS = new Fluids();
@@ -42,7 +43,7 @@ public class MinekeaMod implements ModInitializer {
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
             BUILDING_BLOCKS,
-//            CONTAINER_BLOCKS,
+            CONTAINER_BLOCKS,
             CROPS,
 //            DECORATION_BLOCKS,
             FLUIDS,

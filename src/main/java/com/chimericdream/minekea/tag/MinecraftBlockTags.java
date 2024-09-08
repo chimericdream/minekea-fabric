@@ -10,4 +10,6 @@ public class MinecraftBlockTags {
     public static final TagKey<Block> MINEABLE_HOE = TagKey.of(Registries.BLOCK.getKey(), Identifier.of("mineable/hoe"));
     public static final TagKey<Block> MINEABLE_PICKAXE = TagKey.of(Registries.BLOCK.getKey(), Identifier.of("mineable/pickaxe"));
     public static final TagKey<Block> MINEABLE_SHOVEL = TagKey.of(Registries.BLOCK.getKey(), Identifier.of("mineable/shovel"));
+
+    public static final TagKey<Block> PLANKS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of("planks"));
 }

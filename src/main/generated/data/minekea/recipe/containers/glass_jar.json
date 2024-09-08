@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "L": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    " L ",
+    "G G",
+    "GGG"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minekea:containers/glass_jar"
+  }
+}

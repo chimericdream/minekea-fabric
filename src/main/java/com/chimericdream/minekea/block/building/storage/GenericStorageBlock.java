@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.building.storage;
 
-import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
@@ -93,9 +92,6 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
 
     public GenericStorageBlock(AbstractBlock.Settings settings, Item baseItem, String baseItemName, boolean isBaggedItem) {
         super(settings);
-
-        MinekeaMod.LOGGER.info(String.format("Checking item %s", baseItemName));
-        MinekeaMod.LOGGER.info(String.format("Items.(ITEM): %s", baseItem));
 
         setDefaultState(
             getStateManager()
@@ -227,124 +223,4 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
                     )
             );
     }
-
-//    @Override
-//    public void setupResources() {
-//        StorageBlockSettings settings = (StorageBlockSettings) this.settings;
-//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
-//        Map<String, Identifier> materials = settings.getMaterials();
-//
-//        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
-//
-//        Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
-//
-//        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
-//        Identifier HORIZONTAL_MODEL_ID = Identifier.of(MODEL_ID + "_horizontal");
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
-//        Identifier BAGGED_MODEL_ID = Identifier.of(MODEL_ID.getNamespace(), MODEL_ID.getPath() + "_bagged");
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
-//
-//        Identifier blockTexture = Texture.getBlockTextureID(getBlockID());
-//
-//        JTextures textures = new JTextures();
-//
-//        if (settings.isColumn()) {
-//            if (settings.hasSeparateTop) {
-//                textures
-//                    .var("down", Identifier.of(blockTexture + "_bottom").toString())
-//                    .var("up", Identifier.of(blockTexture + "_top").toString());
-//            } else {
-//                textures
-//                    .var("down", Identifier.of(blockTexture + "_end").toString())
-//                    .var("up", Identifier.of(blockTexture + "_end").toString());
-//            }
-//
-//            textures.var("side", Identifier.of(blockTexture + "_side").toString());
-//        } else {
-//            textures.var("all", blockTexture.toString());
-//        }
-//
-//        JTextures baggedTextures = new JTextures().var("contents", blockTexture.toString());
-//
-//        if (settings.isColumn()) {
-//            MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/storage/compressed_column").textures(textures), MODEL_ID);
-//            MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/storage/compressed_column_horizontal").textures(textures), HORIZONTAL_MODEL_ID);
-//        } else {
-//            MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model("minecraft:block/cube_all").textures(textures), MODEL_ID);
-//        }
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(String.format("%s:block/storage/bagged_block", ModInfo.MOD_ID)).textures(baggedTextures), BAGGED_MODEL_ID);
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
-//
-//        if (settings.isColumn()) {
-//            if (settings.hasSeparateTop) {
-//                MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                    JState.state(
-//                        JState.variant()
-//                            .put("facing=north", new JBlockModel(MODEL_ID).x(90))
-//                            .put("facing=east", new JBlockModel(MODEL_ID).x(90).y(90))
-//                            .put("facing=south", new JBlockModel(MODEL_ID).x(270))
-//                            .put("facing=west", new JBlockModel(MODEL_ID).x(90).y(270))
-//                            .put("facing=up", new JBlockModel(MODEL_ID))
-//                            .put("facing=down", new JBlockModel(MODEL_ID).x(180))
-//                    ),
-//                    getBlockID()
-//                );
-//            } else {
-//                MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                    JState.state(
-//                        JState.variant()
-//                            .put("axis=x", new JBlockModel(HORIZONTAL_MODEL_ID).x(90).y(90))
-//                            .put("axis=y", new JBlockModel(MODEL_ID))
-//                            .put("axis=z", new JBlockModel(HORIZONTAL_MODEL_ID).x(90))
-//                    ),
-//                    getBlockID()
-//                );
-//            }
-//        } else {
-//            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                JState.state(
-//                    JState.variant()
-//                        .put("is_placed=false", new JBlockModel(MODEL_ID))
-//                        .put("is_placed=true", new JBlockModel(BAGGED_MODEL_ID))
-//                ),
-//                getBlockID()
-//            );
-//        }
-//    }
-//
-//    public static class StorageBlockSettings extends MinekeaBlockSettings<StorageBlockSettings> {
-//        protected boolean isBaggedItem = false;
-//        protected boolean hasSeparateTop = false;
-//
-//        public StorageBlockSettings(DefaultSettings settings) {
-//            super((DefaultSettings) settings.nonOpaque());
-//        }
-//
-//        public StorageBlockSettings separateTop() {
-//            this.hasSeparateTop = true;
-//            return this;
-//        }
-//
-//        public StorageBlockSettings bagged() {
-//            this.isBaggedItem = true;
-//            return this;
-//        }
-//
-//        public String getNamePattern() {
-//            return Objects.requireNonNullElse(namePatternOverride, "Compressed %s");
-//        }
-//
-//        @Override
-//        public Identifier getBlockId() {
-//            Identifier ingredient = materials.getOrDefault("ingredient", materials.get("main"));
-//
-//            if (blockId == null) {
-//                blockId = Identifier.of(ModInfo.MOD_ID, String.format("storage/compressed/" + ingredient.getPath()));
-//            }
-//
-//            return blockId;
-//        }
-//    }
 }
