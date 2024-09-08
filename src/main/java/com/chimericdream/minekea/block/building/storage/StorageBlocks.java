@@ -60,7 +60,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock PHANTOM_MEMBRANE_BLOCK;
     public static final GenericStorageBlock POTATO_BLOCK;
     public static final GenericStorageBlock PUMPKIN_SEEDS_BLOCK;
-    //    public static final SetOfEggsBlock SET_OF_EGGS_BLOCK;
+    public static final SetOfEggsBlock SET_OF_EGGS_BLOCK;
     public static final GenericStorageBlock STICK_BLOCK;
     public static final GenericStorageBlock SUGAR_BLOCK;
     public static final GenericStorageBlock SUGAR_CANE_BLOCK;
@@ -127,7 +127,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         PHANTOM_MEMBRANE_BLOCK = new PhantomMembraneStorageBlock();
         POTATO_BLOCK = new PotatoStorageBlock();
         PUMPKIN_SEEDS_BLOCK = new PumpkinSeedsStorageBlock();
-//        SET_OF_EGGS_BLOCK = new SetOfEggsBlock();
+        SET_OF_EGGS_BLOCK = new SetOfEggsBlock();
         STICK_BLOCK = new StickStorageBlock();
         SUGAR_BLOCK = new SugarStorageBlock();
         SUGAR_CANE_BLOCK = new SugarCaneStorageBlock();
@@ -185,7 +185,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         DYE_BLOCKS.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent()));
         BAGGED_BLOCKS.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
 
-//        BlockRenderLayerMap.INSTANCE.putBlock(SET_OF_EGGS_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(SET_OF_EGGS_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SUGAR_CANE_BLOCK, RenderLayer.getTranslucent());
     }
 
@@ -193,7 +193,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public void registerBlocks() {
         DYE_BLOCKS.forEach(DyeBlock::register);
         STORAGE_BLOCKS.forEach(GenericStorageBlock::register);
-//        SET_OF_EGGS_BLOCK.register();
+        SET_OF_EGGS_BLOCK.register();
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS)
             .register((itemGroup) -> {
@@ -203,6 +203,8 @@ public class StorageBlocks implements MinekeaBlockCategory {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
             .register((itemGroup) -> {
                 STORAGE_BLOCKS.forEach(itemGroup::add);
+
+                itemGroup.add(SET_OF_EGGS_BLOCK);
             });
     }
 
@@ -218,48 +220,48 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         DYE_BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
         STORAGE_BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
-//        SET_OF_EGGS_BLOCK.configureBlockTags(registryLookup, getBuilder);
+        SET_OF_EGGS_BLOCK.configureBlockTags(registryLookup, getBuilder);
     }
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
         DYE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
         STORAGE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
-//        SET_OF_EGGS_BLOCK.configureItemTags(registryLookup, getBuilder);
+        SET_OF_EGGS_BLOCK.configureItemTags(registryLookup, getBuilder);
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
         DYE_BLOCKS.forEach(block -> block.configureRecipes(exporter));
         STORAGE_BLOCKS.forEach(block -> block.configureRecipes(exporter));
-//        SET_OF_EGGS_BLOCK.configureRecipes(exporter);
+        SET_OF_EGGS_BLOCK.configureRecipes(exporter);
     }
 
     @Override
     public void configureBlockLootTables(BlockLootTableGenerator generator) {
         DYE_BLOCKS.forEach(block -> block.configureBlockLootTables(generator));
         STORAGE_BLOCKS.forEach(block -> block.configureBlockLootTables(generator));
-//        SET_OF_EGGS_BLOCK.configureBlockLootTables(generator);
+        SET_OF_EGGS_BLOCK.configureBlockLootTables(generator);
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         DYE_BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
         STORAGE_BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
-//        SET_OF_EGGS_BLOCK.configureTranslations(registryLookup, translationBuilder);
+        SET_OF_EGGS_BLOCK.configureTranslations(registryLookup, translationBuilder);
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         DYE_BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
         STORAGE_BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
-//        SET_OF_EGGS_BLOCK.configureBlockStateModels(blockStateModelGenerator);
+        SET_OF_EGGS_BLOCK.configureBlockStateModels(blockStateModelGenerator);
     }
 
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         DYE_BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
         STORAGE_BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
-//        SET_OF_EGGS_BLOCK.configureItemModels(itemModelGenerator);
+        SET_OF_EGGS_BLOCK.configureItemModels(itemModelGenerator);
     }
 }
