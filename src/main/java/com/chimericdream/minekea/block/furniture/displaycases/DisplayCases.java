@@ -178,9 +178,9 @@ public class DisplayCases implements MinekeaBlockCategory {
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
-        DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockLootTables(generator));
-        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockLootTables(generator));
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockLootTables(registryLookup, generator));
+        STRIPPED_DISPLAY_CASES.forEach(displayCase -> displayCase.configureBlockLootTables(registryLookup, generator));
     }
 
     @Override

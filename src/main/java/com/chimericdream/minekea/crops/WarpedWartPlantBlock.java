@@ -16,10 +16,22 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.ApplyBonusLootFunction;
+import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.predicate.StatePredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
@@ -34,6 +46,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
 
 import java.util.function.Function;
+
+import static com.chimericdream.minekea.crops.Crops.WARPED_WART_ITEM;
 
 public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
     public static final MapCodec<WarpedWartPlantBlock> CODEC = createCodec(WarpedWartPlantBlock::new);
@@ -109,15 +123,49 @@ public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        RegistryWrapper.Impl<Enchantment> impl = registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+
+        generator.addDrop(
+            this,
+            (block) -> LootTable.builder()
+                .pool(
+                    (LootPool.Builder) generator.applyExplosionDecay(
+                        block,
+                        LootPool.builder()
+                            .rolls(ConstantLootNumberProvider.create(1.0F))
+                            .with(
+                                ItemEntry.builder(WARPED_WART_ITEM)
+                                    .apply(
+                                        SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 4.0F))
+                                            .conditionally(
+                                                BlockStatePropertyLootCondition
+                                                    .builder(block)
+                                                    .properties(StatePredicate.Builder.create().exactMatch(WarpedWartPlantBlock.AGE, 3))
+                                            )
+                                    )
+                                    .apply(
+                                        ApplyBonusLootFunction.uniformBonusCount(impl.getOrThrow(Enchantments.FORTUNE))
+                                            .conditionally(
+                                                BlockStatePropertyLootCondition
+                                                    .builder(block)
+                                                    .properties(StatePredicate.Builder.create().exactMatch(WarpedWartPlantBlock.AGE, 3))
+                                            )
+                                    )
+                            )
+                    )
+                )
+        );
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        translationBuilder.add(this, "Warped Wart");
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.registerCrop(this, Properties.AGE_3, 0, 1, 1, 2);
     }
 
     @Override

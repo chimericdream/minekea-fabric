@@ -119,8 +119,8 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
-        BLOCK_GROUPS.forEach(group -> group.configureBlockLootTables(generator));
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        BLOCK_GROUPS.forEach(group -> group.configureBlockLootTables(registryLookup, generator));
     }
 
     @Override

@@ -168,9 +168,9 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
-        BLOCKS.forEach(block -> block.configureBlockLootTables(generator));
-        BLOCK_GROUPS.forEach(group -> group.configureBlockLootTables(generator));
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
+        BLOCK_GROUPS.forEach(group -> group.configureBlockLootTables(registryLookup, generator));
     }
 
     @Override

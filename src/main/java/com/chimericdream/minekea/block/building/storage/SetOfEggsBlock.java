@@ -120,7 +120,7 @@ public class SetOfEggsBlock extends Block implements MinekeaBlock, Waterloggable
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         // @TODO: require silk touch?
         generator.addDrop(this);
     }

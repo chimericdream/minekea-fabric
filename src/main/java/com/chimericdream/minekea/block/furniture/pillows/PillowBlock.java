@@ -104,7 +104,7 @@ public class PillowBlock extends Block implements MinekeaBlock {
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.addDrop(this);
     }
 

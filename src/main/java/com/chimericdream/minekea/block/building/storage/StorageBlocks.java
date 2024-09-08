@@ -238,10 +238,10 @@ public class StorageBlocks implements MinekeaBlockCategory {
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
-        DYE_BLOCKS.forEach(block -> block.configureBlockLootTables(generator));
-        STORAGE_BLOCKS.forEach(block -> block.configureBlockLootTables(generator));
-        SET_OF_EGGS_BLOCK.configureBlockLootTables(generator);
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        DYE_BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
+        STORAGE_BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
+        SET_OF_EGGS_BLOCK.configureBlockLootTables(registryLookup, generator);
     }
 
     @Override

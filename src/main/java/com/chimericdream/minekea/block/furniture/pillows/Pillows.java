@@ -111,8 +111,8 @@ public class Pillows implements MinekeaBlockCategory {
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
-        PILLOWS.forEach(pillow -> pillow.configureBlockLootTables(generator));
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        PILLOWS.forEach(pillow -> pillow.configureBlockLootTables(registryLookup, generator));
     }
 
     @Override

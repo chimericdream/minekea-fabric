@@ -115,8 +115,8 @@ public class ContainerBlocks implements MinekeaBlockCategory {
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
-        GLASS_JAR.configureBlockLootTables(generator);
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        GLASS_JAR.configureBlockLootTables(registryLookup, generator);
     }
 
     @Override

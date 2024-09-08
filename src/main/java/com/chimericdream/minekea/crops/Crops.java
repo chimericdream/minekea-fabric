@@ -53,21 +53,24 @@ public class Crops implements MinekeaBlockCategory {
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
         WARPED_WART_PLANT_BLOCK.configureItemTags(registryLookup, getBuilder);
+        WARPED_WART_ITEM.configureItemTags(registryLookup, getBuilder);
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
         WARPED_WART_PLANT_BLOCK.configureRecipes(exporter);
+        WARPED_WART_ITEM.configureRecipes(exporter);
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
-        WARPED_WART_PLANT_BLOCK.configureBlockLootTables(generator);
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        WARPED_WART_PLANT_BLOCK.configureBlockLootTables(registryLookup, generator);
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         WARPED_WART_PLANT_BLOCK.configureTranslations(registryLookup, translationBuilder);
+        WARPED_WART_ITEM.configureTranslations(registryLookup, translationBuilder);
     }
 
     @Override
@@ -78,5 +81,6 @@ public class Crops implements MinekeaBlockCategory {
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         WARPED_WART_PLANT_BLOCK.configureItemModels(itemModelGenerator);
+        WARPED_WART_ITEM.configureItemModels(itemModelGenerator);
     }
 }

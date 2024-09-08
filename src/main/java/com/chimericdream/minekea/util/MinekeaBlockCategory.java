@@ -35,7 +35,7 @@ public interface MinekeaBlockCategory {
     default void configureRecipes(RecipeExporter exporter) {
     }
 
-    default void configureBlockLootTables(BlockLootTableGenerator generator) {
+    default void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
     }
 
     default void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {

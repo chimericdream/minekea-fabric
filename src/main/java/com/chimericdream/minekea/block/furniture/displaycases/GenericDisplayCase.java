@@ -320,7 +320,7 @@ abstract public class GenericDisplayCase extends BlockWithEntity implements Mine
     }
 
     @Override
-    public void configureBlockLootTables(BlockLootTableGenerator generator) {
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.addDrop(this);
     }
 
