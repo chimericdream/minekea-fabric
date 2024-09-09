@@ -3,7 +3,7 @@ package com.chimericdream.minekea.block.building.storage;
 import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 public class SugarCaneStorageBlock extends GenericStorageBlock {
     public SugarCaneStorageBlock() {
-        super(FabricBlockSettings.copyOf(Blocks.HAY_BLOCK).nonOpaque().sounds(BlockSoundGroup.GRASS), Items.SUGAR_CANE, "sugar_cane");
+        super(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK).nonOpaque().sounds(BlockSoundGroup.GRASS), Items.SUGAR_CANE, "sugar_cane");
     }
 
     @Override

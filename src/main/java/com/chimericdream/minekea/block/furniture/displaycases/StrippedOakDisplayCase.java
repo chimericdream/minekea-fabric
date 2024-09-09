@@ -1,9 +1,9 @@
 package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
@@ -16,7 +16,7 @@ public class StrippedOakDisplayCase extends GenericDisplayCase {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "furniture/display_cases/stripped/oak");
 
     public StrippedOakDisplayCase() {
-        super(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS));
+        super(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS));
     }
 
     @Override

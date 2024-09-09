@@ -2,7 +2,7 @@ package com.chimericdream.minekea.block.building.storage;
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -15,7 +15,7 @@ import java.util.function.Function;
 
 public class EnderPearlStorageBlock extends GenericStorageBlock {
     public EnderPearlStorageBlock() {
-        super(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).sounds(BlockSoundGroup.SHROOMLIGHT), Items.ENDER_PEARL, "ender_pearl");
+        super(AbstractBlock.Settings.copy(Blocks.PURPUR_BLOCK).sounds(BlockSoundGroup.SHROOMLIGHT), Items.ENDER_PEARL, "ender_pearl");
     }
 
     @Override

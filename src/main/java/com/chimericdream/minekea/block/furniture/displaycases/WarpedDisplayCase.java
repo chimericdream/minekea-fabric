@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.ModInfo;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
@@ -14,7 +14,7 @@ public class WarpedDisplayCase extends GenericDisplayCase {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "furniture/display_cases/warped");
 
     public WarpedDisplayCase() {
-        super(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS));
+        super(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS));
     }
 
     @Override

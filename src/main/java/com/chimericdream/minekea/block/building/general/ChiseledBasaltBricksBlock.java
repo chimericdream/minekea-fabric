@@ -6,7 +6,7 @@ import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -31,7 +31,7 @@ public class ChiseledBasaltBricksBlock extends Block implements MinekeaBlock {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/general/chiseled_basalt_bricks");
 
     public ChiseledBasaltBricksBlock() {
-        super(FabricBlockSettings.copyOf(Blocks.SMOOTH_BASALT));
+        super(AbstractBlock.Settings.copy(Blocks.SMOOTH_BASALT));
     }
 
     @Override

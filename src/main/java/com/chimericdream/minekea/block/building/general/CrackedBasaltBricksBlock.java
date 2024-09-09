@@ -5,7 +5,7 @@ import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -28,9 +28,9 @@ import static com.chimericdream.minekea.block.building.BuildingBlocks.BASALT_BRI
 
 public class CrackedBasaltBricksBlock extends Block implements MinekeaBlock {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/general/cracked_basalt_bricks");
-
+    
     public CrackedBasaltBricksBlock() {
-        super(FabricBlockSettings.copyOf(Blocks.SMOOTH_BASALT));
+        super(AbstractBlock.Settings.copy(Blocks.SMOOTH_BASALT));
     }
 
     @Override

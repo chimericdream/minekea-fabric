@@ -7,7 +7,7 @@ import com.chimericdream.minekea.item.containers.HoneyBucket;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FluidBlock;
@@ -47,7 +47,7 @@ public class Fluids implements MinekeaBlockCategory {
         MILK_SOURCE_BLOCK = Registry.register(
             Registries.BLOCK,
             MILK_SOURCE_ID,
-            new MilkFluid.Source(MILK, FabricBlockSettings.copyOf(Blocks.WATER).mapColor(MapColor.WHITE))
+            new MilkFluid.Source(MILK, AbstractBlock.Settings.copy(Blocks.WATER).mapColor(MapColor.WHITE))
         );
 
         HONEY = Registry.register(Registries.FLUID, HONEY_ID, new HoneyFluid.Still());
@@ -55,13 +55,13 @@ public class Fluids implements MinekeaBlockCategory {
         HONEY_SOURCE_BLOCK = Registry.register(
             Registries.BLOCK,
             HONEY_SOURCE_ID,
-            new HoneyFluid.Source(HONEY, FabricBlockSettings.copyOf(Blocks.LAVA).mapColor(MapColor.TERRACOTTA_YELLOW))
+            new HoneyFluid.Source(HONEY, AbstractBlock.Settings.copy(Blocks.LAVA).mapColor(MapColor.TERRACOTTA_YELLOW))
         );
 
         MILK_CAULDRON = Registry.register(
             Registries.BLOCK,
             MilkCauldronBlock.BLOCK_ID,
-            new MilkCauldronBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON))
+            new MilkCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON))
         );
 
         HONEY_BUCKET = Registry.register(
@@ -72,7 +72,7 @@ public class Fluids implements MinekeaBlockCategory {
         HONEY_CAULDRON = Registry.register(
             Registries.BLOCK,
             HoneyCauldronBlock.BLOCK_ID,
-            new HoneyCauldronBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON))
+            new HoneyCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON))
         );
     }
 

@@ -19,7 +19,7 @@
 //    private final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/lighting/endless_rod");
 //
 //    public EndlessRod() {
-//        super(FabricBlockSettings.copyOf(Blocks.END_ROD));
+//        super(AbstractBlock.Settings.copy(Blocks.END_ROD));
 //    }
 //
 //    public Identifier getBlockID() {

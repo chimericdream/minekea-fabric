@@ -33,7 +33,7 @@
 //    private final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/misc/fake_cake");
 //
 //    public FakeCake() {
-//        super(FabricBlockSettings.copyOf(Blocks.CAKE));
+//        super(AbstractBlock.Settings.copy(Blocks.CAKE));
 //    }
 //
 //    @Override

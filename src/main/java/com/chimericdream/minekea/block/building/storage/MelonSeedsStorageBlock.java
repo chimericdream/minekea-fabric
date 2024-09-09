@@ -3,7 +3,7 @@ package com.chimericdream.minekea.block.building.storage;
 import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 public class MelonSeedsStorageBlock extends GenericStorageBlock {
     public MelonSeedsStorageBlock() {
-        super(FabricBlockSettings.copyOf(Blocks.HAY_BLOCK).nonOpaque().sounds(BlockSoundGroup.CROP), Items.MELON_SEEDS, "melon_seeds", true);
+        super(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK).nonOpaque().sounds(BlockSoundGroup.CROP), Items.MELON_SEEDS, "melon_seeds", true);
     }
 
     @Override

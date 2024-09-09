@@ -22,7 +22,7 @@
 //    private final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/lighting/end_lantern");
 //
 //    public EndLantern() {
-//        super(FabricBlockSettings.copyOf(Blocks.LANTERN));
+//        super(AbstractBlock.Settings.copy(Blocks.LANTERN));
 //    }
 //
 //    public Identifier getBlockID() {

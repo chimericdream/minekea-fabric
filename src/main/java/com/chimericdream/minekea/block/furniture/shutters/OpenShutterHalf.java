@@ -69,7 +69,7 @@
 //    }
 //
 //    public OpenShutterHalf(ShutterSettings settings) {
-//        super(FabricBlockSettings.copyOf(Blocks.BARRIER));
+//        super(AbstractBlock.Settings.copy(Blocks.BARRIER));
 //
 //        this.shutterSettings = settings;
 //

@@ -6,7 +6,7 @@ import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -49,7 +49,7 @@ public class SetOfEggsBlock extends Block implements MinekeaBlock, Waterloggable
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     public SetOfEggsBlock() {
-        super(FabricBlockSettings.copyOf(Blocks.NETHER_WART_BLOCK).sounds(MinekeaSoundGroup.SET_OF_EGGS_SOUND_GROUP));
+        super(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(MinekeaSoundGroup.SET_OF_EGGS_SOUND_GROUP));
 
         this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
     }

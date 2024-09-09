@@ -161,7 +161,11 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
         BlockPos neighborPos = pos.offset(direction);
         BlockState neighborState = world.getBlockState(neighborPos);
 
-        return neighborState.isOf(this) || neighborState.isSideSolidFullSquare(world, neighborPos, direction.getOpposite());
+        if (neighborState.isOf(Blocks.AIR)) {
+            return false;
+        }
+
+        return neighborState.getFluidState().isEmpty() || neighborState.isIn(MinekeaTags.BEAMS);
     }
 
     @Override
@@ -192,11 +196,10 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
             return state.with(getConnectionProperty(direction), false);
         }
 
-        if (neighborState.isIn(MinekeaTags.BEAMS) || neighborState.isSideSolidFullSquare(world, neighborPos, direction.getOpposite())) {
-            return state.with(getConnectionProperty(direction), true);
-        }
-
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        return state.with(
+            getConnectionProperty(direction),
+            neighborState.getFluidState().isEmpty() || neighborState.isIn(MinekeaTags.BEAMS)
+        );
     }
 
     public static BooleanProperty getConnectionProperty(Direction direction) {

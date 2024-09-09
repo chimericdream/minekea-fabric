@@ -5,7 +5,7 @@ import com.chimericdream.minekea.resource.ModelUtils;
 import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -23,7 +23,7 @@ import java.util.function.Function;
 
 public class AppleStorageBlock extends GenericStorageBlock {
     public AppleStorageBlock() {
-        super(FabricBlockSettings.copyOf(Blocks.MELON).sounds(BlockSoundGroup.WOOD), Items.APPLE, "apple");
+        super(AbstractBlock.Settings.copy(Blocks.MELON).sounds(BlockSoundGroup.WOOD), Items.APPLE, "apple");
     }
 
     @Override
