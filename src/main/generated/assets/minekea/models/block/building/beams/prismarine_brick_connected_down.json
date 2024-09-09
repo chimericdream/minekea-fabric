@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_down",
+  "textures": {
+    "end": "minecraft:block/prismarine_bricks",
+    "side": "minecraft:block/prismarine_bricks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_north",
+  "textures": {
+    "end": "minecraft:block/gold_block",
+    "side": "minecraft:block/gold_block"
+  }
+}

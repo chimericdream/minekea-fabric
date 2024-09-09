@@ -1,0 +1,57 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/building/beams/cyan_terracotta"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/beams/cyan_terracotta_connected_north"
+      },
+      "when": {
+        "connected_north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/beams/cyan_terracotta_connected_south"
+      },
+      "when": {
+        "connected_south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/beams/cyan_terracotta_connected_east"
+      },
+      "when": {
+        "connected_east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/beams/cyan_terracotta_connected_west"
+      },
+      "when": {
+        "connected_west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/beams/cyan_terracotta_connected_up"
+      },
+      "when": {
+        "connected_up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/beams/cyan_terracotta_connected_down"
+      },
+      "when": {
+        "connected_down": "true"
+      }
+    }
+  ]
+}

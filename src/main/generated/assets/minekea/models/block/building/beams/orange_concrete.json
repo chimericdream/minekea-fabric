@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/core",
+  "textures": {
+    "end": "minecraft:block/orange_concrete",
+    "side": "minecraft:block/orange_concrete"
+  }
+}

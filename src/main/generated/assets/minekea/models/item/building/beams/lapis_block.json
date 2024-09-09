@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/lapis_block",
+    "side": "minecraft:block/lapis_block"
+  }
+}

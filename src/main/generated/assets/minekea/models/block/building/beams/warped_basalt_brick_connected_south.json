@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_south",
+  "textures": {
+    "end": "minekea:block/building/general/warped_basalt_bricks",
+    "side": "minekea:block/building/general/warped_basalt_bricks"
+  }
+}

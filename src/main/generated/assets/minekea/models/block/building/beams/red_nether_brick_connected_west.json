@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_west",
+  "textures": {
+    "end": "minecraft:block/red_nether_bricks",
+    "side": "minecraft:block/red_nether_bricks"
+  }
+}

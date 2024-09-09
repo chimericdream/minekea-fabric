@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/core",
+  "textures": {
+    "end": "minecraft:block/packed_mud",
+    "side": "minecraft:block/packed_mud"
+  }
+}

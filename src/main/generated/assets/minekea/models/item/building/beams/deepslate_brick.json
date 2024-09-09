@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/deepslate_bricks",
+    "side": "minecraft:block/deepslate_bricks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/prismarine_bricks",
+    "side": "minecraft:block/prismarine_bricks"
+  }
+}

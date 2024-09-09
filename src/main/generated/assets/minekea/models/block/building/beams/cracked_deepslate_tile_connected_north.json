@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_north",
+  "textures": {
+    "end": "minecraft:block/cracked_deepslate_tiles",
+    "side": "minecraft:block/cracked_deepslate_tiles"
+  }
+}

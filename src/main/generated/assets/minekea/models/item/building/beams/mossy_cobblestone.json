@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/mossy_cobblestone",
+    "side": "minecraft:block/mossy_cobblestone"
+  }
+}

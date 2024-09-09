@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/mud_bricks",
+    "side": "minecraft:block/mud_bricks"
+  }
+}

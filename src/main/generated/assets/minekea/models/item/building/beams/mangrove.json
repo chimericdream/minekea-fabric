@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/mangrove_planks",
+    "side": "minecraft:block/mangrove_planks"
+  }
+}

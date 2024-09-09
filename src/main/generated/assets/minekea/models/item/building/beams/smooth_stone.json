@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/smooth_stone",
+    "side": "minecraft:block/smooth_stone"
+  }
+}

@@ -128,7 +128,11 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-            // ...
+            MinekeaMod.BUILDING_BLOCKS.configureItemModels(itemModelGenerator);
+            MinekeaMod.CROPS.configureItemModels(itemModelGenerator);
+            MinekeaMod.FURNITURE_BLOCKS.configureItemModels(itemModelGenerator);
+            MinekeaMod.FLUIDS.configureItemModels(itemModelGenerator);
+            MinekeaMod.CONTAINER_BLOCKS.configureItemModels(itemModelGenerator);
         }
     }
 }

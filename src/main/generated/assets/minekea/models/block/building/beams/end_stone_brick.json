@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/core",
+  "textures": {
+    "end": "minecraft:block/end_stone_bricks",
+    "side": "minecraft:block/end_stone_bricks"
+  }
+}

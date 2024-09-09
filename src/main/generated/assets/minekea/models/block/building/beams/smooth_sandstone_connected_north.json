@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_north",
+  "textures": {
+    "end": "minecraft:block/sandstone_top",
+    "side": "minecraft:block/sandstone_top"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/lime_concrete",
+    "side": "minecraft:block/lime_concrete"
+  }
+}

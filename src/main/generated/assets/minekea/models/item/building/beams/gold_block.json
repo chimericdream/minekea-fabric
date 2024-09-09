@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/gold_block",
+    "side": "minecraft:block/gold_block"
+  }
+}

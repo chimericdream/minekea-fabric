@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_up",
+  "textures": {
+    "end": "minecraft:block/blue_concrete",
+    "side": "minecraft:block/blue_concrete"
+  }
+}

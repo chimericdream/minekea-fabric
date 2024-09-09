@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/core",
+  "textures": {
+    "end": "minecraft:block/quartz_bricks",
+    "side": "minecraft:block/quartz_bricks"
+  }
+}

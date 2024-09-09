@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_west",
+  "textures": {
+    "end": "minecraft:block/yellow_concrete",
+    "side": "minecraft:block/yellow_concrete"
+  }
+}

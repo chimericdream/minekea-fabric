@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_south",
+  "textures": {
+    "end": "minecraft:block/redstone_block",
+    "side": "minecraft:block/redstone_block"
+  }
+}

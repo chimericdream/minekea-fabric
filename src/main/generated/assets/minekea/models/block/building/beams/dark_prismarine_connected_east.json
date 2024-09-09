@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_east",
+  "textures": {
+    "end": "minecraft:block/dark_prismarine",
+    "side": "minecraft:block/dark_prismarine"
+  }
+}

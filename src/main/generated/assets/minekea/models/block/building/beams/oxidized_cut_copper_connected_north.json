@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_north",
+  "textures": {
+    "end": "minecraft:block/oxidized_cut_copper",
+    "side": "minecraft:block/oxidized_cut_copper"
+  }
+}

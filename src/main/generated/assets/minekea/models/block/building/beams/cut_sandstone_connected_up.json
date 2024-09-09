@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_up",
+  "textures": {
+    "end": "minecraft:block/cut_sandstone",
+    "side": "minecraft:block/cut_sandstone"
+  }
+}

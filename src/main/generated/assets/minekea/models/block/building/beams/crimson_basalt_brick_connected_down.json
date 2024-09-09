@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_down",
+  "textures": {
+    "end": "minekea:block/building/general/crimson_basalt_bricks",
+    "side": "minekea:block/building/general/crimson_basalt_bricks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_south",
+  "textures": {
+    "end": "minecraft:block/crying_obsidian",
+    "side": "minecraft:block/crying_obsidian"
+  }
+}

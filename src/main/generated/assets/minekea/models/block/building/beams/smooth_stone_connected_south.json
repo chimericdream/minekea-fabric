@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_south",
+  "textures": {
+    "end": "minecraft:block/smooth_stone",
+    "side": "minecraft:block/smooth_stone"
+  }
+}

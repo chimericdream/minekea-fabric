@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_west",
+  "textures": {
+    "end": "minecraft:block/magenta_concrete",
+    "side": "minecraft:block/magenta_concrete"
+  }
+}

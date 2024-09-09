@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/core",
+  "textures": {
+    "end": "minekea:block/building/general/mossy_basalt_bricks",
+    "side": "minekea:block/building/general/mossy_basalt_bricks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_south",
+  "textures": {
+    "end": "minecraft:block/magenta_terracotta",
+    "side": "minecraft:block/magenta_terracotta"
+  }
+}

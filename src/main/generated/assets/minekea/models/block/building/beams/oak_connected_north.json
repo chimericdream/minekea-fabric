@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_north",
+  "textures": {
+    "end": "minecraft:block/oak_planks",
+    "side": "minecraft:block/oak_planks"
+  }
+}

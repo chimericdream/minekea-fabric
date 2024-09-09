@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_south",
+  "textures": {
+    "end": "minecraft:block/polished_granite",
+    "side": "minecraft:block/polished_granite"
+  }
+}

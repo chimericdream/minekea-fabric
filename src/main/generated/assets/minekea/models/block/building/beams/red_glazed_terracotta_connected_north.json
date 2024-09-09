@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_north",
+  "textures": {
+    "end": "minecraft:block/red_glazed_terracotta",
+    "side": "minecraft:block/red_glazed_terracotta"
+  }
+}

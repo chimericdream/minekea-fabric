@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/magenta_glazed_terracotta",
+    "side": "minecraft:block/magenta_glazed_terracotta"
+  }
+}

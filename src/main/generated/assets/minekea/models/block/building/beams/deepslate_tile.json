@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/core",
+  "textures": {
+    "end": "minecraft:block/deepslate_tiles",
+    "side": "minecraft:block/deepslate_tiles"
+  }
+}

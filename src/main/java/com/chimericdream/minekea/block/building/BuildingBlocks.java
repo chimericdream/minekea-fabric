@@ -4,9 +4,9 @@ package com.chimericdream.minekea.block.building;
 //import com.chimericdream.minekea.block.building.compressed.CompressedBlocks;
 //import com.chimericdream.minekea.block.building.covers.Covers;
 
+import com.chimericdream.minekea.block.building.beams.Beams;
 import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.ChiseledBasaltBricksBlock;
-import com.chimericdream.minekea.block.building.general.CobbledEndStoneBlock;
 import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
@@ -37,15 +37,14 @@ import java.util.function.Function;
 public class BuildingBlocks implements MinekeaBlockCategory {
     public static final BasaltBricksBlock BASALT_BRICKS_BLOCK;
     public static final ChiseledBasaltBricksBlock CHISELED_BASALT_BRICKS_BLOCK;
-    public static final CobbledEndStoneBlock COBBLED_END_STONE_BLOCK;
     public static final CrackedBasaltBricksBlock CRACKED_BASALT_BRICKS_BLOCK;
     public static final CrimsonBasaltBricksBlock CRIMSON_BASALT_BRICKS_BLOCK;
     public static final MossyBasaltBricksBlock MOSSY_BASALT_BRICKS_BLOCK;
     public static final WarpedBasaltBricksBlock WARPED_BASALT_BRICKS_BLOCK;
     public static final WarpedNetherBricksBlock WARPED_NETHER_BRICKS_BLOCK;
 
-    //    public static Beams BEAMS = null;
-//    public static CompressedBlocks COMPRESSED_BLOCKS = null;
+    public static Beams BEAMS;
+    //    public static CompressedBlocks COMPRESSED_BLOCKS = null;
 //    public static Covers COVERS = null;
 //    public static Slabs SLABS = null;
 //    public static Stairs STAIRS = null;
@@ -61,7 +60,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         BASALT_BRICKS_BLOCK = new BasaltBricksBlock();
         CHISELED_BASALT_BRICKS_BLOCK = new ChiseledBasaltBricksBlock();
 //        if (config.enableCobbledEndStone) {
-        COBBLED_END_STONE_BLOCK = new CobbledEndStoneBlock();
 //        }
         CRACKED_BASALT_BRICKS_BLOCK = new CrackedBasaltBricksBlock();
         CRIMSON_BASALT_BRICKS_BLOCK = new CrimsonBasaltBricksBlock();
@@ -72,7 +70,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         BLOCKS.addAll(List.of(BASALT_BRICKS_BLOCK, CHISELED_BASALT_BRICKS_BLOCK));
 
 //        if (config.enableCobbledEndStone) {
-        BLOCKS.add(COBBLED_END_STONE_BLOCK);
 //        }
 
         BLOCKS.addAll(List.of(
@@ -84,8 +81,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         ));
 
 //        if (config.enableBeams) {
-//            BEAMS = new Beams();
-//            BLOCK_GROUPS.add(BEAMS);
 //        }
 //
 //        if (config.enableCompressedBlocks) {
@@ -115,6 +110,9 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
         STORAGE_BLOCKS = new StorageBlocks();
         BLOCK_GROUPS.add(STORAGE_BLOCKS);
+
+        BEAMS = new Beams();
+        BLOCK_GROUPS.add(BEAMS);
     }
 
     @Environment(EnvType.CLIENT)

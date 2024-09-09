@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/connected_west",
+  "textures": {
+    "end": "minecraft:block/light_blue_terracotta",
+    "side": "minecraft:block/light_blue_terracotta"
+  }
+}

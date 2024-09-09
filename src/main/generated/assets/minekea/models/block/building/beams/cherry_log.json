@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/beams/core",
+  "textures": {
+    "end": "minecraft:block/cherry_log_top",
+    "side": "minecraft:block/cherry_log"
+  }
+}

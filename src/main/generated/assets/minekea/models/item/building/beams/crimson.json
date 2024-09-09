@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/building/beam",
+  "textures": {
+    "end": "minecraft:block/crimson_planks",
+    "side": "minecraft:block/crimson_planks"
+  }
+}
