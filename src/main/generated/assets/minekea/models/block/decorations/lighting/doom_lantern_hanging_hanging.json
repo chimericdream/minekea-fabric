@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_hanging_lantern",
+  "textures": {
+    "lantern": "minekea:block/decorations/lighting/doom_lantern"
+  }
+}

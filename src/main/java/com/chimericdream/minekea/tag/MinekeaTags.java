@@ -11,6 +11,7 @@ public class MinekeaTags {
     public static final TagKey<Block> BEAMS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "beams"));
     public static final TagKey<Block> BOOKSHELVES = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "bookshelves"));
     public static final TagKey<Block> DISPLAY_CASES = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "display_cases"));
+    public static final TagKey<Block> LANTERNS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "lanterns"));
     public static final TagKey<Block> PILLOWS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "pillows"));
     public static final TagKey<Block> MINEABLE_SHEARS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "mineable/shears"));
 

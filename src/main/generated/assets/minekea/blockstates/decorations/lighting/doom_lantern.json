@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/decorations/lighting/doom_lantern_hanging_hanging"
+      },
+      "when": {
+        "hanging": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/decorations/lighting/doom_lantern_base"
+      },
+      "when": {
+        "hanging": "false"
+      }
+    }
+  ]
+}

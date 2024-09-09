@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minekea:item/decorations/lighting/end_lantern"
+  }
+}

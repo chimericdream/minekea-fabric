@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.data;
 
 import com.chimericdream.minekea.MinekeaMod;
+import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -36,11 +37,9 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generate(RecipeExporter exporter) {
-            MinekeaMod.BUILDING_BLOCKS.configureRecipes(exporter);
-            MinekeaMod.CROPS.configureRecipes(exporter);
-            MinekeaMod.FURNITURE_BLOCKS.configureRecipes(exporter);
-            MinekeaMod.FLUIDS.configureRecipes(exporter);
-            MinekeaMod.CONTAINER_BLOCKS.configureRecipes(exporter);
+            for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
+                category.configureRecipes(exporter);
+            }
         }
     }
 
@@ -51,11 +50,9 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
-            MinekeaMod.BUILDING_BLOCKS.configureBlockTags(arg, this::getOrCreateTagBuilder);
-            MinekeaMod.CROPS.configureBlockTags(arg, this::getOrCreateTagBuilder);
-            MinekeaMod.FURNITURE_BLOCKS.configureBlockTags(arg, this::getOrCreateTagBuilder);
-            MinekeaMod.FLUIDS.configureBlockTags(arg, this::getOrCreateTagBuilder);
-            MinekeaMod.CONTAINER_BLOCKS.configureBlockTags(arg, this::getOrCreateTagBuilder);
+            for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
+                category.configureBlockTags(arg, this::getOrCreateTagBuilder);
+            }
         }
     }
 
@@ -66,11 +63,9 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
-            MinekeaMod.BUILDING_BLOCKS.configureItemTags(arg, this::getOrCreateTagBuilder);
-            MinekeaMod.CROPS.configureItemTags(arg, this::getOrCreateTagBuilder);
-            MinekeaMod.FURNITURE_BLOCKS.configureItemTags(arg, this::getOrCreateTagBuilder);
-            MinekeaMod.FLUIDS.configureItemTags(arg, this::getOrCreateTagBuilder);
-            MinekeaMod.CONTAINER_BLOCKS.configureItemTags(arg, this::getOrCreateTagBuilder);
+            for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
+                category.configureItemTags(arg, this::getOrCreateTagBuilder);
+            }
         }
     }
 
@@ -81,11 +76,9 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generate() {
-            MinekeaMod.BUILDING_BLOCKS.configureBlockLootTables(this.registryLookup, this);
-            MinekeaMod.CROPS.configureBlockLootTables(this.registryLookup, this);
-            MinekeaMod.FURNITURE_BLOCKS.configureBlockLootTables(this.registryLookup, this);
-            MinekeaMod.FLUIDS.configureBlockLootTables(this.registryLookup, this);
-            MinekeaMod.CONTAINER_BLOCKS.configureBlockLootTables(this.registryLookup, this);
+            for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
+                category.configureBlockLootTables(this.registryLookup, this);
+            }
         }
     }
 
@@ -96,11 +89,9 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
-            MinekeaMod.BUILDING_BLOCKS.configureTranslations(registryLookup, translationBuilder);
-            MinekeaMod.CROPS.configureTranslations(registryLookup, translationBuilder);
-            MinekeaMod.FURNITURE_BLOCKS.configureTranslations(registryLookup, translationBuilder);
-            MinekeaMod.FLUIDS.configureTranslations(registryLookup, translationBuilder);
-            MinekeaMod.CONTAINER_BLOCKS.configureTranslations(registryLookup, translationBuilder);
+            for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
+                category.configureTranslations(registryLookup, translationBuilder);
+            }
 
             translationBuilder.add("item_group.minekea.blocks.building.beams", "Minekea: Beams");
             translationBuilder.add("item_group.minekea.blocks.building.compressed", "Minekea: Compressed Blocks");
@@ -119,20 +110,16 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-            MinekeaMod.BUILDING_BLOCKS.configureBlockStateModels(blockStateModelGenerator);
-            MinekeaMod.CROPS.configureBlockStateModels(blockStateModelGenerator);
-            MinekeaMod.FURNITURE_BLOCKS.configureBlockStateModels(blockStateModelGenerator);
-            MinekeaMod.FLUIDS.configureBlockStateModels(blockStateModelGenerator);
-            MinekeaMod.CONTAINER_BLOCKS.configureBlockStateModels(blockStateModelGenerator);
+            for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
+                category.configureBlockStateModels(blockStateModelGenerator);
+            }
         }
 
         @Override
         public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-            MinekeaMod.BUILDING_BLOCKS.configureItemModels(itemModelGenerator);
-            MinekeaMod.CROPS.configureItemModels(itemModelGenerator);
-            MinekeaMod.FURNITURE_BLOCKS.configureItemModels(itemModelGenerator);
-            MinekeaMod.FLUIDS.configureItemModels(itemModelGenerator);
-            MinekeaMod.CONTAINER_BLOCKS.configureItemModels(itemModelGenerator);
+            for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
+                category.configureItemModels(itemModelGenerator);
+            }
         }
     }
 }

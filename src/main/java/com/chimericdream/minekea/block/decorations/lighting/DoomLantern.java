@@ -1,90 +1,90 @@
-//package com.chimericdream.minekea.block.decorations.lighting;
-//
-//import com.chimericdream.minekea.ModInfo;
-//import com.chimericdream.minekea.resource.LootTable;
-//import com.chimericdream.minekea.resource.MinekeaResourcePack;
-//import com.chimericdream.minekea.resource.MinekeaTags;
-//import com.chimericdream.minekea.resource.Model;
-//import com.chimericdream.minekea.resource.Texture;
-//import com.chimericdream.minekea.util.MinekeaBlock;
-//import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-//import net.minecraft.block.Blocks;
-//import net.minecraft.block.LanternBlock;
-//import net.minecraft.item.BlockItem;
-//import net.minecraft.item.Item;
-//import net.minecraft.item.ItemGroup;
-//import net.minecraft.item.Items;
-//import net.minecraft.registry.Registries;
-//import net.minecraft.registry.Registry;
-//import net.minecraft.util.Identifier;
-//
-//public class DoomLantern extends LanternBlock implements MinekeaBlock {
-//    private final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/lighting/doom_lantern");
-//
-//    public DoomLantern() {
-//        super(AbstractBlock.Settings.copy(Blocks.LANTERN));
-//    }
-//
-//    public Identifier getBlockID() {
-//        return BLOCK_ID;
-//    }
-//
-//    public void register() {
-//        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-//        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().group(ItemGroup.DECORATIONS)));
-//
-//        setupResources();
-//    }
-//
-//    public void setupResources() {
-//        MinekeaResourcePack.EN_US.blockRespect(this, "Doom Lantern");
-//        MinekeaTags.LANTERNS.add(getBlockID());
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-//            BLOCK_ID,
-//            JRecipe.shaped(
-//                JPattern.pattern("###", "#F#", "#T#"),
-//                JKeys.keys()
-//                    .key("#", JIngredient.ingredient().item(Items.IRON_NUGGET))
-//                    .key("F", JIngredient.ingredient().item(Items.CRIMSON_FUNGUS))
-//                    .key("T", JIngredient.ingredient().item(Items.TORCH)),
-//                JResult.result(BLOCK_ID.toString())
-//            )
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(BLOCK_ID), LootTable.dropSelf(BLOCK_ID));
-//
-//        Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-//        Identifier HANGING_MODEL_ID = Identifier.of(MODEL_ID.getNamespace(), MODEL_ID.getPath() + "_hanging");
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
-//
-//        // Models
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minecraft:block/template_lantern")
-//                .textures(new JTextures().var("lantern", Texture.getBlockTextureID(BLOCK_ID).toString())),
-//            MODEL_ID
-//        );
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minecraft:block/template_hanging_lantern")
-//                .textures(new JTextures().var("lantern", Texture.getBlockTextureID(BLOCK_ID).toString())),
-//            HANGING_MODEL_ID
-//        );
-//
-//        // Item model
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minecraft:item/generated")
-//                .textures(new JTextures().layer0(Texture.getItemTextureID(BLOCK_ID).toString())),
-//            ITEM_MODEL_ID
-//        );
-//
-//        // Blockstate
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(
-//                JState.variant()
-//                    .put("hanging=false", new JBlockModel(MODEL_ID))
-//                    .put("hanging=true", new JBlockModel(HANGING_MODEL_ID))
-//            ),
-//            BLOCK_ID
-//        );
-//    }
-//}
+package com.chimericdream.minekea.block.decorations.lighting;
+
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.resource.ModelUtils;
+import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.util.MinekeaBlock;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.LanternBlock;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
+
+import java.util.function.Function;
+
+public class DoomLantern extends LanternBlock implements MinekeaBlock {
+    private final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/lighting/doom_lantern");
+
+    public DoomLantern() {
+        super(AbstractBlock.Settings.copy(Blocks.LANTERN).nonOpaque());
+    }
+
+    public void register() {
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
+            .register(itemGroup -> itemGroup.add(this.asItem()));
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(MinekeaTags.LANTERNS).add(this);
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, this, 1)
+            .pattern("###")
+            .pattern("#F#")
+            .pattern("#T#")
+            .input('#', Items.IRON_NUGGET)
+            .input('F', Items.CRIMSON_FUNGUS)
+            .input('T', Items.TORCH)
+            .criterion(FabricRecipeProvider.hasItem(Items.IRON_NUGGET),
+                FabricRecipeProvider.conditionsFromItem(Items.IRON_NUGGET))
+            .criterion(FabricRecipeProvider.hasItem(Items.CRIMSON_FUNGUS),
+                FabricRecipeProvider.conditionsFromItem(Items.CRIMSON_FUNGUS))
+            .criterion(FabricRecipeProvider.hasItem(Items.TORCH),
+                FabricRecipeProvider.conditionsFromItem(Items.TORCH))
+            .offerTo(exporter);
+    }
+
+    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        translationBuilder.add(this, "Doom Lantern");
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        ModelUtils.registerLanternBlock(blockStateModelGenerator, this, BLOCK_ID);
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        ModelUtils.registerGeneratedItem(itemModelGenerator, this, BLOCK_ID);
+    }
+}

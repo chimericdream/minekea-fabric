@@ -81,6 +81,8 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         ));
 
 //        if (config.enableBeams) {
+        BEAMS = new Beams();
+        BLOCK_GROUPS.add(BEAMS);
 //        }
 //
 //        if (config.enableCompressedBlocks) {
@@ -110,9 +112,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
         STORAGE_BLOCKS = new StorageBlocks();
         BLOCK_GROUPS.add(STORAGE_BLOCKS);
-
-        BEAMS = new Beams();
-        BLOCK_GROUPS.add(BEAMS);
     }
 
     @Environment(EnvType.CLIENT)
