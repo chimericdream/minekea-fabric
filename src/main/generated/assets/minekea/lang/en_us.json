@@ -147,6 +147,16 @@
   "block.minekea.building.general.warped_nether_bricks": "Warped Nether Bricks",
   "block.minekea.containers.cauldrons.honey": "Honey Cauldron",
   "block.minekea.containers.cauldrons.milk": "Milk Cauldron",
+  "block.minekea.containers.crates.acacia": "Acacia Crate",
+  "block.minekea.containers.crates.birch": "Birch Crate",
+  "block.minekea.containers.crates.cherry": "Cherry Crate",
+  "block.minekea.containers.crates.crimson": "Crimson Crate",
+  "block.minekea.containers.crates.dark_oak": "Dark Oak Crate",
+  "block.minekea.containers.crates.jungle": "Jungle Crate",
+  "block.minekea.containers.crates.mangrove": "Mangrove Crate",
+  "block.minekea.containers.crates.oak": "Oak Crate",
+  "block.minekea.containers.crates.spruce": "Spruce Crate",
+  "block.minekea.containers.crates.warped": "Warped Crate",
   "block.minekea.containers.glass_jar": "Glass Jar",
   "block.minekea.crops.warped_wart.block": "Warped Wart",
   "block.minekea.decorations.lighting.doom_lantern": "Doom Lantern",
@@ -236,5 +246,6 @@
   "item_group.minekea.blocks.building.beams": "Minekea: Beams",
   "item_group.minekea.blocks.building.compressed": "Minekea: Compressed Blocks",
   "item_group.minekea.blocks.building.covers": "Minekea: Covers",
-  "item_group.minekea.blocks.furniture": "Minekea: Furniture"
+  "item_group.minekea.blocks.furniture": "Minekea: Furniture",
+  "minekea:screens/container/crate": "Crate"
 }

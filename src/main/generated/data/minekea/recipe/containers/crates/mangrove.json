@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:mangrove_logs"
+    },
+    "X": {
+      "item": "minecraft:mangrove_planks"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "XXX",
+    "#X#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minekea:containers/crates/mangrove"
+  }
+}

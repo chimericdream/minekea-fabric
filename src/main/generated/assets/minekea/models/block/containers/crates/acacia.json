@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/containers/crate",
+  "textures": {
+    "brace": "minecraft:block/stripped_acacia_log",
+    "material": "minecraft:block/acacia_planks"
+  }
+}

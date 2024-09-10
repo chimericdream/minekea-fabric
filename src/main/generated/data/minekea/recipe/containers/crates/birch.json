@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:birch_logs"
+    },
+    "X": {
+      "item": "minecraft:birch_planks"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "XXX",
+    "#X#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minekea:containers/crates/birch"
+  }
+}

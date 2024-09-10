@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:acacia_logs"
+    },
+    "X": {
+      "item": "minecraft:acacia_planks"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "XXX",
+    "#X#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minekea:containers/crates/acacia"
+  }
+}
