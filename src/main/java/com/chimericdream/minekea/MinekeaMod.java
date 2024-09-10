@@ -7,6 +7,7 @@ import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
 import com.chimericdream.minekea.item.ItemGroups;
+import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ public class MinekeaMod implements ModInitializer {
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
-    //    public static final Items ITEMS;
+    public static final ModItems ITEMS;
     public static final ItemGroups ITEM_GROUPS;
 
     static {
@@ -52,7 +53,7 @@ public class MinekeaMod implements ModInitializer {
 //            REDSTONE_BLOCKS
         };
 
-//        ITEMS = new Items();
+        ITEMS = new ModItems();
         ITEM_GROUPS = new ItemGroups();
     }
 
@@ -79,7 +80,7 @@ public class MinekeaMod implements ModInitializer {
 //        MinekeaPointOfInterestTypes.init();
 
         LOGGER.info("[minekea] Registering items");
-//        ITEMS.register();
+        ITEMS.register();
 //        ITEMS.setupResources();
 
         LOGGER.info("[minekea] Registering colored blocks");

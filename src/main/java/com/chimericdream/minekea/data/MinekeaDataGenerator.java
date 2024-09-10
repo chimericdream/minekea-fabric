@@ -40,6 +40,8 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
                 category.configureRecipes(exporter);
             }
+
+            MinekeaMod.ITEMS.configureRecipes(exporter);
         }
     }
 
@@ -53,6 +55,8 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
                 category.configureBlockTags(arg, this::getOrCreateTagBuilder);
             }
+
+            MinekeaMod.ITEMS.configureBlockTags(arg, this::getOrCreateTagBuilder);
         }
     }
 
@@ -66,6 +70,8 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
                 category.configureItemTags(arg, this::getOrCreateTagBuilder);
             }
+
+            MinekeaMod.ITEMS.configureItemTags(arg, this::getOrCreateTagBuilder);
         }
     }
 
@@ -79,6 +85,8 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
                 category.configureBlockLootTables(this.registryLookup, this);
             }
+
+            MinekeaMod.ITEMS.configureBlockLootTables(this.registryLookup, this);
         }
     }
 
@@ -92,6 +100,8 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
                 category.configureTranslations(registryLookup, translationBuilder);
             }
+
+            MinekeaMod.ITEMS.configureTranslations(registryLookup, translationBuilder);
 
             translationBuilder.add("item_group.minekea.blocks.building.beams", "Minekea: Beams");
             translationBuilder.add("item_group.minekea.blocks.building.compressed", "Minekea: Compressed Blocks");
@@ -113,6 +123,8 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
                 category.configureBlockStateModels(blockStateModelGenerator);
             }
+
+            MinekeaMod.ITEMS.configureBlockStateModels(blockStateModelGenerator);
         }
 
         @Override
@@ -120,6 +132,8 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
                 category.configureItemModels(itemModelGenerator);
             }
+
+            MinekeaMod.ITEMS.configureItemModels(itemModelGenerator);
         }
     }
 }

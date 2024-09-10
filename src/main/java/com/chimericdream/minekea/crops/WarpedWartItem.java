@@ -24,11 +24,6 @@ public class WarpedWartItem extends AliasedBlockItem implements MinekeaItem {
     }
 
     @Override
-    public Identifier getItemID() {
-        return ITEM_ID;
-    }
-
-    @Override
     public void register() {
         Registry.register(Registries.ITEM, ITEM_ID, this);
     }
