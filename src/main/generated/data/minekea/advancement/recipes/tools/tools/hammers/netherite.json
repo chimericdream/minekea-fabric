@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_netherite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:tools/hammers/netherite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_netherite_ingot",
+      "has_stick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:tools/hammers/netherite"
+    ]
+  }
+}

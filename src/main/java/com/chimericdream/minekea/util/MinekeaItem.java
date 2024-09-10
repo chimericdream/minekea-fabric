@@ -11,7 +11,8 @@ import net.minecraft.registry.tag.TagKey;
 import java.util.function.Function;
 
 public interface MinekeaItem {
-    void register();
+    default void register() {
+    }
 
     default void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
     }
