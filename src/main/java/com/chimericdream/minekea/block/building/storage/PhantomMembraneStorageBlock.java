@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 public class PhantomMembraneStorageBlock extends GenericStorageBlock {
     public PhantomMembraneStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(BlockSoundGroup.NETHER_WART), Items.PHANTOM_MEMBRANE, "phantom_membrane");
+        super(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(BlockSoundGroup.NETHER_WART), Items.PHANTOM_MEMBRANE, "phantom_membrane", true);
     }
 
     @Override

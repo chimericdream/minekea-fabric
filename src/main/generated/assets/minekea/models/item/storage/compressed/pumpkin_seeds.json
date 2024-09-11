@@ -1,3 +1,11 @@
 {
-  "parent": "minekea:block/storage/compressed/pumpkin_seeds"
+  "parent": "minekea:block/storage/compressed/pumpkin_seeds",
+  "overrides": [
+    {
+      "model": "minekea:block/storage/compressed/pumpkin_seeds_bagged",
+      "predicate": {
+        "custom_model_data": 9001
+      }
+    }
+  ]
 }

@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.client.render.block;
 
-import com.chimericdream.minekea.block.building.storage.GenericStorageBlock;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
@@ -14,7 +13,7 @@ import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.BlockStateComponent;
+import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
@@ -112,7 +111,7 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
 
         if (isBaggedItem(stack)) {
-            stack.set(DataComponentTypes.BLOCK_STATE, BlockStateComponent.DEFAULT.with(GenericStorageBlock.IS_BAGGED, true));
+            stack.set(DataComponentTypes.CUSTOM_MODEL_DATA, new CustomModelDataComponent(9001));
         }
 
         renderer.renderItem(stack, ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, null, 0);

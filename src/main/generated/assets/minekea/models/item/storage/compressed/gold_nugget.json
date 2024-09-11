@@ -1,3 +1,11 @@
 {
-  "parent": "minekea:block/storage/compressed/gold_nugget"
+  "parent": "minekea:block/storage/compressed/gold_nugget",
+  "overrides": [
+    {
+      "model": "minekea:block/storage/compressed/gold_nugget_bagged",
+      "predicate": {
+        "custom_model_data": 9001
+      }
+    }
+  ]
 }

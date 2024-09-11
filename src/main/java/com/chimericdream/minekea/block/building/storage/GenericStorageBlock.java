@@ -3,6 +3,9 @@ package com.chimericdream.minekea.block.building.storage;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -10,7 +13,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
+import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Model;
+import net.minecraft.data.client.ModelIds;
 import net.minecraft.data.client.Models;
 import net.minecraft.data.client.MultipartBlockStateSupplier;
 import net.minecraft.data.client.TextureKey;
@@ -50,6 +55,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 abstract public class GenericStorageBlock extends Block implements MinekeaBlock {
     protected static final Model COMPRESSED_BLOCK_MODEL = Models.CUBE_ALL;
@@ -223,5 +229,35 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
                             .put(VariantSettings.MODEL, baseModelId)
                     )
             );
+
+        blockStateModelGenerator.excludeFromSimpleItemModelGeneration(this);
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        if (this.isBaggedItem) {
+            Block self = this;
+
+            itemModelGenerator.writer.accept(ModelIds.getItemModelId(this.asItem()), new Supplier<JsonElement>() {
+                @Override
+                public JsonElement get() {
+                    JsonArray overrides = new JsonArray();
+
+                    JsonObject override = new JsonObject();
+                    JsonObject predicate = new JsonObject();
+                    predicate.addProperty("custom_model_data", 9001);
+                    override.add("predicate", predicate);
+                    override.addProperty("model", ModelIds.getBlockModelId(self).withSuffixedPath("_bagged").toString());
+
+                    overrides.add(override);
+
+                    JsonObject modelJson = new JsonObject();
+                    modelJson.addProperty("parent", ModelIds.getBlockModelId(self).toString());
+                    modelJson.add("overrides", overrides);
+
+                    return modelJson;
+                }
+            });
+        }
     }
 }

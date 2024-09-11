@@ -2,6 +2,7 @@ package com.chimericdream.minekea.client.render.block;
 
 import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
+import com.chimericdream.minekea.tag.MinekeaTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
@@ -17,6 +18,7 @@ import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
@@ -44,6 +46,10 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
         return model.hasDepth();
     }
 
+    private boolean isBaggedItem(ItemStack stack) {
+        return stack.isIn(MinekeaTags.BAGGED_ITEMS);
+    }
+
     private boolean isHeadItem(Identifier id) {
         return
             id.compareTo(Registries.ITEM.getId(Items.PLAYER_HEAD)) == 0
@@ -61,18 +67,18 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
             return;
         }
 
-        ItemStack itemStack = entity.getStack(0);
+        ItemStack stack = entity.getStack(0);
 
-        if (hasLabel(entity, itemStack)) {
-            renderLabelIfPresent(entity, itemStack.getName(), matrices, vertexConsumers, light, tickDelta);
+        if (hasLabel(entity, stack)) {
+            renderLabelIfPresent(entity, stack.getName(), matrices, vertexConsumers, light, tickDelta);
         }
 
         int rotation = state.get(GenericDisplayCase.ROTATION);
 
         matrices.push();
 
-        Identifier id = Registries.ITEM.getId(itemStack.getItem());
-        boolean isBlock = isBlockItem(itemStack);
+        Identifier id = Registries.ITEM.getId(stack.getItem());
+        boolean isBlock = isBlockItem(stack);
 
         if (isBlock) {
             Block block = Registries.BLOCK.get(id);
@@ -95,7 +101,11 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
 
         ModelTransformationMode mode = isBlock ? ModelTransformationMode.GROUND : ModelTransformationMode.FIXED;
 
-        renderer.renderItem(itemStack, mode, light, overlay, matrices, vertexConsumers, null, 0);
+        if (isBaggedItem(stack)) {
+            stack.set(DataComponentTypes.CUSTOM_MODEL_DATA, new CustomModelDataComponent(9001));
+        }
+
+        renderer.renderItem(stack, mode, light, overlay, matrices, vertexConsumers, null, 0);
 
         matrices.pop();
     }
