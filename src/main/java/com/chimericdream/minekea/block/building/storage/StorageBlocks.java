@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -228,6 +229,12 @@ public class StorageBlocks implements MinekeaBlockCategory {
         DYE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
         STORAGE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
         SET_OF_EGGS_BLOCK.configureItemTags(registryLookup, getBuilder);
+
+        BAGGED_BLOCKS.forEach(block -> {
+            getBuilder.apply(MinekeaTags.BAGGED_ITEMS)
+                .setReplace(false)
+                .add(block.asItem());
+        });
     }
 
     @Override

@@ -12,7 +12,6 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
@@ -31,10 +30,6 @@ public class AppleStorageBlock extends GenericStorageBlock {
         getBuilder.apply(MinecraftBlockTags.MINEABLE_HOE)
             .setReplace(false)
             .add(this);
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
     }
 
     @Override

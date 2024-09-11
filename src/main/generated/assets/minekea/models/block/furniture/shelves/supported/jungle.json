@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shelves/supported",
+  "textures": {
+    "log": "minecraft:block/jungle_log",
+    "planks": "minecraft:block/jungle_planks"
+  }
+}

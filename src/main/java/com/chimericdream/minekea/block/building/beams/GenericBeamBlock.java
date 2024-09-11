@@ -289,10 +289,6 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
     }
 
     @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 6)
             .pattern("# #")

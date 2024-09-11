@@ -1,0 +1,39 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shelves/floating/mangrove"
+      },
+      "when": {
+        "wall_side": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shelves/floating/mangrove",
+        "y": 90
+      },
+      "when": {
+        "wall_side": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shelves/floating/mangrove",
+        "y": 180
+      },
+      "when": {
+        "wall_side": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shelves/floating/mangrove",
+        "y": 270
+      },
+      "when": {
+        "wall_side": "west"
+      }
+    }
+  ]
+}

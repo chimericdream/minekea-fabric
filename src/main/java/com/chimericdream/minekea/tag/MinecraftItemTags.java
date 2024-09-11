@@ -17,6 +17,5 @@ public class MinecraftItemTags {
     public static final TagKey<Item> SPRUCE_LOGS = TagKey.of(Registries.ITEM.getKey(), Identifier.of("spruce_logs"));
     public static final TagKey<Item> WARPED_STEMS = TagKey.of(Registries.ITEM.getKey(), Identifier.of("warped_stems"));
 
-
     public static final TagKey<Item> PLANKS = TagKey.of(Registries.ITEM.getKey(), Identifier.of("planks"));
 }

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "X": {
+      "item": "minecraft:dark_oak_slab"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "# #",
+    "XXX"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minekea:furniture/shelves/floating/dark_oak"
+  }
+}

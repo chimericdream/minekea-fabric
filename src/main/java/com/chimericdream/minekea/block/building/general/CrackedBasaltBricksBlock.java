@@ -28,7 +28,7 @@ import static com.chimericdream.minekea.block.building.BuildingBlocks.BASALT_BRI
 
 public class CrackedBasaltBricksBlock extends Block implements MinekeaBlock {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/general/cracked_basalt_bricks");
-    
+
     public CrackedBasaltBricksBlock() {
         super(AbstractBlock.Settings.copy(Blocks.SMOOTH_BASALT));
     }
@@ -44,10 +44,6 @@ public class CrackedBasaltBricksBlock extends Block implements MinekeaBlock {
         getBuilder.apply(MinecraftBlockTags.MINEABLE_PICKAXE)
             .setReplace(false)
             .add(this);
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
     }
 
     @Override

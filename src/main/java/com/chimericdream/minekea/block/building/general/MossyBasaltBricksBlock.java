@@ -48,10 +48,6 @@ public class MossyBasaltBricksBlock extends Block implements MinekeaBlock {
     }
 
     @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .input(BASALT_BRICKS_BLOCK)

@@ -90,6 +90,41 @@ public class ModelUtils {
             );
     }
 
+    public static void registerBlockWithWallSide(
+        BlockStateModelGenerator blockStateModelGenerator,
+        DirectionProperty wallSide,
+        Block block,
+        Identifier subModelId
+    ) {
+        blockStateModelGenerator.blockStateCollector
+            .accept(
+                MultipartBlockStateSupplier.create(block)
+                    .with(
+                        When.create().set(wallSide, Direction.NORTH),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create().set(wallSide, Direction.EAST),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create().set(wallSide, Direction.SOUTH),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create().set(wallSide, Direction.WEST),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+            );
+    }
+
     public static void registerBlockWithFacing(
         BlockStateModelGenerator blockStateModelGenerator,
         DirectionProperty facing,

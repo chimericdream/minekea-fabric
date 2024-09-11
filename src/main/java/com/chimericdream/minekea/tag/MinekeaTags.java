@@ -15,5 +15,6 @@ public class MinekeaTags {
     public static final TagKey<Block> PILLOWS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "pillows"));
     public static final TagKey<Block> MINEABLE_SHEARS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "mineable/shears"));
 
+    public static final TagKey<Item> BAGGED_ITEMS = TagKey.of(Registries.ITEM.getKey(), Identifier.of(ModInfo.MOD_ID, "bagged_items"));
     public static final TagKey<Item> GLASS_JAR_STORABLE = TagKey.of(Registries.ITEM.getKey(), Identifier.of(ModInfo.MOD_ID, "glass_jar_storable"));
 }
