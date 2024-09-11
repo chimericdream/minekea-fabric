@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:cherry_log"
+    },
+    "X": {
+      "item": "minecraft:cherry_planks"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minekea:furniture/tables/cherry"
+  }
+}

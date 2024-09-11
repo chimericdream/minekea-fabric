@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.furniture;
 
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.furniture.pillows.Pillows;
+import com.chimericdream.minekea.block.furniture.tables.Tables;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -25,10 +26,10 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
     public static DisplayCases DISPLAY_CASES;
     //    public static Doors DOORS;
     public static Pillows PILLOWS;
-//    public static Seats SEATS;
+    //    public static Seats SEATS;
 //    public static Shelves SHELVES;
 //    public static Shutters SHUTTERS;
-//    public static Tables TABLES;
+    public static Tables TABLES;
 //    public static Trapdoors TRAPDOORS;
 
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
@@ -72,8 +73,8 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
 //        }
 //
 //        if (config.enableTables) {
-//            TABLES = new Tables();
-//            BLOCK_GROUPS.add(TABLES);
+        TABLES = new Tables();
+        BLOCK_GROUPS.add(TABLES);
 //        }
 //
 //        if (config.enableTrapdoors) {

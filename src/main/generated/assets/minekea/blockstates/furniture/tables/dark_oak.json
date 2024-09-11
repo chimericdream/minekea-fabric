@@ -1,0 +1,154 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak"
+      },
+      "when": {
+        "east_connected": "false",
+        "north_connected": "false",
+        "south_connected": "false",
+        "west_connected": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_connected_north"
+      },
+      "when": {
+        "east_connected": "false",
+        "north_connected": "true",
+        "south_connected": "false",
+        "west_connected": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_connected_east"
+      },
+      "when": {
+        "east_connected": "true",
+        "north_connected": "false",
+        "south_connected": "false",
+        "west_connected": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_connected_south"
+      },
+      "when": {
+        "east_connected": "false",
+        "north_connected": "false",
+        "south_connected": "true",
+        "west_connected": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_connected_west"
+      },
+      "when": {
+        "east_connected": "false",
+        "north_connected": "false",
+        "south_connected": "false",
+        "west_connected": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_connected_north_east"
+      },
+      "when": {
+        "east_connected": "true",
+        "north_connected": "true",
+        "south_connected": "false",
+        "west_connected": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_connected_south_east"
+      },
+      "when": {
+        "east_connected": "true",
+        "north_connected": "false",
+        "south_connected": "true",
+        "west_connected": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_connected_north_west"
+      },
+      "when": {
+        "east_connected": "false",
+        "north_connected": "true",
+        "south_connected": "false",
+        "west_connected": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_connected_south_west"
+      },
+      "when": {
+        "east_connected": "false",
+        "north_connected": "false",
+        "south_connected": "true",
+        "west_connected": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/tables/dark_oak_all_connected"
+      },
+      "when": {
+        "OR": [
+          {
+            "east_connected": "true",
+            "north_connected": "false",
+            "south_connected": "false",
+            "west_connected": "true"
+          },
+          {
+            "east_connected": "false",
+            "north_connected": "true",
+            "south_connected": "true",
+            "west_connected": "false"
+          },
+          {
+            "east_connected": "true",
+            "north_connected": "false",
+            "south_connected": "true",
+            "west_connected": "true"
+          },
+          {
+            "east_connected": "true",
+            "north_connected": "true",
+            "south_connected": "false",
+            "west_connected": "true"
+          },
+          {
+            "east_connected": "true",
+            "north_connected": "true",
+            "south_connected": "true",
+            "west_connected": "false"
+          },
+          {
+            "east_connected": "false",
+            "north_connected": "true",
+            "south_connected": "true",
+            "west_connected": "true"
+          },
+          {
+            "east_connected": "true",
+            "north_connected": "true",
+            "south_connected": "true",
+            "west_connected": "true"
+          }
+        ]
+      }
+    }
+  ]
+}

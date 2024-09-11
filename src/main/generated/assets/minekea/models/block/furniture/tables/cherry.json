@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/table",
+  "textures": {
+    "log": "minecraft:block/cherry_log",
+    "planks": "minecraft:block/cherry_planks"
+  }
+}

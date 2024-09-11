@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/tables/table_south_west_connected",
+  "textures": {
+    "log": "minecraft:block/birch_log",
+    "planks": "minecraft:block/birch_planks"
+  }
+}
