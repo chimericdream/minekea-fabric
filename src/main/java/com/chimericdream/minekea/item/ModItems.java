@@ -1,7 +1,11 @@
 package com.chimericdream.minekea.item;
 
+import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.tools.HammerItem;
+import com.chimericdream.minekea.item.tools.PainterItem;
 import com.chimericdream.minekea.item.tools.WrenchItem;
+import com.chimericdream.minekea.screen.item.BlockPainterScreen;
+import com.chimericdream.minekea.screen.item.BlockPainterScreenHandler;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import com.chimericdream.minekea.util.MinekeaItem;
 import net.fabricmc.api.EnvType;
@@ -9,6 +13,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
@@ -22,6 +27,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.resource.featuretoggle.FeatureSet;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.function.Function;
@@ -35,12 +43,12 @@ public class ModItems implements MinekeaBlockCategory {
     public static final HammerItem GOLD_HAMMER_ITEM;
     public static final HammerItem DIAMOND_HAMMER_ITEM;
     public static final HammerItem NETHERITE_HAMMER_ITEM;
-    //    public static final PainterItem PAINTER_ITEM;
+    public static final PainterItem PAINTER_ITEM;
     public static final WrenchItem WRENCH_ITEM;
 
     public static final List<MinekeaItem> ITEMS;
 
-//    public static ScreenHandlerType<BlockPainterScreenHandler> BLOCK_PAINTER_SCREEN_HANDLER;
+    public static ScreenHandlerType<BlockPainterScreenHandler> BLOCK_PAINTER_SCREEN_HANDLER;
 
     static {
 //        GOLD_NUGGET_BAG = new NuggetBag(new NuggetSettings("gold", Identifier.of("minecraft:gold_nugget")));
@@ -102,17 +110,22 @@ public class ModItems implements MinekeaBlockCategory {
                 new Item.Settings().fireproof()
             )
         );
-//        PAINTER_ITEM = new PainterItem();
+        PAINTER_ITEM = Registry.register(
+            Registries.ITEM,
+            PainterItem.ITEM_ID,
+            new PainterItem()
+        );
         WRENCH_ITEM = Registry.register(
             Registries.ITEM,
             WrenchItem.ITEM_ID,
             new WrenchItem()
         );
 
-//        BLOCK_PAINTER_SCREEN_HANDLER = ScreenHandlerRegistry.registerExtended(
-//            Identifier.of(ModInfo.MOD_ID, "screens/items/block_painter"),
-//            BlockPainterScreenHandler::new
-//        );
+        BLOCK_PAINTER_SCREEN_HANDLER = Registry.register(
+            Registries.SCREEN_HANDLER,
+            Identifier.of(ModInfo.MOD_ID, "screens/items/block_painter"),
+            new ScreenHandlerType<>(BlockPainterScreenHandler::new, FeatureSet.empty())
+        );
 
         ITEMS = List.of(
             STONE_HAMMER_ITEM,
@@ -120,6 +133,7 @@ public class ModItems implements MinekeaBlockCategory {
             GOLD_HAMMER_ITEM,
             DIAMOND_HAMMER_ITEM,
             NETHERITE_HAMMER_ITEM,
+            PAINTER_ITEM,
             WRENCH_ITEM
         );
     }
@@ -133,7 +147,7 @@ public class ModItems implements MinekeaBlockCategory {
 
     @Environment(EnvType.CLIENT)
     public void initializeClient() {
-//        ScreenRegistry.register(BLOCK_PAINTER_SCREEN_HANDLER, BlockPainterScreen::new);
+        HandledScreens.register(BLOCK_PAINTER_SCREEN_HANDLER, BlockPainterScreen::new);
     }
 
     @Override

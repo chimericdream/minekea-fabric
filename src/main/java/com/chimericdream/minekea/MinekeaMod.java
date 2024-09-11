@@ -8,8 +8,11 @@ import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
 import com.chimericdream.minekea.item.ItemGroups;
 import com.chimericdream.minekea.item.ModItems;
+import com.chimericdream.minekea.network.ServerNetworking;
+import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.Blocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,8 +62,8 @@ public class MinekeaMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-//        LOGGER.info("[minekea] Initializing server networking");
-//        ServerNetworking.init();
+        LOGGER.info("[minekea] Initializing server networking");
+        ServerNetworking.init();
 
         LOGGER.info("[minekea] Registering item groups");
         ITEM_GROUPS.register();
@@ -81,7 +84,6 @@ public class MinekeaMod implements ModInitializer {
 
         LOGGER.info("[minekea] Registering items");
         ITEMS.register();
-//        ITEMS.setupResources();
 
         LOGGER.info("[minekea] Registering colored blocks");
         registerVanillaColoredBlocks();
@@ -94,90 +96,90 @@ public class MinekeaMod implements ModInitializer {
     }
 
     private void registerVanillaColoredBlocks() {
-//        ColoredBlocksRegistry.addBlock(Blocks.WHITE_CONCRETE, "minecraft:concrete", BlockColor.WHITE);
-//        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_CONCRETE, "minecraft:concrete", BlockColor.ORANGE);
-//        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_CONCRETE, "minecraft:concrete", BlockColor.MAGENTA);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_CONCRETE, "minecraft:concrete", BlockColor.LIGHT_BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_CONCRETE, "minecraft:concrete", BlockColor.YELLOW);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIME_CONCRETE, "minecraft:concrete", BlockColor.LIME);
-//        ColoredBlocksRegistry.addBlock(Blocks.PINK_CONCRETE, "minecraft:concrete", BlockColor.PINK);
-//        ColoredBlocksRegistry.addBlock(Blocks.GRAY_CONCRETE, "minecraft:concrete", BlockColor.GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_CONCRETE, "minecraft:concrete", BlockColor.LIGHT_GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.CYAN_CONCRETE, "minecraft:concrete", BlockColor.CYAN);
-//        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_CONCRETE, "minecraft:concrete", BlockColor.PURPLE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLUE_CONCRETE, "minecraft:concrete", BlockColor.BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BROWN_CONCRETE, "minecraft:concrete", BlockColor.BROWN);
-//        ColoredBlocksRegistry.addBlock(Blocks.GREEN_CONCRETE, "minecraft:concrete", BlockColor.GREEN);
-//        ColoredBlocksRegistry.addBlock(Blocks.RED_CONCRETE, "minecraft:concrete", BlockColor.RED);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLACK_CONCRETE, "minecraft:concrete", BlockColor.BLACK);
-//
-//        ColoredBlocksRegistry.addBlock(Blocks.WHITE_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.WHITE);
-//        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.ORANGE);
-//        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.MAGENTA);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.LIGHT_BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.YELLOW);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIME_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.LIME);
-//        ColoredBlocksRegistry.addBlock(Blocks.PINK_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.PINK);
-//        ColoredBlocksRegistry.addBlock(Blocks.GRAY_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.LIGHT_GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.CYAN_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.CYAN);
-//        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.PURPLE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLUE_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BROWN_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.BROWN);
-//        ColoredBlocksRegistry.addBlock(Blocks.GREEN_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.GREEN);
-//        ColoredBlocksRegistry.addBlock(Blocks.RED_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.RED);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLACK_CONCRETE_POWDER, "minecraft:concrete_powder", BlockColor.BLACK);
-//
-//        ColoredBlocksRegistry.addBlock(Blocks.WHITE_WOOL, "minecraft:wool", BlockColor.WHITE);
-//        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_WOOL, "minecraft:wool", BlockColor.ORANGE);
-//        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_WOOL, "minecraft:wool", BlockColor.MAGENTA);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_WOOL, "minecraft:wool", BlockColor.LIGHT_BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_WOOL, "minecraft:wool", BlockColor.YELLOW);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIME_WOOL, "minecraft:wool", BlockColor.LIME);
-//        ColoredBlocksRegistry.addBlock(Blocks.PINK_WOOL, "minecraft:wool", BlockColor.PINK);
-//        ColoredBlocksRegistry.addBlock(Blocks.GRAY_WOOL, "minecraft:wool", BlockColor.GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_WOOL, "minecraft:wool", BlockColor.LIGHT_GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.CYAN_WOOL, "minecraft:wool", BlockColor.CYAN);
-//        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_WOOL, "minecraft:wool", BlockColor.PURPLE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLUE_WOOL, "minecraft:wool", BlockColor.BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BROWN_WOOL, "minecraft:wool", BlockColor.BROWN);
-//        ColoredBlocksRegistry.addBlock(Blocks.GREEN_WOOL, "minecraft:wool", BlockColor.GREEN);
-//        ColoredBlocksRegistry.addBlock(Blocks.RED_WOOL, "minecraft:wool", BlockColor.RED);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLACK_WOOL, "minecraft:wool", BlockColor.BLACK);
-//
-//        ColoredBlocksRegistry.addBlock(Blocks.TERRACOTTA, "minecraft:terracotta", BlockColor.NONE);
-//        ColoredBlocksRegistry.addBlock(Blocks.WHITE_TERRACOTTA, "minecraft:terracotta", BlockColor.WHITE);
-//        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_TERRACOTTA, "minecraft:terracotta", BlockColor.ORANGE);
-//        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_TERRACOTTA, "minecraft:terracotta", BlockColor.MAGENTA);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_TERRACOTTA, "minecraft:terracotta", BlockColor.LIGHT_BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_TERRACOTTA, "minecraft:terracotta", BlockColor.YELLOW);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIME_TERRACOTTA, "minecraft:terracotta", BlockColor.LIME);
-//        ColoredBlocksRegistry.addBlock(Blocks.PINK_TERRACOTTA, "minecraft:terracotta", BlockColor.PINK);
-//        ColoredBlocksRegistry.addBlock(Blocks.GRAY_TERRACOTTA, "minecraft:terracotta", BlockColor.GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_TERRACOTTA, "minecraft:terracotta", BlockColor.LIGHT_GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.CYAN_TERRACOTTA, "minecraft:terracotta", BlockColor.CYAN);
-//        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_TERRACOTTA, "minecraft:terracotta", BlockColor.PURPLE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLUE_TERRACOTTA, "minecraft:terracotta", BlockColor.BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BROWN_TERRACOTTA, "minecraft:terracotta", BlockColor.BROWN);
-//        ColoredBlocksRegistry.addBlock(Blocks.GREEN_TERRACOTTA, "minecraft:terracotta", BlockColor.GREEN);
-//        ColoredBlocksRegistry.addBlock(Blocks.RED_TERRACOTTA, "minecraft:terracotta", BlockColor.RED);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLACK_TERRACOTTA, "minecraft:terracotta", BlockColor.BLACK);
-//
-//        ColoredBlocksRegistry.addBlock(Blocks.WHITE_STAINED_GLASS, "minecraft:stained_glass", BlockColor.WHITE);
-//        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_STAINED_GLASS, "minecraft:stained_glass", BlockColor.ORANGE);
-//        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_STAINED_GLASS, "minecraft:stained_glass", BlockColor.MAGENTA);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_STAINED_GLASS, "minecraft:stained_glass", BlockColor.LIGHT_BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_STAINED_GLASS, "minecraft:stained_glass", BlockColor.YELLOW);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIME_STAINED_GLASS, "minecraft:stained_glass", BlockColor.LIME);
-//        ColoredBlocksRegistry.addBlock(Blocks.PINK_STAINED_GLASS, "minecraft:stained_glass", BlockColor.PINK);
-//        ColoredBlocksRegistry.addBlock(Blocks.GRAY_STAINED_GLASS, "minecraft:stained_glass", BlockColor.GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_STAINED_GLASS, "minecraft:stained_glass", BlockColor.LIGHT_GRAY);
-//        ColoredBlocksRegistry.addBlock(Blocks.CYAN_STAINED_GLASS, "minecraft:stained_glass", BlockColor.CYAN);
-//        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_STAINED_GLASS, "minecraft:stained_glass", BlockColor.PURPLE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLUE_STAINED_GLASS, "minecraft:stained_glass", BlockColor.BLUE);
-//        ColoredBlocksRegistry.addBlock(Blocks.BROWN_STAINED_GLASS, "minecraft:stained_glass", BlockColor.BROWN);
-//        ColoredBlocksRegistry.addBlock(Blocks.GREEN_STAINED_GLASS, "minecraft:stained_glass", BlockColor.GREEN);
-//        ColoredBlocksRegistry.addBlock(Blocks.RED_STAINED_GLASS, "minecraft:stained_glass", BlockColor.RED);
-//        ColoredBlocksRegistry.addBlock(Blocks.BLACK_STAINED_GLASS, "minecraft:stained_glass", BlockColor.BLACK);
+        ColoredBlocksRegistry.addBlock(Blocks.WHITE_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.WHITE);
+        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.ORANGE);
+        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.MAGENTA);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.YELLOW);
+        ColoredBlocksRegistry.addBlock(Blocks.LIME_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.LIME);
+        ColoredBlocksRegistry.addBlock(Blocks.PINK_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.PINK);
+        ColoredBlocksRegistry.addBlock(Blocks.GRAY_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.CYAN_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.CYAN);
+        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.PURPLE);
+        ColoredBlocksRegistry.addBlock(Blocks.BLUE_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.BROWN_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.BROWN);
+        ColoredBlocksRegistry.addBlock(Blocks.GREEN_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.GREEN);
+        ColoredBlocksRegistry.addBlock(Blocks.RED_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.RED);
+        ColoredBlocksRegistry.addBlock(Blocks.BLACK_CONCRETE, "minecraft:concrete", ColoredBlocksRegistry.BlockColor.BLACK);
+
+        ColoredBlocksRegistry.addBlock(Blocks.WHITE_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.WHITE);
+        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.ORANGE);
+        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.MAGENTA);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.YELLOW);
+        ColoredBlocksRegistry.addBlock(Blocks.LIME_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.LIME);
+        ColoredBlocksRegistry.addBlock(Blocks.PINK_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.PINK);
+        ColoredBlocksRegistry.addBlock(Blocks.GRAY_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.CYAN_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.CYAN);
+        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.PURPLE);
+        ColoredBlocksRegistry.addBlock(Blocks.BLUE_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.BROWN_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.BROWN);
+        ColoredBlocksRegistry.addBlock(Blocks.GREEN_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.GREEN);
+        ColoredBlocksRegistry.addBlock(Blocks.RED_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.RED);
+        ColoredBlocksRegistry.addBlock(Blocks.BLACK_CONCRETE_POWDER, "minecraft:concrete_powder", ColoredBlocksRegistry.BlockColor.BLACK);
+
+        ColoredBlocksRegistry.addBlock(Blocks.WHITE_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.WHITE);
+        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.ORANGE);
+        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.MAGENTA);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.YELLOW);
+        ColoredBlocksRegistry.addBlock(Blocks.LIME_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.LIME);
+        ColoredBlocksRegistry.addBlock(Blocks.PINK_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.PINK);
+        ColoredBlocksRegistry.addBlock(Blocks.GRAY_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.CYAN_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.CYAN);
+        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.PURPLE);
+        ColoredBlocksRegistry.addBlock(Blocks.BLUE_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.BROWN_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.BROWN);
+        ColoredBlocksRegistry.addBlock(Blocks.GREEN_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.GREEN);
+        ColoredBlocksRegistry.addBlock(Blocks.RED_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.RED);
+        ColoredBlocksRegistry.addBlock(Blocks.BLACK_WOOL, "minecraft:wool", ColoredBlocksRegistry.BlockColor.BLACK);
+
+        ColoredBlocksRegistry.addBlock(Blocks.TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.NONE);
+        ColoredBlocksRegistry.addBlock(Blocks.WHITE_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.WHITE);
+        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.ORANGE);
+        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.MAGENTA);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.YELLOW);
+        ColoredBlocksRegistry.addBlock(Blocks.LIME_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.LIME);
+        ColoredBlocksRegistry.addBlock(Blocks.PINK_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.PINK);
+        ColoredBlocksRegistry.addBlock(Blocks.GRAY_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.CYAN_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.CYAN);
+        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.PURPLE);
+        ColoredBlocksRegistry.addBlock(Blocks.BLUE_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.BROWN_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.BROWN);
+        ColoredBlocksRegistry.addBlock(Blocks.GREEN_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.GREEN);
+        ColoredBlocksRegistry.addBlock(Blocks.RED_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.RED);
+        ColoredBlocksRegistry.addBlock(Blocks.BLACK_TERRACOTTA, "minecraft:terracotta", ColoredBlocksRegistry.BlockColor.BLACK);
+
+        ColoredBlocksRegistry.addBlock(Blocks.WHITE_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.WHITE);
+        ColoredBlocksRegistry.addBlock(Blocks.ORANGE_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.ORANGE);
+        ColoredBlocksRegistry.addBlock(Blocks.MAGENTA_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.MAGENTA);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_BLUE_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.YELLOW_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.YELLOW);
+        ColoredBlocksRegistry.addBlock(Blocks.LIME_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.LIME);
+        ColoredBlocksRegistry.addBlock(Blocks.PINK_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.PINK);
+        ColoredBlocksRegistry.addBlock(Blocks.GRAY_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.LIGHT_GRAY_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+        ColoredBlocksRegistry.addBlock(Blocks.CYAN_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.CYAN);
+        ColoredBlocksRegistry.addBlock(Blocks.PURPLE_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.PURPLE);
+        ColoredBlocksRegistry.addBlock(Blocks.BLUE_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.BLUE);
+        ColoredBlocksRegistry.addBlock(Blocks.BROWN_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.BROWN);
+        ColoredBlocksRegistry.addBlock(Blocks.GREEN_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.GREEN);
+        ColoredBlocksRegistry.addBlock(Blocks.RED_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.RED);
+        ColoredBlocksRegistry.addBlock(Blocks.BLACK_STAINED_GLASS, "minecraft:stained_glass", ColoredBlocksRegistry.BlockColor.BLACK);
     }
 }
