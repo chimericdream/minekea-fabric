@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "minekea:block/furniture/bookshelves/crimson_v0"
+      },
+      {
+        "model": "minekea:block/furniture/bookshelves/crimson_v1"
+      },
+      {
+        "model": "minekea:block/furniture/bookshelves/crimson_v2"
+      },
+      {
+        "model": "minekea:block/furniture/bookshelves/crimson_v3"
+      },
+      {
+        "model": "minekea:block/furniture/bookshelves/crimson_v4"
+      },
+      {
+        "model": "minekea:block/furniture/bookshelves/crimson_v5"
+      },
+      {
+        "model": "minekea:block/furniture/bookshelves/crimson_v6"
+      }
+    ]
+  }
+}

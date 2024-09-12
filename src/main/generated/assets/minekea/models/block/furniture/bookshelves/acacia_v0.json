@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/bookshelves/bookshelf",
+  "textures": {
+    "material": "minecraft:block/acacia_planks",
+    "shelf": "minekea:block/furniture/bookshelves/shelf0"
+  }
+}

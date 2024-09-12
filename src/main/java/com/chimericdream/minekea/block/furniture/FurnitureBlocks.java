@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.furniture;
 
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
 import com.chimericdream.minekea.block.furniture.pillows.Pillows;
 import com.chimericdream.minekea.block.furniture.seating.Seats;
@@ -25,7 +26,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class FurnitureBlocks implements MinekeaBlockCategory {
-    //    public static Bookshelves BOOKSHELVES;
+    public static Bookshelves BOOKSHELVES;
     public static DisplayCases DISPLAY_CASES;
     //    public static Doors DOORS;
     public static Pillows PILLOWS;
@@ -38,52 +39,32 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
 
     static {
-//        MinekeaConfig config = ConfigManager.getConfig();
+        BOOKSHELVES = new Bookshelves();
+        BLOCK_GROUPS.add(BOOKSHELVES);
 
-//        if (config.enableBookshelves) {
-//            BOOKSHELVES = new Bookshelves();
-//            BLOCK_GROUPS.add(BOOKSHELVES);
-//        }
-
-//        if (config.enableDisplayCases) {
         DISPLAY_CASES = new DisplayCases();
         BLOCK_GROUPS.add(DISPLAY_CASES);
-//        }
 
-//        if (config.enableDoors) {
 //            DOORS = new Doors();
 //            BLOCK_GROUPS.add(DOORS);
-//        }
-//
-//        if (config.enablePillows) {
+
         PILLOWS = new Pillows();
         BLOCK_GROUPS.add(PILLOWS);
-//        }
-//
-//        if (config.enableChairs || config.enableStools) {
+
         SEATS = new Seats();
         BLOCK_GROUPS.add(SEATS);
-//        }
-//
-//        if (config.enableShelves) {
+
         SHELVES = new Shelves();
         BLOCK_GROUPS.add(SHELVES);
-//        }
-//
-//        if (config.enableShutters) {
+
         SHUTTERS = new Shutters();
         BLOCK_GROUPS.add(SHUTTERS);
-//        }
-//
-//        if (config.enableTables) {
+
         TABLES = new Tables();
         BLOCK_GROUPS.add(TABLES);
-//        }
-//
-//        if (config.enableTrapdoors) {
+
 //            TRAPDOORS = new Trapdoors();
 //            BLOCK_GROUPS.add(TRAPDOORS);
-//        }
     }
 
     @Environment(EnvType.CLIENT)
