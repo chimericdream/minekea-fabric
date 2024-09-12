@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/seating/stool",
+  "textures": {
+    "log": "minecraft:block/oak_log",
+    "planks": "minecraft:block/oak_planks"
+  }
+}

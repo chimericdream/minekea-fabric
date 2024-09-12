@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/seating/stool",
+  "textures": {
+    "log": "minecraft:block/warped_stem",
+    "planks": "minecraft:block/warped_planks"
+  }
+}
