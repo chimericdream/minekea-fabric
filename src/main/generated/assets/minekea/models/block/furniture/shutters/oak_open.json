@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shutters/open",
+  "textures": {
+    "frame": "minecraft:block/oak_log",
+    "panel": "minecraft:block/oak_planks"
+  }
+}

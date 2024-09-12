@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shutters/closed",
+  "textures": {
+    "frame": "minecraft:block/warped_stem",
+    "panel": "minecraft:block/warped_planks"
+  }
+}

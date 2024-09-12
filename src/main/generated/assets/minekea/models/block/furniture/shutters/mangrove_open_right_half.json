@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shutters/right_half",
+  "textures": {
+    "frame": "minecraft:block/mangrove_log",
+    "panel": "minecraft:block/mangrove_planks"
+  }
+}

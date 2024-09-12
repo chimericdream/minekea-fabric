@@ -1,0 +1,51 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/warped",
+        "y": 180
+      },
+      "when": {
+        "open": "false",
+        "wall_side": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/warped"
+      },
+      "when": {
+        "open": "false",
+        "wall_side": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/warped",
+        "y": 270
+      },
+      "when": {
+        "open": "false",
+        "wall_side": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/warped",
+        "y": 90
+      },
+      "when": {
+        "open": "false",
+        "wall_side": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/warped_open"
+      },
+      "when": {
+        "open": "true"
+      }
+    }
+  ]
+}

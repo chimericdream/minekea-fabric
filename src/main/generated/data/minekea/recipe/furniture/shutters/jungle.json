@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_log"
+    },
+    "X": {
+      "item": "minecraft:jungle_planks"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "#X#",
+    "#X#"
+  ],
+  "result": {
+    "count": 6,
+    "id": "minekea:furniture/shutters/jungle"
+  }
+}

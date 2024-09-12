@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shutters/closed",
+  "textures": {
+    "frame": "minecraft:block/jungle_log",
+    "panel": "minecraft:block/jungle_planks"
+  }
+}
