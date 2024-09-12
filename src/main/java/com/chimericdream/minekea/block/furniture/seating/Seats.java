@@ -1,16 +1,23 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
+import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
@@ -23,7 +30,7 @@ public class Seats implements MinekeaBlockCategory {
     public static final List<GenericChair> CHAIRS;
     public static final List<GenericStool> STOOLS;
 
-//    public static EntityType<SeatEntity> SEAT_ENTITY;
+    public static EntityType<SeatEntity> SEAT_ENTITY;
 
     static {
         CHAIRS = List.of(
@@ -55,7 +62,7 @@ public class Seats implements MinekeaBlockCategory {
 
     @Override
     public void initializeClient() {
-//        EntityRendererRegistry.register(SEAT_ENTITY, SeatEntity.EmptyRenderer::new);
+        EntityRendererRegistry.register(SEAT_ENTITY, SeatEntity.EmptyRenderer::new);
     }
 
     @Override
@@ -63,11 +70,11 @@ public class Seats implements MinekeaBlockCategory {
         CHAIRS.forEach(GenericChair::register);
         STOOLS.forEach(GenericStool::register);
 
-//        SEAT_ENTITY = Registry.register(
-//            Registries.ENTITY_TYPE,
-//            SeatEntity.ENTITY_ID,
-//            FabricEntityTypeBuilder.<SeatEntity>create(SpawnGroup.MISC, SeatEntity::new).build()
-//        );
+        SEAT_ENTITY = Registry.register(
+            Registries.ENTITY_TYPE,
+            SeatEntity.ENTITY_ID,
+            FabricEntityTypeBuilder.<SeatEntity>create(SpawnGroup.MISC, SeatEntity::new).build()
+        );
 
         ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> {
             CHAIRS.forEach(itemGroup::add);

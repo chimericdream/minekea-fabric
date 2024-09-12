@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -18,6 +19,7 @@ import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItem;
@@ -29,14 +31,20 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
+import java.util.List;
 import java.util.Optional;
 
 public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
@@ -128,27 +136,27 @@ public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
         return super.getCollisionShape(state, world, pos, context);
     }
 
-//    @Override
-//    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-//        if (world.isClient()) {
-//            return ActionResult.SUCCESS;
-//        }
-//
-//        List<SeatEntity> seats = world.getEntitiesByClass(SeatEntity.class, new Box(pos), (Object) -> true);
-//
-//        if (seats.size() == 0) {
-//            SeatEntity seat = Seats.SEAT_ENTITY.create(world);
-//            Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() + 1.05d, hit.getBlockPos().getZ() + 0.5d);
-//
-//            seat.updatePosition(seatPos.getX(), seatPos.getY(), seatPos.getZ());
-//            world.spawnEntity(seat);
-//            player.startRiding(seat);
-//
-//            return ActionResult.SUCCESS;
-//        }
-//
-//        return ActionResult.PASS;
-//    }
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (world.isClient()) {
+            return ActionResult.SUCCESS;
+        }
+
+        List<SeatEntity> seats = world.getEntitiesByClass(SeatEntity.class, new Box(pos), (Object) -> true);
+
+        if (seats.isEmpty()) {
+            SeatEntity seat = Seats.SEAT_ENTITY.create(world);
+            Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() + 1.5d, hit.getBlockPos().getZ() + 0.5d);
+
+            seat.updatePosition(seatPos.getX(), seatPos.getY(), seatPos.getZ());
+            world.spawnEntity(seat);
+            player.startRiding(seat);
+
+            return ActionResult.SUCCESS;
+        }
+
+        return ActionResult.PASS;
+    }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
