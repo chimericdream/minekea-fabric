@@ -6,6 +6,7 @@ import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
@@ -28,6 +29,8 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -46,6 +49,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
     protected static final Model STOOL_MODEL = new Model(
@@ -175,6 +179,11 @@ public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
             .criterion(FabricRecipeProvider.hasItem(logIngredient),
                 FabricRecipeProvider.conditionsFromItem(logIngredient))
             .offerTo(exporter);
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
     @Override

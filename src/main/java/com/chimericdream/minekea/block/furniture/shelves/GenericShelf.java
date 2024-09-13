@@ -37,6 +37,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -350,12 +351,9 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock, Water
         }
     }
 
-
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-//        getBuilder.apply(MinecraftBlockTags.MINEABLE_AXE)
-//            .setReplace(false)
-//            .add(this);
+        getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
     @Override

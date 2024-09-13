@@ -5,7 +5,6 @@ import com.chimericdream.minekea.resource.ModelUtils;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
@@ -22,14 +21,11 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-
-import java.util.function.Function;
 
 public class GenericFloatingShelf extends GenericShelf {
     public GenericFloatingShelf(
@@ -85,13 +81,6 @@ public class GenericFloatingShelf extends GenericShelf {
             case WEST -> Block.createCuboidShape(9.0, 7.0, 0.0, 16.0, 9.0, 16.0);
             default -> Block.createCuboidShape(0.0, 7.0, 9.0, 16.0, 9.0, 16.0);
         };
-    }
-
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-//        getBuilder.apply(MinecraftBlockTags.MINEABLE_AXE)
-//            .setReplace(false)
-//            .add(this);
     }
 
     @Override
