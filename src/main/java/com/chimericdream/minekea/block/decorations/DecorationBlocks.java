@@ -2,6 +2,8 @@ package com.chimericdream.minekea.block.decorations;
 
 import com.chimericdream.minekea.block.decorations.lighting.DoomLantern;
 import com.chimericdream.minekea.block.decorations.lighting.EndLantern;
+import com.chimericdream.minekea.block.decorations.lighting.EndlessRod;
+import com.chimericdream.minekea.block.decorations.misc.FakeCake;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
@@ -25,18 +27,18 @@ import java.util.function.Function;
 public class DecorationBlocks implements MinekeaBlockCategory {
     public static final DoomLantern DOOM_LANTERN;
     public static final EndLantern END_LANTERN;
-//    public static final EndlessRod ENDLESS_ROD;
-//    public static final FakeCake FAKE_CAKE;
+    public static final EndlessRod ENDLESS_ROD;
+    public static final FakeCake FAKE_CAKE;
 
     public static final List<MinekeaBlock> BLOCKS;
 
     static {
         DOOM_LANTERN = new DoomLantern();
         END_LANTERN = new EndLantern();
-//        ENDLESS_ROD = new EndlessRod();
-//        FAKE_CAKE = new FakeCake();
+        ENDLESS_ROD = new EndlessRod();
+        FAKE_CAKE = new FakeCake();
 
-        BLOCKS = List.of(DOOM_LANTERN, END_LANTERN);
+        BLOCKS = List.of(DOOM_LANTERN, END_LANTERN, ENDLESS_ROD, FAKE_CAKE);
     }
 
     @Environment(EnvType.CLIENT)
@@ -47,12 +49,8 @@ public class DecorationBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        DOOM_LANTERN.register();
-        END_LANTERN.register();
-//        ENDLESS_ROD.register();
-//        FAKE_CAKE.register();
+        BLOCKS.forEach(MinekeaBlock::register);
     }
-
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {

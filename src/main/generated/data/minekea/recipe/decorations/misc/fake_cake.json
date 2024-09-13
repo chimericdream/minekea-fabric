@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:white_carpet"
+    },
+    "B": {
+      "item": "minecraft:white_dye"
+    },
+    "C": {
+      "item": "minecraft:brown_wool"
+    },
+    "E": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BEB",
+    "CCC"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minekea:decorations/misc/fake_cake"
+  }
+}
