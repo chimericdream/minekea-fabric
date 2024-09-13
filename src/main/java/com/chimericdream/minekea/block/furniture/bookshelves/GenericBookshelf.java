@@ -53,7 +53,7 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
     }
 
     public GenericBookshelf(String materialName, Block plankIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.create());
+        super(AbstractBlock.Settings.copy(plankIngredient));
 
         BLOCK_ID = makeBlockId(materialName);
 
@@ -101,7 +101,7 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
 
     @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.drops(this, Items.BOOK, ConstantLootNumberProvider.create(3));
+        generator.addDrop(this, generator.drops(this, Items.BOOK, ConstantLootNumberProvider.create(3)));
     }
 
     @Override

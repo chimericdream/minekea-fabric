@@ -124,7 +124,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock, Water
         boolean isFlammable,
         Identifier blockId
     ) {
-        super(AbstractBlock.Settings.create());
+        super(AbstractBlock.Settings.copy(plankIngredient));
 
         this.setDefaultState(
             this.stateManager.getDefaultState()

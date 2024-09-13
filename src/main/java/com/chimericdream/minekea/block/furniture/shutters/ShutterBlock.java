@@ -126,7 +126,7 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
     }
 
     public ShutterBlock(BlockSetType type, String materialName, Block plankIngredient, Block logIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.create());
+        super(AbstractBlock.Settings.copy(plankIngredient));
 
         this.setDefaultState(
             this.stateManager.getDefaultState()

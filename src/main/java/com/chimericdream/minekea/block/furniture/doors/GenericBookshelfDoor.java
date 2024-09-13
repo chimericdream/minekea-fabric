@@ -80,7 +80,7 @@ public class GenericBookshelfDoor extends DoorBlock implements MinekeaBlock {
     }
 
     public GenericBookshelfDoor(BlockSetType type, String materialName, Block plankIngredient, boolean isFlammable) {
-        super(type, AbstractBlock.Settings.create());
+        super(type, AbstractBlock.Settings.copy(plankIngredient));
 
         BLOCK_ID = makeBlockId(materialName);
 

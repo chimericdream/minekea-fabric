@@ -82,7 +82,7 @@ public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
     }
 
     public GenericStool(String materialName, Block plankIngredient, Block logIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.create());
+        super(AbstractBlock.Settings.copy(plankIngredient));
 
         this.setDefaultState(
             this.stateManager.getDefaultState()

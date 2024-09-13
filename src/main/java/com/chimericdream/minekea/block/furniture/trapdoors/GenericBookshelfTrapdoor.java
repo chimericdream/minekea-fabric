@@ -66,7 +66,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
     }
 
     public GenericBookshelfTrapdoor(BlockSetType type, String materialName, Block plankIngredient, boolean isFlammable) {
-        super(type, AbstractBlock.Settings.create());
+        super(type, AbstractBlock.Settings.copy(plankIngredient));
 
         BLOCK_ID = makeBlockId(materialName);
 
@@ -115,7 +115,7 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
 
     @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.doorDrops(this);
+        generator.addDrop(this);
     }
 
     @Override
