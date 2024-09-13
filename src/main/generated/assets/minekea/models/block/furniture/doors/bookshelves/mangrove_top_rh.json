@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/doors/bookshelves/top_rh",
+  "textures": {
+    "material": "minecraft:block/mangrove_planks",
+    "shelf": "minekea:block/furniture/bookshelves/shelf0"
+  }
+}

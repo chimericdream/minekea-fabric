@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/doors/bookshelves/bottom_rh",
+  "textures": {
+    "material": "minecraft:block/spruce_planks",
+    "shelf": "minekea:block/furniture/bookshelves/shelf0"
+  }
+}

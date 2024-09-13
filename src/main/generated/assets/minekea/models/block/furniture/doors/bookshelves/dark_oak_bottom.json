@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/doors/bookshelves/bottom",
+  "textures": {
+    "material": "minecraft:block/dark_oak_planks",
+    "shelf": "minekea:block/furniture/bookshelves/shelf0"
+  }
+}

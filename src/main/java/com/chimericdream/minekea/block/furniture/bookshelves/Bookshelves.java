@@ -17,24 +17,23 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.function.Function;
 
 public class Bookshelves implements MinekeaBlockCategory {
-    public static final List<GenericBookshelf> BOOKSHELVES;
+    public static final Map<String, GenericBookshelf> BOOKSHELVES = new LinkedHashMap<>();
 
     static {
-        BOOKSHELVES = List.of(
-            new GenericBookshelf("Acacia", Blocks.ACACIA_PLANKS),
-            new GenericBookshelf("Birch", Blocks.BIRCH_PLANKS),
-            new GenericBookshelf("Cherry", Blocks.CHERRY_PLANKS),
-            new GenericBookshelf("Crimson", Blocks.CRIMSON_PLANKS, false),
-            new GenericBookshelf("Dark Oak", Blocks.DARK_OAK_PLANKS),
-            new GenericBookshelf("Jungle", Blocks.JUNGLE_PLANKS),
-            new GenericBookshelf("Mangrove", Blocks.MANGROVE_PLANKS),
-            new GenericBookshelf("Spruce", Blocks.SPRUCE_PLANKS),
-            new GenericBookshelf("Warped", Blocks.WARPED_PLANKS, false)
-        );
+        BOOKSHELVES.put("Acacia", new GenericBookshelf("Acacia", Blocks.ACACIA_PLANKS));
+        BOOKSHELVES.put("Birch", new GenericBookshelf("Birch", Blocks.BIRCH_PLANKS));
+        BOOKSHELVES.put("Cherry", new GenericBookshelf("Cherry", Blocks.CHERRY_PLANKS));
+        BOOKSHELVES.put("Crimson", new GenericBookshelf("Crimson", Blocks.CRIMSON_PLANKS, false));
+        BOOKSHELVES.put("Dark Oak", new GenericBookshelf("Dark Oak", Blocks.DARK_OAK_PLANKS));
+        BOOKSHELVES.put("Jungle", new GenericBookshelf("Jungle", Blocks.JUNGLE_PLANKS));
+        BOOKSHELVES.put("Mangrove", new GenericBookshelf("Mangrove", Blocks.MANGROVE_PLANKS));
+        BOOKSHELVES.put("Spruce", new GenericBookshelf("Spruce", Blocks.SPRUCE_PLANKS));
+        BOOKSHELVES.put("Warped", new GenericBookshelf("Warped", Blocks.WARPED_PLANKS, false));
     }
 
     @Environment(EnvType.CLIENT)
@@ -44,43 +43,43 @@ public class Bookshelves implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        BOOKSHELVES.forEach(GenericBookshelf::register);
+        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.register());
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(itemGroup -> BOOKSHELVES.forEach(itemGroup::add));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(itemGroup -> BOOKSHELVES.forEach((key, bookshelf) -> itemGroup.add(bookshelf)));
     }
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        BOOKSHELVES.forEach(bookshelf -> bookshelf.configureBlockTags(registryLookup, getBuilder));
+        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureBlockTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        BOOKSHELVES.forEach(bookshelf -> bookshelf.configureItemTags(registryLookup, getBuilder));
+        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureItemTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        BOOKSHELVES.forEach(bookshelf -> bookshelf.configureRecipes(exporter));
+        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureRecipes(exporter));
     }
 
     @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        BOOKSHELVES.forEach(bookshelf -> bookshelf.configureBlockLootTables(registryLookup, generator));
+        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureBlockLootTables(registryLookup, generator));
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        BOOKSHELVES.forEach(bookshelf -> bookshelf.configureTranslations(registryLookup, translationBuilder));
+        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureTranslations(registryLookup, translationBuilder));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        BOOKSHELVES.forEach(bookshelf -> bookshelf.configureBlockStateModels(blockStateModelGenerator));
+        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureBlockStateModels(blockStateModelGenerator));
     }
 
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        BOOKSHELVES.forEach(bookshelf -> bookshelf.configureItemModels(itemModelGenerator));
+        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureItemModels(itemModelGenerator));
     }
 }

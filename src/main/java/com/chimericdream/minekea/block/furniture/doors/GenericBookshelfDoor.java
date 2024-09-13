@@ -1,192 +1,486 @@
-//package com.chimericdream.minekea.block.furniture.doors;
-//
-//import com.chimericdream.minekea.ModInfo;
-//import com.chimericdream.minekea.resource.LootTable;
-//import com.chimericdream.minekea.resource.MinekeaResourcePack;
-//import com.chimericdream.minekea.resource.MinekeaTags;
-//import com.chimericdream.minekea.resource.Model;
-//import com.chimericdream.minekea.settings.MinekeaBlockSettings;
-//import com.chimericdream.minekea.util.MinekeaBlock;
-//import com.google.gson.JsonObject;
-//import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-//import net.fabricmc.fabric.api.registry.FuelRegistry;
-//import net.minecraft.block.DoorBlock;
-//import net.minecraft.item.BlockItem;
-//import net.minecraft.item.Item;
-//import net.minecraft.item.ItemGroup;
-//import net.minecraft.registry.Registries;
-//import net.minecraft.registry.Registry;
-//import net.minecraft.util.Identifier;
-//
-//import java.util.Objects;
-//
-//public class GenericBookshelfDoor extends DoorBlock implements MinekeaBlock {
-//    public GenericBookshelfDoor(BookshelfDoorSettings settings) {
-//        super(settings);
-//    }
-//
-//    @Override
-//    public Identifier getBlockID() {
-//        return ((BookshelfDoorSettings) this.settings).getBlockId();
-//    }
-//
-//    @Override
-//    public void register() {
-//        register(false);
-//    }
-//
-//    public void register(boolean isFlammable) {
-//        Registry.register(Registries.BLOCK, getBlockID(), this);
-//        Registry.register(Registries.ITEM, getBlockID(), new BlockItem(this, new Item.Settings().group(ItemGroup.REDSTONE)));
-//
-//        if (isFlammable) {
-//            FuelRegistry.INSTANCE.add(this, 300);
-//            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
-//        }
-//
-//        setupResources();
-//    }
-//
-//    @Override
-//    public void setupResources() {
-//        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
-//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
-//        MinekeaTags.DOORS.add(getBlockID(), settings.isWooden());
-//        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
-//
-//        Identifier shelf = settings.getMaterial("bookshelf");
-//        Identifier plankTexture = settings.getBlockTexture("planks");
-//
-//        Identifier BASE_MODEL_ID = Model.getBlockModelID(getBlockID());
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
-//
-//        Identifier BOTTOM_MODEL_ID = Identifier.of(BASE_MODEL_ID + "_bottom");
-//        Identifier BOTTOM_HINGE_MODEL_ID = Identifier.of(BASE_MODEL_ID + "_bottom_hinge");
-//        Identifier TOP_MODEL_ID = Identifier.of(BASE_MODEL_ID + "_top");
-//        Identifier TOP_HINGE_MODEL_ID = Identifier.of(BASE_MODEL_ID + "_top_hinge");
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
-//            getBlockID(),
-//            JRecipe.shaped(
-//                JPattern.pattern("##", "##", "##"),
-//                JKeys.keys().key("#", JIngredient.ingredient().item(shelf.toString())),
-//                JResult.stackedResult(getBlockID().toString(), 3)
-//            )
-//        );
-//
-//        JsonObject lowerHalf = new JsonObject();
-//        lowerHalf.addProperty("half", "lower");
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addLootTable(
-//            LootTable.getLootTableID(getBlockID()),
-//            JLootTable.loot("minecraft:block")
-//                .pool(
-//                    JLootTable.pool()
-//                        .rolls(1)
-//                        .entry(
-//                            new JEntry()
-//                                .type("minecraft:item")
-//                                .name(getBlockID().toString())
-//                                .condition(
-//                                    new JCondition()
-//                                        .condition("minecraft:block_state_property")
-//                                        .parameter("block", getBlockID())
-//                                        .parameter("properties", lowerHalf)
-//                                )
-//                        )
-//                        .condition(new JCondition().condition("minecraft:survives_explosion"))
-//                )
-//        );
-//
-//        JTextures doorBottom = new JTextures()
-//            .var("material", plankTexture.toString())
-//            .var("shelf", "minekea:block/furniture/bookshelves/shelf0");
-//
-//        JTextures doorTop = new JTextures()
-//            .var("material", plankTexture.toString())
-//            .var("shelf", "minekea:block/furniture/bookshelves/shelf1");
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minekea:block/furniture/doors/bookshelves/bottom").textures(doorBottom),
-//            BOTTOM_MODEL_ID
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minekea:block/furniture/doors/bookshelves/bottom_rh").textures(doorBottom),
-//            BOTTOM_HINGE_MODEL_ID
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minekea:block/furniture/doors/bookshelves/top").textures(doorTop),
-//            TOP_MODEL_ID
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minekea:block/furniture/doors/bookshelves/top_rh").textures(doorTop),
-//            TOP_HINGE_MODEL_ID
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minekea:item/furniture/doors/bookshelf").textures(doorBottom),
-//            ITEM_MODEL_ID
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(
-//                JState.variant()
-//                    .put("facing=east,half=lower,hinge=left,open=false", new JBlockModel(BOTTOM_MODEL_ID))
-//                    .put("facing=east,half=lower,hinge=right,open=true", new JBlockModel(BOTTOM_MODEL_ID).y(270))
-//                    .put("facing=north,half=lower,hinge=left,open=false", new JBlockModel(BOTTOM_MODEL_ID).y(270))
-//                    .put("facing=north,half=lower,hinge=right,open=true", new JBlockModel(BOTTOM_MODEL_ID).y(180))
-//                    .put("facing=south,half=lower,hinge=left,open=false", new JBlockModel(BOTTOM_MODEL_ID).y(90))
-//                    .put("facing=south,half=lower,hinge=right,open=true", new JBlockModel(BOTTOM_MODEL_ID))
-//                    .put("facing=west,half=lower,hinge=left,open=false", new JBlockModel(BOTTOM_MODEL_ID).y(180))
-//                    .put("facing=west,half=lower,hinge=right,open=true", new JBlockModel(BOTTOM_MODEL_ID).y(90))
-//                    .put("facing=east,half=lower,hinge=left,open=true", new JBlockModel(BOTTOM_HINGE_MODEL_ID).y(90))
-//                    .put("facing=east,half=lower,hinge=right,open=false", new JBlockModel(BOTTOM_HINGE_MODEL_ID))
-//                    .put("facing=north,half=lower,hinge=left,open=true", new JBlockModel(BOTTOM_HINGE_MODEL_ID))
-//                    .put("facing=north,half=lower,hinge=right,open=false", new JBlockModel(BOTTOM_HINGE_MODEL_ID).y(270))
-//                    .put("facing=south,half=lower,hinge=left,open=true", new JBlockModel(BOTTOM_HINGE_MODEL_ID).y(180))
-//                    .put("facing=south,half=lower,hinge=right,open=false", new JBlockModel(BOTTOM_HINGE_MODEL_ID).y(90))
-//                    .put("facing=west,half=lower,hinge=left,open=true", new JBlockModel(BOTTOM_HINGE_MODEL_ID).y(270))
-//                    .put("facing=west,half=lower,hinge=right,open=false", new JBlockModel(BOTTOM_HINGE_MODEL_ID).y(180))
-//                    .put("facing=east,half=upper,hinge=left,open=false", new JBlockModel(TOP_MODEL_ID))
-//                    .put("facing=east,half=upper,hinge=right,open=true", new JBlockModel(TOP_MODEL_ID).y(270))
-//                    .put("facing=north,half=upper,hinge=left,open=false", new JBlockModel(TOP_MODEL_ID).y(270))
-//                    .put("facing=north,half=upper,hinge=right,open=true", new JBlockModel(TOP_MODEL_ID).y(180))
-//                    .put("facing=south,half=upper,hinge=left,open=false", new JBlockModel(TOP_MODEL_ID).y(90))
-//                    .put("facing=south,half=upper,hinge=right,open=true", new JBlockModel(TOP_MODEL_ID))
-//                    .put("facing=west,half=upper,hinge=left,open=false", new JBlockModel(TOP_MODEL_ID).y(180))
-//                    .put("facing=west,half=upper,hinge=right,open=true", new JBlockModel(TOP_MODEL_ID).y(90))
-//                    .put("facing=east,half=upper,hinge=left,open=true", new JBlockModel(TOP_HINGE_MODEL_ID).y(90))
-//                    .put("facing=east,half=upper,hinge=right,open=false", new JBlockModel(TOP_HINGE_MODEL_ID))
-//                    .put("facing=north,half=upper,hinge=left,open=true", new JBlockModel(TOP_HINGE_MODEL_ID))
-//                    .put("facing=north,half=upper,hinge=right,open=false", new JBlockModel(TOP_HINGE_MODEL_ID).y(270))
-//                    .put("facing=south,half=upper,hinge=left,open=true", new JBlockModel(TOP_HINGE_MODEL_ID).y(180))
-//                    .put("facing=south,half=upper,hinge=right,open=false", new JBlockModel(TOP_HINGE_MODEL_ID).y(90))
-//                    .put("facing=west,half=upper,hinge=left,open=true", new JBlockModel(TOP_HINGE_MODEL_ID).y(270))
-//                    .put("facing=west,half=upper,hinge=right,open=false", new JBlockModel(TOP_HINGE_MODEL_ID).y(180))
-//            ),
-//            getBlockID()
-//        );
-//    }
-//
-//    public static class BookshelfDoorSettings extends MinekeaBlockSettings<BookshelfDoorSettings> {
-//        public BookshelfDoorSettings(DefaultSettings settings) {
-//            super((DefaultSettings) settings.nonOpaque());
-//        }
-//
-//        public String getNamePattern() {
-//            return Objects.requireNonNullElse(namePatternOverride, "%s Bookshelf Door");
-//        }
-//
-//        @Override
-//        public Identifier getBlockId() {
-//            if (blockId == null) {
-//                blockId = Identifier.of(ModInfo.MOD_ID, String.format("%sfurniture/doors/bookshelves/%s", ModInfo.getModPrefix(modId), mainMaterial));
-//            }
-//
-//            return blockId;
-//        }
-//    }
-//}
+package com.chimericdream.minekea.block.furniture.doors;
+
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
+import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.MinekeaTextures;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSetType;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.DoorBlock;
+import net.minecraft.block.enums.DoorHinge;
+import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.BlockStateVariant;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.MultipartBlockStateSupplier;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.client.VariantSettings;
+import net.minecraft.data.client.When;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
+
+import java.util.Optional;
+
+public class GenericBookshelfDoor extends DoorBlock implements MinekeaBlock {
+    protected static final Model ITEM_MODEL = new Model(
+        Optional.of(Identifier.of(ModInfo.MOD_ID, "item/furniture/doors/bookshelf")),
+        Optional.empty(),
+        MinekeaTextures.MATERIAL,
+        MinekeaTextures.SHELF
+    );
+    protected static final Model BOTTOM_MODEL = new Model(
+        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/doors/bookshelves/bottom")),
+        Optional.empty(),
+        MinekeaTextures.MATERIAL,
+        MinekeaTextures.SHELF
+    );
+    protected static final Model BOTTOM_HINGE_MODEL = new Model(
+        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/doors/bookshelves/bottom_rh")),
+        Optional.empty(),
+        MinekeaTextures.MATERIAL,
+        MinekeaTextures.SHELF
+    );
+    protected static final Model TOP_MODEL = new Model(
+        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/doors/bookshelves/top")),
+        Optional.empty(),
+        MinekeaTextures.MATERIAL,
+        MinekeaTextures.SHELF
+    );
+    protected static final Model TOP_HINGE_MODEL = new Model(
+        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/doors/bookshelves/top_rh")),
+        Optional.empty(),
+        MinekeaTextures.MATERIAL,
+        MinekeaTextures.SHELF
+    );
+
+    public final Identifier BLOCK_ID;
+
+    protected final Block plankIngredient;
+    protected final String materialName;
+    protected final boolean isFlammable;
+
+    public GenericBookshelfDoor(BlockSetType type, String materialName, Block plankIngredient) {
+        this(type, materialName, plankIngredient, true);
+    }
+
+    public GenericBookshelfDoor(BlockSetType type, String materialName, Block plankIngredient, boolean isFlammable) {
+        super(type, AbstractBlock.Settings.create());
+
+        BLOCK_ID = makeBlockId(materialName);
+
+        this.materialName = materialName;
+        this.plankIngredient = plankIngredient;
+        this.isFlammable = isFlammable;
+    }
+
+    public static Identifier makeBlockId(String materialName) {
+        String material = materialName.toLowerCase().replaceAll(" ", "_");
+
+        return Identifier.of(ModInfo.MOD_ID, String.format("furniture/doors/bookshelves/%s", material));
+    }
+
+    @Override
+    public void register() {
+        register(false);
+    }
+
+    public void register(boolean isFlammable) {
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
+    }
+
+    private Block getBookshelf() {
+        if (materialName == "Oak") {
+            return Blocks.BOOKSHELF;
+        }
+
+        return Bookshelves.BOOKSHELVES.get(materialName);
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        Block bookshelf = getBookshelf();
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 3)
+            .pattern("##")
+            .pattern("##")
+            .pattern("##")
+            .input('#', bookshelf)
+            .criterion(FabricRecipeProvider.hasItem(bookshelf),
+                FabricRecipeProvider.conditionsFromItem(bookshelf))
+            .offerTo(exporter);
+    }
+
+    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.doorDrops(this);
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        translationBuilder.add(this, String.format("%s Bookshelf Door", materialName));
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        TextureMap textures = new TextureMap()
+            .put(MinekeaTextures.MATERIAL, TextureMap.getId(plankIngredient))
+            .put(MinekeaTextures.SHELF, Identifier.of(ModInfo.MOD_ID, "block/furniture/bookshelves/shelf0"));
+
+        Identifier bottomModelId = blockStateModelGenerator.createSubModel(this, "_bottom", BOTTOM_MODEL, unused -> textures);
+        Identifier bottomHingeModelId = blockStateModelGenerator.createSubModel(this, "_bottom_rh", BOTTOM_HINGE_MODEL, unused -> textures);
+        Identifier topModelId = blockStateModelGenerator.createSubModel(this, "_top", TOP_MODEL, unused -> textures);
+        Identifier topHingeModelId = blockStateModelGenerator.createSubModel(this, "_top_rh", TOP_HINGE_MODEL, unused -> textures);
+
+        blockStateModelGenerator.blockStateCollector
+            .accept(
+                MultipartBlockStateSupplier.create(this)
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.EAST)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, bottomModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.EAST)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, bottomModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.NORTH)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, bottomModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.NORTH)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, bottomModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.SOUTH)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, bottomModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.SOUTH)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, bottomModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.WEST)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, bottomModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.WEST)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, bottomModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.EAST)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, bottomHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.EAST)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, bottomHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.NORTH)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, bottomHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.NORTH)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, bottomHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.SOUTH)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, bottomHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.SOUTH)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, bottomHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.WEST)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, bottomHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.WEST)
+                            .set(HALF, DoubleBlockHalf.LOWER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, bottomHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.EAST)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, topModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.EAST)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, topModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.NORTH)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, topModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.NORTH)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, topModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.SOUTH)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, topModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.SOUTH)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, topModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.WEST)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, topModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.WEST)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, topModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.EAST)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, topHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.EAST)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, topHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.NORTH)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, topHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.NORTH)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, topHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.SOUTH)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, topHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.SOUTH)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, topHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.WEST)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.LEFT)
+                            .set(OPEN, true),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, topHingeModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(FACING, Direction.WEST)
+                            .set(HALF, DoubleBlockHalf.UPPER)
+                            .set(HINGE, DoorHinge.RIGHT)
+                            .set(OPEN, false),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, topHingeModelId)
+                    )
+            );
+    }
+
+    @Override
+    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        TextureMap textures = new TextureMap()
+            .put(MinekeaTextures.MATERIAL, TextureMap.getId(plankIngredient))
+            .put(MinekeaTextures.SHELF, Identifier.of(ModInfo.MOD_ID, "block/furniture/bookshelves/shelf0"));
+
+        ITEM_MODEL.upload(
+            BLOCK_ID.withPrefixedPath("item/"),
+            textures,
+            itemModelGenerator.writer
+        );
+    }
+}

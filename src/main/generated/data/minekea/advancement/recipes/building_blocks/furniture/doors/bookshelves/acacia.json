@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_furniture/bookshelves/acacia": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:furniture/bookshelves/acacia"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:furniture/doors/bookshelves/acacia"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_furniture/bookshelves/acacia"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:furniture/doors/bookshelves/acacia"
+    ]
+  }
+}
