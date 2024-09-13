@@ -1,0 +1,181 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_bottom",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_bottom"
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_bottom",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_bottom",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_top",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_top"
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_top",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_top",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_open",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_open"
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_open",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_open",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_open",
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_open",
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_open",
+        "x": 180,
+        "y": 0
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/trapdoors/bookshelves/cherry_open",
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "open": "true"
+      }
+    }
+  ]
+}

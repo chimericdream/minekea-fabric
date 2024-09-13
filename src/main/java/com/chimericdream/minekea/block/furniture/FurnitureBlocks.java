@@ -8,6 +8,7 @@ import com.chimericdream.minekea.block.furniture.seating.Seats;
 import com.chimericdream.minekea.block.furniture.shelves.Shelves;
 import com.chimericdream.minekea.block.furniture.shutters.Shutters;
 import com.chimericdream.minekea.block.furniture.tables.Tables;
+import com.chimericdream.minekea.block.furniture.trapdoors.Trapdoors;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -35,37 +36,30 @@ public class FurnitureBlocks implements MinekeaBlockCategory {
     public static Shelves SHELVES;
     public static Shutters SHUTTERS;
     public static Tables TABLES;
-//    public static Trapdoors TRAPDOORS;
+    public static Trapdoors TRAPDOORS;
 
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
 
     static {
         BOOKSHELVES = new Bookshelves();
-        BLOCK_GROUPS.add(BOOKSHELVES);
-
         DISPLAY_CASES = new DisplayCases();
-        BLOCK_GROUPS.add(DISPLAY_CASES);
-
         DOORS = new Doors();
-        BLOCK_GROUPS.add(DOORS);
-
         PILLOWS = new Pillows();
-        BLOCK_GROUPS.add(PILLOWS);
-
         SEATS = new Seats();
-        BLOCK_GROUPS.add(SEATS);
-
         SHELVES = new Shelves();
-        BLOCK_GROUPS.add(SHELVES);
-
         SHUTTERS = new Shutters();
-        BLOCK_GROUPS.add(SHUTTERS);
-
         TABLES = new Tables();
-        BLOCK_GROUPS.add(TABLES);
+        TRAPDOORS = new Trapdoors();
 
-//            TRAPDOORS = new Trapdoors();
-//            BLOCK_GROUPS.add(TRAPDOORS);
+        BLOCK_GROUPS.add(BOOKSHELVES);
+        BLOCK_GROUPS.add(DISPLAY_CASES);
+        BLOCK_GROUPS.add(DOORS);
+        BLOCK_GROUPS.add(PILLOWS);
+        BLOCK_GROUPS.add(SEATS);
+        BLOCK_GROUPS.add(SHELVES);
+        BLOCK_GROUPS.add(SHUTTERS);
+        BLOCK_GROUPS.add(TABLES);
+        BLOCK_GROUPS.add(TRAPDOORS);
     }
 
     @Environment(EnvType.CLIENT)

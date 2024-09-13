@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/trapdoors/bookshelves/top",
+  "textures": {
+    "material": "minecraft:block/oak_planks",
+    "shelf": "minekea:block/furniture/bookshelves/shelf0"
+  }
+}

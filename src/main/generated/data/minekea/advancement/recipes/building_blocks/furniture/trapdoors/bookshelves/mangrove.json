@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_furniture/bookshelves/mangrove": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:furniture/bookshelves/mangrove"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:furniture/trapdoors/bookshelves/mangrove"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_furniture/bookshelves/mangrove"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:furniture/trapdoors/bookshelves/mangrove"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_furniture/bookshelves/warped": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:furniture/bookshelves/warped"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:furniture/trapdoors/bookshelves/warped"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_furniture/bookshelves/warped"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:furniture/trapdoors/bookshelves/warped"
+    ]
+  }
+}

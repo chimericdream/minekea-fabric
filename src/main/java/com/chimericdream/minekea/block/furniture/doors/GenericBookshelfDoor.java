@@ -97,10 +97,6 @@ public class GenericBookshelfDoor extends DoorBlock implements MinekeaBlock {
 
     @Override
     public void register() {
-        register(false);
-    }
-
-    public void register(boolean isFlammable) {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
