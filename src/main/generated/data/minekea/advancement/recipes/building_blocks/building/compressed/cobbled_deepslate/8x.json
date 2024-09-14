@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/compressed/cobbled_deepslate/7x": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/compressed/cobbled_deepslate/7x"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/compressed/cobbled_deepslate/8x"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/compressed/cobbled_deepslate/7x"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/compressed/cobbled_deepslate/8x"
+    ]
+  }
+}

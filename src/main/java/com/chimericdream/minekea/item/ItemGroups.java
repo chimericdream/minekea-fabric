@@ -2,6 +2,7 @@ package com.chimericdream.minekea.item;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.beams.Beams;
+import com.chimericdream.minekea.block.building.compressed.CompressedBlocks;
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
@@ -18,8 +19,15 @@ public class ItemGroups {
         Registries.ITEM_GROUP.getKey(),
         Identifier.of(ModInfo.MOD_ID, "item_group.minekea.blocks.building.beams")
     );
-    //    public static ItemGroup COMPRESSED_BLOCKS = null;
-//    public static ItemGroup COVERS = null;
+
+    public static ItemGroup COMPRESSED_BLOCKS;
+    public static RegistryKey<ItemGroup> COMPRESSED_BLOCK_ITEM_GROUP_KEY = RegistryKey.of(
+        Registries.ITEM_GROUP.getKey(),
+        Identifier.of(ModInfo.MOD_ID, "item_group.minekea.blocks.building.compressed")
+    );
+
+    //    public static ItemGroup COVERS = null;
+
     public static ItemGroup FURNITURE;
     public static final RegistryKey<ItemGroup> FURNITURE_ITEM_GROUP_KEY = RegistryKey.of(
         Registries.ITEM_GROUP.getKey(),
@@ -34,17 +42,13 @@ public class ItemGroups {
             .icon(() -> new ItemStack(Beams.BLOCKS.get(0)))
             .displayName(Text.translatable("item_group.minekea.blocks.building.beams"))
             .build();
-//            BEAMS = FabricItemGroupBuilder
-//                .create(Identifier.of(ModInfo.MOD_ID, "blocks.building.beams"))
-//                .icon(() -> new ItemStack(Beams.BLOCKS.get("amethyst")))
-//                .build();
 //        }
 //
 //        if (config.enableCompressedBlocks) {
-//            COMPRESSED_BLOCKS = FabricItemGroupBuilder
-//                .create(Identifier.of(ModInfo.MOD_ID, "blocks.building.compressed"))
-//                .icon(() -> new ItemStack(CompressedBlocks.BLOCK_MAP.get("cobblestone").get(8)))
-//                .build();
+        COMPRESSED_BLOCKS = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(CompressedBlocks.BLOCKS.get(0)))
+            .displayName(Text.translatable("item_group.minekea.blocks.building.compressed"))
+            .build();
 //        }
 //
 //        if (config.enableCovers) {
@@ -125,6 +129,7 @@ public class ItemGroups {
 
     public void register() {
         Registry.register(Registries.ITEM_GROUP, BEAM_ITEM_GROUP_KEY, BEAMS);
+        Registry.register(Registries.ITEM_GROUP, COMPRESSED_BLOCK_ITEM_GROUP_KEY, COMPRESSED_BLOCKS);
         Registry.register(Registries.ITEM_GROUP, FURNITURE_ITEM_GROUP_KEY, FURNITURE);
     }
 }

@@ -8,6 +8,7 @@ public class MinekeaTextures {
     public static final TextureKey FRAME = TextureKey.of("frame");
     public static final TextureKey LOG = TextureKey.of("log");
     public static final TextureKey MATERIAL = TextureKey.of("material");
+    public static final TextureKey OVERLAY = TextureKey.of("overlay");
     public static final TextureKey PANEL = TextureKey.of("panel");
     public static final TextureKey PLANKS = TextureKey.of("planks");
     public static final TextureKey SHELF = TextureKey.of("shelf");

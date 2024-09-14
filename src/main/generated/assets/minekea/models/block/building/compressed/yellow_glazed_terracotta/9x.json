@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "minekea:block/building/compressed/yellow_glazed_terracotta/9x"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "minekea:block/building/compressed/dark_oak_planks/6x"
+  }
+}

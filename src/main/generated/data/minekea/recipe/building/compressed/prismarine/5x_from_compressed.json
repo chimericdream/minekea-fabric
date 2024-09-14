@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/prismarine/6x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/prismarine/5x"
+  }
+}

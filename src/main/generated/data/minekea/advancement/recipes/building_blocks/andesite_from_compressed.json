@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/compressed/andesite/1x": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/compressed/andesite/1x"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:andesite_from_compressed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/compressed/andesite/1x"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:andesite_from_compressed"
+    ]
+  }
+}

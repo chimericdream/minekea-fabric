@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/coarse_dirt/8x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/coarse_dirt/7x"
+  }
+}

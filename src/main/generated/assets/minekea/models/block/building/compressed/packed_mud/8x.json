@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "minekea:block/building/compressed/packed_mud/8x"
+  }
+}

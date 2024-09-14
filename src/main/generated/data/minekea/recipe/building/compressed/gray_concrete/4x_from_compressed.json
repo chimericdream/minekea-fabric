@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/gray_concrete/5x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/gray_concrete/4x"
+  }
+}

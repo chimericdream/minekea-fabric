@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/red_sandstone_top/3x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/red_sandstone_top/2x"
+  }
+}

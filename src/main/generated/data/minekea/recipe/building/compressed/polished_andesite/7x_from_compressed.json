@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/polished_andesite/8x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/polished_andesite/7x"
+  }
+}

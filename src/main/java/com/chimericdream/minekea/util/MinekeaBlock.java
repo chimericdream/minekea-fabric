@@ -36,4 +36,7 @@ public interface MinekeaBlock {
 
     default void configureItemModels(ItemModelGenerator itemModelGenerator) {
     }
+
+    default void generateTextures() {
+    }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/compressed/polished_blackstone_bricks/6x": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/compressed/polished_blackstone_bricks/6x"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/compressed/polished_blackstone_bricks/7x"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/compressed/polished_blackstone_bricks/6x"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/compressed/polished_blackstone_bricks/7x"
+    ]
+  }
+}

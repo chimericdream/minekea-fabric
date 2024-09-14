@@ -1,10 +1,7 @@
 package com.chimericdream.minekea.block.building;
 
-//import com.chimericdream.minekea.block.building.beams.Beams;
-//import com.chimericdream.minekea.block.building.compressed.CompressedBlocks;
-//import com.chimericdream.minekea.block.building.covers.Covers;
-
 import com.chimericdream.minekea.block.building.beams.Beams;
+import com.chimericdream.minekea.block.building.compressed.CompressedBlocks;
 import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.ChiseledBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
@@ -44,8 +41,8 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final WarpedNetherBricksBlock WARPED_NETHER_BRICKS_BLOCK;
 
     public static Beams BEAMS;
-    //    public static CompressedBlocks COMPRESSED_BLOCKS = null;
-//    public static Covers COVERS = null;
+    public static CompressedBlocks COMPRESSED_BLOCKS;
+    //    public static Covers COVERS = null;
 //    public static Slabs SLABS = null;
 //    public static Stairs STAIRS = null;
     public static final StorageBlocks STORAGE_BLOCKS;
@@ -86,8 +83,8 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 //        }
 //
 //        if (config.enableCompressedBlocks) {
-//            COMPRESSED_BLOCKS = new CompressedBlocks();
-//            BLOCK_GROUPS.add(COMPRESSED_BLOCKS);
+        COMPRESSED_BLOCKS = new CompressedBlocks();
+        BLOCK_GROUPS.add(COMPRESSED_BLOCKS);
 //        }
 //
 //        if (config.enableCovers) {
@@ -186,5 +183,11 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
         BLOCK_GROUPS.forEach(group -> group.configureItemModels(itemModelGenerator));
+    }
+
+    @Override
+    public void generateTextures() {
+        BLOCKS.forEach(MinekeaBlock::generateTextures);
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::generateTextures);
     }
 }

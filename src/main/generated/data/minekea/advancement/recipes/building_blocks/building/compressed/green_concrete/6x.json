@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/compressed/green_concrete/5x": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/compressed/green_concrete/5x"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/compressed/green_concrete/6x"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/compressed/green_concrete/5x"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/compressed/green_concrete/6x"
+    ]
+  }
+}

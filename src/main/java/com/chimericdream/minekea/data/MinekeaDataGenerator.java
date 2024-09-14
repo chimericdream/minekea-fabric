@@ -28,7 +28,44 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MinekeaBlockTagGenerator::new);
         pack.addProvider(MinekeaItemTagGenerator::new);
         pack.addProvider(MinekeaRecipeGenerator::new);
+
+        if (JarAccess.canLoad()) {
+            new TextureGenerator(pack);
+
+            for (MinekeaBlockCategory category : MinekeaMod.BLOCK_CATEGORIES) {
+                category.generateTextures();
+            }
+
+            MinekeaMod.ITEMS.generateTextures();
+        }
     }
+
+//    private static class MinekeaTextureGenerator implements DataProvider {
+//        private final FabricDataGenerator dataGenerator;
+//
+//        public MinekeaTextureGenerator(FabricDataGenerator dataGenerator) {
+//            this.dataGenerator = dataGenerator;
+//        }
+//
+//        @Override
+//        public CompletableFuture<?> run(DataWriter writer) {
+////            dataGenerator
+//            var generatedResources = dataGenerator.getOutput();
+//            var nonGeneratedResources = dataGenerator.getOutput().resolve("../../main/resources");
+//            ReloadableResourceManagerImpl manager = new ReloadableResourceManagerImpl(ResourceType.CLIENT_RESOURCES);
+//            manager.registerReloader();
+//            manager.addPack(new DefaultClientResourcePack(ClientBuiltinResourcePackProvider.DEFAULT_PACK_METADATA, new ResourceIndex(new File(""), "")));
+//            manager.addPack(new DirectoryResourcePack(nonGeneratedResources.toFile()));
+//            manager.addPack(new DirectoryResourcePack(generatedResources.toFile()));
+//
+//            MITextures.offerTextures((image, textureId) -> writeTexture(cache, image, textureId), manager);
+//        }
+//
+//        @Override
+//        public String getName() {
+//            return "";
+//        }
+//    }
 
     private static class MinekeaRecipeGenerator extends FabricRecipeProvider {
         public MinekeaRecipeGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
@@ -107,9 +144,6 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             translationBuilder.add("item_group.minekea.blocks.building.compressed", "Minekea: Compressed Blocks");
             translationBuilder.add("item_group.minekea.blocks.building.covers", "Minekea: Covers");
             translationBuilder.add("item_group.minekea.blocks.furniture", "Minekea: Furniture");
-
-//            translationBuilder.add(TOOLTIP_LEVEL, "%dx Compressed");
-//            translationBuilder.add(TOOLTIP_COUNT, "(%s blocks)");
         }
     }
 

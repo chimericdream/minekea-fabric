@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/compressed/sandstone_top/4x": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/compressed/sandstone_top/4x"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/compressed/sandstone_top/5x"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/compressed/sandstone_top/4x"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/compressed/sandstone_top/5x"
+    ]
+  }
+}

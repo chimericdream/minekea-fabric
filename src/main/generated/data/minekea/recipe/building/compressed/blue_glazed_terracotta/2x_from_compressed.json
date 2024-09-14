@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/blue_glazed_terracotta/3x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/blue_glazed_terracotta/2x"
+  }
+}

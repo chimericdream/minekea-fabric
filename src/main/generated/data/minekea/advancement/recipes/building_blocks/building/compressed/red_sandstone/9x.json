@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/compressed/red_sandstone/8x": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/compressed/red_sandstone/8x"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/compressed/red_sandstone/9x"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/compressed/red_sandstone/8x"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/compressed/red_sandstone/9x"
+    ]
+  }
+}
