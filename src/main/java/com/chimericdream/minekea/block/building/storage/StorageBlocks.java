@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.minekea.item.currency.NuggetBag;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
@@ -16,6 +17,9 @@ import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
@@ -73,7 +77,21 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final List<GenericStorageBlock> STORAGE_BLOCKS;
     public static final List<GenericStorageBlock> BAGGED_BLOCKS;
 
+    public static final NuggetBag GOLD_NUGGET_BAG;
+    public static final NuggetBag IRON_NUGGET_BAG;
+
     static {
+        GOLD_NUGGET_BAG = Registry.register(
+            Registries.ITEM,
+            NuggetBag.makeItemId("Gold"),
+            new NuggetBag("Gold", Items.GOLD_NUGGET)
+        );
+        IRON_NUGGET_BAG = Registry.register(
+            Registries.ITEM,
+            NuggetBag.makeItemId("Iron"),
+            new NuggetBag("Iron", Items.IRON_NUGGET)
+        );
+
         WHITE_DYE_BLOCK = new DyeBlock("white");
         ORANGE_DYE_BLOCK = new DyeBlock("orange");
         MAGENTA_DYE_BLOCK = new DyeBlock("magenta");
@@ -198,12 +216,14 @@ public class StorageBlocks implements MinekeaBlockCategory {
         DYE_BLOCKS.forEach(DyeBlock::register);
         STORAGE_BLOCKS.forEach(GenericStorageBlock::register);
         SET_OF_EGGS_BLOCK.register();
+        GOLD_NUGGET_BAG.register();
+        IRON_NUGGET_BAG.register();
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS)
-            .register((itemGroup) -> DYE_BLOCKS.forEach(itemGroup::add));
+            .register(itemGroup -> DYE_BLOCKS.forEach(itemGroup::add));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
-            .register((itemGroup) -> {
+            .register(itemGroup -> {
                 STORAGE_BLOCKS.forEach(itemGroup::add);
 
                 itemGroup.add(SET_OF_EGGS_BLOCK);
@@ -222,6 +242,8 @@ public class StorageBlocks implements MinekeaBlockCategory {
         DYE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
         STORAGE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
         SET_OF_EGGS_BLOCK.configureItemTags(registryLookup, getBuilder);
+        GOLD_NUGGET_BAG.configureItemTags(registryLookup, getBuilder);
+        IRON_NUGGET_BAG.configureItemTags(registryLookup, getBuilder);
 
         BAGGED_BLOCKS.forEach(
             block -> getBuilder.apply(MinekeaTags.BAGGED_ITEMS)
@@ -235,6 +257,8 @@ public class StorageBlocks implements MinekeaBlockCategory {
         DYE_BLOCKS.forEach(block -> block.configureRecipes(exporter));
         STORAGE_BLOCKS.forEach(block -> block.configureRecipes(exporter));
         SET_OF_EGGS_BLOCK.configureRecipes(exporter);
+        GOLD_NUGGET_BAG.configureRecipes(exporter);
+        IRON_NUGGET_BAG.configureRecipes(exporter);
     }
 
     @Override
@@ -249,6 +273,8 @@ public class StorageBlocks implements MinekeaBlockCategory {
         DYE_BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
         STORAGE_BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
         SET_OF_EGGS_BLOCK.configureTranslations(registryLookup, translationBuilder);
+        GOLD_NUGGET_BAG.configureTranslations(registryLookup, translationBuilder);
+        IRON_NUGGET_BAG.configureTranslations(registryLookup, translationBuilder);
     }
 
     @Override
@@ -263,5 +289,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         DYE_BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
         STORAGE_BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
         SET_OF_EGGS_BLOCK.configureItemModels(itemModelGenerator);
+        GOLD_NUGGET_BAG.configureItemModels(itemModelGenerator);
+        IRON_NUGGET_BAG.configureItemModels(itemModelGenerator);
     }
 }

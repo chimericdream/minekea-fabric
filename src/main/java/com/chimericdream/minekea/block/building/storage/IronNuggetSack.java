@@ -11,7 +11,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
-import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
@@ -21,7 +20,7 @@ import java.util.function.Function;
 
 public class IronNuggetSack extends GenericStorageBlock {
     public IronNuggetSack() {
-        super(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.METAL), Items.IRON_NUGGET, "iron_nugget", true);
+        super(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.METAL), StorageBlocks.IRON_NUGGET_BAG, "iron_nugget", true);
     }
 
     @Override

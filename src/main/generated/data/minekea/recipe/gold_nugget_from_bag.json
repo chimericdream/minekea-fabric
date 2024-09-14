@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minekea:currency/gold_nugget_bag"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:gold_nugget"
+  }
+}

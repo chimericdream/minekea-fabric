@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minekea:storage/compressed/iron_nugget"
+        "recipe": "minecraft:iron_nugget_from_bag"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minekea:storage/compressed/iron_nugget"
+      "minecraft:iron_nugget_from_bag"
     ]
   }
 }

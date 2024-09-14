@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_currency/iron_nugget_bag": {
+    "has_storage/compressed/sugar_cane": {
       "conditions": {
         "items": [
           {
-            "items": "minekea:currency/iron_nugget_bag"
+            "items": "minekea:storage/compressed/sugar_cane"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minekea:storage/compressed/iron_nugget"
+        "recipe": "minecraft:sugar_cane_from_compressed"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_currency/iron_nugget_bag"
+      "has_storage/compressed/sugar_cane"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minekea:storage/compressed/iron_nugget"
+      "minecraft:sugar_cane_from_compressed"
     ]
   }
 }

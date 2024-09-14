@@ -19,7 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import static com.chimericdream.minekea.item.ItemGroups.FURNITURE_ITEM_GROUP_KEY;
+import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class Shutters implements MinekeaBlockCategory {
     public static final Map<String, ShutterBlock> SHUTTERS = new LinkedHashMap<>();

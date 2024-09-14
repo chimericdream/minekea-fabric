@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.building.beams;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.item.ItemGroups;
+import com.chimericdream.minekea.item.MinekeaItemGroups;
 import com.chimericdream.minekea.tag.MinekeaTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -277,7 +277,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BEAM_ITEM_GROUP_KEY)
+        ItemGroupEvents.modifyEntriesEvent(MinekeaItemGroups.BEAM_ITEM_GROUP_KEY)
             .register(itemGroup -> itemGroup.add(this.asItem()));
     }
 

@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "minecraft:gold_nugget"
+      "item": "minekea:currency/gold_nugget_bag"
     }
   },
   "pattern": [

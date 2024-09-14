@@ -19,7 +19,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
 
-import static com.chimericdream.minekea.item.ItemGroups.FURNITURE_ITEM_GROUP_KEY;
+import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class Pillows implements MinekeaBlockCategory {
     public static final PillowBlock WHITE_PILLOW;

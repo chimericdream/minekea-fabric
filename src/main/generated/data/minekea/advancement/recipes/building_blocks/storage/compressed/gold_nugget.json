@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_gold_nugget": {
+    "has_currency/gold_nugget_bag": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:gold_nugget"
+            "items": "minekea:currency/gold_nugget_bag"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_gold_nugget"
+      "has_currency/gold_nugget_bag"
     ]
   ],
   "rewards": {

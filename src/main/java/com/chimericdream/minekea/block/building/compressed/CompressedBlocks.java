@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.building.compressed;
 
-import com.chimericdream.minekea.item.ItemGroups;
+import com.chimericdream.minekea.item.MinekeaItemGroups;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -203,7 +203,7 @@ public class CompressedBlocks implements MinekeaBlockCategory {
     public void registerBlocks() {
         BLOCKS.forEach(GenericCompressedBlock::register);
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMPRESSED_BLOCK_ITEM_GROUP_KEY)
+        ItemGroupEvents.modifyEntriesEvent(MinekeaItemGroups.COMPRESSED_BLOCK_ITEM_GROUP_KEY)
             .register((itemGroup) -> BLOCKS.forEach(itemGroup::add));
     }
 

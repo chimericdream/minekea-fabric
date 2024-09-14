@@ -194,7 +194,7 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
                 .input(this)
                 .criterion(FabricRecipeProvider.hasItem(this),
                     FabricRecipeProvider.conditionsFromItem(this))
-                .offerTo(exporter);
+                .offerTo(exporter, Registries.ITEM.getId(BASE_ITEM).withSuffixedPath("_from_compressed"));
         }
     }
 

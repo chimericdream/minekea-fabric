@@ -35,9 +35,6 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ModItems implements MinekeaBlockCategory {
-    //    public static final NuggetBag GOLD_NUGGET_BAG;
-//    public static final NuggetBag IRON_NUGGET_BAG;
-//
     public static final HammerItem STONE_HAMMER_ITEM;
     public static final HammerItem IRON_HAMMER_ITEM;
     public static final HammerItem GOLD_HAMMER_ITEM;
@@ -51,9 +48,6 @@ public class ModItems implements MinekeaBlockCategory {
     public static ScreenHandlerType<BlockPainterScreenHandler> BLOCK_PAINTER_SCREEN_HANDLER;
 
     static {
-//        GOLD_NUGGET_BAG = new NuggetBag(new NuggetSettings("gold", Identifier.of("minecraft:gold_nugget")));
-//        IRON_NUGGET_BAG = new NuggetBag(new NuggetSettings("iron", Identifier.of("minecraft:iron_nugget")));
-//
         STONE_HAMMER_ITEM = Registry.register(
             Registries.ITEM,
             HammerItem.makeItemId("stone"),
@@ -139,9 +133,6 @@ public class ModItems implements MinekeaBlockCategory {
     }
 
     public void register() {
-//        GOLD_NUGGET_BAG.register(GOLD_NUGGET_BAG);
-//        IRON_NUGGET_BAG.register(IRON_NUGGET_BAG);
-
         ITEMS.forEach(MinekeaItem::register);
     }
 

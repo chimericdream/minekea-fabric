@@ -6,7 +6,7 @@ import com.chimericdream.minekea.block.decorations.DecorationBlocks;
 import com.chimericdream.minekea.block.furniture.FurnitureBlocks;
 import com.chimericdream.minekea.crops.Crops;
 import com.chimericdream.minekea.fluid.Fluids;
-import com.chimericdream.minekea.item.ItemGroups;
+import com.chimericdream.minekea.item.MinekeaItemGroups;
 import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.network.ServerNetworking;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
@@ -25,18 +25,14 @@ public class MinekeaMod implements ModInitializer {
     public static final DecorationBlocks DECORATION_BLOCKS;
     public static final Fluids FLUIDS;
     public static final FurnitureBlocks FURNITURE_BLOCKS;
-//    public static final RedstoneBlocks REDSTONE_BLOCKS;
 
     public static final MinekeaBlockCategory[] BLOCK_CATEGORIES;
 
     public static final ModItems ITEMS;
-    public static final ItemGroups ITEM_GROUPS;
+    public static final MinekeaItemGroups ITEM_GROUPS;
 
     static {
         LOGGER = LoggerFactory.getLogger(ModInfo.MOD_ID);
-
-//        LOGGER.info("[minekea] Registering auto-config");
-//        ConfigManager.registerAutoConfig();
 
         BUILDING_BLOCKS = new BuildingBlocks();
         CONTAINER_BLOCKS = new ContainerBlocks();
@@ -44,7 +40,6 @@ public class MinekeaMod implements ModInitializer {
         DECORATION_BLOCKS = new DecorationBlocks();
         FLUIDS = new Fluids();
         FURNITURE_BLOCKS = new FurnitureBlocks();
-//        REDSTONE_BLOCKS = new RedstoneBlocks();
 
         BLOCK_CATEGORIES = new MinekeaBlockCategory[]{
             BUILDING_BLOCKS,
@@ -52,12 +47,11 @@ public class MinekeaMod implements ModInitializer {
             CROPS,
             DECORATION_BLOCKS,
             FLUIDS,
-            FURNITURE_BLOCKS,
-//            REDSTONE_BLOCKS
+            FURNITURE_BLOCKS
         };
 
         ITEMS = new ModItems();
-        ITEM_GROUPS = new ItemGroups();
+        ITEM_GROUPS = new MinekeaItemGroups();
     }
 
     @Override
@@ -87,12 +81,6 @@ public class MinekeaMod implements ModInitializer {
 
         LOGGER.info("[minekea] Registering colored blocks");
         registerVanillaColoredBlocks();
-
-//        FabricLoader loader = FabricLoader.getInstance();
-
-//        if (loader.isModLoaded("patchouli")) {
-//            PatchouliCompat.init();
-//        }
     }
 
     private void registerVanillaColoredBlocks() {

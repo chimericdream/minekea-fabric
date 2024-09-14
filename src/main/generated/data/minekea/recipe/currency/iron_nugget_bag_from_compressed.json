@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:storage/compressed/iron_nugget"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:currency/iron_nugget_bag"
+  }
+}

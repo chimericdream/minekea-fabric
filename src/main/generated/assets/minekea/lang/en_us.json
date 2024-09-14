@@ -1437,6 +1437,8 @@
   "block.minekea.storage.set_of_eggs": "Set of Eggs",
   "item.minekea.containers.honey_bucket": "Honey Bucket",
   "item.minekea.crops.warped_wart": "Warped Wart",
+  "item.minekea.currency.gold_nugget_bag": "Gold Nugget Bag",
+  "item.minekea.currency.iron_nugget_bag": "Iron Nugget Bag",
   "item.minekea.tools.hammers.diamond": "Diamond Hammer",
   "item.minekea.tools.hammers.gold": "Gold Hammer",
   "item.minekea.tools.hammers.iron": "Iron Hammer",

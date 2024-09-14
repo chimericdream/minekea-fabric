@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_currency/iron_nugget_bag": {
+    "has_storage/compressed/nether_star": {
       "conditions": {
         "items": [
           {
-            "items": "minekea:currency/iron_nugget_bag"
+            "items": "minekea:storage/compressed/nether_star"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minekea:storage/compressed/iron_nugget"
+        "recipe": "minecraft:nether_star_from_compressed"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_currency/iron_nugget_bag"
+      "has_storage/compressed/nether_star"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minekea:storage/compressed/iron_nugget"
+      "minecraft:nether_star_from_compressed"
     ]
   }
 }
