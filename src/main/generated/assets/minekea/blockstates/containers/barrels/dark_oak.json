@@ -1,0 +1,128 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak",
+        "x": 180
+      },
+      "when": {
+        "facing": "down",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak",
+        "x": 90
+      },
+      "when": {
+        "facing": "north",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak"
+      },
+      "when": {
+        "facing": "up",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak_open",
+        "x": 180
+      },
+      "when": {
+        "facing": "down",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak_open",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak_open",
+        "x": 90
+      },
+      "when": {
+        "facing": "north",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak_open",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak_open"
+      },
+      "when": {
+        "facing": "up",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/barrels/dark_oak_open",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "open": "true"
+      }
+    }
+  ]
+}

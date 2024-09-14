@@ -42,22 +42,14 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
     public static Beams BEAMS;
     public static CompressedBlocks COMPRESSED_BLOCKS;
-    //    public static Covers COVERS = null;
-//    public static Slabs SLABS = null;
-//    public static Stairs STAIRS = null;
     public static final StorageBlocks STORAGE_BLOCKS;
-//    public static Walls WALLS = null;
 
     private static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
 
     static {
-//        MinekeaConfig config = ConfigManager.getConfig();
-
         BASALT_BRICKS_BLOCK = new BasaltBricksBlock();
         CHISELED_BASALT_BRICKS_BLOCK = new ChiseledBasaltBricksBlock();
-//        if (config.enableCobbledEndStone) {
-//        }
         CRACKED_BASALT_BRICKS_BLOCK = new CrackedBasaltBricksBlock();
         CRIMSON_BASALT_BRICKS_BLOCK = new CrimsonBasaltBricksBlock();
         MOSSY_BASALT_BRICKS_BLOCK = new MossyBasaltBricksBlock();
@@ -65,9 +57,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
         WARPED_NETHER_BRICKS_BLOCK = new WarpedNetherBricksBlock();
 
         BLOCKS.addAll(List.of(BASALT_BRICKS_BLOCK, CHISELED_BASALT_BRICKS_BLOCK));
-
-//        if (config.enableCobbledEndStone) {
-//        }
 
         BLOCKS.addAll(List.of(
             CRACKED_BASALT_BRICKS_BLOCK,
@@ -77,35 +66,11 @@ public class BuildingBlocks implements MinekeaBlockCategory {
             WARPED_NETHER_BRICKS_BLOCK
         ));
 
-//        if (config.enableBeams) {
         BEAMS = new Beams();
         BLOCK_GROUPS.add(BEAMS);
-//        }
-//
-//        if (config.enableCompressedBlocks) {
+
         COMPRESSED_BLOCKS = new CompressedBlocks();
         BLOCK_GROUPS.add(COMPRESSED_BLOCKS);
-//        }
-//
-//        if (config.enableCovers) {
-//            COVERS = new Covers();
-//            BLOCK_GROUPS.add(COVERS);
-//        }
-//
-//        if (config.enableSlabs) {
-//            SLABS = new Slabs();
-//            BLOCK_GROUPS.add(SLABS);
-//        }
-//
-//        if (config.enableStairs) {
-//            STAIRS = new Stairs();
-//            BLOCK_GROUPS.add(STAIRS);
-//        }
-//
-//        if (config.enableWalls) {
-//            WALLS = new Walls();
-//            BLOCK_GROUPS.add(WALLS);
-//        }
 
         STORAGE_BLOCKS = new StorageBlocks();
         BLOCK_GROUPS.add(STORAGE_BLOCKS);

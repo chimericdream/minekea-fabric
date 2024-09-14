@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minekea:block/containers/barrels/acacia_bottom",
+    "side": "minekea:block/containers/barrels/acacia_side",
+    "top": "minekea:block/containers/barrels/acacia_top"
+  }
+}

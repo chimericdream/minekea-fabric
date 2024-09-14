@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.containers;
 
+import com.chimericdream.minekea.block.containers.barrels.Barrels;
 import com.chimericdream.minekea.block.containers.crates.Crates;
 import com.chimericdream.minekea.client.render.block.GlassJarBlockEntityRenderer;
 import com.chimericdream.minekea.client.render.item.GlassJarItemRenderer;
@@ -32,7 +33,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ContainerBlocks implements MinekeaBlockCategory {
-    //    public static Barrels BARRELS = null;
+    public static Barrels BARRELS;
     public static Crates CRATES;
 
     public static final GlassJarBlock GLASS_JAR;
@@ -43,17 +44,11 @@ public class ContainerBlocks implements MinekeaBlockCategory {
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
 
     static {
-//        MinekeaConfig config = ConfigManager.getConfig();
-//
-//        if (config.enableBarrels) {
-//            BARRELS = new Barrels();
-//            BLOCK_GROUPS.add(BARRELS);
-//        }
-//
-//        if (config.enableCrates) {
+        BARRELS = new Barrels();
+        BLOCK_GROUPS.add(BARRELS);
+
         CRATES = new Crates();
         BLOCK_GROUPS.add(CRATES);
-//        }
 
         GLASS_JAR = new GlassJarBlock();
     }
@@ -136,5 +131,11 @@ public class ContainerBlocks implements MinekeaBlockCategory {
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         BLOCK_GROUPS.forEach(group -> group.configureItemModels(itemModelGenerator));
         GLASS_JAR.configureItemModels(itemModelGenerator);
+    }
+
+    @Override
+    public void generateTextures() {
+        BLOCK_GROUPS.forEach(MinekeaBlockCategory::generateTextures);
+        GLASS_JAR.generateTextures();
     }
 }
