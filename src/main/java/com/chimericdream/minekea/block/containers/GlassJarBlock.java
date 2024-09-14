@@ -97,6 +97,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             entry("minecraft:black_dye", "minekea:storage/dyes/black_dye"),
             entry("minecraft:blaze_powder", "minekea:storage/compressed/blaze_powder"),
             entry("minecraft:blaze_rod", "minekea:storage/compressed/blaze_rod"),
+            entry("minecraft:breeze_rod", "minekea:storage/compressed/breeze_rod"),
             entry("minecraft:blue_concrete_powder", "minecraft:blue_concrete_powder"),
             entry("minecraft:blue_dye", "minekea:storage/dyes/blue_dye"),
             entry("minecraft:brown_concrete_powder", "minecraft:brown_concrete_powder"),
@@ -174,7 +175,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState()
+        return this.getDefaultState()
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
@@ -407,7 +408,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             NbtCompound nbt = nbtComponent.copyNbt();
 
             String storedFluid = nbt.getString(GlassJarBlockEntity.FLUID_KEY);
-            if (!storedFluid.equals("") && !storedFluid.equals("NONE")) {
+            if (!storedFluid.isEmpty() && !storedFluid.equals("NONE")) {
                 Fluid fluid = Registries.FLUID.get(Identifier.of(storedFluid));
 
                 if (fluid != Fluids.EMPTY) {
@@ -509,9 +510,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         ContainerBlocks.GLASS_JAR_ITEM = Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().maxCount(8)));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
-            .register((itemGroup) -> {
-                itemGroup.add(this);
-            });
+            .register((itemGroup) -> itemGroup.add(this));
     }
 
     @Override

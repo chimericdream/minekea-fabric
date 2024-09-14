@@ -47,6 +47,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock BEETROOT_SEEDS_BLOCK;
     public static final GenericStorageBlock BLAZE_POWDER_BLOCK;
     public static final GenericStorageBlock BLAZE_ROD_BLOCK;
+    public static final GenericStorageBlock BREEZE_ROD_BLOCK;
     public static final GenericStorageBlock CARROT_BLOCK;
     public static final GenericStorageBlock CHARCOAL_BLOCK;
     public static final GenericStorageBlock CHORUS_FRUIT_BLOCK;
@@ -114,6 +115,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         BEETROOT_SEEDS_BLOCK = new BeetrootSeedsStorageBlock();
         BLAZE_POWDER_BLOCK = new BlazePowderStorageBlock();
         BLAZE_ROD_BLOCK = new BlazeRodStorageBlock();
+        BREEZE_ROD_BLOCK = new BreezeRodStorageBlock();
         CARROT_BLOCK = new CarrotStorageBlock();
         CHARCOAL_BLOCK = new CharcoalStorageBlock();
         CHORUS_FRUIT_BLOCK = new ChorusFruitStorageBlock();
@@ -142,6 +144,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
             BEETROOT_SEEDS_BLOCK,
             BLAZE_POWDER_BLOCK,
             BLAZE_ROD_BLOCK,
+            BREEZE_ROD_BLOCK,
             CARROT_BLOCK,
             CHARCOAL_BLOCK,
             CHORUS_FRUIT_BLOCK,
@@ -197,9 +200,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         SET_OF_EGGS_BLOCK.register();
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS)
-            .register((itemGroup) -> {
-                DYE_BLOCKS.forEach(itemGroup::add);
-            });
+            .register((itemGroup) -> DYE_BLOCKS.forEach(itemGroup::add));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
             .register((itemGroup) -> {
@@ -207,14 +208,6 @@ public class StorageBlocks implements MinekeaBlockCategory {
 
                 itemGroup.add(SET_OF_EGGS_BLOCK);
             });
-    }
-
-    @Override
-    public void registerBlockEntities() {
-    }
-
-    @Override
-    public void registerEntities() {
     }
 
     @Override
@@ -230,11 +223,11 @@ public class StorageBlocks implements MinekeaBlockCategory {
         STORAGE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
         SET_OF_EGGS_BLOCK.configureItemTags(registryLookup, getBuilder);
 
-        BAGGED_BLOCKS.forEach(block -> {
-            getBuilder.apply(MinekeaTags.BAGGED_ITEMS)
+        BAGGED_BLOCKS.forEach(
+            block -> getBuilder.apply(MinekeaTags.BAGGED_ITEMS)
                 .setReplace(false)
-                .add(block.asItem());
-        });
+                .add(block.asItem())
+        );
     }
 
     @Override
