@@ -1,0 +1,18 @@
+{
+    "name": "Beams",
+    "icon": "minekea:building/beams/cobblestone",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Beams are a new building block that bears some resemblance to fence posts or walls. By default, beams connect to any adjacent blocks, but you can use the wrench to enable or disable any of the six sides of a beam, allowing for infinite possibilities!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/beams/cobblestone",
+            "title": "Recipe",
+            "text": "There are over a hundred types of beams, but all follow the same recipe pattern."
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Dyed Blocks",
+    "icon": "minekea:building/dyed/smooth_stone/blue",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Many blocks can be dyed any of Minecraft's 16 colors, giving you dozens more choices for the perfect build!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/dyed/smooth_stone/blue",
+            "title": "Recipe",
+            "text": "All dyed blocks follow the same pattern, but not all blocks can be dyed."
+        }
+    ]
+}

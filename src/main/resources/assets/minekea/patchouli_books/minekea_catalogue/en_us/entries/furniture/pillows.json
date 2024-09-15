@@ -1,0 +1,19 @@
+{
+    "name": "Pillows",
+    "icon": "minekea:furniture/pillows/green",
+    "flag": "minekea:enablePillows",
+    "category": "minekea:furniture",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "What's fluffier than a block of wool? A pillow stuffed with $(o)four$() blocks of wool! Pillows are available in all 16 colors and prevent all fall damage when you land on them."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:furniture/pillows/blue",
+            "recipe2": "minekea:furniture/pillows/red",
+            "title": "Example Recipes"
+        }
+    ]
+}

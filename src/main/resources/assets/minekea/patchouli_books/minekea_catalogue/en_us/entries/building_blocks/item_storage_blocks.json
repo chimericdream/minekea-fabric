@@ -1,0 +1,42 @@
+{
+    "name": "Item Storage Blocks",
+    "icon": "minekea:storage/compressed/ender_pearl",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Some items tend to take up a large amount of space in your inventory or storage system. Wouldn't it be nice if you could craft them into solid blocks for better storage, or even as decorations? Yes! It would!!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:storage/compressed/ender_pearl",
+            "recipe2": "minekea:storage/compressed/blaze_powder",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:storage/compressed/sugar",
+            "recipe2": "minekea:storage/compressed/potato",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:storage/dyes/white",
+            "title": "Example Recipes",
+            "text": "All dyes can be compressed into gooey blocks which behave much like honey. They slow entities down and prevent jumping. However, they cannot be used in redstone contraptions."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "When placed, some blocks render inside a brown sack. To remove the sack, right-click the block with a pair of shears. To put the block back into a bag, right-click with a piece of leather."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/bagged-blocks.png",
+                "minekea:textures/gui/patchouli/unbagged-blocks.png",
+                "minekea:textures/gui/patchouli/re-bagged-blocks.png"
+            ]
+        }
+    ]
+}

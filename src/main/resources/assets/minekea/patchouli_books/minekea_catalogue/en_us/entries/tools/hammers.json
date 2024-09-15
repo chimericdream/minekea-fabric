@@ -1,0 +1,49 @@
+{
+    "name": "Hammers",
+    "icon": "minekea:tools/hammers/diamond",
+    "category": "minekea:tools",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "These hammers are a must-have for the discerning builder! They give you the ability to place random blocks from your hotbar, perfect for creating texture in a build! Each tier of hammer is capable of using more slots than the previous one, from 4 (stone) to 8 (netherite)."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/hammer-random-blocks.png"
+            ],
+            "text": "Simply place the blocks you want to use to the right of the hammer, then right-click the hammer all over your build to place random blocks!"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/hammer-ratio-blocks.png",
+                "minekea:textures/gui/patchouli/hammer-ratio-hotbar.png"
+            ],
+            "text": "You can even control the ratio of blocks to place by using different size stacks of each block type."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:tools/hammers/stone",
+            "recipe2": "minekea:tools/hammers/iron",
+            "title": "Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:tools/hammers/gold",
+            "recipe2": "minekea:tools/hammers/diamond",
+            "title": "Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:tools/hammers/netherite",
+            "title": "Recipes"
+        },
+        {
+            "type": "patchouli:smithing",
+            "recipe": "minekea:tools/hammers/netherite_upgrade_from_diamond",
+            "title": "Recipes"
+        }
+    ]
+}

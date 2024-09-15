@@ -1,0 +1,18 @@
+{
+    "name": "Barrels",
+    "icon": "minecraft:barrel",
+    "category": "minekea:containers_and_storage",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Barrels are now available in all wood types! The recipe is now material-specific, but is otherwise the same as it ever was.$(br2)$(br2)$(o)Note: the vanilla barrel texture has been modified slightly to blend with the rest of the new variants.$()"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minecraft:barrel",
+            "recipe2": "minekea:containers/barrels/spruce",
+            "title": "Example Recipes"
+        }
+    ]
+}

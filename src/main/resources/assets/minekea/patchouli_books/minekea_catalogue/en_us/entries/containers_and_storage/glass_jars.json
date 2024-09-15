@@ -1,0 +1,24 @@
+{
+    "name": "Glass Jars",
+    "icon": "minekea:containers/glass_jar",
+    "category": "minekea:containers_and_storage",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Jars can store any fluid, as well as a wide variety of items. Most \"dust\" blocks, dyes, some foods, etc. can be stored in a jar. In addition, jars retain their inventory when broken, making it easy to transport large quantities of some items."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:containers/glass_jar",
+            "title": "Recipe"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/jars_on_a_shelf.png"
+            ],
+            "text": "Jars rendering their contents on a shelf"
+        }
+    ]
+}

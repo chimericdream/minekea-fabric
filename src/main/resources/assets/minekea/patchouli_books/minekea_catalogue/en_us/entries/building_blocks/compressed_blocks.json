@@ -1,0 +1,42 @@
+{
+    "name": "Compressed Blocks",
+    "icon": "minekea:building/compressed/cobblestone/9x",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Some items tend to take up a large amount of space in your inventory or storage system. Minekea adds 1x-9x compressed versions of over a hundred block types to help you stay organized!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/compressed/cobblestone/1x",
+            "recipe2": "minekea:building/compressed/andesite/2x",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/compressed/granite/3x",
+            "recipe2": "minekea:building/compressed/dirt/4x",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/compressed/gravel/5x",
+            "recipe2": "minekea:building/compressed/sand/6x",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/compressed/white_concrete/7x",
+            "recipe2": "minekea:building/compressed/iron_block/8x",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/compressed/netherite_block/9x",
+            "title": "Example Recipes (lol)",
+            "text": "$(o)Fun fact: the Nether contains an $(l:https://www.reddit.com/r/Minecraft/comments/g6nlhn/ever_wondered_how_many_netherite_blocks_youd_get/)estimated$(/l) 2.37*10^13 ancient debris, which is enough to make 658.2 billion netherite blocks, or nearly 1,700 9x compressed netherite blocks."
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Vertical Stairs",
+    "icon": "minekea:building/stairs/vertical/cobblestone",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Just like regular stairs, but sideways!$(br2)$(br2)$(br2)$(br2)$(o)Minekea makes no promise or guarantee regarding the suitability of these blocks for actual staircases."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/stairs/vertical/cobblestone",
+            "title": "Example Recipe",
+            "text": "If a block has stairs, it's got vertical ones as well!"
+        }
+    ]
+}
