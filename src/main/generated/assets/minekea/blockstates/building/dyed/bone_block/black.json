@@ -1,0 +1,31 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/building/dyed/bone_block/black",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/dyed/bone_block/black"
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/dyed/bone_block/black",
+        "x": 90
+      },
+      "when": {
+        "axis": "z"
+      }
+    }
+  ]
+}

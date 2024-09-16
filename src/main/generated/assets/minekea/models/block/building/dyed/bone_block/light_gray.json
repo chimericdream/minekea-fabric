@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "minekea:block/building/dyed/bone_block/light_gray_end",
+    "side": "minekea:block/building/dyed/bone_block/light_gray_side"
+  }
+}

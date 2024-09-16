@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.util.DyeColor;
 
 import java.util.List;
 
@@ -54,6 +55,10 @@ public class Colors {
         return variants[tintIndex];
     }
 
+    public static String getName(DyeColor color) {
+        return getName(color.asString());
+    }
+
     public static String getName(String key) {
         return switch (key) {
             case "white" -> "White";
@@ -74,6 +79,10 @@ public class Colors {
             case "black" -> "Black";
             default -> "";
         };
+    }
+
+    public static Item getDye(DyeColor color) {
+        return getDye(color.asString());
     }
 
     public static Item getDye(String key) {

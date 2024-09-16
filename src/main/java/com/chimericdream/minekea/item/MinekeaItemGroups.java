@@ -3,8 +3,10 @@ package com.chimericdream.minekea.item;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.beams.Beams;
 import com.chimericdream.minekea.block.building.compressed.CompressedBlocks;
+import com.chimericdream.minekea.block.building.dyed.DyedBlocks;
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -26,6 +28,12 @@ public class MinekeaItemGroups {
         Identifier.of(ModInfo.MOD_ID, "item_group.minekea.blocks.building.compressed")
     );
 
+    public static ItemGroup DYED_BLOCKS;
+    public static RegistryKey<ItemGroup> DYED_BLOCK_ITEM_GROUP_KEY = RegistryKey.of(
+        Registries.ITEM_GROUP.getKey(),
+        Identifier.of(ModInfo.MOD_ID, "item_group.minekea.blocks.building.dyed")
+    );
+
     //    public static ItemGroup COVERS = null;
 
     public static ItemGroup FURNITURE;
@@ -35,35 +43,30 @@ public class MinekeaItemGroups {
     );
 
     static {
-//        MinekeaConfig config = ConfigManager.getConfig();
-//
-//        if (config.enableBeams) {
         BEAMS = FabricItemGroup.builder()
             .icon(() -> new ItemStack(Beams.BLOCKS.get(0)))
             .displayName(Text.translatable("item_group.minekea.blocks.building.beams"))
             .build();
-//        }
-//
-//        if (config.enableCompressedBlocks) {
+
         COMPRESSED_BLOCKS = FabricItemGroup.builder()
             .icon(() -> new ItemStack(CompressedBlocks.BLOCKS.get(0)))
             .displayName(Text.translatable("item_group.minekea.blocks.building.compressed"))
             .build();
-//        }
-//
-//        if (config.enableCovers) {
+
+        DYED_BLOCKS = FabricItemGroup.builder()
+            .icon(() -> new ItemStack((Block) DyedBlocks.BLOCKS.get(0)))
+            .displayName(Text.translatable("item_group.minekea.blocks.building.dyed"))
+            .build();
+
 //            COVERS = FabricItemGroupBuilder
 //                .create(Identifier.of(ModInfo.MOD_ID, "blocks.building.covers"))
 //                .icon(() -> new ItemStack(Covers.BLOCKS.get("crimson_stem")))
 //                .build();
-//        }
 
-//        if (isFurnitureEnabled()) {
         FURNITURE = FabricItemGroup.builder()
             .icon(MinekeaItemGroups::getFurnitureIcon)
             .displayName(Text.translatable("item_group.minekea.blocks.furniture"))
             .build();
-//        }
     }
 
 //    protected static boolean isFurnitureEnabled() {
@@ -130,6 +133,7 @@ public class MinekeaItemGroups {
     public void register() {
         Registry.register(Registries.ITEM_GROUP, BEAM_ITEM_GROUP_KEY, BEAMS);
         Registry.register(Registries.ITEM_GROUP, COMPRESSED_BLOCK_ITEM_GROUP_KEY, COMPRESSED_BLOCKS);
+        Registry.register(Registries.ITEM_GROUP, DYED_BLOCK_ITEM_GROUP_KEY, DYED_BLOCKS);
         Registry.register(Registries.ITEM_GROUP, FURNITURE_ITEM_GROUP_KEY, FURNITURE);
     }
 }

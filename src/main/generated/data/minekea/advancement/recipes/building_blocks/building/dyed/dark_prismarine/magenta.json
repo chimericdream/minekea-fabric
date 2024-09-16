@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dark_prismarine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:dark_prismarine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_magenta_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:magenta_dye"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/dyed/dark_prismarine/magenta"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dark_prismarine",
+      "has_magenta_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/dyed/dark_prismarine/magenta"
+    ]
+  }
+}

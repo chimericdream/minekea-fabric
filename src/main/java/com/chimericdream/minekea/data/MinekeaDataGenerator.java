@@ -143,6 +143,7 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
             translationBuilder.add("item_group.minekea.blocks.building.beams", "Minekea: Beams");
             translationBuilder.add("item_group.minekea.blocks.building.compressed", "Minekea: Compressed Blocks");
             translationBuilder.add("item_group.minekea.blocks.building.covers", "Minekea: Covers");
+            translationBuilder.add("item_group.minekea.blocks.building.dyed", "Minekea: Dyed Blocks");
             translationBuilder.add("item_group.minekea.blocks.furniture", "Minekea: Furniture");
         }
     }

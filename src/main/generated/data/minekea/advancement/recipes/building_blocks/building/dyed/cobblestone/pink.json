@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cobblestone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pink_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:pink_dye"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/dyed/cobblestone/pink"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cobblestone",
+      "has_pink_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/dyed/cobblestone/pink"
+    ]
+  }
+}
