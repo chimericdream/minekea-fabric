@@ -2,8 +2,6 @@ package com.chimericdream.minekea.block.building.dyed;
 
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -183,16 +181,10 @@ public class DyedBlocks implements MinekeaBlockCategory {
         BLOCK_MAP.forEach((unused, block) -> BLOCKS.add(block));
     }
 
-    @Environment(EnvType.CLIENT)
-    @Override
-    public void initializeClient() {
-    }
-
     @Override
     public void registerBlocks() {
         BLOCK_MAP.values().forEach(MinekeaBlock::register);
     }
-
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {

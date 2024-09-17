@@ -10,6 +10,7 @@ import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock
 import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
+import com.chimericdream.minekea.block.building.stairs.Stairs;
 import com.chimericdream.minekea.block.building.storage.StorageBlocks;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -44,6 +45,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static Beams BEAMS;
     public static CompressedBlocks COMPRESSED_BLOCKS;
     public static DyedBlocks DYED_BLOCKS;
+    public static Stairs STAIRS;
     public static final StorageBlocks STORAGE_BLOCKS;
 
     private static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
@@ -76,6 +78,9 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
         DYED_BLOCKS = new DyedBlocks();
         BLOCK_GROUPS.add(DYED_BLOCKS);
+
+        STAIRS = new Stairs();
+        BLOCK_GROUPS.add(STAIRS);
 
         STORAGE_BLOCKS = new StorageBlocks();
         BLOCK_GROUPS.add(STORAGE_BLOCKS);

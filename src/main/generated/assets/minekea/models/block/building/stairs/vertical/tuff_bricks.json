@@ -1,0 +1,6 @@
+{
+  "parent": "minekea:block/building/stairs/vertical",
+  "textures": {
+    "all": "minecraft:block/tuff_bricks"
+  }
+}

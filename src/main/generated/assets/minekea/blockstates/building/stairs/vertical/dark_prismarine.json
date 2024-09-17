@@ -1,0 +1,43 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/building/stairs/vertical/dark_prismarine",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/stairs/vertical/dark_prismarine",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/stairs/vertical/dark_prismarine",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/stairs/vertical/dark_prismarine",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "west"
+      }
+    }
+  ]
+}
