@@ -1,0 +1,6 @@
+{
+  "parent": "minekea:block/building/slabs/vertical",
+  "textures": {
+    "all": "minecraft:block/cut_red_sandstone"
+  }
+}

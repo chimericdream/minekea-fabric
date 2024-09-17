@@ -54,9 +54,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, W
         TextureKey.ALL
     );
 
-    // minekea:block/building/stairs/vertical
     public static final DirectionProperty FACING;
-
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     public static final VoxelShape NORTH_SHAPE = VoxelShapes.union(
