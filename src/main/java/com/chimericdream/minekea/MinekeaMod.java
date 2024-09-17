@@ -11,6 +11,7 @@ import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.network.ServerNetworking;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import com.chimericdream.minekea.world.poi.MinekeaPointOfInterestTypes;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.Blocks;
 import org.slf4j.Logger;
@@ -73,8 +74,8 @@ public class MinekeaMod implements ModInitializer {
             category.registerEntities();
         }
 
-//        LOGGER.info("[minekea] Registering villager points of interest");
-//        MinekeaPointOfInterestTypes.init();
+        LOGGER.info("[minekea] Registering villager points of interest");
+        MinekeaPointOfInterestTypes.init();
 
         LOGGER.info("[minekea] Registering items");
         ITEMS.register();
