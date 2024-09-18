@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "minekea:block/building/general/cracked_basalt_bricks"
+  }
+}

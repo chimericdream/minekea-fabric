@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "minekea:block/building/general/cracked_basalt_bricks"
+  }
+}

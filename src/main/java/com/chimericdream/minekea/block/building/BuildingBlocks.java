@@ -13,6 +13,7 @@ import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.block.building.slabs.Slabs;
 import com.chimericdream.minekea.block.building.stairs.Stairs;
 import com.chimericdream.minekea.block.building.storage.StorageBlocks;
+import com.chimericdream.minekea.block.building.walls.Walls;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
@@ -43,12 +44,13 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final WarpedBasaltBricksBlock WARPED_BASALT_BRICKS_BLOCK;
     public static final WarpedNetherBricksBlock WARPED_NETHER_BRICKS_BLOCK;
 
-    public static Beams BEAMS;
-    public static CompressedBlocks COMPRESSED_BLOCKS;
-    public static DyedBlocks DYED_BLOCKS;
-    public static Slabs SLABS;
-    public static Stairs STAIRS;
+    public static final Beams BEAMS;
+    public static final CompressedBlocks COMPRESSED_BLOCKS;
+    public static final DyedBlocks DYED_BLOCKS;
+    public static final Slabs SLABS;
+    public static final Stairs STAIRS;
     public static final StorageBlocks STORAGE_BLOCKS;
+    public static final Walls WALLS;
 
     private static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
@@ -89,6 +91,9 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
         STORAGE_BLOCKS = new StorageBlocks();
         BLOCK_GROUPS.add(STORAGE_BLOCKS);
+
+        WALLS = new Walls();
+        BLOCK_GROUPS.add(WALLS);
     }
 
     @Environment(EnvType.CLIENT)
