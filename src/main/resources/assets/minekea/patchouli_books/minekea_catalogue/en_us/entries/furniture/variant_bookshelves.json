@@ -1,18 +1,17 @@
 {
     "name": "Bookshelf Variants",
     "icon": "minekea:furniture/bookshelves/crimson",
-    "flag": "minekea:enableBookshelves",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "Tired of only having a single texture for bookshelves? Worry no more! This mod provides dozens of new types of bookshelves for all your decorating needs! All wood types, as well as a number of decorative block variants, are included."
+            "text": "Tired of only having a single texture for bookshelves? Worry no more! This mod provides bookshelves in all the wood types for all your decorating needs!"
         },
         {
             "type": "patchouli:crafting",
             "recipe": "minekea:furniture/bookshelves/crimson",
-            "recipe2": "minekea:furniture/bookshelves/dark_prismarine",
+            "recipe2": "minekea:furniture/bookshelves/spruce",
             "title": "Example Recipes"
         }
     ]

@@ -1,7 +1,6 @@
 {
     "name": "Shelves",
     "icon": "minekea:furniture/shelves/supported/oak",
-    "flag": "minekea:enableShelves",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [
@@ -17,7 +16,9 @@
         },
         {
             "type": "patchouli:image",
-            "images": ["minekea:textures/gui/patchouli/floating_shelf_example.png"],
+            "images": [
+                "minekea:textures/gui/patchouli/floating_shelf_example.png"
+            ],
             "text": "A dark oak floating shelf displaying some basic supplies."
         }
     ]

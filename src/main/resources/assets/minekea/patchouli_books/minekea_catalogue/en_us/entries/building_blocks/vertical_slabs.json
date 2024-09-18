@@ -1,0 +1,18 @@
+{
+    "name": "Vertical Slabs",
+    "icon": "minekea:building/slabs/vertical/stone_bricks",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Just like regular slabs, but sideways!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/slabs/vertical/oak",
+            "title": "Example Recipe",
+            "text": "If a block has a slab, it's got a vertical one as well!"
+        }
+    ]
+}

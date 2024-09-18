@@ -1,7 +1,6 @@
 {
     "name": "Shutters",
     "icon": "minekea:furniture/shutters/oak",
-    "flag": "minekea:enableShutters",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [

@@ -1,7 +1,6 @@
 {
     "name": "Pillows",
     "icon": "minekea:furniture/pillows/green",
-    "flag": "minekea:enablePillows",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [

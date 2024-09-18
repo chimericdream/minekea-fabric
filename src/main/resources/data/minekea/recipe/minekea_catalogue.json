@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        {
+            "item": "minecraft:stick"
+        }
+    ],
+    "result": {
+        "id": "patchouli:guide_book",
+        "components": {
+            "patchouli:book": "minekea:minekea_catalogue"
+        }
+    }
+}

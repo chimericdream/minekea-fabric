@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "If you find yourself with too much basalt, try using some of it to craft some new brick blocks! Each brick type (except for chiseled) also includes a slab, stair, and vertical stair version."
+            "text": "If you find yourself with too much basalt, try using some of it to craft some new brick blocks! Each brick type (except for chiseled) also includes a slab, vertical slab, stair, vertical stair, and wall version."
         },
         {
             "type": "patchouli:crafting",
@@ -29,6 +29,12 @@
             "type": "patchouli:smelting",
             "recipe": "minekea:building/general/cracked_basalt_bricks_from_smelting_building/general/basalt_bricks",
             "title": "Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/slabs/crimson_basalt_bricks",
+            "recipe2": "minekea:building/walls/warped_basalt_bricks",
+            "title": "Example Recipes"
         }
     ]
 }

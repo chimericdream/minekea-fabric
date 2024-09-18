@@ -1,7 +1,6 @@
 {
     "name": "Chairs and stools",
     "icon": "minekea:furniture/seating/chairs/oak",
-    "flag": "minekea:enableChairs",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [

@@ -1,7 +1,6 @@
 {
     "name": "Display Cases",
     "icon": "minekea:furniture/display_cases/oak",
-    "flag": "minekea:enableDisplayCases",
     "category": "minekea:furniture",
     "read_by_default": true,
     "pages": [
@@ -17,12 +16,16 @@
         },
         {
             "type": "patchouli:image",
-            "images": ["minekea:textures/gui/patchouli/display_case_rendering.png"],
+            "images": [
+                "minekea:textures/gui/patchouli/display_case_rendering.png"
+            ],
             "text": "Items look great in a display case! Mob and player heads have special rendering for best results."
         },
         {
             "type": "patchouli:image",
-            "images": ["minekea:textures/gui/patchouli/display_case_redstone.png"],
+            "images": [
+                "minekea:textures/gui/patchouli/display_case_redstone.png"
+            ],
             "text": "Not only can you rotate the item on display, the case outputs a variable redstone signal based on the current rotation!"
         }
     ]
