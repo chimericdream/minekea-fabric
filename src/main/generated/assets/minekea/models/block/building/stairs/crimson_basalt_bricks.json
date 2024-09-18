@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "minekea:block/building/general/crimson_basalt_bricks",
+    "side": "minekea:block/building/general/crimson_basalt_bricks",
+    "top": "minekea:block/building/general/crimson_basalt_bricks"
+  }
+}

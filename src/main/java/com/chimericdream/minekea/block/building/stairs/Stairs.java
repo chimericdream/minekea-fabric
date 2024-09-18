@@ -1,5 +1,12 @@
 package com.chimericdream.minekea.block.building.stairs;
 
+import com.chimericdream.minekea.block.building.BuildingBlocks;
+import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -20,9 +27,17 @@ import java.util.List;
 import java.util.function.Function;
 
 public class Stairs implements MinekeaBlockCategory {
+    public static final List<MinekeaBlock> STAIRS = new ArrayList<>();
     public static final List<MinekeaBlock> VERTICAL_STAIRS = new ArrayList<>();
 
     static {
+        STAIRS.add(new GenericStairsBlock("Basalt Brick", "basalt_bricks", false, BuildingBlocks.BASALT_BRICKS_BLOCK, BasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        STAIRS.add(new GenericStairsBlock("Cracked Basalt Brick", "cracked_basalt_bricks", false, BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK, CrackedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        STAIRS.add(new GenericStairsBlock("Crimson Basalt Brick", "crimson_basalt_bricks", false, BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK, CrimsonBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        STAIRS.add(new GenericStairsBlock("Mossy Basalt Brick", "mossy_basalt_bricks", false, BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK, MossyBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        STAIRS.add(new GenericStairsBlock("Warped Basalt Brick", "warped_basalt_bricks", false, BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK, WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        STAIRS.add(new GenericStairsBlock("Warped Nether Brick", "warped_nether_bricks", false, BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK, WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+
         VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Acacia", "acacia_planks", true, Blocks.ACACIA_PLANKS));
         VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Birch", "birch_planks", true, Blocks.BIRCH_PLANKS));
         VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Cherry", "cherry_planks", true, Blocks.CHERRY_PLANKS));
@@ -79,50 +94,66 @@ public class Stairs implements MinekeaBlockCategory {
         VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Waxed Weathered Cut Copper", "waxed_weathered_cut_copper", false, Blocks.WAXED_WEATHERED_CUT_COPPER, TextureMap.getId(Blocks.WEATHERED_CUT_COPPER)));
         VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Oxidized Cut Copper", "oxidized_cut_copper", false, Blocks.OXIDIZED_CUT_COPPER));
         VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Waxed Oxidized Cut Copper", "waxed_oxidized_cut_copper", false, Blocks.WAXED_OXIDIZED_CUT_COPPER, TextureMap.getId(Blocks.OXIDIZED_CUT_COPPER)));
+
+        VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Basalt Brick", "basalt_bricks", false, BuildingBlocks.BASALT_BRICKS_BLOCK, BasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Cracked Basalt Brick", "cracked_basalt_bricks", false, BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK, CrackedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Crimson Basalt Brick", "crimson_basalt_bricks", false, BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK, CrimsonBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Mossy Basalt Brick", "mossy_basalt_bricks", false, BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK, MossyBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Warped Basalt Brick", "warped_basalt_bricks", false, BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK, WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_STAIRS.add(new GenericVerticalStairsBlock("Warped Nether Brick", "warped_nether_bricks", false, BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK, WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
     }
 
     @Override
     public void registerBlocks() {
+        STAIRS.forEach(MinekeaBlock::register);
         VERTICAL_STAIRS.forEach(MinekeaBlock::register);
     }
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        STAIRS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
         VERTICAL_STAIRS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+        STAIRS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
         VERTICAL_STAIRS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        STAIRS.forEach(block -> block.configureRecipes(exporter));
         VERTICAL_STAIRS.forEach(block -> block.configureRecipes(exporter));
     }
 
     @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        STAIRS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
         VERTICAL_STAIRS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        STAIRS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
         VERTICAL_STAIRS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        STAIRS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
         VERTICAL_STAIRS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
     }
 
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        STAIRS.forEach(block -> block.configureItemModels(itemModelGenerator));
         VERTICAL_STAIRS.forEach(block -> block.configureItemModels(itemModelGenerator));
     }
 
     @Override
     public void generateTextures() {
+        STAIRS.forEach(MinekeaBlock::generateTextures);
         VERTICAL_STAIRS.forEach(MinekeaBlock::generateTextures);
     }
 }
