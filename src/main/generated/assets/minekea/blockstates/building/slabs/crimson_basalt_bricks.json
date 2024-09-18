@@ -1,0 +1,28 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/building/slabs/crimson_basalt_bricks"
+      },
+      "when": {
+        "type": "bottom"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/slabs/crimson_basalt_bricks_top_top"
+      },
+      "when": {
+        "type": "top"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/slabs/crimson_basalt_bricks_double"
+      },
+      "when": {
+        "type": "double"
+      }
+    }
+  ]
+}

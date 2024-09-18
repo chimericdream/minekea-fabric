@@ -1,5 +1,12 @@
 package com.chimericdream.minekea.block.building.slabs;
 
+import com.chimericdream.minekea.block.building.BuildingBlocks;
+import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -20,9 +27,17 @@ import java.util.List;
 import java.util.function.Function;
 
 public class Slabs implements MinekeaBlockCategory {
-    public static final List<GenericVerticalSlabBlock> VERTICAL_SLABS = new ArrayList<>();
+    public static final List<MinekeaBlock> SLABS = new ArrayList<>();
+    public static final List<MinekeaBlock> VERTICAL_SLABS = new ArrayList<>();
 
     static {
+        SLABS.add(new GenericSlabBlock("Basalt Brick", "basalt_bricks", false, BuildingBlocks.BASALT_BRICKS_BLOCK, BasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        SLABS.add(new GenericSlabBlock("Cracked Basalt Brick", "cracked_basalt_bricks", false, BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK, CrackedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        SLABS.add(new GenericSlabBlock("Crimson Basalt Brick", "crimson_basalt_bricks", false, BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK, CrimsonBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        SLABS.add(new GenericSlabBlock("Mossy Basalt Brick", "mossy_basalt_bricks", false, BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK, MossyBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        SLABS.add(new GenericSlabBlock("Warped Basalt Brick", "warped_basalt_bricks", false, BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK, WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        SLABS.add(new GenericSlabBlock("Warped Nether Brick", "warped_nether_bricks", false, BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK, WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+
         VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Acacia", "acacia", false, Blocks.ACACIA_PLANKS));
         VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Bamboo", "bamboo_planks", false, Blocks.BAMBOO_PLANKS));
         VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Birch", "birch", false, Blocks.BIRCH_PLANKS));
@@ -84,50 +99,66 @@ public class Slabs implements MinekeaBlockCategory {
         VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Waxed Weathered Cut Copper", "waxed_weathered_cut_copper", false, Blocks.WAXED_WEATHERED_CUT_COPPER, TextureMap.getId(Blocks.WEATHERED_CUT_COPPER)));
         VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Oxidized Cut Copper", "oxidized_cut_copper", false, Blocks.OXIDIZED_CUT_COPPER));
         VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Waxed Oxidized Cut Copper", "waxed_oxidized_cut_copper", false, Blocks.WAXED_OXIDIZED_CUT_COPPER, TextureMap.getId(Blocks.OXIDIZED_CUT_COPPER)));
+
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Basalt Brick", "basalt_bricks", false, BuildingBlocks.BASALT_BRICKS_BLOCK, BasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cracked Basalt Brick", "cracked_basalt_bricks", false, BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK, CrackedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Crimson Basalt Brick", "crimson_basalt_bricks", false, BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK, CrimsonBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Mossy Basalt Brick", "mossy_basalt_bricks", false, BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK, MossyBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Warped Basalt Brick", "warped_basalt_bricks", false, BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK, WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Warped Nether Brick", "warped_nether_bricks", false, BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK, WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
     }
 
     @Override
     public void registerBlocks() {
-        VERTICAL_SLABS.forEach(GenericVerticalSlabBlock::register);
+        SLABS.forEach(MinekeaBlock::register);
+        VERTICAL_SLABS.forEach(MinekeaBlock::register);
     }
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        SLABS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
         VERTICAL_SLABS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+        SLABS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
         VERTICAL_SLABS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        SLABS.forEach(block -> block.configureRecipes(exporter));
         VERTICAL_SLABS.forEach(block -> block.configureRecipes(exporter));
     }
 
     @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        SLABS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
         VERTICAL_SLABS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        SLABS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
         VERTICAL_SLABS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        SLABS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
         VERTICAL_SLABS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
     }
 
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
+        SLABS.forEach(block -> block.configureItemModels(itemModelGenerator));
         VERTICAL_SLABS.forEach(block -> block.configureItemModels(itemModelGenerator));
     }
 
     @Override
     public void generateTextures() {
+        SLABS.forEach(MinekeaBlock::generateTextures);
         VERTICAL_SLABS.forEach(MinekeaBlock::generateTextures);
     }
 }

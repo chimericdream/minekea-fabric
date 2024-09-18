@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "minekea:block/building/general/basalt_bricks",
+    "side": "minekea:block/building/general/basalt_bricks",
+    "top": "minekea:block/building/general/basalt_bricks"
+  }
+}

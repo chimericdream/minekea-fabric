@@ -1,0 +1,28 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/building/slabs/warped_nether_bricks"
+      },
+      "when": {
+        "type": "bottom"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/slabs/warped_nether_bricks_top_top"
+      },
+      "when": {
+        "type": "top"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/slabs/warped_nether_bricks_double"
+      },
+      "when": {
+        "type": "double"
+      }
+    }
+  ]
+}

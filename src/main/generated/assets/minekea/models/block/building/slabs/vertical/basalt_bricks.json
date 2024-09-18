@@ -1,0 +1,6 @@
+{
+  "parent": "minekea:block/building/slabs/vertical",
+  "textures": {
+    "all": "minekea:block/building/general/basalt_bricks"
+  }
+}
