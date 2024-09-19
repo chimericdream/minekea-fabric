@@ -3,6 +3,7 @@ package com.chimericdream.minekea.item;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.beams.Beams;
 import com.chimericdream.minekea.block.building.compressed.CompressedBlocks;
+import com.chimericdream.minekea.block.building.covers.Covers;
 import com.chimericdream.minekea.block.building.dyed.DyedBlocks;
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -34,7 +35,11 @@ public class MinekeaItemGroups {
         Identifier.of(ModInfo.MOD_ID, "item_group.minekea.blocks.building.dyed")
     );
 
-    //    public static ItemGroup COVERS = null;
+    public static ItemGroup COVERS;
+    public static RegistryKey<ItemGroup> COVERS_ITEM_GROUP_KEY = RegistryKey.of(
+        Registries.ITEM_GROUP.getKey(),
+        Identifier.of(ModInfo.MOD_ID, "item_group.minekea.blocks.building.covers")
+    );
 
     public static ItemGroup FURNITURE;
     public static final RegistryKey<ItemGroup> FURNITURE_ITEM_GROUP_KEY = RegistryKey.of(
@@ -58,10 +63,10 @@ public class MinekeaItemGroups {
             .displayName(Text.translatable("item_group.minekea.blocks.building.dyed"))
             .build();
 
-//            COVERS = FabricItemGroupBuilder
-//                .create(Identifier.of(ModInfo.MOD_ID, "blocks.building.covers"))
-//                .icon(() -> new ItemStack(Covers.BLOCKS.get("crimson_stem")))
-//                .build();
+        COVERS = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(Covers.BLOCKS.get(0)))
+            .displayName(Text.translatable("item_group.minekea.blocks.building.covers"))
+            .build();
 
         FURNITURE = FabricItemGroup.builder()
             .icon(MinekeaItemGroups::getFurnitureIcon)
@@ -133,6 +138,7 @@ public class MinekeaItemGroups {
     public void register() {
         Registry.register(Registries.ITEM_GROUP, BEAM_ITEM_GROUP_KEY, BEAMS);
         Registry.register(Registries.ITEM_GROUP, COMPRESSED_BLOCK_ITEM_GROUP_KEY, COMPRESSED_BLOCKS);
+        Registry.register(Registries.ITEM_GROUP, COVERS_ITEM_GROUP_KEY, COVERS);
         Registry.register(Registries.ITEM_GROUP, DYED_BLOCK_ITEM_GROUP_KEY, DYED_BLOCKS);
         Registry.register(Registries.ITEM_GROUP, FURNITURE_ITEM_GROUP_KEY, FURNITURE);
     }

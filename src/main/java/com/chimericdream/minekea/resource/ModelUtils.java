@@ -125,6 +125,41 @@ public class ModelUtils {
             );
     }
 
+    public static void registerBlockWithHorizontalFacing(
+        BlockStateModelGenerator blockStateModelGenerator,
+        DirectionProperty facing,
+        Block block,
+        Identifier subModelId
+    ) {
+        blockStateModelGenerator.blockStateCollector
+            .accept(
+                MultipartBlockStateSupplier.create(block)
+                    .with(
+                        When.create().set(facing, Direction.NORTH),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create().set(facing, Direction.EAST),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create().set(facing, Direction.SOUTH),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create().set(facing, Direction.WEST),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+            );
+    }
+
     public static void registerBlockWithFacing(
         BlockStateModelGenerator blockStateModelGenerator,
         DirectionProperty facing,

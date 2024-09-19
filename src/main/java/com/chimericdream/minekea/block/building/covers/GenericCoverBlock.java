@@ -1,0 +1,230 @@
+package com.chimericdream.minekea.block.building.covers;
+
+import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.item.MinekeaItemGroups;
+import com.chimericdream.minekea.resource.ModelUtils;
+import com.chimericdream.minekea.util.MinekeaBlock;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CarpetBlock;
+import net.minecraft.block.Waterloggable;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.WorldAccess;
+
+import java.util.Optional;
+
+public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Waterloggable {
+    // yowza
+    public static final Model COVER_MODEL = new Model(
+        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/cover")),
+        Optional.empty(),
+        TextureKey.END,
+        TextureKey.SIDE
+    );
+
+    public static final DirectionProperty FACING;
+
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+
+    static {
+        FACING = Properties.HORIZONTAL_FACING;
+    }
+
+    public final Identifier BLOCK_ID;
+
+    protected final String materialName;
+    protected final String material;
+    protected final boolean isFlammable;
+    protected final Block ingredient;
+    protected final Identifier endTextureId;
+    protected final Identifier sideTextureId;
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
+        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient), TextureMap.getId(ingredient));
+    }
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier endTextureId, Identifier sideTextureId) {
+        super(AbstractBlock.Settings.copy(ingredient));
+
+        this.setDefaultState(
+            this.stateManager.getDefaultState()
+                .with(FACING, Direction.NORTH)
+                .with(WATERLOGGED, false)
+        );
+
+        this.materialName = materialName;
+        this.material = material;
+        this.isFlammable = isFlammable;
+        this.ingredient = ingredient;
+        this.endTextureId = endTextureId;
+        this.sideTextureId = sideTextureId;
+
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/covers/%s", material));
+    }
+
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING, WATERLOGGED);
+    }
+
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayer().getHorizontalFacing().getOpposite())
+            .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
+
+    @Override
+    public void register() {
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+
+        if (isFlammable) {
+            FuelRegistry.INSTANCE.add(this, 300);
+            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+        }
+
+        ItemGroupEvents.modifyEntriesEvent(MinekeaItemGroups.COVERS_ITEM_GROUP_KEY)
+            .register((itemGroup) -> itemGroup.add(this));
+    }
+
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 16)
+            .pattern("# #")
+            .pattern("   ")
+            .pattern("# #")
+            .input('#', ingredient)
+            .criterion(FabricRecipeProvider.hasItem(ingredient),
+                FabricRecipeProvider.conditionsFromItem(ingredient))
+            .offerTo(exporter);
+    }
+
+    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        translationBuilder.add(this, String.format("%s Cover", materialName));
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        TextureMap textures = new TextureMap()
+            .put(TextureKey.END, endTextureId)
+            .put(TextureKey.SIDE, sideTextureId);
+
+        Identifier subModelId = blockStateModelGenerator.createSubModel(this, "", COVER_MODEL, unused -> textures);
+
+        ModelUtils.registerBlockWithHorizontalFacing(blockStateModelGenerator, FACING, this, subModelId);
+    }
+
+//    @Override
+//    public void setupResources() {
+//        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
+//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
+//        MinekeaTags.COVERS.add(getBlockID(), settings.isWooden());
+//        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
+//
+//        Identifier ingredient = settings.getMaterial("ingredient");
+//
+//        Identifier endTexture = settings.getBlockTexture("end");
+//        Identifier sideTexture = settings.getBlockTexture("main");
+//
+//        Identifier MODEL_ID = Model.getBlockModelID(((CoverSettings) this.settings).getBlockId());
+//        Identifier ITEM_MODEL_ID = Model.getItemModelID(((CoverSettings) this.settings).getBlockId());
+//
+//        MinekeaResourcePack.RESOURCE_PACK.addRecipe(
+//            ((CoverSettings) this.settings).getBlockId(),
+//            JRecipe.shaped(
+//                JPattern.pattern("X X", "   ", "X X"),
+//                JKeys.keys().key("X", JIngredient.ingredient().item(ingredient.toString())),
+//                JResult.stackedResult(((CoverSettings) this.settings).getBlockId().toString(), 16)
+//            )
+//        );
+//
+//        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(((CoverSettings) this.settings).getBlockId()), LootTable.dropSelf(((CoverSettings) this.settings).getBlockId()));
+//
+//        JTextures textures = new JTextures()
+//            .var("end", endTexture.toString())
+//            .var("side", sideTexture.toString());
+//
+//        MinekeaResourcePack.RESOURCE_PACK.addModel(
+//            JModel.model(ModInfo.MOD_ID + ":block/building/cover").textures(textures),
+//            MODEL_ID
+//        );
+//
+//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
+//
+//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
+//            JState.state(
+//                JState.variant()
+//                    .put("facing=north", new JBlockModel(MODEL_ID))
+//                    .put("facing=east", new JBlockModel(MODEL_ID).y(90))
+//                    .put("facing=south", new JBlockModel(MODEL_ID).y(180))
+//                    .put("facing=west", new JBlockModel(MODEL_ID).y(270))
+//            ),
+//            ((CoverSettings) this.settings).getBlockId()
+//        );
+//    }
+//
+//    public static class CoverSettings extends MinekeaBlockSettings<CoverSettings> {
+//        public CoverSettings(DefaultSettings settings) {
+//            super((DefaultSettings) settings.nonOpaque());
+//        }
+//
+//        public String getNamePattern() {
+//            return Objects.requireNonNullElse(namePatternOverride, "%s Cover");
+//        }
+//
+//        @Override
+//        public Identifier getBlockId() {
+//            if (blockId == null) {
+//                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/covers/%s", ModInfo.getModPrefix(modId), mainMaterial));
+//            }
+//
+//            return blockId;
+//        }
+//    }
+}
