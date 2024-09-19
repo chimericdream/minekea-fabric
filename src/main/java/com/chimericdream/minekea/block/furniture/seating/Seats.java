@@ -43,7 +43,18 @@ public class Seats implements MinekeaBlockCategory {
             new GenericChair("Mangrove", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG),
             new GenericChair("Oak", Blocks.OAK_PLANKS, Blocks.OAK_LOG),
             new GenericChair("Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG),
-            new GenericChair("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false)
+            new GenericChair("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false),
+
+            new GenericChair("Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG),
+            new GenericChair("Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG),
+            new GenericChair("Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG),
+            new GenericChair("Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false),
+            new GenericChair("Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG),
+            new GenericChair("Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG),
+            new GenericChair("Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG),
+            new GenericChair("Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG),
+            new GenericChair("Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG),
+            new GenericChair("Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, false)
         );
 
         STOOLS = List.of(
@@ -56,7 +67,18 @@ public class Seats implements MinekeaBlockCategory {
             new GenericStool("Mangrove", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG),
             new GenericStool("Oak", Blocks.OAK_PLANKS, Blocks.OAK_LOG),
             new GenericStool("Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG),
-            new GenericStool("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false)
+            new GenericStool("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false),
+
+            new GenericStool("Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG),
+            new GenericStool("Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG),
+            new GenericStool("Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG),
+            new GenericStool("Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false),
+            new GenericStool("Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG),
+            new GenericStool("Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG),
+            new GenericStool("Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG),
+            new GenericStool("Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG),
+            new GenericStool("Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG),
+            new GenericStool("Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, false)
         );
     }
 

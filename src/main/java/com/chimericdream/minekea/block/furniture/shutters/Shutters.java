@@ -37,6 +37,17 @@ public class Shutters implements MinekeaBlockCategory {
         SHUTTERS.put("Spruce", new ShutterBlock(BlockSetType.SPRUCE, "Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG));
         SHUTTERS.put("Warped", new ShutterBlock(BlockSetType.WARPED, "Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false));
 
+        SHUTTERS.put("Stripped Acacia", new ShutterBlock(BlockSetType.ACACIA, "Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG));
+        SHUTTERS.put("Stripped Birch", new ShutterBlock(BlockSetType.BIRCH, "Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG));
+        SHUTTERS.put("Stripped Cherry", new ShutterBlock(BlockSetType.CHERRY, "Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG));
+        SHUTTERS.put("Stripped Crimson", new ShutterBlock(BlockSetType.CRIMSON, "Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false));
+        SHUTTERS.put("Stripped Dark Oak", new ShutterBlock(BlockSetType.DARK_OAK, "Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG));
+        SHUTTERS.put("Stripped Jungle", new ShutterBlock(BlockSetType.JUNGLE, "Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG));
+        SHUTTERS.put("Stripped Mangrove", new ShutterBlock(BlockSetType.MANGROVE, "Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG));
+        SHUTTERS.put("Stripped Oak", new ShutterBlock(BlockSetType.OAK, "Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG));
+        SHUTTERS.put("Stripped Spruce", new ShutterBlock(BlockSetType.SPRUCE, "Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG));
+        SHUTTERS.put("Stripped Warped", new ShutterBlock(BlockSetType.WARPED, "Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, false));
+
         OPEN_SHUTTER_HALVES.put("Acacia", new OpenShutterHalf(BlockSetType.ACACIA, "Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG));
         OPEN_SHUTTER_HALVES.put("Birch", new OpenShutterHalf(BlockSetType.BIRCH, "Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG));
         OPEN_SHUTTER_HALVES.put("Cherry", new OpenShutterHalf(BlockSetType.CHERRY, "Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG));
@@ -47,6 +58,17 @@ public class Shutters implements MinekeaBlockCategory {
         OPEN_SHUTTER_HALVES.put("Oak", new OpenShutterHalf(BlockSetType.OAK, "Oak", Blocks.OAK_PLANKS, Blocks.OAK_LOG));
         OPEN_SHUTTER_HALVES.put("Spruce", new OpenShutterHalf(BlockSetType.SPRUCE, "Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG));
         OPEN_SHUTTER_HALVES.put("Warped", new OpenShutterHalf(BlockSetType.WARPED, "Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false));
+
+        OPEN_SHUTTER_HALVES.put("Stripped Acacia", new OpenShutterHalf(BlockSetType.ACACIA, "Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Birch", new OpenShutterHalf(BlockSetType.BIRCH, "Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Cherry", new OpenShutterHalf(BlockSetType.CHERRY, "Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Crimson", new OpenShutterHalf(BlockSetType.CRIMSON, "Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false));
+        OPEN_SHUTTER_HALVES.put("Stripped Dark Oak", new OpenShutterHalf(BlockSetType.DARK_OAK, "Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Jungle", new OpenShutterHalf(BlockSetType.JUNGLE, "Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Mangrove", new OpenShutterHalf(BlockSetType.MANGROVE, "Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Oak", new OpenShutterHalf(BlockSetType.OAK, "Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Spruce", new OpenShutterHalf(BlockSetType.SPRUCE, "Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Warped", new OpenShutterHalf(BlockSetType.WARPED, "Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, false));
     }
 
     @Override

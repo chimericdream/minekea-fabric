@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shutters/closed",
+  "textures": {
+    "frame": "minecraft:block/stripped_cherry_log",
+    "panel": "minecraft:block/cherry_planks"
+  }
+}

@@ -33,7 +33,18 @@ public class Tables implements MinekeaBlockCategory {
             new GenericTable("Mangrove", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG),
             new GenericTable("Oak", Blocks.OAK_PLANKS, Blocks.OAK_LOG),
             new GenericTable("Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG),
-            new GenericTable("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM)
+            new GenericTable("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM),
+
+            new GenericTable("Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG),
+            new GenericTable("Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG),
+            new GenericTable("Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG),
+            new GenericTable("Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM),
+            new GenericTable("Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG),
+            new GenericTable("Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG),
+            new GenericTable("Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG),
+            new GenericTable("Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG),
+            new GenericTable("Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG),
+            new GenericTable("Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM)
         );
     }
 

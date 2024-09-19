@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/tables/table_south_east_connected",
+  "textures": {
+    "log": "minecraft:block/stripped_warped_stem",
+    "planks": "minecraft:block/warped_planks"
+  }
+}

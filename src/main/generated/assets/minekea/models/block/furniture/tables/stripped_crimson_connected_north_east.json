@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/tables/table_north_east_connected",
+  "textures": {
+    "log": "minecraft:block/stripped_crimson_stem",
+    "planks": "minecraft:block/crimson_planks"
+  }
+}

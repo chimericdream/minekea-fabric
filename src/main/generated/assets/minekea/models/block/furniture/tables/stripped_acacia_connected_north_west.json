@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/tables/table_north_west_connected",
+  "textures": {
+    "log": "minecraft:block/stripped_acacia_log",
+    "planks": "minecraft:block/acacia_planks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/tables/table_south_connected",
+  "textures": {
+    "log": "minecraft:block/stripped_dark_oak_log",
+    "planks": "minecraft:block/dark_oak_planks"
+  }
+}

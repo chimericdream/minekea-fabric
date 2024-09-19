@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:stripped_crimson_stem"
+    },
+    "X": {
+      "item": "minecraft:crimson_planks"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minekea:furniture/tables/stripped_crimson"
+  }
+}

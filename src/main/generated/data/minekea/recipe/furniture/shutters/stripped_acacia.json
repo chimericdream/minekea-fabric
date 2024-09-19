@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:stripped_acacia_log"
+    },
+    "X": {
+      "item": "minecraft:acacia_planks"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "#X#",
+    "#X#"
+  ],
+  "result": {
+    "count": 6,
+    "id": "minekea:furniture/shutters/stripped_acacia"
+  }
+}

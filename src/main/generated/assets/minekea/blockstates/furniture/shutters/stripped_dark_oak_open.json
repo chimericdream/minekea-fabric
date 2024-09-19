@@ -1,0 +1,82 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/stripped_dark_oak_open_right_half",
+        "y": 180
+      },
+      "when": {
+        "half": "left",
+        "wall_side": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/stripped_dark_oak_open_right_half"
+      },
+      "when": {
+        "half": "left",
+        "wall_side": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/stripped_dark_oak_open_right_half",
+        "y": 270
+      },
+      "when": {
+        "half": "left",
+        "wall_side": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/stripped_dark_oak_open_right_half",
+        "y": 90
+      },
+      "when": {
+        "half": "left",
+        "wall_side": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/stripped_dark_oak_open_left_half",
+        "y": 180
+      },
+      "when": {
+        "half": "right",
+        "wall_side": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/stripped_dark_oak_open_left_half"
+      },
+      "when": {
+        "half": "right",
+        "wall_side": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/stripped_dark_oak_open_left_half",
+        "y": 270
+      },
+      "when": {
+        "half": "right",
+        "wall_side": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/shutters/stripped_dark_oak_open_left_half",
+        "y": 90
+      },
+      "when": {
+        "half": "right",
+        "wall_side": "west"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:stripped_oak_log"
+    },
+    "X": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minekea:furniture/tables/stripped_oak"
+  }
+}

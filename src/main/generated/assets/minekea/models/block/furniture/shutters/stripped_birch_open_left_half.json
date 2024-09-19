@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shutters/left_half",
+  "textures": {
+    "frame": "minecraft:block/stripped_birch_log",
+    "panel": "minecraft:block/birch_planks"
+  }
+}

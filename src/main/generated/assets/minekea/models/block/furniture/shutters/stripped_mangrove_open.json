@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shutters/open",
+  "textures": {
+    "frame": "minecraft:block/stripped_mangrove_log",
+    "panel": "minecraft:block/mangrove_planks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/tables/table_west_connected",
+  "textures": {
+    "log": "minecraft:block/stripped_mangrove_log",
+    "planks": "minecraft:block/mangrove_planks"
+  }
+}
