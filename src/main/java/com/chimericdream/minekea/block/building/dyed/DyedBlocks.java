@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.dyed;
 
+import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -184,6 +185,48 @@ public class DyedBlocks implements MinekeaBlockCategory {
     @Override
     public void registerBlocks() {
         BLOCK_MAP.values().forEach(MinekeaBlock::register);
+
+        BLOCKS_TO_DYE.forEach(data -> {
+            String textureKey = data.getB();
+
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "gray"), textureKey, ColoredBlocksRegistry.BlockColor.GRAY);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "black"), textureKey, ColoredBlocksRegistry.BlockColor.BLACK);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "brown"), textureKey, ColoredBlocksRegistry.BlockColor.BROWN);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "red"), textureKey, ColoredBlocksRegistry.BlockColor.RED);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "orange"), textureKey, ColoredBlocksRegistry.BlockColor.ORANGE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "yellow"), textureKey, ColoredBlocksRegistry.BlockColor.YELLOW);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "lime"), textureKey, ColoredBlocksRegistry.BlockColor.LIME);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "green"), textureKey, ColoredBlocksRegistry.BlockColor.GREEN);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "cyan"), textureKey, ColoredBlocksRegistry.BlockColor.CYAN);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_blue"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "blue"), textureKey, ColoredBlocksRegistry.BlockColor.BLUE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "purple"), textureKey, ColoredBlocksRegistry.BlockColor.PURPLE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "magenta"), textureKey, ColoredBlocksRegistry.BlockColor.MAGENTA);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "pink"), textureKey, ColoredBlocksRegistry.BlockColor.PINK);
+        });
+
+        PILLAR_BLOCKS_TO_DYE.forEach(data -> {
+            String textureKey = data.getB();
+
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "gray"), textureKey, ColoredBlocksRegistry.BlockColor.GRAY);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "black"), textureKey, ColoredBlocksRegistry.BlockColor.BLACK);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "brown"), textureKey, ColoredBlocksRegistry.BlockColor.BROWN);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "red"), textureKey, ColoredBlocksRegistry.BlockColor.RED);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "orange"), textureKey, ColoredBlocksRegistry.BlockColor.ORANGE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "yellow"), textureKey, ColoredBlocksRegistry.BlockColor.YELLOW);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "lime"), textureKey, ColoredBlocksRegistry.BlockColor.LIME);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "green"), textureKey, ColoredBlocksRegistry.BlockColor.GREEN);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "cyan"), textureKey, ColoredBlocksRegistry.BlockColor.CYAN);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_blue"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "blue"), textureKey, ColoredBlocksRegistry.BlockColor.BLUE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "purple"), textureKey, ColoredBlocksRegistry.BlockColor.PURPLE);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "magenta"), textureKey, ColoredBlocksRegistry.BlockColor.MAGENTA);
+            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "pink"), textureKey, ColoredBlocksRegistry.BlockColor.PINK);
+        });
     }
 
     @Override

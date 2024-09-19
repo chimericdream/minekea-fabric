@@ -11,6 +11,8 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.Models;
 import net.minecraft.data.client.TextureKey;
@@ -18,20 +20,37 @@ import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsage;
+import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.potion.Potions;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemActionResult;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
     public static final EnumProperty<Direction.Axis> AXIS;
@@ -85,6 +104,32 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
     }
 
     @Override
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        PotionContentsComponent potionContentsComponent = (PotionContentsComponent) stack.getOrDefault(DataComponentTypes.POTION_CONTENTS, PotionContentsComponent.DEFAULT);
+        BlockState blockState = world.getBlockState(pos);
+        if (hit.getSide() != Direction.DOWN && potionContentsComponent.matches(Potions.WATER)) {
+            world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
+            player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+
+            if (!world.isClient) {
+                ServerWorld serverWorld = (ServerWorld) world;
+
+                for (int i = 0; i < 5; ++i) {
+                    serverWorld.spawnParticles(ParticleTypes.SPLASH, (double) pos.getX() + world.random.nextDouble(), (double) (pos.getY() + 1), (double) pos.getZ() + world.random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
+                }
+            }
+
+            world.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.emitGameEvent((Entity) null, GameEvent.FLUID_PLACE, pos);
+            world.setBlockState(pos, this.baseBlock.getDefaultState().with(AXIS, blockState.get(AXIS)));
+            return ItemActionResult.success(world.isClient);
+        } else {
+            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+    }
+
+    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
@@ -134,141 +179,4 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
 
         ModelUtils.registerBlockWithAxis(blockStateModelGenerator, AXIS, this, subModelId);
     }
-
-//    @Override
-//    public void setupResources() {
-//        DyedBlockSettings settings = (DyedBlockSettings) this.settings;
-//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
-//        if (settings.getBlockTag() != null) {
-//            settings.getBlockTag().add(getBlockID());
-//        }
-//
-//        MinekeaResourcePack.EN_US.blockRespect(
-//            this,
-//            String.format(settings.getNamePattern(), settings.getColorName(), settings.getIngredientName(false))
-//        );
-//
-//        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
-//
-//        Identifier dye = settings.getDye();
-//
-//        Identifier ingredient = settings.getMaterial("ingredient");
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.blockID(getBlockID()), LootTable.dropSelf(getBlockID()));
-//
-//        Identifier textureId = Texture.getBlockTextureID(getBlockID());
-//
-//        if (settings.isColumn()) {
-//            MinekeaResourcePack.RESOURCE_PACK.addModel(
-//                JModel.model("minecraft:block/cube_column")
-//                    .textures(
-//                        new JTextures()
-//                            .var("end", textureId + "_end")
-//                            .var("side", textureId + "_side")
-//                    ),
-//                MODEL_ID
-//            );
-//        } else {
-//            MinekeaResourcePack.RESOURCE_PACK.addModel(
-//                JModel.model("minecraft:block/cube_all")
-//                    .textures(new JTextures().var("all", textureId.toString())),
-//                MODEL_ID
-//            );
-//        }
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
-//
-//        if (settings.isColumn()) {
-//            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                JState.state(
-//                    JState.variant()
-//                        .put("axis=x", new JBlockModel(MODEL_ID).x(90).y(90))
-//                        .put("axis=y", new JBlockModel(MODEL_ID))
-//                        .put("axis=z", new JBlockModel(MODEL_ID).x(90))
-//                ),
-//                getBlockID()
-//            );
-//        } else {
-//            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                JState.state(JState.variant().put("", new JBlockModel(MODEL_ID))),
-//                getBlockID()
-//            );
-//        }
-//
-//        if (getBlockID().toString().contains("bone_block")) {
-//            String thing = "";
-//        }
-//    }
-//
-//    public static class DyedBlockSettings extends MinekeaBlockSettings<DyedBlockSettings> {
-//        protected String color = "";
-//        protected JTag blockTag = null;
-//
-//        public DyedBlockSettings(DefaultSettings settings) {
-//            super(settings);
-//        }
-//
-//        public DefaultSettings asDefaultSettings() {
-//            DefaultSettings settings = new DefaultSettings(this.getBaseBlock())
-//                .material(String.format("%s/%s", getMainMaterial(), getColor()))
-//                .materials(Map.of("main", getBlockId()))
-//                .ingredientName(String.format("%s Dyed %s", Colors.getName(color), getIngredientName()));
-//
-//            if (this.isColumn()) {
-//                settings.materials(
-//                    Map.of(
-//                        "main", new Identifier(getBlockId() + "_side"),
-//                        "end", new Identifier(getBlockId() + "_end"),
-//                        "ingredient", getBlockId()
-//                    )
-//                );
-//            }
-//
-//            return settings;
-//        }
-//
-//        public String getColor() {
-//            return this.color;
-//        }
-//
-//        public DyedBlockSettings color(String color) {
-//            this.color = color;
-//            return this;
-//        }
-//
-//        public String getColorName() {
-//            return Colors.getName(this.color);
-//        }
-//
-//        public Identifier getDye() {
-//            return Colors.getDye(this.color);
-//        }
-//
-//        public JTag getBlockTag() {
-//            return this.blockTag;
-//        }
-//
-//        public DyedBlockSettings blockTag(JTag blockTag) {
-//            this.blockTag = blockTag;
-//            return this;
-//        }
-//
-//        public String getName() {
-//            return String.format(getNamePattern(), getColorName(), getIngredientName(false));
-//        }
-//
-//        public String getNamePattern() {
-//            return Objects.requireNonNullElse(namePatternOverride, "%s Dyed %s");
-//        }
-//
-//        @Override
-//        public Identifier getBlockId() {
-//            if (blockId == null) {
-//                blockId = new Identifier(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", getMaterial("ingredient").getPath(), color));
-//            }
-//
-//            return blockId;
-//        }
-//    }
 }
