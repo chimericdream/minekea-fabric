@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/cherry_planks",
+    "side": "minecraft:block/cherry_planks"
+  }
+}

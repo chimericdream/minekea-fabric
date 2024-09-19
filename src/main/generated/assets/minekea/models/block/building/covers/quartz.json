@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/quartz_block_top",
+    "side": "minecraft:block/quartz_block_top"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/polished_basalt_top",
+    "side": "minecraft:block/polished_basalt_side"
+  }
+}

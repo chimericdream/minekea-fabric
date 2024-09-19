@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/white_concrete",
+    "side": "minecraft:block/white_concrete"
+  }
+}

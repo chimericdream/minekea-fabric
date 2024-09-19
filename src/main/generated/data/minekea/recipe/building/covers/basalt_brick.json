@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minekea:building/general/basalt_bricks"
+    }
+  },
+  "pattern": [
+    "# #",
+    "   ",
+    "# #"
+  ],
+  "result": {
+    "count": 16,
+    "id": "minekea:building/covers/basalt_brick"
+  }
+}

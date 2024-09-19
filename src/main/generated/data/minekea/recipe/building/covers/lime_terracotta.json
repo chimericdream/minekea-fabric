@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:lime_terracotta"
+    }
+  },
+  "pattern": [
+    "# #",
+    "   ",
+    "# #"
+  ],
+  "result": {
+    "count": 16,
+    "id": "minekea:building/covers/lime_terracotta"
+  }
+}

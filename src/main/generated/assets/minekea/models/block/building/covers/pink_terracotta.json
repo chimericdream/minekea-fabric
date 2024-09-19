@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/pink_terracotta",
+    "side": "minecraft:block/pink_terracotta"
+  }
+}

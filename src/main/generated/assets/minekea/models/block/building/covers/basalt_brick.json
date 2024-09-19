@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minekea:block/building/general/basalt_bricks",
+    "side": "minekea:block/building/general/basalt_bricks"
+  }
+}

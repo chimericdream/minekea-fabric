@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/brown_terracotta",
+    "side": "minecraft:block/brown_terracotta"
+  }
+}

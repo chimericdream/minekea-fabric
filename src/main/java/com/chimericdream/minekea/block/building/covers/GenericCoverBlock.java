@@ -63,15 +63,32 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
     protected final String materialName;
     protected final String material;
     protected final boolean isFlammable;
+    protected final Block settingsSource;
     protected final Block ingredient;
     protected final Identifier endTextureId;
     protected final Identifier sideTextureId;
 
     public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
-        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient), TextureMap.getId(ingredient));
+        this(materialName, material, isFlammable, ingredient, ingredient, TextureMap.getId(ingredient), TextureMap.getId(ingredient));
+    }
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource) {
+        this(materialName, material, isFlammable, ingredient, settingsSource, TextureMap.getId(ingredient), TextureMap.getId(ingredient));
+    }
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
+        this(materialName, material, isFlammable, ingredient, ingredient, textureId, textureId);
+    }
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Identifier textureId) {
+        this(materialName, material, isFlammable, ingredient, settingsSource, textureId, textureId);
     }
 
     public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier endTextureId, Identifier sideTextureId) {
+        this(materialName, material, isFlammable, ingredient, ingredient, endTextureId, sideTextureId);
+    }
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Identifier endTextureId, Identifier sideTextureId) {
         super(AbstractBlock.Settings.copy(ingredient));
 
         this.setDefaultState(
@@ -84,6 +101,7 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
         this.material = material;
         this.isFlammable = isFlammable;
         this.ingredient = ingredient;
+        this.settingsSource = settingsSource;
         this.endTextureId = endTextureId;
         this.sideTextureId = sideTextureId;
 

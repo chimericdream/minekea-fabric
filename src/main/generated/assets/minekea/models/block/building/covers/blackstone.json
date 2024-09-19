@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/blackstone",
+    "side": "minecraft:block/blackstone"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/red_sandstone_top",
+    "side": "minecraft:block/red_sandstone_top"
+  }
+}

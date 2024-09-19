@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/cover",
+  "textures": {
+    "end": "minecraft:block/cracked_deepslate_bricks",
+    "side": "minecraft:block/cracked_deepslate_bricks"
+  }
+}
