@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/bookshelves/bookshelf",
+  "textures": {
+    "material": "minecraft:block/smooth_stone",
+    "shelf": "minekea:block/furniture/bookshelves/shelf4"
+  }
+}

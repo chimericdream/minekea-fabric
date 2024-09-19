@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/bookshelves/bookshelf",
+  "textures": {
+    "material": "minekea:block/building/general/warped_nether_bricks",
+    "shelf": "minekea:block/furniture/bookshelves/shelf6"
+  }
+}

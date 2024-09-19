@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/bookshelves/bookshelf",
+  "textures": {
+    "material": "minecraft:block/polished_deepslate",
+    "shelf": "minekea:block/furniture/bookshelves/shelf5"
+  }
+}

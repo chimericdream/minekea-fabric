@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/bookshelves/bookshelf",
+  "textures": {
+    "material": "minecraft:block/bone_block_side",
+    "shelf": "minekea:block/furniture/bookshelves/shelf5"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/bookshelves/bookshelf",
+  "textures": {
+    "material": "minecraft:block/purpur_block",
+    "shelf": "minekea:block/furniture/bookshelves/shelf6"
+  }
+}

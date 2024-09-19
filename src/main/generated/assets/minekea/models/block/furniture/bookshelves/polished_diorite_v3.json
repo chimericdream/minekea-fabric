@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/bookshelves/bookshelf",
+  "textures": {
+    "material": "minecraft:block/polished_diorite",
+    "shelf": "minekea:block/furniture/bookshelves/shelf3"
+  }
+}

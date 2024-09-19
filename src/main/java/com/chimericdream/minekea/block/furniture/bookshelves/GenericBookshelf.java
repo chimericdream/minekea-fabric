@@ -44,28 +44,38 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
 
     public final Identifier BLOCK_ID;
 
-    protected final Block plankIngredient;
+    protected final Block ingredient;
     protected final String materialName;
+    protected final String material;
     protected final boolean isFlammable;
+    protected final Identifier textureId;
 
-    public GenericBookshelf(String materialName, Block plankIngredient) {
-        this(materialName, plankIngredient, true);
+    public GenericBookshelf(String materialName, Block ingredient) {
+        this(materialName, true, ingredient);
     }
 
-    public GenericBookshelf(String materialName, Block plankIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(plankIngredient));
+    public GenericBookshelf(String materialName, String material, Block ingredient) {
+        this(materialName, material, true, ingredient);
+    }
 
-        BLOCK_ID = makeBlockId(materialName);
+    public GenericBookshelf(String materialName, boolean isFlammable, Block ingredient) {
+        this(materialName, materialName, isFlammable, ingredient);
+    }
+
+    public GenericBookshelf(String materialName, String material, boolean isFlammable, Block ingredient) {
+        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient));
+    }
+
+    public GenericBookshelf(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
+        super(AbstractBlock.Settings.copy(ingredient));
+
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/bookshelves/%s", material));
 
         this.materialName = materialName;
-        this.plankIngredient = plankIngredient;
+        this.material = material;
+        this.ingredient = ingredient;
         this.isFlammable = isFlammable;
-    }
-
-    public static Identifier makeBlockId(String materialName) {
-        String material = materialName.toLowerCase().replaceAll(" ", "_");
-
-        return Identifier.of(ModInfo.MOD_ID, String.format("furniture/bookshelves/%s", material));
+        this.textureId = textureId;
     }
 
     @Override
@@ -91,10 +101,10 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
             .pattern("###")
             .pattern("XXX")
             .pattern("###")
-            .input('#', plankIngredient)
+            .input('#', ingredient)
             .input('X', Items.BOOK)
-            .criterion(FabricRecipeProvider.hasItem(plankIngredient),
-                FabricRecipeProvider.conditionsFromItem(plankIngredient))
+            .criterion(FabricRecipeProvider.hasItem(ingredient),
+                FabricRecipeProvider.conditionsFromItem(ingredient))
             .criterion(FabricRecipeProvider.hasItem(Items.BOOK),
                 FabricRecipeProvider.conditionsFromItem(Items.BOOK))
             .offerTo(exporter);
@@ -112,8 +122,7 @@ public class GenericBookshelf extends Block implements MinekeaBlock {
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        TextureMap textures = new TextureMap()
-            .put(MinekeaTextures.MATERIAL, TextureMap.getId(plankIngredient));
+        TextureMap textures = new TextureMap().put(MinekeaTextures.MATERIAL, textureId);
 
         Identifier variant0Id = blockStateModelGenerator.createSubModel(this, "_v0", BOOKSHELF_MODEL, unused -> textures.put(MinekeaTextures.SHELF, Identifier.of(ModInfo.MOD_ID, "block/furniture/bookshelves/shelf0")));
         Identifier variant1Id = blockStateModelGenerator.createSubModel(this, "_v1", BOOKSHELF_MODEL, unused -> textures.put(MinekeaTextures.SHELF, Identifier.of(ModInfo.MOD_ID, "block/furniture/bookshelves/shelf1")));
