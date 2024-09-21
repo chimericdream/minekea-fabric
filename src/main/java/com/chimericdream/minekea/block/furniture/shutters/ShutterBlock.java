@@ -334,7 +334,14 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
 
-        BlockState blockState = this.getDefaultState().with(WALL_SIDE, ctx.getPlayerLookDirection());
+        
+        // Get the player's look direction and ignore vertical directions (UP and DOWN)
+        Direction playerLookDirection = ctx.getPlayerLookDirection();
+        if (playerLookDirection.getAxis().isVertical()) {
+            playerLookDirection = ctx.getHorizontalPlayerFacing(); // Default to horizontal facing
+        }
+
+        BlockState blockState = this.getDefaultState().with(WALL_SIDE, playerLookDirection);
 
         if (ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos())) {
             blockState = blockState.with(OPEN, true).with(POWERED, true);
