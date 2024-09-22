@@ -1,3 +1,14 @@
+### 1.21.x - 5.1.0
+
+#### New features
+
+* Armor-oires! These beautiful furniture items can store up to 4 complete sets of armor!
+
+#### Bug fixes
+
+* Crash when placing shutters on a top or bottom surface ([theaceofthespade](https://github.com/theaceofthespade))
+
+
 ### 1.19.1-2 - 4.0.2
 
 #### Bug Fixes
