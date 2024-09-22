@@ -1,7 +1,14 @@
 accessWidener	v1	named
 accessible	field	net/minecraft/block/AbstractBlock	settings	Lnet/minecraft/block/AbstractBlock$Settings;
 accessible	method	net/minecraft/block/AbstractBlock	getOutlineShape	(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;
+
 accessible method net/minecraft/block/AbstractBlock$Settings <init> ()V
+
 mutable	field	net/minecraft/block/Block	translationKey	Ljava/lang/String;
+
 accessible field net/minecraft/world/poi/PointOfInterestType blockStates Ljava/util/Set;
 mutable field net/minecraft/world/poi/PointOfInterestType blockStates Ljava/util/Set;
+
+accessible method net/minecraft/entity/decoration/ArmorStandEntity setSmall (Z)V
+accessible method net/minecraft/entity/decoration/ArmorStandEntity setMarker (Z)V
+accessible field net/minecraft/entity/decoration/ArmorStandEntity disabledSlots I

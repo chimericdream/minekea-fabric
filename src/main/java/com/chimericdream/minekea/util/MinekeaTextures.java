@@ -3,6 +3,7 @@ package com.chimericdream.minekea.util;
 import net.minecraft.data.client.TextureKey;
 
 public class MinekeaTextures {
+    public static final TextureKey BAR = TextureKey.of("bar");
     public static final TextureKey BRACE = TextureKey.of("brace");
     public static final TextureKey CONTENTS = TextureKey.of("contents");
     public static final TextureKey FRAME = TextureKey.of("frame");

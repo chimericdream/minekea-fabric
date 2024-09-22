@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:birch_planks"
+    },
+    "B": {
+      "item": "minecraft:birch_slab"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "S": {
+      "item": "minecraft:armor_stand"
+    }
+  },
+  "pattern": [
+    "BSB",
+    "BCB",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minekea:furniture/armoires/birch"
+  }
+}
