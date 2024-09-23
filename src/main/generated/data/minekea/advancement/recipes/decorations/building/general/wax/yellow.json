@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredients/wax/yellow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:ingredients/wax/yellow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/general/wax/yellow"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingredients/wax/yellow"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/general/wax/yellow"
+    ]
+  }
+}

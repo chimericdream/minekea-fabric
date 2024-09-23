@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredients/wax/green": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:ingredients/wax/green"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/general/wax/green"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingredients/wax/green"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/general/wax/green"
+    ]
+  }
+}

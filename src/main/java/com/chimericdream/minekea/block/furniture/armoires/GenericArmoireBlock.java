@@ -258,9 +258,12 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
     }
 
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.down();
-        BlockState blockState = world.getBlockState(blockPos);
-        return state.get(HALF) == DoubleBlockHalf.LOWER ? blockState.isSideSolidFullSquare(world, blockPos, Direction.UP) : blockState.isOf(this);
+        BlockPos below = pos.down();
+        BlockState belowState = world.getBlockState(below);
+        BlockPos above = pos.up();
+        BlockState aboveState = world.getBlockState(above);
+
+        return state.get(HALF) == DoubleBlockHalf.LOWER ? aboveState.isAir() : belowState.isOf(this);
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

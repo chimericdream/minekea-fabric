@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_decorations/misc/wax/pink": {
+    "has_building/general/wax/pink": {
       "conditions": {
         "items": [
           {
-            "items": "minekea:decorations/misc/wax/pink"
+            "items": "minekea:building/general/wax/pink"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_decorations/misc/wax/pink"
+      "has_building/general/wax/pink"
     ]
   ],
   "rewards": {

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_decorations/misc/wax/light_blue": {
+    "has_building/general/wax/light_blue": {
       "conditions": {
         "items": [
           {
-            "items": "minekea:decorations/misc/wax/light_blue"
+            "items": "minekea:building/general/wax/light_blue"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_decorations/misc/wax/light_blue"
+      "has_building/general/wax/light_blue"
     ]
   ],
   "rewards": {

@@ -1,0 +1,24 @@
+{
+    "name": "Wax Blocks",
+    "icon": "minekea:building/general/wax/cyan",
+    "category": "minekea:building_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "When candles melt (i.e. are smelted), they leave behind a waxy residue. With enough wax, you can make blocks! These blocks are slightly less slippery than ice and don't stick to slime blocks."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:building/general/wax/green",
+            "recipe2": "minekea:building/general/wax/magenta",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:smelting",
+            "recipe": "minekea:ingredients/wax/pink",
+            "recipe2": "minekea:ingredients/wax/plain",
+            "title": "Example Recipes"
+        }
+    ]
+}

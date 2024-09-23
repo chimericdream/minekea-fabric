@@ -1,0 +1,25 @@
+{
+    "name": "Armoires",
+    "icon": "minekea:furniture/armoires/mangrove",
+    "category": "minekea:furniture",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Armor stands are for peasants. Store up to four full sets of armor in our one-of-a-kind Armor-oire!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:furniture/armoires/oak",
+            "recipe2": "minekea:furniture/armoires/birch",
+            "title": "Example Recipes"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "minekea:textures/gui/patchouli/armoire_rendering.png"
+            ],
+            "text": "Absolutely gorgeous!"
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredients/wax/black": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:ingredients/wax/black"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/general/wax/black"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingredients/wax/black"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/general/wax/black"
+    ]
+  }
+}

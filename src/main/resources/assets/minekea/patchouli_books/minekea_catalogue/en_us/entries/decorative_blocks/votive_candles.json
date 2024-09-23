@@ -1,0 +1,18 @@
+{
+    "name": "Votive Candles",
+    "icon": "minekea:decorations/candles/blue_votive_candle",
+    "category": "minekea:decorative_blocks",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "If you're looking for something a little fancier than plain candles, stick them on some tiny glass pedestals! These candles function identically to their vanilla counterparts."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:decorations/candles/blue_votive_candle",
+            "recipe2": "minekea:decorations/candles/red_votive_candle",
+            "title": "Example Recipes"
+        }
+    ]
+}

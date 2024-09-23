@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_decorations/misc/wax/white": {
+    "has_building/general/wax/white": {
       "conditions": {
         "items": [
           {
-            "items": "minekea:decorations/misc/wax/white"
+            "items": "minekea:building/general/wax/white"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_decorations/misc/wax/white"
+      "has_building/general/wax/white"
     ]
   ],
   "rewards": {

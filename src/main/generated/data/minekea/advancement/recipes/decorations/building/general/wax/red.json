@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredients/wax/red": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:ingredients/wax/red"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/general/wax/red"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingredients/wax/red"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/general/wax/red"
+    ]
+  }
+}

@@ -12,23 +12,6 @@
     "minekea:storage/compressed/gold_nugget",
     "minekea:storage/compressed/iron_nugget",
     "minekea:storage/compressed/nether_star",
-    "minekea:storage/compressed/totem_of_undying",
-    "minekea:decorations/misc/wax/plain",
-    "minekea:decorations/misc/wax/white",
-    "minekea:decorations/misc/wax/light_gray",
-    "minekea:decorations/misc/wax/gray",
-    "minekea:decorations/misc/wax/black",
-    "minekea:decorations/misc/wax/brown",
-    "minekea:decorations/misc/wax/red",
-    "minekea:decorations/misc/wax/orange",
-    "minekea:decorations/misc/wax/yellow",
-    "minekea:decorations/misc/wax/lime",
-    "minekea:decorations/misc/wax/green",
-    "minekea:decorations/misc/wax/cyan",
-    "minekea:decorations/misc/wax/light_blue",
-    "minekea:decorations/misc/wax/blue",
-    "minekea:decorations/misc/wax/purple",
-    "minekea:decorations/misc/wax/magenta",
-    "minekea:decorations/misc/wax/pink"
+    "minekea:storage/compressed/totem_of_undying"
   ]
 }

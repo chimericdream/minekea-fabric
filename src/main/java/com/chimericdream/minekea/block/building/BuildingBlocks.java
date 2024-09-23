@@ -11,6 +11,7 @@ import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock
 import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
+import com.chimericdream.minekea.block.building.general.WaxBlock;
 import com.chimericdream.minekea.block.building.slabs.Slabs;
 import com.chimericdream.minekea.block.building.stairs.Stairs;
 import com.chimericdream.minekea.block.building.storage.StorageBlocks;
@@ -33,7 +34,9 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 public class BuildingBlocks implements MinekeaBlockCategory {
@@ -53,6 +56,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final Stairs STAIRS;
     public static final StorageBlocks STORAGE_BLOCKS;
     public static final Walls WALLS;
+    public static final Map<String, MinekeaBlock> WAX_BLOCKS = new LinkedHashMap();
 
     private static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
@@ -99,6 +103,26 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
         WALLS = new Walls();
         BLOCK_GROUPS.add(WALLS);
+
+        WAX_BLOCKS.put("plain", new WaxBlock("plain"));
+        WAX_BLOCKS.put("white", new WaxBlock("white"));
+        WAX_BLOCKS.put("light_gray", new WaxBlock("light_gray"));
+        WAX_BLOCKS.put("gray", new WaxBlock("gray"));
+        WAX_BLOCKS.put("black", new WaxBlock("black"));
+        WAX_BLOCKS.put("brown", new WaxBlock("brown"));
+        WAX_BLOCKS.put("red", new WaxBlock("red"));
+        WAX_BLOCKS.put("orange", new WaxBlock("orange"));
+        WAX_BLOCKS.put("yellow", new WaxBlock("yellow"));
+        WAX_BLOCKS.put("lime", new WaxBlock("lime"));
+        WAX_BLOCKS.put("green", new WaxBlock("green"));
+        WAX_BLOCKS.put("cyan", new WaxBlock("cyan"));
+        WAX_BLOCKS.put("light_blue", new WaxBlock("light_blue"));
+        WAX_BLOCKS.put("blue", new WaxBlock("blue"));
+        WAX_BLOCKS.put("purple", new WaxBlock("purple"));
+        WAX_BLOCKS.put("magenta", new WaxBlock("magenta"));
+        WAX_BLOCKS.put("pink", new WaxBlock("pink"));
+
+        BLOCKS.addAll(WAX_BLOCKS.values());
     }
 
     @Environment(EnvType.CLIENT)

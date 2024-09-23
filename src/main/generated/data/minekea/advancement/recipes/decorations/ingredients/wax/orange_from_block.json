@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_decorations/misc/wax/orange": {
+    "has_building/general/wax/orange": {
       "conditions": {
         "items": [
           {
-            "items": "minekea:decorations/misc/wax/orange"
+            "items": "minekea:building/general/wax/orange"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_decorations/misc/wax/orange"
+      "has_building/general/wax/orange"
     ]
   ],
   "rewards": {

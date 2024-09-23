@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_decorations/misc/wax/magenta": {
+    "has_building/general/wax/magenta": {
       "conditions": {
         "items": [
           {
-            "items": "minekea:decorations/misc/wax/magenta"
+            "items": "minekea:building/general/wax/magenta"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_decorations/misc/wax/magenta"
+      "has_building/general/wax/magenta"
     ]
   ],
   "rewards": {

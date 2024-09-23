@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_decorations/misc/wax/purple": {
+    "has_building/general/wax/purple": {
       "conditions": {
         "items": [
           {
-            "items": "minekea:decorations/misc/wax/purple"
+            "items": "minekea:building/general/wax/purple"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_decorations/misc/wax/purple"
+      "has_building/general/wax/purple"
     ]
   ],
   "rewards": {

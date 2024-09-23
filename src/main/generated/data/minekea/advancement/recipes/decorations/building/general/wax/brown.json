@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredients/wax/brown": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:ingredients/wax/brown"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/general/wax/brown"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingredients/wax/brown"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/general/wax/brown"
+    ]
+  }
+}

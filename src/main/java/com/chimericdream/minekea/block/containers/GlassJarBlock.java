@@ -2,7 +2,7 @@ package com.chimericdream.minekea.block.containers;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.decorations.misc.WaxBlock;
+import com.chimericdream.minekea.block.building.general.WaxBlock;
 import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
 import com.chimericdream.minekea.item.ingredients.WaxItem;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
