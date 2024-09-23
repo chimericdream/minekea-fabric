@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.furniture.pillows;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -71,11 +71,11 @@ public class PillowBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        getBuilder.apply(MinekeaTags.PILLOWS)
+        getBuilder.apply(MinekeaBlockTags.PILLOWS)
             .setReplace(false)
             .add(this);
 
-        getBuilder.apply(MinekeaTags.MINEABLE_SHEARS)
+        getBuilder.apply(MinekeaBlockTags.MINEABLE_SHEARS)
             .setReplace(false)
             .add(this);
     }

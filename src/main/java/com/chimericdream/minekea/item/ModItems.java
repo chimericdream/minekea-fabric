@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.item;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.item.ingredients.WaxItem;
 import com.chimericdream.minekea.item.tools.HammerItem;
 import com.chimericdream.minekea.item.tools.PainterItem;
 import com.chimericdream.minekea.item.tools.WrenchItem;
@@ -31,7 +32,10 @@ import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 public class ModItems implements MinekeaBlockCategory {
@@ -43,7 +47,8 @@ public class ModItems implements MinekeaBlockCategory {
     public static final PainterItem PAINTER_ITEM;
     public static final WrenchItem WRENCH_ITEM;
 
-    public static final List<MinekeaItem> ITEMS;
+    public static final Map<String, MinekeaItem> WAX_ITEMS = new LinkedHashMap<>();
+    public static final List<MinekeaItem> ITEMS = new ArrayList<>();
 
     public static ScreenHandlerType<BlockPainterScreenHandler> BLOCK_PAINTER_SCREEN_HANDLER;
 
@@ -115,13 +120,31 @@ public class ModItems implements MinekeaBlockCategory {
             new WrenchItem()
         );
 
+        WAX_ITEMS.put("plain", Registry.register(Registries.ITEM, WaxItem.makeId("plain"), new WaxItem("plain", Items.CANDLE)));
+        WAX_ITEMS.put("white", Registry.register(Registries.ITEM, WaxItem.makeId("white"), new WaxItem("white", Items.WHITE_CANDLE)));
+        WAX_ITEMS.put("light_gray", Registry.register(Registries.ITEM, WaxItem.makeId("light_gray"), new WaxItem("light_gray", Items.LIGHT_GRAY_CANDLE)));
+        WAX_ITEMS.put("gray", Registry.register(Registries.ITEM, WaxItem.makeId("gray"), new WaxItem("gray", Items.GRAY_CANDLE)));
+        WAX_ITEMS.put("black", Registry.register(Registries.ITEM, WaxItem.makeId("black"), new WaxItem("black", Items.BLACK_CANDLE)));
+        WAX_ITEMS.put("brown", Registry.register(Registries.ITEM, WaxItem.makeId("brown"), new WaxItem("brown", Items.BROWN_CANDLE)));
+        WAX_ITEMS.put("red", Registry.register(Registries.ITEM, WaxItem.makeId("red"), new WaxItem("red", Items.RED_CANDLE)));
+        WAX_ITEMS.put("orange", Registry.register(Registries.ITEM, WaxItem.makeId("orange"), new WaxItem("orange", Items.ORANGE_CANDLE)));
+        WAX_ITEMS.put("yellow", Registry.register(Registries.ITEM, WaxItem.makeId("yellow"), new WaxItem("yellow", Items.YELLOW_CANDLE)));
+        WAX_ITEMS.put("lime", Registry.register(Registries.ITEM, WaxItem.makeId("lime"), new WaxItem("lime", Items.LIME_CANDLE)));
+        WAX_ITEMS.put("green", Registry.register(Registries.ITEM, WaxItem.makeId("green"), new WaxItem("green", Items.GREEN_CANDLE)));
+        WAX_ITEMS.put("cyan", Registry.register(Registries.ITEM, WaxItem.makeId("cyan"), new WaxItem("cyan", Items.CYAN_CANDLE)));
+        WAX_ITEMS.put("light_blue", Registry.register(Registries.ITEM, WaxItem.makeId("light_blue"), new WaxItem("light_blue", Items.LIGHT_BLUE_CANDLE)));
+        WAX_ITEMS.put("blue", Registry.register(Registries.ITEM, WaxItem.makeId("blue"), new WaxItem("blue", Items.BLUE_CANDLE)));
+        WAX_ITEMS.put("purple", Registry.register(Registries.ITEM, WaxItem.makeId("purple"), new WaxItem("purple", Items.PURPLE_CANDLE)));
+        WAX_ITEMS.put("magenta", Registry.register(Registries.ITEM, WaxItem.makeId("magenta"), new WaxItem("magenta", Items.MAGENTA_CANDLE)));
+        WAX_ITEMS.put("pink", Registry.register(Registries.ITEM, WaxItem.makeId("pink"), new WaxItem("pink", Items.PINK_CANDLE)));
+
         BLOCK_PAINTER_SCREEN_HANDLER = Registry.register(
             Registries.SCREEN_HANDLER,
             Identifier.of(ModInfo.MOD_ID, "screens/items/block_painter"),
             new ScreenHandlerType<>(BlockPainterScreenHandler::new, FeatureSet.empty())
         );
 
-        ITEMS = List.of(
+        ITEMS.addAll(List.of(
             STONE_HAMMER_ITEM,
             IRON_HAMMER_ITEM,
             GOLD_HAMMER_ITEM,
@@ -129,7 +152,9 @@ public class ModItems implements MinekeaBlockCategory {
             NETHERITE_HAMMER_ITEM,
             PAINTER_ITEM,
             WRENCH_ITEM
-        );
+        ));
+
+        ITEMS.addAll(WAX_ITEMS.values());
     }
 
     public void register() {

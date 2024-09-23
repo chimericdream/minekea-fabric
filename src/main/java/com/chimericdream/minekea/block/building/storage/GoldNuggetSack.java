@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -12,6 +11,7 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -25,7 +25,7 @@ public class GoldNuggetSack extends GenericStorageBlock {
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        getBuilder.apply(MinecraftBlockTags.MINEABLE_PICKAXE)
+        getBuilder.apply(BlockTags.PICKAXE_MINEABLE)
             .setReplace(false)
             .add(this);
     }

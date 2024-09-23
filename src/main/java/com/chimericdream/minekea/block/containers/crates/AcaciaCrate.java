@@ -2,7 +2,6 @@ package com.chimericdream.minekea.block.containers.crates;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.ModelUtils;
-import com.chimericdream.minekea.tag.MinecraftItemTags;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.block.AbstractBlock;
@@ -13,6 +12,7 @@ import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 public class AcaciaCrate extends GenericCrate {
@@ -29,7 +29,7 @@ public class AcaciaCrate extends GenericCrate {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        this.registerRecipe(exporter, Items.ACACIA_PLANKS, MinecraftItemTags.ACACIA_LOGS);
+        this.registerRecipe(exporter, Items.ACACIA_PLANKS, ItemTags.ACACIA_LOGS);
     }
 
     @Override

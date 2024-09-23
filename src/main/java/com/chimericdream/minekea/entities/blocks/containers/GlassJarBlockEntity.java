@@ -2,7 +2,7 @@ package com.chimericdream.minekea.entities.blocks.containers;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
-import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.tag.MinekeaItemTags;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -159,7 +159,7 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             return false;
         }
 
-        if (!item.isIn(MinekeaTags.GLASS_JAR_STORABLE)) {
+        if (!item.isIn(MinekeaItemTags.GLASS_JAR_STORABLE)) {
             return false;
         }
 

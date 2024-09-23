@@ -2,7 +2,6 @@ package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.ModelUtils;
-import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
@@ -14,6 +13,7 @@ import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -27,7 +27,7 @@ public class AppleStorageBlock extends GenericStorageBlock {
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        getBuilder.apply(MinecraftBlockTags.MINEABLE_HOE)
+        getBuilder.apply(BlockTags.HOE_MINEABLE)
             .setReplace(false)
             .add(this);
     }

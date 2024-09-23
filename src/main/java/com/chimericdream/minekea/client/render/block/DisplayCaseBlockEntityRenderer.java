@@ -2,7 +2,7 @@ package com.chimericdream.minekea.client.render.block;
 
 import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
-import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.tag.MinekeaItemTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
@@ -47,7 +47,7 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
     }
 
     private boolean isBaggedItem(ItemStack stack) {
-        return stack.isIn(MinekeaTags.BAGGED_ITEMS);
+        return stack.isIn(MinekeaItemTags.BAGGED_ITEMS);
     }
 
     private boolean isHeadItem(Identifier id) {

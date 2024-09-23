@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/candles/template_four_votive_candles",
+  "textures": {
+    "candle": "minecraft:block/white_candle_lit",
+    "side": "minecraft:block/glass"
+  }
+}

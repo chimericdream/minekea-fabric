@@ -2,7 +2,6 @@ package com.chimericdream.minekea.block.furniture.displaycases;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
-import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import com.chimericdream.minekea.util.ImplementedInventory;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
@@ -33,6 +32,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -292,7 +292,7 @@ abstract public class GenericDisplayCase extends BlockWithEntity implements Mine
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        getBuilder.apply(MinecraftBlockTags.MINEABLE_AXE)
+        getBuilder.apply(BlockTags.AXE_MINEABLE)
             .setReplace(false)
             .add(this);
     }

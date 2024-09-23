@@ -1,0 +1,76 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/decorations/candles/magenta_votive_candle_one"
+      },
+      "when": {
+        "candles": "1",
+        "lit": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/decorations/candles/magenta_votive_candle_one_lit"
+      },
+      "when": {
+        "candles": "1",
+        "lit": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/decorations/candles/magenta_votive_candle_two"
+      },
+      "when": {
+        "candles": "2",
+        "lit": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/decorations/candles/magenta_votive_candle_two_lit"
+      },
+      "when": {
+        "candles": "2",
+        "lit": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/decorations/candles/magenta_votive_candle_three"
+      },
+      "when": {
+        "candles": "3",
+        "lit": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/decorations/candles/magenta_votive_candle_three_lit"
+      },
+      "when": {
+        "candles": "3",
+        "lit": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/decorations/candles/magenta_votive_candle_four"
+      },
+      "when": {
+        "candles": "4",
+        "lit": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/decorations/candles/magenta_votive_candle_four_lit"
+      },
+      "when": {
+        "candles": "4",
+        "lit": "true"
+      }
+    }
+  ]
+}

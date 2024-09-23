@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:pink_candle"
+    },
+    {
+      "item": "minecraft:pink_candle"
+    },
+    {
+      "item": "minecraft:pink_candle"
+    },
+    {
+      "item": "minecraft:pink_candle"
+    },
+    {
+      "item": "minecraft:glass"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minekea:decorations/candles/pink_votive_candle"
+  }
+}

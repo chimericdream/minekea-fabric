@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minekea:decorations/misc/wax/plain"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:ingredients/wax/plain"
+  }
+}

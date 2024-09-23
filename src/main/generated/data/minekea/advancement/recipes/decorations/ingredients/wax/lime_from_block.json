@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_decorations/misc/wax/lime": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:decorations/misc/wax/lime"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:ingredients/wax/lime_from_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_decorations/misc/wax/lime"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:ingredients/wax/lime_from_block"
+    ]
+  }
+}

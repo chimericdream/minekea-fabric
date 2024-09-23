@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:light_blue_candle"
+    },
+    {
+      "item": "minecraft:light_blue_candle"
+    },
+    {
+      "item": "minecraft:light_blue_candle"
+    },
+    {
+      "item": "minecraft:light_blue_candle"
+    },
+    {
+      "item": "minecraft:glass"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minekea:decorations/candles/light_blue_votive_candle"
+  }
+}

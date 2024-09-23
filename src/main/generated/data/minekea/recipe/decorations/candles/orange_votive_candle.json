@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:orange_candle"
+    },
+    {
+      "item": "minecraft:orange_candle"
+    },
+    {
+      "item": "minecraft:orange_candle"
+    },
+    {
+      "item": "minecraft:orange_candle"
+    },
+    {
+      "item": "minecraft:glass"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minekea:decorations/candles/orange_votive_candle"
+  }
+}

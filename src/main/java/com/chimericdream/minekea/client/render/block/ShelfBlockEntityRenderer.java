@@ -3,7 +3,7 @@ package com.chimericdream.minekea.client.render.block;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.furniture.shelves.GenericShelf;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
-import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.tag.MinekeaItemTags;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -41,7 +41,7 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
     }
 
     private boolean isBaggedItem(ItemStack stack) {
-        return stack.isIn(MinekeaTags.BAGGED_ITEMS);
+        return stack.isIn(MinekeaItemTags.BAGGED_ITEMS);
     }
 
     private boolean isJarItem(ItemStack stack) {

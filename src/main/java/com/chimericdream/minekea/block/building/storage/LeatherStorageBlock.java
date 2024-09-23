@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
-import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
@@ -21,7 +21,7 @@ public class LeatherStorageBlock extends GenericStorageBlock {
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        getBuilder.apply(MinekeaTags.MINEABLE_SHEARS)
+        getBuilder.apply(MinekeaBlockTags.MINEABLE_SHEARS)
             .setReplace(false)
             .add(this);
     }

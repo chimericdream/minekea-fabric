@@ -2,7 +2,7 @@ package com.chimericdream.minekea.block.building.beams;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
-import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -165,7 +165,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
             return false;
         }
 
-        return neighborState.getFluidState().isEmpty() || neighborState.isIn(MinekeaTags.BEAMS);
+        return neighborState.getFluidState().isEmpty() || neighborState.isIn(MinekeaBlockTags.BEAMS);
     }
 
     @Override
@@ -198,7 +198,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
 
         return state.with(
             getConnectionProperty(direction),
-            neighborState.getFluidState().isEmpty() || neighborState.isIn(MinekeaTags.BEAMS)
+            neighborState.getFluidState().isEmpty() || neighborState.isIn(MinekeaBlockTags.BEAMS)
         );
     }
 
@@ -283,7 +283,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        getBuilder.apply(MinekeaTags.BEAMS)
+        getBuilder.apply(MinekeaBlockTags.BEAMS)
             .setReplace(false)
             .add(this);
     }

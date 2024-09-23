@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.building.general;
 
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.tag.MinecraftBlockTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -20,6 +19,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
@@ -42,7 +42,7 @@ public class MossyBasaltBricksBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        getBuilder.apply(MinecraftBlockTags.MINEABLE_PICKAXE)
+        getBuilder.apply(BlockTags.PICKAXE_MINEABLE)
             .setReplace(false)
             .add(this);
     }

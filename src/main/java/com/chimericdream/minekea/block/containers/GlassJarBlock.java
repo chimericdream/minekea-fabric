@@ -2,9 +2,10 @@ package com.chimericdream.minekea.block.containers;
 
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.decorations.misc.WaxBlock;
 import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
-import com.chimericdream.minekea.tag.MinecraftItemTags;
-import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.item.ingredients.WaxItem;
+import com.chimericdream.minekea.tag.MinekeaItemTags;
 import com.chimericdream.minekea.util.FluidHelpers;
 import com.chimericdream.minekea.util.ItemHelpers;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -45,6 +46,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -100,21 +102,13 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         ALLOWED_ITEMS.put("minecraft:bamboo", "minekea:storage/compressed/bamboo");
         ALLOWED_ITEMS.put("minecraft:beetroot", "minekea:storage/compressed/beetroot");
         ALLOWED_ITEMS.put("minecraft:beetroot_seeds", "minekea:storage/compressed/beetroot_seeds");
-        ALLOWED_ITEMS.put("minecraft:black_concrete_powder", "minecraft:black_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:black_dye", "minekea:storage/dyes/black_dye");
         ALLOWED_ITEMS.put("minecraft:blaze_powder", "minekea:storage/compressed/blaze_powder");
         ALLOWED_ITEMS.put("minecraft:blaze_rod", "minekea:storage/compressed/blaze_rod");
         ALLOWED_ITEMS.put("minecraft:breeze_rod", "minekea:storage/compressed/breeze_rod");
-        ALLOWED_ITEMS.put("minecraft:blue_concrete_powder", "minecraft:blue_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:blue_dye", "minekea:storage/dyes/blue_dye");
-        ALLOWED_ITEMS.put("minecraft:brown_concrete_powder", "minecraft:brown_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:brown_dye", "minekea:storage/dyes/brown_dye");
         ALLOWED_ITEMS.put("minecraft:carrot", "minekea:storage/compressed/carrot");
         ALLOWED_ITEMS.put("minecraft:charcoal", "minekea:storage/compressed/charcoal");
         ALLOWED_ITEMS.put("minecraft:chorus_fruit", "minekea:storage/compressed/chorus_fruit");
         ALLOWED_ITEMS.put("minecraft:coal", "minecraft:coal_block");
-        ALLOWED_ITEMS.put("minecraft:cyan_concrete_powder", "minecraft:cyan_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:cyan_dye", "minekea:storage/dyes/cyan_dye");
         ALLOWED_ITEMS.put("minecraft:dried_kelp", "minecraft:dried_kelp_block");
         ALLOWED_ITEMS.put("minecraft:egg", "minekea:storage/compressed/set_of_eggs");
         ALLOWED_ITEMS.put("minecraft:ender_pearl", "minekea:storage/compressed/ender_pearl");
@@ -122,35 +116,15 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         ALLOWED_ITEMS.put("minecraft:glowstone_dust", "minecraft:glowstone");
         ALLOWED_ITEMS.put("minecraft:golden_apple", "minekea:storage/compressed/golden_apple");
         ALLOWED_ITEMS.put("minecraft:gravel", "minecraft:gravel");
-        ALLOWED_ITEMS.put("minecraft:gray_concrete_powder", "minecraft:gray_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:gray_dye", "minekea:storage/dyes/gray_dye");
-        ALLOWED_ITEMS.put("minecraft:green_concrete_powder", "minecraft:green_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:green_dye", "minekea:storage/dyes/green_dye");
         ALLOWED_ITEMS.put("minecraft:honeycomb", "minecraft:honeycomb_block");
         ALLOWED_ITEMS.put("minecraft:leather", "minekea:storage/compressed/leather");
-        ALLOWED_ITEMS.put("minecraft:light_blue_concrete_powder", "minecraft:light_blue_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:light_blue_dye", "minekea:storage/dyes/light_blue_dye");
-        ALLOWED_ITEMS.put("minecraft:light_gray_concrete_powder", "minecraft:light_gray_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:light_gray_dye", "minekea:storage/dyes/light_gray_dye");
-        ALLOWED_ITEMS.put("minecraft:lime_concrete_powder", "minecraft:lime_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:lime_dye", "minekea:storage/dyes/lime_dye");
-        ALLOWED_ITEMS.put("minecraft:magenta_concrete_powder", "minecraft:magenta_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:magenta_dye", "minekea:storage/dyes/magenta_dye");
         ALLOWED_ITEMS.put("minecraft:melon_seeds", "minekea:storage/compressed/melon_seeds");
         ALLOWED_ITEMS.put("minecraft:melon_slice", "minecraft:melon");
         ALLOWED_ITEMS.put("minecraft:nether_star", "minekea:storage/compressed/nether_star");
-        ALLOWED_ITEMS.put("minecraft:orange_concrete_powder", "minecraft:orange_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:orange_dye", "minekea:storage/dyes/orange_dye");
         ALLOWED_ITEMS.put("minecraft:paper", "minekea:storage/compressed/wallpaper");
         ALLOWED_ITEMS.put("minecraft:phantom_membrane", "minekea:storage/compressed/phantom_membrane");
-        ALLOWED_ITEMS.put("minecraft:pink_concrete_powder", "minecraft:pink_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:pink_dye", "minekea:storage/dyes/pink_dye");
         ALLOWED_ITEMS.put("minecraft:potato", "minekea:storage/compressed/potato");
         ALLOWED_ITEMS.put("minecraft:pumpkin_seeds", "minekea:storage/compressed/pumpkin_seeds");
-        ALLOWED_ITEMS.put("minecraft:purple_concrete_powder", "minecraft:purple_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:purple_dye", "minekea:storage/dyes/purple_dye");
-        ALLOWED_ITEMS.put("minecraft:red_concrete_powder", "minecraft:red_concrete_powder");
-        ALLOWED_ITEMS.put("minecraft:red_dye", "minekea:storage/dyes/red_dye");
         ALLOWED_ITEMS.put("minecraft:red_sand", "minecraft:red_sand");
         ALLOWED_ITEMS.put("minecraft:redstone", "minecraft:redstone_block");
         ALLOWED_ITEMS.put("minecraft:sand", "minecraft:sand");
@@ -161,10 +135,58 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         ALLOWED_ITEMS.put("minecraft:totem_of_undying", "minekea:storage/compressed/totem");
         ALLOWED_ITEMS.put("minecraft:wheat", "minecraft:hay_block");
         ALLOWED_ITEMS.put("minecraft:wheat_seeds", "minekea:storage/compressed/wheat_seeds");
-        ALLOWED_ITEMS.put("minecraft:white_concrete_powder", "minecraft:white_concrete_powder");
+
         ALLOWED_ITEMS.put("minecraft:white_dye", "minekea:storage/dyes/white_dye");
-        ALLOWED_ITEMS.put("minecraft:yellow_concrete_powder", "minecraft:yellow_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:light_gray_dye", "minekea:storage/dyes/light_gray_dye");
+        ALLOWED_ITEMS.put("minecraft:gray_dye", "minekea:storage/dyes/gray_dye");
+        ALLOWED_ITEMS.put("minecraft:black_dye", "minekea:storage/dyes/black_dye");
+        ALLOWED_ITEMS.put("minecraft:brown_dye", "minekea:storage/dyes/brown_dye");
+        ALLOWED_ITEMS.put("minecraft:red_dye", "minekea:storage/dyes/red_dye");
+        ALLOWED_ITEMS.put("minecraft:orange_dye", "minekea:storage/dyes/orange_dye");
         ALLOWED_ITEMS.put("minecraft:yellow_dye", "minekea:storage/dyes/yellow_dye");
+        ALLOWED_ITEMS.put("minecraft:lime_dye", "minekea:storage/dyes/lime_dye");
+        ALLOWED_ITEMS.put("minecraft:green_dye", "minekea:storage/dyes/green_dye");
+        ALLOWED_ITEMS.put("minecraft:cyan_dye", "minekea:storage/dyes/cyan_dye");
+        ALLOWED_ITEMS.put("minecraft:light_blue_dye", "minekea:storage/dyes/light_blue_dye");
+        ALLOWED_ITEMS.put("minecraft:blue_dye", "minekea:storage/dyes/blue_dye");
+        ALLOWED_ITEMS.put("minecraft:purple_dye", "minekea:storage/dyes/purple_dye");
+        ALLOWED_ITEMS.put("minecraft:magenta_dye", "minekea:storage/dyes/magenta_dye");
+        ALLOWED_ITEMS.put("minecraft:pink_dye", "minekea:storage/dyes/pink_dye");
+
+        ALLOWED_ITEMS.put("minecraft:white_concrete_powder", "minecraft:white_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:light_gray_concrete_powder", "minecraft:light_gray_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:gray_concrete_powder", "minecraft:gray_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:black_concrete_powder", "minecraft:black_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:brown_concrete_powder", "minecraft:brown_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:red_concrete_powder", "minecraft:red_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:orange_concrete_powder", "minecraft:orange_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:yellow_concrete_powder", "minecraft:yellow_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:lime_concrete_powder", "minecraft:lime_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:green_concrete_powder", "minecraft:green_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:cyan_concrete_powder", "minecraft:cyan_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:light_blue_concrete_powder", "minecraft:light_blue_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:blue_concrete_powder", "minecraft:blue_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:purple_concrete_powder", "minecraft:purple_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:magenta_concrete_powder", "minecraft:magenta_concrete_powder");
+        ALLOWED_ITEMS.put("minecraft:pink_concrete_powder", "minecraft:pink_concrete_powder");
+
+        ALLOWED_ITEMS.put(WaxItem.makeId("plain").toString(), WaxBlock.makeId("plain").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("white").toString(), WaxBlock.makeId("white").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("light_gray").toString(), WaxBlock.makeId("light_gray").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("gray").toString(), WaxBlock.makeId("gray").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("black").toString(), WaxBlock.makeId("black").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("brown").toString(), WaxBlock.makeId("brown").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("red").toString(), WaxBlock.makeId("red").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("orange").toString(), WaxBlock.makeId("orange").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("yellow").toString(), WaxBlock.makeId("yellow").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("lime").toString(), WaxBlock.makeId("lime").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("green").toString(), WaxBlock.makeId("green").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("cyan").toString(), WaxBlock.makeId("cyan").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("light_blue").toString(), WaxBlock.makeId("light_blue").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("blue").toString(), WaxBlock.makeId("blue").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("purple").toString(), WaxBlock.makeId("purple").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("magenta").toString(), WaxBlock.makeId("magenta").toString());
+        ALLOWED_ITEMS.put(WaxItem.makeId("pink").toString(), WaxBlock.makeId("pink").toString());
 
         MAIN_SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 9.0, 11.0);
         LID_SHAPE = Block.createCuboidShape(6.0, 9.0, 6.0, 10.0, 10.0, 10.0);
@@ -526,7 +548,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        FabricTagProvider<Item>.FabricTagBuilder builder = getBuilder.apply(MinekeaTags.GLASS_JAR_STORABLE).setReplace(false);
+        FabricTagProvider<Item>.FabricTagBuilder builder = getBuilder.apply(MinekeaItemTags.GLASS_JAR_STORABLE).setReplace(false);
 
         for (String id : ALLOWED_ITEMS.keySet()) {
             builder.add(Identifier.of(id));
@@ -539,7 +561,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             .pattern(" L ")
             .pattern("G G")
             .pattern("GGG")
-            .input('L', MinecraftItemTags.PLANKS)
+            .input('L', ItemTags.PLANKS)
             .input('G', Items.GLASS_PANE)
             .criterion(FabricRecipeProvider.hasItem(Items.GLASS_PANE),
                 FabricRecipeProvider.conditionsFromItem(Items.GLASS_PANE))

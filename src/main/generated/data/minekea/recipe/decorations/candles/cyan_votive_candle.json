@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:cyan_candle"
+    },
+    {
+      "item": "minecraft:cyan_candle"
+    },
+    {
+      "item": "minecraft:cyan_candle"
+    },
+    {
+      "item": "minecraft:cyan_candle"
+    },
+    {
+      "item": "minecraft:glass"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minekea:decorations/candles/cyan_votive_candle"
+  }
+}

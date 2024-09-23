@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_decorations/misc/wax/black": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:decorations/misc/wax/black"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:ingredients/wax/black_from_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_decorations/misc/wax/black"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:ingredients/wax/black_from_block"
+    ]
+  }
+}

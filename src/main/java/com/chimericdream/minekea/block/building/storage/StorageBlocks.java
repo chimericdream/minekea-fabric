@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.minekea.item.currency.NuggetBag;
-import com.chimericdream.minekea.tag.MinekeaTags;
+import com.chimericdream.minekea.tag.MinekeaItemTags;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -246,7 +246,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
         IRON_NUGGET_BAG.configureItemTags(registryLookup, getBuilder);
 
         BAGGED_BLOCKS.forEach(
-            block -> getBuilder.apply(MinekeaTags.BAGGED_ITEMS)
+            block -> getBuilder.apply(MinekeaItemTags.BAGGED_ITEMS)
                 .setReplace(false)
                 .add(block.asItem())
         );
