@@ -1,3 +1,19 @@
+### 1.21.x - 5.2.0
+
+#### New Features
+
+* Votive candles
+    * Fancy candles that behave identically to vanilla ones
+* Wax
+  * Wax comes in both item and block form. It can be acquired by smelting candles or honeycomb.
+  * Wax is a slippery block, causing entities to slide slightly less than on ice.
+  * Similar to glazed terracotta blocks, honey and slime do not stick to wax.
+
+#### Changes
+
+* Armor-oires no longer need to be placed on a solid block.
+
+
 ### 1.21.x - 5.1.0
 
 #### New features
