@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.building.beams;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
+import com.chimericdream.minekea.tag.CommonItemTags;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -30,25 +31,35 @@ import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.entity.ai.pathing.NavigationType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
@@ -168,6 +179,60 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
         return neighborState.getFluidState().isEmpty() || neighborState.isIn(MinekeaBlockTags.BEAMS);
     }
 
+    private double getPartialCoord(Direction hitSide, double coord) {
+        double offset = 0.00001;
+
+        if (hitSide == Direction.EAST || hitSide == Direction.SOUTH || hitSide == Direction.UP) {
+            offset = -1 * offset;
+        }
+
+        int floor = MathHelper.floor(coord + offset);
+
+        return coord - (double) floor;
+    }
+
+    // @TODO: Add "override" versions of the CONNECTED_* properties to allow for more granular control of the beam connections
+    @Override
+    public ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (!stack.isIn(CommonItemTags.WRENCHES)) {
+            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+
+        Direction hitSide = hit.getSide();
+        Vec3d hitPos = hit.getPos();
+        BooleanProperty connection = getConnectionProperty(hitSide);
+
+        double x = getPartialCoord(hitSide, hitPos.x);
+        double y = getPartialCoord(hitSide, hitPos.y);
+        double z = getPartialCoord(hitSide, hitPos.z);
+
+        double UPPER_ARM_START = 0.687500;
+        double LOWER_ARM_END = 0.312500;
+
+        if (x > UPPER_ARM_START) {
+            connection = CONNECTED_EAST;
+        } else if (y > UPPER_ARM_START) {
+            connection = CONNECTED_UP;
+        } else if (z > UPPER_ARM_START) {
+            connection = CONNECTED_SOUTH;
+        } else if (x < LOWER_ARM_END) {
+            connection = CONNECTED_WEST;
+        } else if (y < LOWER_ARM_END) {
+            connection = CONNECTED_DOWN;
+        } else if (z < LOWER_ARM_END) {
+            connection = CONNECTED_NORTH;
+        }
+
+        world.setBlockState(pos, state.with(connection, !state.get(connection)));
+        world.markDirty(pos);
+
+        if (!world.isClient()) {
+            world.playSound(null, pos, SoundEvents.ITEM_SPYGLASS_USE, SoundCategory.AMBIENT, 2.0F, 1.5F);
+        }
+
+        return ItemActionResult.CONSUME;
+    }
+
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState()
@@ -202,7 +267,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
         );
     }
 
-    public static BooleanProperty getConnectionProperty(Direction direction) {
+    private BooleanProperty getConnectionProperty(Direction direction) {
         return switch (direction) {
             case NORTH -> CONNECTED_NORTH;
             case SOUTH -> CONNECTED_SOUTH;
