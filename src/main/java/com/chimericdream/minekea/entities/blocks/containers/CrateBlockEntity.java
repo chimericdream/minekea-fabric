@@ -120,7 +120,16 @@ public class CrateBlockEntity extends BlockEntity implements NamedScreenHandlerF
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {
-        Vec3i vec3i = ((Direction) state.get(GenericCrate.FACING)).getVector();
+        Direction.Axis axis = state.get(GenericCrate.AXIS);
+
+        Vec3i vec3i;
+        if (axis.isVertical()) {
+            vec3i = Direction.UP.getVector();
+        } else if (axis.test(Direction.NORTH)) {
+            vec3i = Direction.NORTH.getVector();
+        } else {
+            vec3i = Direction.EAST.getVector();
+        }
 
         double d = (double) this.pos.getX() + 0.5 + (double) vec3i.getX() / 2.0;
         double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;

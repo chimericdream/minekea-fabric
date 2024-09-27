@@ -33,12 +33,9 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
@@ -46,6 +43,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -56,27 +55,50 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         MinekeaTextures.BRACE,
         MinekeaTextures.MATERIAL
     );
+    protected static final Model HALF_DOUBLE_CRATE_MODEL = new Model(
+        Optional.of(Identifier.of("minekea:block/containers/double_crate_half")),
+        Optional.empty(),
+        MinekeaTextures.BRACE,
+        MinekeaTextures.MATERIAL
+    );
 
     public static final MapCodec<GenericCrate> CODEC = createCodec(GenericCrate::new);
 
     public static final Integer ROW_COUNT = 6;
 
     public static final EnumProperty<Axis> AXIS;
-    public static final DirectionProperty FACING;
     public static final BooleanProperty OPEN;
+
+    public static final BooleanProperty CONNECTED_NORTH;
+    public static final BooleanProperty CONNECTED_SOUTH;
+    public static final BooleanProperty CONNECTED_EAST;
+    public static final BooleanProperty CONNECTED_WEST;
 
     public Identifier BLOCK_ID = null;
 
     static {
         AXIS = Properties.AXIS;
-        FACING = Properties.FACING;
         OPEN = Properties.OPEN;
+
+        CONNECTED_NORTH = BooleanProperty.of("connected_north");
+        CONNECTED_SOUTH = BooleanProperty.of("connected_south");
+        CONNECTED_EAST = BooleanProperty.of("connected_east");
+        CONNECTED_WEST = BooleanProperty.of("connected_west");
     }
 
     protected GenericCrate(Settings settings) {
         super(settings);
 
-        this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y).with(FACING, Direction.NORTH).with(OPEN, false));
+        this.setDefaultState(
+            this.stateManager
+                .getDefaultState()
+                .with(AXIS, Axis.Y)
+                .with(CONNECTED_NORTH, false)
+                .with(CONNECTED_SOUTH, false)
+                .with(CONNECTED_EAST, false)
+                .with(CONNECTED_WEST, false)
+                .with(OPEN, false)
+        );
     }
 
     @Override
@@ -112,31 +134,127 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         return validateTicker(type, Crates.CRATE_BLOCK_ENTITY, CrateBlockEntity::tick);
     }
 
-    public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState) state.with(FACING, rotation.rotate((Direction) state.get(FACING)));
-    }
-
-    public BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.rotate(mirror.getRotation((Direction) state.get(FACING)));
-    }
-
-    public static BlockState changeRotation(BlockState state, BlockRotation rotation) {
-        return switch (rotation) {
-            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch ((Axis) state.get(AXIS)) {
-                case X -> (BlockState) state.with(AXIS, Axis.Z);
-                case Z -> (BlockState) state.with(AXIS, Axis.X);
-                default -> state;
-            };
-            default -> state;
-        };
-    }
+//    public BlockState rotate(BlockState state, BlockRotation rotation) {
+//        if (isConnectedCrate(state)) {
+//            return state;
+//        }
+//
+//        return (BlockState) state.with(FACING, rotation.rotate((Direction) state.get(FACING)));
+//    }
+//
+//    public BlockState mirror(BlockState state, BlockMirror mirror) {
+//        if (!state.get(CRATE_TYPE).equals(ChestType.SINGLE)) {
+//            return state;
+//        }
+//
+//        return state.rotate(mirror.getRotation((Direction) state.get(FACING)));
+//    }
+//
+//    public static BlockState changeRotation(BlockState state, BlockRotation rotation) {
+//        if (!state.get(CRATE_TYPE).equals(ChestType.SINGLE)) {
+//            return state;
+//        }
+//
+//        return switch (rotation) {
+//            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch ((Axis) state.get(AXIS)) {
+//                case X -> (BlockState) state.with(AXIS, Axis.Z);
+//                case Z -> (BlockState) state.with(AXIS, Axis.X);
+//                default -> state;
+//            };
+//            default -> state;
+//        };
+//    }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(AXIS, FACING, OPEN);
+        builder.add(AXIS, OPEN, CONNECTED_NORTH, CONNECTED_SOUTH, CONNECTED_EAST, CONNECTED_WEST);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(AXIS, ctx.getSide().getAxis()).with(FACING, ctx.getPlayerLookDirection().getOpposite());
+        BlockState placementState = this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
+
+        // if the player is sneaking, or if this crate is not being placed vertically, skip checking for double crate stuff
+        if (ctx.shouldCancelInteraction() || ctx.getSide().getAxis().isHorizontal()) {
+            return placementState;
+        }
+
+        BlockState neighbor;
+
+        neighbor = getAvailableNeighboringCrate(ctx, Direction.NORTH);
+        if (neighbor != null) {
+            return placementState.with(CONNECTED_NORTH, true);
+        }
+
+        neighbor = getAvailableNeighboringCrate(ctx, Direction.EAST);
+        if (neighbor != null) {
+            return placementState.with(CONNECTED_EAST, true);
+        }
+
+        neighbor = getAvailableNeighboringCrate(ctx, Direction.SOUTH);
+        if (neighbor != null) {
+            return placementState.with(CONNECTED_SOUTH, true);
+        }
+
+        neighbor = getAvailableNeighboringCrate(ctx, Direction.WEST);
+        if (neighbor != null) {
+            return placementState.with(CONNECTED_WEST, true);
+        }
+
+        return placementState;
+    }
+
+    @Nullable
+    private BooleanProperty getConnectionProperty(Direction dir) {
+        return switch (dir) {
+            case DOWN, UP -> null;
+            case NORTH -> CONNECTED_NORTH;
+            case SOUTH -> CONNECTED_SOUTH;
+            case EAST -> CONNECTED_EAST;
+            case WEST -> CONNECTED_WEST;
+        };
+    }
+
+    @Nullable
+    private BooleanProperty getReverseConnectionProperty(Direction dir) {
+        return switch (dir) {
+            case DOWN, UP -> null;
+            case NORTH -> CONNECTED_SOUTH;
+            case SOUTH -> CONNECTED_NORTH;
+            case EAST -> CONNECTED_WEST;
+            case WEST -> CONNECTED_EAST;
+        };
+    }
+
+    @Override
+    protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (direction.getAxis().isVertical()) {
+            return state;
+        }
+
+        if (!neighborState.isOf(this)) {
+            return state.with(getConnectionProperty(direction), false);
+        }
+
+        BooleanProperty prop = getReverseConnectionProperty(direction);
+        if (neighborState.get(prop)) {
+            return state.with(getConnectionProperty(direction), true);
+        }
+
+        return state;
+    }
+
+    private static boolean isConnectedCrate(BlockState crate) {
+        return crate.get(CONNECTED_NORTH) || crate.get(CONNECTED_SOUTH) || crate.get(CONNECTED_EAST) || crate.get(CONNECTED_WEST);
+    }
+
+    @Nullable
+    private BlockState getAvailableNeighboringCrate(ItemPlacementContext ctx, Direction dir) {
+        BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos().offset(dir));
+
+        if (!blockState.isOf(this) || isConnectedCrate(blockState) || blockState.get(AXIS).isHorizontal()) {
+            return null;
+        }
+
+        return blockState;
     }
 
     @Override
