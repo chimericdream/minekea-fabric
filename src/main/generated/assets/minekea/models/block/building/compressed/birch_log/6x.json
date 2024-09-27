@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "minekea:block/building/compressed/birch_log/6x_end",
+    "side": "minekea:block/building/compressed/birch_log/6x_side"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/building/compressed/birch_log/3x",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/compressed/birch_log/3x"
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/compressed/birch_log/3x",
+        "x": 90
+      },
+      "when": {
+        "axis": "z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_building/compressed/oak_log/6x": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minekea:building/compressed/oak_log/6x"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minekea:building/compressed/oak_log/5x_from_compressed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_building/compressed/oak_log/6x"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minekea:building/compressed/oak_log/5x_from_compressed"
+    ]
+  }
+}

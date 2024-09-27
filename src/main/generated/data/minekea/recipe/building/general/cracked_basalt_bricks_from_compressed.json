@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/cracked_basalt_brick/1x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/general/cracked_basalt_bricks"
+  }
+}

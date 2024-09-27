@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/mossy_basalt_brick/7x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/mossy_basalt_brick/6x"
+  }
+}

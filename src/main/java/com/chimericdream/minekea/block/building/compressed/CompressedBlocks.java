@@ -1,6 +1,14 @@
 package com.chimericdream.minekea.block.building.compressed;
 
+import com.chimericdream.minekea.block.building.BuildingBlocks;
+import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
+import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
+import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -14,6 +22,9 @@ import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
+import oshi.util.tuples.Quartet;
+import oshi.util.tuples.Quintet;
 import oshi.util.tuples.Triplet;
 
 import java.util.ArrayList;
@@ -29,33 +40,33 @@ public class CompressedBlocks implements MinekeaBlockCategory {
     public static final Map<String, List<GenericCompressedBlock>> BLOCK_MAP = new LinkedHashMap<>();
     public static final List<GenericCompressedBlock> BLOCKS = new ArrayList<>();
 
-    protected static final List<Triplet<String, String, Block>> MINEKEA_BLOCKS_TO_COMPRESS = List.of(
-//        new Triplet<>("Basalt Brick", "basalt_brick", BuildingBlocks.BASALT_BRICKS_BLOCK),
-//        new Triplet<>("Cracked Basalt Bricks", "cracked_basalt_brick", BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK),
-//        new Triplet<>("Crimson Basalt Bricks", "crimson_basalt_brick", BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK),
-//        new Triplet<>("Mossy Basalt Brick", "mossy_basalt_brick", BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK),
-//        new Triplet<>("Warped Basalt Brick", "warped_basalt_brick", BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK),
-//        new Triplet<>("Warped Nether Brick", "warped_nether_brick", BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK)
+    protected static final List<Quartet<String, String, MinekeaBlock, Identifier>> MINEKEA_BLOCKS_TO_COMPRESS = List.of(
+        new Quartet<>("Basalt Brick", "basalt_brick", BuildingBlocks.BASALT_BRICKS_BLOCK, BasaltBricksBlock.BLOCK_ID),
+        new Quartet<>("Cracked Basalt Bricks", "cracked_basalt_brick", BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK, CrackedBasaltBricksBlock.BLOCK_ID),
+        new Quartet<>("Crimson Basalt Bricks", "crimson_basalt_brick", BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK, CrimsonBasaltBricksBlock.BLOCK_ID),
+        new Quartet<>("Mossy Basalt Brick", "mossy_basalt_brick", BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK, MossyBasaltBricksBlock.BLOCK_ID),
+        new Quartet<>("Warped Basalt Brick", "warped_basalt_brick", BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK, WarpedBasaltBricksBlock.BLOCK_ID),
+        new Quartet<>("Warped Nether Brick", "warped_nether_brick", BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK, WarpedNetherBricksBlock.BLOCK_ID)
     );
 
-    protected static final List<Triplet<String, String, Block>> COLUMN_BLOCKS_TO_COMPRESS = List.of(
-//        new Triplet<>("Basalt", "basalt", Blocks.BASALT)
-//        new Triplet<>("Blackstone", "blackstone", Blocks.BLACKSTONE),
-//        new Triplet<>("Bone", "bone", Blocks.BONE_BLOCK),
-        new Triplet<>("Deepslate", "deepslate", Blocks.DEEPSLATE),
-//        new Triplet<>("Polished Basalt", "polished_basalt", Blocks.POLISHED_BASALT),
-//        new Triplet<>("Purpur Pillar", "purpur_pillar", Blocks.PURPUR_PILLAR),
-        new Triplet<>("Quartz", "quartz", Blocks.QUARTZ_BLOCK),
-        new Triplet<>("Acacia Log", "acacia_log", Blocks.ACACIA_LOG),
-        new Triplet<>("Birch Log", "birch_log", Blocks.BIRCH_LOG),
-        new Triplet<>("Cherry Log", "cherry_log", Blocks.CHERRY_LOG),
-        new Triplet<>("Crimson Stem", "crimson_stem", Blocks.CRIMSON_STEM),
-        new Triplet<>("Dark Oak Log", "dark_oak_log", Blocks.DARK_OAK_LOG),
-        new Triplet<>("Jungle Log", "jungle_log", Blocks.JUNGLE_LOG),
-        new Triplet<>("Mangrove Log", "mangrove_log", Blocks.MANGROVE_LOG),
-        new Triplet<>("Oak Log", "oak_log", Blocks.OAK_LOG),
-        new Triplet<>("Spruce Log", "spruce_log", Blocks.SPRUCE_LOG),
-        new Triplet<>("Warped Stem", "warped_stem", Blocks.WARPED_STEM)
+    protected static final List<Quintet<String, String, Block, String, String>> COLUMN_BLOCKS_TO_COMPRESS = List.of(
+        new Quintet<>("Basalt", "basalt", Blocks.BASALT, "_side", "_top"),
+        new Quintet<>("Blackstone", "blackstone", Blocks.BLACKSTONE, "", "_top"),
+        new Quintet<>("Bone", "bone_block", Blocks.BONE_BLOCK, "_side", "_top"),
+        new Quintet<>("Deepslate", "deepslate", Blocks.DEEPSLATE, "", "_top"),
+        new Quintet<>("Polished Basalt", "polished_basalt", Blocks.POLISHED_BASALT, "_side", "_top"),
+        new Quintet<>("Purpur Pillar", "purpur_pillar", Blocks.PURPUR_PILLAR, "", "_top"),
+        new Quintet<>("Quartz", "quartz_block", Blocks.QUARTZ_BLOCK, "_side", "_top"),
+        new Quintet<>("Acacia Log", "acacia_log", Blocks.ACACIA_LOG, "", "_top"),
+        new Quintet<>("Birch Log", "birch_log", Blocks.BIRCH_LOG, "", "_top"),
+        new Quintet<>("Cherry Log", "cherry_log", Blocks.CHERRY_LOG, "", "_top"),
+        new Quintet<>("Crimson Stem", "crimson_stem", Blocks.CRIMSON_STEM, "", "_top"),
+        new Quintet<>("Dark Oak Log", "dark_oak_log", Blocks.DARK_OAK_LOG, "", "_top"),
+        new Quintet<>("Jungle Log", "jungle_log", Blocks.JUNGLE_LOG, "", "_top"),
+        new Quintet<>("Mangrove Log", "mangrove_log", Blocks.MANGROVE_LOG, "", "_top"),
+        new Quintet<>("Oak Log", "oak_log", Blocks.OAK_LOG, "", "_top"),
+        new Quintet<>("Spruce Log", "spruce_log", Blocks.SPRUCE_LOG, "", "_top"),
+        new Quintet<>("Warped Stem", "warped_stem", Blocks.WARPED_STEM, "", "_top")
     );
 
     protected static final List<Triplet<String, String, Block>> BLOCKS_TO_COMPRESS = List.of(
@@ -183,6 +194,22 @@ public class CompressedBlocks implements MinekeaBlockCategory {
     );
 
     static {
+        MINEKEA_BLOCKS_TO_COMPRESS.forEach(data -> {
+            String materialName = data.getA();
+            String textureKey = data.getB();
+            MinekeaBlock baseBlock = data.getC();
+            Identifier baseBlockId = data.getD();
+
+            List<GenericCompressedBlock> compressedBlocks = new ArrayList<>();
+
+            for (int i = 1; i <= 9; i += 1) {
+                compressedBlocks.add(new CompressedMinekeaBlock(materialName, textureKey, baseBlock, i, baseBlockId));
+            }
+
+            BLOCKS.addAll(compressedBlocks);
+            BLOCK_MAP.put(materialName, compressedBlocks);
+        });
+
         BLOCKS_TO_COMPRESS.forEach(data -> {
             String materialName = data.getA();
             String textureKey = data.getB();
@@ -192,6 +219,23 @@ public class CompressedBlocks implements MinekeaBlockCategory {
 
             for (int i = 1; i <= 9; i += 1) {
                 compressedBlocks.add(new GenericCompressedBlock(materialName, textureKey, baseBlock, i));
+            }
+
+            BLOCKS.addAll(compressedBlocks);
+            BLOCK_MAP.put(materialName, compressedBlocks);
+        });
+
+        COLUMN_BLOCKS_TO_COMPRESS.forEach(data -> {
+            String materialName = data.getA();
+            String textureKey = data.getB();
+            Block baseBlock = data.getC();
+            String textureKeySide = data.getD();
+            String textureKeyEnd = data.getE();
+
+            List<GenericCompressedBlock> compressedBlocks = new ArrayList<>();
+
+            for (int i = 1; i <= 9; i += 1) {
+                compressedBlocks.add(new CompressedColumnBlock(materialName, textureKey, baseBlock, i, textureKeySide, textureKeyEnd));
             }
 
             BLOCKS.addAll(compressedBlocks);

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/quartz_block/8x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/quartz_block/7x"
+  }
+}

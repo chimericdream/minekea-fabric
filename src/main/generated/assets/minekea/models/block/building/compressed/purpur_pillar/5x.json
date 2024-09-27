@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "minekea:block/building/compressed/purpur_pillar/5x_end",
+    "side": "minekea:block/building/compressed/purpur_pillar/5x_side"
+  }
+}

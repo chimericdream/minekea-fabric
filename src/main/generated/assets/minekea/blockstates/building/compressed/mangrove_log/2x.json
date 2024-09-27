@@ -1,0 +1,31 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/building/compressed/mangrove_log/2x",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/compressed/mangrove_log/2x"
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/compressed/mangrove_log/2x",
+        "x": 90
+      },
+      "when": {
+        "axis": "z"
+      }
+    }
+  ]
+}

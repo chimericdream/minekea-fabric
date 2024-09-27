@@ -38,7 +38,7 @@ import java.util.Optional;
 
 public class GenericCompressedBlock extends Block implements MinekeaBlock {
     public final Identifier BLOCK_ID;
-    protected final Identifier PARENT_BLOCK_ID;
+    protected Identifier PARENT_BLOCK_ID;
 
     public static final String TOOLTIP_LEVEL = "block.minekea.building.compressed.tooltip.level";
     public static final String TOOLTIP_COUNT = "block.minekea.building.compressed.tooltip.count";

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "minekea:block/building/compressed/crimson_stem/8x_end",
+    "side": "minekea:block/building/compressed/crimson_stem/8x_side"
+  }
+}

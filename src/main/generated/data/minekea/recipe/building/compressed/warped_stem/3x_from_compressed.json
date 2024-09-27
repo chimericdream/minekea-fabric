@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minekea:building/compressed/warped_stem/4x"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "minekea:building/compressed/warped_stem/3x"
+  }
+}

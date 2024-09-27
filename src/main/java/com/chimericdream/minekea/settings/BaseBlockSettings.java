@@ -1,17 +1,3 @@
-//package com.chimericdream.minekea.settings;
-//
-//import com.chimericdream.minekea.block.building.BuildingBlocks;
-//import com.chimericdream.minekea.block.building.general.*;
-//import com.chimericdream.minekea.config.ConfigManager;
-//import com.chimericdream.minekea.settings.MinekeaBlockSettings.DefaultSettings;
-//import com.chimericdream.minekea.util.Tool;
-//import net.minecraft.block.Blocks;
-//import net.minecraft.util.Identifier;
-//
-//import java.util.List;
-//import java.util.Map;
-//
-//public class BaseBlockSettings {
 //    public static DefaultSettings AMETHYST = new DefaultSettings(Blocks.AMETHYST_BLOCK)
 //        .material("amethyst")
 //        .materials(
@@ -19,25 +5,10 @@
 //                "main", Identifier.of("minecraft:amethyst_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withWall();
-//
-//    public static DefaultSettings ANDESITE = new DefaultSettings(Blocks.ANDESITE)
-//        .material("andesite")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:andesite")
-//            )
-//        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs();
 //
 //    public static DefaultSettings BASALT = new DefaultSettings(Blocks.BASALT)
 //        .material("basalt")
@@ -49,9 +20,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -65,25 +33,9 @@
 //                "main", BasaltBricksBlock.BLOCK_ID
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
-//        .withStairs()
 //        .withVerticalStairs()
 //        .withWall();
-//
-//    public static DefaultSettings BLACKSTONE = new DefaultSettings(Blocks.BLACKSTONE)
-//        .material("blackstone")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:blackstone")
-//            )
-//        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs();
 //
 //    public static DefaultSettings BONE = new DefaultSettings(Blocks.BONE_BLOCK)
 //        .material("bone")
@@ -95,28 +47,10 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withWall()
-//        .withDyedBlocks();
-//
-//    public static DefaultSettings BRICK = new DefaultSettings(Blocks.BRICKS)
-//        .material("brick")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:bricks")
-//            )
-//        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withDyedBlocks();
 //
 //    public static DefaultSettings CALCITE = new DefaultSettings(Blocks.CALCITE)
@@ -126,9 +60,6 @@
 //                "main", Identifier.of("minecraft:calcite")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -143,8 +74,6 @@
 //                "main", Identifier.of("minecraft:clay")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -157,22 +86,8 @@
 //                "main", Identifier.of("minecraft:coarse_dirt")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
-//        .withVerticalStairs();
-//
-//    public static DefaultSettings COBBLED_DEEPSLATE = new DefaultSettings(Blocks.COBBLED_DEEPSLATE)
-//        .material("cobbled_deepslate")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:cobbled_deepslate")
-//            )
-//        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings COBBLED_END_STONE = new DefaultSettings(Blocks.END_STONE)
@@ -183,26 +98,11 @@
 //                "main", CobbledEndStoneBlock.BLOCK_ID
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withWall();
-//
-//    public static DefaultSettings COBBLESTONE = new DefaultSettings(Blocks.COBBLESTONE)
-//        .material("cobblestone")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:cobblestone")
-//            )
-//        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withDyedBlocks();
 //
 //    public static DefaultSettings CRACKED_BASALT_BRICK = new DefaultSettings(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK)
 //        .material("cracked_basalt_brick")
@@ -212,11 +112,7 @@
 //                "main", CrackedBasaltBricksBlock.BLOCK_ID
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
-//        .withStairs()
 //        .withVerticalStairs()
 //        .withWall();
 //
@@ -227,9 +123,6 @@
 //                "main", Identifier.of("minecraft:cracked_deepslate_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -242,9 +135,6 @@
 //                "main", Identifier.of("minecraft:cracked_deepslate_tiles")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -257,9 +147,6 @@
 //                "main", Identifier.of("minecraft:cracked_stone_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -273,12 +160,7 @@
 //                "main", CrimsonBasaltBricksBlock.BLOCK_ID
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
-//        .withStairs()
-//        .withVerticalStairs()
 //        .withWall();
 //
 //    public static DefaultSettings CRYING_OBSIDIAN = new DefaultSettings(Blocks.CRYING_OBSIDIAN)
@@ -288,9 +170,6 @@
 //                "main", Identifier.of("minecraft:crying_obsidian")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -303,9 +182,6 @@
 //                "main", Identifier.of("minecraft:cut_red_sandstone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withWall();
@@ -317,9 +193,6 @@
 //                "main", Identifier.of("minecraft:cut_sandstone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withWall();
@@ -331,13 +204,7 @@
 //                "main", Identifier.of("minecraft:dark_prismarine")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDyedBlocks();
 //
 //    public static DefaultSettings DEEPSLATE = new DefaultSettings(Blocks.DEEPSLATE)
@@ -347,9 +214,6 @@
 //                "main", Identifier.of("minecraft:deepslate")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -362,11 +226,6 @@
 //                "main", Identifier.of("minecraft:deepslate_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings DEEPSLATE_TILE = new DefaultSettings(Blocks.DEEPSLATE_TILES)
@@ -376,9 +235,6 @@
 //                "main", Identifier.of("minecraft:deepslate_tiles")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings DIORITE = new DefaultSettings(Blocks.DIORITE)
@@ -388,9 +244,6 @@
 //                "main", Identifier.of("minecraft:diorite")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings DIRT = new DefaultSettings(Blocks.DIRT)
@@ -401,8 +254,6 @@
 //                "main", Identifier.of("minecraft:dirt")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withSlab();
@@ -426,9 +277,6 @@
 //                ? Identifier.of("minekea:block/building/general/end_stone")
 //                : Identifier.of("minekea:block/building/general/cobbled_end_stone")
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -441,11 +289,6 @@
 //                "main", Identifier.of("minecraft:end_stone_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings GRANITE = new DefaultSettings(Blocks.GRANITE)
@@ -455,9 +298,6 @@
 //                "main", Identifier.of("minecraft:granite")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings GRAVEL = new DefaultSettings(Blocks.GRAVEL)
@@ -468,8 +308,6 @@
 //                "main", Identifier.of("minecraft:gravel")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -482,12 +320,7 @@
 //                "main", MossyBasaltBricksBlock.BLOCK_ID
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
-//        .withStairs()
-//        .withVerticalStairs()
 //        .withWall();
 //
 //    public static DefaultSettings MOSSY_COBBLESTONE = new DefaultSettings(Blocks.MOSSY_COBBLESTONE)
@@ -497,9 +330,6 @@
 //                "main", Identifier.of("minecraft:mossy_cobblestone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings MOSSY_STONE_BRICK = new DefaultSettings(Blocks.MOSSY_STONE_BRICKS)
@@ -509,9 +339,6 @@
 //                "main", Identifier.of("minecraft:mossy_stone_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings MUD = new DefaultSettings(Blocks.MUD)
@@ -522,8 +349,6 @@
 //                "main", Identifier.of("minecraft:mud")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -535,10 +360,6 @@
 //                "main", Identifier.of("minecraft:mud_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withDyedBlocks();
 //
 //    public static DefaultSettings NETHERRACK = new DefaultSettings(Blocks.NETHERRACK)
@@ -548,9 +369,6 @@
 //                "main", Identifier.of("minecraft:netherrack")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -563,11 +381,6 @@
 //                "main", Identifier.of("minecraft:nether_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings NETHER_WART = new DefaultSettings(Blocks.NETHER_WART_BLOCK)
@@ -587,9 +400,6 @@
 //                "main", Identifier.of("minecraft:obsidian")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -602,9 +412,6 @@
 //                "main", Identifier.of("minecraft:packed_mud")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withSlab();
@@ -616,12 +423,7 @@
 //                "main", Identifier.of("minecraft:polished_andesite")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings POLISHED_BASALT = new DefaultSettings(Blocks.POLISHED_BASALT)
@@ -634,14 +436,10 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings POLISHED_BLACKSTONE = new DefaultSettings(Blocks.POLISHED_BLACKSTONE)
@@ -651,11 +449,6 @@
 //                "main", Identifier.of("minecraft:polished_blackstone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings POLISHED_BLACKSTONE_BRICK = new DefaultSettings(Blocks.POLISHED_BLACKSTONE_BRICKS)
@@ -665,11 +458,6 @@
 //                "main", Identifier.of("minecraft:polished_blackstone_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings POLISHED_DEEPSLATE = new DefaultSettings(Blocks.POLISHED_DEEPSLATE)
@@ -679,11 +467,6 @@
 //                "main", Identifier.of("minecraft:polished_deepslate")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings POLISHED_DIORITE = new DefaultSettings(Blocks.POLISHED_DIORITE)
@@ -693,12 +476,7 @@
 //                "main", Identifier.of("minecraft:polished_diorite")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings POLISHED_GRANITE = new DefaultSettings(Blocks.POLISHED_GRANITE)
@@ -708,12 +486,7 @@
 //                "main", Identifier.of("minecraft:polished_granite")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings PRISMARINE = new DefaultSettings(Blocks.PRISMARINE)
@@ -723,12 +496,6 @@
 //                "main", Identifier.of("minecraft:prismarine")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDyedBlocks();
 //
 //    public static DefaultSettings PRISMARINE_BRICK = new DefaultSettings(Blocks.PRISMARINE_BRICKS)
@@ -738,13 +505,7 @@
 //                "main", Identifier.of("minecraft:prismarine_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDyedBlocks();
 //
 //    public static DefaultSettings PURPUR = new DefaultSettings(Blocks.PURPUR_BLOCK)
@@ -754,12 +515,7 @@
 //                "main", Identifier.of("minecraft:purpur_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings PURPUR_PILLAR = new DefaultSettings(Blocks.PURPUR_PILLAR)
@@ -769,9 +525,6 @@
 //                "main", Identifier.of("minecraft:purpur_pillar")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withVerticalStairs()
 //        .withWall();
@@ -784,8 +537,6 @@
 //                "ingredient", Identifier.of("minecraft:quartz_block")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings QUARTZ_BRICK = new DefaultSettings(Blocks.QUARTZ_BRICKS)
@@ -795,9 +546,6 @@
 //                "main", Identifier.of("minecraft:quartz_bricks")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings RED_NETHER_BRICK = new DefaultSettings(Blocks.RED_NETHER_BRICKS)
@@ -807,11 +555,6 @@
 //                "main", Identifier.of("minecraft:red_nether_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings RED_SANDSTONE = new DefaultSettings(Blocks.RED_SANDSTONE)
@@ -821,9 +564,6 @@
 //                "main", Identifier.of("minecraft:red_sandstone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings RED_SAND = new DefaultSettings(Blocks.RED_SAND)
@@ -834,8 +574,6 @@
 //                "main", Identifier.of("minecraft:red_sand")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -848,8 +586,6 @@
 //                "main", Identifier.of("minecraft:rooted_dirt")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -862,8 +598,6 @@
 //                "main", Identifier.of("minecraft:sand")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -875,9 +609,6 @@
 //                "main", Identifier.of("minecraft:sandstone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withVerticalStairs();
 //
 //    public static DefaultSettings SMOOTH_BASALT = new DefaultSettings(Blocks.SMOOTH_BASALT)
@@ -887,9 +618,6 @@
 //                "main", Identifier.of("minecraft:smooth_basalt")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -903,10 +631,6 @@
 //                "ingredient", Identifier.of("minecraft:smooth_quartz")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings SMOOTH_RED_SANDSTONE = new DefaultSettings(Blocks.SMOOTH_RED_SANDSTONE)
@@ -917,10 +641,6 @@
 //                "ingredient", Identifier.of("minecraft:smooth_red_sandstone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall();
 //
 //    public static DefaultSettings SMOOTH_SANDSTONE = new DefaultSettings(Blocks.SMOOTH_SANDSTONE)
@@ -931,10 +651,6 @@
 //                "ingredient", Identifier.of("minecraft:smooth_sandstone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall();
 //
 //    public static DefaultSettings SMOOTH_STONE = new DefaultSettings(Blocks.SMOOTH_STONE)
@@ -944,14 +660,9 @@
 //                "main", Identifier.of("minecraft:smooth_stone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withStairs()
 //        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDyedBlocks();
 //
 //    public static DefaultSettings SOUL_SAND = new DefaultSettings(Blocks.SOUL_SAND)
@@ -962,8 +673,6 @@
 //                "main", Identifier.of("minecraft:soul_sand")
 //            )
 //        )
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -975,10 +684,6 @@
 //                "main", Identifier.of("minecraft:stone")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
 //        .withWall()
 //        .withDyedBlocks();
 //
@@ -989,12 +694,6 @@
 //                "main", Identifier.of("minecraft:stone_bricks")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
-//        .withVerticalStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDyedBlocks();
 //
 //    public static DefaultSettings TUFF = new DefaultSettings(Blocks.TUFF)
@@ -1004,12 +703,8 @@
 //                "main", Identifier.of("minecraft:tuff")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
-//        .withVerticalStairs()
 //        .withWall();
 //
 //    public static DefaultSettings WARPED_BASALT_BRICK = new DefaultSettings(BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK)
@@ -1020,12 +715,7 @@
 //                "main", WarpedBasaltBricksBlock.BLOCK_ID
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
-//        .withStairs()
-//        .withVerticalStairs()
 //        .withWall();
 //
 //    public static DefaultSettings WARPED_NETHER_BRICK = new DefaultSettings(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK)
@@ -1036,14 +726,8 @@
 //                "main", WarpedNetherBricksBlock.BLOCK_ID
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
-//        .withStairs()
-//        .withVerticalStairs()
 //        .withWall()
-//        .withBookshelf()
 //        .withStorageBookshelf();
 //
 //    public static DefaultSettings WARPED_WART = new DefaultSettings(Blocks.WARPED_WART_BLOCK)
@@ -1064,9 +748,6 @@
 //                "main", Identifier.of("minecraft:copper_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1079,9 +760,6 @@
 //                "main", Identifier.of("minecraft:diamond_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1094,9 +772,6 @@
 //                "main", Identifier.of("minecraft:gold_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1109,9 +784,6 @@
 //                "main", Identifier.of("minecraft:iron_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1124,9 +796,6 @@
 //                "main", Identifier.of("minecraft:lapis_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1139,9 +808,6 @@
 //                "main", Identifier.of("minecraft:netherite_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1154,9 +820,6 @@
 //                "main", Identifier.of("minecraft:redstone_block")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1379,9 +1042,6 @@
 //                "main", Identifier.of("minecraft:white_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1394,9 +1054,6 @@
 //                "main", Identifier.of("minecraft:orange_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1409,9 +1066,6 @@
 //                "main", Identifier.of("minecraft:magenta_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1424,9 +1078,6 @@
 //                "main", Identifier.of("minecraft:light_blue_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1439,9 +1090,6 @@
 //                "main", Identifier.of("minecraft:yellow_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1454,9 +1102,6 @@
 //                "main", Identifier.of("minecraft:lime_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1469,9 +1114,6 @@
 //                "main", Identifier.of("minecraft:pink_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1484,9 +1126,6 @@
 //                "main", Identifier.of("minecraft:gray_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1499,9 +1138,6 @@
 //                "main", Identifier.of("minecraft:light_gray_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1514,9 +1150,6 @@
 //                "main", Identifier.of("minecraft:cyan_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1529,9 +1162,6 @@
 //                "main", Identifier.of("minecraft:purple_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1544,9 +1174,6 @@
 //                "main", Identifier.of("minecraft:blue_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1559,9 +1186,6 @@
 //                "main", Identifier.of("minecraft:brown_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1574,9 +1198,6 @@
 //                "main", Identifier.of("minecraft:green_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1589,9 +1210,6 @@
 //                "main", Identifier.of("minecraft:red_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1604,9 +1222,6 @@
 //                "main", Identifier.of("minecraft:black_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1621,9 +1236,6 @@
 //                "main", Identifier.of("minecraft:white_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1636,9 +1248,6 @@
 //                "main", Identifier.of("minecraft:orange_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1651,9 +1260,6 @@
 //                "main", Identifier.of("minecraft:magenta_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1666,9 +1272,6 @@
 //                "main", Identifier.of("minecraft:light_blue_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1681,9 +1284,6 @@
 //                "main", Identifier.of("minecraft:yellow_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1696,9 +1296,6 @@
 //                "main", Identifier.of("minecraft:lime_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1711,9 +1308,6 @@
 //                "main", Identifier.of("minecraft:pink_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1726,9 +1320,6 @@
 //                "main", Identifier.of("minecraft:gray_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1741,9 +1332,6 @@
 //                "main", Identifier.of("minecraft:light_gray_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1756,9 +1344,6 @@
 //                "main", Identifier.of("minecraft:cyan_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1771,9 +1356,6 @@
 //                "main", Identifier.of("minecraft:purple_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1786,9 +1368,6 @@
 //                "main", Identifier.of("minecraft:blue_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1801,9 +1380,6 @@
 //                "main", Identifier.of("minecraft:brown_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1816,9 +1392,6 @@
 //                "main", Identifier.of("minecraft:green_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1831,9 +1404,6 @@
 //                "main", Identifier.of("minecraft:red_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1846,9 +1416,6 @@
 //                "main", Identifier.of("minecraft:black_glazed_terracotta")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1863,9 +1430,6 @@
 //                "main", Identifier.of("minecraft:white_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1878,9 +1442,6 @@
 //                "main", Identifier.of("minecraft:orange_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1893,9 +1454,6 @@
 //                "main", Identifier.of("minecraft:magenta_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1908,9 +1466,6 @@
 //                "main", Identifier.of("minecraft:light_blue_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1923,9 +1478,6 @@
 //                "main", Identifier.of("minecraft:yellow_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1938,9 +1490,6 @@
 //                "main", Identifier.of("minecraft:lime_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1953,9 +1502,6 @@
 //                "main", Identifier.of("minecraft:pink_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1968,9 +1514,6 @@
 //                "main", Identifier.of("minecraft:gray_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1983,9 +1526,6 @@
 //                "main", Identifier.of("minecraft:light_gray_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -1998,9 +1538,6 @@
 //                "main", Identifier.of("minecraft:cyan_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -2013,9 +1550,6 @@
 //                "main", Identifier.of("minecraft:purple_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -2028,9 +1562,6 @@
 //                "main", Identifier.of("minecraft:blue_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -2043,9 +1574,6 @@
 //                "main", Identifier.of("minecraft:brown_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -2058,9 +1586,6 @@
 //                "main", Identifier.of("minecraft:green_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -2073,9 +1598,6 @@
 //                "main", Identifier.of("minecraft:red_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -2088,9 +1610,6 @@
 //                "main", Identifier.of("minecraft:black_concrete")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs()
@@ -2106,9 +1625,7 @@
 //                "main", Identifier.of("minecraft:white_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2121,9 +1638,7 @@
 //                "main", Identifier.of("minecraft:orange_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2136,9 +1651,7 @@
 //                "main", Identifier.of("minecraft:magenta_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2151,9 +1664,7 @@
 //                "main", Identifier.of("minecraft:light_blue_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2166,9 +1677,7 @@
 //                "main", Identifier.of("minecraft:yellow_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2181,9 +1690,7 @@
 //                "main", Identifier.of("minecraft:lime_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2196,9 +1703,7 @@
 //                "main", Identifier.of("minecraft:pink_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2211,9 +1716,7 @@
 //                "main", Identifier.of("minecraft:gray_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2226,9 +1729,7 @@
 //                "main", Identifier.of("minecraft:light_gray_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2241,9 +1742,7 @@
 //                "main", Identifier.of("minecraft:cyan_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2256,9 +1755,7 @@
 //                "main", Identifier.of("minecraft:purple_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2271,9 +1768,7 @@
 //                "main", Identifier.of("minecraft:blue_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2286,9 +1781,7 @@
 //                "main", Identifier.of("minecraft:brown_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2301,9 +1794,7 @@
 //                "main", Identifier.of("minecraft:green_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2316,9 +1807,7 @@
 //                "main", Identifier.of("minecraft:red_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2331,9 +1820,7 @@
 //                "main", Identifier.of("minecraft:black_stained_glass")
 //            )
 //        )
-//        .withBeam()
 //        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2354,15 +1841,9 @@
 //                "slab", Identifier.of("minecraft:acacia_slab")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2400,9 +1881,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2432,15 +1910,9 @@
 //                "slab", Identifier.of("minecraft:birch_slab")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2478,9 +1950,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2498,15 +1967,9 @@
 //                "slab", Identifier.of("minecraft:crimson_slab")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2532,9 +1995,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2553,15 +2013,9 @@
 //                "slab", Identifier.of("minecraft:dark_oak_slab")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2599,9 +2053,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2631,15 +2082,9 @@
 //                "slab", Identifier.of("minecraft:jungle_slab")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2677,9 +2122,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2698,15 +2140,9 @@
 //                "slab", Identifier.of("minecraft:mangrove_slab")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2744,9 +2180,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2767,14 +2200,9 @@
 //        )
 //        .bookshelfId("minecraft:bookshelf")
 //        .bookshelfModel("minecraft:block/bookshelf")
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2812,9 +2240,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2833,15 +2258,9 @@
 //                "slab", Identifier.of("minecraft:spruce_slab")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2879,9 +2298,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
@@ -2899,15 +2315,9 @@
 //                "slab", Identifier.of("minecraft:warped_slab")
 //            )
 //        )
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withBookshelfSlab()
 //        .withBookshelfStairs()
-//        .withVerticalStairs()
 //        .withVerticalBookshelfStairs()
-//        .withBookshelf()
-//        .withStorageBookshelf()
 //        .withDisplayCase()
 //        .withStrippedDisplayCase()
 //        .withBookshelfDoor()
@@ -2933,613 +2343,6 @@
 //            )
 //        )
 //        .column()
-//        .withBeam()
-//        .withCompressedBlock()
-//        .withCover()
 //        .withSlab()
 //        .withStairs()
 //        .withVerticalStairs();
-//
-//    /******************************************************************************************************************/
-//
-//    public static DefaultSettings APPLE = new DefaultSettings(Blocks.MELON)
-//        .material("apple")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:apple"),
-//                "ingredient", Identifier.of("minecraft:apple")
-//            )
-//        )
-//        .column();
-//
-//    public static DefaultSettings BAMBOO = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("bamboo")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:bamboo"),
-//                "ingredient", Identifier.of("minecraft:bamboo")
-//            )
-//        )
-//        .column();
-//
-//    public static DefaultSettings BEETROOT = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("beetroot")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:beetroot"),
-//                "ingredient", Identifier.of("minecraft:beetroot")
-//            )
-//        );
-//
-//    public static DefaultSettings BEETROOT_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("beetroot_seeds")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:beetroot_seeds"),
-//                "ingredient", Identifier.of("minecraft:beetroot_seeds")
-//            )
-//        );
-//
-//    public static DefaultSettings BLAZE_POWDER = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("blaze_powder")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:blaze_powder"),
-//                "ingredient", Identifier.of("minecraft:blaze_powder")
-//            )
-//        );
-//
-//    public static DefaultSettings BLAZE_ROD = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("blaze_rod")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:blaze_rod"),
-//                "ingredient", Identifier.of("minecraft:blaze_rod")
-//            )
-//        );
-//
-//    public static DefaultSettings CARROT = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("carrot")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:carrot"),
-//                "ingredient", Identifier.of("minecraft:carrot")
-//            )
-//        );
-//
-//    public static DefaultSettings CHARCOAL = new DefaultSettings(Blocks.COAL_BLOCK)
-//        .material("charcoal")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:charcoal"),
-//                "ingredient", Identifier.of("minecraft:charcoal")
-//            )
-//        );
-//
-//    public static DefaultSettings CHORUS_FRUIT = new DefaultSettings(Blocks.PURPUR_BLOCK)
-//        .material("chorus_fruit")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:chorus_fruit"),
-//                "ingredient", Identifier.of("minecraft:chorus_fruit")
-//            )
-//        );
-//
-//    public static DefaultSettings ENDER_PEARL = new DefaultSettings(Blocks.PURPUR_BLOCK)
-//        .material("ender_pearl")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:ender_pearl"),
-//                "ingredient", Identifier.of("minecraft:ender_pearl")
-//            )
-//        );
-//
-//    public static DefaultSettings FLINT = new DefaultSettings(Blocks.COBBLESTONE)
-//        .material("flint")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:flint"),
-//                "ingredient", Identifier.of("minecraft:flint")
-//            )
-//        );
-//
-//    public static DefaultSettings GOLDEN_APPLE = new DefaultSettings(Blocks.MELON)
-//        .material("golden_apple")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:golden_apple"),
-//                "ingredient", Identifier.of("minecraft:golden_apple")
-//            )
-//        )
-//        .column();
-//
-//    public static DefaultSettings LEATHER = new DefaultSettings(Blocks.WHITE_WOOL)
-//        .material("leather")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:leather"),
-//                "ingredient", Identifier.of("minecraft:leather")
-//            )
-//        );
-//
-//    public static DefaultSettings MELON_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("melon_seeds")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:melon_seeds"),
-//                "ingredient", Identifier.of("minecraft:melon_seeds")
-//            )
-//        );
-//
-//    public static DefaultSettings NETHER_STAR = new DefaultSettings(Blocks.DIAMOND_BLOCK)
-//        .material("nether_star")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:nether_star"),
-//                "ingredient", Identifier.of("minecraft:nether_star")
-//            )
-//        );
-//
-//    public static DefaultSettings PAPER = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("paper")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:paper"),
-//                "ingredient", Identifier.of("minecraft:paper")
-//            )
-//        );
-//
-//    public static DefaultSettings PHANTOM_MEMBRANE = new DefaultSettings(Blocks.NETHER_WART_BLOCK)
-//        .material("phantom_membrane")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:phantom_membrane"),
-//                "ingredient", Identifier.of("minecraft:phantom_membrane")
-//            )
-//        );
-//
-//    public static DefaultSettings POTATO = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("potato")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:potato"),
-//                "ingredient", Identifier.of("minecraft:potato")
-//            )
-//        );
-//
-//    public static DefaultSettings PUMPKIN_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("pumpkin_seeds")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:pumpkin_seeds"),
-//                "ingredient", Identifier.of("minecraft:pumpkin_seeds")
-//            )
-//        );
-//
-//    public static DefaultSettings STICK = new DefaultSettings(Blocks.OAK_PLANKS)
-//        .material("stick")
-//        .wooden()
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:stick"),
-//                "ingredient", Identifier.of("minecraft:stick")
-//            )
-//        );
-//
-//    public static DefaultSettings SUGAR = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("sugar")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:sugar"),
-//                "ingredient", Identifier.of("minecraft:sugar")
-//            )
-//        );
-//
-//    public static DefaultSettings SUGAR_CANE = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("sugar_cane")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:sugar_cane"),
-//                "ingredient", Identifier.of("minecraft:sugar_cane")
-//            )
-//        );
-//
-//    public static DefaultSettings TOTEM = new DefaultSettings(Blocks.GOLD_BLOCK)
-//        .material("totem_of_undying")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:totem_of_undying"),
-//                "ingredient", Identifier.of("minecraft:totem_of_undying")
-//            )
-//        )
-//        .column();
-//
-//    public static DefaultSettings WHEAT_SEEDS = new DefaultSettings(Blocks.HAY_BLOCK)
-//        .material("wheat_seeds")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:wheat_seeds"),
-//                "ingredient", Identifier.of("minecraft:wheat_seeds")
-//            )
-//        );
-//
-//    /******************************************************************************************************************/
-//
-//    public static DefaultSettings WHITE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("white_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:white_dye"),
-//                "ingredient", Identifier.of("minecraft:white_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings ORANGE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("orange_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:orange_dye"),
-//                "ingredient", Identifier.of("minecraft:orange_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings MAGENTA_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("magenta_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:magenta_dye"),
-//                "ingredient", Identifier.of("minecraft:magenta_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings LIGHT_BLUE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("light_blue_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:light_blue_dye"),
-//                "ingredient", Identifier.of("minecraft:light_blue_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings YELLOW_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("yellow_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:yellow_dye"),
-//                "ingredient", Identifier.of("minecraft:yellow_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings LIME_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("lime_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:lime_dye"),
-//                "ingredient", Identifier.of("minecraft:lime_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings PINK_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("pink_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:pink_dye"),
-//                "ingredient", Identifier.of("minecraft:pink_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings GRAY_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("gray_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:gray_dye"),
-//                "ingredient", Identifier.of("minecraft:gray_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings LIGHT_GRAY_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("light_gray_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:light_gray_dye"),
-//                "ingredient", Identifier.of("minecraft:light_gray_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings CYAN_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("cyan_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:cyan_dye"),
-//                "ingredient", Identifier.of("minecraft:cyan_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings PURPLE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("purple_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:purple_dye"),
-//                "ingredient", Identifier.of("minecraft:purple_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings BLUE_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("blue_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:blue_dye"),
-//                "ingredient", Identifier.of("minecraft:blue_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings BROWN_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("brown_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:brown_dye"),
-//                "ingredient", Identifier.of("minecraft:brown_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings GREEN_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("green_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:green_dye"),
-//                "ingredient", Identifier.of("minecraft:green_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings RED_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("red_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:red_dye"),
-//                "ingredient", Identifier.of("minecraft:red_dye")
-//            )
-//        );
-//
-//    public static DefaultSettings BLACK_DYE = new DefaultSettings(Blocks.HONEY_BLOCK)
-//        .material("black_dye")
-//        .materials(
-//            Map.of(
-//                "main", Identifier.of("minecraft:black_dye"),
-//                "ingredient", Identifier.of("minecraft:black_dye")
-//            )
-//        );
-//
-//    /******************************************************************************************************************/
-//
-//    public static final List<DefaultSettings> ALL_SETTINGS = List.of(
-//        AMETHYST,
-//        ANDESITE,
-//        BASALT,
-//        BASALT_BRICK,
-//        BLACKSTONE,
-//        BONE,
-//        BRICK,
-//        CALCITE,
-//        CLAY,
-//        COARSE_DIRT,
-//        COBBLED_DEEPSLATE,
-//        COBBLED_END_STONE,
-//        COBBLESTONE,
-//        CRACKED_BASALT_BRICK,
-//        CRACKED_DEEPSLATE_BRICK,
-//        CRACKED_DEEPSLATE_TILE,
-//        CRACKED_STONE_BRICK,
-//        CRIMSON_BASALT_BRICK,
-//        CRYING_OBSIDIAN,
-//        CUT_RED_SANDSTONE,
-//        CUT_SANDSTONE,
-//        DARK_PRISMARINE,
-//        DEEPSLATE,
-//        DEEPSLATE_BRICK,
-//        DEEPSLATE_TILE,
-//        DIORITE,
-//        DIRT,
-//        END_STONE,
-//        END_STONE_BRICK,
-//        GRANITE,
-//        GRAVEL,
-//        MOSSY_BASALT_BRICK,
-//        MOSSY_COBBLESTONE,
-//        MOSSY_STONE_BRICK,
-//        MUD,
-//        MUD_BRICK,
-//        NETHERRACK,
-//        NETHER_BRICK,
-//        NETHER_WART,
-//        OBSIDIAN,
-//        PACKED_MUD,
-//        POLISHED_ANDESITE,
-//        POLISHED_BASALT,
-//        POLISHED_BLACKSTONE,
-//        POLISHED_BLACKSTONE_BRICK,
-//        POLISHED_DEEPSLATE,
-//        POLISHED_DIORITE,
-//        POLISHED_GRANITE,
-//        PRISMARINE,
-//        PRISMARINE_BRICK,
-//        PURPUR,
-//        PURPUR_PILLAR,
-//        QUARTZ,
-//        QUARTZ_BRICK,
-//        RED_NETHER_BRICK,
-//        RED_SANDSTONE,
-//        RED_SAND,
-//        ROOTED_DIRT,
-//        SAND,
-//        SANDSTONE,
-//        SMOOTH_BASALT,
-//        SMOOTH_QUARTZ,
-//        SMOOTH_RED_SANDSTONE,
-//        SMOOTH_SANDSTONE,
-//        SMOOTH_STONE,
-//        SOUL_SAND,
-//        STONE,
-//        STONE_BRICK,
-//        TUFF,
-//        WARPED_BASALT_BRICK,
-//        WARPED_NETHER_BRICK,
-//        WARPED_WART,
-//
-//        COPPER_BLOCK,
-//        DIAMOND_BLOCK,
-//        GOLD_BLOCK,
-//        IRON_BLOCK,
-//        LAPIS_BLOCK,
-//        NETHERITE_BLOCK,
-//        REDSTONE_BLOCK,
-//
-//        CUT_COPPER,
-//        EXPOSED_CUT_COPPER,
-//        WEATHERED_CUT_COPPER,
-//        OXIDIZED_CUT_COPPER,
-//        WAXED_CUT_COPPER,
-//        WAXED_EXPOSED_CUT_COPPER,
-//        WAXED_WEATHERED_CUT_COPPER,
-//        WAXED_OXIDIZED_CUT_COPPER,
-//
-//        WHITE_WOOL,
-//        ORANGE_WOOL,
-//        MAGENTA_WOOL,
-//        LIGHT_BLUE_WOOL,
-//        YELLOW_WOOL,
-//        LIME_WOOL,
-//        PINK_WOOL,
-//        GRAY_WOOL,
-//        LIGHT_GRAY_WOOL,
-//        CYAN_WOOL,
-//        PURPLE_WOOL,
-//        BLUE_WOOL,
-//        BROWN_WOOL,
-//        GREEN_WOOL,
-//        RED_WOOL,
-//        BLACK_WOOL,
-//
-//        WHITE_TERRACOTTA,
-//        ORANGE_TERRACOTTA,
-//        MAGENTA_TERRACOTTA,
-//        LIGHT_BLUE_TERRACOTTA,
-//        YELLOW_TERRACOTTA,
-//        LIME_TERRACOTTA,
-//        PINK_TERRACOTTA,
-//        GRAY_TERRACOTTA,
-//        LIGHT_GRAY_TERRACOTTA,
-//        CYAN_TERRACOTTA,
-//        PURPLE_TERRACOTTA,
-//        BLUE_TERRACOTTA,
-//        BROWN_TERRACOTTA,
-//        GREEN_TERRACOTTA,
-//        RED_TERRACOTTA,
-//        BLACK_TERRACOTTA,
-//
-//        WHITE_GLAZED_TERRACOTTA,
-//        ORANGE_GLAZED_TERRACOTTA,
-//        MAGENTA_GLAZED_TERRACOTTA,
-//        LIGHT_BLUE_GLAZED_TERRACOTTA,
-//        YELLOW_GLAZED_TERRACOTTA,
-//        LIME_GLAZED_TERRACOTTA,
-//        PINK_GLAZED_TERRACOTTA,
-//        GRAY_GLAZED_TERRACOTTA,
-//        LIGHT_GRAY_GLAZED_TERRACOTTA,
-//        CYAN_GLAZED_TERRACOTTA,
-//        PURPLE_GLAZED_TERRACOTTA,
-//        BLUE_GLAZED_TERRACOTTA,
-//        BROWN_GLAZED_TERRACOTTA,
-//        GREEN_GLAZED_TERRACOTTA,
-//        RED_GLAZED_TERRACOTTA,
-//        BLACK_GLAZED_TERRACOTTA,
-//
-//        WHITE_CONCRETE,
-//        ORANGE_CONCRETE,
-//        MAGENTA_CONCRETE,
-//        LIGHT_BLUE_CONCRETE,
-//        YELLOW_CONCRETE,
-//        LIME_CONCRETE,
-//        PINK_CONCRETE,
-//        GRAY_CONCRETE,
-//        LIGHT_GRAY_CONCRETE,
-//        CYAN_CONCRETE,
-//        PURPLE_CONCRETE,
-//        BLUE_CONCRETE,
-//        BROWN_CONCRETE,
-//        GREEN_CONCRETE,
-//        RED_CONCRETE,
-//        BLACK_CONCRETE,
-//
-//        WHITE_STAINED_GLASS,
-//        ORANGE_STAINED_GLASS,
-//        MAGENTA_STAINED_GLASS,
-//        LIGHT_BLUE_STAINED_GLASS,
-//        YELLOW_STAINED_GLASS,
-//        LIME_STAINED_GLASS,
-//        PINK_STAINED_GLASS,
-//        GRAY_STAINED_GLASS,
-//        LIGHT_GRAY_STAINED_GLASS,
-//        CYAN_STAINED_GLASS,
-//        PURPLE_STAINED_GLASS,
-//        BLUE_STAINED_GLASS,
-//        BROWN_STAINED_GLASS,
-//        GREEN_STAINED_GLASS,
-//        RED_STAINED_GLASS,
-//        BLACK_STAINED_GLASS,
-//
-//        ACACIA,
-//        ACACIA_LEAVES,
-//        ACACIA_LOG,
-//        AZALEA_LEAVES,
-//        BIRCH,
-//        BIRCH_LEAVES,
-//        BIRCH_LOG,
-//        CRIMSON,
-//        CRIMSON_STEM,
-//        DARK_OAK,
-//        DARK_OAK_LEAVES,
-//        DARK_OAK_LOG,
-//        FLOWERING_AZALEA_LEAVES,
-//        JUNGLE,
-//        JUNGLE_LEAVES,
-//        JUNGLE_LOG,
-//        MANGROVE,
-//        MANGROVE_LEAVES,
-//        MANGROVE_LOG,
-//        OAK,
-//        OAK_LEAVES,
-//        OAK_LOG,
-//        SPRUCE,
-//        SPRUCE_LEAVES,
-//        SPRUCE_LOG,
-//        WARPED,
-//        WARPED_STEM,
-//
-//        BAMBOO,
-//        BEETROOT,
-//        BLAZE_POWDER,
-//        CARROT,
-//        CHORUS_FRUIT,
-//        ENDER_PEARL,
-//        POTATO,
-//        STICK,
-//        SUGAR,
-//        SUGAR_CANE,
-//        WHITE_DYE,
-//        ORANGE_DYE,
-//        MAGENTA_DYE,
-//        LIGHT_BLUE_DYE,
-//        YELLOW_DYE,
-//        LIME_DYE,
-//        PINK_DYE,
-//        GRAY_DYE,
-//        LIGHT_GRAY_DYE,
-//        CYAN_DYE,
-//        PURPLE_DYE,
-//        BLUE_DYE,
-//        BROWN_DYE,
-//        GREEN_DYE,
-//        RED_DYE,
-//        BLACK_DYE
-//    );
-//}
