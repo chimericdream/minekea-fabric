@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.containers.crates;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
+import com.chimericdream.minekea.screen.crate.DoubleCrateScreenHandler;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.mojang.serialization.MapCodec;
@@ -16,9 +17,11 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.DoubleBlockProperties;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.enums.ChestType;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.Model;
@@ -30,6 +33,9 @@ import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.DoubleInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -44,8 +50,10 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Identifier;
@@ -78,9 +86,11 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
 
     public static final Integer ROW_COUNT = 6;
 
+    public static final DirectionProperty FACING;
     public static final EnumProperty<Axis> AXIS;
     public static final BooleanProperty OPEN;
 
+    public static final EnumProperty<ChestType> CRATE_TYPE;
     public static final BooleanProperty CONNECTED_NORTH;
     public static final BooleanProperty CONNECTED_SOUTH;
     public static final BooleanProperty CONNECTED_EAST;
@@ -94,14 +104,56 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     protected final Block braceMaterial;
     protected final boolean isFlammable;
 
+    private static final DoubleBlockProperties.PropertyRetriever<CrateBlockEntity, Optional<Inventory>> INVENTORY_RETRIEVER;
+    private static final DoubleBlockProperties.PropertyRetriever<CrateBlockEntity, Optional<NamedScreenHandlerFactory>> SCREEN_RETRIEVER;
+
     static {
+        FACING = Properties.FACING;
         AXIS = Properties.AXIS;
         OPEN = Properties.OPEN;
 
+        CRATE_TYPE = Properties.CHEST_TYPE;
         CONNECTED_NORTH = BooleanProperty.of("connected_north");
         CONNECTED_SOUTH = BooleanProperty.of("connected_south");
         CONNECTED_EAST = BooleanProperty.of("connected_east");
         CONNECTED_WEST = BooleanProperty.of("connected_west");
+
+        INVENTORY_RETRIEVER = new DoubleBlockProperties.PropertyRetriever<>() {
+            public Optional<Inventory> getFromBoth(CrateBlockEntity crate1, CrateBlockEntity crate2) {
+                return Optional.of(new DoubleInventory(crate1, crate2));
+            }
+
+            public Optional<Inventory> getFrom(CrateBlockEntity chestBlockEntity) {
+                return Optional.of(chestBlockEntity);
+            }
+
+            public Optional<Inventory> getFallback() {
+                return Optional.empty();
+            }
+        };
+        SCREEN_RETRIEVER = new DoubleBlockProperties.PropertyRetriever<>() {
+            public Optional<NamedScreenHandlerFactory> getFromBoth(final CrateBlockEntity crate1, final CrateBlockEntity crate2) {
+                final Inventory inventory = new DoubleInventory(crate1, crate2);
+
+                return Optional.of(new NamedScreenHandlerFactory() {
+                    public ScreenHandler createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+                        return new DoubleCrateScreenHandler(Crates.DOUBLE_CRATE_SCREEN_HANDLER, i, playerInventory, inventory);
+                    }
+
+                    public Text getDisplayName() {
+                        return Text.translatable(DoubleCrateScreenHandler.SCREEN_ID.toString());
+                    }
+                });
+            }
+
+            public Optional<NamedScreenHandlerFactory> getFrom(CrateBlockEntity crate) {
+                return Optional.of(crate);
+            }
+
+            public Optional<NamedScreenHandlerFactory> getFallback() {
+                return Optional.empty();
+            }
+        };
     }
 
     public GenericCrate(AbstractBlock.Settings settings) {
@@ -124,6 +176,8 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
             this.stateManager
                 .getDefaultState()
                 .with(AXIS, Axis.Y)
+                .with(FACING, Direction.NORTH)
+                .with(CRATE_TYPE, ChestType.SINGLE)
                 .with(CONNECTED_NORTH, false)
                 .with(CONNECTED_SOUTH, false)
                 .with(CONNECTED_EAST, false)
@@ -177,7 +231,7 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(AXIS, OPEN, CONNECTED_NORTH, CONNECTED_SOUTH, CONNECTED_EAST, CONNECTED_WEST);
+        builder.add(FACING, AXIS, OPEN, CRATE_TYPE, CONNECTED_NORTH, CONNECTED_SOUTH, CONNECTED_EAST, CONNECTED_WEST);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -190,35 +244,39 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
             BooleanProperty prop = getConnectionProperty(side);
 
             if (neighbor != null) {
-                return this.getDefaultState().with(AXIS, Axis.Y).with(prop, true);
+                return this.getDefaultState().with(AXIS, Axis.Y).with(FACING, Direction.UP).with(prop, true).with(CRATE_TYPE, getDoubleCrateType(side));
             }
         }
 
         // if the player is sneaking, or if this crate is not being placed vertically, skip checking for double crate stuff
         if (ctx.shouldCancelInteraction() || ctx.getSide().getAxis().isHorizontal()) {
-            return placementState;
+            if (ctx.getSide().getAxis().equals(Axis.X)) {
+                return placementState.with(FACING, Direction.EAST);
+            }
+
+            return placementState.with(FACING, Direction.SOUTH);
         }
 
         BlockState neighbor;
 
         neighbor = getAvailableNeighboringCrate(ctx, Direction.NORTH);
         if (neighbor != null) {
-            return placementState.with(CONNECTED_NORTH, true);
+            return placementState.with(CONNECTED_NORTH, true).with(FACING, Direction.UP).with(CRATE_TYPE, ChestType.RIGHT);
         }
 
         neighbor = getAvailableNeighboringCrate(ctx, Direction.EAST);
         if (neighbor != null) {
-            return placementState.with(CONNECTED_EAST, true);
+            return placementState.with(CONNECTED_EAST, true).with(FACING, Direction.UP).with(CRATE_TYPE, ChestType.LEFT);
         }
 
         neighbor = getAvailableNeighboringCrate(ctx, Direction.SOUTH);
         if (neighbor != null) {
-            return placementState.with(CONNECTED_SOUTH, true);
+            return placementState.with(CONNECTED_SOUTH, true).with(FACING, Direction.UP).with(CRATE_TYPE, ChestType.LEFT);
         }
 
         neighbor = getAvailableNeighboringCrate(ctx, Direction.WEST);
         if (neighbor != null) {
-            return placementState.with(CONNECTED_WEST, true);
+            return placementState.with(CONNECTED_WEST, true).with(FACING, Direction.UP).with(CRATE_TYPE, ChestType.RIGHT);
         }
 
         return placementState;
@@ -232,6 +290,15 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
             case SOUTH -> CONNECTED_SOUTH;
             case EAST -> CONNECTED_EAST;
             case WEST -> CONNECTED_WEST;
+        };
+    }
+
+    @Nullable
+    private ChestType getDoubleCrateType(Direction dir) {
+        return switch (dir) {
+            case DOWN, UP -> null;
+            case NORTH, WEST -> ChestType.RIGHT;
+            case SOUTH, EAST -> ChestType.LEFT;
         };
     }
 
@@ -258,7 +325,7 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
 
         BooleanProperty prop = getReverseConnectionProperty(direction);
         if (neighborState.get(prop)) {
-            return state.with(getConnectionProperty(direction), true);
+            return state.with(getConnectionProperty(direction), true).with(FACING, Direction.UP);
         }
 
         return state;
@@ -290,7 +357,7 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
             return ActionResult.SUCCESS;
         }
 
-        NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
+        NamedScreenHandlerFactory screenHandlerFactory = this.createScreenHandlerFactory(state, world, pos);
 
         if (screenHandlerFactory != null) {
             player.openHandledScreen(screenHandlerFactory);
@@ -298,6 +365,56 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         }
 
         return ActionResult.FAIL;
+    }
+
+    public static Direction getFacing(BlockState state) {
+        if (state.get(CONNECTED_NORTH)) {
+            return Direction.NORTH;
+        }
+
+        if (state.get(CONNECTED_SOUTH)) {
+            return Direction.SOUTH;
+        }
+
+        if (state.get(CONNECTED_EAST)) {
+            return Direction.EAST;
+        }
+
+        if (state.get(CONNECTED_WEST)) {
+            return Direction.WEST;
+        }
+
+        return state.get(FACING);
+    }
+
+    public static DoubleBlockProperties.Type getDoubleBlockType(BlockState state) {
+        if (!isConnectedCrate(state)) {
+            return DoubleBlockProperties.Type.SINGLE;
+        }
+
+        if (state.get(CONNECTED_NORTH) || state.get(CONNECTED_EAST)) {
+            return DoubleBlockProperties.Type.FIRST;
+        }
+
+        return DoubleBlockProperties.Type.SECOND;
+    }
+
+    public DoubleBlockProperties.PropertySource<CrateBlockEntity> getBlockEntitySource(BlockState state, World world, BlockPos pos) {
+        return DoubleBlockProperties.toPropertySource(
+            Crates.CRATE_BLOCK_ENTITY,
+            GenericCrate::getDoubleBlockType,
+            GenericCrate::getFacing,
+            FACING,
+            state,
+            world,
+            pos,
+            (worldx, posx) -> false
+        );
+    }
+
+    @Nullable
+    protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
+        return (NamedScreenHandlerFactory) ((Optional) this.getBlockEntitySource(state, world, pos).apply(SCREEN_RETRIEVER)).orElse((Object) null);
     }
 
     @Override
@@ -430,61 +547,4 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
                     )
             );
     }
-
-//    public void setupResources() {
-//        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
-//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
-//        MinekeaTags.CRATES.add(getBlockID(), settings.isWooden());
-//
-//        Identifier log = settings.getMaterial("log");
-//        Identifier planks = settings.getMaterial("planks");
-//
-//        Identifier plankTexture = settings.getBlockTexture("planks");
-//        Identifier strippedLogTexture = settings.getBlockTexture("stripped_log");
-//
-//        Identifier MODEL_ID = Model.getBlockModelID(getBlockID());
-//        Identifier HORIZONTAL_MODEL_ID = Identifier.of(MODEL_ID + "_horizontal");
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
-//
-//        JTextures textures = new JTextures()
-//            .var("brace", strippedLogTexture.toString())
-//            .var("planks", plankTexture.toString());
-//
-//        JModel mainModel = JModel.model("minekea:block/containers/crate").textures(textures);
-//        JModel horizontalModel = JModel.model("minekea:block/containers/crate_horizontal").textures(textures);
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(mainModel, MODEL_ID);
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(horizontalModel, HORIZONTAL_MODEL_ID);
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(
-//                JState.variant()
-//                    .put("axis=x", new JBlockModel(HORIZONTAL_MODEL_ID).x(90).y(90))
-//                    .put("axis=y", new JBlockModel(MODEL_ID))
-//                    .put("axis=z", new JBlockModel(HORIZONTAL_MODEL_ID).x(90))
-//            ),
-//            getBlockID()
-//        );
-//    }
-//
-//    public static class CrateSettings extends MinekeaBlockSettings<CrateSettings> {
-//        public CrateSettings(DefaultSettings settings) {
-//            super((DefaultSettings) settings.nonOpaque());
-//        }
-//
-//        public String getNamePattern() {
-//            return Objects.requireNonNullElse(namePatternOverride, "%s Crate");
-//        }
-//
-//        @Override
-//        public Identifier getBlockId() {
-//            if (blockId == null) {
-//                blockId = Identifier.of(ModInfo.MOD_ID, String.format("%scontainers/crates/%s", ModInfo.getModPrefix(modId), mainMaterial));
-//            }
-//
-//            return blockId;
-//        }
-//    }
 }

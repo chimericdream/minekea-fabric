@@ -10,17 +10,17 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
-public class SimpleInventoryScreenHandler extends ScreenHandler {
+public class DoubleWideInventoryScreenHandler extends ScreenHandler {
     private final Inventory inventory;
 
-    public SimpleInventoryScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, int rowCount) {
-        this(type, syncId, playerInventory, new SimpleInventory(ScreenHelpers.getInventorySize(rowCount)), rowCount);
+    public DoubleWideInventoryScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, int rowCount) {
+        this(type, syncId, playerInventory, new SimpleInventory(ScreenHelpers.getDoubleWideInventorySize(rowCount)), rowCount);
     }
 
-    public SimpleInventoryScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, Inventory inventory, int rowCount) {
+    public DoubleWideInventoryScreenHandler(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, Inventory inventory, int rowCount) {
         super(type, syncId);
 
-        checkSize(inventory, ScreenHelpers.getInventorySize(rowCount));
+        checkSize(inventory, ScreenHelpers.getDoubleWideInventorySize(rowCount));
 
         this.inventory = inventory;
 
@@ -28,10 +28,10 @@ public class SimpleInventoryScreenHandler extends ScreenHandler {
 
         int i = (rowCount - 4) * 18, j, k;
         for (j = 0; j < rowCount; ++j) {
-            for (k = 0; k < 9; ++k) {
+            for (k = 0; k < 18; ++k) {
                 this.addSlot(new Slot(
                     inventory,
-                    k + j * 9,
+                    k + j * 18,
                     8 + k * ScreenHelpers.ROW_HEIGHT,
                     ScreenHelpers.ROW_HEIGHT + j * ScreenHelpers.ROW_HEIGHT
                 ));
@@ -43,7 +43,7 @@ public class SimpleInventoryScreenHandler extends ScreenHandler {
                 this.addSlot(new Slot(
                     playerInventory,
                     k + j * 9 + 9,
-                    8 + k * ScreenHelpers.ROW_HEIGHT,
+                    89 + k * ScreenHelpers.ROW_HEIGHT,
                     104 + j * ScreenHelpers.ROW_HEIGHT + i
                 ));
             }
@@ -53,7 +53,7 @@ public class SimpleInventoryScreenHandler extends ScreenHandler {
             this.addSlot(new Slot(
                 playerInventory,
                 j,
-                8 + j * ScreenHelpers.ROW_HEIGHT,
+                89 + j * ScreenHelpers.ROW_HEIGHT,
                 162 + i
             ));
         }

@@ -3,6 +3,8 @@ package com.chimericdream.minekea.block.containers.crates;
 import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
 import com.chimericdream.minekea.screen.crate.CrateScreen;
 import com.chimericdream.minekea.screen.crate.CrateScreenHandler;
+import com.chimericdream.minekea.screen.crate.DoubleCrateScreen;
+import com.chimericdream.minekea.screen.crate.DoubleCrateScreenHandler;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -35,6 +37,7 @@ public class Crates implements MinekeaBlockCategory {
 
     public static BlockEntityType<CrateBlockEntity> CRATE_BLOCK_ENTITY;
     public static ScreenHandlerType<CrateScreenHandler> CRATE_SCREEN_HANDLER;
+    public static ScreenHandlerType<DoubleCrateScreenHandler> DOUBLE_CRATE_SCREEN_HANDLER;
 
     static {
         CRATES.add(new GenericCrate("acacia", "Acacia", Blocks.ACACIA_PLANKS, ItemTags.ACACIA_LOGS, Blocks.STRIPPED_ACACIA_LOG, true));
@@ -53,12 +56,19 @@ public class Crates implements MinekeaBlockCategory {
             CrateScreenHandler.SCREEN_ID,
             new ScreenHandlerType<>(CrateScreenHandler::new, FeatureSet.empty())
         );
+
+        DOUBLE_CRATE_SCREEN_HANDLER = Registry.register(
+            Registries.SCREEN_HANDLER,
+            DoubleCrateScreenHandler.SCREEN_ID,
+            new ScreenHandlerType<>(DoubleCrateScreenHandler::new, FeatureSet.empty())
+        );
     }
 
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
         HandledScreens.register(CRATE_SCREEN_HANDLER, CrateScreen::new);
+        HandledScreens.register(DOUBLE_CRATE_SCREEN_HANDLER, DoubleCrateScreen::new);
     }
 
     @Override
@@ -104,6 +114,7 @@ public class Crates implements MinekeaBlockCategory {
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         CRATES.forEach(crate -> crate.configureTranslations(registryLookup, translationBuilder));
         translationBuilder.add("minekea:screens/container/crate", "Crate");
+        translationBuilder.add("minekea:screens/container/double_crate", "Large Crate");
     }
 
     @Override

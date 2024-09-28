@@ -7,6 +7,10 @@ public class ScreenHelpers {
         return rowCount * 9;
     }
 
+    public static int getDoubleWideInventorySize(int rowCount) {
+        return rowCount * 18;
+    }
+
     public static int getPlayerInventoryOffset(int rowCount) {
         return 67 + ((rowCount - 1) * ROW_HEIGHT);
     }

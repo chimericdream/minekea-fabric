@@ -2257,5 +2257,6 @@
   "item_group.minekea.blocks.building.covers": "Minekea: Covers",
   "item_group.minekea.blocks.building.dyed": "Minekea: Dyed Blocks",
   "item_group.minekea.blocks.furniture": "Minekea: Furniture",
-  "minekea:screens/container/crate": "Crate"
+  "minekea:screens/container/crate": "Crate",
+  "minekea:screens/container/double_crate": "Large Crate"
 }
