@@ -2,7 +2,9 @@ package com.chimericdream.minekea.block.containers.barrels;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
+import com.chimericdream.minekea.entities.blocks.containers.MinekeaBarrelBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -10,9 +12,12 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BarrelBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.Models;
@@ -24,25 +29,49 @@ import net.minecraft.data.client.When;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.entity.mob.PiglinBrain;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.stat.Stats;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
+public class GenericBarrel extends BlockWithEntity implements MinekeaBlock {
+    public static final MapCodec<GenericBarrel> CODEC = createCodec(GenericBarrel::new);
+
     public final Identifier BLOCK_ID;
+
+    public static final DirectionProperty FACING;
+    public static final BooleanProperty OPEN;
 
     protected final String materialName;
     protected final String sideTextureKey;
@@ -50,6 +79,20 @@ public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
     protected final Block plankIngredient;
     protected final Block slabIngredient;
     protected final boolean isFlammable;
+
+    static {
+        FACING = Properties.FACING;
+        OPEN = Properties.OPEN;
+    }
+
+    public GenericBarrel(Settings settings) {
+        this("Acacia", "acacia_planks", "stripped_acacia_log", Blocks.ACACIA_PLANKS, Blocks.ACACIA_SLAB);
+    }
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return CODEC;
+    }
 
     public GenericBarrel(
         String materialName,
@@ -86,12 +129,76 @@ public class GenericBarrel extends BarrelBlock implements MinekeaBlock {
         this.plankIngredient = plankIngredient;
         this.slabIngredient = slabIngredient;
         this.isFlammable = isFlammable;
+
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(OPEN, false));
     }
 
     public static Identifier makeBlockId(String materialName) {
         String material = materialName.toLowerCase().replaceAll(" ", "_");
 
         return Identifier.of(ModInfo.MOD_ID, String.format("containers/barrels/%s", material));
+    }
+
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        } else {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof MinekeaBarrelBlockEntity) {
+                player.openHandledScreen((MinekeaBarrelBlockEntity) blockEntity);
+                player.incrementStat(Stats.OPEN_BARREL);
+                PiglinBrain.onGuardedBlockInteracted(player, true);
+            }
+
+            return ActionResult.CONSUME;
+        }
+    }
+
+    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        ItemScatterer.onStateReplaced(state, newState, world, pos);
+        super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
+    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof MinekeaBarrelBlockEntity) {
+            ((MinekeaBarrelBlockEntity) blockEntity).tick();
+        }
+
+    }
+
+    @Override
+    @Nullable
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new MinekeaBarrelBlockEntity(pos, state);
+    }
+
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    protected boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
+    }
+
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING, OPEN);
+    }
+
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite());
     }
 
     @Override

@@ -35,7 +35,7 @@ public class MinekeaPointOfInterestTypes {
         // NOTE: PointOfInterestType.blockStates is accessible by access widener
         List<BlockState> fishermanBlockStates = new ArrayList<BlockState>(fishermanPoiType.blockStates);
 
-        for (Block block : Barrels.ALL_BARRELS) {
+        for (Block block : Barrels.BARRELS) {
             ImmutableList<BlockState> blockStates = block.getStateManager().getStates();
 
             for (BlockState blockState : blockStates) {
