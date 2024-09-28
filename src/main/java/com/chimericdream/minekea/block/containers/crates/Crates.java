@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -20,6 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.screen.ScreenHandlerType;
@@ -29,46 +31,22 @@ import java.util.List;
 import java.util.function.Function;
 
 public class Crates implements MinekeaBlockCategory {
-    public static final GenericCrate ACACIA_CRATE;
-    public static final GenericCrate BIRCH_CRATE;
-    public static final GenericCrate CHERRY_CRATE;
-    public static final GenericCrate CRIMSON_CRATE;
-    public static final GenericCrate DARK_OAK_CRATE;
-    public static final GenericCrate JUNGLE_CRATE;
-    public static final GenericCrate MANGROVE_CRATE;
-    public static final GenericCrate OAK_CRATE;
-    public static final GenericCrate SPRUCE_CRATE;
-    public static final GenericCrate WARPED_CRATE;
-
     public static final List<GenericCrate> CRATES = new ArrayList<>();
 
     public static BlockEntityType<CrateBlockEntity> CRATE_BLOCK_ENTITY;
     public static ScreenHandlerType<CrateScreenHandler> CRATE_SCREEN_HANDLER;
 
     static {
-        ACACIA_CRATE = new AcaciaCrate();
-        BIRCH_CRATE = new BirchCrate();
-        CHERRY_CRATE = new CherryCrate();
-        CRIMSON_CRATE = new CrimsonCrate();
-        DARK_OAK_CRATE = new DarkOakCrate();
-        JUNGLE_CRATE = new JungleCrate();
-        MANGROVE_CRATE = new MangroveCrate();
-        OAK_CRATE = new OakCrate();
-        SPRUCE_CRATE = new SpruceCrate();
-        WARPED_CRATE = new WarpedCrate();
-
-        CRATES.addAll(List.of(
-            ACACIA_CRATE,
-            BIRCH_CRATE,
-            CHERRY_CRATE,
-            CRIMSON_CRATE,
-            DARK_OAK_CRATE,
-            JUNGLE_CRATE,
-            MANGROVE_CRATE,
-            OAK_CRATE,
-            SPRUCE_CRATE,
-            WARPED_CRATE
-        ));
+        CRATES.add(new GenericCrate("acacia", "Acacia", Blocks.ACACIA_PLANKS, ItemTags.ACACIA_LOGS, Blocks.STRIPPED_ACACIA_LOG, true));
+        CRATES.add(new GenericCrate("birch", "Birch", Blocks.BIRCH_PLANKS, ItemTags.BIRCH_LOGS, Blocks.STRIPPED_BIRCH_LOG, true));
+        CRATES.add(new GenericCrate("cherry", "Cherry", Blocks.CHERRY_PLANKS, ItemTags.CHERRY_LOGS, Blocks.STRIPPED_CHERRY_LOG, true));
+        CRATES.add(new GenericCrate("crimson", "Crimson", Blocks.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, Blocks.STRIPPED_CRIMSON_STEM, true));
+        CRATES.add(new GenericCrate("dark_oak", "Dark Oak", Blocks.DARK_OAK_PLANKS, ItemTags.DARK_OAK_LOGS, Blocks.STRIPPED_DARK_OAK_LOG, true));
+        CRATES.add(new GenericCrate("jungle", "Jungle", Blocks.JUNGLE_PLANKS, ItemTags.JUNGLE_LOGS, Blocks.STRIPPED_JUNGLE_LOG, true));
+        CRATES.add(new GenericCrate("mangrove", "Mangrove", Blocks.MANGROVE_PLANKS, ItemTags.MANGROVE_LOGS, Blocks.STRIPPED_MANGROVE_LOG, true));
+        CRATES.add(new GenericCrate("oak", "Oak", Blocks.OAK_PLANKS, ItemTags.OAK_LOGS, Blocks.STRIPPED_OAK_LOG, true));
+        CRATES.add(new GenericCrate("spruce", "Spruce", Blocks.SPRUCE_PLANKS, ItemTags.SPRUCE_LOGS, Blocks.STRIPPED_SPRUCE_LOG, true));
+        CRATES.add(new GenericCrate("warped", "Warped", Blocks.WARPED_PLANKS, ItemTags.WARPED_STEMS, Blocks.STRIPPED_WARPED_STEM, true));
 
         CRATE_SCREEN_HANDLER = Registry.register(
             Registries.SCREEN_HANDLER,

@@ -1,21 +1,31 @@
 package com.chimericdream.minekea.block.containers.crates;
 
+import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.Model;
+import net.minecraft.data.client.MultipartBlockStateSupplier;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.client.VariantSettings;
+import net.minecraft.data.client.When;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -28,6 +38,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
@@ -36,6 +47,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
@@ -74,7 +86,13 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     public static final BooleanProperty CONNECTED_EAST;
     public static final BooleanProperty CONNECTED_WEST;
 
-    public Identifier BLOCK_ID = null;
+    protected final Identifier BLOCK_ID;
+    protected final String material;
+    protected final String materialName;
+    protected final Block ingredient1;
+    protected final TagKey<Item> ingredient2;
+    protected final Block braceMaterial;
+    protected final boolean isFlammable;
 
     static {
         AXIS = Properties.AXIS;
@@ -86,8 +104,21 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         CONNECTED_WEST = BooleanProperty.of("connected_west");
     }
 
-    protected GenericCrate(Settings settings) {
-        super(settings);
+    public GenericCrate(AbstractBlock.Settings settings) {
+        this("Oak", "oak", Blocks.OAK_PLANKS, ItemTags.OAK_LOGS, Blocks.STRIPPED_OAK_LOG, true);
+    }
+
+    public GenericCrate(String material, String materialName, Block ingredient1, TagKey<Item> ingredient2, Block braceMaterial, boolean isFlammable) {
+        super(AbstractBlock.Settings.copy(Blocks.BARREL));
+
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/crates/%s", material));
+
+        this.material = material;
+        this.materialName = materialName;
+        this.ingredient1 = ingredient1;
+        this.ingredient2 = ingredient2;
+        this.braceMaterial = braceMaterial;
+        this.isFlammable = isFlammable;
 
         this.setDefaultState(
             this.stateManager
@@ -113,10 +144,6 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public void register() {
-        register(false);
-    }
-
-    public void register(boolean isFlammable) {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
@@ -134,36 +161,20 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         return validateTicker(type, Crates.CRATE_BLOCK_ENTITY, CrateBlockEntity::tick);
     }
 
-//    public BlockState rotate(BlockState state, BlockRotation rotation) {
-//        if (isConnectedCrate(state)) {
-//            return state;
-//        }
-//
-//        return (BlockState) state.with(FACING, rotation.rotate((Direction) state.get(FACING)));
-//    }
-//
-//    public BlockState mirror(BlockState state, BlockMirror mirror) {
-//        if (!state.get(CRATE_TYPE).equals(ChestType.SINGLE)) {
-//            return state;
-//        }
-//
-//        return state.rotate(mirror.getRotation((Direction) state.get(FACING)));
-//    }
-//
-//    public static BlockState changeRotation(BlockState state, BlockRotation rotation) {
-//        if (!state.get(CRATE_TYPE).equals(ChestType.SINGLE)) {
-//            return state;
-//        }
-//
-//        return switch (rotation) {
-//            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch ((Axis) state.get(AXIS)) {
-//                case X -> (BlockState) state.with(AXIS, Axis.Z);
-//                case Z -> (BlockState) state.with(AXIS, Axis.X);
-//                default -> state;
-//            };
-//            default -> state;
-//        };
-//    }
+    public static BlockState changeRotation(BlockState state, BlockRotation rotation) {
+        if (isConnectedCrate(state)) {
+            return state;
+        }
+
+        return switch (rotation) {
+            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch ((Axis) state.get(AXIS)) {
+                case X -> (BlockState) state.with(AXIS, Axis.Z);
+                case Z -> (BlockState) state.with(AXIS, Axis.X);
+                default -> state;
+            };
+            default -> state;
+        };
+    }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(AXIS, OPEN, CONNECTED_NORTH, CONNECTED_SOUTH, CONNECTED_EAST, CONNECTED_WEST);
@@ -171,6 +182,17 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState placementState = this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
+
+        // if the player is sneaking, and they are targeting another block of this type, and that block is not already connected elsewhere
+        if (ctx.getPlayer() != null && ctx.getPlayer().isSneaking() && ctx.getSide().getAxis().isHorizontal()) {
+            Direction side = ctx.getSide().getOpposite();
+            BlockState neighbor = getAvailableNeighboringCrate(ctx, side);
+            BooleanProperty prop = getConnectionProperty(side);
+
+            if (neighbor != null) {
+                return this.getDefaultState().with(AXIS, Axis.Y).with(prop, true);
+            }
+        }
 
         // if the player is sneaking, or if this crate is not being placed vertically, skip checking for double crate stuff
         if (ctx.shouldCancelInteraction() || ctx.getSide().getAxis().isHorizontal()) {
@@ -305,30 +327,108 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         generator.addDrop(this);
     }
 
-    protected void registerRecipe(RecipeExporter exporter, Item planks, TagKey<Item> log) {
+    @Override
+    public void configureRecipes(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, this, 1)
             .pattern("#X#")
             .pattern("XXX")
             .pattern("#X#")
-            .input('X', planks)
-            .input('#', log)
-            .criterion(FabricRecipeProvider.hasItem(planks),
-                FabricRecipeProvider.conditionsFromItem(planks))
+            .input('X', ingredient1)
+            .input('#', ingredient2)
+            .criterion(FabricRecipeProvider.hasItem(ingredient1),
+                FabricRecipeProvider.conditionsFromItem(ingredient1))
+            .criterion("has_log",
+                FabricRecipeProvider.conditionsFromTag(ingredient2))
             .offerTo(exporter);
     }
 
-    protected void registerRecipe(RecipeExporter exporter, Item planks, Item log) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, this, 1)
-            .pattern("#X#")
-            .pattern("XXX")
-            .pattern("#X#")
-            .input('X', planks)
-            .input('#', log)
-            .criterion(FabricRecipeProvider.hasItem(planks),
-                FabricRecipeProvider.conditionsFromItem(planks))
-            .criterion(FabricRecipeProvider.hasItem(log),
-                FabricRecipeProvider.conditionsFromItem(log))
-            .offerTo(exporter);
+    @Override
+    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+        translationBuilder.add(this, String.format("%s Crate", materialName));
+    }
+
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        TextureMap textures = new TextureMap()
+            .put(MinekeaTextures.BRACE, Registries.BLOCK.getId(braceMaterial).withPrefixedPath("block/"))
+            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(ingredient1).withPrefixedPath("block/"));
+
+        Identifier subModelId = blockStateModelGenerator.createSubModel(this, "", CRATE_MODEL, unused -> textures);
+        Identifier halfModelId = blockStateModelGenerator.createSubModel(this, "_double_half", HALF_DOUBLE_CRATE_MODEL, unused -> textures);
+
+        blockStateModelGenerator.blockStateCollector
+            .accept(
+                MultipartBlockStateSupplier.create(this)
+                    .with(
+                        When.create()
+                            .set(AXIS, Direction.Axis.X),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.X, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(AXIS, Direction.Axis.Z),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.X, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(CONNECTED_NORTH, false)
+                            .set(CONNECTED_SOUTH, false)
+                            .set(CONNECTED_EAST, false)
+                            .set(CONNECTED_WEST, false)
+                            .set(AXIS, Direction.Axis.Y),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, subModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(CONNECTED_NORTH, false)
+                            .set(CONNECTED_SOUTH, false)
+                            .set(CONNECTED_EAST, false)
+                            .set(CONNECTED_WEST, true)
+                            .set(AXIS, Direction.Axis.Y),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.MODEL, halfModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(CONNECTED_NORTH, true)
+                            .set(CONNECTED_SOUTH, false)
+                            .set(CONNECTED_EAST, false)
+                            .set(CONNECTED_WEST, false)
+                            .set(AXIS, Direction.Axis.Y),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, halfModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(CONNECTED_NORTH, false)
+                            .set(CONNECTED_SOUTH, false)
+                            .set(CONNECTED_EAST, true)
+                            .set(CONNECTED_WEST, false)
+                            .set(AXIS, Direction.Axis.Y),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                            .put(VariantSettings.MODEL, halfModelId)
+                    )
+                    .with(
+                        When.create()
+                            .set(CONNECTED_NORTH, false)
+                            .set(CONNECTED_SOUTH, true)
+                            .set(CONNECTED_EAST, false)
+                            .set(CONNECTED_WEST, false)
+                            .set(AXIS, Direction.Axis.Y),
+                        BlockStateVariant.create()
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                            .put(VariantSettings.MODEL, halfModelId)
+                    )
+            );
     }
 
 //    public void setupResources() {

@@ -12,19 +12,74 @@
     },
     {
       "apply": {
-        "model": "minekea:block/containers/crates/crimson"
-      },
-      "when": {
-        "axis": "y"
-      }
-    },
-    {
-      "apply": {
         "model": "minekea:block/containers/crates/crimson",
         "x": 90
       },
       "when": {
         "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/crimson"
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "false",
+        "connected_north": "false",
+        "connected_south": "false",
+        "connected_west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/crimson_double_half"
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "false",
+        "connected_north": "false",
+        "connected_south": "false",
+        "connected_west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/crimson_double_half",
+        "y": 90
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "false",
+        "connected_north": "true",
+        "connected_south": "false",
+        "connected_west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/crimson_double_half",
+        "y": 180
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "true",
+        "connected_north": "false",
+        "connected_south": "false",
+        "connected_west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/crimson_double_half",
+        "y": 270
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "false",
+        "connected_north": "false",
+        "connected_south": "true",
+        "connected_west": "false"
       }
     }
   ]

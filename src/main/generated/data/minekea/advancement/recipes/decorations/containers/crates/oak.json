@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:oak_logs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_oak_planks": {
       "conditions": {
         "items": [
@@ -21,7 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_oak_planks"
+      "has_oak_planks",
+      "has_log"
     ]
   ],
   "rewards": {

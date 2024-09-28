@@ -11,6 +11,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:jungle_logs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "minekea:containers/crates/jungle"
@@ -21,7 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_jungle_planks"
+      "has_jungle_planks",
+      "has_log"
     ]
   ],
   "rewards": {

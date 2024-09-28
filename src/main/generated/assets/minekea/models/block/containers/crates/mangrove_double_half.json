@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/containers/double_crate_half",
+  "textures": {
+    "brace": "minecraft:block/stripped_mangrove_log",
+    "material": "minecraft:block/mangrove_planks"
+  }
+}

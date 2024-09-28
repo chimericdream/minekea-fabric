@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/containers/double_crate_half",
+  "textures": {
+    "brace": "minecraft:block/stripped_warped_stem",
+    "material": "minecraft:block/warped_planks"
+  }
+}

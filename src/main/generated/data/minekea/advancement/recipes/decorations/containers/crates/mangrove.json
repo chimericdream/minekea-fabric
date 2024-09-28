@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:mangrove_logs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_mangrove_planks": {
       "conditions": {
         "items": [
@@ -21,7 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_mangrove_planks"
+      "has_mangrove_planks",
+      "has_log"
     ]
   ],
   "rewards": {
