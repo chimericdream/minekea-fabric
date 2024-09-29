@@ -109,7 +109,7 @@ public class MinekeaItemGroups {
 //        }
 //
 //        if (config.enableDisplayCases) {
-        return new ItemStack(DisplayCases.ACACIA_DISPLAY_CASE);
+        return new ItemStack(DisplayCases.DISPLAY_CASES.getFirst());
 //        }
 //
 //        if (config.enableBookshelves) {
