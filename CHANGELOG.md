@@ -1,3 +1,26 @@
+### 1.21.x - 6.0.0
+
+#### BREAKING CHANGES
+
+This release fixes a crash on 1.21.1 related to Minekea's variant barrels. _Before upgrading_,
+make sure to break any existing variant barrels that have been placed in your world. Any items
+left in a Minekea barrel will be lost upon upgrade!
+
+#### New Features
+
+* Bamboo furniture
+  * Added bamboo variants for all furniture and other wood type items
+* Double crates
+  * Crates can now merge along a horizontal axis to form double crates, similar to the behavior for chests
+* Trapped crates and double crates
+  * Added trapped variants of crates and double crates
+* Added new ancient lantern variant
+
+#### Changes
+
+* Beams now support wrenches from other mods. Specifically, anything in the `c:tools/wrenches` item tag will work
+
+
 ### 1.21.x - 5.2.0
 
 #### New Features
