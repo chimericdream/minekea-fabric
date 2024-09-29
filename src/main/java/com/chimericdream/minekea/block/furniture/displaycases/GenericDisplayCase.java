@@ -10,6 +10,7 @@ import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
@@ -61,6 +62,8 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
 import java.util.function.Function;
+
+import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock, Waterloggable {
     private static final Model DISPLAY_CASE_MODEL = new Model(
@@ -114,6 +117,10 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock,
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+
+        ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> {
+            itemGroup.add(this);
+        });
 
         if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);

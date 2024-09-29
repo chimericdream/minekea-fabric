@@ -10,7 +10,6 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -29,8 +28,6 @@ import net.minecraft.registry.tag.TagKey;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
-
-import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class DisplayCases implements MinekeaBlockCategory {
     public static final List<GenericDisplayCase> DISPLAY_CASES = new ArrayList<>();
@@ -74,10 +71,6 @@ public class DisplayCases implements MinekeaBlockCategory {
     @Override
     public void registerBlocks() {
         DISPLAY_CASES.forEach(MinekeaBlock::register);
-
-        ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> {
-            DISPLAY_CASES.forEach(itemGroup::add);
-        });
     }
 
     @Override
