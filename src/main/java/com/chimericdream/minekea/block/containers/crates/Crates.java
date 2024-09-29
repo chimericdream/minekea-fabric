@@ -41,6 +41,7 @@ public class Crates implements MinekeaBlockCategory {
 
     static {
         CRATES.add(new GenericCrate("acacia", "Acacia", Blocks.ACACIA_PLANKS, ItemTags.ACACIA_LOGS, Blocks.STRIPPED_ACACIA_LOG, true));
+        CRATES.add(new GenericCrate("bamboo", "Bamboo", Blocks.BAMBOO_PLANKS, ItemTags.BAMBOO_BLOCKS, Blocks.STRIPPED_BAMBOO_BLOCK, true));
         CRATES.add(new GenericCrate("birch", "Birch", Blocks.BIRCH_PLANKS, ItemTags.BIRCH_LOGS, Blocks.STRIPPED_BIRCH_LOG, true));
         CRATES.add(new GenericCrate("cherry", "Cherry", Blocks.CHERRY_PLANKS, ItemTags.CHERRY_LOGS, Blocks.STRIPPED_CHERRY_LOG, true));
         CRATES.add(new GenericCrate("crimson", "Crimson", Blocks.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, Blocks.STRIPPED_CRIMSON_STEM, true));
@@ -50,6 +51,12 @@ public class Crates implements MinekeaBlockCategory {
         CRATES.add(new GenericCrate("oak", "Oak", Blocks.OAK_PLANKS, ItemTags.OAK_LOGS, Blocks.STRIPPED_OAK_LOG, true));
         CRATES.add(new GenericCrate("spruce", "Spruce", Blocks.SPRUCE_PLANKS, ItemTags.SPRUCE_LOGS, Blocks.STRIPPED_SPRUCE_LOG, true));
         CRATES.add(new GenericCrate("warped", "Warped", Blocks.WARPED_PLANKS, ItemTags.WARPED_STEMS, Blocks.STRIPPED_WARPED_STEM, true));
+
+        List<GenericCrate> trapped = new ArrayList<>();
+        CRATES.forEach(crate -> {
+            trapped.add(new TrappedCrate(crate.material, crate.materialName, crate.ingredient1, crate.ingredient2, crate.braceMaterial, crate.isFlammable, crate));
+        });
+        CRATES.addAll(trapped);
 
         CRATE_SCREEN_HANDLER = Registry.register(
             Registries.SCREEN_HANDLER,
@@ -115,6 +122,8 @@ public class Crates implements MinekeaBlockCategory {
         CRATES.forEach(crate -> crate.configureTranslations(registryLookup, translationBuilder));
         translationBuilder.add("minekea:screens/container/crate", "Crate");
         translationBuilder.add("minekea:screens/container/double_crate", "Large Crate");
+        translationBuilder.add("minekea:screens/container/crate/trapped", "Trapped Crate");
+        translationBuilder.add("minekea:screens/container/double_crate/trapped", "Trapped Large Crate");
     }
 
     @Override
@@ -125,5 +134,10 @@ public class Crates implements MinekeaBlockCategory {
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         CRATES.forEach(crate -> crate.configureItemModels(itemModelGenerator));
+    }
+
+    @Override
+    public void generateTextures() {
+        CRATES.forEach(GenericCrate::generateTextures);
     }
 }

@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class DoubleCrateScreenHandler extends DoubleWideInventoryScreenHandler {
     public static final Identifier SCREEN_ID = Identifier.of(ModInfo.MOD_ID, "screens/container/double_crate");
+    public static final Identifier TRAPPED_SCREEN_ID = Identifier.of(ModInfo.MOD_ID, "screens/container/double_crate/trapped");
 
     public DoubleCrateScreenHandler(int syncId, PlayerInventory playerInventory) {
         super(null, syncId, playerInventory, GenericCrate.ROW_COUNT);

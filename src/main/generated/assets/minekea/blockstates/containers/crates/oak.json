@@ -58,8 +58,7 @@
     },
     {
       "apply": {
-        "model": "minekea:block/containers/crates/oak_double_half",
-        "y": 180
+        "model": "minekea:block/containers/crates/oak_double_half_right"
       },
       "when": {
         "axis": "y",
@@ -71,8 +70,8 @@
     },
     {
       "apply": {
-        "model": "minekea:block/containers/crates/oak_double_half",
-        "y": 270
+        "model": "minekea:block/containers/crates/oak_double_half_right",
+        "y": 90
       },
       "when": {
         "axis": "y",

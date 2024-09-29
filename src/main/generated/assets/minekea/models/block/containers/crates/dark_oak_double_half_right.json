@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/containers/double_crate_half_right",
+  "textures": {
+    "brace": "minecraft:block/stripped_dark_oak_log",
+    "material": "minecraft:block/dark_oak_planks"
+  }
+}

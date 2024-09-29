@@ -81,6 +81,12 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         MinekeaTextures.BRACE,
         MinekeaTextures.MATERIAL
     );
+    protected static final Model RIGHT_HALF_DOUBLE_CRATE_MODEL = new Model(
+        Optional.of(Identifier.of("minekea:block/containers/double_crate_half_right")),
+        Optional.empty(),
+        MinekeaTextures.BRACE,
+        MinekeaTextures.MATERIAL
+    );
 
     public static final MapCodec<GenericCrate> CODEC = createCodec(GenericCrate::new);
 
@@ -96,13 +102,13 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     public static final BooleanProperty CONNECTED_EAST;
     public static final BooleanProperty CONNECTED_WEST;
 
-    protected final Identifier BLOCK_ID;
-    protected final String material;
-    protected final String materialName;
-    protected final Block ingredient1;
-    protected final TagKey<Item> ingredient2;
-    protected final Block braceMaterial;
-    protected final boolean isFlammable;
+    public Identifier BLOCK_ID;
+    public final String material;
+    public final String materialName;
+    public final Block ingredient1;
+    public final TagKey<Item> ingredient2;
+    public final Block braceMaterial;
+    public final boolean isFlammable;
 
     private static final DoubleBlockProperties.PropertyRetriever<CrateBlockEntity, Optional<Inventory>> INVENTORY_RETRIEVER;
     private static final DoubleBlockProperties.PropertyRetriever<CrateBlockEntity, Optional<NamedScreenHandlerFactory>> SCREEN_RETRIEVER;
@@ -141,6 +147,10 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
                     }
 
                     public Text getDisplayName() {
+                        if (crate1.isTrapped()) {
+                            return Text.translatable(DoubleCrateScreenHandler.TRAPPED_SCREEN_ID.toString());
+                        }
+
                         return Text.translatable(DoubleCrateScreenHandler.SCREEN_ID.toString());
                     }
                 });
@@ -464,15 +474,10 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         translationBuilder.add(this, String.format("%s Crate", materialName));
     }
 
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        TextureMap textures = new TextureMap()
-            .put(MinekeaTextures.BRACE, Registries.BLOCK.getId(braceMaterial).withPrefixedPath("block/"))
-            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(ingredient1).withPrefixedPath("block/"));
-
+    protected void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator, TextureMap textures) {
         Identifier subModelId = blockStateModelGenerator.createSubModel(this, "", CRATE_MODEL, unused -> textures);
-        Identifier halfModelId = blockStateModelGenerator.createSubModel(this, "_double_half", HALF_DOUBLE_CRATE_MODEL, unused -> textures);
+        Identifier leftHalfModelId = blockStateModelGenerator.createSubModel(this, "_double_half", HALF_DOUBLE_CRATE_MODEL, unused -> textures);
+        Identifier rightHalfModelId = blockStateModelGenerator.createSubModel(this, "_double_half_right", RIGHT_HALF_DOUBLE_CRATE_MODEL, unused -> textures);
 
         blockStateModelGenerator.blockStateCollector
             .accept(
@@ -510,7 +515,7 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
                             .set(CONNECTED_WEST, true)
                             .set(AXIS, Direction.Axis.Y),
                         BlockStateVariant.create()
-                            .put(VariantSettings.MODEL, halfModelId)
+                            .put(VariantSettings.MODEL, leftHalfModelId)
                     )
                     .with(
                         When.create()
@@ -521,7 +526,7 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
                             .set(AXIS, Direction.Axis.Y),
                         BlockStateVariant.create()
                             .put(VariantSettings.Y, VariantSettings.Rotation.R90)
-                            .put(VariantSettings.MODEL, halfModelId)
+                            .put(VariantSettings.MODEL, leftHalfModelId)
                     )
                     .with(
                         When.create()
@@ -531,8 +536,7 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
                             .set(CONNECTED_WEST, false)
                             .set(AXIS, Direction.Axis.Y),
                         BlockStateVariant.create()
-                            .put(VariantSettings.Y, VariantSettings.Rotation.R180)
-                            .put(VariantSettings.MODEL, halfModelId)
+                            .put(VariantSettings.MODEL, rightHalfModelId)
                     )
                     .with(
                         When.create()
@@ -542,9 +546,18 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
                             .set(CONNECTED_WEST, false)
                             .set(AXIS, Direction.Axis.Y),
                         BlockStateVariant.create()
-                            .put(VariantSettings.Y, VariantSettings.Rotation.R270)
-                            .put(VariantSettings.MODEL, halfModelId)
+                            .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                            .put(VariantSettings.MODEL, rightHalfModelId)
                     )
             );
+    }
+
+    @Override
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        TextureMap textures = new TextureMap()
+            .put(MinekeaTextures.BRACE, Registries.BLOCK.getId(braceMaterial).withPrefixedPath("block/"))
+            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(ingredient1).withPrefixedPath("block/"));
+
+        this.configureBlockStateModels(blockStateModelGenerator, textures);
     }
 }

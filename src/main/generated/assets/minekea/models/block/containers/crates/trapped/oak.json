@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/containers/crate",
+  "textures": {
+    "brace": "minecraft:block/stripped_oak_log",
+    "material": "minekea:block/containers/crates/trapped/oak_material"
+  }
+}

@@ -28,6 +28,7 @@ public class Barrels implements MinekeaBlockCategory {
 
     static {
         BARRELS.add(new GenericBarrel("Acacia", "acacia_planks", "stripped_acacia_log", Blocks.ACACIA_PLANKS, Blocks.ACACIA_SLAB));
+        BARRELS.add(new GenericBarrel("Bamboo", "bamboo_planks", "stripped_bamboo_block", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_SLAB));
         BARRELS.add(new GenericBarrel("Birch", "birch_planks", "stripped_birch_log", Blocks.BIRCH_PLANKS, Blocks.BIRCH_SLAB));
         BARRELS.add(new GenericBarrel("Cherry", "cherry_planks", "stripped_cherry_log", Blocks.CHERRY_PLANKS, Blocks.CHERRY_SLAB));
         BARRELS.add(new GenericBarrel("Crimson", "crimson_planks", "stripped_crimson_stem", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_SLAB));

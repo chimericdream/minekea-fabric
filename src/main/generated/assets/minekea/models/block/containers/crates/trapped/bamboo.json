@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/containers/crate",
+  "textures": {
+    "brace": "minecraft:block/stripped_bamboo_block",
+    "material": "minekea:block/containers/crates/trapped/bamboo_material"
+  }
+}

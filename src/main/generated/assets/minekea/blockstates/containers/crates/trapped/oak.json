@@ -1,0 +1,85 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/trapped/oak",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/trapped/oak",
+        "x": 90
+      },
+      "when": {
+        "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/trapped/oak"
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "false",
+        "connected_north": "false",
+        "connected_south": "false",
+        "connected_west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/trapped/oak_double_half"
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "false",
+        "connected_north": "false",
+        "connected_south": "false",
+        "connected_west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/trapped/oak_double_half",
+        "y": 90
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "false",
+        "connected_north": "true",
+        "connected_south": "false",
+        "connected_west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/trapped/oak_double_half_right"
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "true",
+        "connected_north": "false",
+        "connected_south": "false",
+        "connected_west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/containers/crates/trapped/oak_double_half_right",
+        "y": 90
+      },
+      "when": {
+        "axis": "y",
+        "connected_east": "false",
+        "connected_north": "false",
+        "connected_south": "true",
+        "connected_west": "false"
+      }
+    }
+  ]
+}

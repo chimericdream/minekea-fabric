@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/containers/double_crate_half_right",
+  "textures": {
+    "brace": "minecraft:block/stripped_spruce_log",
+    "material": "minekea:block/containers/crates/trapped/spruce_material"
+  }
+}
