@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_nugget"
+    },
+    "S": {
+      "item": "minecraft:echo_shard"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "pattern": [
+    "###",
+    "#S#",
+    "#T#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minekea:decorations/lighting/ancient_lantern"
+  }
+}

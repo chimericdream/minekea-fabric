@@ -10,8 +10,13 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "minekea:decorations/lighting/doom_lantern",
-            "recipe2": "minekea:decorations/lighting/end_lantern",
+            "recipe": "minekea:decorations/lighting/ancient_lantern",
+            "recipe2": "minekea:decorations/lighting/doom_lantern",
+            "title": "Recipes"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "minekea:decorations/lighting/end_lantern",
             "title": "Recipes"
         }
     ]

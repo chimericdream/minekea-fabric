@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.decorations;
 
 import com.chimericdream.minekea.block.decorations.candles.GenericVotiveCandle;
+import com.chimericdream.minekea.block.decorations.lighting.AncientLantern;
 import com.chimericdream.minekea.block.decorations.lighting.DoomLantern;
 import com.chimericdream.minekea.block.decorations.lighting.EndLantern;
 import com.chimericdream.minekea.block.decorations.lighting.EndlessRod;
@@ -30,6 +31,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class DecorationBlocks implements MinekeaBlockCategory {
+    public static final AncientLantern ANCIENT_LANTERN;
     public static final DoomLantern DOOM_LANTERN;
     public static final EndLantern END_LANTERN;
     public static final EndlessRod ENDLESS_ROD;
@@ -40,11 +42,13 @@ public class DecorationBlocks implements MinekeaBlockCategory {
     public static final Map<String, MinekeaBlock> VOTIVE_CANDLES = new LinkedHashMap<>();
 
     static {
+        ANCIENT_LANTERN = new AncientLantern();
         DOOM_LANTERN = new DoomLantern();
         END_LANTERN = new EndLantern();
         ENDLESS_ROD = new EndlessRod();
         FAKE_CAKE = new FakeCake();
 
+        BLOCKS.add(ANCIENT_LANTERN);
         BLOCKS.add(DOOM_LANTERN);
         BLOCKS.add(END_LANTERN);
         BLOCKS.add(ENDLESS_ROD);
@@ -74,7 +78,7 @@ public class DecorationBlocks implements MinekeaBlockCategory {
     @Environment(EnvType.CLIENT)
     @Override
     public void initializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), DOOM_LANTERN, END_LANTERN);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ANCIENT_LANTERN, DOOM_LANTERN, END_LANTERN);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), VOTIVE_CANDLES.values().toArray(new Block[0]));
     }
 
