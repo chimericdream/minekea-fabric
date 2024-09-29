@@ -29,6 +29,7 @@ public class Bookshelves implements MinekeaBlockCategory {
 
     static {
         BOOKSHELVES.put("Acacia", new GenericBookshelf("Acacia", "acacia", true, Blocks.ACACIA_PLANKS));
+        BOOKSHELVES.put("Bamboo", new GenericBookshelf("Bamboo", "bamboo", true, Blocks.BAMBOO_PLANKS));
         BOOKSHELVES.put("Birch", new GenericBookshelf("Birch", "birch", true, Blocks.BIRCH_PLANKS));
         BOOKSHELVES.put("Cherry", new GenericBookshelf("Cherry", "cherry", true, Blocks.CHERRY_PLANKS));
         BOOKSHELVES.put("Crimson", new GenericBookshelf("Crimson", "crimson", false, Blocks.CRIMSON_PLANKS));

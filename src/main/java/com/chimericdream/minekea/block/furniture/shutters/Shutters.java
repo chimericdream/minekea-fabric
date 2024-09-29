@@ -27,6 +27,7 @@ public class Shutters implements MinekeaBlockCategory {
 
     static {
         SHUTTERS.put("Acacia", new ShutterBlock(BlockSetType.ACACIA, "Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG));
+        SHUTTERS.put("Bamboo", new ShutterBlock(BlockSetType.BAMBOO, "Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK));
         SHUTTERS.put("Birch", new ShutterBlock(BlockSetType.BIRCH, "Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG));
         SHUTTERS.put("Cherry", new ShutterBlock(BlockSetType.CHERRY, "Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG));
         SHUTTERS.put("Crimson", new ShutterBlock(BlockSetType.CRIMSON, "Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, false));
@@ -38,6 +39,7 @@ public class Shutters implements MinekeaBlockCategory {
         SHUTTERS.put("Warped", new ShutterBlock(BlockSetType.WARPED, "Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false));
 
         SHUTTERS.put("Stripped Acacia", new ShutterBlock(BlockSetType.ACACIA, "Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG));
+        SHUTTERS.put("Stripped Bamboo", new ShutterBlock(BlockSetType.BAMBOO, "Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK));
         SHUTTERS.put("Stripped Birch", new ShutterBlock(BlockSetType.BIRCH, "Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG));
         SHUTTERS.put("Stripped Cherry", new ShutterBlock(BlockSetType.CHERRY, "Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG));
         SHUTTERS.put("Stripped Crimson", new ShutterBlock(BlockSetType.CRIMSON, "Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false));
@@ -49,6 +51,7 @@ public class Shutters implements MinekeaBlockCategory {
         SHUTTERS.put("Stripped Warped", new ShutterBlock(BlockSetType.WARPED, "Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, false));
 
         OPEN_SHUTTER_HALVES.put("Acacia", new OpenShutterHalf(BlockSetType.ACACIA, "Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG));
+        OPEN_SHUTTER_HALVES.put("Bamboo", new OpenShutterHalf(BlockSetType.BAMBOO, "Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK));
         OPEN_SHUTTER_HALVES.put("Birch", new OpenShutterHalf(BlockSetType.BIRCH, "Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG));
         OPEN_SHUTTER_HALVES.put("Cherry", new OpenShutterHalf(BlockSetType.CHERRY, "Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG));
         OPEN_SHUTTER_HALVES.put("Crimson", new OpenShutterHalf(BlockSetType.CRIMSON, "Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, false));
@@ -60,6 +63,7 @@ public class Shutters implements MinekeaBlockCategory {
         OPEN_SHUTTER_HALVES.put("Warped", new OpenShutterHalf(BlockSetType.WARPED, "Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false));
 
         OPEN_SHUTTER_HALVES.put("Stripped Acacia", new OpenShutterHalf(BlockSetType.ACACIA, "Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG));
+        OPEN_SHUTTER_HALVES.put("Stripped Bamboo", new OpenShutterHalf(BlockSetType.BAMBOO, "Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK));
         OPEN_SHUTTER_HALVES.put("Stripped Birch", new OpenShutterHalf(BlockSetType.BIRCH, "Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG));
         OPEN_SHUTTER_HALVES.put("Stripped Cherry", new OpenShutterHalf(BlockSetType.CHERRY, "Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG));
         OPEN_SHUTTER_HALVES.put("Stripped Crimson", new OpenShutterHalf(BlockSetType.CRIMSON, "Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false));

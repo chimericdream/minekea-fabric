@@ -1,0 +1,8 @@
+{
+  "parent": "minekea:item/furniture/armoire",
+  "textures": {
+    "bar": "minecraft:block/netherite_block",
+    "material": "minecraft:block/stripped_bamboo_block",
+    "planks": "minecraft:block/oak_planks"
+  }
+}

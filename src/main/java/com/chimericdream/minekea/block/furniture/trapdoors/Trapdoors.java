@@ -25,6 +25,7 @@ public class Trapdoors implements MinekeaBlockCategory {
 
     static {
         BOOKSHELF_TRAPDOORS.put("Acacia", new GenericBookshelfTrapdoor(BlockSetType.ACACIA, "Acacia", Blocks.ACACIA_PLANKS));
+        BOOKSHELF_TRAPDOORS.put("Bamboo", new GenericBookshelfTrapdoor(BlockSetType.BAMBOO, "Bamboo", Blocks.BAMBOO_PLANKS));
         BOOKSHELF_TRAPDOORS.put("Birch", new GenericBookshelfTrapdoor(BlockSetType.BIRCH, "Birch", Blocks.BIRCH_PLANKS));
         BOOKSHELF_TRAPDOORS.put("Cherry", new GenericBookshelfTrapdoor(BlockSetType.CHERRY, "Cherry", Blocks.CHERRY_PLANKS));
         BOOKSHELF_TRAPDOORS.put("Crimson", new GenericBookshelfTrapdoor(BlockSetType.CRIMSON, "Crimson", Blocks.CRIMSON_PLANKS));

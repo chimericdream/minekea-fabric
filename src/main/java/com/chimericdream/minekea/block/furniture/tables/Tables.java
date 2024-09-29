@@ -25,6 +25,7 @@ public class Tables implements MinekeaBlockCategory {
     static {
         TABLES = List.of(
             new GenericTable("Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG),
+            new GenericTable("Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK),
             new GenericTable("Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG),
             new GenericTable("Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG),
             new GenericTable("Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM),
@@ -36,6 +37,7 @@ public class Tables implements MinekeaBlockCategory {
             new GenericTable("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM),
 
             new GenericTable("Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG),
+            new GenericTable("Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK),
             new GenericTable("Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG),
             new GenericTable("Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG),
             new GenericTable("Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM),

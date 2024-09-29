@@ -36,6 +36,7 @@ public class Armoires implements MinekeaBlockCategory {
     static {
         ARMOIRES = List.of(
             new GenericArmoireBlock("Acacia", "acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG, Blocks.ACACIA_SLAB, true),
+            new GenericArmoireBlock("Bamboo", "bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK, Blocks.BAMBOO_SLAB, true),
             new GenericArmoireBlock("Birch", "birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG, Blocks.BIRCH_SLAB, true),
             new GenericArmoireBlock("Cherry", "cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG, Blocks.CHERRY_SLAB, true),
             new GenericArmoireBlock("Crimson", "crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, Blocks.CRIMSON_SLAB, false),

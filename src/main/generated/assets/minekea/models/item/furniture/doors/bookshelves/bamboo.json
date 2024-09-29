@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:item/furniture/doors/bookshelf",
+  "textures": {
+    "material": "minecraft:block/bamboo_planks",
+    "shelf": "minekea:block/furniture/bookshelves/shelf0"
+  }
+}

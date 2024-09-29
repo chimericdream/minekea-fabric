@@ -38,6 +38,7 @@ public class Shelves implements MinekeaBlockCategory {
     static {
         SHELVES = List.of(
             new GenericShelf("Acacia", Blocks.ACACIA_SLAB, Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG, true),
+            new GenericShelf("Bamboo", Blocks.BAMBOO_SLAB, Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK, true),
             new GenericShelf("Birch", Blocks.BIRCH_SLAB, Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG, true),
             new GenericShelf("Cherry", Blocks.CHERRY_SLAB, Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG, true),
             new GenericShelf("Crimson", Blocks.CRIMSON_SLAB, Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, false),
@@ -50,6 +51,7 @@ public class Shelves implements MinekeaBlockCategory {
         );
         FLOATING_SHELVES = List.of(
             new GenericFloatingShelf("Acacia", Blocks.ACACIA_SLAB, Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG, true),
+            new GenericFloatingShelf("Bamboo", Blocks.BAMBOO_SLAB, Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK, true),
             new GenericFloatingShelf("Birch", Blocks.BIRCH_SLAB, Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG, true),
             new GenericFloatingShelf("Cherry", Blocks.CHERRY_SLAB, Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG, true),
             new GenericFloatingShelf("Crimson", Blocks.CRIMSON_SLAB, Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, false),

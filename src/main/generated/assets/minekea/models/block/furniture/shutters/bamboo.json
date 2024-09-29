@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/furniture/shutters/closed",
+  "textures": {
+    "frame": "minecraft:block/bamboo_block",
+    "panel": "minecraft:block/bamboo_planks"
+  }
+}

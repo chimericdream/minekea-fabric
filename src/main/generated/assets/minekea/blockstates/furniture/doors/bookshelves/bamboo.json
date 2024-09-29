@@ -1,0 +1,380 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom"
+      },
+      "when": {
+        "facing": "east",
+        "half": "lower",
+        "hinge": "left",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "lower",
+        "hinge": "right",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom",
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "lower",
+        "hinge": "left",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "lower",
+        "hinge": "right",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom",
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "lower",
+        "hinge": "left",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom"
+      },
+      "when": {
+        "facing": "south",
+        "half": "lower",
+        "hinge": "right",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom",
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "lower",
+        "hinge": "left",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "lower",
+        "hinge": "right",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom_rh",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "lower",
+        "hinge": "left",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom_rh"
+      },
+      "when": {
+        "facing": "east",
+        "half": "lower",
+        "hinge": "right",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom_rh"
+      },
+      "when": {
+        "facing": "north",
+        "half": "lower",
+        "hinge": "left",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom_rh",
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "lower",
+        "hinge": "right",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom_rh",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "lower",
+        "hinge": "left",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom_rh",
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "lower",
+        "hinge": "right",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom_rh",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "lower",
+        "hinge": "left",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_bottom_rh",
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "lower",
+        "hinge": "right",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top"
+      },
+      "when": {
+        "facing": "east",
+        "half": "upper",
+        "hinge": "left",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "upper",
+        "hinge": "right",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top",
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "upper",
+        "hinge": "left",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "upper",
+        "hinge": "right",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top",
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "upper",
+        "hinge": "left",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top"
+      },
+      "when": {
+        "facing": "south",
+        "half": "upper",
+        "hinge": "right",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top",
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "upper",
+        "hinge": "left",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "upper",
+        "hinge": "right",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top_rh",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "upper",
+        "hinge": "left",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top_rh"
+      },
+      "when": {
+        "facing": "east",
+        "half": "upper",
+        "hinge": "right",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top_rh"
+      },
+      "when": {
+        "facing": "north",
+        "half": "upper",
+        "hinge": "left",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top_rh",
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "upper",
+        "hinge": "right",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top_rh",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "upper",
+        "hinge": "left",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top_rh",
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "upper",
+        "hinge": "right",
+        "open": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top_rh",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "upper",
+        "hinge": "left",
+        "open": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/furniture/doors/bookshelves/bamboo_top_rh",
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "upper",
+        "hinge": "right",
+        "open": "false"
+      }
+    }
+  ]
+}

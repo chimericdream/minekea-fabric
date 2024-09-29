@@ -25,6 +25,7 @@ public class Doors implements MinekeaBlockCategory {
 
     static {
         BOOKSHELF_DOORS.put("Acacia", new GenericBookshelfDoor(BlockSetType.ACACIA, "Acacia", Blocks.ACACIA_PLANKS));
+        BOOKSHELF_DOORS.put("Bamboo", new GenericBookshelfDoor(BlockSetType.BAMBOO, "Bamboo", Blocks.BAMBOO_PLANKS));
         BOOKSHELF_DOORS.put("Birch", new GenericBookshelfDoor(BlockSetType.BIRCH, "Birch", Blocks.BIRCH_PLANKS));
         BOOKSHELF_DOORS.put("Cherry", new GenericBookshelfDoor(BlockSetType.CHERRY, "Cherry", Blocks.CHERRY_PLANKS));
         BOOKSHELF_DOORS.put("Crimson", new GenericBookshelfDoor(BlockSetType.CRIMSON, "Crimson", Blocks.CRIMSON_PLANKS));

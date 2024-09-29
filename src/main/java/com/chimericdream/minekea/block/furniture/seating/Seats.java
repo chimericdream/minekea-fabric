@@ -35,6 +35,7 @@ public class Seats implements MinekeaBlockCategory {
     static {
         CHAIRS = List.of(
             new GenericChair("Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG),
+            new GenericChair("Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK),
             new GenericChair("Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG),
             new GenericChair("Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG),
             new GenericChair("Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, false),
@@ -46,6 +47,7 @@ public class Seats implements MinekeaBlockCategory {
             new GenericChair("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false),
 
             new GenericChair("Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG),
+            new GenericChair("Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK),
             new GenericChair("Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG),
             new GenericChair("Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG),
             new GenericChair("Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false),
@@ -59,6 +61,7 @@ public class Seats implements MinekeaBlockCategory {
 
         STOOLS = List.of(
             new GenericStool("Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG),
+            new GenericStool("Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK),
             new GenericStool("Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG),
             new GenericStool("Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG),
             new GenericStool("Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, false),
@@ -70,6 +73,7 @@ public class Seats implements MinekeaBlockCategory {
             new GenericStool("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false),
 
             new GenericStool("Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG),
+            new GenericStool("Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK),
             new GenericStool("Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG),
             new GenericStool("Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG),
             new GenericStool("Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false),
