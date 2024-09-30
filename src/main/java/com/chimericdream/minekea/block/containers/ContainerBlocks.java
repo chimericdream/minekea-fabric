@@ -3,14 +3,12 @@ package com.chimericdream.minekea.block.containers;
 import com.chimericdream.minekea.block.containers.barrels.Barrels;
 import com.chimericdream.minekea.block.containers.crates.Crates;
 import com.chimericdream.minekea.client.render.block.GlassJarBlockEntityRenderer;
-import com.chimericdream.minekea.client.render.item.GlassJarItemRenderer;
 import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -21,7 +19,6 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -39,7 +36,6 @@ public class ContainerBlocks implements MinekeaBlockCategory {
     public static final GlassJarBlock GLASS_JAR;
 
     public static BlockEntityType<GlassJarBlockEntity> GLASS_JAR_BLOCK_ENTITY;
-    public static BlockItem GLASS_JAR_ITEM;
 
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
 
@@ -63,7 +59,6 @@ public class ContainerBlocks implements MinekeaBlockCategory {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), GLASS_JAR);
 
         BlockEntityRendererRegistry.register(GLASS_JAR_BLOCK_ENTITY, GlassJarBlockEntityRenderer::new);
-        BuiltinItemRendererRegistry.INSTANCE.register(GLASS_JAR_ITEM, new GlassJarItemRenderer());
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.general.WaxBlock;
 import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
+import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.item.ingredients.WaxItem;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
 import com.chimericdream.minekea.util.FluidHelpers;
@@ -31,7 +32,6 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -81,7 +81,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
-    private final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "containers/glass_jar");
+    public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "containers/glass_jar");
 
     private static final VoxelShape MAIN_SHAPE;
     private static final VoxelShape LID_SHAPE;
@@ -375,14 +375,14 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                         (double) pos.getX() + 0.5D,
                         (double) pos.getY() + 0.5D,
                         (double) pos.getZ() + 0.5D,
-                        ContainerBlocks.GLASS_JAR_ITEM.getDefaultStack()
+                        ModItems.GLASS_JAR_ITEM.getDefaultStack()
                     );
 
                     itemEntity.setToDefaultPickupDelay();
 
                     world.spawnEntity(itemEntity);
                 } else if (!entity.isEmpty()) {
-                    ItemStack itemStack = new ItemStack(ContainerBlocks.GLASS_JAR_ITEM);
+                    ItemStack itemStack = new ItemStack(ModItems.GLASS_JAR_ITEM);
                     NbtCompound nbt = new NbtCompound();
                     entity.writeNbt(nbt, world.getRegistryManager());
 
@@ -535,7 +535,6 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        ContainerBlocks.GLASS_JAR_ITEM = Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings().maxCount(8)));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
             .register((itemGroup) -> itemGroup.add(this));

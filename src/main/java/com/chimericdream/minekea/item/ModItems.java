@@ -1,6 +1,10 @@
 package com.chimericdream.minekea.item;
 
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.block.containers.ContainerBlocks;
+import com.chimericdream.minekea.block.containers.GlassJarBlock;
+import com.chimericdream.minekea.client.render.item.GlassJarItemRenderer;
+import com.chimericdream.minekea.item.containers.GlassJarItem;
 import com.chimericdream.minekea.item.ingredients.WaxItem;
 import com.chimericdream.minekea.item.tools.HammerItem;
 import com.chimericdream.minekea.item.tools.PainterItem;
@@ -11,6 +15,7 @@ import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import com.chimericdream.minekea.util.MinekeaItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -46,6 +51,8 @@ public class ModItems implements MinekeaBlockCategory {
     public static final HammerItem NETHERITE_HAMMER_ITEM;
     public static final PainterItem PAINTER_ITEM;
     public static final WrenchItem WRENCH_ITEM;
+
+    public static final GlassJarItem GLASS_JAR_ITEM;
 
     public static final Map<String, MinekeaItem> WAX_ITEMS = new LinkedHashMap<>();
     public static final List<MinekeaItem> ITEMS = new ArrayList<>();
@@ -120,6 +127,8 @@ public class ModItems implements MinekeaBlockCategory {
             new WrenchItem()
         );
 
+        GLASS_JAR_ITEM = Registry.register(Registries.ITEM, GlassJarBlock.BLOCK_ID, new GlassJarItem(ContainerBlocks.GLASS_JAR, new Item.Settings().maxCount(8)));
+
         WAX_ITEMS.put("plain", Registry.register(Registries.ITEM, WaxItem.makeId("plain"), new WaxItem("plain", Items.CANDLE)));
         WAX_ITEMS.put("white", Registry.register(Registries.ITEM, WaxItem.makeId("white"), new WaxItem("white", Items.WHITE_CANDLE)));
         WAX_ITEMS.put("light_gray", Registry.register(Registries.ITEM, WaxItem.makeId("light_gray"), new WaxItem("light_gray", Items.LIGHT_GRAY_CANDLE)));
@@ -164,6 +173,7 @@ public class ModItems implements MinekeaBlockCategory {
     @Environment(EnvType.CLIENT)
     public void initializeClient() {
         HandledScreens.register(BLOCK_PAINTER_SCREEN_HANDLER, BlockPainterScreen::new);
+        BuiltinItemRendererRegistry.INSTANCE.register(GLASS_JAR_ITEM, new GlassJarItemRenderer());
     }
 
     @Override
