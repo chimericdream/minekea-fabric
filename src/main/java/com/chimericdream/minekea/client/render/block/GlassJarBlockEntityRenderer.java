@@ -14,6 +14,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
+import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.texture.Sprite;
@@ -38,7 +39,8 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
     // Ensures that the total height of the contents doesn't go above the top
     private static final float VERTICAL_MULTIPLIER = 9f / 16f;
 
-    private final ItemRenderer renderer = MinecraftClient.getInstance().getItemRenderer();
+    private final ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
+    private final EntityRenderDispatcher entityRenderer = MinecraftClient.getInstance().getEntityRenderDispatcher();
 
     public GlassJarBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
     }
@@ -283,7 +285,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         matrices.scale(0.749f, fY, 0.749f);
 
         int lightAbove = world == null ? 15728880 : WorldRenderer.getLightmapCoordinates(world, pos.up());
-        renderer.renderItem(stack, ModelTransformationMode.FIXED, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, null, 0);
+        itemRenderer.renderItem(stack, ModelTransformationMode.FIXED, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, null, 0);
 
         matrices.pop();
     }
