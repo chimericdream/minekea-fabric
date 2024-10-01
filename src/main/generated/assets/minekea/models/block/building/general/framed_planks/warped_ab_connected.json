@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/framed_planks/ab_connected",
+  "textures": {
+    "brace": "minecraft:block/warped_stem",
+    "material": "minecraft:block/warped_planks"
+  }
+}

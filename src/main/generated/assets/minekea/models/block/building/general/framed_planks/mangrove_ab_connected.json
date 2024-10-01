@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/framed_planks/ab_connected",
+  "textures": {
+    "brace": "minecraft:block/mangrove_log",
+    "material": "minecraft:block/mangrove_planks"
+  }
+}

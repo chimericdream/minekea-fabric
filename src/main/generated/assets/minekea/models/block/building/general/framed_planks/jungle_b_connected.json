@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/framed_planks/b_connected",
+  "textures": {
+    "brace": "minecraft:block/jungle_log",
+    "material": "minecraft:block/jungle_planks"
+  }
+}

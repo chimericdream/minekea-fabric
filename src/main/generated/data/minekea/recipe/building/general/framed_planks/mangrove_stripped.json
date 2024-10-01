@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:mangrove_planks"
+    },
+    {
+      "item": "minecraft:mangrove_planks"
+    },
+    {
+      "item": "minecraft:mangrove_planks"
+    },
+    {
+      "item": "minecraft:mangrove_planks"
+    },
+    {
+      "item": "minecraft:stripped_mangrove_log"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "minekea:building/general/framed_planks/mangrove_stripped"
+  }
+}

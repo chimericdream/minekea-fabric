@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/framed_planks/ab_connected",
+  "textures": {
+    "brace": "minecraft:block/bamboo_block",
+    "material": "minecraft:block/bamboo_planks"
+  }
+}

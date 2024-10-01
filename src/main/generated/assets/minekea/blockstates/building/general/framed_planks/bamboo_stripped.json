@@ -1,0 +1,88 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minekea:block/building/general/framed_planks/bamboo_stripped"
+      },
+      "when": {
+        "connected_east": "false",
+        "connected_west": "false",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/general/framed_planks/bamboo_stripped_a_connected"
+      },
+      "when": {
+        "connected_east": "true",
+        "connected_west": "false",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/general/framed_planks/bamboo_stripped_b_connected"
+      },
+      "when": {
+        "connected_east": "false",
+        "connected_west": "true",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/general/framed_planks/bamboo_stripped_ab_connected"
+      },
+      "when": {
+        "connected_east": "true",
+        "connected_west": "true",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/general/framed_planks/bamboo_stripped",
+        "y": 270
+      },
+      "when": {
+        "connected_north": "false",
+        "connected_south": "false",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/general/framed_planks/bamboo_stripped_a_connected",
+        "y": 270
+      },
+      "when": {
+        "connected_north": "true",
+        "connected_south": "false",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/general/framed_planks/bamboo_stripped_b_connected",
+        "y": 270
+      },
+      "when": {
+        "connected_north": "false",
+        "connected_south": "true",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "minekea:block/building/general/framed_planks/bamboo_stripped_ab_connected",
+        "y": 270
+      },
+      "when": {
+        "connected_north": "true",
+        "connected_south": "true",
+        "facing": "east"
+      }
+    }
+  ]
+}

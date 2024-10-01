@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:acacia_planks"
+    },
+    {
+      "item": "minecraft:acacia_planks"
+    },
+    {
+      "item": "minecraft:acacia_planks"
+    },
+    {
+      "item": "minecraft:acacia_planks"
+    },
+    {
+      "item": "minecraft:stripped_acacia_log"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "minekea:building/general/framed_planks/acacia_stripped"
+  }
+}

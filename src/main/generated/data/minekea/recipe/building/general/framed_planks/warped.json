@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:warped_planks"
+    },
+    {
+      "item": "minecraft:warped_planks"
+    },
+    {
+      "item": "minecraft:warped_planks"
+    },
+    {
+      "item": "minecraft:warped_planks"
+    },
+    {
+      "item": "minecraft:warped_stem"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "minekea:building/general/framed_planks/warped"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/framed_planks/ab_connected",
+  "textures": {
+    "brace": "minecraft:block/stripped_dark_oak_log",
+    "material": "minecraft:block/dark_oak_planks"
+  }
+}

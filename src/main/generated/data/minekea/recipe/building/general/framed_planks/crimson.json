@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:crimson_planks"
+    },
+    {
+      "item": "minecraft:crimson_planks"
+    },
+    {
+      "item": "minecraft:crimson_planks"
+    },
+    {
+      "item": "minecraft:crimson_planks"
+    },
+    {
+      "item": "minecraft:crimson_stem"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "minekea:building/general/framed_planks/crimson"
+  }
+}

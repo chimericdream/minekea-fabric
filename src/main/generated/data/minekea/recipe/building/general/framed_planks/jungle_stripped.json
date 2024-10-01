@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:jungle_planks"
+    },
+    {
+      "item": "minecraft:jungle_planks"
+    },
+    {
+      "item": "minecraft:jungle_planks"
+    },
+    {
+      "item": "minecraft:jungle_planks"
+    },
+    {
+      "item": "minecraft:stripped_jungle_log"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "minekea:building/general/framed_planks/jungle_stripped"
+  }
+}

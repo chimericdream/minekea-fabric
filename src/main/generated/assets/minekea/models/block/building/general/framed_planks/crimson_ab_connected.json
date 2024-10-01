@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/framed_planks/ab_connected",
+  "textures": {
+    "brace": "minecraft:block/crimson_stem",
+    "material": "minecraft:block/crimson_planks"
+  }
+}

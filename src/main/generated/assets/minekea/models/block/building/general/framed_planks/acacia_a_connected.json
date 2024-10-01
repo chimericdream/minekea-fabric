@@ -1,0 +1,7 @@
+{
+  "parent": "minekea:block/building/framed_planks/a_connected",
+  "textures": {
+    "brace": "minecraft:block/acacia_log",
+    "material": "minecraft:block/acacia_planks"
+  }
+}

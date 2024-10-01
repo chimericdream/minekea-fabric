@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:bamboo_planks"
+    },
+    {
+      "item": "minecraft:bamboo_planks"
+    },
+    {
+      "item": "minecraft:bamboo_planks"
+    },
+    {
+      "item": "minecraft:bamboo_planks"
+    },
+    {
+      "item": "minecraft:bamboo_block"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "minekea:building/general/framed_planks/bamboo"
+  }
+}
