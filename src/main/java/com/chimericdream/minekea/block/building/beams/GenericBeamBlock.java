@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.building.beams;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
+import com.chimericdream.minekea.resource.TextureUtils;
 import com.chimericdream.minekea.tag.CommonItemTags;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
@@ -66,56 +67,14 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggable {
-    protected static final Model CONNECTED_NORTH_MODEL = new Model(
-        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/beams/connected_north")),
-        Optional.empty(),
-        TextureKey.SIDE,
-        TextureKey.END
-    );
-    protected static final Model CONNECTED_SOUTH_MODEL = new Model(
-        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/beams/connected_south")),
-        Optional.empty(),
-        TextureKey.SIDE,
-        TextureKey.END
-    );
-    protected static final Model CONNECTED_EAST_MODEL = new Model(
-        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/beams/connected_east")),
-        Optional.empty(),
-        TextureKey.SIDE,
-        TextureKey.END
-    );
-    protected static final Model CONNECTED_WEST_MODEL = new Model(
-        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/beams/connected_west")),
-        Optional.empty(),
-        TextureKey.SIDE,
-        TextureKey.END
-    );
-    protected static final Model CONNECTED_UP_MODEL = new Model(
-        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/beams/connected_up")),
-        Optional.empty(),
-        TextureKey.SIDE,
-        TextureKey.END
-    );
-    protected static final Model CONNECTED_DOWN_MODEL = new Model(
-        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/beams/connected_down")),
-        Optional.empty(),
-        TextureKey.SIDE,
-        TextureKey.END
-    );
-    protected static final Model CORE_MODEL = new Model(
-        Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/beams/core")),
-        Optional.empty(),
-        TextureKey.SIDE,
-        TextureKey.END
-    );
-    protected static final Model ITEM_MODEL = new Model(
-        Optional.of(Identifier.of(ModInfo.MOD_ID, "item/building/beam")),
-        Optional.empty(),
-        TextureKey.SIDE,
-        TextureKey.END
-    );
-
-    public final BeamConfig config;
+    protected static final Model CONNECTED_NORTH_MODEL = makeModel("north");
+    protected static final Model CONNECTED_SOUTH_MODEL = makeModel("south");
+    protected static final Model CONNECTED_EAST_MODEL = makeModel("east");
+    protected static final Model CONNECTED_WEST_MODEL = makeModel("west");
+    protected static final Model CONNECTED_UP_MODEL = makeModel("up");
+    protected static final Model CONNECTED_DOWN_MODEL = makeModel("down");
+    protected static final Model CORE_MODEL = makeModel(Identifier.of(ModInfo.MOD_ID, "block/building/beams/core"));
+    protected static final Model ITEM_MODEL = makeModel(Identifier.of(ModInfo.MOD_ID, "item/building/beam"));
 
     protected static final VoxelShape CORE_SHAPE = Block.createCuboidShape(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
     protected static final VoxelShape CONNECTED_NORTH_SHAPE = Block.createCuboidShape(5.0, 5.0, 0.0, 11.0, 11.0, 5.0);
@@ -143,13 +102,72 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
         CONNECTED_DOWN = BooleanProperty.of("connected_down");
     }
 
-    public GenericBeamBlock(
-        AbstractBlock.Settings settings,
-        BeamConfig config
-    ) {
+    public final Identifier BLOCK_ID;
+
+    public final String material;
+    public final String materialName;
+    public final Block ingredient;
+    public final boolean isFlammable;
+    public final boolean isTranslucent;
+    public final Identifier sideTexture;
+    public final Identifier endTexture;
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient) {
+        this(material, materialName, ingredient, false, false);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable) {
+        this(material, materialName, ingredient, isFlammable, false);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent) {
+        this(material, materialName, ingredient, isFlammable, isTranslucent, TextureUtils.block(ingredient));
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, Identifier texture) {
+        this(material, materialName, ingredient, false, false, texture, texture);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, Identifier texture) {
+        this(material, materialName, ingredient, isFlammable, false, texture, texture);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier texture) {
+        this(material, materialName, ingredient, isFlammable, isTranslucent, texture, texture);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, Identifier sideTexture, Identifier endTexture) {
+        this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, false, false, sideTexture, endTexture);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, Identifier sideTexture, Identifier endTexture) {
+        this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, isFlammable, false, sideTexture, endTexture);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier sideTexture, Identifier endTexture) {
+        this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, isFlammable, isTranslucent, sideTexture, endTexture);
+    }
+
+    public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, Identifier sideTexture, Identifier endTexture) {
+        this(settings, material, materialName, ingredient, false, false, sideTexture, endTexture);
+    }
+
+    public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, boolean isFlammable, Identifier sideTexture, Identifier endTexture) {
+        this(settings, material, materialName, ingredient, isFlammable, false, sideTexture, endTexture);
+    }
+
+    public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier sideTexture, Identifier endTexture) {
         super(settings);
 
-        this.config = config;
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/beams/" + material);
+
+        this.material = material;
+        this.materialName = materialName;
+        this.ingredient = ingredient;
+        this.isFlammable = isFlammable;
+        this.isTranslucent = isTranslucent;
+        this.sideTexture = sideTexture;
+        this.endTexture = endTexture;
 
         this.setDefaultState(
             this.stateManager
@@ -162,6 +180,24 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
                 .with(CONNECTED_DOWN, false)
                 .with(WATERLOGGED, false)
         );
+    }
+
+    private static Model makeModel(String direction) {
+        return makeModel(Identifier.of(ModInfo.MOD_ID, String.format("block/building/beams/connected_%s", direction)));
+    }
+
+    private static Model makeModel(Identifier id) {
+        return new Model(
+            Optional.of(id),
+            Optional.empty(),
+            TextureKey.SIDE,
+            TextureKey.END
+        );
+    }
+
+    @Override
+    public boolean isTranslucent() {
+        return isTranslucent;
     }
 
     private boolean shouldConnect(ItemPlacementContext ctx, Direction direction) {
@@ -334,10 +370,10 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
 
     @Override
     public void register() {
-        Registry.register(Registries.BLOCK, config.getBlockID(), this);
-        Registry.register(Registries.ITEM, config.getBlockID(), new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (config.isFlammable) {
+        if (isFlammable) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -359,9 +395,9 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
             .pattern("# #")
             .pattern("# #")
             .pattern("# #")
-            .input('#', config.ingredient)
-            .criterion(FabricRecipeProvider.hasItem(config.ingredient),
-                FabricRecipeProvider.conditionsFromItem(config.ingredient))
+            .input('#', ingredient)
+            .criterion(FabricRecipeProvider.hasItem(ingredient),
+                FabricRecipeProvider.conditionsFromItem(ingredient))
             .offerTo(exporter);
     }
 
@@ -372,12 +408,12 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, config.name + " Beam");
+        translationBuilder.add(this, String.format("%s Beam", materialName));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        TextureMap textures = config.getTextures();
+        TextureMap textures = getTextures();
 
         Identifier coreModelId = blockStateModelGenerator.createSubModel(this, "", CORE_MODEL, unused -> textures);
         Identifier northModelId = blockStateModelGenerator.createSubModel(this, "_connected_north", CONNECTED_NORTH_MODEL, unused -> textures);
@@ -427,69 +463,18 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
             );
     }
 
+    private TextureMap getTextures() {
+        return new TextureMap()
+            .put(TextureKey.SIDE, sideTexture)
+            .put(TextureKey.END, endTexture);
+    }
+
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         ITEM_MODEL.upload(
-            config.getBlockID().withPrefixedPath("item/"),
-            config.getTextures(),
+            BLOCK_ID.withPrefixedPath("item/"),
+            getTextures(),
             itemModelGenerator.writer
         );
-    }
-
-    public static final class BeamConfig {
-        public final Block ingredient;
-        public final String material;
-        public final String name;
-        public final boolean isFlammable;
-        public final boolean isTranslucent;
-        public final Identifier sideTexture;
-        public final Identifier endTexture;
-
-        public BeamConfig(
-            Block ingredient,
-            String material,
-            String name,
-            boolean isFlammable,
-            boolean isTranslucent,
-            Identifier texture
-        ) {
-            this(
-                ingredient,
-                material,
-                name,
-                isFlammable,
-                isTranslucent,
-                texture,
-                texture
-            );
-        }
-
-        public BeamConfig(
-            Block ingredient,
-            String material,
-            String name,
-            boolean isFlammable,
-            boolean isTranslucent,
-            Identifier sideTexture,
-            Identifier endTexture
-        ) {
-            this.ingredient = ingredient;
-            this.material = material;
-            this.name = name;
-            this.isFlammable = isFlammable;
-            this.isTranslucent = isTranslucent;
-            this.sideTexture = sideTexture;
-            this.endTexture = endTexture;
-        }
-
-        public Identifier getBlockID() {
-            return Identifier.of(ModInfo.MOD_ID, "building/beams/" + material);
-        }
-
-        public TextureMap getTextures() {
-            return new TextureMap()
-                .put(TextureKey.SIDE, sideTexture)
-                .put(TextureKey.END, endTexture);
-        }
     }
 }
