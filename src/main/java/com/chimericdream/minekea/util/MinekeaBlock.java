@@ -16,6 +16,10 @@ import java.util.function.Function;
 public interface MinekeaBlock {
     void register();
 
+    default boolean isTranslucent() {
+        return false;
+    }
+
     default void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
     }
 
