@@ -43,9 +43,12 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     private Fluid storedFluid = Fluids.EMPTY;
     private double fluidAmountInBuckets = 0.0;
 
+    private NbtCompound storedMobData = new NbtCompound();
+
     public static final String ITEM_AMT_KEY = "FullItemStacks";
     public static final String FLUID_KEY = "StoredFluid";
     public static final String FLUID_AMT_KEY = "StoredFluidAmount";
+    public static final String MOB_DATA_KEY = "StoredMobData";
 
     public GlassJarBlockEntity(BlockPos pos, BlockState state) {
         this(ContainerBlocks.GLASS_JAR_BLOCK_ENTITY, pos, state);
@@ -53,6 +56,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
 
     public GlassJarBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+    }
+
+    public NbtCompound getStoredMobData() {
+        return storedMobData;
     }
 
     public Fluid getStoredFluid() {
@@ -76,8 +83,8 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             return true;
         }
 
-        // We can't store fluids and items at the same time
-        if (this.hasItem()) {
+        // We can't store multiple things at the same time
+        if (this.hasItem() || this.hasMob()) {
             return false;
         }
 
@@ -154,8 +161,8 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     }
 
     public boolean canAcceptItem(ItemStack item) {
-        // We can't store fluids and items at the same time
-        if (this.hasFluid()) {
+        // We can't store multiple things at the same time
+        if (this.hasFluid() || this.hasMob()) {
             return false;
         }
 
@@ -175,6 +182,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
 
     @Override
     public ItemStack tryInsert(ItemStack stack) {
+        if (this.hasFluid() || this.hasMob()) {
+            return stack;
+        }
+
         ItemStack storedItem = this.items.get(0);
 
         // The jar was empty. Now it won't be
@@ -265,6 +276,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         return stacks;
     }
 
+    public boolean hasMob() {
+        return !storedMobData.isEmpty();
+    }
+
     public boolean hasFluid() {
         return !storedFluid.matchesType(Fluids.EMPTY);
     }
@@ -290,20 +305,41 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
 
         super.readNbt(nbt, registryLookup);
 
+        boolean hasFluid = readFluidNbt(nbt);
+        boolean hasMob = readMobNbt(nbt);
+
+        if (!hasFluid && !hasMob) {
+            Inventories.readNbt(nbt, items, registryLookup);
+            fullItemStacks = nbt.getInt(ITEM_AMT_KEY);
+        }
+
+        markDirty();
+    }
+
+    private boolean readFluidNbt(NbtCompound nbt) {
         String fluidKey = nbt.getString(FLUID_KEY);
 
         if (fluidKey.equals("NONE")) {
             storedFluid = Fluids.EMPTY;
             fluidAmountInBuckets = 0.0;
-        } else {
-            storedFluid = Registries.FLUID.get(Identifier.of(fluidKey));
-            fluidAmountInBuckets = nbt.getDouble(FLUID_AMT_KEY);
+
+            return false;
         }
 
-        Inventories.readNbt(nbt, items, registryLookup);
-        fullItemStacks = nbt.getInt(ITEM_AMT_KEY);
+        storedFluid = Registries.FLUID.get(Identifier.of(fluidKey));
+        fluidAmountInBuckets = nbt.getDouble(FLUID_AMT_KEY);
 
-        markDirty();
+        return true;
+    }
+
+    private boolean readMobNbt(NbtCompound nbt) {
+        storedMobData = nbt.getCompound(MOB_DATA_KEY);
+
+        return !storedMobData.isEmpty();
+    }
+
+    public void readMobNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        storedMobData = nbt;
     }
 
     @Override
@@ -311,6 +347,13 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         Inventories.writeNbt(nbt, items, registryLookup);
         nbt.putInt(ITEM_AMT_KEY, fullItemStacks);
 
+        writeFluidNbt(nbt, registryLookup);
+        writeMobNbt(nbt, registryLookup);
+
+        super.writeNbt(nbt, registryLookup);
+    }
+
+    private void writeFluidNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         if (storedFluid.matchesType(Fluids.EMPTY)) {
             nbt.putString(FLUID_KEY, "NONE");
             nbt.putDouble(FLUID_AMT_KEY, 0.0);
@@ -318,8 +361,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
             nbt.putString(FLUID_KEY, Registries.FLUID.getId(storedFluid).toString());
             nbt.putDouble(FLUID_AMT_KEY, fluidAmountInBuckets);
         }
+    }
 
-        super.writeNbt(nbt, registryLookup);
+    public void writeMobNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        nbt.put(MOB_DATA_KEY, storedMobData);
     }
 
     @Override
@@ -350,7 +395,11 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
 
     @Override
     public boolean isEmpty() {
-        return ImplementedInventory.super.isEmpty() && storedFluid.matchesType(Fluids.EMPTY);
+        if (hasFluid() || hasMob()) {
+            return false;
+        }
+
+        return ImplementedInventory.super.isEmpty();
     }
 
     public void playEmptyBottleSound() {

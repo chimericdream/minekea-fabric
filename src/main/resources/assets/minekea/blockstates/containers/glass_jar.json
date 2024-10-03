@@ -1,7 +1,39 @@
 {
-    "variants": {
-        "": {
-            "model": "minekea:block/containers/glass_jar"
+    "multipart": [
+        {
+            "apply": {
+                "model": "minekea:block/containers/glass_jar"
+            },
+            "when": {
+                "facing": "north"
+            }
+        },
+        {
+            "apply": {
+                "model": "minekea:block/containers/glass_jar",
+                "y": 90
+            },
+            "when": {
+                "facing": "east"
+            }
+        },
+        {
+            "apply": {
+                "model": "minekea:block/containers/glass_jar",
+                "y": 180
+            },
+            "when": {
+                "facing": "south"
+            }
+        },
+        {
+            "apply": {
+                "model": "minekea:block/containers/glass_jar",
+                "y": 270
+            },
+            "when": {
+                "facing": "west"
+            }
         }
-    }
+    ]
 }

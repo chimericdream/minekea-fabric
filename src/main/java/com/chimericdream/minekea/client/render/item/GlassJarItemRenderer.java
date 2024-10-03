@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.client.render.item;
 
+import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,14 +15,14 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 
 @Environment(EnvType.CLIENT)
 public class GlassJarItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer {
     @Override
     public void render(ItemStack stack, ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        BlockState defaultState = Registries.BLOCK.get(Registries.ITEM.getId(stack.getItem().asItem())).getDefaultState();
+        BlockState defaultState = ContainerBlocks.GLASS_JAR.getDefaultState();
 
         JarModel model = new JarModel();
         model.setModel(MinecraftClient.getInstance().getBlockRenderManager().getModel(defaultState));
@@ -32,9 +33,20 @@ public class GlassJarItemRenderer implements BuiltinItemRendererRegistry.Dynamic
 
         GlassJarBlockEntity entity = new GlassJarBlockEntity(BlockPos.ORIGIN, defaultState);
 
-        NbtComponent nbt = stack.getComponents().get(DataComponentTypes.CUSTOM_DATA);
-        if (nbt != null && MinecraftClient.getInstance().world != null) {
-            entity.readNbt(nbt.copyNbt(), MinecraftClient.getInstance().world.getRegistryManager());
+        NbtComponent customData = stack.getComponents().get(DataComponentTypes.CUSTOM_DATA);
+        if (customData != null && MinecraftClient.getInstance().world != null) {
+            NbtCompound data = customData.copyNbt();
+            if (!data.isEmpty()) {
+                entity.readNbt(data, MinecraftClient.getInstance().world.getRegistryManager());
+            }
+        }
+
+        NbtComponent entityData = stack.getComponents().get(DataComponentTypes.ENTITY_DATA);
+        if (entityData != null && MinecraftClient.getInstance().world != null) {
+            NbtCompound mobData = entityData.copyNbt();
+            if (!mobData.isEmpty()) {
+                entity.readMobNbt(mobData, MinecraftClient.getInstance().world.getRegistryManager());
+            }
         }
 
         MinecraftClient.getInstance().getBlockEntityRenderDispatcher().renderEntity(entity, matrices, vertexConsumers, light, overlay);

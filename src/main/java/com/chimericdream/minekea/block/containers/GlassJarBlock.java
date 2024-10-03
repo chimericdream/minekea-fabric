@@ -25,6 +25,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,6 +51,7 @@ import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
@@ -79,7 +81,8 @@ import java.util.function.UnaryOperator;
 public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider, Waterloggable {
     public static final Map<String, String> ALLOWED_ITEMS = new LinkedHashMap<>();
 
-    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    public static final DirectionProperty FACING;
+    public static final BooleanProperty WATERLOGGED;
 
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "containers/glass_jar");
 
@@ -87,6 +90,9 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     private static final VoxelShape LID_SHAPE;
 
     static {
+        FACING = Properties.HORIZONTAL_FACING;
+        WATERLOGGED = Properties.WATERLOGGED;
+
         /*
          * This would probably be cleaner looking if did something like
          *
@@ -195,15 +201,21 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     public GlassJarBlock() {
         super(Settings.copy(Blocks.GLASS).nonOpaque());
 
-        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
+        this.setDefaultState(
+            this.stateManager
+                .getDefaultState()
+                .with(FACING, Direction.NORTH)
+                .with(WATERLOGGED, false)
+        );
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED);
+        builder.add(FACING, WATERLOGGED);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState()
+            .with(FACING, ctx.getPlayer().getHorizontalFacing().getOpposite())
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
@@ -356,11 +368,16 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
             return;
         }
 
-        if (itemStack.get(DataComponentTypes.CUSTOM_DATA) == null) {
+        NbtComponent customData = itemStack.getOrDefault(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT);
+        if (!customData.isEmpty()) {
+            entity.readNbt(customData.copyNbt(), world.getRegistryManager());
             return;
         }
 
-        entity.readNbt(itemStack.get(DataComponentTypes.CUSTOM_DATA).copyNbt(), world.getRegistryManager());
+        NbtComponent entityData = itemStack.getOrDefault(DataComponentTypes.ENTITY_DATA, NbtComponent.DEFAULT);
+        if (!entityData.isEmpty()) {
+            entity.readMobNbt(entityData.copyNbt(), world.getRegistryManager());
+        }
     }
 
     @Override
@@ -386,7 +403,9 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                     NbtCompound nbt = new NbtCompound();
                     entity.writeNbt(nbt, world.getRegistryManager());
 
-                    if (!nbt.isEmpty()) {
+                    if (entity.hasMob()) {
+                        itemStack.apply(DataComponentTypes.ENTITY_DATA, NbtComponent.of(nbt.getCompound(GlassJarBlockEntity.MOB_DATA_KEY)), UnaryOperator.identity());
+                    } else {
                         itemStack.apply(DataComponentTypes.CUSTOM_DATA, NbtComponent.of(nbt), UnaryOperator.identity());
                     }
 
@@ -430,10 +449,11 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
         super.appendTooltip(stack, context, tooltip, options);
 
-        NbtComponent nbtComponent = stack.getComponents().get(DataComponentTypes.CUSTOM_DATA);
+        NbtComponent customDataComponent = stack.getComponents().get(DataComponentTypes.CUSTOM_DATA);
+        NbtComponent entityDataComponent = stack.getComponents().get(DataComponentTypes.ENTITY_DATA);
 
-        if (nbtComponent != null) {
-            NbtCompound nbt = nbtComponent.copyNbt();
+        if (customDataComponent != null) {
+            NbtCompound nbt = customDataComponent.copyNbt();
 
             String storedFluid = nbt.getString(GlassJarBlockEntity.FLUID_KEY);
             if (!storedFluid.isEmpty() && !storedFluid.equals("NONE")) {
@@ -467,6 +487,17 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
 
                     tooltip.add(text);
                 }
+            }
+        } else if (entityDataComponent != null) {
+            NbtCompound nbt = entityDataComponent.copyNbt();
+
+            if (!nbt.isEmpty()) {
+                EntityType.get(nbt.getString("id")).ifPresent(entityType -> {
+                    MutableText text = MutableText.of(Text.of("Captured mob: ").getContent()).formatted(Formatting.GREEN);
+                    text.append(entityType.getName().copy());
+
+                    tooltip.add(text);
+                });
             }
         }
     }
