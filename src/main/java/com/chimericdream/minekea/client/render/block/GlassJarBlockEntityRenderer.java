@@ -56,12 +56,12 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
 
     @Override
     public void render(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        if (entity.hasFluid()) {
+        if (entity.hasMob()) {
+            renderMob(entity, matrices, vertexConsumers);
+        } else if (entity.hasFluid()) {
             renderFluid(entity, matrices, vertexConsumers, light);
         } else if (entity.hasItem()) {
             renderItem(entity, matrices, vertexConsumers);
-        } else if (entity.hasMob()) {
-            renderMob(entity, matrices, vertexConsumers);
         }
 
     }
