@@ -14,15 +14,23 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
+import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import org.joml.Quaternionf;
+
+import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJarBlockEntity> {
@@ -38,19 +46,72 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
     // Ensures that the total height of the contents doesn't go above the top
     private static final float VERTICAL_MULTIPLIER = 9f / 16f;
 
-    private final ItemRenderer renderer = MinecraftClient.getInstance().getItemRenderer();
+    private final EntityRenderDispatcher entityRenderer;
+    private final ItemRenderer itemRenderer;
 
     public GlassJarBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+        entityRenderer = ctx.getEntityRenderDispatcher();
+        itemRenderer = ctx.getItemRenderer();
     }
 
     @Override
     public void render(GlassJarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        if (entity.hasFluid()) {
+        if (entity.hasMob()) {
+            renderMob(entity, matrices, vertexConsumers);
+        } else if (entity.hasFluid()) {
             renderFluid(entity, matrices, vertexConsumers, light);
         } else if (entity.hasItem()) {
             renderItem(entity, matrices, vertexConsumers);
         }
 
+    }
+
+    private void renderMob(GlassJarBlockEntity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers) {
+        NbtCompound mobData = entity.getStoredMobData();
+        if (mobData.isEmpty()) {
+            return;
+        }
+
+        World world = MinecraftClient.getInstance().world;
+        if (world == null) {
+            return;
+        }
+
+        Optional<Entity> mob = EntityType.getEntityFromNbt(mobData, world);
+
+        if (mob.isEmpty()) {
+            return;
+        }
+
+        matrices.push();
+        matrices.translate(0.5f, 0f, 0.5f);
+        float f = 0.34375f;
+        float g = Math.max(mob.get().getWidth(), mob.get().getHeight());
+        if ((double) g > 1.0) {
+            f /= g;
+        }
+
+        int light = entity.getWorld() == null ? 15728880 : WorldRenderer.getLightmapCoordinates(entity.getWorld(), entity.getPos().up());
+
+        matrices.translate(0.0F, 0.4F, 0.0F);
+        matrices.translate(0.0F, -0.3125F, 0.0F);
+        matrices.scale(f, f, f);
+
+        if (entity.getWorld() != null) {
+            Direction facing = entity.getCachedState().get(GlassJarBlock.FACING);
+            if (facing.equals(Direction.NORTH)) {
+                matrices.multiply((new Quaternionf()).rotationY(3.1415927f));
+            } else if (facing.equals(Direction.SOUTH)) {
+                matrices.multiply(new Quaternionf());
+            } else if (facing.equals(Direction.WEST)) {
+                matrices.multiply((new Quaternionf()).rotationY(-1.5707964f));
+            } else {
+                matrices.multiply((new Quaternionf()).rotationY(1.5707964f));
+            }
+        }
+
+        entityRenderer.render(mob.get(), 0.0, 0.0, 0.0, 0.0f, 0.0f, matrices, vertexConsumers, light);
+        matrices.pop();
     }
 
     private void renderFluidTexture(
@@ -283,7 +344,7 @@ public class GlassJarBlockEntityRenderer implements BlockEntityRenderer<GlassJar
         matrices.scale(0.749f, fY, 0.749f);
 
         int lightAbove = world == null ? 15728880 : WorldRenderer.getLightmapCoordinates(world, pos.up());
-        renderer.renderItem(stack, ModelTransformationMode.FIXED, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, null, 0);
+        itemRenderer.renderItem(stack, ModelTransformationMode.FIXED, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, null, 0);
 
         matrices.pop();
     }

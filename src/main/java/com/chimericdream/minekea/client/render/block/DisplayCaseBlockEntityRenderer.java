@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.client.render.block;
 
+import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.block.furniture.displaycases.GenericDisplayCase;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
@@ -50,6 +51,10 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
         return stack.isIn(MinekeaItemTags.BAGGED_ITEMS);
     }
 
+    private boolean isJarItem(ItemStack stack) {
+        return stack.isOf(ContainerBlocks.GLASS_JAR.asItem());
+    }
+
     private boolean isHeadItem(Identifier id) {
         return
             id.compareTo(Registries.ITEM.getId(Items.PLAYER_HEAD)) == 0
@@ -94,9 +99,14 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
             matrices.scale(0.5f, 0.5f, 0.5f);
         }
 
-        // Rotate heads so they face up instead of being half inside the case
-        if (isHeadItem(id)) {
+        // Rotate heads and jars so they face up instead of being half inside the case
+        if (isHeadItem(id) || isJarItem(stack)) {
             matrices.multiply(RotationAxis.NEGATIVE_X.rotationDegrees(90));
+        }
+
+        // Jars need to move up a tiny bit more
+        if (isJarItem(stack)) {
+            matrices.translate(0, 0, 0.09375);
         }
 
         ModelTransformationMode mode = isBlock ? ModelTransformationMode.GROUND : ModelTransformationMode.FIXED;

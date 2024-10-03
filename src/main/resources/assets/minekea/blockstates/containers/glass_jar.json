@@ -1,7 +1,19 @@
 {
     "variants": {
-        "": {
+        "facing=north": {
             "model": "minekea:block/containers/glass_jar"
+        },
+        "facing=east": {
+            "model": "minekea:block/containers/glass_jar",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "minekea:block/containers/glass_jar",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "minekea:block/containers/glass_jar",
+            "y": 270
         }
     }
 }
