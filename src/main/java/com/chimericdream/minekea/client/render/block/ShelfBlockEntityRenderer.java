@@ -100,6 +100,7 @@ public class ShelfBlockEntityRenderer<T extends ShelfBlockEntity> implements Blo
         if (isJarItem(stack)) {
             matrices.translate(x, 0.785, 0.25);
             matrices.scale(0.9f, 0.9f, 0.9f);
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
         } else if (isBlockItem(stack)) {
             matrices.translate(x, 0.65, 0.25);
             matrices.scale(0.375f, 0.375f, 0.375f);
