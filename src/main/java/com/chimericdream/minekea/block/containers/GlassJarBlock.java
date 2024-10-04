@@ -251,7 +251,7 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         return switch (mobId) {
             case "minecraft:allay" -> SoundEvents.ENTITY_ALLAY_AMBIENT_WITHOUT_ITEM;
             case "minecraft:bat" -> SoundEvents.ENTITY_BAT_AMBIENT;
-            case "minecraft:bee" -> SoundEvents.ENTITY_BEE_LOOP;
+            case "minecraft:bee" -> SoundEvents.ENTITY_BEE_POLLINATE;
             case "minecraft:endermite" -> SoundEvents.ENTITY_ENDERMITE_AMBIENT;
             case "minecraft:silverfish" -> SoundEvents.ENTITY_SILVERFISH_AMBIENT;
             case "minecraft:slime" -> SoundEvents.ENTITY_SLIME_SQUISH;
