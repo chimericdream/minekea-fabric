@@ -1,3 +1,20 @@
+### 1.21.x - 6.1.0
+
+#### New Features
+
+* Mob in a jar
+  * Glass jars can now be used to capture and display some mobs. Right-clicking a mob with an empty jar will capture it, and shift-right-clicking a jar will release the mob.
+  * Mobs that can be captured include:
+    * Allays
+    * Bats
+    * Endermites
+    * Silverfish
+    * Small slimes
+    * Vexes
+* Framed planks
+  * These planks have a similar appearance to crates, but are purely decorative.
+
+
 ### 1.21.x - 6.0.0
 
 #### BREAKING CHANGES
