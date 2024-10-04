@@ -49,6 +49,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -64,6 +67,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -217,6 +221,42 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         return this.getDefaultState()
             .with(FACING, ctx.getPlayer().getHorizontalFacing().getOpposite())
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+    }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        GlassJarBlockEntity entity;
+        try {
+            entity = (GlassJarBlockEntity) world.getBlockEntity(pos);
+            assert entity != null;
+        } catch (Exception e) {
+            MinekeaMod.LOGGER.error(String.format("The glass jar at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+
+            return;
+        }
+
+        String mobId = entity.getMobId();
+        if (mobId == null) {
+            return;
+        }
+
+        SoundEvent sound = getMobSound(mobId);
+        if (sound != null && random.nextInt(100) == 0) {
+            world.playSound((double) pos.getX() + 0.5, (double) pos.getY() + 0.5, (double) pos.getZ() + 0.5, sound, SoundCategory.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false);
+        }
+    }
+
+    @Nullable
+    private SoundEvent getMobSound(String mobId) {
+        return switch (mobId) {
+            case "minecraft:allay" -> SoundEvents.ENTITY_ALLAY_AMBIENT_WITHOUT_ITEM;
+            case "minecraft:vex" -> SoundEvents.ENTITY_VEX_AMBIENT;
+            case "minecraft:slime" -> SoundEvents.ENTITY_SLIME_SQUISH;
+            case "minecraft:bat" -> SoundEvents.ENTITY_BAT_AMBIENT;
+            case "minecraft:silverfish" -> SoundEvents.ENTITY_SILVERFISH_AMBIENT;
+            case "minecraft:endermite" -> SoundEvents.ENTITY_ENDERMITE_AMBIENT;
+            default -> null;
+        };
     }
 
     @Override

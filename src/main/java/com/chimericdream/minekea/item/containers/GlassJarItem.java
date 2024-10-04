@@ -13,6 +13,7 @@ import net.minecraft.entity.mob.SilverfishEntity;
 import net.minecraft.entity.mob.SlimeEntity;
 import net.minecraft.entity.mob.VexEntity;
 import net.minecraft.entity.passive.AllayEntity;
+import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemPlacementContext;
@@ -168,7 +169,7 @@ public class GlassJarItem extends BlockItem {
             return ((SlimeEntity) entity).isSmall();
         }
 
-        return entity instanceof VexEntity || entity instanceof AllayEntity || entity instanceof SilverfishEntity || entity instanceof EndermiteEntity;
+        return entity instanceof VexEntity || entity instanceof AllayEntity || entity instanceof SilverfishEntity || entity instanceof EndermiteEntity || entity instanceof BatEntity;
     }
 
     public boolean hasStoredMob(ItemStack stack) {

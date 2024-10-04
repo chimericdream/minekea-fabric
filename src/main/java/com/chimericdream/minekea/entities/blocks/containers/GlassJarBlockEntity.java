@@ -276,6 +276,15 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         return stacks;
     }
 
+    @Nullable
+    public String getMobId() {
+        if (this.hasMob()) {
+            return storedMobData.getString("id");
+        }
+
+        return null;
+    }
+
     public boolean hasMob() {
         return !storedMobData.isEmpty();
     }
