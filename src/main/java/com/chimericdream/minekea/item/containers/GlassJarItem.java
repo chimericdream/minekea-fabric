@@ -21,6 +21,8 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -43,10 +45,6 @@ public class GlassJarItem extends BlockItem {
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand) {
-        if (player.getWorld().isClient()) {
-            return ActionResult.PASS;
-        }
-
         if (entity instanceof MobEntity mob && canCaptureMob(mob) && !hasStoredMob(stack)) {
             mob.stopRiding();
             mob.removeAllPassengers();
@@ -75,6 +73,20 @@ public class GlassJarItem extends BlockItem {
                 stack.decrement(1);
             }
 
+            World world = player.getWorld();
+            BlockPos blockPos = player.getBlockPos();
+
+            world.playSound(
+                (double) blockPos.getX() + 0.5,
+                (double) blockPos.getY() + 0.5,
+                (double) blockPos.getZ() + 0.5,
+                SoundEvents.ENTITY_ITEM_PICKUP,
+                SoundCategory.BLOCKS,
+                0.5F,
+                world.random.nextFloat() * 0.4F + 0.8F,
+                false
+            );
+
             return ActionResult.SUCCESS;
         }
 
@@ -87,9 +99,6 @@ public class GlassJarItem extends BlockItem {
 
         if (context.getPlayer() != null && context.getPlayer().isSneaking() && hasStoredMob(stack)) {
             World world = context.getWorld();
-            if (world.isClient()) {
-                return ActionResult.SUCCESS;
-            }
 
             BlockPos blockPos = context.getBlockPos();
             Direction direction = context.getSide();
@@ -115,6 +124,16 @@ public class GlassJarItem extends BlockItem {
 
         if (releaseMobAt(nbt, world, releasePos, itemStack)) {
             world.emitGameEvent(player, GameEvent.ENTITY_PLACE, blockPos);
+            world.playSound(
+                (double) blockPos.getX() + 0.5,
+                (double) blockPos.getY() + 0.5,
+                (double) blockPos.getZ() + 0.5,
+                SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM,
+                SoundCategory.BLOCKS,
+                0.5F,
+                world.random.nextFloat() * 0.4F + 0.8F,
+                false
+            );
 
             itemStack.decrement(1);
 
@@ -127,17 +146,19 @@ public class GlassJarItem extends BlockItem {
     }
 
     private boolean releaseMobAt(NbtCompound nbt, World world, BlockPos pos, ItemStack stack) {
-        if (!world.isClient() && !nbt.isEmpty()) {
+        if (!nbt.isEmpty()) {
             nbt.remove("UUID");
 
             return EntityType.getEntityFromNbt(nbt, world).map((entity) -> {
-                moveEntityTo(entity, world, pos);
-                entity.setVelocity(Vec3d.ZERO);
+                if (!world.isClient()) {
+                    moveEntityTo(entity, world, pos);
+                    entity.setVelocity(Vec3d.ZERO);
 
-                world.spawnEntity(entity);
+                    world.spawnEntity(entity);
 
-                if (hasCustomName(stack) && entity instanceof LivingEntity) {
-                    entity.setCustomName(stack.get(DataComponentTypes.CUSTOM_NAME));
+                    if (hasCustomName(stack) && entity instanceof LivingEntity) {
+                        entity.setCustomName(stack.get(DataComponentTypes.CUSTOM_NAME));
+                    }
                 }
 
                 return entity;
