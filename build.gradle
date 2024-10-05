@@ -57,7 +57,6 @@ dependencies {
 
     modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
 
-    modImplementation "com.chimericdream.lib:chimericlib-common:${project.chimericlib_version}"
     modImplementation "com.chimericdream.lib:chimericlib-fabric:${project.chimericlib_version}"
 }
 
