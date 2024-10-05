@@ -19,7 +19,7 @@ fabricApi {
 }
 
 ext {
-    GITHUB_TOKEN = System.getenv("GH_PERSONAL_ACCESS_TOKEN")
+    GITHUB_TOKEN = System.getenv("GITHUB_TOKEN")
 }
 
 repositories {
