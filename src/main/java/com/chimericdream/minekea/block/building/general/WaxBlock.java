@@ -1,9 +1,9 @@
 package com.chimericdream.minekea.block.building.general;
 
+import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.item.ingredients.WaxItem;
-import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -98,7 +98,7 @@ public class WaxBlock extends Block implements MinekeaBlock {
             return;
         }
 
-        translationBuilder.add(this, String.format("%s Wax Block", Colors.getName(color)));
+        translationBuilder.add(this, String.format("%s Wax Block", ColorHelpers.getName(color)));
     }
 
     @Override

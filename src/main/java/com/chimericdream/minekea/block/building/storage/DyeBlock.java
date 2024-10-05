@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -89,7 +89,7 @@ public class DyeBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Item dye = Colors.getDye(color);
+        Item dye = ColorHelpers.getDye(color);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern("###")
@@ -114,7 +114,7 @@ public class DyeBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("Compressed %s Dye", Colors.getName(color)));
+        translationBuilder.add(this, String.format("Compressed %s Dye", ColorHelpers.getName(color)));
     }
 
     @Override

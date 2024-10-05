@@ -18,6 +18,10 @@ fabricApi {
     configureDataGeneration()
 }
 
+ext {
+    GITHUB_TOKEN = System.getenv("GITHUB_TOKEN")
+}
+
 repositories {
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
@@ -27,6 +31,13 @@ repositories {
     maven { url = uri("https://maven.blamejared.com") }
     maven { url = uri("https://maven.shedaniel.me/") }
     maven { url = uri("https://maven.terraformersmc.com/releases") }
+    maven {
+        url = uri("https://maven.pkg.github.com/chimericdream/*")
+        credentials {
+            username "chimericdream"
+            password GITHUB_TOKEN
+        }
+    }
 }
 
 dependencies {
@@ -45,6 +56,9 @@ dependencies {
     }
 
     modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
+
+    modImplementation "com.chimericdream.lib:chimericlib-common:${project.chimericlib_version}"
+    modImplementation "com.chimericdream.lib:chimericlib-fabric:${project.chimericlib_version}"
 }
 
 processResources {

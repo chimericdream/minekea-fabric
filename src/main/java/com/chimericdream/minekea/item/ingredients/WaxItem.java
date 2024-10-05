@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.item.ingredients;
 
+import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaItem;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -78,7 +78,7 @@ public class WaxItem extends Item implements MinekeaItem {
             return;
         }
 
-        translationBuilder.add(this, String.format("%s Wax", Colors.getName(color)));
+        translationBuilder.add(this, String.format("%s Wax", ColorHelpers.getName(color)));
     }
 
     @Override

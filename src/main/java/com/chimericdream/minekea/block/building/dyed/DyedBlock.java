@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.block.building.dyed;
 
+import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
-import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -137,7 +137,7 @@ public class DyedBlock extends Block implements MinekeaBlock {
     @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block parentBlock = Registries.BLOCK.get(PARENT_BLOCK_ID);
-        Item dye = Colors.getDye(color);
+        Item dye = ColorHelpers.getDye(color);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 8)
             .pattern("###")
@@ -159,7 +159,7 @@ public class DyedBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Dyed %s", Colors.getName(color), materialName));
+        translationBuilder.add(this, String.format("%s Dyed %s", ColorHelpers.getName(color), materialName));
     }
 
     @Override

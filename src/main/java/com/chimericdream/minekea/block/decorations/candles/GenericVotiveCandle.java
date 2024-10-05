@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.block.decorations.candles;
 
+import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
-import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -142,7 +142,7 @@ public class GenericVotiveCandle extends CandleBlock implements MinekeaBlock {
         if (color.equals("plain")) {
             dye = Items.ICE;
         } else {
-            dye = Colors.getDye(color);
+            dye = ColorHelpers.getDye(color);
         }
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, this, 8)
@@ -171,7 +171,7 @@ public class GenericVotiveCandle extends CandleBlock implements MinekeaBlock {
             return;
         }
 
-        translationBuilder.add(this, String.format("%s Votive Candle", Colors.getName(color)));
+        translationBuilder.add(this, String.format("%s Votive Candle", ColorHelpers.getName(color)));
     }
 
     @Override

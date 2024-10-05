@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.block.furniture.pillows;
 
+import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
-import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -86,7 +86,7 @@ public class PillowBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block wool = Colors.getWool(color);
+        Block wool = ColorHelpers.getWool(color);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern("##")
@@ -110,7 +110,7 @@ public class PillowBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Pillow", Colors.getName(color)));
+        translationBuilder.add(this, String.format("%s Pillow", ColorHelpers.getName(color)));
     }
 
     @Override
