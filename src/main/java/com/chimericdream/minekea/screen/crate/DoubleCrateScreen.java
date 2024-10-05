@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.screen.crate;
 
+import com.chimericdream.lib.screen.DoubleWideInventoryScreen;
 import com.chimericdream.minekea.block.containers.crates.GenericCrate;
-import com.chimericdream.minekea.screen.DoubleWideInventoryScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 

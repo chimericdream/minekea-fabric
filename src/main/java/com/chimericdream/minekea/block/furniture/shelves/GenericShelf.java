@@ -1,9 +1,9 @@
 package com.chimericdream.minekea.block.furniture.shelves;
 
+import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
-import com.chimericdream.minekea.resource.ModelUtils;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.mojang.serialization.MapCodec;

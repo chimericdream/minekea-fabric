@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.decorations.misc;
 
+import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.resource.ModelUtils;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.TextHelpers;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;

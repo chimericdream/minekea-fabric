@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.block.building.compressed;
 
+import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
-import com.chimericdream.minekea.resource.ModelUtils;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.Models;

@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.block.building.beams;
 
+import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
-import com.chimericdream.minekea.resource.TextureUtils;
 import com.chimericdream.minekea.tag.CommonItemTags;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import com.chimericdream.minekea.util.MinekeaBlock;

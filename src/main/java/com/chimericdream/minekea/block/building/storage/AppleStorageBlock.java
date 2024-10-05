@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.resource.ModelUtils;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
