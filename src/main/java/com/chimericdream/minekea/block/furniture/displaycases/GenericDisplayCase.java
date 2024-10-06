@@ -1,10 +1,10 @@
 package com.chimericdream.minekea.block.furniture.displaycases;
 
+import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
 import com.chimericdream.minekea.util.ImplementedInventory;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -17,7 +17,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
@@ -65,7 +64,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock, Waterloggable {
+public class GenericDisplayCase extends FabricModBlockWithEntity implements Waterloggable {
     private static final Model DISPLAY_CASE_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/furniture/display_case")),
         Optional.empty(),
@@ -82,29 +81,15 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock,
 
     public final Identifier BLOCK_ID;
 
-    protected final String material;
-    protected final String materialName;
-    protected final Block plankIngredient;
-    protected final Block logIngredient;
-    protected final Block strippedLogIngredient;
-    protected final boolean isFlammable;
-
     static {
         MAIN_SHAPE = Block.createCuboidShape(0.0, 2.0, 0.0, 16.0, 16.0, 16.0);
         BASEBOARD_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 2.0, 15.0);
     }
 
-    public GenericDisplayCase(String material, String materialName, Block plankIngredient, Block logIngredient, Block strippedLogIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(plankIngredient));
+    public GenericDisplayCase(ModBlockConfig config) {
+        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/display_cases/%s", material));
-
-        this.material = material;
-        this.materialName = materialName;
-        this.plankIngredient = plankIngredient;
-        this.logIngredient = logIngredient;
-        this.strippedLogIngredient = strippedLogIngredient;
-        this.isFlammable = isFlammable;
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/display_cases/%s", this.getMaterial()));
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -122,14 +107,14 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock,
             itemGroup.add(this);
         });
 
-        if (isFlammable) {
+        if (this.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState()
+        return this.getDefaultState()
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
@@ -283,7 +268,7 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock,
     }
 
     @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
+    protected MapCodec<? extends FabricModBlockWithEntity> getCodec() {
         return null;
     }
 
@@ -335,6 +320,9 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock,
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block plankIngredient = this.getIngredient("planks");
+        Block logIngredient = this.getIngredient("log");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern(" G ")
             .pattern("X X")
@@ -358,11 +346,14 @@ public class GenericDisplayCase extends BlockWithEntity implements MinekeaBlock,
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Display Case", materialName));
+        translationBuilder.add(this, String.format("%s Display Case", this.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block logIngredient = this.getIngredient("log");
+        Block strippedLogIngredient = Optional.ofNullable(this.getIngredient("stripped_log")).orElse(logIngredient);
+
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.MATERIAL, TextureMap.getId(logIngredient))
             .put(MinekeaTextures.STRIPPED_MATERIAL, TextureMap.getId(strippedLogIngredient));

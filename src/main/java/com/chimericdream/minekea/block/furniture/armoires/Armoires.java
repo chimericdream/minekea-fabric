@@ -1,8 +1,9 @@
 package com.chimericdream.minekea.block.furniture.armoires;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.client.render.block.ArmoireBlockEntityRenderer;
 import com.chimericdream.minekea.entities.blocks.furniture.ArmoireBlockEntity;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -25,28 +26,27 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
 public class Armoires implements MinekeaBlockCategory {
-    public static final List<MinekeaBlock> ARMOIRES;
+    public static final List<FabricModBlock> ARMOIRES = new ArrayList<>();
 
     public static BlockEntityType<ArmoireBlockEntity> ARMOIRE_BLOCK_ENTITY;
 
     static {
-        ARMOIRES = List.of(
-            new GenericArmoireBlock("Acacia", "acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG, Blocks.ACACIA_SLAB, true),
-            new GenericArmoireBlock("Bamboo", "bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK, Blocks.BAMBOO_SLAB, true),
-            new GenericArmoireBlock("Birch", "birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG, Blocks.BIRCH_SLAB, true),
-            new GenericArmoireBlock("Cherry", "cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG, Blocks.CHERRY_SLAB, true),
-            new GenericArmoireBlock("Crimson", "crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, Blocks.CRIMSON_SLAB, false),
-            new GenericArmoireBlock("Dark Oak", "dark_oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG, Blocks.DARK_OAK_SLAB, true),
-            new GenericArmoireBlock("Jungle", "jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG, Blocks.JUNGLE_SLAB, true),
-            new GenericArmoireBlock("Mangrove", "mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG, Blocks.MANGROVE_SLAB, true),
-            new GenericArmoireBlock("Oak", "oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG, Blocks.OAK_SLAB, true),
-            new GenericArmoireBlock("Spruce", "spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG, Blocks.SPRUCE_SLAB, true),
-            new GenericArmoireBlock("Warped", "warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, Blocks.WARPED_SLAB, false)
-        );
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Acacia").material("acacia").ingredient("planks", Blocks.ACACIA_PLANKS).ingredient("log", Blocks.STRIPPED_ACACIA_LOG).ingredient("slab", Blocks.ACACIA_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Bamboo").material("bamboo").ingredient("planks", Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.STRIPPED_BAMBOO_BLOCK).ingredient("slab", Blocks.BAMBOO_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Birch").material("birch").ingredient("planks", Blocks.BIRCH_PLANKS).ingredient("log", Blocks.STRIPPED_BIRCH_LOG).ingredient("slab", Blocks.BIRCH_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Cherry").material("cherry").ingredient("planks", Blocks.CHERRY_PLANKS).ingredient("log", Blocks.STRIPPED_CHERRY_LOG).ingredient("slab", Blocks.CHERRY_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Crimson").material("crimson").ingredient("planks", Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.STRIPPED_CRIMSON_STEM).ingredient("slab", Blocks.CRIMSON_SLAB)));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Dark Oak").material("dark_oak").ingredient("planks", Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.STRIPPED_DARK_OAK_LOG).ingredient("slab", Blocks.DARK_OAK_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Jungle").material("jungle").ingredient("planks", Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.STRIPPED_JUNGLE_LOG).ingredient("slab", Blocks.JUNGLE_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Mangrove").material("mangrove").ingredient("planks", Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.STRIPPED_MANGROVE_LOG).ingredient("slab", Blocks.MANGROVE_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Oak").material("oak").ingredient("planks", Blocks.OAK_PLANKS).ingredient("log", Blocks.STRIPPED_OAK_LOG).ingredient("slab", Blocks.OAK_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Spruce").material("spruce").ingredient("planks", Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.STRIPPED_SPRUCE_LOG).ingredient("slab", Blocks.SPRUCE_SLAB).flammable()));
+        ARMOIRES.add(new GenericArmoireBlock(new ModBlock.ModBlockConfig().materialName("Warped").material("warped").ingredient("planks", Blocks.WARPED_PLANKS).ingredient("log", Blocks.STRIPPED_WARPED_STEM).ingredient("slab", Blocks.WARPED_SLAB)));
     }
 
     @Environment(EnvType.CLIENT)
@@ -59,7 +59,7 @@ public class Armoires implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        ARMOIRES.forEach(MinekeaBlock::register);
+        ARMOIRES.forEach(ModBlock::register);
     }
 
     @Override

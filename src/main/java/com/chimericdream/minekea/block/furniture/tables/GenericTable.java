@@ -1,9 +1,9 @@
 package com.chimericdream.minekea.block.furniture.tables;
 
+import com.chimericdream.lib.text.TextHelpers;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
-import com.chimericdream.minekea.util.TextHelpers;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;

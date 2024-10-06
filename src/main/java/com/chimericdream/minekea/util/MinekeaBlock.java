@@ -20,19 +20,23 @@ public interface MinekeaBlock {
         return false;
     }
 
+    default boolean isFlammable() {
+        return false;
+    }
+
     default void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
     }
 
     default void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
     }
 
+    default void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
+    }
+
     default void configureRecipes(RecipeExporter exporter) {
     }
 
     default void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-    }
-
-    default void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
     }
 
     default void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {

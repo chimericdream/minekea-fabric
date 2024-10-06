@@ -1,8 +1,8 @@
 package com.chimericdream.minekea.block.furniture.displaycases;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.minekea.client.render.block.DisplayCaseBlockEntityRenderer;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -35,29 +35,29 @@ public class DisplayCases implements MinekeaBlockCategory {
     public static BlockEntityType<DisplayCaseBlockEntity> DISPLAY_CASE_BLOCK_ENTITY;
 
     static {
-        DISPLAY_CASES.add(new GenericDisplayCase("acacia", "Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("bamboo", "Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK, Blocks.STRIPPED_BAMBOO_BLOCK, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("birch", "Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("cherry", "Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG, Blocks.STRIPPED_CHERRY_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("crimson", "Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, false));
-        DISPLAY_CASES.add(new GenericDisplayCase("dark_oak", "Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("jungle", "Jungle", Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("mangrove", "Mangrove", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG, Blocks.STRIPPED_MANGROVE_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("oak", "Oak", Blocks.OAK_PLANKS, Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("spruce", "Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("warped", "Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, false));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("acacia").materialName("Acacia").ingredient("planks", Blocks.ACACIA_PLANKS).ingredient("log", Blocks.ACACIA_LOG).ingredient("stripped_log", Blocks.STRIPPED_ACACIA_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("bamboo").materialName("Bamboo").ingredient("planks", Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.BAMBOO_BLOCK).ingredient("stripped_log", Blocks.STRIPPED_BAMBOO_BLOCK).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("birch").materialName("Birch").ingredient("planks", Blocks.BIRCH_PLANKS).ingredient("log", Blocks.BIRCH_LOG).ingredient("stripped_log", Blocks.STRIPPED_BIRCH_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("cherry").materialName("Cherry").ingredient("planks", Blocks.CHERRY_PLANKS).ingredient("log", Blocks.CHERRY_LOG).ingredient("stripped_log", Blocks.STRIPPED_CHERRY_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("crimson").materialName("Crimson").ingredient("planks", Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.CRIMSON_STEM).ingredient("stripped_log", Blocks.STRIPPED_CRIMSON_STEM)));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("dark_oak").materialName("Dark Oak").ingredient("planks", Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.DARK_OAK_LOG).ingredient("stripped_log", Blocks.STRIPPED_DARK_OAK_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("jungle").materialName("Jungle").ingredient("planks", Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.JUNGLE_LOG).ingredient("stripped_log", Blocks.STRIPPED_JUNGLE_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("mangrove").materialName("Mangrove").ingredient("planks", Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.MANGROVE_LOG).ingredient("stripped_log", Blocks.STRIPPED_MANGROVE_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("oak").materialName("Oak").ingredient("planks", Blocks.OAK_PLANKS).ingredient("log", Blocks.OAK_LOG).ingredient("stripped_log", Blocks.STRIPPED_OAK_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("spruce").materialName("Spruce").ingredient("planks", Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.SPRUCE_LOG).ingredient("stripped_log", Blocks.STRIPPED_SPRUCE_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("warped").materialName("Warped").ingredient("planks", Blocks.WARPED_PLANKS).ingredient("log", Blocks.WARPED_STEM).ingredient("stripped_log", Blocks.STRIPPED_WARPED_STEM)));
 
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/acacia", "Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/bamboo", "Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK, Blocks.STRIPPED_BAMBOO_BLOCK, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/birch", "Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/cherry", "Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG, Blocks.STRIPPED_CHERRY_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/crimson", "Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, false));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/dark_oak", "Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/jungle", "Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/mangrove", "Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG, Blocks.STRIPPED_MANGROVE_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/oak", "Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG, Blocks.STRIPPED_OAK_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/spruce", "Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, true));
-        DISPLAY_CASES.add(new GenericDisplayCase("stripped/warped", "Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, false));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/acacia").materialName("Stripped Acacia").ingredient("planks", Blocks.ACACIA_PLANKS).ingredient("log", Blocks.STRIPPED_ACACIA_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/bamboo").materialName("Stripped Bamboo").ingredient("planks", Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.STRIPPED_BAMBOO_BLOCK).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/birch").materialName("Stripped Birch").ingredient("planks", Blocks.BIRCH_PLANKS).ingredient("log", Blocks.STRIPPED_BIRCH_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/cherry").materialName("Stripped Cherry").ingredient("planks", Blocks.CHERRY_PLANKS).ingredient("log", Blocks.STRIPPED_CHERRY_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/crimson").materialName("Stripped Crimson").ingredient("planks", Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.STRIPPED_CRIMSON_STEM)));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/dark_oak").materialName("Stripped Dark Oak").ingredient("planks", Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.STRIPPED_DARK_OAK_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/jungle").materialName("Stripped Jungle").ingredient("planks", Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.STRIPPED_JUNGLE_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/mangrove").materialName("Stripped Mangrove").ingredient("planks", Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.STRIPPED_MANGROVE_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/oak").materialName("Stripped Oak").ingredient("planks", Blocks.OAK_PLANKS).ingredient("log", Blocks.STRIPPED_OAK_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/spruce").materialName("Stripped Spruce").ingredient("planks", Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.STRIPPED_SPRUCE_LOG).flammable()));
+        DISPLAY_CASES.add(new GenericDisplayCase(new ModBlock.ModBlockConfig().material("stripped/warped").materialName("Stripped Warped").ingredient("planks", Blocks.WARPED_PLANKS).ingredient("log", Blocks.STRIPPED_WARPED_STEM)));
     }
 
     @Environment(EnvType.CLIENT)
@@ -70,7 +70,7 @@ public class DisplayCases implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        DISPLAY_CASES.forEach(MinekeaBlock::register);
+        DISPLAY_CASES.forEach(ModBlock::register);
     }
 
     @Override

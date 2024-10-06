@@ -1,9 +1,9 @@
 package com.chimericdream.minekea.block.furniture.armoires;
 
+import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.ArmoireBlockEntity;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -16,7 +16,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
@@ -70,7 +69,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock {
+public class GenericArmoireBlock extends FabricModBlockWithEntity {
     protected static final Model BOTTOM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/armoires/bottom")),
         Optional.empty(),
@@ -177,19 +176,8 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
 
     public final Identifier BLOCK_ID;
 
-    protected final Block plankIngredient;
-    protected final Block logIngredient;
-    protected final Block slabIngredient;
-    protected final String materialName;
-    protected final String material;
-    protected final boolean isFlammable;
-
-    public GenericArmoireBlock(String materialName, String material, Block plankIngredient, Block logIngredient, Block slabIngredient) {
-        this(materialName, material, plankIngredient, logIngredient, slabIngredient, false);
-    }
-
-    public GenericArmoireBlock(String materialName, String material, Block plankIngredient, Block logIngredient, Block slabIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(plankIngredient));
+    public GenericArmoireBlock(ModBlockConfig config) {
+        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
 
         this.setDefaultState(
             this.stateManager
@@ -198,14 +186,7 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
                 .with(HALF, DoubleBlockHalf.LOWER)
         );
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/armoires/%s", material));
-
-        this.materialName = materialName;
-        this.material = material;
-        this.plankIngredient = plankIngredient;
-        this.logIngredient = logIngredient;
-        this.slabIngredient = slabIngredient;
-        this.isFlammable = isFlammable;
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/armoires/%s", this.getMaterial()));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -214,14 +195,14 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
 
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!world.isClient && player.isCreative()) {
-            DoubleBlockHalf half = (DoubleBlockHalf) state.get(HALF);
+            DoubleBlockHalf half = state.get(HALF);
 
             if (half == DoubleBlockHalf.UPPER) {
                 BlockPos blockPos = pos.down();
                 BlockState blockState = world.getBlockState(blockPos);
 
                 if (blockState.isOf(state.getBlock()) && blockState.get(HALF) == DoubleBlockHalf.LOWER) {
-                    BlockState blockState2 = blockState.contains(Properties.WATERLOGGED) && (Boolean) blockState.get(Properties.WATERLOGGED) ? Blocks.WATER.getDefaultState() : Blocks.AIR.getDefaultState();
+                    BlockState blockState2 = blockState.contains(Properties.WATERLOGGED) && blockState.get(Properties.WATERLOGGED) ? Blocks.WATER.getDefaultState() : Blocks.AIR.getDefaultState();
                     world.setBlockState(blockPos, blockState2, 35);
                     world.syncWorldEvent(player, 2001, blockPos, Block.getRawIdFromState(blockState));
                 }
@@ -232,7 +213,7 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
     }
 
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
-        world.setBlockState(pos.up(), (BlockState) state.with(HALF, DoubleBlockHalf.UPPER), 3);
+        world.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER), 3);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -242,11 +223,11 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
             lookDirection = ctx.getHorizontalPlayerFacing();
         }
 
-        return (BlockState) this.getDefaultState().with(FACING, lookDirection);
+        return this.getDefaultState().with(FACING, lookDirection);
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        DoubleBlockHalf doubleBlockHalf = (DoubleBlockHalf) state.get(HALF);
+        DoubleBlockHalf doubleBlockHalf = state.get(HALF);
 
         if (direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.LOWER == (direction == Direction.UP)) {
             return neighborState.isOf(this) && neighborState.get(HALF) != doubleBlockHalf ? state.with(FACING, neighborState.get(FACING)) : Blocks.AIR.getDefaultState();
@@ -292,7 +273,7 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
     }
 
     @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
+    protected MapCodec<? extends FabricModBlockWithEntity> getCodec() {
         return null;
     }
 
@@ -537,7 +518,7 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (this.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -554,6 +535,9 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block slabIngredient = this.getIngredient("slab");
+        Block plankIngredient = this.getIngredient("planks");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern("BSB")
             .pattern("BCB")
@@ -580,14 +564,14 @@ public class GenericArmoireBlock extends BlockWithEntity implements MinekeaBlock
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Armor-oire", materialName));
+        translationBuilder.add(this, String.format("%s Armor-oire", this.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.BAR, Registries.BLOCK.getId(Blocks.NETHERITE_BLOCK).withPrefixedPath("block/"))
-            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(logIngredient).withPrefixedPath("block/"))
+            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(this.getIngredient("log")).withPrefixedPath("block/"))
             .put(MinekeaTextures.PLANKS, Registries.BLOCK.getId(Blocks.OAK_PLANKS).withPrefixedPath("block/"));
 
         Identifier topModelId = blockStateModelGenerator.createSubModel(this, "_top", TOP_MODEL, unused -> textures);

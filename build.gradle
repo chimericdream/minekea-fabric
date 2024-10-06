@@ -38,6 +38,8 @@ repositories {
             password GITHUB_TOKEN
         }
     }
+
+    mavenLocal()
 }
 
 dependencies {

@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.containers;
 
 import com.chimericdream.lib.fluids.FluidHelpers;
+import com.chimericdream.lib.items.ItemHelpers;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.general.WaxBlock;
@@ -8,7 +9,6 @@ import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
 import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.item.ingredients.WaxItem;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
-import com.chimericdream.minekea.util.ItemHelpers;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;

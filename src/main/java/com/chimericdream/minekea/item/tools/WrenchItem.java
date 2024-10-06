@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.item.tools;
 
+import com.chimericdream.lib.tags.CommonItemTags;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.tag.CommonItemTags;
 import com.chimericdream.minekea.util.MinekeaItem;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
