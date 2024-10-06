@@ -48,17 +48,16 @@ public class GenericBookshelf extends FabricModBlock {
     public GenericBookshelf(ModBlockConfig config) {
         super(config);
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/bookshelves/%s", this.getMaterial()));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/bookshelves/%s", this.config.getMaterial()));
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(itemGroup -> itemGroup.add(this));
 
-        if (this.isFlammable()) {
+        if (this.config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -72,7 +71,7 @@ public class GenericBookshelf extends FabricModBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block ingredient = this.getIngredient();
+        Block ingredient = this.config.getIngredient();
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 3)
             .pattern("###")
@@ -94,12 +93,12 @@ public class GenericBookshelf extends FabricModBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Bookshelf", this.getMaterialName()));
+        translationBuilder.add(this, String.format("%s Bookshelf", this.config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        TextureMap textures = new TextureMap().put(MinekeaTextures.MATERIAL, this.getTexture());
+        TextureMap textures = new TextureMap().put(MinekeaTextures.MATERIAL, this.config.getTexture());
 
         Identifier variant0Id = blockStateModelGenerator.createSubModel(this, "_v0", BOOKSHELF_MODEL, unused -> textures.put(MinekeaTextures.SHELF, Identifier.of(ModInfo.MOD_ID, "block/furniture/bookshelves/shelf0")));
         Identifier variant1Id = blockStateModelGenerator.createSubModel(this, "_v1", BOOKSHELF_MODEL, unused -> textures.put(MinekeaTextures.SHELF, Identifier.of(ModInfo.MOD_ID, "block/furniture/bookshelves/shelf1")));

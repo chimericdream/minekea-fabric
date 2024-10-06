@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.furniture.armoires;
 
 import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.client.render.block.ArmoireBlockEntityRenderer;
 import com.chimericdream.minekea.entities.blocks.furniture.ArmoireBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -31,7 +30,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class Armoires implements MinekeaBlockCategory {
-    public static final List<FabricModBlock> ARMOIRES = new ArrayList<>();
+    public static final List<GenericArmoireBlock> ARMOIRES = new ArrayList<>();
 
     public static BlockEntityType<ArmoireBlockEntity> ARMOIRE_BLOCK_ENTITY;
 
@@ -59,7 +58,7 @@ public class Armoires implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        ARMOIRES.forEach(ModBlock::register);
+        ARMOIRES.forEach(GenericArmoireBlock::register);
     }
 
     @Override

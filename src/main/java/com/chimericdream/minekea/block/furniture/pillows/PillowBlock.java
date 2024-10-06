@@ -62,7 +62,6 @@ public class PillowBlock extends FabricModBlock {
         }
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));

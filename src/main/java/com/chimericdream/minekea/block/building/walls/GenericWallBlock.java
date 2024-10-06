@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.building.walls;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModWallBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -10,7 +11,6 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.WallBlock;
 import net.minecraft.block.enums.WallShape;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
@@ -36,37 +36,20 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class GenericWallBlock extends WallBlock implements MinekeaBlock {
+public class GenericWallBlock extends FabricModWallBlock {
     public final Identifier BLOCK_ID;
 
-    protected final String materialName;
-    protected final String material;
-    protected final boolean isFlammable;
-    protected final Block ingredient;
-    protected final Identifier textureId;
+    public GenericWallBlock(ModBlock.ModBlockConfig config) {
+        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient())));
 
-    public GenericWallBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
-        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/walls/%s", config.getMaterial()));
     }
 
-    public GenericWallBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
-        super(AbstractBlock.Settings.copy(ingredient));
-
-        this.materialName = materialName;
-        this.material = material;
-        this.isFlammable = isFlammable;
-        this.ingredient = ingredient;
-        this.textureId = textureId;
-
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/walls/%s", material));
-    }
-
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -84,6 +67,8 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block ingredient = config.getIngredient();
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 6)
             .pattern("###")
             .pattern("###")
@@ -100,13 +85,13 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Wall", materialName));
+        translationBuilder.add(this, String.format("%s Wall", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
-            .put(TextureKey.WALL, textureId);
+            .put(TextureKey.WALL, config.getTexture());
 
         Identifier inventoryModelId = blockStateModelGenerator.createSubModel(this, "", Models.WALL_INVENTORY, unused -> textures);
         Identifier postModelId = blockStateModelGenerator.createSubModel(this, "", Models.TEMPLATE_WALL_POST, unused -> textures);

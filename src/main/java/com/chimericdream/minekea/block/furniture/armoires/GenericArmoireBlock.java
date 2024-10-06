@@ -186,7 +186,7 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
                 .with(HALF, DoubleBlockHalf.LOWER)
         );
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/armoires/%s", this.getMaterial()));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/armoires/%s", this.config.getMaterial()));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -513,12 +513,11 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
         }
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (this.isFlammable()) {
+        if (this.config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -535,8 +534,8 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block slabIngredient = this.getIngredient("slab");
-        Block plankIngredient = this.getIngredient("planks");
+        Block slabIngredient = this.config.getIngredient("slab");
+        Block plankIngredient = this.config.getIngredient("planks");
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern("BSB")
@@ -564,14 +563,14 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Armor-oire", this.getMaterialName()));
+        translationBuilder.add(this, String.format("%s Armor-oire", this.config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.BAR, Registries.BLOCK.getId(Blocks.NETHERITE_BLOCK).withPrefixedPath("block/"))
-            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(this.getIngredient("log")).withPrefixedPath("block/"))
+            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(this.config.getIngredient("log")).withPrefixedPath("block/"))
             .put(MinekeaTextures.PLANKS, Registries.BLOCK.getId(Blocks.OAK_PLANKS).withPrefixedPath("block/"));
 
         Identifier topModelId = blockStateModelGenerator.createSubModel(this, "_top", TOP_MODEL, unused -> textures);

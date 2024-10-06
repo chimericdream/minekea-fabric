@@ -70,7 +70,7 @@ public class DisplayCases implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        DISPLAY_CASES.forEach(ModBlock::register);
+        DISPLAY_CASES.forEach(GenericDisplayCase::register);
     }
 
     @Override

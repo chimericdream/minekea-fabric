@@ -89,7 +89,7 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
     public GenericDisplayCase(ModBlockConfig config) {
         super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/display_cases/%s", this.getMaterial()));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/display_cases/%s", this.config.getMaterial()));
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -98,7 +98,6 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
         );
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
@@ -107,7 +106,7 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
             itemGroup.add(this);
         });
 
-        if (this.isFlammable()) {
+        if (this.config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -320,8 +319,8 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block plankIngredient = this.getIngredient("planks");
-        Block logIngredient = this.getIngredient("log");
+        Block plankIngredient = this.config.getIngredient("planks");
+        Block logIngredient = this.config.getIngredient("log");
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern(" G ")
@@ -346,13 +345,13 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Display Case", this.getMaterialName()));
+        translationBuilder.add(this, String.format("%s Display Case", this.config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        Block logIngredient = this.getIngredient("log");
-        Block strippedLogIngredient = Optional.ofNullable(this.getIngredient("stripped_log")).orElse(logIngredient);
+        Block logIngredient = this.config.getIngredient("log");
+        Block strippedLogIngredient = Optional.ofNullable(this.config.getIngredient("stripped_log")).orElse(logIngredient);
 
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.MATERIAL, TextureMap.getId(logIngredient))
