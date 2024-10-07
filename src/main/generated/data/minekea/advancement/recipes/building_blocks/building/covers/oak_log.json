@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_oak_planks": {
+    "has_oak_log": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:oak_planks"
+            "items": "minecraft:oak_log"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_oak_planks"
+      "has_oak_log"
     ]
   ],
   "rewards": {
