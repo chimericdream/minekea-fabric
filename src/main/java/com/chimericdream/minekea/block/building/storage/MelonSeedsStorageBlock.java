@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 public class MelonSeedsStorageBlock extends GenericStorageBlock {
     public MelonSeedsStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK).nonOpaque().sounds(BlockSoundGroup.CROP), Items.MELON_SEEDS, "melon_seeds", true);
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK).nonOpaque().sounds(BlockSoundGroup.CROP)).item(Items.MELON_SEEDS).material("melon_seeds"), true);
     }
 
     @Override

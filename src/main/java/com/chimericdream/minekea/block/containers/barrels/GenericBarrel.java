@@ -1,9 +1,11 @@
 package com.chimericdream.minekea.block.containers.barrels;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
+import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import com.chimericdream.minekea.entities.blocks.containers.MinekeaBarrelBlockEntity;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -15,7 +17,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -65,20 +66,15 @@ import java.awt.image.BufferedImage;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBarrel extends BlockWithEntity implements MinekeaBlock {
+public class GenericBarrel extends FabricModBlockWithEntity {
     public static final MapCodec<GenericBarrel> CODEC = createCodec(GenericBarrel::new);
 
     public final Identifier BLOCK_ID;
+    public final String sideTextureKey;
+    public final String faceTextureKey;
 
     public static final DirectionProperty FACING;
     public static final BooleanProperty OPEN;
-
-    protected final String materialName;
-    protected final String sideTextureKey;
-    protected final String faceTextureKey;
-    protected final Block plankIngredient;
-    protected final Block slabIngredient;
-    protected final boolean isFlammable;
 
     static {
         FACING = Properties.FACING;
@@ -86,57 +82,22 @@ public class GenericBarrel extends BlockWithEntity implements MinekeaBlock {
     }
 
     public GenericBarrel(Settings settings) {
-        this("Acacia", "acacia_planks", "stripped_acacia_log", Blocks.ACACIA_PLANKS, Blocks.ACACIA_SLAB);
+        this(new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("slab", Blocks.ACACIA_SLAB), "acacia_planks", "stripped_acacia_log");
     }
 
     @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
+    protected MapCodec<GenericBarrel> getCodec() {
         return CODEC;
     }
 
-    public GenericBarrel(
-        String materialName,
-        String sideTextureKey,
-        String faceTextureKey,
-        Block plankIngredient,
-        Block slabIngredient
-    ) {
-        this(
-            materialName,
-            sideTextureKey,
-            faceTextureKey,
-            plankIngredient,
-            slabIngredient,
-            true
-        );
-    }
+    public GenericBarrel(ModBlock.Config config, String sideTextureKey, String faceTextureKey) {
+        super(config.settings(AbstractBlock.Settings.copy(Blocks.BARREL)));
 
-    public GenericBarrel(
-        String materialName,
-        String sideTextureKey,
-        String faceTextureKey,
-        Block plankIngredient,
-        Block slabIngredient,
-        boolean isFlammable
-    ) {
-        super(AbstractBlock.Settings.copy(Blocks.BARREL));
-
-        BLOCK_ID = makeBlockId(materialName);
-
-        this.materialName = materialName;
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/barrels/%s", config.getMaterial()));
         this.sideTextureKey = sideTextureKey;
         this.faceTextureKey = faceTextureKey;
-        this.plankIngredient = plankIngredient;
-        this.slabIngredient = slabIngredient;
-        this.isFlammable = isFlammable;
 
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(OPEN, false));
-    }
-
-    public static Identifier makeBlockId(String materialName) {
-        String material = materialName.toLowerCase().replaceAll(" ", "_");
-
-        return Identifier.of(ModInfo.MOD_ID, String.format("containers/barrels/%s", material));
     }
 
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
@@ -206,7 +167,7 @@ public class GenericBarrel extends BlockWithEntity implements MinekeaBlock {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -223,6 +184,9 @@ public class GenericBarrel extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block plankIngredient = config.getIngredient();
+        Block slabIngredient = config.getIngredient("slab");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern("PSP")
             .pattern("P P")
@@ -243,15 +207,15 @@ public class GenericBarrel extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Barrel", materialName));
+        translationBuilder.add(this, String.format("%s Barrel", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        Identifier bottomTexture = BLOCK_ID.withSuffixedPath("_bottom").withPrefixedPath("block/");
-        Identifier sideTexture = BLOCK_ID.withSuffixedPath("_side").withPrefixedPath("block/");
-        Identifier topTexture = BLOCK_ID.withSuffixedPath("_top").withPrefixedPath("block/");
-        Identifier topOpenTexture = BLOCK_ID.withSuffixedPath("_top_open").withPrefixedPath("block/");
+        Identifier bottomTexture = TextureUtils.block(BLOCK_ID, "_bottom");
+        Identifier sideTexture = TextureUtils.block(BLOCK_ID, "_side");
+        Identifier topTexture = TextureUtils.block(BLOCK_ID, "_top");
+        Identifier topOpenTexture = TextureUtils.block(BLOCK_ID, "_top_open");
 
         TextureMap baseTextures = new TextureMap()
             .put(TextureKey.BOTTOM, bottomTexture)

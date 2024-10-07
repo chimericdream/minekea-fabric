@@ -1,8 +1,9 @@
 package com.chimericdream.minekea.block.building.compressed;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.AbstractBlock;
@@ -36,7 +37,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
 
-public class GenericCompressedBlock extends Block implements MinekeaBlock {
+public class GenericCompressedBlock extends FabricModBlock {
     public final Identifier BLOCK_ID;
     protected Identifier PARENT_BLOCK_ID;
 
@@ -45,42 +46,26 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
 
     public static final EnumProperty<Direction.Axis> AXIS;
 
-    protected final String materialName;
-    protected final String textureKey;
-    protected final Block baseBlock;
     protected final int compressionLevel;
 
     static {
         AXIS = Properties.AXIS;
     }
 
-    public GenericCompressedBlock(String materialName, String textureKey, Block baseBlock, int compressionLevel) {
-        this(AbstractBlock.Settings.copy(baseBlock), materialName, textureKey, baseBlock, compressionLevel);
-    }
+    public GenericCompressedBlock(ModBlock.Config config, int compressionLevel) {
+        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient()).strength(
+            getHardness(compressionLevel, config.getIngredient().getHardness()),
+            getResistance(compressionLevel, config.getIngredient().getBlastResistance())
+        ).requiresTool()));
 
-    public GenericCompressedBlock(
-        AbstractBlock.Settings settings,
-        String materialName,
-        String textureKey,
-        Block baseBlock,
-        int compressionLevel
-    ) {
-        super(settings.strength(
-            getHardness(compressionLevel, baseBlock.getHardness()),
-            getResistance(compressionLevel, baseBlock.getBlastResistance())
-        ).requiresTool());
-
-        this.materialName = materialName;
-        this.textureKey = textureKey;
-        this.baseBlock = baseBlock;
         this.compressionLevel = compressionLevel;
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/compressed/%s/%dx", textureKey, compressionLevel));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/compressed/%s/%dx", config.getMaterial(), compressionLevel));
 
         if (compressionLevel > 1) {
-            PARENT_BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/compressed/%s/%dx", textureKey, compressionLevel - 1));
+            PARENT_BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/compressed/%s/%dx", config.getMaterial(), compressionLevel - 1));
         } else {
-            PARENT_BLOCK_ID = Registries.BLOCK.getId(baseBlock);
+            PARENT_BLOCK_ID = Registries.BLOCK.getId(config.getIngredient());
         }
 
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
@@ -148,7 +133,7 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("Compressed %s", materialName));
+        translationBuilder.add(this, String.format("Compressed %s", config.getMaterialName()));
     }
 
     @Override
@@ -159,7 +144,7 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
     @Override
     public void generateTextures() {
         TextureGenerator.getInstance().generate(Registries.BLOCK.getKey(), instance -> {
-            final Optional<BufferedImage> source = instance.getImage(textureKey);
+            final Optional<BufferedImage> source = instance.getImage(config.getMaterial());
 
             if (source.isPresent()) {
                 BufferedImage sourceImage = source.get();
@@ -180,42 +165,4 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
             }
         });
     }
-
-//    @Override
-//    public void setupResources() {
-//        CompressedBlockSettings settings = (CompressedBlockSettings) this.settings;
-//
-//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
-//
-//        Identifier endTexture = settings.getBlockTexture("end");
-//        Identifier sideTexture = settings.getBlockTexture("main");
-//
-//        Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
-//
-//        JTextures textures = new JTextures()
-//            .var("side", sideTexture.toString())
-//            .var("end", endTexture.toString())
-//            .var("overlay", String.format(ModInfo.MOD_ID + ":block/building/compressed/level-%d", settings.getCompressionLevel()));
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/building/compressed_block").textures(textures), MODEL_ID);
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
-//
-//        if (settings.isColumn()) {
-//            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                JState.state(
-//                    JState.variant()
-//                        .put("axis=x", new JBlockModel(MODEL_ID).x(90).y(90))
-//                        .put("axis=y", new JBlockModel(MODEL_ID))
-//                        .put("axis=z", new JBlockModel(MODEL_ID).x(90))
-//                ),
-//                BLOCK_ID
-//            );
-//        } else {
-//            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                JState.state(JState.variant(new JBlockModel(MODEL_ID))),
-//                BLOCK_ID
-//            );
-//        }
-//    }
 }

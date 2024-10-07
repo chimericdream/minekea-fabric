@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.containers.barrels;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.minekea.entities.blocks.containers.MinekeaBarrelBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -27,16 +28,16 @@ public class Barrels implements MinekeaBlockCategory {
     public static BlockEntityType<MinekeaBarrelBlockEntity> MINEKEA_BARREL_BLOCK_ENTITY;
 
     static {
-        BARRELS.add(new GenericBarrel("Acacia", "acacia_planks", "stripped_acacia_log", Blocks.ACACIA_PLANKS, Blocks.ACACIA_SLAB));
-        BARRELS.add(new GenericBarrel("Bamboo", "bamboo_planks", "stripped_bamboo_block", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_SLAB));
-        BARRELS.add(new GenericBarrel("Birch", "birch_planks", "stripped_birch_log", Blocks.BIRCH_PLANKS, Blocks.BIRCH_SLAB));
-        BARRELS.add(new GenericBarrel("Cherry", "cherry_planks", "stripped_cherry_log", Blocks.CHERRY_PLANKS, Blocks.CHERRY_SLAB));
-        BARRELS.add(new GenericBarrel("Crimson", "crimson_planks", "stripped_crimson_stem", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_SLAB));
-        BARRELS.add(new GenericBarrel("Dark Oak", "dark_oak_planks", "stripped_dark_oak_log", Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_SLAB));
-        BARRELS.add(new GenericBarrel("Jungle", "jungle_planks", "stripped_jungle_log", Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_SLAB));
-        BARRELS.add(new GenericBarrel("Mangrove", "mangrove_planks", "stripped_mangrove_log", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_SLAB));
-        BARRELS.add(new GenericBarrel("Spruce", "spruce_planks", "stripped_spruce_log", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_SLAB));
-        BARRELS.add(new GenericBarrel("Warped", "warped_planks", "stripped_warped_stem", Blocks.WARPED_PLANKS, Blocks.WARPED_SLAB));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("slab", Blocks.ACACIA_SLAB), "acacia_planks", "stripped_acacia_log"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS).ingredient("slab", Blocks.BAMBOO_SLAB), "bamboo_planks", "stripped_bamboo_block"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).ingredient("slab", Blocks.BIRCH_SLAB), "birch_planks", "stripped_birch_log"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).ingredient("slab", Blocks.CHERRY_SLAB), "cherry_planks", "stripped_cherry_log"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).ingredient("slab", Blocks.CRIMSON_SLAB), "crimson_planks", "stripped_crimson_stem"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).ingredient("slab", Blocks.DARK_OAK_SLAB), "dark_oak_planks", "stripped_dark_oak_log"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).ingredient("slab", Blocks.JUNGLE_SLAB), "jungle_planks", "stripped_jungle_log"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).ingredient("slab", Blocks.MANGROVE_SLAB), "mangrove_planks", "stripped_mangrove_log"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).ingredient("slab", Blocks.SPRUCE_SLAB), "spruce_planks", "stripped_spruce_log"));
+        BARRELS.add(new GenericBarrel(new ModBlock.Config().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).ingredient("slab", Blocks.WARPED_SLAB), "warped_planks", "stripped_warped_stem"));
     }
 
     @Override

@@ -1,10 +1,11 @@
 package com.chimericdream.minekea.block.furniture.shelves;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -16,7 +17,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
 import net.minecraft.block.entity.BlockEntity;
@@ -62,7 +62,7 @@ import net.minecraft.world.WorldAccess;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericShelf extends BlockWithEntity implements MinekeaBlock, Waterloggable {
+public class GenericShelf extends FabricModBlockWithEntity implements Waterloggable {
     protected static final Model SHELF_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/shelves/supported")),
         Optional.empty(),
@@ -81,51 +81,16 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock, Water
 
     public final Identifier BLOCK_ID;
 
-    protected final Block slabIngredient;
-    protected final Block plankIngredient;
-    protected final Block logIngredient;
-    protected final String materialName;
-    protected final boolean isFlammable;
-
     static {
         WALL_SIDE = DirectionProperty.of("wall_side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
     }
 
-    public GenericShelf(
-        String materialName,
-        Block slabIngredient,
-        Block plankIngredient,
-        Block logIngredient
-    ) {
-        this(materialName, slabIngredient, plankIngredient, logIngredient, false);
+    public GenericShelf(ModBlock.Config config) {
+        this(config, Identifier.of(ModInfo.MOD_ID, String.format("furniture/shelves/supported/%s", config.getMaterial())));
     }
 
-    public GenericShelf(
-        String materialName,
-        Block slabIngredient,
-        Block plankIngredient,
-        Block logIngredient,
-        boolean isFlammable
-    ) {
-        this(
-            materialName,
-            slabIngredient,
-            plankIngredient,
-            logIngredient,
-            isFlammable,
-            makeBlockId(materialName)
-        );
-    }
-
-    public GenericShelf(
-        String materialName,
-        Block slabIngredient,
-        Block plankIngredient,
-        Block logIngredient,
-        boolean isFlammable,
-        Identifier blockId
-    ) {
-        super(AbstractBlock.Settings.copy(plankIngredient));
+    public GenericShelf(ModBlock.Config config, Identifier blockId) {
+        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -134,18 +99,6 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock, Water
         );
 
         BLOCK_ID = blockId;
-
-        this.materialName = materialName;
-        this.slabIngredient = slabIngredient;
-        this.plankIngredient = plankIngredient;
-        this.logIngredient = logIngredient;
-        this.isFlammable = isFlammable;
-    }
-
-    public static Identifier makeBlockId(String materialName) {
-        String material = materialName.toLowerCase().replaceAll(" ", "_");
-
-        return Identifier.of(ModInfo.MOD_ID, String.format("furniture/shelves/supported/%s", material));
     }
 
     @Override
@@ -158,7 +111,7 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock, Water
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -358,6 +311,8 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock, Water
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block slabIngredient = config.getIngredient("slab");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 3)
             .pattern("XXX")
             .pattern("# #")
@@ -378,11 +333,14 @@ public class GenericShelf extends BlockWithEntity implements MinekeaBlock, Water
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Shelf", materialName));
+        translationBuilder.add(this, String.format("%s Shelf", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block plankIngredient = config.getIngredient("planks");
+        Block logIngredient = config.getIngredient("log");
+
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.LOG, TextureMap.getId(logIngredient))
             .put(MinekeaTextures.PLANKS, TextureMap.getId(plankIngredient));

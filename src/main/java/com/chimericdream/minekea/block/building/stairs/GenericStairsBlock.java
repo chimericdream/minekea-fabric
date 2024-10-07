@@ -1,15 +1,14 @@
 package com.chimericdream.minekea.block.building.stairs;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModStairsBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.StairsBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -33,37 +32,20 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
-public class GenericStairsBlock extends StairsBlock implements MinekeaBlock {
+public class GenericStairsBlock extends FabricModStairsBlock {
     public final Identifier BLOCK_ID;
 
-    protected final String materialName;
-    protected final String material;
-    protected final boolean isFlammable;
-    protected final Block ingredient;
-    protected final Identifier textureId;
+    public GenericStairsBlock(ModBlock.Config config) {
+        super(config.getIngredient().getDefaultState(), config);
 
-    public GenericStairsBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
-        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/stairs/%s", config.getMaterial()));
     }
 
-    public GenericStairsBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
-        super(ingredient.getDefaultState(), AbstractBlock.Settings.copy(ingredient));
-
-        this.materialName = materialName;
-        this.material = material;
-        this.isFlammable = isFlammable;
-        this.ingredient = ingredient;
-        this.textureId = textureId;
-
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/stairs/%s", material));
-    }
-
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -74,6 +56,8 @@ public class GenericStairsBlock extends StairsBlock implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block ingredient = config.getIngredient();
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 8)
             .pattern("#  ")
             .pattern("## ")
@@ -91,11 +75,13 @@ public class GenericStairsBlock extends StairsBlock implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Stairs", materialName));
+        translationBuilder.add(this, String.format("%s Stairs", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Identifier textureId = config.getTexture();
+
         TextureMap textures = new TextureMap()
             .put(TextureKey.BOTTOM, textureId)
             .put(TextureKey.TOP, textureId)

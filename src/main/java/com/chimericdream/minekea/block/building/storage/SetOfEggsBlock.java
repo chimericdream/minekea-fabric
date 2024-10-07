@@ -1,19 +1,17 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.sound.MinekeaSoundGroup;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -28,7 +26,6 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -40,16 +37,14 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 
-import java.util.function.Function;
-
 // @TODO: turn this into a slab-like block with top/bottom/full variations
-public class SetOfEggsBlock extends Block implements MinekeaBlock, Waterloggable {
+public class SetOfEggsBlock extends FabricModBlock implements Waterloggable {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "storage/set_of_eggs");
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     public SetOfEggsBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(MinekeaSoundGroup.SET_OF_EGGS_SOUND_GROUP));
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(MinekeaSoundGroup.SET_OF_EGGS_SOUND_GROUP)));
 
         this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
     }
@@ -92,15 +87,6 @@ public class SetOfEggsBlock extends Block implements MinekeaBlock, Waterloggable
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
     }
 
-
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-    }
-
     @Override
     public void configureRecipes(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
@@ -129,22 +115,4 @@ public class SetOfEggsBlock extends Block implements MinekeaBlock, Waterloggable
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, "Set of Eggs");
     }
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-    }
-
-//    @Override
-//    public void setupResources() {
-//        Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(JState.variant().put("", new JBlockModel(MODEL_ID))),
-//            BLOCK_ID
-//        );
-//    }
 }

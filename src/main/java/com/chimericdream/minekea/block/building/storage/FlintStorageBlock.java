@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 public class FlintStorageBlock extends GenericStorageBlock {
     public FlintStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.COBBLESTONE).sounds(BlockSoundGroup.STONE), Items.FLINT, "flint");
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.COBBLESTONE).sounds(BlockSoundGroup.STONE)).material("flint").item(Items.FLINT));
     }
 
     @Override

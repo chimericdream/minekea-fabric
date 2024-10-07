@@ -1,5 +1,7 @@
 package com.chimericdream.minekea.block.containers;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
 import com.chimericdream.lib.fluids.FluidHelpers;
 import com.chimericdream.lib.items.ItemHelpers;
 import com.chimericdream.minekea.MinekeaMod;
@@ -9,13 +11,13 @@ import com.chimericdream.minekea.entities.blocks.containers.GlassJarBlockEntity;
 import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.item.ingredients.WaxItem;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
-import com.chimericdream.minekea.util.MinekeaBlock;
+import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
@@ -82,7 +84,9 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityProvider, Waterloggable {
+public class GlassJarBlock extends FabricModBlockWithEntity implements Waterloggable {
+    public static final MapCodec<GlassJarBlock> CODEC = createCodec(GlassJarBlock::new);
+
     public static final Map<String, String> ALLOWED_ITEMS = new LinkedHashMap<>();
 
     public static final DirectionProperty FACING;
@@ -202,8 +206,12 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
         LID_SHAPE = Block.createCuboidShape(6.0, 9.0, 6.0, 10.0, 10.0, 10.0);
     }
 
+    public GlassJarBlock(AbstractBlock.Settings settings) {
+        this();
+    }
+
     public GlassJarBlock() {
-        super(Settings.copy(Blocks.GLASS).nonOpaque());
+        super(new ModBlock.Config().settings(Settings.copy(Blocks.GLASS).nonOpaque()));
 
         this.setDefaultState(
             this.stateManager
@@ -211,6 +219,10 @@ public class GlassJarBlock extends Block implements MinekeaBlock, BlockEntityPro
                 .with(FACING, Direction.NORTH)
                 .with(WATERLOGGED, false)
         );
+    }
+
+    protected MapCodec<GlassJarBlock> getCodec() {
+        return CODEC;
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

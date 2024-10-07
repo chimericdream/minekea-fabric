@@ -25,40 +25,40 @@ public class Bookshelves implements MinekeaBlockCategory {
     public static final Map<String, GenericBookshelf> BOOKSHELVES = new LinkedHashMap<>();
 
     static {
-        BOOKSHELVES.put("Acacia", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Acacia").material("acacia").flammable().ingredient(Blocks.ACACIA_PLANKS)));
-        BOOKSHELVES.put("Bamboo", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Bamboo").material("bamboo").flammable().ingredient(Blocks.BAMBOO_PLANKS)));
-        BOOKSHELVES.put("Birch", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Birch").material("birch").flammable().ingredient(Blocks.BIRCH_PLANKS)));
-        BOOKSHELVES.put("Cherry", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Cherry").material("cherry").flammable().ingredient(Blocks.CHERRY_PLANKS)));
-        BOOKSHELVES.put("Crimson", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Crimson").material("crimson").ingredient(Blocks.CRIMSON_PLANKS)));
-        BOOKSHELVES.put("Dark Oak", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Dark Oak").material("dark_oak").flammable().ingredient(Blocks.DARK_OAK_PLANKS)));
-        BOOKSHELVES.put("Jungle", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Jungle").material("jungle").flammable().ingredient(Blocks.JUNGLE_PLANKS)));
-        BOOKSHELVES.put("Mangrove", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Mangrove").material("mangrove").flammable().ingredient(Blocks.MANGROVE_PLANKS)));
-        BOOKSHELVES.put("Spruce", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Spruce").material("spruce").flammable().ingredient(Blocks.SPRUCE_PLANKS)));
-        BOOKSHELVES.put("Warped", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Warped").material("warped").ingredient(Blocks.WARPED_PLANKS)));
+        BOOKSHELVES.put("Acacia", new GenericBookshelf(new ModBlock.Config().materialName("Acacia").material("acacia").flammable().ingredient(Blocks.ACACIA_PLANKS)));
+        BOOKSHELVES.put("Bamboo", new GenericBookshelf(new ModBlock.Config().materialName("Bamboo").material("bamboo").flammable().ingredient(Blocks.BAMBOO_PLANKS)));
+        BOOKSHELVES.put("Birch", new GenericBookshelf(new ModBlock.Config().materialName("Birch").material("birch").flammable().ingredient(Blocks.BIRCH_PLANKS)));
+        BOOKSHELVES.put("Cherry", new GenericBookshelf(new ModBlock.Config().materialName("Cherry").material("cherry").flammable().ingredient(Blocks.CHERRY_PLANKS)));
+        BOOKSHELVES.put("Crimson", new GenericBookshelf(new ModBlock.Config().materialName("Crimson").material("crimson").ingredient(Blocks.CRIMSON_PLANKS)));
+        BOOKSHELVES.put("Dark Oak", new GenericBookshelf(new ModBlock.Config().materialName("Dark Oak").material("dark_oak").flammable().ingredient(Blocks.DARK_OAK_PLANKS)));
+        BOOKSHELVES.put("Jungle", new GenericBookshelf(new ModBlock.Config().materialName("Jungle").material("jungle").flammable().ingredient(Blocks.JUNGLE_PLANKS)));
+        BOOKSHELVES.put("Mangrove", new GenericBookshelf(new ModBlock.Config().materialName("Mangrove").material("mangrove").flammable().ingredient(Blocks.MANGROVE_PLANKS)));
+        BOOKSHELVES.put("Spruce", new GenericBookshelf(new ModBlock.Config().materialName("Spruce").material("spruce").flammable().ingredient(Blocks.SPRUCE_PLANKS)));
+        BOOKSHELVES.put("Warped", new GenericBookshelf(new ModBlock.Config().materialName("Warped").material("warped").ingredient(Blocks.WARPED_PLANKS)));
 
-        BOOKSHELVES.put("Bone", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Bone").material("bone").ingredient(Blocks.BONE_BLOCK).texture("default", Registries.BLOCK.getId(Blocks.BONE_BLOCK).withPrefixedPath("block/").withSuffixedPath("_side"))));
-        BOOKSHELVES.put("Dark Prismarine", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Dark Prismarine").material("dark_prismarine").ingredient(Blocks.DARK_PRISMARINE)));
-        BOOKSHELVES.put("Deepslate Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Deepslate Brick").material("deepslate_brick").ingredient(Blocks.DEEPSLATE_BRICKS)));
-        BOOKSHELVES.put("End Stone Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("End Stone Brick").material("end_stone_brick").ingredient(Blocks.END_STONE_BRICKS)));
-        BOOKSHELVES.put("Nether Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Nether Brick").material("nether_brick").ingredient(Blocks.NETHER_BRICKS)));
-        BOOKSHELVES.put("Polished Andesite", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Polished Andesite").material("polished_andesite").ingredient(Blocks.POLISHED_ANDESITE)));
-        BOOKSHELVES.put("Polished Basalt", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Polished Basalt").material("polished_basalt").ingredient(Blocks.POLISHED_BASALT).texture("default", Registries.BLOCK.getId(Blocks.POLISHED_BASALT).withPrefixedPath("block/").withSuffixedPath("_top"))));
-        BOOKSHELVES.put("Polished Blackstone", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Polished Blackstone").material("polished_blackstone").ingredient(Blocks.POLISHED_BLACKSTONE)));
-        BOOKSHELVES.put("Polished Blackstone Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Polished Blackstone Brick").material("polished_blackstone_brick").ingredient(Blocks.POLISHED_BLACKSTONE_BRICKS)));
-        BOOKSHELVES.put("Polished Deepslate", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Polished Deepslate").material("polished_deepslate").ingredient(Blocks.POLISHED_DEEPSLATE)));
-        BOOKSHELVES.put("Polished Diorite", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Polished Diorite").material("polished_diorite").ingredient(Blocks.POLISHED_DIORITE)));
-        BOOKSHELVES.put("Polished Granite", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Polished Granite").material("polished_granite").ingredient(Blocks.POLISHED_GRANITE)));
-        BOOKSHELVES.put("Polished Tuff", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Polished Tuff").material("polished_tuff").ingredient(Blocks.POLISHED_TUFF)));
-        BOOKSHELVES.put("Prismarine", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Prismarine").material("prismarine").ingredient(Blocks.PRISMARINE)));
-        BOOKSHELVES.put("Prismarine Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Prismarine Brick").material("prismarine_brick").ingredient(Blocks.PRISMARINE_BRICKS)));
-        BOOKSHELVES.put("Purpur", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Purpur").material("purpur").ingredient(Blocks.PURPUR_BLOCK)));
-        BOOKSHELVES.put("Quartz Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Quartz Brick").material("quartz_brick").ingredient(Blocks.QUARTZ_BRICKS)));
-        BOOKSHELVES.put("Red Nether Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Red Nether Brick").material("red_nether_brick").ingredient(Blocks.RED_NETHER_BRICKS)));
-        BOOKSHELVES.put("Smooth Quartz", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Smooth Quartz").material("smooth_quartz").ingredient(Blocks.SMOOTH_QUARTZ).texture("default", Registries.BLOCK.getId(Blocks.QUARTZ_BLOCK).withPrefixedPath("block/").withSuffixedPath("_bottom"))));
-        BOOKSHELVES.put("Smooth Stone", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Smooth Stone").material("smooth_stone").ingredient(Blocks.SMOOTH_STONE)));
-        BOOKSHELVES.put("Stone Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Stone Brick").material("stone_brick").ingredient(Blocks.STONE_BRICKS)));
-        BOOKSHELVES.put("Tuff Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Tuff Brick").material("tuff_brick").ingredient(Blocks.TUFF_BRICKS)));
-        BOOKSHELVES.put("Warped Nether Brick", new GenericBookshelf(new ModBlock.ModBlockConfig().materialName("Warped Nether Brick").material("warped_nether_brick").ingredient(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK).texture("default", WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
+        BOOKSHELVES.put("Bone", new GenericBookshelf(new ModBlock.Config().materialName("Bone").material("bone").ingredient(Blocks.BONE_BLOCK).texture("default", Registries.BLOCK.getId(Blocks.BONE_BLOCK).withPrefixedPath("block/").withSuffixedPath("_side"))));
+        BOOKSHELVES.put("Dark Prismarine", new GenericBookshelf(new ModBlock.Config().materialName("Dark Prismarine").material("dark_prismarine").ingredient(Blocks.DARK_PRISMARINE)));
+        BOOKSHELVES.put("Deepslate Brick", new GenericBookshelf(new ModBlock.Config().materialName("Deepslate Brick").material("deepslate_brick").ingredient(Blocks.DEEPSLATE_BRICKS)));
+        BOOKSHELVES.put("End Stone Brick", new GenericBookshelf(new ModBlock.Config().materialName("End Stone Brick").material("end_stone_brick").ingredient(Blocks.END_STONE_BRICKS)));
+        BOOKSHELVES.put("Nether Brick", new GenericBookshelf(new ModBlock.Config().materialName("Nether Brick").material("nether_brick").ingredient(Blocks.NETHER_BRICKS)));
+        BOOKSHELVES.put("Polished Andesite", new GenericBookshelf(new ModBlock.Config().materialName("Polished Andesite").material("polished_andesite").ingredient(Blocks.POLISHED_ANDESITE)));
+        BOOKSHELVES.put("Polished Basalt", new GenericBookshelf(new ModBlock.Config().materialName("Polished Basalt").material("polished_basalt").ingredient(Blocks.POLISHED_BASALT).texture("default", Registries.BLOCK.getId(Blocks.POLISHED_BASALT).withPrefixedPath("block/").withSuffixedPath("_top"))));
+        BOOKSHELVES.put("Polished Blackstone", new GenericBookshelf(new ModBlock.Config().materialName("Polished Blackstone").material("polished_blackstone").ingredient(Blocks.POLISHED_BLACKSTONE)));
+        BOOKSHELVES.put("Polished Blackstone Brick", new GenericBookshelf(new ModBlock.Config().materialName("Polished Blackstone Brick").material("polished_blackstone_brick").ingredient(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+        BOOKSHELVES.put("Polished Deepslate", new GenericBookshelf(new ModBlock.Config().materialName("Polished Deepslate").material("polished_deepslate").ingredient(Blocks.POLISHED_DEEPSLATE)));
+        BOOKSHELVES.put("Polished Diorite", new GenericBookshelf(new ModBlock.Config().materialName("Polished Diorite").material("polished_diorite").ingredient(Blocks.POLISHED_DIORITE)));
+        BOOKSHELVES.put("Polished Granite", new GenericBookshelf(new ModBlock.Config().materialName("Polished Granite").material("polished_granite").ingredient(Blocks.POLISHED_GRANITE)));
+        BOOKSHELVES.put("Polished Tuff", new GenericBookshelf(new ModBlock.Config().materialName("Polished Tuff").material("polished_tuff").ingredient(Blocks.POLISHED_TUFF)));
+        BOOKSHELVES.put("Prismarine", new GenericBookshelf(new ModBlock.Config().materialName("Prismarine").material("prismarine").ingredient(Blocks.PRISMARINE)));
+        BOOKSHELVES.put("Prismarine Brick", new GenericBookshelf(new ModBlock.Config().materialName("Prismarine Brick").material("prismarine_brick").ingredient(Blocks.PRISMARINE_BRICKS)));
+        BOOKSHELVES.put("Purpur", new GenericBookshelf(new ModBlock.Config().materialName("Purpur").material("purpur").ingredient(Blocks.PURPUR_BLOCK)));
+        BOOKSHELVES.put("Quartz Brick", new GenericBookshelf(new ModBlock.Config().materialName("Quartz Brick").material("quartz_brick").ingredient(Blocks.QUARTZ_BRICKS)));
+        BOOKSHELVES.put("Red Nether Brick", new GenericBookshelf(new ModBlock.Config().materialName("Red Nether Brick").material("red_nether_brick").ingredient(Blocks.RED_NETHER_BRICKS)));
+        BOOKSHELVES.put("Smooth Quartz", new GenericBookshelf(new ModBlock.Config().materialName("Smooth Quartz").material("smooth_quartz").ingredient(Blocks.SMOOTH_QUARTZ).texture("default", Registries.BLOCK.getId(Blocks.QUARTZ_BLOCK).withPrefixedPath("block/").withSuffixedPath("_bottom"))));
+        BOOKSHELVES.put("Smooth Stone", new GenericBookshelf(new ModBlock.Config().materialName("Smooth Stone").material("smooth_stone").ingredient(Blocks.SMOOTH_STONE)));
+        BOOKSHELVES.put("Stone Brick", new GenericBookshelf(new ModBlock.Config().materialName("Stone Brick").material("stone_brick").ingredient(Blocks.STONE_BRICKS)));
+        BOOKSHELVES.put("Tuff Brick", new GenericBookshelf(new ModBlock.Config().materialName("Tuff Brick").material("tuff_brick").ingredient(Blocks.TUFF_BRICKS)));
+        BOOKSHELVES.put("Warped Nether Brick", new GenericBookshelf(new ModBlock.Config().materialName("Warped Nether Brick").material("warped_nether_brick").ingredient(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK).texture("default", WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
     }
 
 //    @Override

@@ -42,7 +42,7 @@ public class PillowBlock extends FabricModBlock {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
     public PillowBlock(String color) {
-        super(new ModBlockConfig().settings(AbstractBlock.Settings.copy(Blocks.WHITE_WOOL).mapColor(DyeColor.byName(color, DyeColor.WHITE))));
+        super(new Config().settings(AbstractBlock.Settings.copy(Blocks.WHITE_WOOL).mapColor(DyeColor.byName(color, DyeColor.WHITE))));
 
         this.color = color;
 

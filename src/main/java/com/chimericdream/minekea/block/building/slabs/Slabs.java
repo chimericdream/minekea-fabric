@@ -1,5 +1,7 @@
 package com.chimericdream.minekea.block.building.slabs;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
@@ -7,7 +9,6 @@ import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock
 import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -15,7 +16,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Item;
@@ -27,91 +27,91 @@ import java.util.List;
 import java.util.function.Function;
 
 public class Slabs implements MinekeaBlockCategory {
-    public static final List<MinekeaBlock> SLABS = new ArrayList<>();
-    public static final List<MinekeaBlock> VERTICAL_SLABS = new ArrayList<>();
+    public static final List<GenericSlabBlock> SLABS = new ArrayList<>();
+    public static final List<GenericVerticalSlabBlock> VERTICAL_SLABS = new ArrayList<>();
 
     static {
-        SLABS.add(new GenericSlabBlock("Basalt Brick", "basalt_bricks", false, BuildingBlocks.BASALT_BRICKS_BLOCK, BasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        SLABS.add(new GenericSlabBlock("Cracked Basalt Brick", "cracked_basalt_bricks", false, BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK, CrackedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        SLABS.add(new GenericSlabBlock("Crimson Basalt Brick", "crimson_basalt_bricks", false, BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK, CrimsonBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        SLABS.add(new GenericSlabBlock("Mossy Basalt Brick", "mossy_basalt_bricks", false, BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK, MossyBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        SLABS.add(new GenericSlabBlock("Warped Basalt Brick", "warped_basalt_bricks", false, BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK, WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        SLABS.add(new GenericSlabBlock("Warped Nether Brick", "warped_nether_bricks", false, BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK, WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        SLABS.add(new GenericSlabBlock(new ModBlock.Config().material("basalt_bricks").materialName("Basalt Brick").ingredient(BuildingBlocks.BASALT_BRICKS_BLOCK).texture(TextureUtils.block(BasaltBricksBlock.BLOCK_ID))));
+        SLABS.add(new GenericSlabBlock(new ModBlock.Config().material("cracked_basalt_bricks").materialName("Cracked Basalt Brick").ingredient(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(CrackedBasaltBricksBlock.BLOCK_ID))));
+        SLABS.add(new GenericSlabBlock(new ModBlock.Config().material("crimson_basalt_bricks").materialName("Crimson Basalt Brick").ingredient(BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(CrimsonBasaltBricksBlock.BLOCK_ID))));
+        SLABS.add(new GenericSlabBlock(new ModBlock.Config().material("mossy_basalt_bricks").materialName("Mossy Basalt Brick").ingredient(BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(MossyBasaltBricksBlock.BLOCK_ID))));
+        SLABS.add(new GenericSlabBlock(new ModBlock.Config().material("warped_basalt_bricks").materialName("Warped Basalt Brick").ingredient(BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(WarpedBasaltBricksBlock.BLOCK_ID))));
+        SLABS.add(new GenericSlabBlock(new ModBlock.Config().material("warped_nether_bricks").materialName("Warped Nether Brick").ingredient(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK).texture(TextureUtils.block(WarpedNetherBricksBlock.BLOCK_ID))));
 
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Acacia", "acacia", false, Blocks.ACACIA_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Bamboo", "bamboo_planks", false, Blocks.BAMBOO_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Birch", "birch", false, Blocks.BIRCH_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cherry", "cherry", false, Blocks.CHERRY_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Crimson", "crimson", false, Blocks.CRIMSON_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Dark Oak", "dark_oak", false, Blocks.DARK_OAK_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Jungle", "jungle", false, Blocks.JUNGLE_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Mangrove", "mangrove", false, Blocks.MANGROVE_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Oak", "oak", false, Blocks.OAK_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Spruce", "spruce", false, Blocks.SPRUCE_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Warped", "warped", false, Blocks.WARPED_PLANKS));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("bamboo_planks").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS)));
 
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Andesite", "andesite", false, Blocks.ANDESITE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Bamboo Mosaic", "bamboo_mosaic", false, Blocks.BAMBOO_MOSAIC));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Blackstone", "blackstone", false, Blocks.BLACKSTONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Brick", "bricks", false, Blocks.BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cobbled Deepslate", "cobbled_deepslate", false, Blocks.COBBLED_DEEPSLATE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cobblestone", "cobblestone", false, Blocks.COBBLESTONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cut Red Sandstone", "cut_red_sandstone", false, Blocks.CUT_RED_SANDSTONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cut Sandstone", "cut_sandstone", false, Blocks.CUT_SANDSTONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Dark Prismarine", "dark_prismarine", false, Blocks.DARK_PRISMARINE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Deepslate Brick", "deepslate_bricks", false, Blocks.DEEPSLATE_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Deepslate Tile", "deepslate_tiles", false, Blocks.DEEPSLATE_TILES));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Diorite", "diorite", false, Blocks.DIORITE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("End Stone Brick", "end_stone_bricks", false, Blocks.END_STONE_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Granite", "granite", false, Blocks.GRANITE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Mossy Cobblestone", "mossy_cobblestone", false, Blocks.MOSSY_COBBLESTONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Mossy Stone Brick", "mossy_stone_bricks", false, Blocks.MOSSY_STONE_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Mud Brick", "mud_bricks", false, Blocks.MUD_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Nether Brick", "nether_bricks", false, Blocks.NETHER_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Polished Andesite", "polished_andesite", false, Blocks.POLISHED_ANDESITE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Polished Blackstone", "polished_blackstone", false, Blocks.POLISHED_BLACKSTONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Polished Blackstone Brick", "polished_blackstone_bricks", false, Blocks.POLISHED_BLACKSTONE_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Polished Deepslate", "polished_deepslate", false, Blocks.POLISHED_DEEPSLATE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Polished Diorite", "polished_diorite", false, Blocks.POLISHED_DIORITE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Polished Granite", "polished_granite", false, Blocks.POLISHED_GRANITE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Polished Tuff", "polished_tuff", false, Blocks.POLISHED_TUFF));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Prismarine", "prismarine", false, Blocks.PRISMARINE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Prismarine Brick", "prismarine_bricks", false, Blocks.PRISMARINE_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Purpur", "purpur_block", false, Blocks.PURPUR_BLOCK));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Quartz", "quartz_block", false, Blocks.QUARTZ_BLOCK, TextureMap.getId(Blocks.QUARTZ_BLOCK).withSuffixedPath("_top")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Red Nether Brick", "red_nether_bricks", false, Blocks.RED_NETHER_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Red Sandstone", "red_sandstone", false, Blocks.RED_SANDSTONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Sandstone", "sandstone", false, Blocks.SANDSTONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Smooth Quartz", "smooth_quartz", false, Blocks.SMOOTH_QUARTZ, TextureMap.getId(Blocks.QUARTZ_BLOCK).withSuffixedPath("_bottom")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Smooth Red Sandstone", "smooth_red_sandstone", false, Blocks.SMOOTH_RED_SANDSTONE, TextureMap.getId(Blocks.RED_SANDSTONE).withSuffixedPath("_top")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Smooth Sandstone", "smooth_sandstone", false, Blocks.SMOOTH_SANDSTONE, TextureMap.getId(Blocks.SANDSTONE).withSuffixedPath("_top")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Smooth Stone", "smooth_stone", false, Blocks.SMOOTH_STONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Stone", "stone", false, Blocks.STONE));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Stone Brick", "stone_bricks", false, Blocks.STONE_BRICKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Tuff", "tuff", false, Blocks.TUFF));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Tuff Brick", "tuff_bricks", false, Blocks.TUFF_BRICKS));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("andesite").materialName("Andesite").ingredient(Blocks.ANDESITE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("bamboo_mosaic").materialName("Bamboo Mosaic").ingredient(Blocks.BAMBOO_MOSAIC)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("blackstone").materialName("Blackstone").ingredient(Blocks.BLACKSTONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("bricks").materialName("Brick").ingredient(Blocks.BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("cobbled_deepslate").materialName("Cobbled Deepslate").ingredient(Blocks.COBBLED_DEEPSLATE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("cobblestone").materialName("Cobblestone").ingredient(Blocks.COBBLESTONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("cut_red_sandstone").materialName("Cut Red Sandstone").ingredient(Blocks.CUT_RED_SANDSTONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("cut_sandstone").materialName("Cut Sandstone").ingredient(Blocks.CUT_SANDSTONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("dark_prismarine").materialName("Dark Prismarine").ingredient(Blocks.DARK_PRISMARINE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("deepslate_bricks").materialName("Deepslate Brick").ingredient(Blocks.DEEPSLATE_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("deepslate_tiles").materialName("Deepslate Tile").ingredient(Blocks.DEEPSLATE_TILES)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("diorite").materialName("Diorite").ingredient(Blocks.DIORITE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("end_stone_bricks").materialName("End Stone Brick").ingredient(Blocks.END_STONE_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("granite").materialName("Granite").ingredient(Blocks.GRANITE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("mossy_cobblestone").materialName("Mossy Cobblestone").ingredient(Blocks.MOSSY_COBBLESTONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("mossy_stone_bricks").materialName("Mossy Stone Brick").ingredient(Blocks.MOSSY_STONE_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("mud_bricks").materialName("Mud Brick").ingredient(Blocks.MUD_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("nether_bricks").materialName("Nether Brick").ingredient(Blocks.NETHER_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("polished_andesite").materialName("Polished Andesite").ingredient(Blocks.POLISHED_ANDESITE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("polished_blackstone").materialName("Polished Blackstone").ingredient(Blocks.POLISHED_BLACKSTONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("polished_blackstone_bricks").materialName("Polished Blackstone Brick").ingredient(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("polished_deepslate").materialName("Polished Deepslate").ingredient(Blocks.POLISHED_DEEPSLATE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("polished_diorite").materialName("Polished Diorite").ingredient(Blocks.POLISHED_DIORITE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("polished_granite").materialName("Polished Granite").ingredient(Blocks.POLISHED_GRANITE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("polished_tuff").materialName("Polished Tuff").ingredient(Blocks.POLISHED_TUFF)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("prismarine").materialName("Prismarine").ingredient(Blocks.PRISMARINE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("prismarine_bricks").materialName("Prismarine Brick").ingredient(Blocks.PRISMARINE_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("purpur_block").materialName("Purpur").ingredient(Blocks.PURPUR_BLOCK)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("quartz_block").materialName("Quartz").ingredient(Blocks.QUARTZ_BLOCK).texture(TextureUtils.block(Blocks.QUARTZ_BLOCK, "_top"))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("red_nether_bricks").materialName("Red Nether Brick").ingredient(Blocks.RED_NETHER_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("red_sandstone").materialName("Red Sandstone").ingredient(Blocks.RED_SANDSTONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("sandstone").materialName("Sandstone").ingredient(Blocks.SANDSTONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("smooth_quartz").materialName("Smooth Quartz").ingredient(Blocks.SMOOTH_QUARTZ).texture(TextureUtils.block(Blocks.QUARTZ_BLOCK, "_bottom"))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("smooth_red_sandstone").materialName("Smooth Red Sandstone").ingredient(Blocks.SMOOTH_RED_SANDSTONE).texture(TextureUtils.block(Blocks.RED_SANDSTONE, "_top"))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("smooth_sandstone").materialName("Smooth Sandstone").ingredient(Blocks.SMOOTH_SANDSTONE).texture(TextureUtils.block(Blocks.SANDSTONE, "_top"))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("smooth_stone").materialName("Smooth Stone").ingredient(Blocks.SMOOTH_STONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("stone").materialName("Stone").ingredient(Blocks.STONE)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("stone_bricks").materialName("Stone Brick").ingredient(Blocks.STONE_BRICKS)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("tuff").materialName("Tuff").ingredient(Blocks.TUFF)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("tuff_bricks").materialName("Tuff Brick").ingredient(Blocks.TUFF_BRICKS)));
 
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cut Copper", "cut_copper", false, Blocks.CUT_COPPER));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Waxed Cut Copper", "waxed_cut_copper", false, Blocks.WAXED_CUT_COPPER, TextureMap.getId(Blocks.CUT_COPPER)));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Exposed Cut Copper", "exposed_cut_copper", false, Blocks.EXPOSED_CUT_COPPER));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Waxed Exposed Cut Copper", "waxed_exposed_cut_copper", false, Blocks.WAXED_EXPOSED_CUT_COPPER, TextureMap.getId(Blocks.EXPOSED_CUT_COPPER)));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Weathered Cut Copper", "weathered_cut_copper", false, Blocks.WEATHERED_CUT_COPPER));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Waxed Weathered Cut Copper", "waxed_weathered_cut_copper", false, Blocks.WAXED_WEATHERED_CUT_COPPER, TextureMap.getId(Blocks.WEATHERED_CUT_COPPER)));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Oxidized Cut Copper", "oxidized_cut_copper", false, Blocks.OXIDIZED_CUT_COPPER));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Waxed Oxidized Cut Copper", "waxed_oxidized_cut_copper", false, Blocks.WAXED_OXIDIZED_CUT_COPPER, TextureMap.getId(Blocks.OXIDIZED_CUT_COPPER)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("cut_copper").materialName("Cut Copper").ingredient(Blocks.CUT_COPPER)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("waxed_cut_copper").materialName("Waxed Cut Copper").ingredient(Blocks.WAXED_CUT_COPPER).texture(TextureUtils.block(Blocks.CUT_COPPER))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("exposed_cut_copper").materialName("Exposed Cut Copper").ingredient(Blocks.EXPOSED_CUT_COPPER)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("waxed_exposed_cut_copper").materialName("Waxed Exposed Cut Copper").ingredient(Blocks.WAXED_EXPOSED_CUT_COPPER).texture(TextureUtils.block(Blocks.EXPOSED_CUT_COPPER))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("weathered_cut_copper").materialName("Weathered Cut Copper").ingredient(Blocks.WEATHERED_CUT_COPPER)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("waxed_weathered_cut_copper").materialName("Waxed Weathered Cut Copper").ingredient(Blocks.WAXED_WEATHERED_CUT_COPPER).texture(TextureUtils.block(Blocks.WEATHERED_CUT_COPPER))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("oxidized_cut_copper").materialName("Oxidized Cut Copper").ingredient(Blocks.OXIDIZED_CUT_COPPER)));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("waxed_oxidized_cut_copper").materialName("Waxed Oxidized Cut Copper").ingredient(Blocks.WAXED_OXIDIZED_CUT_COPPER).texture(TextureUtils.block(Blocks.OXIDIZED_CUT_COPPER))));
 
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Basalt Brick", "basalt_bricks", false, BuildingBlocks.BASALT_BRICKS_BLOCK, BasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cracked Basalt Brick", "cracked_basalt_bricks", false, BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK, CrackedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Crimson Basalt Brick", "crimson_basalt_bricks", false, BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK, CrimsonBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Mossy Basalt Brick", "mossy_basalt_bricks", false, BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK, MossyBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Warped Basalt Brick", "warped_basalt_bricks", false, BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK, WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Warped Nether Brick", "warped_nether_bricks", false, BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK, WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("basalt_bricks").materialName("Basalt Brick").ingredient(BuildingBlocks.BASALT_BRICKS_BLOCK).texture(TextureUtils.block(BasaltBricksBlock.BLOCK_ID))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("cracked_basalt_bricks").materialName("Cracked Basalt Brick").ingredient(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(CrackedBasaltBricksBlock.BLOCK_ID))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("crimson_basalt_bricks").materialName("Crimson Basalt Brick").ingredient(BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(CrimsonBasaltBricksBlock.BLOCK_ID))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("mossy_basalt_bricks").materialName("Mossy Basalt Brick").ingredient(BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(MossyBasaltBricksBlock.BLOCK_ID))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("warped_basalt_bricks").materialName("Warped Basalt Brick").ingredient(BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(WarpedBasaltBricksBlock.BLOCK_ID))));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock(new ModBlock.Config().material("warped_nether_bricks").materialName("Warped Nether Brick").ingredient(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK).texture(TextureUtils.block(WarpedNetherBricksBlock.BLOCK_ID))));
     }
 
     @Override
     public void registerBlocks() {
-        SLABS.forEach(MinekeaBlock::register);
-        VERTICAL_SLABS.forEach(MinekeaBlock::register);
+        SLABS.forEach(GenericSlabBlock::register);
+        VERTICAL_SLABS.forEach(GenericVerticalSlabBlock::register);
     }
 
     @Override
@@ -158,7 +158,7 @@ public class Slabs implements MinekeaBlockCategory {
 
     @Override
     public void generateTextures() {
-        SLABS.forEach(MinekeaBlock::generateTextures);
-        VERTICAL_SLABS.forEach(MinekeaBlock::generateTextures);
+        SLABS.forEach(GenericSlabBlock::generateTextures);
+        VERTICAL_SLABS.forEach(GenericVerticalSlabBlock::generateTextures);
     }
 }

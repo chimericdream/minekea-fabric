@@ -1,5 +1,7 @@
 package com.chimericdream.minekea.block.containers.crates;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
@@ -13,12 +15,10 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -34,13 +34,13 @@ public class TrappedCrate extends GenericCrate {
 
     public TrappedCrate(Settings settings) {
         super(settings);
-        BASE_CRATE = Crates.CRATES.get(0);
+        BASE_CRATE = Crates.CRATES.getFirst();
     }
 
-    public TrappedCrate(String material, String materialName, Block ingredient1, TagKey<Item> ingredient2, Block braceMaterial, boolean isFlammable, Block baseCrate) {
-        super(material, materialName, ingredient1, ingredient2, braceMaterial, isFlammable);
+    public TrappedCrate(ModBlock.Config config, Block baseCrate) {
+        super(config);
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/crates/trapped/%s", material));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/crates/trapped/%s", config.getMaterial()));
         BASE_CRATE = baseCrate;
     }
 
@@ -75,14 +75,14 @@ public class TrappedCrate extends GenericCrate {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("Trapped %s Crate", materialName));
+        translationBuilder.add(this, String.format("Trapped %s Crate", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
-            .put(MinekeaTextures.BRACE, Registries.BLOCK.getId(braceMaterial).withPrefixedPath("block/"))
-            .put(MinekeaTextures.MATERIAL, BLOCK_ID.withPrefixedPath("block/").withSuffixedPath("_material"));
+            .put(MinekeaTextures.BRACE, config.getTexture("brace"))
+            .put(MinekeaTextures.MATERIAL, TextureUtils.block(BLOCK_ID, "_material"));
 
         this.configureBlockStateModels(blockStateModelGenerator, textures);
     }
@@ -90,7 +90,7 @@ public class TrappedCrate extends GenericCrate {
     @Override
     public void generateTextures() {
         TextureGenerator.getInstance().generate(Registries.BLOCK.getKey(), instance -> {
-            final Optional<BufferedImage> source = instance.getImage(String.format("%s_planks", material));
+            final Optional<BufferedImage> source = instance.getImage(String.format("%s_planks", config.getMaterial()));
 
             if (source.isPresent()) {
                 BufferedImage sourceImage = source.get();

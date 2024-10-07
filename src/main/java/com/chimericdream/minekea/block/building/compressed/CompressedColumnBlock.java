@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.compressed;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
@@ -16,26 +17,14 @@ import java.awt.image.BufferedImage;
 import java.util.Optional;
 
 public class CompressedColumnBlock extends GenericCompressedBlock {
-    protected final String textureKeySide;
-    protected final String textureKeyEnd;
+    private final String sideTextureSuffix;
+    private final String endTextureSuffix;
 
-    public CompressedColumnBlock(String materialName, String textureKey, Block baseBlock, int compressionLevel, String textureKeySide, String textureKeyEnd) {
-        this(Settings.copy(baseBlock), materialName, textureKey, baseBlock, compressionLevel, textureKeySide, textureKeyEnd);
-    }
+    public CompressedColumnBlock(ModBlock.Config config, int compressionLevel, String sideTextureSuffix, String endTextureSuffix) {
+        super(config, compressionLevel);
 
-    public CompressedColumnBlock(
-        Settings settings,
-        String materialName,
-        String textureKey,
-        Block baseBlock,
-        int compressionLevel,
-        String textureKeySide,
-        String textureKeyEnd
-    ) {
-        super(settings, materialName, textureKey, baseBlock, compressionLevel);
-
-        this.textureKeySide = textureKeySide;
-        this.textureKeyEnd = textureKeyEnd;
+        this.sideTextureSuffix = sideTextureSuffix;
+        this.endTextureSuffix = endTextureSuffix;
     }
 
     @Override
@@ -74,46 +63,8 @@ public class CompressedColumnBlock extends GenericCompressedBlock {
     @Override
     public void generateTextures() {
         TextureGenerator.getInstance().generate(Registries.BLOCK.getKey(), instance -> {
-            generateTexture(instance, textureKey + textureKeyEnd, BLOCK_ID.withSuffixedPath("_end"));
-            generateTexture(instance, textureKey + textureKeySide, BLOCK_ID.withSuffixedPath("_side"));
+            generateTexture(instance, config.getMaterial() + endTextureSuffix, BLOCK_ID.withSuffixedPath("_end"));
+            generateTexture(instance, config.getMaterial() + sideTextureSuffix, BLOCK_ID.withSuffixedPath("_side"));
         });
     }
-
-//    @Override
-//    public void setupResources() {
-//        CompressedBlockSettings settings = (CompressedBlockSettings) this.settings;
-//
-//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
-//
-//        Identifier endTexture = settings.getBlockTexture("end");
-//        Identifier sideTexture = settings.getBlockTexture("main");
-//
-//        Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(BLOCK_ID);
-//
-//        JTextures textures = new JTextures()
-//            .var("side", sideTexture.toString())
-//            .var("end", endTexture.toString())
-//            .var("overlay", String.format(ModInfo.MOD_ID + ":block/building/compressed/level-%d", settings.getCompressionLevel()));
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(ModInfo.MOD_ID + ":block/building/compressed_block").textures(textures), MODEL_ID);
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(MODEL_ID), ITEM_MODEL_ID);
-//
-//        if (settings.isColumn()) {
-//            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                JState.state(
-//                    JState.variant()
-//                        .put("axis=x", new JBlockModel(MODEL_ID).x(90).y(90))
-//                        .put("axis=y", new JBlockModel(MODEL_ID))
-//                        .put("axis=z", new JBlockModel(MODEL_ID).x(90))
-//                ),
-//                BLOCK_ID
-//            );
-//        } else {
-//            MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//                JState.state(JState.variant(new JBlockModel(MODEL_ID))),
-//                BLOCK_ID
-//            );
-//        }
-//    }
 }

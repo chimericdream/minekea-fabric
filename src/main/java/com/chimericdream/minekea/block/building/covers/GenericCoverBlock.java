@@ -1,18 +1,17 @@
 package com.chimericdream.minekea.block.building.covers;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModCarpetBlock;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.CarpetBlock;
 import net.minecraft.block.Waterloggable;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.Model;
@@ -41,7 +40,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
 
-public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Waterloggable {
+public class GenericCoverBlock extends FabricModCarpetBlock implements Waterloggable {
     // yowza
     public static final Model COVER_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/cover")),
@@ -60,36 +59,8 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
 
     public final Identifier BLOCK_ID;
 
-    protected final String materialName;
-    protected final String material;
-    protected final boolean isFlammable;
-    protected final Block settingsSource;
-    protected final Block ingredient;
-    protected final Identifier endTextureId;
-    protected final Identifier sideTextureId;
-
-    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
-        this(materialName, material, isFlammable, ingredient, ingredient, TextureMap.getId(ingredient), TextureMap.getId(ingredient));
-    }
-
-    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource) {
-        this(materialName, material, isFlammable, ingredient, settingsSource, TextureMap.getId(ingredient), TextureMap.getId(ingredient));
-    }
-
-    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
-        this(materialName, material, isFlammable, ingredient, ingredient, textureId, textureId);
-    }
-
-    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Identifier textureId) {
-        this(materialName, material, isFlammable, ingredient, settingsSource, textureId, textureId);
-    }
-
-    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier endTextureId, Identifier sideTextureId) {
-        this(materialName, material, isFlammable, ingredient, ingredient, endTextureId, sideTextureId);
-    }
-
-    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Identifier endTextureId, Identifier sideTextureId) {
-        super(AbstractBlock.Settings.copy(ingredient));
+    public GenericCoverBlock(ModBlock.Config config) {
+        super(config);
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -97,15 +68,7 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
                 .with(WATERLOGGED, false)
         );
 
-        this.materialName = materialName;
-        this.material = material;
-        this.isFlammable = isFlammable;
-        this.ingredient = ingredient;
-        this.settingsSource = settingsSource;
-        this.endTextureId = endTextureId;
-        this.sideTextureId = sideTextureId;
-
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/covers/%s", material));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/covers/%s", config.getMaterial()));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -131,12 +94,11 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -147,6 +109,8 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block ingredient = config.getIngredient();
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 16)
             .pattern("# #")
             .pattern("   ")
@@ -164,11 +128,14 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Cover", materialName));
+        translationBuilder.add(this, String.format("%s Cover", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Identifier endTextureId = config.getTexture();
+        Identifier sideTextureId = Optional.ofNullable(config.getTexture("side")).orElse(endTextureId);
+
         TextureMap textures = new TextureMap()
             .put(TextureKey.END, endTextureId)
             .put(TextureKey.SIDE, sideTextureId);

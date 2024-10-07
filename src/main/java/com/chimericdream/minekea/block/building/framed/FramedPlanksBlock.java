@@ -1,9 +1,11 @@
 package com.chimericdream.minekea.block.building.framed;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.property.MinekeaProperties;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -11,7 +13,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -47,7 +48,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class FramedPlanksBlock extends Block implements MinekeaBlock {
+public class FramedPlanksBlock extends FabricModBlock {
     protected static final Model CORE_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/framed_planks/core")),
         Optional.empty(),
@@ -74,12 +75,6 @@ public class FramedPlanksBlock extends Block implements MinekeaBlock {
 
     public final Identifier BLOCK_ID;
 
-    protected final String material;
-    protected final String materialName;
-    protected final Block plankIngredient;
-    protected final Block logIngredient;
-    protected final boolean isFlammable;
-
     protected static Model makeModel(String direction) {
         return new Model(
             Optional.of(Identifier.of(ModInfo.MOD_ID, String.format("block/building/framed_planks/%s_connected", direction))),
@@ -89,16 +84,10 @@ public class FramedPlanksBlock extends Block implements MinekeaBlock {
         );
     }
 
-    public FramedPlanksBlock(String material, String materialName, Block plankIngredient, Block logIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(plankIngredient));
+    public FramedPlanksBlock(ModBlock.Config config) {
+        super(config);
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/general/framed_planks/%s", material));
-
-        this.material = material;
-        this.materialName = materialName;
-        this.plankIngredient = plankIngredient;
-        this.logIngredient = logIngredient;
-        this.isFlammable = isFlammable;
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/general/framed_planks/%s", config.getMaterial()));
 
         this.setDefaultState(
             this.stateManager
@@ -192,7 +181,7 @@ public class FramedPlanksBlock extends Block implements MinekeaBlock {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
             .register(itemGroup -> itemGroup.add(this));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -208,6 +197,9 @@ public class FramedPlanksBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block plankIngredient = config.getIngredient();
+        Block logIngredient = config.getIngredient("log");
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 6)
             .input(plankIngredient)
             .input(plankIngredient)
@@ -228,14 +220,17 @@ public class FramedPlanksBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("Framed %s Planks", materialName));
+        translationBuilder.add(this, String.format("Framed %s Planks", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block plankIngredient = config.getIngredient();
+        Block logIngredient = config.getIngredient("log");
+
         TextureMap textures = new TextureMap()
-            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(plankIngredient).withPrefixedPath("block/"))
-            .put(MinekeaTextures.BRACE, Registries.BLOCK.getId(logIngredient).withPrefixedPath("block/"));
+            .put(MinekeaTextures.MATERIAL, TextureUtils.block(plankIngredient))
+            .put(MinekeaTextures.BRACE, TextureUtils.block(logIngredient));
 
         Identifier modelId = blockStateModelGenerator.createSubModel(this, "", CORE_MODEL, unused -> textures);
         Identifier aConnectedModelId = blockStateModelGenerator.createSubModel(this, "_a_connected", A_CONNECTED_MODEL, unused -> textures);

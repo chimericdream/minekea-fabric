@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -22,7 +23,7 @@ import java.util.function.Function;
 
 public class AppleStorageBlock extends GenericStorageBlock {
     public AppleStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.MELON).sounds(BlockSoundGroup.WOOD), Items.APPLE, "apple");
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.MELON).sounds(BlockSoundGroup.WOOD)).item(Items.APPLE).material("apple"));
     }
 
     @Override

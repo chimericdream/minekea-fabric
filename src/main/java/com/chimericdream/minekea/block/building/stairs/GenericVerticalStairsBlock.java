@@ -1,13 +1,13 @@
 package com.chimericdream.minekea.block.building.stairs;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -47,7 +47,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
 
-public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, Waterloggable {
+public class GenericVerticalStairsBlock extends FabricModBlock implements Waterloggable {
     public static final Model VERTICAL_STAIRS_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/stairs/vertical")),
         Optional.empty(),
@@ -80,18 +80,8 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, W
 
     public final Identifier BLOCK_ID;
 
-    protected final String materialName;
-    protected final String material;
-    protected final boolean isFlammable;
-    protected final Block ingredient;
-    protected final Identifier textureId;
-
-    public GenericVerticalStairsBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
-        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient));
-    }
-
-    public GenericVerticalStairsBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
-        super(AbstractBlock.Settings.copy(ingredient));
+    public GenericVerticalStairsBlock(ModBlock.Config config) {
+        super(config);
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -99,13 +89,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, W
                 .with(WATERLOGGED, false)
         );
 
-        this.materialName = materialName;
-        this.material = material;
-        this.isFlammable = isFlammable;
-        this.ingredient = ingredient;
-        this.textureId = textureId;
-
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/stairs/vertical/%s", material));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/stairs/vertical/%s", config.getMaterial()));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -149,7 +133,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, W
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -160,6 +144,8 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, W
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block ingredient = config.getIngredient();
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 8)
             .pattern("###")
             .pattern(" ##")
@@ -177,7 +163,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, W
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Vertical Stairs", materialName));
+        translationBuilder.add(this, String.format("%s Vertical Stairs", config.getMaterialName()));
     }
 
     public static void doBlockStateModels(
@@ -224,6 +210,6 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, W
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        doBlockStateModels(blockStateModelGenerator, this, textureId);
+        doBlockStateModels(blockStateModelGenerator, this, config.getTexture());
     }
 }

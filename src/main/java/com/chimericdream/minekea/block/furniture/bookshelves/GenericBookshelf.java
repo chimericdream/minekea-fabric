@@ -45,7 +45,7 @@ public class GenericBookshelf extends FabricModBlock {
 
     public final Identifier BLOCK_ID;
 
-    public GenericBookshelf(ModBlockConfig config) {
+    public GenericBookshelf(Config config) {
         super(config);
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/bookshelves/%s", this.config.getMaterial()));

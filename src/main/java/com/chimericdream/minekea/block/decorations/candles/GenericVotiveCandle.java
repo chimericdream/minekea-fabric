@@ -1,17 +1,16 @@
 package com.chimericdream.minekea.block.decorations.candles;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
+import com.chimericdream.lib.fabric.blocks.FabricModCandleBlock;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.CandleBlock;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.Model;
@@ -40,7 +39,7 @@ import net.minecraft.util.Identifier;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericVotiveCandle extends CandleBlock implements MinekeaBlock {
+public class GenericVotiveCandle extends FabricModCandleBlock {
     protected static final Model VOTIVE_ITEM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/candles/template_votive_item")),
         Optional.empty(),
@@ -98,14 +97,12 @@ public class GenericVotiveCandle extends CandleBlock implements MinekeaBlock {
 
     public final Identifier BLOCK_ID;
     public final String color;
-    public final Block ingredient;
 
-    public GenericVotiveCandle(String color, Block ingredient) {
-        super(AbstractBlock.Settings.copy(ingredient));
+    public GenericVotiveCandle(ModBlock.Config config, String color) {
+        super(config);
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("decorations/candles/%s_votive_candle", color));
         this.color = color;
-        this.ingredient = ingredient;
     }
 
     @Override
@@ -129,6 +126,8 @@ public class GenericVotiveCandle extends CandleBlock implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block ingredient = config.getIngredient();
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, this, 4)
             .input(ingredient, 4)
             .input(Items.GLASS)
@@ -176,6 +175,8 @@ public class GenericVotiveCandle extends CandleBlock implements MinekeaBlock {
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block ingredient = config.getIngredient();
+
         TextureMap textures = new TextureMap()
             .put(TextureKey.CANDLE, TextureMap.getId(ingredient))
             .put(TextureKey.SIDE, TextureMap.getId(Blocks.GLASS));

@@ -1,9 +1,10 @@
 package com.chimericdream.minekea.block.decorations.lighting;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModLanternBlock;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -11,7 +12,6 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.LanternBlock;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
@@ -30,11 +30,11 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class DoomLantern extends LanternBlock implements MinekeaBlock {
+public class DoomLantern extends FabricModLanternBlock {
     private final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/lighting/doom_lantern");
 
     public DoomLantern() {
-        super(AbstractBlock.Settings.copy(Blocks.LANTERN).nonOpaque());
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.LANTERN).nonOpaque()));
     }
 
     public void register() {

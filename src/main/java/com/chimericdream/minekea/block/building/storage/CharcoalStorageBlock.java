@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 public class CharcoalStorageBlock extends GenericStorageBlock {
     public CharcoalStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.COAL_BLOCK).sounds(BlockSoundGroup.TUFF), Items.CHARCOAL, "charcoal");
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.COAL_BLOCK).sounds(BlockSoundGroup.TUFF)).item(Items.CHARCOAL).material("charcoal"));
     }
 
     @Override

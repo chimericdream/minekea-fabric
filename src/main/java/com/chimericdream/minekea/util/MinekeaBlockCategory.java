@@ -1,5 +1,7 @@
 package com.chimericdream.minekea.util;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -18,20 +20,20 @@ import java.util.List;
 import java.util.function.Function;
 
 public interface MinekeaBlockCategory {
-    default List<MinekeaBlock> getCategoryBlocks() {
+    default List<FabricModBlock> getCategoryBlocks() {
         return new ArrayList<>();
     }
 
     default void initializeClient() {
         getCategoryBlocks().forEach(block -> {
-            if (block.isTranslucent()) {
+            if (block.config.isTranslucent()) {
                 BlockRenderLayerMap.INSTANCE.putBlock((Block) block, RenderLayer.getTranslucent());
             }
         });
     }
 
     default void registerBlocks() {
-        getCategoryBlocks().forEach(MinekeaBlock::register);
+        getCategoryBlocks().forEach(ModBlock::register);
     }
 
     default void registerBlockEntities() {
@@ -69,6 +71,6 @@ public interface MinekeaBlockCategory {
     }
 
     default void generateTextures() {
-        getCategoryBlocks().forEach(MinekeaBlock::generateTextures);
+        getCategoryBlocks().forEach(ModBlock::generateTextures);
     }
 }

@@ -1,8 +1,9 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -39,7 +40,7 @@ import net.minecraft.world.World;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class DyeBlock extends Block implements MinekeaBlock {
+public class DyeBlock extends FabricModBlock {
     private static final Model DYE_BLOCK_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/storage/dye_block")),
         Optional.empty(),
@@ -53,7 +54,7 @@ public class DyeBlock extends Block implements MinekeaBlock {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
     public DyeBlock(String color) {
-        super(AbstractBlock.Settings.copy(Blocks.HONEY_BLOCK).mapColor(DyeColor.byName(color, DyeColor.WHITE)).jumpVelocityMultiplier(0.5F));
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.HONEY_BLOCK).mapColor(DyeColor.byName(color, DyeColor.WHITE)).jumpVelocityMultiplier(0.5F)));
 
         this.color = color;
 

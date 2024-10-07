@@ -86,7 +86,7 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
         BASEBOARD_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 2.0, 15.0);
     }
 
-    public GenericDisplayCase(ModBlockConfig config) {
+    public GenericDisplayCase(Config config) {
         super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/display_cases/%s", this.config.getMaterial()));

@@ -39,7 +39,7 @@ import java.util.function.Function;
 public class GenericWallBlock extends FabricModWallBlock {
     public final Identifier BLOCK_ID;
 
-    public GenericWallBlock(ModBlock.ModBlockConfig config) {
+    public GenericWallBlock(ModBlock.Config config) {
         super(config.settings(AbstractBlock.Settings.copy(config.getIngredient())));
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/walls/%s", config.getMaterial()));

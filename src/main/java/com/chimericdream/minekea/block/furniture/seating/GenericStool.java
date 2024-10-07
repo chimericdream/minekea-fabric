@@ -1,15 +1,15 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.mounts.SeatEntity;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -51,7 +51,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
+public class GenericStool extends FabricModBlock implements Waterloggable {
     protected static final Model STOOL_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/seating/stool")),
         Optional.empty(),
@@ -60,11 +60,6 @@ public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
     );
 
     public final Identifier BLOCK_ID;
-
-    protected final Block plankIngredient;
-    protected final Block logIngredient;
-    protected final String materialName;
-    protected final boolean isFlammable;
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
@@ -81,30 +76,15 @@ public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
         };
     }
 
-    public GenericStool(String materialName, Block plankIngredient, Block logIngredient) {
-        this(materialName, plankIngredient, logIngredient, false);
-    }
-
-    public GenericStool(String materialName, Block plankIngredient, Block logIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(plankIngredient));
+    public GenericStool(ModBlock.Config config) {
+        super(config);
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
                 .with(WATERLOGGED, false)
         );
 
-        BLOCK_ID = makeBlockId(materialName);
-
-        this.materialName = materialName;
-        this.plankIngredient = plankIngredient;
-        this.logIngredient = logIngredient;
-        this.isFlammable = isFlammable;
-    }
-
-    public static Identifier makeBlockId(String materialName) {
-        String material = materialName.toLowerCase().replaceAll(" ", "_");
-
-        return Identifier.of(ModInfo.MOD_ID, String.format("furniture/seating/stools/%s", material));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/seating/stools/%s", config.getMaterial()));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -130,7 +110,7 @@ public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -169,6 +149,9 @@ public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block plankIngredient = config.getIngredient();
+        Block logIngredient = config.getIngredient("log");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 2)
             .pattern("PP")
             .pattern("LL")
@@ -193,11 +176,14 @@ public class GenericStool extends Block implements MinekeaBlock, Waterloggable {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Stool", materialName));
+        translationBuilder.add(this, String.format("%s Stool", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block plankIngredient = config.getIngredient();
+        Block logIngredient = config.getIngredient("log");
+
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.LOG, Registries.BLOCK.getId(logIngredient).withPrefixedPath("block/"))
             .put(MinekeaTextures.PLANKS, Registries.BLOCK.getId(plankIngredient).withPrefixedPath("block/"));

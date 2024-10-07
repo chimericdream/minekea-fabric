@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.furniture.shelves;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
@@ -28,36 +29,11 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class GenericFloatingShelf extends GenericShelf {
-    public GenericFloatingShelf(
-        String materialName,
-        Block slabIngredient,
-        Block plankIngredient,
-        Block logIngredient
-    ) {
-        this(materialName, slabIngredient, plankIngredient, logIngredient, false);
-    }
-
-    public GenericFloatingShelf(
-        String materialName,
-        Block slabIngredient,
-        Block plankIngredient,
-        Block logIngredient,
-        boolean isFlammable
-    ) {
+    public GenericFloatingShelf(ModBlock.Config config) {
         super(
-            materialName,
-            slabIngredient,
-            plankIngredient,
-            logIngredient,
-            isFlammable,
-            makeBlockId(materialName)
+            config,
+            Identifier.of(ModInfo.MOD_ID, String.format("furniture/shelves/floating/%s", config.getMaterial()))
         );
-    }
-
-    public static Identifier makeBlockId(String materialName) {
-        String material = materialName.toLowerCase().replaceAll(" ", "_");
-
-        return Identifier.of(ModInfo.MOD_ID, String.format("furniture/shelves/floating/%s", material));
     }
 
     @Override
@@ -65,7 +41,7 @@ public class GenericFloatingShelf extends GenericShelf {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -85,6 +61,8 @@ public class GenericFloatingShelf extends GenericShelf {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block slabIngredient = config.getIngredient("slab");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 3)
             .pattern("XXX")
             .pattern("# #")
@@ -100,11 +78,13 @@ public class GenericFloatingShelf extends GenericShelf {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Floating Shelf", materialName));
+        translationBuilder.add(this, String.format("%s Floating Shelf", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block plankIngredient = config.getIngredient("planks");
+
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.PLANKS, TextureMap.getId(plankIngredient));
 

@@ -1,5 +1,7 @@
 package com.chimericdream.minekea.block.building;
 
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.util.Registerable;
 import com.chimericdream.minekea.block.building.beams.Beams;
 import com.chimericdream.minekea.block.building.compressed.CompressedBlocks;
 import com.chimericdream.minekea.block.building.covers.Covers;
@@ -17,7 +19,6 @@ import com.chimericdream.minekea.block.building.slabs.Slabs;
 import com.chimericdream.minekea.block.building.stairs.Stairs;
 import com.chimericdream.minekea.block.building.storage.StorageBlocks;
 import com.chimericdream.minekea.block.building.walls.Walls;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -58,9 +59,9 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public static final Stairs STAIRS;
     public static final StorageBlocks STORAGE_BLOCKS;
     public static final Walls WALLS;
-    public static final Map<String, MinekeaBlock> WAX_BLOCKS = new LinkedHashMap();
+    public static final Map<String, FabricModBlock> WAX_BLOCKS = new LinkedHashMap<>();
 
-    private static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
+    private static final List<FabricModBlock> BLOCKS = new ArrayList<>();
     private static final List<MinekeaBlockCategory> BLOCK_GROUPS = new ArrayList<>();
 
     static {
@@ -137,7 +138,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        BLOCKS.forEach(MinekeaBlock::register);
+        BLOCKS.forEach(Registerable::register);
         BLOCK_GROUPS.forEach(MinekeaBlockCategory::registerBlocks);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
@@ -206,7 +207,7 @@ public class BuildingBlocks implements MinekeaBlockCategory {
 
     @Override
     public void generateTextures() {
-        BLOCKS.forEach(MinekeaBlock::generateTextures);
+        BLOCKS.forEach(FabricModBlock::generateTextures);
         BLOCK_GROUPS.forEach(MinekeaBlockCategory::generateTextures);
     }
 }

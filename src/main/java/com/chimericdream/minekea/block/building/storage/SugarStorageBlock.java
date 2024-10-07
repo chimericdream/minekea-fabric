@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 public class SugarStorageBlock extends GenericStorageBlock {
     public SugarStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK).sounds(BlockSoundGroup.SAND), Items.SUGAR, "sugar", true);
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK).sounds(BlockSoundGroup.SAND)).item(Items.SUGAR).material("sugar"), true);
     }
 
     @Override

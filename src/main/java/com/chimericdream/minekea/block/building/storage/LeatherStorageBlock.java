@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 public class LeatherStorageBlock extends GenericStorageBlock {
     public LeatherStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.WHITE_WOOL).sounds(BlockSoundGroup.WOOL), Items.LEATHER, "leather");
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.WHITE_WOOL).sounds(BlockSoundGroup.WOOL)).item(Items.LEATHER).material("leather"));
     }
 
     @Override

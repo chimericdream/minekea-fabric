@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.building.general;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -25,11 +26,11 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class BasaltBricksBlock extends Block implements MinekeaBlock {
+public class BasaltBricksBlock extends FabricModBlock {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/general/basalt_bricks");
 
     public BasaltBricksBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.SMOOTH_BASALT));
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.SMOOTH_BASALT)));
     }
 
     @Override

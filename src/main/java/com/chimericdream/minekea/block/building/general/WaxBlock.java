@@ -1,10 +1,11 @@
 package com.chimericdream.minekea.block.building.general;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.item.ingredients.WaxItem;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -30,13 +31,13 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class WaxBlock extends Block implements MinekeaBlock {
+public class WaxBlock extends FabricModBlock {
     public final Identifier BLOCK_ID;
 
     protected final String color;
 
     public WaxBlock(String color) {
-        super(Settings.copy(Blocks.HONEYCOMB_BLOCK).pistonBehavior(PistonBehavior.PUSH_ONLY).slipperiness(0.9F));
+        super(new ModBlock.Config().settings(Settings.copy(Blocks.HONEYCOMB_BLOCK).pistonBehavior(PistonBehavior.PUSH_ONLY).slipperiness(0.9F)));
 
         BLOCK_ID = makeId(color);
         this.color = color;

@@ -25,17 +25,17 @@ public class Doors implements MinekeaBlockCategory {
     public static final Map<String, GenericBookshelfDoor> BOOKSHELF_DOORS = new LinkedHashMap<>();
 
     static {
-        BOOKSHELF_DOORS.put("Acacia", new GenericBookshelfDoor(BlockSetType.ACACIA, new ModBlock.ModBlockConfig().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS)));
-        BOOKSHELF_DOORS.put("Bamboo", new GenericBookshelfDoor(BlockSetType.BAMBOO, new ModBlock.ModBlockConfig().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS)));
-        BOOKSHELF_DOORS.put("Birch", new GenericBookshelfDoor(BlockSetType.BIRCH, new ModBlock.ModBlockConfig().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS)));
-        BOOKSHELF_DOORS.put("Cherry", new GenericBookshelfDoor(BlockSetType.CHERRY, new ModBlock.ModBlockConfig().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS)));
-        BOOKSHELF_DOORS.put("Crimson", new GenericBookshelfDoor(BlockSetType.CRIMSON, new ModBlock.ModBlockConfig().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS)));
-        BOOKSHELF_DOORS.put("Dark Oak", new GenericBookshelfDoor(BlockSetType.DARK_OAK, new ModBlock.ModBlockConfig().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS)));
-        BOOKSHELF_DOORS.put("Jungle", new GenericBookshelfDoor(BlockSetType.JUNGLE, new ModBlock.ModBlockConfig().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS)));
-        BOOKSHELF_DOORS.put("Mangrove", new GenericBookshelfDoor(BlockSetType.MANGROVE, new ModBlock.ModBlockConfig().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS)));
-        BOOKSHELF_DOORS.put("Oak", new GenericBookshelfDoor(BlockSetType.OAK, new ModBlock.ModBlockConfig().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS)));
-        BOOKSHELF_DOORS.put("Spruce", new GenericBookshelfDoor(BlockSetType.SPRUCE, new ModBlock.ModBlockConfig().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS)));
-        BOOKSHELF_DOORS.put("Warped", new GenericBookshelfDoor(BlockSetType.WARPED, new ModBlock.ModBlockConfig().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS)));
+        BOOKSHELF_DOORS.put("Acacia", new GenericBookshelfDoor(BlockSetType.ACACIA, new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS)));
+        BOOKSHELF_DOORS.put("Bamboo", new GenericBookshelfDoor(BlockSetType.BAMBOO, new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS)));
+        BOOKSHELF_DOORS.put("Birch", new GenericBookshelfDoor(BlockSetType.BIRCH, new ModBlock.Config().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS)));
+        BOOKSHELF_DOORS.put("Cherry", new GenericBookshelfDoor(BlockSetType.CHERRY, new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS)));
+        BOOKSHELF_DOORS.put("Crimson", new GenericBookshelfDoor(BlockSetType.CRIMSON, new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS)));
+        BOOKSHELF_DOORS.put("Dark Oak", new GenericBookshelfDoor(BlockSetType.DARK_OAK, new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS)));
+        BOOKSHELF_DOORS.put("Jungle", new GenericBookshelfDoor(BlockSetType.JUNGLE, new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS)));
+        BOOKSHELF_DOORS.put("Mangrove", new GenericBookshelfDoor(BlockSetType.MANGROVE, new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS)));
+        BOOKSHELF_DOORS.put("Oak", new GenericBookshelfDoor(BlockSetType.OAK, new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS)));
+        BOOKSHELF_DOORS.put("Spruce", new GenericBookshelfDoor(BlockSetType.SPRUCE, new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS)));
+        BOOKSHELF_DOORS.put("Warped", new GenericBookshelfDoor(BlockSetType.WARPED, new ModBlock.Config().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS)));
     }
 
     @Override

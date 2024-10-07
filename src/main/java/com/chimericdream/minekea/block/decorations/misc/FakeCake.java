@@ -1,16 +1,16 @@
 package com.chimericdream.minekea.block.decorations.misc;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModCakeBlock;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.lib.text.TextHelpers;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.CakeBlock;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -40,12 +40,12 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class FakeCake extends CakeBlock implements MinekeaBlock {
+public class FakeCake extends FabricModCakeBlock {
     public final static String TOOLTIP_KEY = "block.minekea.decorations.misc.fake_cake.tooltip";
     public final static Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/misc/fake_cake");
 
     public FakeCake() {
-        super(AbstractBlock.Settings.copy(Blocks.CAKE));
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.CAKE)));
     }
 
     @Override

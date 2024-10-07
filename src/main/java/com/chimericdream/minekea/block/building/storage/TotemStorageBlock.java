@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -23,7 +24,7 @@ import java.util.function.Function;
 
 public class TotemStorageBlock extends GenericStorageBlock {
     public TotemStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).sounds(BlockSoundGroup.METAL), Items.TOTEM_OF_UNDYING, "totem_of_undying");
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).sounds(BlockSoundGroup.METAL)).item(Items.TOTEM_OF_UNDYING).material("totem_of_undying"));
     }
 
     @Override

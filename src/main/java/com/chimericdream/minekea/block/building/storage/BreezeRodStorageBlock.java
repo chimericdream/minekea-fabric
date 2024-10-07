@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -15,7 +16,7 @@ import java.util.function.Function;
 
 public class BreezeRodStorageBlock extends GenericStorageBlock {
     public BreezeRodStorageBlock() {
-        super(Settings.copy(Blocks.HEAVY_CORE).sounds(BlockSoundGroup.BASALT), Items.BREEZE_ROD, "breeze_rod");
+        super(new ModBlock.Config().settings(Settings.copy(Blocks.HEAVY_CORE).sounds(BlockSoundGroup.BASALT)).item(Items.BREEZE_ROD).material("breeze_rod"));
     }
 
     @Override

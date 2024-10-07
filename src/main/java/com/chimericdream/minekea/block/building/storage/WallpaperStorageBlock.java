@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 public class WallpaperStorageBlock extends GenericStorageBlock {
     public WallpaperStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK).sounds(BlockSoundGroup.NETHER_STEM), Items.PAPER, "paper");
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK).sounds(BlockSoundGroup.NETHER_STEM)).item(Items.PAPER).material("paper"));
     }
 
     @Override

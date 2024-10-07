@@ -1,7 +1,7 @@
 package com.chimericdream.minekea.block.building.dyed;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -15,7 +15,6 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.DyeColor;
-import oshi.util.tuples.Quartet;
 import oshi.util.tuples.Triplet;
 
 import java.util.ArrayList;
@@ -25,8 +24,11 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class DyedBlocks implements MinekeaBlockCategory {
-    public static final Map<String, MinekeaBlock> BLOCK_MAP = new LinkedHashMap<>();
-    public static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
+    public static final Map<String, DyedBlock> BLOCK_MAP = new LinkedHashMap<>();
+    public static final List<DyedBlock> BLOCKS = new ArrayList<>();
+
+    public static final Map<String, DyedPillarBlock> PILLAR_BLOCK_MAP = new LinkedHashMap<>();
+    public static final List<DyedPillarBlock> PILLAR_BLOCKS = new ArrayList<>();
 
     protected static final List<Triplet<String, String, Block>> BLOCKS_TO_DYE = List.of(
         new Triplet<>("Bricks", "bricks", Blocks.BRICKS),
@@ -42,66 +44,71 @@ public class DyedBlocks implements MinekeaBlockCategory {
         new Triplet<>("Stone Bricks", "stone_bricks", Blocks.STONE_BRICKS)
     );
 
-    protected static final List<Quartet<String, String, String, Block>> PILLAR_BLOCKS_TO_DYE = List.of(
-        new Quartet<>("Bone Block", "bone_block_top", "bone_block_side", Blocks.BONE_BLOCK)
+    protected static final List<Triplet<String, String, Block>> PILLAR_BLOCKS_TO_DYE = List.of(
+        new Triplet<>("Bone Block", "bone_block", Blocks.BONE_BLOCK)
     );
 
-    protected static final List<MinekeaBlock> WHITE_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> LIGHT_GRAY_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> GRAY_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> BLACK_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> BROWN_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> RED_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> ORANGE_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> YELLOW_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> LIME_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> GREEN_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> CYAN_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> LIGHT_BLUE_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> BLUE_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> PURPLE_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> MAGENTA_BLOCKS = new ArrayList<>();
-    protected static final List<MinekeaBlock> PINK_BLOCKS = new ArrayList<>();
+    protected static final List<Block> WHITE_BLOCKS = new ArrayList<>();
+    protected static final List<Block> LIGHT_GRAY_BLOCKS = new ArrayList<>();
+    protected static final List<Block> GRAY_BLOCKS = new ArrayList<>();
+    protected static final List<Block> BLACK_BLOCKS = new ArrayList<>();
+    protected static final List<Block> BROWN_BLOCKS = new ArrayList<>();
+    protected static final List<Block> RED_BLOCKS = new ArrayList<>();
+    protected static final List<Block> ORANGE_BLOCKS = new ArrayList<>();
+    protected static final List<Block> YELLOW_BLOCKS = new ArrayList<>();
+    protected static final List<Block> LIME_BLOCKS = new ArrayList<>();
+    protected static final List<Block> GREEN_BLOCKS = new ArrayList<>();
+    protected static final List<Block> CYAN_BLOCKS = new ArrayList<>();
+    protected static final List<Block> LIGHT_BLUE_BLOCKS = new ArrayList<>();
+    protected static final List<Block> BLUE_BLOCKS = new ArrayList<>();
+    protected static final List<Block> PURPLE_BLOCKS = new ArrayList<>();
+    protected static final List<Block> MAGENTA_BLOCKS = new ArrayList<>();
+    protected static final List<Block> PINK_BLOCKS = new ArrayList<>();
 
     static {
         BLOCKS_TO_DYE.forEach(data -> {
             String materialName = data.getA();
-            String textureKey = data.getB();
+            String material = data.getB();
             Block baseBlock = data.getC();
 
-            DyedBlock whiteBlock = new DyedBlock(DyeColor.WHITE, materialName, textureKey, baseBlock);
-            DyedBlock lightGrayBlock = new DyedBlock(DyeColor.LIGHT_GRAY, materialName, textureKey, baseBlock);
-            DyedBlock grayBlock = new DyedBlock(DyeColor.GRAY, materialName, textureKey, baseBlock);
-            DyedBlock blackBlock = new DyedBlock(DyeColor.BLACK, materialName, textureKey, baseBlock);
-            DyedBlock brownBlock = new DyedBlock(DyeColor.BROWN, materialName, textureKey, baseBlock);
-            DyedBlock redBlock = new DyedBlock(DyeColor.RED, materialName, textureKey, baseBlock);
-            DyedBlock orangeBlock = new DyedBlock(DyeColor.ORANGE, materialName, textureKey, baseBlock);
-            DyedBlock yellowBlock = new DyedBlock(DyeColor.YELLOW, materialName, textureKey, baseBlock);
-            DyedBlock limeBlock = new DyedBlock(DyeColor.LIME, materialName, textureKey, baseBlock);
-            DyedBlock greenBlock = new DyedBlock(DyeColor.GREEN, materialName, textureKey, baseBlock);
-            DyedBlock cyanBlock = new DyedBlock(DyeColor.CYAN, materialName, textureKey, baseBlock);
-            DyedBlock lightBlueBlock = new DyedBlock(DyeColor.LIGHT_BLUE, materialName, textureKey, baseBlock);
-            DyedBlock blueBlock = new DyedBlock(DyeColor.BLUE, materialName, textureKey, baseBlock);
-            DyedBlock purpleBlock = new DyedBlock(DyeColor.PURPLE, materialName, textureKey, baseBlock);
-            DyedBlock magentaBlock = new DyedBlock(DyeColor.MAGENTA, materialName, textureKey, baseBlock);
-            DyedBlock pinkBlock = new DyedBlock(DyeColor.PINK, materialName, textureKey, baseBlock);
+            ModBlock.Config config = new ModBlock.Config()
+                .material(material)
+                .materialName(materialName)
+                .ingredient(baseBlock);
 
-            BLOCK_MAP.put(textureKey + "white", whiteBlock);
-            BLOCK_MAP.put(textureKey + "light_gray", lightGrayBlock);
-            BLOCK_MAP.put(textureKey + "gray", grayBlock);
-            BLOCK_MAP.put(textureKey + "black", blackBlock);
-            BLOCK_MAP.put(textureKey + "brown", brownBlock);
-            BLOCK_MAP.put(textureKey + "red", redBlock);
-            BLOCK_MAP.put(textureKey + "orange", orangeBlock);
-            BLOCK_MAP.put(textureKey + "yellow", yellowBlock);
-            BLOCK_MAP.put(textureKey + "lime", limeBlock);
-            BLOCK_MAP.put(textureKey + "green", greenBlock);
-            BLOCK_MAP.put(textureKey + "cyan", cyanBlock);
-            BLOCK_MAP.put(textureKey + "light_blue", lightBlueBlock);
-            BLOCK_MAP.put(textureKey + "blue", blueBlock);
-            BLOCK_MAP.put(textureKey + "purple", purpleBlock);
-            BLOCK_MAP.put(textureKey + "magenta", magentaBlock);
-            BLOCK_MAP.put(textureKey + "pink", pinkBlock);
+            DyedBlock whiteBlock = new DyedBlock(config, DyeColor.WHITE);
+            DyedBlock lightGrayBlock = new DyedBlock(config, DyeColor.LIGHT_GRAY);
+            DyedBlock grayBlock = new DyedBlock(config, DyeColor.GRAY);
+            DyedBlock blackBlock = new DyedBlock(config, DyeColor.BLACK);
+            DyedBlock brownBlock = new DyedBlock(config, DyeColor.BROWN);
+            DyedBlock redBlock = new DyedBlock(config, DyeColor.RED);
+            DyedBlock orangeBlock = new DyedBlock(config, DyeColor.ORANGE);
+            DyedBlock yellowBlock = new DyedBlock(config, DyeColor.YELLOW);
+            DyedBlock limeBlock = new DyedBlock(config, DyeColor.LIME);
+            DyedBlock greenBlock = new DyedBlock(config, DyeColor.GREEN);
+            DyedBlock cyanBlock = new DyedBlock(config, DyeColor.CYAN);
+            DyedBlock lightBlueBlock = new DyedBlock(config, DyeColor.LIGHT_BLUE);
+            DyedBlock blueBlock = new DyedBlock(config, DyeColor.BLUE);
+            DyedBlock purpleBlock = new DyedBlock(config, DyeColor.PURPLE);
+            DyedBlock magentaBlock = new DyedBlock(config, DyeColor.MAGENTA);
+            DyedBlock pinkBlock = new DyedBlock(config, DyeColor.PINK);
+
+            BLOCK_MAP.put(material + "white", whiteBlock);
+            BLOCK_MAP.put(material + "light_gray", lightGrayBlock);
+            BLOCK_MAP.put(material + "gray", grayBlock);
+            BLOCK_MAP.put(material + "black", blackBlock);
+            BLOCK_MAP.put(material + "brown", brownBlock);
+            BLOCK_MAP.put(material + "red", redBlock);
+            BLOCK_MAP.put(material + "orange", orangeBlock);
+            BLOCK_MAP.put(material + "yellow", yellowBlock);
+            BLOCK_MAP.put(material + "lime", limeBlock);
+            BLOCK_MAP.put(material + "green", greenBlock);
+            BLOCK_MAP.put(material + "cyan", cyanBlock);
+            BLOCK_MAP.put(material + "light_blue", lightBlueBlock);
+            BLOCK_MAP.put(material + "blue", blueBlock);
+            BLOCK_MAP.put(material + "purple", purpleBlock);
+            BLOCK_MAP.put(material + "magenta", magentaBlock);
+            BLOCK_MAP.put(material + "pink", pinkBlock);
 
             WHITE_BLOCKS.add(whiteBlock);
             LIGHT_GRAY_BLOCKS.add(lightGrayBlock);
@@ -123,43 +130,47 @@ public class DyedBlocks implements MinekeaBlockCategory {
 
         PILLAR_BLOCKS_TO_DYE.forEach(data -> {
             String materialName = data.getA();
-            String endTextureKey = data.getB();
-            String sideTextureKey = data.getC();
-            Block baseBlock = data.getD();
+            String material = data.getB();
+            Block ingredient = data.getC();
 
-            DyedPillarBlock whiteBlock = new DyedPillarBlock(DyeColor.WHITE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock lightGrayBlock = new DyedPillarBlock(DyeColor.LIGHT_GRAY, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock grayBlock = new DyedPillarBlock(DyeColor.GRAY, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock blackBlock = new DyedPillarBlock(DyeColor.BLACK, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock brownBlock = new DyedPillarBlock(DyeColor.BROWN, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock redBlock = new DyedPillarBlock(DyeColor.RED, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock orangeBlock = new DyedPillarBlock(DyeColor.ORANGE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock yellowBlock = new DyedPillarBlock(DyeColor.YELLOW, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock limeBlock = new DyedPillarBlock(DyeColor.LIME, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock greenBlock = new DyedPillarBlock(DyeColor.GREEN, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock cyanBlock = new DyedPillarBlock(DyeColor.CYAN, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock lightBlueBlock = new DyedPillarBlock(DyeColor.LIGHT_BLUE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock blueBlock = new DyedPillarBlock(DyeColor.BLUE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock purpleBlock = new DyedPillarBlock(DyeColor.PURPLE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock magentaBlock = new DyedPillarBlock(DyeColor.MAGENTA, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock pinkBlock = new DyedPillarBlock(DyeColor.PINK, materialName, endTextureKey, sideTextureKey, baseBlock);
+            ModBlock.Config config = new ModBlock.Config()
+                .materialName(materialName)
+                .material(material)
+                .ingredient(ingredient);
 
-            BLOCK_MAP.put(endTextureKey + "white", whiteBlock);
-            BLOCK_MAP.put(endTextureKey + "light_gray", lightGrayBlock);
-            BLOCK_MAP.put(endTextureKey + "gray", grayBlock);
-            BLOCK_MAP.put(endTextureKey + "black", blackBlock);
-            BLOCK_MAP.put(endTextureKey + "brown", brownBlock);
-            BLOCK_MAP.put(endTextureKey + "red", redBlock);
-            BLOCK_MAP.put(endTextureKey + "orange", orangeBlock);
-            BLOCK_MAP.put(endTextureKey + "yellow", yellowBlock);
-            BLOCK_MAP.put(endTextureKey + "lime", limeBlock);
-            BLOCK_MAP.put(endTextureKey + "green", greenBlock);
-            BLOCK_MAP.put(endTextureKey + "cyan", cyanBlock);
-            BLOCK_MAP.put(endTextureKey + "light_blue", lightBlueBlock);
-            BLOCK_MAP.put(endTextureKey + "blue", blueBlock);
-            BLOCK_MAP.put(endTextureKey + "purple", purpleBlock);
-            BLOCK_MAP.put(endTextureKey + "magenta", magentaBlock);
-            BLOCK_MAP.put(endTextureKey + "pink", pinkBlock);
+            DyedPillarBlock whiteBlock = new DyedPillarBlock(config, DyeColor.WHITE);
+            DyedPillarBlock lightGrayBlock = new DyedPillarBlock(config, DyeColor.LIGHT_GRAY);
+            DyedPillarBlock grayBlock = new DyedPillarBlock(config, DyeColor.GRAY);
+            DyedPillarBlock blackBlock = new DyedPillarBlock(config, DyeColor.BLACK);
+            DyedPillarBlock brownBlock = new DyedPillarBlock(config, DyeColor.BROWN);
+            DyedPillarBlock redBlock = new DyedPillarBlock(config, DyeColor.RED);
+            DyedPillarBlock orangeBlock = new DyedPillarBlock(config, DyeColor.ORANGE);
+            DyedPillarBlock yellowBlock = new DyedPillarBlock(config, DyeColor.YELLOW);
+            DyedPillarBlock limeBlock = new DyedPillarBlock(config, DyeColor.LIME);
+            DyedPillarBlock greenBlock = new DyedPillarBlock(config, DyeColor.GREEN);
+            DyedPillarBlock cyanBlock = new DyedPillarBlock(config, DyeColor.CYAN);
+            DyedPillarBlock lightBlueBlock = new DyedPillarBlock(config, DyeColor.LIGHT_BLUE);
+            DyedPillarBlock blueBlock = new DyedPillarBlock(config, DyeColor.BLUE);
+            DyedPillarBlock purpleBlock = new DyedPillarBlock(config, DyeColor.PURPLE);
+            DyedPillarBlock magentaBlock = new DyedPillarBlock(config, DyeColor.MAGENTA);
+            DyedPillarBlock pinkBlock = new DyedPillarBlock(config, DyeColor.PINK);
+
+            PILLAR_BLOCK_MAP.put(material + "white", whiteBlock);
+            PILLAR_BLOCK_MAP.put(material + "light_gray", lightGrayBlock);
+            PILLAR_BLOCK_MAP.put(material + "gray", grayBlock);
+            PILLAR_BLOCK_MAP.put(material + "black", blackBlock);
+            PILLAR_BLOCK_MAP.put(material + "brown", brownBlock);
+            PILLAR_BLOCK_MAP.put(material + "red", redBlock);
+            PILLAR_BLOCK_MAP.put(material + "orange", orangeBlock);
+            PILLAR_BLOCK_MAP.put(material + "yellow", yellowBlock);
+            PILLAR_BLOCK_MAP.put(material + "lime", limeBlock);
+            PILLAR_BLOCK_MAP.put(material + "green", greenBlock);
+            PILLAR_BLOCK_MAP.put(material + "cyan", cyanBlock);
+            PILLAR_BLOCK_MAP.put(material + "light_blue", lightBlueBlock);
+            PILLAR_BLOCK_MAP.put(material + "blue", blueBlock);
+            PILLAR_BLOCK_MAP.put(material + "purple", purpleBlock);
+            PILLAR_BLOCK_MAP.put(material + "magenta", magentaBlock);
+            PILLAR_BLOCK_MAP.put(material + "pink", pinkBlock);
 
             WHITE_BLOCKS.add(whiteBlock);
             LIGHT_GRAY_BLOCKS.add(lightGrayBlock);
@@ -180,92 +191,102 @@ public class DyedBlocks implements MinekeaBlockCategory {
         });
 
         BLOCK_MAP.forEach((unused, block) -> BLOCKS.add(block));
+        PILLAR_BLOCK_MAP.forEach((unused, block) -> PILLAR_BLOCKS.add(block));
     }
 
     @Override
     public void registerBlocks() {
-        BLOCK_MAP.values().forEach(MinekeaBlock::register);
+        BLOCK_MAP.values().forEach(DyedBlock::register);
+        PILLAR_BLOCK_MAP.values().forEach(DyedPillarBlock::register);
 
         BLOCKS_TO_DYE.forEach(data -> {
             String textureKey = data.getB();
 
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "gray"), textureKey, ColoredBlocksRegistry.BlockColor.GRAY);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "black"), textureKey, ColoredBlocksRegistry.BlockColor.BLACK);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "brown"), textureKey, ColoredBlocksRegistry.BlockColor.BROWN);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "red"), textureKey, ColoredBlocksRegistry.BlockColor.RED);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "orange"), textureKey, ColoredBlocksRegistry.BlockColor.ORANGE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "yellow"), textureKey, ColoredBlocksRegistry.BlockColor.YELLOW);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "lime"), textureKey, ColoredBlocksRegistry.BlockColor.LIME);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "green"), textureKey, ColoredBlocksRegistry.BlockColor.GREEN);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "cyan"), textureKey, ColoredBlocksRegistry.BlockColor.CYAN);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_blue"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "blue"), textureKey, ColoredBlocksRegistry.BlockColor.BLUE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "purple"), textureKey, ColoredBlocksRegistry.BlockColor.PURPLE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "magenta"), textureKey, ColoredBlocksRegistry.BlockColor.MAGENTA);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "pink"), textureKey, ColoredBlocksRegistry.BlockColor.PINK);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "gray"), textureKey, ColoredBlocksRegistry.BlockColor.GRAY);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "black"), textureKey, ColoredBlocksRegistry.BlockColor.BLACK);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "brown"), textureKey, ColoredBlocksRegistry.BlockColor.BROWN);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "red"), textureKey, ColoredBlocksRegistry.BlockColor.RED);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "orange"), textureKey, ColoredBlocksRegistry.BlockColor.ORANGE);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "yellow"), textureKey, ColoredBlocksRegistry.BlockColor.YELLOW);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "lime"), textureKey, ColoredBlocksRegistry.BlockColor.LIME);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "green"), textureKey, ColoredBlocksRegistry.BlockColor.GREEN);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "cyan"), textureKey, ColoredBlocksRegistry.BlockColor.CYAN);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "light_blue"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "blue"), textureKey, ColoredBlocksRegistry.BlockColor.BLUE);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "purple"), textureKey, ColoredBlocksRegistry.BlockColor.PURPLE);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "magenta"), textureKey, ColoredBlocksRegistry.BlockColor.MAGENTA);
+            ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "pink"), textureKey, ColoredBlocksRegistry.BlockColor.PINK);
         });
 
         PILLAR_BLOCKS_TO_DYE.forEach(data -> {
             String textureKey = data.getB();
 
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "gray"), textureKey, ColoredBlocksRegistry.BlockColor.GRAY);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "black"), textureKey, ColoredBlocksRegistry.BlockColor.BLACK);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "brown"), textureKey, ColoredBlocksRegistry.BlockColor.BROWN);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "red"), textureKey, ColoredBlocksRegistry.BlockColor.RED);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "orange"), textureKey, ColoredBlocksRegistry.BlockColor.ORANGE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "yellow"), textureKey, ColoredBlocksRegistry.BlockColor.YELLOW);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "lime"), textureKey, ColoredBlocksRegistry.BlockColor.LIME);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "green"), textureKey, ColoredBlocksRegistry.BlockColor.GREEN);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "cyan"), textureKey, ColoredBlocksRegistry.BlockColor.CYAN);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_blue"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "blue"), textureKey, ColoredBlocksRegistry.BlockColor.BLUE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "purple"), textureKey, ColoredBlocksRegistry.BlockColor.PURPLE);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "magenta"), textureKey, ColoredBlocksRegistry.BlockColor.MAGENTA);
-            ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "pink"), textureKey, ColoredBlocksRegistry.BlockColor.PINK);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "gray"), textureKey, ColoredBlocksRegistry.BlockColor.GRAY);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "black"), textureKey, ColoredBlocksRegistry.BlockColor.BLACK);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "brown"), textureKey, ColoredBlocksRegistry.BlockColor.BROWN);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "red"), textureKey, ColoredBlocksRegistry.BlockColor.RED);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "orange"), textureKey, ColoredBlocksRegistry.BlockColor.ORANGE);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "yellow"), textureKey, ColoredBlocksRegistry.BlockColor.YELLOW);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "lime"), textureKey, ColoredBlocksRegistry.BlockColor.LIME);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "green"), textureKey, ColoredBlocksRegistry.BlockColor.GREEN);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "cyan"), textureKey, ColoredBlocksRegistry.BlockColor.CYAN);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "light_blue"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_BLUE);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "blue"), textureKey, ColoredBlocksRegistry.BlockColor.BLUE);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "purple"), textureKey, ColoredBlocksRegistry.BlockColor.PURPLE);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "magenta"), textureKey, ColoredBlocksRegistry.BlockColor.MAGENTA);
+            ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "pink"), textureKey, ColoredBlocksRegistry.BlockColor.PINK);
         });
     }
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
+        PILLAR_BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
         BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
+        PILLAR_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
         BLOCKS.forEach(block -> block.configureRecipes(exporter));
+        PILLAR_BLOCKS.forEach(block -> block.configureRecipes(exporter));
     }
 
     @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
+        PILLAR_BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
+        PILLAR_BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
+        PILLAR_BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
     }
 
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
+        PILLAR_BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
     }
 
     @Override
     public void generateTextures() {
-        BLOCKS.forEach(MinekeaBlock::generateTextures);
+        BLOCKS.forEach(DyedBlock::generateTextures);
+        PILLAR_BLOCKS.forEach(DyedPillarBlock::generateTextures);
     }
 }

@@ -75,7 +75,7 @@ public class GenericBookshelfDoor extends FabricModDoorBlock {
 
     public final Identifier BLOCK_ID;
 
-    public GenericBookshelfDoor(BlockSetType type, ModBlock.ModBlockConfig config) {
+    public GenericBookshelfDoor(BlockSetType type, ModBlock.Config config) {
         super(type, config.settings(AbstractBlock.Settings.copy(config.getIngredient())));
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/doors/bookshelves/%s", config.getMaterial()));

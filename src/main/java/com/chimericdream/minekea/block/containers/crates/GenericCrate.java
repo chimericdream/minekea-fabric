@@ -1,9 +1,11 @@
 package com.chimericdream.minekea.block.containers.crates;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
+import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
 import com.chimericdream.minekea.screen.crate.DoubleCrateScreenHandler;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -15,7 +17,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DoubleBlockProperties;
 import net.minecraft.block.entity.BlockEntity;
@@ -68,7 +69,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
+public class GenericCrate extends FabricModBlockWithEntity {
     protected static final Model CRATE_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/containers/crate")),
         Optional.empty(),
@@ -103,12 +104,6 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     public static final BooleanProperty CONNECTED_WEST;
 
     public Identifier BLOCK_ID;
-    public final String material;
-    public final String materialName;
-    public final Block ingredient1;
-    public final TagKey<Item> ingredient2;
-    public final Block braceMaterial;
-    public final boolean isFlammable;
 
     private static final DoubleBlockProperties.PropertyRetriever<CrateBlockEntity, Optional<Inventory>> INVENTORY_RETRIEVER;
     private static final DoubleBlockProperties.PropertyRetriever<CrateBlockEntity, Optional<NamedScreenHandlerFactory>> SCREEN_RETRIEVER;
@@ -167,20 +162,13 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     }
 
     public GenericCrate(AbstractBlock.Settings settings) {
-        this("Oak", "oak", Blocks.OAK_PLANKS, ItemTags.OAK_LOGS, Blocks.STRIPPED_OAK_LOG, true);
+        this(new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).tagIngredient(ItemTags.OAK_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_OAK_LOG)).flammable());
     }
 
-    public GenericCrate(String material, String materialName, Block ingredient1, TagKey<Item> ingredient2, Block braceMaterial, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(Blocks.BARREL));
+    public GenericCrate(ModBlock.Config config) {
+        super(config.settings(AbstractBlock.Settings.copy(Blocks.BARREL)));
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/crates/%s", material));
-
-        this.material = material;
-        this.materialName = materialName;
-        this.ingredient1 = ingredient1;
-        this.ingredient2 = ingredient2;
-        this.braceMaterial = braceMaterial;
-        this.isFlammable = isFlammable;
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/crates/%s", config.getMaterial()));
 
         this.setDefaultState(
             this.stateManager
@@ -211,7 +199,7 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -456,6 +444,9 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block ingredient1 = config.getIngredient();
+        TagKey<Item> ingredient2 = config.getTagIngredient();
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, this, 1)
             .pattern("#X#")
             .pattern("XXX")
@@ -471,7 +462,7 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Crate", materialName));
+        translationBuilder.add(this, String.format("%s Crate", config.getMaterialName()));
     }
 
     protected void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator, TextureMap textures) {
@@ -555,8 +546,8 @@ public class GenericCrate extends BlockWithEntity implements MinekeaBlock {
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
-            .put(MinekeaTextures.BRACE, Registries.BLOCK.getId(braceMaterial).withPrefixedPath("block/"))
-            .put(MinekeaTextures.MATERIAL, Registries.BLOCK.getId(ingredient1).withPrefixedPath("block/"));
+            .put(MinekeaTextures.BRACE, config.getTexture("brace"))
+            .put(MinekeaTextures.MATERIAL, config.getTexture());
 
         this.configureBlockStateModels(blockStateModelGenerator, textures);
     }

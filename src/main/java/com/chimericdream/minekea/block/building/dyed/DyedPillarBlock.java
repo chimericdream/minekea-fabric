@@ -1,16 +1,17 @@
 package com.chimericdream.minekea.block.building.dyed;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
+import com.chimericdream.lib.fabric.blocks.FabricModPillarBlock;
 import com.chimericdream.lib.resource.ModelUtils;
+import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.PillarBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -52,7 +53,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
+public class DyedPillarBlock extends FabricModPillarBlock {
     public static final EnumProperty<Direction.Axis> AXIS;
 
     static {
@@ -60,37 +61,18 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
     }
 
     public final Identifier BLOCK_ID;
-    protected final Identifier PARENT_BLOCK_ID;
 
-    protected final String materialName;
-    protected final String endTextureKey;
-    protected final String sideTextureKey;
     protected final DyeColor color;
-    protected final Block baseBlock;
-
-    public DyedPillarBlock(DyeColor color, String materialName, String endTextureKey, String sideTextureKey, Block baseBlock) {
-        this(Settings.copy(baseBlock), color, materialName, endTextureKey, sideTextureKey, baseBlock);
-    }
 
     public DyedPillarBlock(
-        Settings settings,
-        DyeColor color,
-        String materialName,
-        String endTextureKey,
-        String sideTextureKey,
-        Block baseBlock
+        ModBlock.Config config,
+        DyeColor color
     ) {
-        super(settings.mapColor(color));
+        super(config.settings(config.getBaseSettings().mapColor(color)));
 
         this.color = color;
-        this.materialName = materialName;
-        this.endTextureKey = endTextureKey;
-        this.sideTextureKey = sideTextureKey;
-        this.baseBlock = baseBlock;
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", Registries.BLOCK.getId(baseBlock).getPath(), color));
-
-        PARENT_BLOCK_ID = Registries.BLOCK.getId(baseBlock);
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", config.getMaterial(), color));
 
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
@@ -122,14 +104,13 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
 
             world.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
             world.emitGameEvent((Entity) null, GameEvent.FLUID_PLACE, pos);
-            world.setBlockState(pos, this.baseBlock.getDefaultState().with(AXIS, blockState.get(AXIS)));
+            world.setBlockState(pos, config.getIngredient().getDefaultState().with(AXIS, blockState.get(AXIS)));
             return ItemActionResult.success(world.isClient);
-        } else {
-            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
+
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
@@ -143,7 +124,7 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block parentBlock = Registries.BLOCK.get(PARENT_BLOCK_ID);
+        Block parentBlock = config.getIngredient();
         Item dye = ColorHelpers.getDye(color);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 8)
@@ -166,14 +147,14 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Dyed %s", ColorHelpers.getName(color), materialName));
+        translationBuilder.add(this, String.format("%s Dyed %s", ColorHelpers.getName(color), config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
-            .put(TextureKey.END, BLOCK_ID.withPrefixedPath("block/").withSuffixedPath("_end"))
-            .put(TextureKey.SIDE, BLOCK_ID.withPrefixedPath("block/").withSuffixedPath("_side"));
+            .put(TextureKey.END, TextureUtils.block(BLOCK_ID, "_end"))
+            .put(TextureKey.SIDE, TextureUtils.block(BLOCK_ID, "_side"));
 
         Identifier subModelId = blockStateModelGenerator.createSubModel(this, "", Models.CUBE_COLUMN, unused -> textures);
 

@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 public class PhantomMembraneStorageBlock extends GenericStorageBlock {
     public PhantomMembraneStorageBlock() {
-        super(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(BlockSoundGroup.NETHER_WART), Items.PHANTOM_MEMBRANE, "phantom_membrane", true);
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(BlockSoundGroup.NETHER_WART)).item(Items.PHANTOM_MEMBRANE).material("phantom_membrane"), true);
     }
 
     @Override

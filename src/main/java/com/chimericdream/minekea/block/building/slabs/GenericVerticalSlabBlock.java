@@ -1,13 +1,13 @@
 package com.chimericdream.minekea.block.building.slabs;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -46,7 +46,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
 
-public class GenericVerticalSlabBlock extends Block implements MinekeaBlock, Waterloggable {
+public class GenericVerticalSlabBlock extends FabricModBlock implements Waterloggable {
     public static final Model VERTICAL_SLAB_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/slabs/vertical")),
         Optional.empty(),
@@ -63,22 +63,12 @@ public class GenericVerticalSlabBlock extends Block implements MinekeaBlock, Wat
 
     public final Identifier BLOCK_ID;
 
-    protected final String materialName;
-    protected final String material;
-    protected final boolean isFlammable;
-    protected final Block ingredient;
-    protected final Identifier textureId;
-
     static {
         FACING = Properties.HORIZONTAL_FACING;
     }
 
-    public GenericVerticalSlabBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
-        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient));
-    }
-
-    public GenericVerticalSlabBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
-        super(AbstractBlock.Settings.copy(ingredient));
+    public GenericVerticalSlabBlock(ModBlock.Config config) {
+        super(config);
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -86,13 +76,7 @@ public class GenericVerticalSlabBlock extends Block implements MinekeaBlock, Wat
                 .with(WATERLOGGED, false)
         );
 
-        this.materialName = materialName;
-        this.material = material;
-        this.isFlammable = isFlammable;
-        this.ingredient = ingredient;
-        this.textureId = textureId;
-
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/slabs/vertical/%s", material));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/slabs/vertical/%s", config.getMaterial()));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -136,7 +120,7 @@ public class GenericVerticalSlabBlock extends Block implements MinekeaBlock, Wat
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -147,6 +131,8 @@ public class GenericVerticalSlabBlock extends Block implements MinekeaBlock, Wat
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block ingredient = config.getIngredient();
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 6)
             .pattern("#")
             .pattern("#")
@@ -164,11 +150,13 @@ public class GenericVerticalSlabBlock extends Block implements MinekeaBlock, Wat
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Vertical Slab", materialName));
+        translationBuilder.add(this, String.format("%s Vertical Slab", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Identifier textureId = config.getTexture();
+
         TextureMap textures = new TextureMap()
             .put(TextureKey.ALL, textureId);
 
@@ -205,69 +193,4 @@ public class GenericVerticalSlabBlock extends Block implements MinekeaBlock, Wat
                     )
             );
     }
-
-//    @Override
-//    public void setupResources() {
-//        MinekeaBlockSettings<?> settings = (MinekeaBlockSettings<?>) this.settings;
-//        MinekeaTags.addToolTag(settings.getTool(), getBlockID());
-//        MinekeaTags.SLABS.add(getBlockID(), settings.isWooden());
-//        MinekeaResourcePack.EN_US.blockRespect(this, String.format(settings.getNamePattern(), settings.getIngredientName()));
-//
-//        Identifier ingredient = settings.getMaterial("ingredient");
-//        Identifier endTexture = settings.getBlockTexture("end");
-//        Identifier sideTexture = settings.getBlockTexture("main");
-//
-//        Identifier SLAB_MODEL_ID = Model.getBlockModelID(getBlockID());
-//        Identifier TOP_SLAB_MODEL_ID = new Identifier(ModInfo.MOD_ID, SLAB_MODEL_ID.getPath() + "_top");
-//        Identifier DOUBLE_MODEL_ID = Model.getItemModelID(ingredient);
-//        Identifier ITEM_MODEL_ID = Model.getItemModelID(getBlockID());
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addLootTable(LootTable.getLootTableID(getBlockID()), LootTable.slabLootTable(getBlockID()));
-//
-//        JTextures textures = new JTextures()
-//            .var("bottom", endTexture.toString())
-//            .var("top", endTexture.toString())
-//            .var("side", sideTexture.toString());
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minecraft:block/slab").textures(textures),
-//            SLAB_MODEL_ID
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(
-//            JModel.model("minecraft:block/slab_top").textures(textures),
-//            TOP_SLAB_MODEL_ID
-//        );
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addModel(JModel.model(SLAB_MODEL_ID), ITEM_MODEL_ID);
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(
-//                JState.variant()
-//                    .put("type=bottom", new JBlockModel(SLAB_MODEL_ID))
-//                    .put("type=double", new JBlockModel(DOUBLE_MODEL_ID))
-//                    .put("type=top", new JBlockModel(TOP_SLAB_MODEL_ID))
-//            ),
-//            getBlockID()
-//        );
-//    }
-//
-//    public static class SlabSettings extends MinekeaBlockSettings<SlabSettings> {
-//        public SlabSettings(DefaultSettings settings) {
-//            super((DefaultSettings) settings.nonOpaque());
-//        }
-//
-//        public String getNamePattern() {
-//            return Objects.requireNonNullElse(namePatternOverride, "%s Slab");
-//        }
-//
-//        @Override
-//        public Identifier getBlockId() {
-//            if (blockId == null) {
-//                blockId = new Identifier(ModInfo.MOD_ID, String.format("%sbuilding/slabs/%s", ModInfo.getModPrefix(modId), mainMaterial));
-//            }
-//
-//            return blockId;
-//        }
-//    }
 }

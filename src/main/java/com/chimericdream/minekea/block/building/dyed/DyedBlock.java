@@ -1,13 +1,13 @@
 package com.chimericdream.minekea.block.building.dyed;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
@@ -48,7 +48,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-public class DyedBlock extends Block implements MinekeaBlock {
+public class DyedBlock extends FabricModBlock {
     public static final EnumProperty<Direction.Axis> AXIS;
 
     static {
@@ -56,34 +56,15 @@ public class DyedBlock extends Block implements MinekeaBlock {
     }
 
     public final Identifier BLOCK_ID;
-    protected final Identifier PARENT_BLOCK_ID;
 
-    protected final String materialName;
-    protected final String textureKey;
     protected final DyeColor color;
-    protected final Block baseBlock;
 
-    public DyedBlock(DyeColor color, String materialName, String textureKey, Block baseBlock) {
-        this(AbstractBlock.Settings.copy(baseBlock), color, materialName, textureKey, baseBlock);
-    }
-
-    public DyedBlock(
-        AbstractBlock.Settings settings,
-        DyeColor color,
-        String materialName,
-        String textureKey,
-        Block baseBlock
-    ) {
-        super(settings.mapColor(color));
+    public DyedBlock(ModBlock.Config config, DyeColor color) {
+        super(config.settings(config.getBaseSettings().mapColor(color)));
 
         this.color = color;
-        this.materialName = materialName;
-        this.textureKey = textureKey;
-        this.baseBlock = baseBlock;
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", Registries.BLOCK.getId(baseBlock).getPath(), color));
-
-        PARENT_BLOCK_ID = Registries.BLOCK.getId(baseBlock);
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", config.getMaterial(), color));
 
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
@@ -115,11 +96,11 @@ public class DyedBlock extends Block implements MinekeaBlock {
 
             world.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
             world.emitGameEvent((Entity) null, GameEvent.FLUID_PLACE, pos);
-            world.setBlockState(pos, this.baseBlock.getDefaultState());
+            world.setBlockState(pos, config.getIngredient().getDefaultState());
             return ItemActionResult.success(world.isClient);
-        } else {
-            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
+
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override
@@ -136,7 +117,7 @@ public class DyedBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block parentBlock = Registries.BLOCK.get(PARENT_BLOCK_ID);
+        Block parentBlock = config.getIngredient();
         Item dye = ColorHelpers.getDye(color);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 8)
@@ -159,7 +140,7 @@ public class DyedBlock extends Block implements MinekeaBlock {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Dyed %s", ColorHelpers.getName(color), materialName));
+        translationBuilder.add(this, String.format("%s Dyed %s", ColorHelpers.getName(color), config.getMaterialName()));
     }
 
     @Override

@@ -1,13 +1,13 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -57,7 +57,7 @@ import net.minecraft.world.World;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-abstract public class GenericStorageBlock extends Block implements MinekeaBlock {
+abstract public class GenericStorageBlock extends FabricModBlock {
     protected static final Model COMPRESSED_BLOCK_MODEL = Models.CUBE_ALL;
     protected static final Model COMPRESSED_COLUMN_BLOCK_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/storage/compressed_column")),
@@ -83,7 +83,6 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
     public static final DirectionProperty FACING;
     public static final BooleanProperty IS_BAGGED;
 
-    public final Item BASE_ITEM;
     public final Identifier BLOCK_ID;
     public final boolean isBaggedItem;
 
@@ -93,12 +92,12 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
         IS_BAGGED = BooleanProperty.of("is_bagged");
     }
 
-    public GenericStorageBlock(AbstractBlock.Settings settings, Item baseItem, String baseItemName) {
-        this(settings, baseItem, baseItemName, false);
+    public GenericStorageBlock(ModBlock.Config config) {
+        this(config, false);
     }
 
-    public GenericStorageBlock(AbstractBlock.Settings settings, Item baseItem, String baseItemName, boolean isBaggedItem) {
-        super(settings);
+    public GenericStorageBlock(ModBlock.Config config, boolean isBaggedItem) {
+        super(config);
 
         setDefaultState(
             getStateManager()
@@ -107,8 +106,7 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
                 .with(IS_BAGGED, false)
         );
 
-        this.BASE_ITEM = baseItem;
-        this.BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("storage/compressed/%s", baseItemName));
+        this.BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("storage/compressed/%s", config.getMaterial()));
         this.isBaggedItem = isBaggedItem;
     }
 
@@ -178,23 +176,25 @@ abstract public class GenericStorageBlock extends Block implements MinekeaBlock 
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Item baseItem = config.getItem();
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern("###")
             .pattern("###")
             .pattern("###")
-            .input('#', BASE_ITEM)
-            .criterion(FabricRecipeProvider.hasItem(BASE_ITEM),
-                FabricRecipeProvider.conditionsFromItem(BASE_ITEM))
+            .input('#', baseItem)
+            .criterion(FabricRecipeProvider.hasItem(baseItem),
+                FabricRecipeProvider.conditionsFromItem(baseItem))
             .offerTo(exporter);
 
         // This means that things like totems won't be uncraftable; modpacks which have some method to override
         // the max stack size can re-add these recipes in a datapack
-        if (BASE_ITEM.getMaxCount() >= 9) {
-            ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BASE_ITEM, 9)
+        if (baseItem.getMaxCount() >= 9) {
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, baseItem, 9)
                 .input(this)
                 .criterion(FabricRecipeProvider.hasItem(this),
                     FabricRecipeProvider.conditionsFromItem(this))
-                .offerTo(exporter, Registries.ITEM.getId(BASE_ITEM).withSuffixedPath("_from_compressed"));
+                .offerTo(exporter, Registries.ITEM.getId(baseItem).withSuffixedPath("_from_compressed"));
         }
     }
 

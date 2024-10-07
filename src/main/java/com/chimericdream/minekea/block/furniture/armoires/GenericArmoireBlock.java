@@ -176,7 +176,7 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
 
     public final Identifier BLOCK_ID;
 
-    public GenericArmoireBlock(ModBlockConfig config) {
+    public GenericArmoireBlock(Config config) {
         super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
 
         this.setDefaultState(

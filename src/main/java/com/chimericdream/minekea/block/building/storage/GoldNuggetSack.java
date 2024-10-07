@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -20,7 +21,7 @@ import java.util.function.Function;
 
 public class GoldNuggetSack extends GenericStorageBlock {
     public GoldNuggetSack() {
-        super(AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).sounds(BlockSoundGroup.METAL), StorageBlocks.GOLD_NUGGET_BAG, "gold_nugget", true);
+        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).sounds(BlockSoundGroup.METAL)).item(StorageBlocks.GOLD_NUGGET_BAG).material("gold_nugget"), true);
     }
 
     @Override
