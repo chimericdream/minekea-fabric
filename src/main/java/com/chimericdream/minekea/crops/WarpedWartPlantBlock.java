@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.crops;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModPlantBlock;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.minekea.ModInfo;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -10,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
+import net.minecraft.block.PlantBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
@@ -42,7 +44,7 @@ import net.minecraft.world.WorldView;
 
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_ITEM;
 
-public class WarpedWartPlantBlock extends FabricModPlantBlock {
+public class WarpedWartPlantBlock extends PlantBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
     public static final MapCodec<WarpedWartPlantBlock> CODEC = createCodec(WarpedWartPlantBlock::new);
 
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "crops/warped_wart/block");
@@ -50,9 +52,13 @@ public class WarpedWartPlantBlock extends FabricModPlantBlock {
     private static final VoxelShape[] AGE_TO_SHAPE;
 
     public WarpedWartPlantBlock(AbstractBlock.Settings settings) {
-        super(new ModBlock.Config().settings(settings.mapColor(MapColor.BRIGHT_TEAL)));
+        this();
+    }
 
-        this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(AGE, 0));
+    public WarpedWartPlantBlock() {
+        super(AbstractBlock.Settings.copy(Blocks.NETHER_WART).mapColor(MapColor.BRIGHT_TEAL));
+
+        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0));
     }
 
     public MapCodec<WarpedWartPlantBlock> getCodec() {
@@ -60,7 +66,7 @@ public class WarpedWartPlantBlock extends FabricModPlantBlock {
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return AGE_TO_SHAPE[(Integer) state.get(AGE)];
+        return AGE_TO_SHAPE[state.get(AGE)];
     }
 
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
@@ -68,13 +74,13 @@ public class WarpedWartPlantBlock extends FabricModPlantBlock {
     }
 
     public boolean hasRandomTicks(BlockState state) {
-        return (Integer) state.get(AGE) < 3;
+        return state.get(AGE) < 3;
     }
 
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        int i = (Integer) state.get(AGE);
+        int i = state.get(AGE);
         if (i < 3 && random.nextInt(10) == 0) {
-            state = (BlockState) state.with(AGE, i + 1);
+            state = state.with(AGE, i + 1);
             world.setBlockState(pos, state, 2);
         }
 
@@ -98,12 +104,10 @@ public class WarpedWartPlantBlock extends FabricModPlantBlock {
         };
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         RegistryWrapper.Impl<Enchantment> impl = registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
 
@@ -139,12 +143,10 @@ public class WarpedWartPlantBlock extends FabricModPlantBlock {
         );
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, "Warped Wart");
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerCrop(this, Properties.AGE_3, 0, 1, 1, 2);
     }

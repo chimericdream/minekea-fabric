@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.util.MinekeaTextures;
@@ -58,7 +61,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericChair extends FabricModBlock implements Waterloggable {
+public class GenericChair extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model CHAIR_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/seating/chair")),
         Optional.empty(),
@@ -69,6 +72,7 @@ public class GenericChair extends FabricModBlock implements Waterloggable {
     public static final DirectionProperty FACING;
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
@@ -94,8 +98,8 @@ public class GenericChair extends FabricModBlock implements Waterloggable {
         );
     }
 
-    public GenericChair(ModBlock.Config config) {
-        super(config);
+    public GenericChair(BlockConfig config) {
+        super(config.getBaseSettings());
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -104,12 +108,16 @@ public class GenericChair extends FabricModBlock implements Waterloggable {
         );
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/seating/chairs/%s", config.getMaterial()));
+        this.config = config;
     }
 
-    @Override
+    public BlockConfig getConfig() {
+        return config;
+    }
+
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -195,7 +203,6 @@ public class GenericChair extends FabricModBlock implements Waterloggable {
         return VoxelShapes.union(VoxelShapes.union(SEAT_SHAPE, LEG_SHAPES), SEAT_BACKS.get("south"));
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");
@@ -213,22 +220,18 @@ public class GenericChair extends FabricModBlock implements Waterloggable {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Chair", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");

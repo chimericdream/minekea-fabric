@@ -1,9 +1,9 @@
 package com.chimericdream.minekea.block.decorations;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.blocks.ModBlockDataGenerator;
-import com.chimericdream.lib.fabric.blocks.FabricModBlockDataGenerator;
-import com.chimericdream.lib.util.Registerable;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.minekea.block.decorations.candles.GenericVotiveCandle;
 import com.chimericdream.minekea.block.decorations.lighting.AncientLantern;
 import com.chimericdream.minekea.block.decorations.lighting.DoomLantern;
@@ -40,7 +40,7 @@ public class DecorationBlocks implements MinekeaBlockCategory {
     public static final EndlessRod ENDLESS_ROD;
     public static final FakeCake FAKE_CAKE;
 
-    public static final List<Registerable> BLOCKS = new ArrayList<>();
+    public static final List<Block> BLOCKS = new ArrayList<>();
 
     public static final Map<String, GenericVotiveCandle> VOTIVE_CANDLES = new LinkedHashMap<>();
 
@@ -57,23 +57,23 @@ public class DecorationBlocks implements MinekeaBlockCategory {
         BLOCKS.add(ENDLESS_ROD);
         BLOCKS.add(FAKE_CAKE);
 
-        VOTIVE_CANDLES.put("plain", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.CANDLE), "plain"));
-        VOTIVE_CANDLES.put("white", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.WHITE_CANDLE), "white"));
-        VOTIVE_CANDLES.put("light_gray", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.LIGHT_GRAY_CANDLE), "light_gray"));
-        VOTIVE_CANDLES.put("gray", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.GRAY_CANDLE), "gray"));
-        VOTIVE_CANDLES.put("black", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.BLACK_CANDLE), "black"));
-        VOTIVE_CANDLES.put("brown", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.BROWN_CANDLE), "brown"));
-        VOTIVE_CANDLES.put("red", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.RED_CANDLE), "red"));
-        VOTIVE_CANDLES.put("orange", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.ORANGE_CANDLE), "orange"));
-        VOTIVE_CANDLES.put("yellow", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.YELLOW_CANDLE), "yellow"));
-        VOTIVE_CANDLES.put("lime", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.LIME_CANDLE), "lime"));
-        VOTIVE_CANDLES.put("green", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.GREEN_CANDLE), "green"));
-        VOTIVE_CANDLES.put("cyan", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.CYAN_CANDLE), "cyan"));
-        VOTIVE_CANDLES.put("light_blue", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.LIGHT_BLUE_CANDLE), "light_blue"));
-        VOTIVE_CANDLES.put("blue", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.BLUE_CANDLE), "blue"));
-        VOTIVE_CANDLES.put("purple", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.PURPLE_CANDLE), "purple"));
-        VOTIVE_CANDLES.put("magenta", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.MAGENTA_CANDLE), "magenta"));
-        VOTIVE_CANDLES.put("pink", new GenericVotiveCandle(new ModBlock.Config().ingredient(Blocks.PINK_CANDLE), "pink"));
+        VOTIVE_CANDLES.put("plain", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.CANDLE), "plain"));
+        VOTIVE_CANDLES.put("white", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.WHITE_CANDLE), "white"));
+        VOTIVE_CANDLES.put("light_gray", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.LIGHT_GRAY_CANDLE), "light_gray"));
+        VOTIVE_CANDLES.put("gray", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.GRAY_CANDLE), "gray"));
+        VOTIVE_CANDLES.put("black", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.BLACK_CANDLE), "black"));
+        VOTIVE_CANDLES.put("brown", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.BROWN_CANDLE), "brown"));
+        VOTIVE_CANDLES.put("red", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.RED_CANDLE), "red"));
+        VOTIVE_CANDLES.put("orange", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.ORANGE_CANDLE), "orange"));
+        VOTIVE_CANDLES.put("yellow", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.YELLOW_CANDLE), "yellow"));
+        VOTIVE_CANDLES.put("lime", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.LIME_CANDLE), "lime"));
+        VOTIVE_CANDLES.put("green", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.GREEN_CANDLE), "green"));
+        VOTIVE_CANDLES.put("cyan", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.CYAN_CANDLE), "cyan"));
+        VOTIVE_CANDLES.put("light_blue", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.LIGHT_BLUE_CANDLE), "light_blue"));
+        VOTIVE_CANDLES.put("blue", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.BLUE_CANDLE), "blue"));
+        VOTIVE_CANDLES.put("purple", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.PURPLE_CANDLE), "purple"));
+        VOTIVE_CANDLES.put("magenta", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.MAGENTA_CANDLE), "magenta"));
+        VOTIVE_CANDLES.put("pink", new GenericVotiveCandle(new BlockConfig().ingredient(Blocks.PINK_CANDLE), "pink"));
 
         BLOCKS.addAll(VOTIVE_CANDLES.values());
     }
@@ -87,41 +87,41 @@ public class DecorationBlocks implements MinekeaBlockCategory {
 
     @Override
     public void registerBlocks() {
-        BLOCKS.forEach(Registerable::register);
+        BLOCKS.forEach(block -> ((RegisterableBlock) block).register());
     }
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        BLOCKS.forEach(block -> ((FabricModBlockDataGenerator) block).configureBlockTags(registryLookup, getBuilder));
+        BLOCKS.forEach(block -> ((FabricBlockDataGenerator) block).configureBlockTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        BLOCKS.forEach(block -> ((FabricModBlockDataGenerator) block).configureItemTags(registryLookup, getBuilder));
+        BLOCKS.forEach(block -> ((FabricBlockDataGenerator) block).configureItemTags(registryLookup, getBuilder));
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        BLOCKS.forEach(block -> ((ModBlockDataGenerator) block).configureRecipes(exporter));
+        BLOCKS.forEach(block -> ((BlockDataGenerator) block).configureRecipes(exporter));
     }
 
     @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        BLOCKS.forEach(block -> ((ModBlockDataGenerator) block).configureBlockLootTables(registryLookup, generator));
+        BLOCKS.forEach(block -> ((BlockDataGenerator) block).configureBlockLootTables(registryLookup, generator));
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        BLOCKS.forEach(block -> ((FabricModBlockDataGenerator) block).configureTranslations(registryLookup, translationBuilder));
+        BLOCKS.forEach(block -> ((FabricBlockDataGenerator) block).configureTranslations(registryLookup, translationBuilder));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        BLOCKS.forEach(block -> ((ModBlockDataGenerator) block).configureBlockStateModels(blockStateModelGenerator));
+        BLOCKS.forEach(block -> ((BlockDataGenerator) block).configureBlockStateModels(blockStateModelGenerator));
     }
 
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        BLOCKS.forEach(block -> ((ModBlockDataGenerator) block).configureItemModels(itemModelGenerator));
+        BLOCKS.forEach(block -> ((BlockDataGenerator) block).configureItemModels(itemModelGenerator));
     }
 }

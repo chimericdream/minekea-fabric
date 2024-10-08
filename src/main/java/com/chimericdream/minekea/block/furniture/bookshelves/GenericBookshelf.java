@@ -1,6 +1,10 @@
 package com.chimericdream.minekea.block.furniture.bookshelves;
 
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -35,7 +39,7 @@ import net.minecraft.util.Identifier;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBookshelf extends FabricModBlock {
+public class GenericBookshelf extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model BOOKSHELF_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/bookshelves/bookshelf")),
         Optional.empty(),
@@ -44,16 +48,22 @@ public class GenericBookshelf extends FabricModBlock {
     );
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
-    public GenericBookshelf(Config config) {
-        super(config);
+    public GenericBookshelf(BlockConfig config) {
+        super(config.getBaseSettings());
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/bookshelves/%s", this.config.getMaterial()));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/bookshelves/%s", config.getMaterial()));
+        this.config = config;
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(itemGroup -> itemGroup.add(this));
 
@@ -63,13 +73,11 @@ public class GenericBookshelf extends FabricModBlock {
         }
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.ENCHANTMENT_POWER_PROVIDER).setReplace(false).add(this);
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block ingredient = this.config.getIngredient();
 
@@ -86,17 +94,14 @@ public class GenericBookshelf extends FabricModBlock {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.addDrop(this, generator.drops(this, Items.BOOK, ConstantLootNumberProvider.create(3)));
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Bookshelf", this.config.getMaterialName()));
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap().put(MinekeaTextures.MATERIAL, this.config.getTexture());
 

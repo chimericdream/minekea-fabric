@@ -1,7 +1,11 @@
 package com.chimericdream.minekea.block.building.beams;
 
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.tags.CommonItemTags;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
@@ -64,7 +68,7 @@ import net.minecraft.world.WorldAccess;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBeamBlock extends FabricModBlock implements Waterloggable {
+public class GenericBeamBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model CONNECTED_NORTH_MODEL = makeModel("north");
     protected static final Model CONNECTED_SOUTH_MODEL = makeModel("south");
     protected static final Model CONNECTED_EAST_MODEL = makeModel("east");
@@ -101,11 +105,14 @@ public class GenericBeamBlock extends FabricModBlock implements Waterloggable {
     }
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
-    public GenericBeamBlock(Config config) {
-        super(config);
+    public GenericBeamBlock(BlockConfig config) {
+        super(config.getBaseSettings());
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/beams/" + config.getMaterial());
+
+        this.config = config;
 
         this.setDefaultState(
             this.stateManager
@@ -118,6 +125,10 @@ public class GenericBeamBlock extends FabricModBlock implements Waterloggable {
                 .with(CONNECTED_DOWN, false)
                 .with(WATERLOGGED, false)
         );
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     private static Model makeModel(String direction) {
@@ -302,8 +313,8 @@ public class GenericBeamBlock extends FabricModBlock implements Waterloggable {
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -314,14 +325,12 @@ public class GenericBeamBlock extends FabricModBlock implements Waterloggable {
             .register(itemGroup -> itemGroup.add(this.asItem()));
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(MinekeaBlockTags.BEAMS)
             .setReplace(false)
             .add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block ingredient = config.getIngredient();
 
@@ -335,17 +344,14 @@ public class GenericBeamBlock extends FabricModBlock implements Waterloggable {
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Beam", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = getTextures();
 
@@ -406,7 +412,6 @@ public class GenericBeamBlock extends FabricModBlock implements Waterloggable {
             .put(TextureKey.END, endTexture);
     }
 
-    @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         ITEM_MODEL.upload(
             BLOCK_ID.withPrefixedPath("item/"),

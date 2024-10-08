@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.building.general;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -26,27 +27,24 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class BasaltBricksBlock extends FabricModBlock {
+public class BasaltBricksBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/general/basalt_bricks");
 
     public BasaltBricksBlock() {
-        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.SMOOTH_BASALT)));
+        super(AbstractBlock.Settings.copy(Blocks.SMOOTH_BASALT));
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.PICKAXE_MINEABLE)
             .setReplace(false)
             .add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 4)
             .pattern("##")
@@ -60,17 +58,14 @@ public class BasaltBricksBlock extends FabricModBlock {
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_BASALT, this, 1);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, "Basalt Bricks");
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(this);
     }

@@ -1,6 +1,10 @@
 package com.chimericdream.minekea.block.furniture.armoires;
 
-import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.ArmoireBlockEntity;
@@ -16,6 +20,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
@@ -69,7 +74,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class GenericArmoireBlock extends FabricModBlockWithEntity {
+public class GenericArmoireBlock extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model BOTTOM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/armoires/bottom")),
         Optional.empty(),
@@ -175,9 +180,10 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
     }
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
-    public GenericArmoireBlock(Config config) {
-        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
+    public GenericArmoireBlock(BlockConfig config) {
+        super(AbstractBlock.Settings.copy(config.getIngredient("planks")));
 
         this.setDefaultState(
             this.stateManager
@@ -186,7 +192,12 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
                 .with(HALF, DoubleBlockHalf.LOWER)
         );
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/armoires/%s", this.config.getMaterial()));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/armoires/%s", config.getMaterial()));
+        this.config = config;
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -273,7 +284,7 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
     }
 
     @Override
-    protected MapCodec<? extends FabricModBlockWithEntity> getCodec() {
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
         return null;
     }
 
@@ -514,8 +525,8 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (this.config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -527,12 +538,10 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
         });
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block slabIngredient = this.config.getIngredient("slab");
         Block plankIngredient = this.config.getIngredient("planks");
@@ -556,17 +565,14 @@ public class GenericArmoireBlock extends FabricModBlockWithEntity {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.addDrop(this, generator.dropsWithProperty(this, HALF, DoubleBlockHalf.LOWER));
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Armor-oire", this.config.getMaterialName()));
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.BAR, Registries.BLOCK.getId(Blocks.NETHERITE_BLOCK).withPrefixedPath("block/"))

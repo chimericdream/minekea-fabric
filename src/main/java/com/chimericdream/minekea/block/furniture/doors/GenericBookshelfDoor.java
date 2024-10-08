@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.furniture.doors;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModDoorBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -12,6 +15,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
+import net.minecraft.block.DoorBlock;
 import net.minecraft.block.enums.DoorHinge;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -39,7 +43,7 @@ import net.minecraft.util.math.Direction;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBookshelfDoor extends FabricModDoorBlock {
+public class GenericBookshelfDoor extends DoorBlock implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model ITEM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "item/furniture/doors/bookshelf")),
         Optional.empty(),
@@ -72,16 +76,22 @@ public class GenericBookshelfDoor extends FabricModDoorBlock {
     );
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
-    public GenericBookshelfDoor(BlockSetType type, ModBlock.Config config) {
-        super(type, config.settings(AbstractBlock.Settings.copy(config.getIngredient())));
+    public GenericBookshelfDoor(BlockSetType type, BlockConfig config) {
+        super(type, AbstractBlock.Settings.copy(config.getIngredient()));
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/doors/bookshelves/%s", config.getMaterial()));
+        this.config = config;
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (this.config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -89,12 +99,10 @@ public class GenericBookshelfDoor extends FabricModDoorBlock {
         }
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block bookshelf = config.getIngredient();
 
@@ -108,17 +116,14 @@ public class GenericBookshelfDoor extends FabricModDoorBlock {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.doorDrops(this);
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Bookshelf Door", config.getMaterialName()));
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient("planks");
 
@@ -449,7 +454,6 @@ public class GenericBookshelfDoor extends FabricModDoorBlock {
             );
     }
 
-    @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         Block plankIngredient = config.getIngredient("planks");
 

@@ -1,8 +1,11 @@
 package com.chimericdream.minekea.block.furniture.shelves;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.resource.ModelUtils;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
@@ -17,6 +20,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
 import net.minecraft.block.entity.BlockEntity;
@@ -62,7 +66,7 @@ import net.minecraft.world.WorldAccess;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericShelf extends FabricModBlockWithEntity implements Waterloggable {
+public class GenericShelf extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model SHELF_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/shelves/supported")),
         Optional.empty(),
@@ -80,17 +84,18 @@ public class GenericShelf extends FabricModBlockWithEntity implements Waterlogga
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
     static {
         WALL_SIDE = DirectionProperty.of("wall_side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
     }
 
-    public GenericShelf(ModBlock.Config config) {
+    public GenericShelf(BlockConfig config) {
         this(config, Identifier.of(ModInfo.MOD_ID, String.format("furniture/shelves/supported/%s", config.getMaterial())));
     }
 
-    public GenericShelf(ModBlock.Config config, Identifier blockId) {
-        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
+    public GenericShelf(BlockConfig config, Identifier blockId) {
+        super(AbstractBlock.Settings.copy(config.getIngredient("planks")));
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -99,6 +104,11 @@ public class GenericShelf extends FabricModBlockWithEntity implements Waterlogga
         );
 
         BLOCK_ID = blockId;
+        this.config = config;
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     @Override
@@ -108,8 +118,8 @@ public class GenericShelf extends FabricModBlockWithEntity implements Waterlogga
 
     @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -304,12 +314,10 @@ public class GenericShelf extends FabricModBlockWithEntity implements Waterlogga
         }
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block slabIngredient = config.getIngredient("slab");
 
@@ -326,17 +334,14 @@ public class GenericShelf extends FabricModBlockWithEntity implements Waterlogga
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Shelf", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient("planks");
         Block logIngredient = config.getIngredient("log");

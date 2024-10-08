@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.building.compressed;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import net.minecraft.registry.Registries;
@@ -14,7 +14,7 @@ public class CompressedMinekeaBlock extends GenericCompressedBlock {
     private final Identifier baseBlockId;
 
     public CompressedMinekeaBlock(
-        ModBlock.Config config,
+        BlockConfig config,
         int compressionLevel,
         Identifier baseBlockId
     ) {

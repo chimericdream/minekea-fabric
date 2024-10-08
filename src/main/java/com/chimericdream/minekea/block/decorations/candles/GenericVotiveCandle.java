@@ -1,8 +1,11 @@
 package com.chimericdream.minekea.block.decorations.candles;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
-import com.chimericdream.lib.fabric.blocks.FabricModCandleBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -11,6 +14,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.CandleBlock;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.Model;
@@ -39,7 +43,7 @@ import net.minecraft.util.Identifier;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericVotiveCandle extends FabricModCandleBlock {
+public class GenericVotiveCandle extends CandleBlock implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model VOTIVE_ITEM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/candles/template_votive_item")),
         Optional.empty(),
@@ -96,35 +100,37 @@ public class GenericVotiveCandle extends FabricModCandleBlock {
     );
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
     public final String color;
 
-    public GenericVotiveCandle(ModBlock.Config config, String color) {
-        super(config);
+    public GenericVotiveCandle(BlockConfig config, String color) {
+        super(config.getBaseSettings());
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("decorations/candles/%s_votive_candle", color));
+        this.config = config;
         this.color = color;
     }
 
-    @Override
+    public BlockConfig getConfig() {
+        return config;
+    }
+
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
             .register(itemGroup -> itemGroup.add(this.asItem()));
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.CANDLES).add(this);
     }
 
-    @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(MinekeaItemTags.VOTIVE_CANDLES).add(this.asItem());
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block ingredient = config.getIngredient();
 
@@ -157,12 +163,10 @@ public class GenericVotiveCandle extends FabricModCandleBlock {
             .offerTo(exporter, BLOCK_ID.withSuffixedPath("_universal_dyeing"));
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.addDrop(this, generator.candleDrops(this));
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         if (color.equals("plain")) {
             translationBuilder.add(this, "Votive Candle");
@@ -173,7 +177,6 @@ public class GenericVotiveCandle extends FabricModCandleBlock {
         translationBuilder.add(this, String.format("%s Votive Candle", ColorHelpers.getName(color)));
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block ingredient = config.getIngredient();
 

@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.furniture.trapdoors;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -26,17 +26,17 @@ public class Trapdoors implements MinekeaBlockCategory {
     public static final Map<String, GenericBookshelfTrapdoor> BOOKSHELF_TRAPDOORS = new LinkedHashMap<>();
 
     static {
-        BOOKSHELF_TRAPDOORS.put("acacia", new GenericBookshelfTrapdoor(BlockSetType.ACACIA, new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Bookshelves.BOOKSHELVES.get("acacia")).ingredient("planks", Blocks.ACACIA_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("bamboo", new GenericBookshelfTrapdoor(BlockSetType.BAMBOO, new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Bookshelves.BOOKSHELVES.get("bamboo")).ingredient("planks", Blocks.BAMBOO_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("birch", new GenericBookshelfTrapdoor(BlockSetType.BIRCH, new ModBlock.Config().material("birch").materialName("Birch").ingredient(Bookshelves.BOOKSHELVES.get("birch")).ingredient("planks", Blocks.BIRCH_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("cherry", new GenericBookshelfTrapdoor(BlockSetType.CHERRY, new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Bookshelves.BOOKSHELVES.get("cherry")).ingredient("planks", Blocks.CHERRY_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("crimson", new GenericBookshelfTrapdoor(BlockSetType.CRIMSON, new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Bookshelves.BOOKSHELVES.get("crimson")).ingredient("planks", Blocks.CRIMSON_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("dark_oak", new GenericBookshelfTrapdoor(BlockSetType.DARK_OAK, new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Bookshelves.BOOKSHELVES.get("dark_oak")).ingredient("planks", Blocks.DARK_OAK_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("jungle", new GenericBookshelfTrapdoor(BlockSetType.JUNGLE, new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Bookshelves.BOOKSHELVES.get("jungle")).ingredient("planks", Blocks.JUNGLE_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("mangrove", new GenericBookshelfTrapdoor(BlockSetType.MANGROVE, new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Bookshelves.BOOKSHELVES.get("mangrove")).ingredient("planks", Blocks.MANGROVE_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("oak", new GenericBookshelfTrapdoor(BlockSetType.OAK, new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.BOOKSHELF).ingredient("planks", Blocks.OAK_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("spruce", new GenericBookshelfTrapdoor(BlockSetType.SPRUCE, new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Bookshelves.BOOKSHELVES.get("spruce")).ingredient("planks", Blocks.SPRUCE_PLANKS)));
-        BOOKSHELF_TRAPDOORS.put("warped", new GenericBookshelfTrapdoor(BlockSetType.WARPED, new ModBlock.Config().material("warped").materialName("Warped").ingredient(Bookshelves.BOOKSHELVES.get("warped")).ingredient("planks", Blocks.WARPED_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("acacia", new GenericBookshelfTrapdoor(BlockSetType.ACACIA, new BlockConfig().material("acacia").materialName("Acacia").ingredient(Bookshelves.BOOKSHELVES.get("acacia")).ingredient("planks", Blocks.ACACIA_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("bamboo", new GenericBookshelfTrapdoor(BlockSetType.BAMBOO, new BlockConfig().material("bamboo").materialName("Bamboo").ingredient(Bookshelves.BOOKSHELVES.get("bamboo")).ingredient("planks", Blocks.BAMBOO_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("birch", new GenericBookshelfTrapdoor(BlockSetType.BIRCH, new BlockConfig().material("birch").materialName("Birch").ingredient(Bookshelves.BOOKSHELVES.get("birch")).ingredient("planks", Blocks.BIRCH_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("cherry", new GenericBookshelfTrapdoor(BlockSetType.CHERRY, new BlockConfig().material("cherry").materialName("Cherry").ingredient(Bookshelves.BOOKSHELVES.get("cherry")).ingredient("planks", Blocks.CHERRY_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("crimson", new GenericBookshelfTrapdoor(BlockSetType.CRIMSON, new BlockConfig().material("crimson").materialName("Crimson").ingredient(Bookshelves.BOOKSHELVES.get("crimson")).ingredient("planks", Blocks.CRIMSON_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("dark_oak", new GenericBookshelfTrapdoor(BlockSetType.DARK_OAK, new BlockConfig().material("dark_oak").materialName("Dark Oak").ingredient(Bookshelves.BOOKSHELVES.get("dark_oak")).ingredient("planks", Blocks.DARK_OAK_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("jungle", new GenericBookshelfTrapdoor(BlockSetType.JUNGLE, new BlockConfig().material("jungle").materialName("Jungle").ingredient(Bookshelves.BOOKSHELVES.get("jungle")).ingredient("planks", Blocks.JUNGLE_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("mangrove", new GenericBookshelfTrapdoor(BlockSetType.MANGROVE, new BlockConfig().material("mangrove").materialName("Mangrove").ingredient(Bookshelves.BOOKSHELVES.get("mangrove")).ingredient("planks", Blocks.MANGROVE_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("oak", new GenericBookshelfTrapdoor(BlockSetType.OAK, new BlockConfig().material("oak").materialName("Oak").ingredient(Blocks.BOOKSHELF).ingredient("planks", Blocks.OAK_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("spruce", new GenericBookshelfTrapdoor(BlockSetType.SPRUCE, new BlockConfig().material("spruce").materialName("Spruce").ingredient(Bookshelves.BOOKSHELVES.get("spruce")).ingredient("planks", Blocks.SPRUCE_PLANKS)));
+        BOOKSHELF_TRAPDOORS.put("warped", new GenericBookshelfTrapdoor(BlockSetType.WARPED, new BlockConfig().material("warped").materialName("Warped").ingredient(Bookshelves.BOOKSHELVES.get("warped")).ingredient("planks", Blocks.WARPED_PLANKS)));
     }
 
     @Override

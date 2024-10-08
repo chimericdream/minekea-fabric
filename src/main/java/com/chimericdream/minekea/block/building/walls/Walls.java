@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.building.walls;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
@@ -28,12 +28,12 @@ public class Walls implements MinekeaBlockCategory {
     public static final List<GenericWallBlock> WALLS = new ArrayList<>();
 
     static {
-        WALLS.add(new GenericWallBlock(new ModBlock.Config().material("basalt_bricks").materialName("Basalt Brick").ingredient(BuildingBlocks.BASALT_BRICKS_BLOCK).texture(BasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
-        WALLS.add(new GenericWallBlock(new ModBlock.Config().material("cracked_basalt_bricks").materialName("Cracked Basalt Brick").ingredient(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK).texture(CrackedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
-        WALLS.add(new GenericWallBlock(new ModBlock.Config().material("crimson_basalt_bricks").materialName("Crimson Basalt Brick").ingredient(BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK).texture(CrimsonBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
-        WALLS.add(new GenericWallBlock(new ModBlock.Config().material("mossy_basalt_bricks").materialName("Mossy Basalt Brick").ingredient(BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK).texture(MossyBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
-        WALLS.add(new GenericWallBlock(new ModBlock.Config().material("warped_basalt_bricks").materialName("Warped Basalt Brick").ingredient(BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK).texture(WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
-        WALLS.add(new GenericWallBlock(new ModBlock.Config().material("warped_nether_bricks").materialName("Warped Nether Brick").ingredient(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK).texture(WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
+        WALLS.add(new GenericWallBlock(new BlockConfig().material("basalt_bricks").materialName("Basalt Brick").ingredient(BuildingBlocks.BASALT_BRICKS_BLOCK).texture(BasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
+        WALLS.add(new GenericWallBlock(new BlockConfig().material("cracked_basalt_bricks").materialName("Cracked Basalt Brick").ingredient(BuildingBlocks.CRACKED_BASALT_BRICKS_BLOCK).texture(CrackedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
+        WALLS.add(new GenericWallBlock(new BlockConfig().material("crimson_basalt_bricks").materialName("Crimson Basalt Brick").ingredient(BuildingBlocks.CRIMSON_BASALT_BRICKS_BLOCK).texture(CrimsonBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
+        WALLS.add(new GenericWallBlock(new BlockConfig().material("mossy_basalt_bricks").materialName("Mossy Basalt Brick").ingredient(BuildingBlocks.MOSSY_BASALT_BRICKS_BLOCK).texture(MossyBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
+        WALLS.add(new GenericWallBlock(new BlockConfig().material("warped_basalt_bricks").materialName("Warped Basalt Brick").ingredient(BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK).texture(WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
+        WALLS.add(new GenericWallBlock(new BlockConfig().material("warped_nether_bricks").materialName("Warped Nether Brick").ingredient(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK).texture(WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
     }
 
     @Override

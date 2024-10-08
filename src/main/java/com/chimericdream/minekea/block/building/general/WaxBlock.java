@@ -1,8 +1,9 @@
 package com.chimericdream.minekea.block.building.general;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.ModItems;
 import com.chimericdream.minekea.item.ingredients.WaxItem;
@@ -10,6 +11,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.piston.PistonBehavior;
@@ -31,13 +33,13 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class WaxBlock extends FabricModBlock {
+public class WaxBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
     public final Identifier BLOCK_ID;
 
     protected final String color;
 
     public WaxBlock(String color) {
-        super(new ModBlock.Config().settings(Settings.copy(Blocks.HONEYCOMB_BLOCK).pistonBehavior(PistonBehavior.PUSH_ONLY).slipperiness(0.9F)));
+        super(AbstractBlock.Settings.copy(Blocks.HONEYCOMB_BLOCK).pistonBehavior(PistonBehavior.PUSH_ONLY).slipperiness(0.9F));
 
         BLOCK_ID = makeId(color);
         this.color = color;
@@ -47,7 +49,6 @@ public class WaxBlock extends FabricModBlock {
         return Identifier.of(ModInfo.MOD_ID, String.format("building/general/wax/%s", color));
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
@@ -59,14 +60,12 @@ public class WaxBlock extends FabricModBlock {
             .register((itemGroup) -> itemGroup.add(this));
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.HOE_MINEABLE)
             .setReplace(false)
             .add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Item ingredient = (Item) ModItems.WAX_ITEMS.getOrDefault(color, ModItems.WAX_ITEMS.get("plain"));
 
@@ -86,12 +85,10 @@ public class WaxBlock extends FabricModBlock {
             .offerTo(exporter, WaxItem.makeId(color).withSuffixedPath("_from_block"));
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.addDrop(this);
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         if (color.equals("plain")) {
             translationBuilder.add(this, "Wax Block");
@@ -102,7 +99,6 @@ public class WaxBlock extends FabricModBlock {
         translationBuilder.add(this, String.format("%s Wax Block", ColorHelpers.getName(color)));
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(this);
     }

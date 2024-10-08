@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.decorations.misc;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModCakeBlock;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.lib.text.TextHelpers;
 import com.chimericdream.minekea.ModInfo;
@@ -9,8 +10,10 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.CakeBlock;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -40,12 +43,12 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class FakeCake extends FabricModCakeBlock {
+public class FakeCake extends CakeBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
     public final static String TOOLTIP_KEY = "block.minekea.decorations.misc.fake_cake.tooltip";
     public final static Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/misc/fake_cake");
 
     public FakeCake() {
-        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.CAKE)));
+        super(AbstractBlock.Settings.copy(Blocks.CAKE));
     }
 
     @Override
@@ -58,16 +61,14 @@ public class FakeCake extends FabricModCakeBlock {
         tooltip.add(TextHelpers.getTooltip(TOOLTIP_KEY));
     }
 
-    @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
             .register(itemGroup -> itemGroup.add(this.asItem()));
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, this, 3)
             .pattern("AAA")
@@ -88,18 +89,11 @@ public class FakeCake extends FabricModCakeBlock {
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, "Cake");
         translationBuilder.add(TOOLTIP_KEY, "This cake is a lie!");
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Identifier identifier = ModelIds.getBlockModelId(Blocks.CAKE);
         blockStateModelGenerator.blockStateCollector
@@ -111,7 +105,10 @@ public class FakeCake extends FabricModCakeBlock {
             );
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         ModelUtils.registerGeneratedItem(itemModelGenerator, this, Registries.BLOCK.getId(Blocks.CAKE));
     }

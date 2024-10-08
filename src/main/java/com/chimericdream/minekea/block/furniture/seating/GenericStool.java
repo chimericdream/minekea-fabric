@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.util.MinekeaTextures;
@@ -51,7 +54,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericStool extends FabricModBlock implements Waterloggable {
+public class GenericStool extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model STOOL_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/seating/stool")),
         Optional.empty(),
@@ -60,6 +63,7 @@ public class GenericStool extends FabricModBlock implements Waterloggable {
     );
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
@@ -76,8 +80,8 @@ public class GenericStool extends FabricModBlock implements Waterloggable {
         };
     }
 
-    public GenericStool(ModBlock.Config config) {
-        super(config);
+    public GenericStool(BlockConfig config) {
+        super(config.getBaseSettings());
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -85,6 +89,11 @@ public class GenericStool extends FabricModBlock implements Waterloggable {
         );
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/seating/stools/%s", config.getMaterial()));
+        this.config = config;
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -105,10 +114,9 @@ public class GenericStool extends FabricModBlock implements Waterloggable {
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
-    @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -147,7 +155,6 @@ public class GenericStool extends FabricModBlock implements Waterloggable {
         return VoxelShapes.union(SEAT_SHAPE, LEG_SHAPES);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");
@@ -164,22 +171,18 @@ public class GenericStool extends FabricModBlock implements Waterloggable {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Stool", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");

@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.building.compressed;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -37,28 +40,30 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
 
-public class GenericCompressedBlock extends FabricModBlock {
+public class GenericCompressedBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     public final Identifier BLOCK_ID;
-    protected Identifier PARENT_BLOCK_ID;
+    public final BlockConfig config;
 
     public static final String TOOLTIP_LEVEL = "block.minekea.building.compressed.tooltip.level";
     public static final String TOOLTIP_COUNT = "block.minekea.building.compressed.tooltip.count";
 
     public static final EnumProperty<Direction.Axis> AXIS;
 
+    protected Identifier PARENT_BLOCK_ID;
     protected final int compressionLevel;
 
     static {
         AXIS = Properties.AXIS;
     }
 
-    public GenericCompressedBlock(ModBlock.Config config, int compressionLevel) {
-        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient()).strength(
+    public GenericCompressedBlock(BlockConfig config, int compressionLevel) {
+        super(AbstractBlock.Settings.copy(config.getIngredient()).strength(
             getHardness(compressionLevel, config.getIngredient().getHardness()),
             getResistance(compressionLevel, config.getIngredient().getBlastResistance())
-        ).requiresTool()));
+        ).requiresTool());
 
         this.compressionLevel = compressionLevel;
+        this.config = config;
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/compressed/%s/%dx", config.getMaterial(), compressionLevel));
 
@@ -71,12 +76,16 @@ public class GenericCompressedBlock extends FabricModBlock {
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
 
+    public BlockConfig getConfig() {
+        return config;
+    }
+
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(AXIS);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
+        return this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
     }
 
     @Override
@@ -100,13 +109,11 @@ public class GenericCompressedBlock extends FabricModBlock {
         return (float) (baseResistance * Math.pow(3, level));
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block parentBlock = Registries.BLOCK.get(PARENT_BLOCK_ID);
 
@@ -126,22 +133,18 @@ public class GenericCompressedBlock extends FabricModBlock {
             .offerTo(exporter, PARENT_BLOCK_ID.withSuffixedPath("_from_compressed"));
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("Compressed %s", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(this);
     }
 
-    @Override
     public void generateTextures() {
         TextureGenerator.getInstance().generate(Registries.BLOCK.getKey(), instance -> {
             final Optional<BufferedImage> source = instance.getImage(config.getMaterial());

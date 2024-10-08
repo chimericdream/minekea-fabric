@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.building.compressed;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
@@ -20,7 +20,7 @@ public class CompressedColumnBlock extends GenericCompressedBlock {
     private final String sideTextureSuffix;
     private final String endTextureSuffix;
 
-    public CompressedColumnBlock(ModBlock.Config config, int compressionLevel, String sideTextureSuffix, String endTextureSuffix) {
+    public CompressedColumnBlock(BlockConfig config, int compressionLevel, String sideTextureSuffix, String endTextureSuffix) {
         super(config, compressionLevel);
 
         this.sideTextureSuffix = sideTextureSuffix;

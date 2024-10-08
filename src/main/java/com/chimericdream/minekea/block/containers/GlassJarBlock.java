@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.containers;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fluids.FluidHelpers;
 import com.chimericdream.lib.items.ItemHelpers;
 import com.chimericdream.minekea.MinekeaMod;
@@ -18,7 +19,9 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
@@ -84,7 +87,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-public class GlassJarBlock extends FabricModBlockWithEntity implements Waterloggable {
+public class GlassJarBlock extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock, Waterloggable {
     public static final MapCodec<GlassJarBlock> CODEC = createCodec(GlassJarBlock::new);
 
     public static final Map<String, String> ALLOWED_ITEMS = new LinkedHashMap<>();
@@ -211,7 +214,7 @@ public class GlassJarBlock extends FabricModBlockWithEntity implements Waterlogg
     }
 
     public GlassJarBlock() {
-        super(new ModBlock.Config().settings(Settings.copy(Blocks.GLASS).nonOpaque()));
+        super(Settings.copy(Blocks.GLASS).nonOpaque());
 
         this.setDefaultState(
             this.stateManager
@@ -233,6 +236,11 @@ public class GlassJarBlock extends FabricModBlockWithEntity implements Waterlogg
         return this.getDefaultState()
             .with(FACING, ctx.getPlayer().getHorizontalFacing().getOpposite())
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+    }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override

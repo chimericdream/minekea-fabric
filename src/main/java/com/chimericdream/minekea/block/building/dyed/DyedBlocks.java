@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.building.dyed;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -71,7 +71,7 @@ public class DyedBlocks implements MinekeaBlockCategory {
             String material = data.getB();
             Block baseBlock = data.getC();
 
-            ModBlock.Config config = new ModBlock.Config()
+            BlockConfig config = new BlockConfig()
                 .material(material)
                 .materialName(materialName)
                 .ingredient(baseBlock);
@@ -133,7 +133,7 @@ public class DyedBlocks implements MinekeaBlockCategory {
             String material = data.getB();
             Block ingredient = data.getC();
 
-            ModBlock.Config config = new ModBlock.Config()
+            BlockConfig config = new BlockConfig()
                 .materialName(materialName)
                 .material(material)
                 .ingredient(ingredient);

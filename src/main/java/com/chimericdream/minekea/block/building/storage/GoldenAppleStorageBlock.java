@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -9,11 +9,13 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
@@ -24,26 +26,24 @@ import java.util.function.Function;
 
 public class GoldenAppleStorageBlock extends GenericStorageBlock {
     public GoldenAppleStorageBlock() {
-        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.MELON).sounds(BlockSoundGroup.WOOD)).item(Items.GOLDEN_APPLE).material("golden_apple"));
+        super(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.MELON).sounds(BlockSoundGroup.WOOD)).item(Items.GOLDEN_APPLE).material("golden_apple"));
     }
 
-    @Override
+    public void register() {
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+    }
+
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.HOE_MINEABLE)
             .setReplace(false)
             .add(this);
     }
 
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, "Compressed Golden Apple");
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
             .put(TextureKey.BOTTOM, Identifier.of(ModInfo.MOD_ID, String.format("block/%s_bottom", BLOCK_ID.getPath())))
@@ -53,9 +53,5 @@ public class GoldenAppleStorageBlock extends GenericStorageBlock {
         Identifier subModelId = blockStateModelGenerator.createSubModel(this, "", COMPRESSED_COLUMN_BLOCK_MODEL, unused -> textures);
 
         ModelUtils.registerBlockWithFacing(blockStateModelGenerator, FACING, this, subModelId);
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
     }
 }

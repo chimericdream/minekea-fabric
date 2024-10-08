@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.building.stairs;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -47,7 +50,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
 
-public class GenericVerticalStairsBlock extends FabricModBlock implements Waterloggable {
+public class GenericVerticalStairsBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     public static final Model VERTICAL_STAIRS_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/stairs/vertical")),
         Optional.empty(),
@@ -79,9 +82,10 @@ public class GenericVerticalStairsBlock extends FabricModBlock implements Waterl
     }
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
-    public GenericVerticalStairsBlock(ModBlock.Config config) {
-        super(config);
+    public GenericVerticalStairsBlock(BlockConfig config) {
+        super(config.getBaseSettings());
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -90,6 +94,11 @@ public class GenericVerticalStairsBlock extends FabricModBlock implements Waterl
         );
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/stairs/vertical/%s", config.getMaterial()));
+        this.config = config;
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -128,10 +137,9 @@ public class GenericVerticalStairsBlock extends FabricModBlock implements Waterl
         };
     }
 
-    @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -142,7 +150,6 @@ public class GenericVerticalStairsBlock extends FabricModBlock implements Waterl
             .register((itemGroup) -> itemGroup.add(this));
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block ingredient = config.getIngredient();
 
@@ -156,14 +163,12 @@ public class GenericVerticalStairsBlock extends FabricModBlock implements Waterl
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Vertical Stairs", config.getMaterialName()));
+    }
+
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
     }
 
     public static void doBlockStateModels(
@@ -208,7 +213,6 @@ public class GenericVerticalStairsBlock extends FabricModBlock implements Waterl
             );
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         doBlockStateModels(blockStateModelGenerator, this, config.getTexture());
     }

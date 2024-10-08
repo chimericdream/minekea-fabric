@@ -1,10 +1,13 @@
 package com.chimericdream.minekea.block.building.dyed;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
-import com.chimericdream.lib.fabric.blocks.FabricModPillarBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.lib.resource.TextureUtils;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -12,6 +15,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -53,7 +57,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-public class DyedPillarBlock extends FabricModPillarBlock {
+public class DyedPillarBlock extends PillarBlock implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     public static final EnumProperty<Direction.Axis> AXIS;
 
     static {
@@ -61,20 +65,26 @@ public class DyedPillarBlock extends FabricModPillarBlock {
     }
 
     public final Identifier BLOCK_ID;
+    protected final BlockConfig config;
 
     protected final DyeColor color;
 
     public DyedPillarBlock(
-        ModBlock.Config config,
+        BlockConfig config,
         DyeColor color
     ) {
-        super(config.settings(config.getBaseSettings().mapColor(color)));
+        super(config.getBaseSettings().mapColor(color));
 
         this.color = color;
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", config.getMaterial(), color));
+        this.config = config;
 
         this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.Y));
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -112,8 +122,8 @@ public class DyedPillarBlock extends FabricModPillarBlock {
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS)
             .register((itemGroup) -> itemGroup.add(this));
@@ -122,7 +132,6 @@ public class DyedPillarBlock extends FabricModPillarBlock {
             .register((itemGroup) -> itemGroup.add(this));
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block parentBlock = config.getIngredient();
         Item dye = ColorHelpers.getDye(color);
@@ -140,17 +149,14 @@ public class DyedPillarBlock extends FabricModPillarBlock {
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Dyed %s", ColorHelpers.getName(color), config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
             .put(TextureKey.END, TextureUtils.block(BLOCK_ID, "_end"))

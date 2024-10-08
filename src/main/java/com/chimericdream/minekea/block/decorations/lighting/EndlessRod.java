@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.decorations.lighting;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModRodBlock;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.minekea.ModInfo;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -11,6 +12,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.RodBlock;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
@@ -31,7 +33,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-public class EndlessRod extends FabricModRodBlock {
+public class EndlessRod extends RodBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
     public final static Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/lighting/endless_rod");
     public static final MapCodec<EndlessRod> CODEC = createCodec(EndlessRod::new);
 
@@ -44,7 +46,7 @@ public class EndlessRod extends FabricModRodBlock {
     }
 
     public EndlessRod() {
-        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.END_ROD)));
+        super(AbstractBlock.Settings.copy(Blocks.END_ROD));
 
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.UP));
     }
@@ -84,16 +86,14 @@ public class EndlessRod extends FabricModRodBlock {
         builder.add(FACING);
     }
 
-    @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
             .register(itemGroup -> itemGroup.add(this.asItem()));
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, this, 1)
             .input(Items.END_ROD)
@@ -108,13 +108,11 @@ public class EndlessRod extends FabricModRodBlock {
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, "End(less) Rod");
+    }
+
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
     }
 }

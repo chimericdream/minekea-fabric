@@ -1,6 +1,10 @@
 package com.chimericdream.minekea.block.furniture.displaycases;
 
-import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.furniture.DisplayCaseBlockEntity;
@@ -17,6 +21,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
@@ -64,7 +69,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class GenericDisplayCase extends FabricModBlockWithEntity implements Waterloggable {
+public class GenericDisplayCase extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     private static final Model DISPLAY_CASE_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/furniture/display_case")),
         Optional.empty(),
@@ -80,16 +85,18 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
     private static final VoxelShape BASEBOARD_SHAPE;
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
     static {
         MAIN_SHAPE = Block.createCuboidShape(0.0, 2.0, 0.0, 16.0, 16.0, 16.0);
         BASEBOARD_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 2.0, 15.0);
     }
 
-    public GenericDisplayCase(Config config) {
-        super(config.settings(AbstractBlock.Settings.copy(config.getIngredient("planks"))));
+    public GenericDisplayCase(BlockConfig config) {
+        super(AbstractBlock.Settings.copy(config.getIngredient("planks")));
 
-        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/display_cases/%s", this.config.getMaterial()));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/display_cases/%s", config.getMaterial()));
+        this.config = config;
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -98,9 +105,13 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
         );
     }
 
+    public BlockConfig getConfig() {
+        return config;
+    }
+
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(this);
@@ -267,7 +278,7 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
     }
 
     @Override
-    protected MapCodec<? extends FabricModBlockWithEntity> getCodec() {
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
         return null;
     }
 
@@ -306,18 +317,12 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
         return (rotation * 2) + 1;
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE)
             .setReplace(false)
             .add(this);
     }
 
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block plankIngredient = this.config.getIngredient("planks");
         Block logIngredient = this.config.getIngredient("log");
@@ -338,17 +343,14 @@ public class GenericDisplayCase extends FabricModBlockWithEntity implements Wate
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Display Case", this.config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block logIngredient = this.config.getIngredient("log");
         Block strippedLogIngredient = Optional.ofNullable(this.config.getIngredient("stripped_log")).orElse(logIngredient);

@@ -1,19 +1,18 @@
 package com.chimericdream.minekea.block.building.storage;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
@@ -28,7 +27,6 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
@@ -38,9 +36,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.Optional;
-import java.util.function.Function;
 
-public class DyeBlock extends FabricModBlock {
+public class DyeBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
     private static final Model DYE_BLOCK_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/storage/dye_block")),
         Optional.empty(),
@@ -54,7 +51,7 @@ public class DyeBlock extends FabricModBlock {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
     public DyeBlock(String color) {
-        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.HONEY_BLOCK).mapColor(DyeColor.byName(color, DyeColor.WHITE)).jumpVelocityMultiplier(0.5F)));
+        super(AbstractBlock.Settings.copy(Blocks.HONEY_BLOCK).mapColor(DyeColor.byName(color, DyeColor.WHITE)).jumpVelocityMultiplier(0.5F));
 
         this.color = color;
 
@@ -74,21 +71,11 @@ public class DyeBlock extends FabricModBlock {
         }
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
     }
 
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Item dye = ColorHelpers.getDye(color);
 
@@ -108,17 +95,14 @@ public class DyeBlock extends FabricModBlock {
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("Compressed %s Dye", ColorHelpers.getName(color)));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
             .put(TextureKey.BOTTOM, Identifier.of(ModInfo.MOD_ID, String.format("block/storage/dyes/%s/bottom", color)))
@@ -130,9 +114,5 @@ public class DyeBlock extends FabricModBlock {
             textures,
             DYE_BLOCK_MODEL
         );
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
     }
 }

@@ -1,8 +1,11 @@
 package com.chimericdream.minekea.block.building.framed;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.resource.TextureUtils;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.property.MinekeaProperties;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
@@ -48,7 +51,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class FramedPlanksBlock extends FabricModBlock {
+public class FramedPlanksBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model CORE_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/framed_planks/core")),
         Optional.empty(),
@@ -74,6 +77,7 @@ public class FramedPlanksBlock extends FabricModBlock {
     }
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
     protected static Model makeModel(String direction) {
         return new Model(
@@ -84,10 +88,11 @@ public class FramedPlanksBlock extends FabricModBlock {
         );
     }
 
-    public FramedPlanksBlock(ModBlock.Config config) {
-        super(config);
+    public FramedPlanksBlock(BlockConfig config) {
+        super(config.getBaseSettings());
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/general/framed_planks/%s", config.getMaterial()));
+        this.config = config;
 
         this.setDefaultState(
             this.stateManager
@@ -98,6 +103,10 @@ public class FramedPlanksBlock extends FabricModBlock {
                 .with(CONNECTED_EAST, false)
                 .with(CONNECTED_WEST, false)
         );
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     private boolean shouldConnect(ItemPlacementContext ctx, Direction direction, Direction facing) {
@@ -173,10 +182,9 @@ public class FramedPlanksBlock extends FabricModBlock {
         };
     }
 
-    @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
             .register(itemGroup -> itemGroup.add(this));
@@ -187,7 +195,6 @@ public class FramedPlanksBlock extends FabricModBlock {
         }
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
         getBuilder.apply(MinekeaBlockTags.FRAMED_PLANKS)
@@ -195,7 +202,6 @@ public class FramedPlanksBlock extends FabricModBlock {
             .add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");
@@ -213,17 +219,14 @@ public class FramedPlanksBlock extends FabricModBlock {
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("Framed %s Planks", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");

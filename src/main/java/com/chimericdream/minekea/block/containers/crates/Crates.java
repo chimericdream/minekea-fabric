@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.containers.crates;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
 import com.chimericdream.minekea.screen.crate.CrateScreen;
@@ -42,17 +42,17 @@ public class Crates implements MinekeaBlockCategory {
     public static ScreenHandlerType<DoubleCrateScreenHandler> DOUBLE_CRATE_SCREEN_HANDLER;
 
     static {
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).tagIngredient(ItemTags.ACACIA_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_ACACIA_LOG)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS).tagIngredient(ItemTags.BAMBOO_BLOCKS).texture("brace", TextureUtils.block(Blocks.STRIPPED_BAMBOO_BLOCK)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).tagIngredient(ItemTags.BIRCH_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_BIRCH_LOG)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).tagIngredient(ItemTags.CHERRY_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_CHERRY_LOG)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).tagIngredient(ItemTags.CRIMSON_STEMS).texture("brace", TextureUtils.block(Blocks.STRIPPED_CRIMSON_STEM))));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).tagIngredient(ItemTags.DARK_OAK_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_DARK_OAK_LOG)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).tagIngredient(ItemTags.JUNGLE_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_JUNGLE_LOG)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).tagIngredient(ItemTags.MANGROVE_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_MANGROVE_LOG)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).tagIngredient(ItemTags.OAK_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_OAK_LOG)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).tagIngredient(ItemTags.SPRUCE_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_SPRUCE_LOG)).flammable()));
-        CRATES.add(new GenericCrate(new ModBlock.Config().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).tagIngredient(ItemTags.WARPED_STEMS).texture("brace", TextureUtils.block(Blocks.STRIPPED_WARPED_STEM))));
+        CRATES.add(new GenericCrate(new BlockConfig().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).tagIngredient(ItemTags.ACACIA_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_ACACIA_LOG)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS).tagIngredient(ItemTags.BAMBOO_BLOCKS).texture("brace", TextureUtils.block(Blocks.STRIPPED_BAMBOO_BLOCK)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).tagIngredient(ItemTags.BIRCH_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_BIRCH_LOG)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).tagIngredient(ItemTags.CHERRY_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_CHERRY_LOG)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).tagIngredient(ItemTags.CRIMSON_STEMS).texture("brace", TextureUtils.block(Blocks.STRIPPED_CRIMSON_STEM))));
+        CRATES.add(new GenericCrate(new BlockConfig().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).tagIngredient(ItemTags.DARK_OAK_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_DARK_OAK_LOG)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).tagIngredient(ItemTags.JUNGLE_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_JUNGLE_LOG)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).tagIngredient(ItemTags.MANGROVE_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_MANGROVE_LOG)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).tagIngredient(ItemTags.OAK_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_OAK_LOG)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).tagIngredient(ItemTags.SPRUCE_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_SPRUCE_LOG)).flammable()));
+        CRATES.add(new GenericCrate(new BlockConfig().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).tagIngredient(ItemTags.WARPED_STEMS).texture("brace", TextureUtils.block(Blocks.STRIPPED_WARPED_STEM))));
 
         List<GenericCrate> trapped = new ArrayList<>();
         CRATES.forEach(crate -> {

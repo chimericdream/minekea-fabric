@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.furniture.shelves;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.client.render.block.ShelfBlockEntityRenderer;
 import com.chimericdream.minekea.entities.blocks.furniture.ShelfBlockEntity;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
@@ -38,30 +38,30 @@ public class Shelves implements MinekeaBlockCategory {
 
     static {
         SHELVES = List.of(
-            new GenericShelf(new ModBlock.Config().material("acacia").materialName("Acacia").ingredient("slab", Blocks.ACACIA_SLAB).ingredient("planks", Blocks.ACACIA_PLANKS).ingredient("log", Blocks.ACACIA_LOG).flammable()),
-            new GenericShelf(new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient("slab", Blocks.BAMBOO_SLAB).ingredient("planks", Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.BAMBOO_BLOCK).flammable()),
-            new GenericShelf(new ModBlock.Config().material("birch").materialName("Birch").ingredient("slab", Blocks.BIRCH_SLAB).ingredient("planks", Blocks.BIRCH_PLANKS).ingredient("log", Blocks.BIRCH_LOG).flammable()),
-            new GenericShelf(new ModBlock.Config().material("cherry").materialName("Cherry").ingredient("slab", Blocks.CHERRY_SLAB).ingredient("planks", Blocks.CHERRY_PLANKS).ingredient("log", Blocks.CHERRY_LOG).flammable()),
-            new GenericShelf(new ModBlock.Config().material("crimson").materialName("Crimson").ingredient("slab", Blocks.CRIMSON_SLAB).ingredient("planks", Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.CRIMSON_STEM)),
-            new GenericShelf(new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient("slab", Blocks.DARK_OAK_SLAB).ingredient("planks", Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.DARK_OAK_LOG).flammable()),
-            new GenericShelf(new ModBlock.Config().material("jungle").materialName("Jungle").ingredient("slab", Blocks.JUNGLE_SLAB).ingredient("planks", Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.JUNGLE_LOG).flammable()),
-            new GenericShelf(new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient("slab", Blocks.MANGROVE_SLAB).ingredient("planks", Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.MANGROVE_LOG).flammable()),
-            new GenericShelf(new ModBlock.Config().material("oak").materialName("Oak").ingredient("slab", Blocks.OAK_SLAB).ingredient("planks", Blocks.OAK_PLANKS).ingredient("log", Blocks.OAK_LOG).flammable()),
-            new GenericShelf(new ModBlock.Config().material("spruce").materialName("Spruce").ingredient("slab", Blocks.SPRUCE_SLAB).ingredient("planks", Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.SPRUCE_LOG).flammable()),
-            new GenericShelf(new ModBlock.Config().material("warped").materialName("Warped").ingredient("slab", Blocks.WARPED_SLAB).ingredient("planks", Blocks.WARPED_PLANKS).ingredient("log", Blocks.WARPED_STEM))
+            new GenericShelf(new BlockConfig().material("acacia").materialName("Acacia").ingredient("slab", Blocks.ACACIA_SLAB).ingredient("planks", Blocks.ACACIA_PLANKS).ingredient("log", Blocks.ACACIA_LOG).flammable()),
+            new GenericShelf(new BlockConfig().material("bamboo").materialName("Bamboo").ingredient("slab", Blocks.BAMBOO_SLAB).ingredient("planks", Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.BAMBOO_BLOCK).flammable()),
+            new GenericShelf(new BlockConfig().material("birch").materialName("Birch").ingredient("slab", Blocks.BIRCH_SLAB).ingredient("planks", Blocks.BIRCH_PLANKS).ingredient("log", Blocks.BIRCH_LOG).flammable()),
+            new GenericShelf(new BlockConfig().material("cherry").materialName("Cherry").ingredient("slab", Blocks.CHERRY_SLAB).ingredient("planks", Blocks.CHERRY_PLANKS).ingredient("log", Blocks.CHERRY_LOG).flammable()),
+            new GenericShelf(new BlockConfig().material("crimson").materialName("Crimson").ingredient("slab", Blocks.CRIMSON_SLAB).ingredient("planks", Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.CRIMSON_STEM)),
+            new GenericShelf(new BlockConfig().material("dark_oak").materialName("Dark Oak").ingredient("slab", Blocks.DARK_OAK_SLAB).ingredient("planks", Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.DARK_OAK_LOG).flammable()),
+            new GenericShelf(new BlockConfig().material("jungle").materialName("Jungle").ingredient("slab", Blocks.JUNGLE_SLAB).ingredient("planks", Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.JUNGLE_LOG).flammable()),
+            new GenericShelf(new BlockConfig().material("mangrove").materialName("Mangrove").ingredient("slab", Blocks.MANGROVE_SLAB).ingredient("planks", Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.MANGROVE_LOG).flammable()),
+            new GenericShelf(new BlockConfig().material("oak").materialName("Oak").ingredient("slab", Blocks.OAK_SLAB).ingredient("planks", Blocks.OAK_PLANKS).ingredient("log", Blocks.OAK_LOG).flammable()),
+            new GenericShelf(new BlockConfig().material("spruce").materialName("Spruce").ingredient("slab", Blocks.SPRUCE_SLAB).ingredient("planks", Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.SPRUCE_LOG).flammable()),
+            new GenericShelf(new BlockConfig().material("warped").materialName("Warped").ingredient("slab", Blocks.WARPED_SLAB).ingredient("planks", Blocks.WARPED_PLANKS).ingredient("log", Blocks.WARPED_STEM))
         );
         FLOATING_SHELVES = List.of(
-            new GenericFloatingShelf(new ModBlock.Config().material("acacia").materialName("Acacia").ingredient("slab", Blocks.ACACIA_SLAB).ingredient("planks", Blocks.ACACIA_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient("slab", Blocks.BAMBOO_SLAB).ingredient("planks", Blocks.BAMBOO_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("birch").materialName("Birch").ingredient("slab", Blocks.BIRCH_SLAB).ingredient("planks", Blocks.BIRCH_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("cherry").materialName("Cherry").ingredient("slab", Blocks.CHERRY_SLAB).ingredient("planks", Blocks.CHERRY_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("crimson").materialName("Crimson").ingredient("slab", Blocks.CRIMSON_SLAB).ingredient("planks", Blocks.CRIMSON_PLANKS)),
-            new GenericFloatingShelf(new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient("slab", Blocks.DARK_OAK_SLAB).ingredient("planks", Blocks.DARK_OAK_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("jungle").materialName("Jungle").ingredient("slab", Blocks.JUNGLE_SLAB).ingredient("planks", Blocks.JUNGLE_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient("slab", Blocks.MANGROVE_SLAB).ingredient("planks", Blocks.MANGROVE_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("oak").materialName("Oak").ingredient("slab", Blocks.OAK_SLAB).ingredient("planks", Blocks.OAK_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("spruce").materialName("Spruce").ingredient("slab", Blocks.SPRUCE_SLAB).ingredient("planks", Blocks.SPRUCE_PLANKS).flammable()),
-            new GenericFloatingShelf(new ModBlock.Config().material("warped").materialName("Warped").ingredient("slab", Blocks.WARPED_SLAB).ingredient("planks", Blocks.WARPED_PLANKS))
+            new GenericFloatingShelf(new BlockConfig().material("acacia").materialName("Acacia").ingredient("slab", Blocks.ACACIA_SLAB).ingredient("planks", Blocks.ACACIA_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("bamboo").materialName("Bamboo").ingredient("slab", Blocks.BAMBOO_SLAB).ingredient("planks", Blocks.BAMBOO_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("birch").materialName("Birch").ingredient("slab", Blocks.BIRCH_SLAB).ingredient("planks", Blocks.BIRCH_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("cherry").materialName("Cherry").ingredient("slab", Blocks.CHERRY_SLAB).ingredient("planks", Blocks.CHERRY_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("crimson").materialName("Crimson").ingredient("slab", Blocks.CRIMSON_SLAB).ingredient("planks", Blocks.CRIMSON_PLANKS)),
+            new GenericFloatingShelf(new BlockConfig().material("dark_oak").materialName("Dark Oak").ingredient("slab", Blocks.DARK_OAK_SLAB).ingredient("planks", Blocks.DARK_OAK_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("jungle").materialName("Jungle").ingredient("slab", Blocks.JUNGLE_SLAB).ingredient("planks", Blocks.JUNGLE_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("mangrove").materialName("Mangrove").ingredient("slab", Blocks.MANGROVE_SLAB).ingredient("planks", Blocks.MANGROVE_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("oak").materialName("Oak").ingredient("slab", Blocks.OAK_SLAB).ingredient("planks", Blocks.OAK_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("spruce").materialName("Spruce").ingredient("slab", Blocks.SPRUCE_SLAB).ingredient("planks", Blocks.SPRUCE_PLANKS).flammable()),
+            new GenericFloatingShelf(new BlockConfig().material("warped").materialName("Warped").ingredient("slab", Blocks.WARPED_SLAB).ingredient("planks", Blocks.WARPED_PLANKS))
         );
     }
 

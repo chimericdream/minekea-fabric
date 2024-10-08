@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.furniture.trapdoors;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModTrapdoorBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -11,6 +14,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
+import net.minecraft.block.TrapdoorBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
@@ -36,7 +40,7 @@ import net.minecraft.util.math.Direction;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBookshelfTrapdoor extends FabricModTrapdoorBlock {
+public class GenericBookshelfTrapdoor extends TrapdoorBlock implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model BOTTOM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/trapdoors/bookshelves/bottom")),
         Optional.empty(),
@@ -57,17 +61,22 @@ public class GenericBookshelfTrapdoor extends FabricModTrapdoorBlock {
     );
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
-    public GenericBookshelfTrapdoor(BlockSetType type, ModBlock.Config config) {
-        super(type, config);
+    public GenericBookshelfTrapdoor(BlockSetType type, BlockConfig config) {
+        super(type, config.getBaseSettings());
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/trapdoors/bookshelves/%s", config.getMaterial()));
+        this.config = config;
     }
 
-    @Override
+    public BlockConfig getConfig() {
+        return config;
+    }
+
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -75,7 +84,6 @@ public class GenericBookshelfTrapdoor extends FabricModTrapdoorBlock {
         }
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block bookshelf = config.getIngredient();
 
@@ -88,22 +96,18 @@ public class GenericBookshelfTrapdoor extends FabricModTrapdoorBlock {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Bookshelf Trapdoor", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient("planks");
 

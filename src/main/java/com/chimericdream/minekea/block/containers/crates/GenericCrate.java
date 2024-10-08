@@ -1,8 +1,11 @@
 package com.chimericdream.minekea.block.containers.crates;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.resource.TextureUtils;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.entities.blocks.containers.CrateBlockEntity;
 import com.chimericdream.minekea.screen.crate.DoubleCrateScreenHandler;
@@ -17,6 +20,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DoubleBlockProperties;
 import net.minecraft.block.entity.BlockEntity;
@@ -69,7 +73,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class GenericCrate extends FabricModBlockWithEntity {
+public class GenericCrate extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model CRATE_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/containers/crate")),
         Optional.empty(),
@@ -104,6 +108,7 @@ public class GenericCrate extends FabricModBlockWithEntity {
     public static final BooleanProperty CONNECTED_WEST;
 
     public Identifier BLOCK_ID;
+    public final BlockConfig config;
 
     private static final DoubleBlockProperties.PropertyRetriever<CrateBlockEntity, Optional<Inventory>> INVENTORY_RETRIEVER;
     private static final DoubleBlockProperties.PropertyRetriever<CrateBlockEntity, Optional<NamedScreenHandlerFactory>> SCREEN_RETRIEVER;
@@ -162,13 +167,14 @@ public class GenericCrate extends FabricModBlockWithEntity {
     }
 
     public GenericCrate(AbstractBlock.Settings settings) {
-        this(new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).tagIngredient(ItemTags.OAK_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_OAK_LOG)).flammable());
+        this(new BlockConfig().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).tagIngredient(ItemTags.OAK_LOGS).texture("brace", TextureUtils.block(Blocks.STRIPPED_OAK_LOG)).flammable());
     }
 
-    public GenericCrate(ModBlock.Config config) {
-        super(config.settings(AbstractBlock.Settings.copy(Blocks.BARREL)));
+    public GenericCrate(BlockConfig config) {
+        super(AbstractBlock.Settings.copy(Blocks.BARREL));
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/crates/%s", config.getMaterial()));
+        this.config = config;
 
         this.setDefaultState(
             this.stateManager
@@ -184,6 +190,10 @@ public class GenericCrate extends FabricModBlockWithEntity {
         );
     }
 
+    public BlockConfig getConfig() {
+        return config;
+    }
+
     @Override
     protected MapCodec<GenericCrate> getCodec() {
         return CODEC;
@@ -194,10 +204,9 @@ public class GenericCrate extends FabricModBlockWithEntity {
         return new CrateBlockEntity(Crates.CRATE_BLOCK_ENTITY, pos, state);
     }
 
-    @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -437,12 +446,6 @@ public class GenericCrate extends FabricModBlockWithEntity {
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block ingredient1 = config.getIngredient();
         TagKey<Item> ingredient2 = config.getTagIngredient();
@@ -460,9 +463,12 @@ public class GenericCrate extends FabricModBlockWithEntity {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Crate", config.getMaterialName()));
+    }
+
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
     }
 
     protected void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator, TextureMap textures) {
@@ -543,7 +549,6 @@ public class GenericCrate extends FabricModBlockWithEntity {
             );
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.BRACE, config.getTexture("brace"))

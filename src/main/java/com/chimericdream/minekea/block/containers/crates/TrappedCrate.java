@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.containers.crates;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
@@ -37,7 +37,7 @@ public class TrappedCrate extends GenericCrate {
         BASE_CRATE = Crates.CRATES.getFirst();
     }
 
-    public TrappedCrate(ModBlock.Config config, Block baseCrate) {
+    public TrappedCrate(BlockConfig config, Block baseCrate) {
         super(config);
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/crates/trapped/%s", config.getMaterial()));

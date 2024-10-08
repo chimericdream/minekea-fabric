@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.building.storage;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.sound.MinekeaSoundGroup;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -38,13 +39,13 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 
 // @TODO: turn this into a slab-like block with top/bottom/full variations
-public class SetOfEggsBlock extends FabricModBlock implements Waterloggable {
+public class SetOfEggsBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock, Waterloggable {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "storage/set_of_eggs");
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     public SetOfEggsBlock() {
-        super(new ModBlock.Config().settings(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(MinekeaSoundGroup.SET_OF_EGGS_SOUND_GROUP)));
+        super(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).sounds(MinekeaSoundGroup.SET_OF_EGGS_SOUND_GROUP));
 
         this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
     }
@@ -81,13 +82,11 @@ public class SetOfEggsBlock extends FabricModBlock implements Waterloggable {
         );
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 1)
             .pattern("###")
@@ -105,13 +104,11 @@ public class SetOfEggsBlock extends FabricModBlock implements Waterloggable {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         // @TODO: require silk touch?
         generator.addDrop(this);
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, "Set of Eggs");
     }

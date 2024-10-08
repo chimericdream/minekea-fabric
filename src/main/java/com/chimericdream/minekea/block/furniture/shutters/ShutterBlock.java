@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.furniture.shutters;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -63,7 +66,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class ShutterBlock extends FabricModBlock implements Waterloggable {
+public class ShutterBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model CLOSED_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/shutters/closed")),
         Optional.empty(),
@@ -78,6 +81,7 @@ public class ShutterBlock extends FabricModBlock implements Waterloggable {
     );
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
     protected final BlockSetType blockSetType;
 
     public static final BooleanProperty OPEN;
@@ -120,8 +124,8 @@ public class ShutterBlock extends FabricModBlock implements Waterloggable {
         );
     }
 
-    public ShutterBlock(BlockSetType type, ModBlock.Config config) {
-        super(config);
+    public ShutterBlock(BlockSetType type, BlockConfig config) {
+        super(config.getBaseSettings());
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -132,8 +136,13 @@ public class ShutterBlock extends FabricModBlock implements Waterloggable {
         );
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/shutters/%s", config.getMaterial()));
+        this.config = config;
 
         this.blockSetType = type;
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     @Override
@@ -374,10 +383,9 @@ public class ShutterBlock extends FabricModBlock implements Waterloggable {
         };
     }
 
-    @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> itemGroup.add(this));
 
@@ -387,7 +395,6 @@ public class ShutterBlock extends FabricModBlock implements Waterloggable {
         }
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");
@@ -405,22 +412,18 @@ public class ShutterBlock extends FabricModBlock implements Waterloggable {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Shutters", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");

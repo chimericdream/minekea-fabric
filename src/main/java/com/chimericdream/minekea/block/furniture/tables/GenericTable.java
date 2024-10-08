@@ -1,8 +1,11 @@
 package com.chimericdream.minekea.block.furniture.tables;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.text.TextHelpers;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -53,7 +56,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericTable extends FabricModBlock implements Waterloggable {
+public class GenericTable extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     public static final String TOOLTIP_KEY = "block.minekea.furniture.tables.tooltip";
 
     protected static final Model CORE_MODEL = new Model(
@@ -118,6 +121,7 @@ public class GenericTable extends FabricModBlock implements Waterloggable {
     );
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
 
     public static final BooleanProperty NORTH_CONNECTED;
     public static final BooleanProperty SOUTH_CONNECTED;
@@ -144,8 +148,8 @@ public class GenericTable extends FabricModBlock implements Waterloggable {
         WEST_CONNECTED = BooleanProperty.of("west_connected");
     }
 
-    public GenericTable(ModBlock.Config config) {
-        super(config);
+    public GenericTable(BlockConfig config) {
+        super(config.getBaseSettings());
 
         this.setDefaultState(
             this.stateManager
@@ -158,12 +162,16 @@ public class GenericTable extends FabricModBlock implements Waterloggable {
         );
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/tables/%s", config.getMaterial()));
+        this.config = config;
     }
 
-    @Override
+    public BlockConfig getConfig() {
+        return config;
+    }
+
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -171,12 +179,10 @@ public class GenericTable extends FabricModBlock implements Waterloggable {
         }
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");
@@ -194,17 +200,14 @@ public class GenericTable extends FabricModBlock implements Waterloggable {
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Table", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");

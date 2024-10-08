@@ -1,7 +1,9 @@
 package com.chimericdream.minekea.util;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -20,20 +22,20 @@ import java.util.List;
 import java.util.function.Function;
 
 public interface MinekeaBlockCategory {
-    default List<FabricModBlock> getCategoryBlocks() {
+    default List<Block> getCategoryBlocks() {
         return new ArrayList<>();
     }
 
     default void initializeClient() {
         getCategoryBlocks().forEach(block -> {
-            if (block.config.isTranslucent()) {
-                BlockRenderLayerMap.INSTANCE.putBlock((Block) block, RenderLayer.getTranslucent());
+            if (((ModConfigurable) block).getConfig().isTranslucent()) {
+                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
             }
         });
     }
 
     default void registerBlocks() {
-        getCategoryBlocks().forEach(ModBlock::register);
+        getCategoryBlocks().forEach(block -> ((RegisterableBlock) block).register());
     }
 
     default void registerBlockEntities() {
@@ -43,34 +45,34 @@ public interface MinekeaBlockCategory {
     }
 
     default void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        getCategoryBlocks().forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
+        getCategoryBlocks().forEach(block -> ((FabricBlockDataGenerator) block).configureBlockTags(registryLookup, getBuilder));
     }
 
     default void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        getCategoryBlocks().forEach(block -> block.configureItemTags(registryLookup, getBuilder));
+        getCategoryBlocks().forEach(block -> ((FabricBlockDataGenerator) block).configureItemTags(registryLookup, getBuilder));
     }
 
     default void configureRecipes(RecipeExporter exporter) {
-        getCategoryBlocks().forEach(block -> block.configureRecipes(exporter));
+        getCategoryBlocks().forEach(block -> ((BlockDataGenerator) block).configureRecipes(exporter));
     }
 
     default void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        getCategoryBlocks().forEach(block -> block.configureBlockLootTables(registryLookup, generator));
+        getCategoryBlocks().forEach(block -> ((BlockDataGenerator) block).configureBlockLootTables(registryLookup, generator));
     }
 
     default void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        getCategoryBlocks().forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
+        getCategoryBlocks().forEach(block -> ((FabricBlockDataGenerator) block).configureTranslations(registryLookup, translationBuilder));
     }
 
     default void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        getCategoryBlocks().forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
+        getCategoryBlocks().forEach(block -> ((BlockDataGenerator) block).configureBlockStateModels(blockStateModelGenerator));
     }
 
     default void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        getCategoryBlocks().forEach(block -> block.configureItemModels(itemModelGenerator));
+        getCategoryBlocks().forEach(block -> ((BlockDataGenerator) block).configureItemModels(itemModelGenerator));
     }
 
     default void generateTextures() {
-        getCategoryBlocks().forEach(ModBlock::generateTextures);
+        getCategoryBlocks().forEach(block -> ((BlockDataGenerator) block).generateTextures());
     }
 }

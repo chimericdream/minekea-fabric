@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.building.storage;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import com.google.gson.JsonArray;
@@ -27,14 +30,12 @@ import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -57,7 +58,7 @@ import net.minecraft.world.World;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-abstract public class GenericStorageBlock extends FabricModBlock {
+abstract public class GenericStorageBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model COMPRESSED_BLOCK_MODEL = Models.CUBE_ALL;
     protected static final Model COMPRESSED_COLUMN_BLOCK_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/storage/compressed_column")),
@@ -84,6 +85,7 @@ abstract public class GenericStorageBlock extends FabricModBlock {
     public static final BooleanProperty IS_BAGGED;
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
     public final boolean isBaggedItem;
 
     static {
@@ -92,12 +94,12 @@ abstract public class GenericStorageBlock extends FabricModBlock {
         IS_BAGGED = BooleanProperty.of("is_bagged");
     }
 
-    public GenericStorageBlock(ModBlock.Config config) {
+    public GenericStorageBlock(BlockConfig config) {
         this(config, false);
     }
 
-    public GenericStorageBlock(ModBlock.Config config, boolean isBaggedItem) {
-        super(config);
+    public GenericStorageBlock(BlockConfig config, boolean isBaggedItem) {
+        super(config.getBaseSettings());
 
         setDefaultState(
             getStateManager()
@@ -107,7 +109,12 @@ abstract public class GenericStorageBlock extends FabricModBlock {
         );
 
         this.BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("storage/compressed/%s", config.getMaterial()));
+        this.config = config;
         this.isBaggedItem = isBaggedItem;
+    }
+
+    public BlockConfig getConfig() {
+        return this.config;
     }
 
     @Override
@@ -168,13 +175,6 @@ abstract public class GenericStorageBlock extends FabricModBlock {
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    @Override
-    public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
-    }
-
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Item baseItem = config.getItem();
 
@@ -198,7 +198,6 @@ abstract public class GenericStorageBlock extends FabricModBlock {
         }
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.addDrop(this);
     }
@@ -233,7 +232,6 @@ abstract public class GenericStorageBlock extends FabricModBlock {
         blockStateModelGenerator.excludeFromSimpleItemModelGeneration(this);
     }
 
-    @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
         if (this.isBaggedItem) {
             Block self = this;
@@ -259,5 +257,9 @@ abstract public class GenericStorageBlock extends FabricModBlock {
                 }
             });
         }
+    }
+
+    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.registerSimpleCubeAll(this);
     }
 }

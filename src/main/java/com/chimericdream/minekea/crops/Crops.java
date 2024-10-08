@@ -5,9 +5,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -25,7 +23,7 @@ public class Crops implements MinekeaBlockCategory {
     public static final WarpedWartItem WARPED_WART_ITEM;
 
     static {
-        WARPED_WART_PLANT_BLOCK = new WarpedWartPlantBlock(AbstractBlock.Settings.copy(Blocks.NETHER_WART));
+        WARPED_WART_PLANT_BLOCK = new WarpedWartPlantBlock();
         WARPED_WART_ITEM = new WarpedWartItem();
     }
 
@@ -40,9 +38,7 @@ public class Crops implements MinekeaBlockCategory {
         WARPED_WART_ITEM.register();
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
-            .register((itemGroup) -> {
-                itemGroup.add(WARPED_WART_ITEM);
-            });
+            .register((itemGroup) -> itemGroup.add(WARPED_WART_ITEM));
     }
 
     @Override

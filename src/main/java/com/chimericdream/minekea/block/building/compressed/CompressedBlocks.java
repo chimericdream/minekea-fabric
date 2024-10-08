@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.block.building.compressed;
 
-import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
@@ -42,7 +42,7 @@ public class CompressedBlocks implements MinekeaBlockCategory {
 
     protected static final List<Triplet<String, String, Block>> BLOCKS_TO_COMPRESS = new ArrayList<>();
     protected static final List<Quintet<String, String, Block, String, String>> COLUMN_BLOCKS_TO_COMPRESS = new ArrayList<>();
-    protected static final List<Quartet<String, String, ModBlock, Identifier>> MINEKEA_BLOCKS_TO_COMPRESS = new ArrayList<>();
+    protected static final List<Quartet<String, String, Block, Identifier>> MINEKEA_BLOCKS_TO_COMPRESS = new ArrayList<>();
 
     static {
         BLOCKS_TO_COMPRESS.add(new Triplet<>("Amethyst", "amethyst_block", Blocks.AMETHYST_BLOCK));
@@ -175,7 +175,7 @@ public class CompressedBlocks implements MinekeaBlockCategory {
             List<GenericCompressedBlock> compressedBlocks = new ArrayList<>();
 
             for (int i = 1; i <= 9; i += 1) {
-                compressedBlocks.add(new GenericCompressedBlock(new ModBlock.Config().material(material).materialName(materialName).ingredient(ingredient), i));
+                compressedBlocks.add(new GenericCompressedBlock(new BlockConfig().material(material).materialName(materialName).ingredient(ingredient), i));
             }
 
             BLOCKS.addAll(compressedBlocks);
@@ -210,7 +210,7 @@ public class CompressedBlocks implements MinekeaBlockCategory {
             List<GenericCompressedBlock> compressedBlocks = new ArrayList<>();
 
             for (int i = 1; i <= 9; i += 1) {
-                compressedBlocks.add(new CompressedColumnBlock(new ModBlock.Config().material(material).materialName(materialName).ingredient(ingredient), i, sideTextureSuffix, endTextureSuffix));
+                compressedBlocks.add(new CompressedColumnBlock(new BlockConfig().material(material).materialName(materialName).ingredient(ingredient), i, sideTextureSuffix, endTextureSuffix));
             }
 
             BLOCKS.addAll(compressedBlocks);
@@ -227,13 +227,13 @@ public class CompressedBlocks implements MinekeaBlockCategory {
         MINEKEA_BLOCKS_TO_COMPRESS.forEach(data -> {
             String materialName = data.getA();
             String material = data.getB();
-            ModBlock ingredient = data.getC();
+            Block ingredient = data.getC();
             Identifier baseBlockId = data.getD();
 
             List<GenericCompressedBlock> compressedBlocks = new ArrayList<>();
 
             for (int i = 1; i <= 9; i += 1) {
-                compressedBlocks.add(new CompressedMinekeaBlock(new ModBlock.Config().material(material).materialName(materialName).ingredient(ingredient), i, baseBlockId));
+                compressedBlocks.add(new CompressedMinekeaBlock(new BlockConfig().material(material).materialName(materialName).ingredient(ingredient), i, baseBlockId));
             }
 
             BLOCKS.addAll(compressedBlocks);

@@ -1,7 +1,10 @@
 package com.chimericdream.minekea.block.furniture.shutters;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.minecraft.block.AbstractBlock;
@@ -47,7 +50,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class OpenShutterHalf extends FabricModBlock implements Waterloggable {
+public class OpenShutterHalf extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model LEFT_HALF_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/shutters/left_half")),
         Optional.empty(),
@@ -62,6 +65,7 @@ public class OpenShutterHalf extends FabricModBlock implements Waterloggable {
     );
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
     protected final BlockSetType blockSetType;
 
     public static final EnumProperty<ShutterHalf> HALF;
@@ -91,8 +95,8 @@ public class OpenShutterHalf extends FabricModBlock implements Waterloggable {
         );
     }
 
-    public OpenShutterHalf(BlockSetType type, ModBlock.Config config) {
-        super(config.settings(AbstractBlock.Settings.copy(Blocks.BARRIER)));
+    public OpenShutterHalf(BlockSetType type, BlockConfig config) {
+        super(AbstractBlock.Settings.copy(Blocks.BARRIER));
 
         this.setDefaultState(
             this.stateManager
@@ -103,8 +107,13 @@ public class OpenShutterHalf extends FabricModBlock implements Waterloggable {
         );
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/shutters/%s_open", config.getMaterial()));
+        this.config = config;
 
         this.blockSetType = type;
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     @Override
@@ -259,12 +268,10 @@ public class OpenShutterHalf extends FabricModBlock implements Waterloggable {
         world.emitGameEvent(player, GameEvent.BLOCK_CLOSE, pos);
     }
 
-    @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Block plankIngredient = config.getIngredient();
         Block logIngredient = config.getIngredient("log");

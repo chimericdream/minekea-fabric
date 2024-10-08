@@ -1,8 +1,11 @@
 package com.chimericdream.minekea.block.containers.barrels;
 
-import com.chimericdream.lib.blocks.ModBlock;
-import com.chimericdream.lib.fabric.blocks.FabricModBlockWithEntity;
+import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.resource.TextureUtils;
+import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import com.chimericdream.minekea.entities.blocks.containers.MinekeaBarrelBlockEntity;
@@ -17,6 +20,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -66,10 +70,11 @@ import java.awt.image.BufferedImage;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBarrel extends FabricModBlockWithEntity {
+public class GenericBarrel extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     public static final MapCodec<GenericBarrel> CODEC = createCodec(GenericBarrel::new);
 
     public final Identifier BLOCK_ID;
+    public final BlockConfig config;
     public final String sideTextureKey;
     public final String faceTextureKey;
 
@@ -82,7 +87,7 @@ public class GenericBarrel extends FabricModBlockWithEntity {
     }
 
     public GenericBarrel(Settings settings) {
-        this(new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("slab", Blocks.ACACIA_SLAB), "acacia_planks", "stripped_acacia_log");
+        this(new BlockConfig().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("slab", Blocks.ACACIA_SLAB), "acacia_planks", "stripped_acacia_log");
     }
 
     @Override
@@ -90,14 +95,19 @@ public class GenericBarrel extends FabricModBlockWithEntity {
         return CODEC;
     }
 
-    public GenericBarrel(ModBlock.Config config, String sideTextureKey, String faceTextureKey) {
-        super(config.settings(AbstractBlock.Settings.copy(Blocks.BARREL)));
+    public GenericBarrel(BlockConfig config, String sideTextureKey, String faceTextureKey) {
+        super(AbstractBlock.Settings.copy(Blocks.BARREL));
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("containers/barrels/%s", config.getMaterial()));
+        this.config = config;
         this.sideTextureKey = sideTextureKey;
         this.faceTextureKey = faceTextureKey;
 
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(OPEN, false));
+    }
+
+    public BlockConfig getConfig() {
+        return config;
     }
 
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
@@ -162,10 +172,9 @@ public class GenericBarrel extends FabricModBlockWithEntity {
         return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite());
     }
 
-    @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -177,12 +186,10 @@ public class GenericBarrel extends FabricModBlockWithEntity {
         });
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block plankIngredient = config.getIngredient();
         Block slabIngredient = config.getIngredient("slab");
@@ -200,17 +207,14 @@ public class GenericBarrel extends FabricModBlockWithEntity {
             .offerTo(exporter);
     }
 
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        generator.addDrop(this);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Barrel", config.getMaterialName()));
     }
 
-    @Override
+    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
+        generator.addDrop(this);
+    }
+
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         Identifier bottomTexture = TextureUtils.block(BLOCK_ID, "_bottom");
         Identifier sideTexture = TextureUtils.block(BLOCK_ID, "_side");
@@ -325,7 +329,6 @@ public class GenericBarrel extends FabricModBlockWithEntity {
             );
     }
 
-    @Override
     public void generateTextures() {
         generateTextures(faceTextureKey, sideTextureKey, BLOCK_ID);
     }

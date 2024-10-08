@@ -1,7 +1,9 @@
 package com.chimericdream.minekea.block.furniture.pillows;
 
+import com.chimericdream.lib.blocks.BlockDataGenerator;
+import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
-import com.chimericdream.lib.fabric.blocks.FabricModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -35,14 +37,14 @@ import net.minecraft.world.World;
 
 import java.util.function.Function;
 
-public class PillowBlock extends FabricModBlock {
+public class PillowBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
     public final Identifier BLOCK_ID;
     protected final String color;
 
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
     public PillowBlock(String color) {
-        super(new Config().settings(AbstractBlock.Settings.copy(Blocks.WHITE_WOOL).mapColor(DyeColor.byName(color, DyeColor.WHITE))));
+        super(AbstractBlock.Settings.copy(Blocks.WHITE_WOOL).mapColor(DyeColor.byName(color, DyeColor.WHITE)));
 
         this.color = color;
 
@@ -67,7 +69,6 @@ public class PillowBlock extends FabricModBlock {
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
     }
 
-    @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(MinekeaBlockTags.PILLOWS)
             .setReplace(false)
@@ -78,7 +79,6 @@ public class PillowBlock extends FabricModBlock {
             .add(this);
     }
 
-    @Override
     public void configureRecipes(RecipeExporter exporter) {
         Block wool = ColorHelpers.getWool(color);
 
@@ -97,17 +97,14 @@ public class PillowBlock extends FabricModBlock {
             .offerTo(exporter);
     }
 
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         generator.addDrop(this);
     }
 
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, String.format("%s Pillow", ColorHelpers.getName(color)));
     }
 
-    @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(this);
     }
