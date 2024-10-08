@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.furniture.shutters;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -46,7 +47,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggable {
+public class OpenShutterHalf extends FabricModBlock implements Waterloggable {
     protected static final Model LEFT_HALF_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/shutters/left_half")),
         Optional.empty(),
@@ -61,11 +62,6 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
     );
 
     public final Identifier BLOCK_ID;
-
-    protected final Block plankIngredient;
-    protected final Block logIngredient;
-    protected final String materialName;
-    protected final boolean isFlammable;
     protected final BlockSetType blockSetType;
 
     public static final EnumProperty<ShutterHalf> HALF;
@@ -95,12 +91,8 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
         );
     }
 
-    public OpenShutterHalf(BlockSetType type, String materialName, Block plankIngredient, Block logIngredient) {
-        this(type, materialName, plankIngredient, logIngredient, false);
-    }
-
-    public OpenShutterHalf(BlockSetType type, String materialName, Block plankIngredient, Block logIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(Blocks.BARRIER));
+    public OpenShutterHalf(BlockSetType type, ModBlock.Config config) {
+        super(config.settings(AbstractBlock.Settings.copy(Blocks.BARRIER)));
 
         this.setDefaultState(
             this.stateManager
@@ -110,24 +102,14 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
                 .with(WATERLOGGED, false)
         );
 
-        BLOCK_ID = makeBlockId(materialName);
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/shutters/%s_open", config.getMaterial()));
 
         this.blockSetType = type;
-        this.materialName = materialName;
-        this.plankIngredient = plankIngredient;
-        this.logIngredient = logIngredient;
-        this.isFlammable = isFlammable;
-    }
-
-    public static Identifier makeBlockId(String materialName) {
-        String material = materialName.toLowerCase().replaceAll(" ", "_");
-
-        return Identifier.of(ModInfo.MOD_ID, String.format("furniture/shutters/%s_open", material));
     }
 
     @Override
     public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
-        return new ItemStack(Shutters.SHUTTERS.get(materialName));
+        return new ItemStack(Shutters.SHUTTERS.get(config.getMaterial()));
     }
 
     @Override
@@ -284,6 +266,9 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block plankIngredient = config.getIngredient();
+        Block logIngredient = config.getIngredient("log");
+
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.FRAME, Registries.BLOCK.getId(logIngredient).withPrefixedPath("block/"))
             .put(MinekeaTextures.PANEL, Registries.BLOCK.getId(plankIngredient).withPrefixedPath("block/"));

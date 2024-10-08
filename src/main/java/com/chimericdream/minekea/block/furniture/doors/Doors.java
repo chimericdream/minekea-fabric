@@ -1,6 +1,7 @@
 package com.chimericdream.minekea.block.furniture.doors;
 
 import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -25,17 +26,17 @@ public class Doors implements MinekeaBlockCategory {
     public static final Map<String, GenericBookshelfDoor> BOOKSHELF_DOORS = new LinkedHashMap<>();
 
     static {
-        BOOKSHELF_DOORS.put("Acacia", new GenericBookshelfDoor(BlockSetType.ACACIA, new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS)));
-        BOOKSHELF_DOORS.put("Bamboo", new GenericBookshelfDoor(BlockSetType.BAMBOO, new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS)));
-        BOOKSHELF_DOORS.put("Birch", new GenericBookshelfDoor(BlockSetType.BIRCH, new ModBlock.Config().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS)));
-        BOOKSHELF_DOORS.put("Cherry", new GenericBookshelfDoor(BlockSetType.CHERRY, new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS)));
-        BOOKSHELF_DOORS.put("Crimson", new GenericBookshelfDoor(BlockSetType.CRIMSON, new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS)));
-        BOOKSHELF_DOORS.put("Dark Oak", new GenericBookshelfDoor(BlockSetType.DARK_OAK, new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS)));
-        BOOKSHELF_DOORS.put("Jungle", new GenericBookshelfDoor(BlockSetType.JUNGLE, new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS)));
-        BOOKSHELF_DOORS.put("Mangrove", new GenericBookshelfDoor(BlockSetType.MANGROVE, new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS)));
-        BOOKSHELF_DOORS.put("Oak", new GenericBookshelfDoor(BlockSetType.OAK, new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS)));
-        BOOKSHELF_DOORS.put("Spruce", new GenericBookshelfDoor(BlockSetType.SPRUCE, new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS)));
-        BOOKSHELF_DOORS.put("Warped", new GenericBookshelfDoor(BlockSetType.WARPED, new ModBlock.Config().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS)));
+        BOOKSHELF_DOORS.put("acacia", new GenericBookshelfDoor(BlockSetType.ACACIA, new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Bookshelves.BOOKSHELVES.get("acacia")).ingredient("planks", Blocks.ACACIA_PLANKS)));
+        BOOKSHELF_DOORS.put("bamboo", new GenericBookshelfDoor(BlockSetType.BAMBOO, new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Bookshelves.BOOKSHELVES.get("bamboo")).ingredient("planks", Blocks.BAMBOO_PLANKS)));
+        BOOKSHELF_DOORS.put("birch", new GenericBookshelfDoor(BlockSetType.BIRCH, new ModBlock.Config().material("birch").materialName("Birch").ingredient(Bookshelves.BOOKSHELVES.get("birch")).ingredient("planks", Blocks.BIRCH_PLANKS)));
+        BOOKSHELF_DOORS.put("cherry", new GenericBookshelfDoor(BlockSetType.CHERRY, new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Bookshelves.BOOKSHELVES.get("cherry")).ingredient("planks", Blocks.CHERRY_PLANKS)));
+        BOOKSHELF_DOORS.put("crimson", new GenericBookshelfDoor(BlockSetType.CRIMSON, new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Bookshelves.BOOKSHELVES.get("crimson")).ingredient("planks", Blocks.CRIMSON_PLANKS)));
+        BOOKSHELF_DOORS.put("dark_oak", new GenericBookshelfDoor(BlockSetType.DARK_OAK, new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Bookshelves.BOOKSHELVES.get("dark_oak")).ingredient("planks", Blocks.DARK_OAK_PLANKS)));
+        BOOKSHELF_DOORS.put("jungle", new GenericBookshelfDoor(BlockSetType.JUNGLE, new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Bookshelves.BOOKSHELVES.get("jungle")).ingredient("planks", Blocks.JUNGLE_PLANKS)));
+        BOOKSHELF_DOORS.put("mangrove", new GenericBookshelfDoor(BlockSetType.MANGROVE, new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Bookshelves.BOOKSHELVES.get("mangrove")).ingredient("planks", Blocks.MANGROVE_PLANKS)));
+        BOOKSHELF_DOORS.put("oak", new GenericBookshelfDoor(BlockSetType.OAK, new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.BOOKSHELF).ingredient("planks", Blocks.OAK_PLANKS)));
+        BOOKSHELF_DOORS.put("spruce", new GenericBookshelfDoor(BlockSetType.SPRUCE, new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Bookshelves.BOOKSHELVES.get("spruce")).ingredient("planks", Blocks.SPRUCE_PLANKS)));
+        BOOKSHELF_DOORS.put("warped", new GenericBookshelfDoor(BlockSetType.WARPED, new ModBlock.Config().material("warped").materialName("Warped").ingredient(Bookshelves.BOOKSHELVES.get("warped")).ingredient("planks", Blocks.WARPED_PLANKS)));
     }
 
     @Override

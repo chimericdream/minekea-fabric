@@ -1,24 +1,20 @@
 package com.chimericdream.minekea.crops;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModPlantBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
-import net.minecraft.block.PlantBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -33,7 +29,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
@@ -45,11 +40,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
 
-import java.util.function.Function;
-
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_ITEM;
 
-public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
+public class WarpedWartPlantBlock extends FabricModPlantBlock {
     public static final MapCodec<WarpedWartPlantBlock> CODEC = createCodec(WarpedWartPlantBlock::new);
 
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "crops/warped_wart/block");
@@ -57,7 +50,7 @@ public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
     private static final VoxelShape[] AGE_TO_SHAPE;
 
     public WarpedWartPlantBlock(AbstractBlock.Settings settings) {
-        super(settings.mapColor(MapColor.BRIGHT_TEAL));
+        super(new ModBlock.Config().settings(settings.mapColor(MapColor.BRIGHT_TEAL)));
 
         this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(AGE, 0));
     }
@@ -111,18 +104,6 @@ public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
     }
 
     @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
-    public void configureRecipes(RecipeExporter exporter) {
-    }
-
-    @Override
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
         RegistryWrapper.Impl<Enchantment> impl = registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
 
@@ -166,9 +147,5 @@ public class WarpedWartPlantBlock extends PlantBlock implements MinekeaBlock {
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerCrop(this, Properties.AGE_3, 0, 1, 1, 2);
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
     }
 }

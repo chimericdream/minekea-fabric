@@ -1,19 +1,16 @@
 package com.chimericdream.minekea.block.furniture.trapdoors;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModTrapdoorBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.TrapdoorBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
@@ -39,7 +36,7 @@ import net.minecraft.util.math.Direction;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBlock {
+public class GenericBookshelfTrapdoor extends FabricModTrapdoorBlock {
     protected static final Model BOTTOM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/trapdoors/bookshelves/bottom")),
         Optional.empty(),
@@ -61,28 +58,10 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
 
     public final Identifier BLOCK_ID;
 
-    protected final Block plankIngredient;
-    protected final String materialName;
-    protected final boolean isFlammable;
+    public GenericBookshelfTrapdoor(BlockSetType type, ModBlock.Config config) {
+        super(type, config);
 
-    public GenericBookshelfTrapdoor(BlockSetType type, String materialName, Block plankIngredient) {
-        this(type, materialName, plankIngredient, true);
-    }
-
-    public GenericBookshelfTrapdoor(BlockSetType type, String materialName, Block plankIngredient, boolean isFlammable) {
-        super(type, AbstractBlock.Settings.copy(plankIngredient));
-
-        BLOCK_ID = makeBlockId(materialName);
-
-        this.materialName = materialName;
-        this.plankIngredient = plankIngredient;
-        this.isFlammable = isFlammable;
-    }
-
-    public static Identifier makeBlockId(String materialName) {
-        String material = materialName.toLowerCase().replaceAll(" ", "_");
-
-        return Identifier.of(ModInfo.MOD_ID, String.format("furniture/trapdoors/bookshelves/%s", material));
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/trapdoors/bookshelves/%s", config.getMaterial()));
     }
 
     @Override
@@ -90,23 +69,15 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
     }
 
-    private Block getBookshelf() {
-        if (materialName == "Oak") {
-            return Blocks.BOOKSHELF;
-        }
-
-        return Bookshelves.BOOKSHELVES.get(materialName);
-    }
-
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block bookshelf = getBookshelf();
+        Block bookshelf = config.getIngredient();
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 12)
             .pattern("###")
@@ -129,11 +100,13 @@ public class GenericBookshelfTrapdoor extends TrapdoorBlock implements MinekeaBl
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Bookshelf Trapdoor", materialName));
+        translationBuilder.add(this, String.format("%s Bookshelf Trapdoor", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block plankIngredient = config.getIngredient("planks");
+
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.MATERIAL, TextureMap.getId(plankIngredient))
             .put(MinekeaTextures.SHELF, Identifier.of(ModInfo.MOD_ID, "block/furniture/bookshelves/shelf0"));

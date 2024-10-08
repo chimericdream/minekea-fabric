@@ -3,7 +3,6 @@ package com.chimericdream.minekea.block.furniture.doors;
 import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.lib.fabric.blocks.FabricModDoorBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.block.furniture.bookshelves.Bookshelves;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -13,7 +12,6 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.DoorHinge;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -96,17 +94,9 @@ public class GenericBookshelfDoor extends FabricModDoorBlock {
         getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
-    private Block getBookshelf() {
-        if (config.getMaterialName() == "Oak") {
-            return Blocks.BOOKSHELF;
-        }
-
-        return Bookshelves.BOOKSHELVES.get(config.getMaterialName());
-    }
-
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        Block bookshelf = getBookshelf();
+        Block bookshelf = config.getIngredient();
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 3)
             .pattern("##")
@@ -130,7 +120,7 @@ public class GenericBookshelfDoor extends FabricModDoorBlock {
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        Block plankIngredient = config.getIngredient();
+        Block plankIngredient = config.getIngredient("planks");
 
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.MATERIAL, TextureMap.getId(plankIngredient))
@@ -461,7 +451,7 @@ public class GenericBookshelfDoor extends FabricModDoorBlock {
 
     @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        Block plankIngredient = config.getIngredient();
+        Block plankIngredient = config.getIngredient("planks");
 
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.MATERIAL, TextureMap.getId(plankIngredient))

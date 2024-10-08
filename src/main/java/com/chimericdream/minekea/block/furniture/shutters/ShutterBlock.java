@@ -1,7 +1,8 @@
 package com.chimericdream.minekea.block.furniture.shutters;
 
+import com.chimericdream.lib.blocks.ModBlock;
+import com.chimericdream.lib.fabric.blocks.FabricModBlock;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -9,7 +10,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
 import net.minecraft.block.BlockState;
@@ -63,7 +63,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
+public class ShutterBlock extends FabricModBlock implements Waterloggable {
     protected static final Model CLOSED_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/shutters/closed")),
         Optional.empty(),
@@ -78,11 +78,6 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
     );
 
     public final Identifier BLOCK_ID;
-
-    protected final Block plankIngredient;
-    protected final Block logIngredient;
-    protected final String materialName;
-    protected final boolean isFlammable;
     protected final BlockSetType blockSetType;
 
     public static final BooleanProperty OPEN;
@@ -125,12 +120,8 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
         );
     }
 
-    public ShutterBlock(BlockSetType type, String materialName, Block plankIngredient, Block logIngredient) {
-        this(type, materialName, plankIngredient, logIngredient, true);
-    }
-
-    public ShutterBlock(BlockSetType type, String materialName, Block plankIngredient, Block logIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(plankIngredient));
+    public ShutterBlock(BlockSetType type, ModBlock.Config config) {
+        super(config);
 
         this.setDefaultState(
             this.stateManager.getDefaultState()
@@ -140,19 +131,9 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
                 .with(WATERLOGGED, false)
         );
 
-        BLOCK_ID = makeBlockId(materialName);
+        BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("furniture/shutters/%s", config.getMaterial()));
 
         this.blockSetType = type;
-        this.materialName = materialName;
-        this.plankIngredient = plankIngredient;
-        this.logIngredient = logIngredient;
-        this.isFlammable = isFlammable;
-    }
-
-    public static Identifier makeBlockId(String materialName) {
-        String material = materialName.toLowerCase().replaceAll(" ", "_");
-
-        return Identifier.of(ModInfo.MOD_ID, String.format("furniture/shutters/%s", material));
     }
 
     @Override
@@ -220,17 +201,13 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
         BlockState leftState = world.getBlockState(left);
         BlockState rightState = world.getBlockState(right);
 
-        BlockState newLeftState = Shutters.OPEN_SHUTTER_HALVES
-            .get(materialName)
+        BlockState baseNewState = Shutters.OPEN_SHUTTER_HALVES
+            .get(config.getMaterial())
             .getDefaultState()
-            .with(OpenShutterHalf.HALF, OpenShutterHalf.ShutterHalf.LEFT)
             .with(OpenShutterHalf.WALL_SIDE, state.get(WALL_SIDE));
 
-        BlockState newRightState = Shutters.OPEN_SHUTTER_HALVES
-            .get(materialName)
-            .getDefaultState()
-            .with(OpenShutterHalf.HALF, OpenShutterHalf.ShutterHalf.RIGHT)
-            .with(OpenShutterHalf.WALL_SIDE, state.get(WALL_SIDE));
+        BlockState newLeftState = baseNewState.with(OpenShutterHalf.HALF, OpenShutterHalf.ShutterHalf.LEFT);
+        BlockState newRightState = baseNewState.with(OpenShutterHalf.HALF, OpenShutterHalf.ShutterHalf.RIGHT);
 
         if (leftState.isOf(Blocks.WATER)) {
             world.setBlockState(
@@ -334,7 +311,7 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
 
-        
+
         // Get the player's look direction and ignore vertical directions (UP and DOWN)
         Direction playerLookDirection = ctx.getPlayerLookDirection();
         if (playerLookDirection.getAxis().isVertical()) {
@@ -404,7 +381,7 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
 
         ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> itemGroup.add(this));
 
-        if (isFlammable) {
+        if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
@@ -412,6 +389,9 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
+        Block plankIngredient = config.getIngredient();
+        Block logIngredient = config.getIngredient("log");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, this, 6)
             .pattern("#X#")
             .pattern("#X#")
@@ -437,11 +417,14 @@ public class ShutterBlock extends Block implements MinekeaBlock, Waterloggable {
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        translationBuilder.add(this, String.format("%s Shutters", materialName));
+        translationBuilder.add(this, String.format("%s Shutters", config.getMaterialName()));
     }
 
     @Override
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        Block plankIngredient = config.getIngredient();
+        Block logIngredient = config.getIngredient("log");
+
         TextureMap textures = new TextureMap()
             .put(MinekeaTextures.FRAME, Registries.BLOCK.getId(logIngredient).withPrefixedPath("block/"))
             .put(MinekeaTextures.PANEL, Registries.BLOCK.getId(plankIngredient).withPrefixedPath("block/"));

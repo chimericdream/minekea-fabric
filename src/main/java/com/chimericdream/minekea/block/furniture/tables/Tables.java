@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.furniture.tables;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -24,29 +25,29 @@ public class Tables implements MinekeaBlockCategory {
 
     static {
         TABLES = List.of(
-            new GenericTable("Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG),
-            new GenericTable("Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK),
-            new GenericTable("Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG),
-            new GenericTable("Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG),
-            new GenericTable("Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM),
-            new GenericTable("Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_LOG),
-            new GenericTable("Jungle", Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_LOG),
-            new GenericTable("Mangrove", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG),
-            new GenericTable("Oak", Blocks.OAK_PLANKS, Blocks.OAK_LOG),
-            new GenericTable("Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG),
-            new GenericTable("Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM),
+            new GenericTable(new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("log", Blocks.ACACIA_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.BAMBOO_BLOCK).flammable()),
+            new GenericTable(new ModBlock.Config().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).ingredient("log", Blocks.BIRCH_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).ingredient("log", Blocks.CHERRY_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.CRIMSON_STEM)),
+            new GenericTable(new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.DARK_OAK_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.JUNGLE_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.MANGROVE_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).ingredient("log", Blocks.OAK_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.SPRUCE_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).ingredient("log", Blocks.WARPED_STEM)),
 
-            new GenericTable("Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG),
-            new GenericTable("Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK),
-            new GenericTable("Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG),
-            new GenericTable("Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG),
-            new GenericTable("Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM),
-            new GenericTable("Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG),
-            new GenericTable("Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG),
-            new GenericTable("Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG),
-            new GenericTable("Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG),
-            new GenericTable("Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG),
-            new GenericTable("Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM)
+            new GenericTable(new ModBlock.Config().material("stripped_acacia").materialName("Stripped Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("log", Blocks.STRIPPED_ACACIA_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_bamboo").materialName("Stripped Bamboo").ingredient(Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.STRIPPED_BAMBOO_BLOCK).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_birch").materialName("Stripped Birch").ingredient(Blocks.BIRCH_PLANKS).ingredient("log", Blocks.STRIPPED_BIRCH_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_cherry").materialName("Stripped Cherry").ingredient(Blocks.CHERRY_PLANKS).ingredient("log", Blocks.STRIPPED_CHERRY_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_crimson").materialName("Stripped Crimson").ingredient(Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.STRIPPED_CRIMSON_STEM)),
+            new GenericTable(new ModBlock.Config().material("stripped_dark_oak").materialName("Stripped Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.STRIPPED_DARK_OAK_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_jungle").materialName("Stripped Jungle").ingredient(Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.STRIPPED_JUNGLE_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_mangrove").materialName("Stripped Mangrove").ingredient(Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.STRIPPED_MANGROVE_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_oak").materialName("Stripped Oak").ingredient(Blocks.OAK_PLANKS).ingredient("log", Blocks.STRIPPED_OAK_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_spruce").materialName("Stripped Spruce").ingredient(Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.STRIPPED_SPRUCE_LOG).flammable()),
+            new GenericTable(new ModBlock.Config().material("stripped_warped").materialName("Stripped Warped").ingredient(Blocks.WARPED_PLANKS).ingredient("log", Blocks.STRIPPED_WARPED_STEM))
         );
     }
 

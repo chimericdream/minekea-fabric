@@ -1,5 +1,6 @@
 package com.chimericdream.minekea.block.furniture.shutters;
 
+import com.chimericdream.lib.blocks.ModBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -26,53 +27,53 @@ public class Shutters implements MinekeaBlockCategory {
     public static final Map<String, OpenShutterHalf> OPEN_SHUTTER_HALVES = new LinkedHashMap<>();
 
     static {
-        SHUTTERS.put("Acacia", new ShutterBlock(BlockSetType.ACACIA, "Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG));
-        SHUTTERS.put("Bamboo", new ShutterBlock(BlockSetType.BAMBOO, "Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK));
-        SHUTTERS.put("Birch", new ShutterBlock(BlockSetType.BIRCH, "Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG));
-        SHUTTERS.put("Cherry", new ShutterBlock(BlockSetType.CHERRY, "Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG));
-        SHUTTERS.put("Crimson", new ShutterBlock(BlockSetType.CRIMSON, "Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, false));
-        SHUTTERS.put("Dark Oak", new ShutterBlock(BlockSetType.DARK_OAK, "Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_LOG));
-        SHUTTERS.put("Jungle", new ShutterBlock(BlockSetType.JUNGLE, "Jungle", Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_LOG));
-        SHUTTERS.put("Mangrove", new ShutterBlock(BlockSetType.MANGROVE, "Mangrove", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG));
-        SHUTTERS.put("Oak", new ShutterBlock(BlockSetType.OAK, "Oak", Blocks.OAK_PLANKS, Blocks.OAK_LOG));
-        SHUTTERS.put("Spruce", new ShutterBlock(BlockSetType.SPRUCE, "Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG));
-        SHUTTERS.put("Warped", new ShutterBlock(BlockSetType.WARPED, "Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false));
+        SHUTTERS.put("acacia", new ShutterBlock(BlockSetType.ACACIA, new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("log", Blocks.ACACIA_LOG).flammable()));
+        SHUTTERS.put("bamboo", new ShutterBlock(BlockSetType.BAMBOO, new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.BAMBOO_BLOCK).flammable()));
+        SHUTTERS.put("birch", new ShutterBlock(BlockSetType.BIRCH, new ModBlock.Config().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).ingredient("log", Blocks.BIRCH_LOG).flammable()));
+        SHUTTERS.put("cherry", new ShutterBlock(BlockSetType.CHERRY, new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).ingredient("log", Blocks.CHERRY_LOG).flammable()));
+        SHUTTERS.put("crimson", new ShutterBlock(BlockSetType.CRIMSON, new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.CRIMSON_STEM)));
+        SHUTTERS.put("dark_oak", new ShutterBlock(BlockSetType.DARK_OAK, new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.DARK_OAK_LOG).flammable()));
+        SHUTTERS.put("jungle", new ShutterBlock(BlockSetType.JUNGLE, new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.JUNGLE_LOG).flammable()));
+        SHUTTERS.put("mangrove", new ShutterBlock(BlockSetType.MANGROVE, new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.MANGROVE_LOG).flammable()));
+        SHUTTERS.put("oak", new ShutterBlock(BlockSetType.OAK, new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).ingredient("log", Blocks.OAK_LOG).flammable()));
+        SHUTTERS.put("spruce", new ShutterBlock(BlockSetType.SPRUCE, new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.SPRUCE_LOG).flammable()));
+        SHUTTERS.put("warped", new ShutterBlock(BlockSetType.WARPED, new ModBlock.Config().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).ingredient("log", Blocks.WARPED_STEM)));
 
-        SHUTTERS.put("Stripped Acacia", new ShutterBlock(BlockSetType.ACACIA, "Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG));
-        SHUTTERS.put("Stripped Bamboo", new ShutterBlock(BlockSetType.BAMBOO, "Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK));
-        SHUTTERS.put("Stripped Birch", new ShutterBlock(BlockSetType.BIRCH, "Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG));
-        SHUTTERS.put("Stripped Cherry", new ShutterBlock(BlockSetType.CHERRY, "Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG));
-        SHUTTERS.put("Stripped Crimson", new ShutterBlock(BlockSetType.CRIMSON, "Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false));
-        SHUTTERS.put("Stripped Dark Oak", new ShutterBlock(BlockSetType.DARK_OAK, "Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG));
-        SHUTTERS.put("Stripped Jungle", new ShutterBlock(BlockSetType.JUNGLE, "Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG));
-        SHUTTERS.put("Stripped Mangrove", new ShutterBlock(BlockSetType.MANGROVE, "Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG));
-        SHUTTERS.put("Stripped Oak", new ShutterBlock(BlockSetType.OAK, "Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG));
-        SHUTTERS.put("Stripped Spruce", new ShutterBlock(BlockSetType.SPRUCE, "Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG));
-        SHUTTERS.put("Stripped Warped", new ShutterBlock(BlockSetType.WARPED, "Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, false));
+        SHUTTERS.put("stripped_acacia", new ShutterBlock(BlockSetType.ACACIA, new ModBlock.Config().material("stripped_acacia").materialName("Stripped Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("log", Blocks.STRIPPED_ACACIA_LOG).flammable()));
+        SHUTTERS.put("stripped_bamboo", new ShutterBlock(BlockSetType.BAMBOO, new ModBlock.Config().material("stripped_bamboo").materialName("Stripped Bamboo").ingredient(Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.STRIPPED_BAMBOO_BLOCK).flammable()));
+        SHUTTERS.put("stripped_birch", new ShutterBlock(BlockSetType.BIRCH, new ModBlock.Config().material("stripped_birch").materialName("Stripped Birch").ingredient(Blocks.BIRCH_PLANKS).ingredient("log", Blocks.STRIPPED_BIRCH_LOG).flammable()));
+        SHUTTERS.put("stripped_cherry", new ShutterBlock(BlockSetType.CHERRY, new ModBlock.Config().material("stripped_cherry").materialName("Stripped Cherry").ingredient(Blocks.CHERRY_PLANKS).ingredient("log", Blocks.STRIPPED_CHERRY_LOG).flammable()));
+        SHUTTERS.put("stripped_crimson", new ShutterBlock(BlockSetType.CRIMSON, new ModBlock.Config().material("stripped_crimson").materialName("Stripped Crimson").ingredient(Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.STRIPPED_CRIMSON_STEM)));
+        SHUTTERS.put("stripped_dark_oak", new ShutterBlock(BlockSetType.DARK_OAK, new ModBlock.Config().material("stripped_dark_oak").materialName("Stripped Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.STRIPPED_DARK_OAK_LOG).flammable()));
+        SHUTTERS.put("stripped_jungle", new ShutterBlock(BlockSetType.JUNGLE, new ModBlock.Config().material("stripped_jungle").materialName("Stripped Jungle").ingredient(Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.STRIPPED_JUNGLE_LOG).flammable()));
+        SHUTTERS.put("stripped_mangrove", new ShutterBlock(BlockSetType.MANGROVE, new ModBlock.Config().material("stripped_mangrove").materialName("Stripped Mangrove").ingredient(Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.STRIPPED_MANGROVE_LOG).flammable()));
+        SHUTTERS.put("stripped_oak", new ShutterBlock(BlockSetType.OAK, new ModBlock.Config().material("stripped_oak").materialName("Stripped Oak").ingredient(Blocks.OAK_PLANKS).ingredient("log", Blocks.STRIPPED_OAK_LOG).flammable()));
+        SHUTTERS.put("stripped_spruce", new ShutterBlock(BlockSetType.SPRUCE, new ModBlock.Config().material("stripped_spruce").materialName("Stripped Spruce").ingredient(Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.STRIPPED_SPRUCE_LOG).flammable()));
+        SHUTTERS.put("stripped_warped", new ShutterBlock(BlockSetType.WARPED, new ModBlock.Config().material("stripped_warped").materialName("Stripped Warped").ingredient(Blocks.WARPED_PLANKS).ingredient("log", Blocks.STRIPPED_WARPED_STEM)));
 
-        OPEN_SHUTTER_HALVES.put("Acacia", new OpenShutterHalf(BlockSetType.ACACIA, "Acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG));
-        OPEN_SHUTTER_HALVES.put("Bamboo", new OpenShutterHalf(BlockSetType.BAMBOO, "Bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_BLOCK));
-        OPEN_SHUTTER_HALVES.put("Birch", new OpenShutterHalf(BlockSetType.BIRCH, "Birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG));
-        OPEN_SHUTTER_HALVES.put("Cherry", new OpenShutterHalf(BlockSetType.CHERRY, "Cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG));
-        OPEN_SHUTTER_HALVES.put("Crimson", new OpenShutterHalf(BlockSetType.CRIMSON, "Crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, false));
-        OPEN_SHUTTER_HALVES.put("Dark Oak", new OpenShutterHalf(BlockSetType.DARK_OAK, "Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_LOG));
-        OPEN_SHUTTER_HALVES.put("Jungle", new OpenShutterHalf(BlockSetType.JUNGLE, "Jungle", Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_LOG));
-        OPEN_SHUTTER_HALVES.put("Mangrove", new OpenShutterHalf(BlockSetType.MANGROVE, "Mangrove", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG));
-        OPEN_SHUTTER_HALVES.put("Oak", new OpenShutterHalf(BlockSetType.OAK, "Oak", Blocks.OAK_PLANKS, Blocks.OAK_LOG));
-        OPEN_SHUTTER_HALVES.put("Spruce", new OpenShutterHalf(BlockSetType.SPRUCE, "Spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG));
-        OPEN_SHUTTER_HALVES.put("Warped", new OpenShutterHalf(BlockSetType.WARPED, "Warped", Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, false));
+        OPEN_SHUTTER_HALVES.put("acacia", new OpenShutterHalf(BlockSetType.ACACIA, new ModBlock.Config().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("log", Blocks.ACACIA_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("bamboo", new OpenShutterHalf(BlockSetType.BAMBOO, new ModBlock.Config().material("bamboo").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.BAMBOO_BLOCK).flammable()));
+        OPEN_SHUTTER_HALVES.put("birch", new OpenShutterHalf(BlockSetType.BIRCH, new ModBlock.Config().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).ingredient("log", Blocks.BIRCH_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("cherry", new OpenShutterHalf(BlockSetType.CHERRY, new ModBlock.Config().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).ingredient("log", Blocks.CHERRY_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("crimson", new OpenShutterHalf(BlockSetType.CRIMSON, new ModBlock.Config().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.CRIMSON_STEM)));
+        OPEN_SHUTTER_HALVES.put("dark_oak", new OpenShutterHalf(BlockSetType.DARK_OAK, new ModBlock.Config().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.DARK_OAK_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("jungle", new OpenShutterHalf(BlockSetType.JUNGLE, new ModBlock.Config().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.JUNGLE_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("mangrove", new OpenShutterHalf(BlockSetType.MANGROVE, new ModBlock.Config().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.MANGROVE_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("oak", new OpenShutterHalf(BlockSetType.OAK, new ModBlock.Config().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).ingredient("log", Blocks.OAK_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("spruce", new OpenShutterHalf(BlockSetType.SPRUCE, new ModBlock.Config().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.SPRUCE_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("warped", new OpenShutterHalf(BlockSetType.WARPED, new ModBlock.Config().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).ingredient("log", Blocks.WARPED_STEM)));
 
-        OPEN_SHUTTER_HALVES.put("Stripped Acacia", new OpenShutterHalf(BlockSetType.ACACIA, "Stripped Acacia", Blocks.ACACIA_PLANKS, Blocks.STRIPPED_ACACIA_LOG));
-        OPEN_SHUTTER_HALVES.put("Stripped Bamboo", new OpenShutterHalf(BlockSetType.BAMBOO, "Stripped Bamboo", Blocks.BAMBOO_PLANKS, Blocks.STRIPPED_BAMBOO_BLOCK));
-        OPEN_SHUTTER_HALVES.put("Stripped Birch", new OpenShutterHalf(BlockSetType.BIRCH, "Stripped Birch", Blocks.BIRCH_PLANKS, Blocks.STRIPPED_BIRCH_LOG));
-        OPEN_SHUTTER_HALVES.put("Stripped Cherry", new OpenShutterHalf(BlockSetType.CHERRY, "Stripped Cherry", Blocks.CHERRY_PLANKS, Blocks.STRIPPED_CHERRY_LOG));
-        OPEN_SHUTTER_HALVES.put("Stripped Crimson", new OpenShutterHalf(BlockSetType.CRIMSON, "Stripped Crimson", Blocks.CRIMSON_PLANKS, Blocks.STRIPPED_CRIMSON_STEM, false));
-        OPEN_SHUTTER_HALVES.put("Stripped Dark Oak", new OpenShutterHalf(BlockSetType.DARK_OAK, "Stripped Dark Oak", Blocks.DARK_OAK_PLANKS, Blocks.STRIPPED_DARK_OAK_LOG));
-        OPEN_SHUTTER_HALVES.put("Stripped Jungle", new OpenShutterHalf(BlockSetType.JUNGLE, "Stripped Jungle", Blocks.JUNGLE_PLANKS, Blocks.STRIPPED_JUNGLE_LOG));
-        OPEN_SHUTTER_HALVES.put("Stripped Mangrove", new OpenShutterHalf(BlockSetType.MANGROVE, "Stripped Mangrove", Blocks.MANGROVE_PLANKS, Blocks.STRIPPED_MANGROVE_LOG));
-        OPEN_SHUTTER_HALVES.put("Stripped Oak", new OpenShutterHalf(BlockSetType.OAK, "Stripped Oak", Blocks.OAK_PLANKS, Blocks.STRIPPED_OAK_LOG));
-        OPEN_SHUTTER_HALVES.put("Stripped Spruce", new OpenShutterHalf(BlockSetType.SPRUCE, "Stripped Spruce", Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_SPRUCE_LOG));
-        OPEN_SHUTTER_HALVES.put("Stripped Warped", new OpenShutterHalf(BlockSetType.WARPED, "Stripped Warped", Blocks.WARPED_PLANKS, Blocks.STRIPPED_WARPED_STEM, false));
+        OPEN_SHUTTER_HALVES.put("stripped_acacia", new OpenShutterHalf(BlockSetType.ACACIA, new ModBlock.Config().material("stripped_acacia").materialName("Stripped Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("log", Blocks.STRIPPED_ACACIA_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_bamboo", new OpenShutterHalf(BlockSetType.BAMBOO, new ModBlock.Config().material("stripped_bamboo").materialName("Stripped Bamboo").ingredient(Blocks.BAMBOO_PLANKS).ingredient("log", Blocks.STRIPPED_BAMBOO_BLOCK).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_birch", new OpenShutterHalf(BlockSetType.BIRCH, new ModBlock.Config().material("stripped_birch").materialName("Stripped Birch").ingredient(Blocks.BIRCH_PLANKS).ingredient("log", Blocks.STRIPPED_BIRCH_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_cherry", new OpenShutterHalf(BlockSetType.CHERRY, new ModBlock.Config().material("stripped_cherry").materialName("Stripped Cherry").ingredient(Blocks.CHERRY_PLANKS).ingredient("log", Blocks.STRIPPED_CHERRY_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_crimson", new OpenShutterHalf(BlockSetType.CRIMSON, new ModBlock.Config().material("stripped_crimson").materialName("Stripped Crimson").ingredient(Blocks.CRIMSON_PLANKS).ingredient("log", Blocks.STRIPPED_CRIMSON_STEM)));
+        OPEN_SHUTTER_HALVES.put("stripped_dark_oak", new OpenShutterHalf(BlockSetType.DARK_OAK, new ModBlock.Config().material("stripped_dark_oak").materialName("Stripped Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).ingredient("log", Blocks.STRIPPED_DARK_OAK_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_jungle", new OpenShutterHalf(BlockSetType.JUNGLE, new ModBlock.Config().material("stripped_jungle").materialName("Stripped Jungle").ingredient(Blocks.JUNGLE_PLANKS).ingredient("log", Blocks.STRIPPED_JUNGLE_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_mangrove", new OpenShutterHalf(BlockSetType.MANGROVE, new ModBlock.Config().material("stripped_mangrove").materialName("Stripped Mangrove").ingredient(Blocks.MANGROVE_PLANKS).ingredient("log", Blocks.STRIPPED_MANGROVE_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_oak", new OpenShutterHalf(BlockSetType.OAK, new ModBlock.Config().material("stripped_oak").materialName("Stripped Oak").ingredient(Blocks.OAK_PLANKS).ingredient("log", Blocks.STRIPPED_OAK_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_spruce", new OpenShutterHalf(BlockSetType.SPRUCE, new ModBlock.Config().material("stripped_spruce").materialName("Stripped Spruce").ingredient(Blocks.SPRUCE_PLANKS).ingredient("log", Blocks.STRIPPED_SPRUCE_LOG).flammable()));
+        OPEN_SHUTTER_HALVES.put("stripped_warped", new OpenShutterHalf(BlockSetType.WARPED, new ModBlock.Config().material("stripped_warped").materialName("Stripped Warped").ingredient(Blocks.WARPED_PLANKS).ingredient("log", Blocks.STRIPPED_WARPED_STEM)));
     }
 
     @Override
