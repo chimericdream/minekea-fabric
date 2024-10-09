@@ -3,8 +3,10 @@ package com.chimericdream.minekea.block.containers;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
 import com.chimericdream.lib.fluids.FluidHelpers;
 import com.chimericdream.lib.items.ItemHelpers;
+import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.building.general.WaxBlock;
@@ -16,7 +18,6 @@ import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -50,7 +51,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
@@ -633,10 +633,8 @@ public class GlassJarBlock extends BlockWithEntity implements BlockDataGenerator
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
-            .register((itemGroup) -> itemGroup.add(this));
+        RegistryHelpers.registerBlock(this, BLOCK_ID);
+        FabricItemGroupEventHelpers.addBlockToItemGroup(this, ItemGroups.FUNCTIONAL);
     }
 
     @Override

@@ -4,13 +4,13 @@ import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
+import com.chimericdream.lib.fabric.registries.FabricRegistryHelpers;
+import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.enums.BlockHalf;
@@ -26,12 +26,8 @@ import net.minecraft.data.client.When;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
@@ -52,16 +48,12 @@ public class GenericStairsBlock extends StairsBlock implements BlockDataGenerato
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        RegistryHelpers.registerBlockWithItem(this, BLOCK_ID);
+        FabricItemGroupEventHelpers.addBlockToItemGroup(this, ItemGroups.BUILDING_BLOCKS);
 
         if (config.isFlammable()) {
-            FuelRegistry.INSTANCE.add(this, 300);
-            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+            FabricRegistryHelpers.registerFlammableBlock(this);
         }
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
-            .register((itemGroup) -> itemGroup.add(this));
     }
 
     public void configureRecipes(RecipeExporter exporter) {

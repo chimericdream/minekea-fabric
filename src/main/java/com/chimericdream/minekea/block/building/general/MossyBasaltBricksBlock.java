@@ -3,6 +3,8 @@ package com.chimericdream.minekea.block.building.general;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
+import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -15,11 +17,8 @@ import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
@@ -37,8 +36,8 @@ public class MossyBasaltBricksBlock extends Block implements BlockDataGenerator,
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        RegistryHelpers.registerBlockWithItem(this, BLOCK_ID);
+        FabricItemGroupEventHelpers.addBlockToItemGroup(this, ItemGroups.BUILDING_BLOCKS);
     }
 
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {

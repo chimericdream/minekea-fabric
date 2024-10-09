@@ -4,6 +4,8 @@ import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.fabric.registries.FabricRegistryHelpers;
+import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
@@ -26,7 +28,6 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -269,7 +270,11 @@ public class OpenShutterHalf extends Block implements BlockDataGenerator, Fabric
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        RegistryHelpers.registerBlock(this, BLOCK_ID);
+
+        if (config.isFlammable()) {
+            FabricRegistryHelpers.registerFlammableBlock(this);
+        }
     }
 
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {

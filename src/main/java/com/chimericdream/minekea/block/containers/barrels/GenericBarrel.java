@@ -4,6 +4,9 @@ import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
+import com.chimericdream.lib.fabric.registries.FabricRegistryHelpers;
+import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.resource.TextureUtils;
 import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
@@ -13,9 +16,6 @@ import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -36,13 +36,10 @@ import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
@@ -173,17 +170,12 @@ public class GenericBarrel extends BlockWithEntity implements BlockDataGenerator
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+        RegistryHelpers.registerBlockWithItem(this, BLOCK_ID);
+        FabricItemGroupEventHelpers.addBlockToItemGroup(this, ItemGroups.FUNCTIONAL);
 
         if (config.isFlammable()) {
-            FuelRegistry.INSTANCE.add(this, 300);
-            FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
+            FabricRegistryHelpers.registerFlammableBlock(this);
         }
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(itemGroup -> {
-            itemGroup.add(this);
-        });
     }
 
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {

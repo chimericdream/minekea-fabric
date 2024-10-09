@@ -25,14 +25,12 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
@@ -141,17 +139,6 @@ public class BuildingBlocks implements MinekeaBlockCategory {
     public void registerBlocks() {
         BLOCKS.forEach(block -> ((RegisterableBlock) block).register());
         BLOCK_GROUPS.forEach(MinekeaBlockCategory::registerBlocks);
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
-            .register((itemGroup) -> {
-                itemGroup.add(BASALT_BRICKS_BLOCK);
-                itemGroup.add(CHISELED_BASALT_BRICKS_BLOCK);
-                itemGroup.add(CRACKED_BASALT_BRICKS_BLOCK);
-                itemGroup.add(CRIMSON_BASALT_BRICKS_BLOCK);
-                itemGroup.add(MOSSY_BASALT_BRICKS_BLOCK);
-                itemGroup.add(WARPED_BASALT_BRICKS_BLOCK);
-                itemGroup.add(WARPED_NETHER_BRICKS_BLOCK);
-            });
     }
 
     @Override

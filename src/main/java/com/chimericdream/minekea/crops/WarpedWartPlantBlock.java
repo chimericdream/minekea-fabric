@@ -3,6 +3,7 @@ package com.chimericdream.minekea.crops;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.minekea.ModInfo;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -27,8 +28,6 @@ import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.world.ServerWorld;
@@ -100,7 +99,7 @@ public class WarpedWartPlantBlock extends PlantBlock implements BlockDataGenerat
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        RegistryHelpers.registerBlock(this, BLOCK_ID);
     }
 
     public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {

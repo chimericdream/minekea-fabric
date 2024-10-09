@@ -3,14 +3,14 @@ package com.chimericdream.minekea.block.decorations.misc;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
+import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.lib.text.TextHelpers;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CakeBlock;
@@ -24,7 +24,6 @@ import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
@@ -32,7 +31,6 @@ import net.minecraft.item.Items;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -62,11 +60,8 @@ public class FakeCake extends CakeBlock implements BlockDataGenerator, FabricBlo
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
-            .register(itemGroup -> itemGroup.add(this.asItem()));
+        RegistryHelpers.registerBlockWithItem(this, BLOCK_ID);
+        FabricItemGroupEventHelpers.addBlockToItemGroup(this, ItemGroups.BUILDING_BLOCKS);
     }
 
     public void configureRecipes(RecipeExporter exporter) {

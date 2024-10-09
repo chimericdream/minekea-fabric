@@ -4,13 +4,14 @@ import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
+import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
+import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -20,14 +21,12 @@ import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
@@ -112,11 +111,8 @@ public class GenericCompressedBlock extends Block implements BlockDataGenerator,
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
-
-        ItemGroupEvents.modifyEntriesEvent(MinekeaItemGroups.COMPRESSED_BLOCK_ITEM_GROUP_KEY)
-            .register(itemGroup -> itemGroup.add(this));
+        RegistryHelpers.registerBlockWithItem(this, BLOCK_ID);
+        FabricItemGroupEventHelpers.addBlockToItemGroup(this, MinekeaItemGroups.COMPRESSED_BLOCK_ITEM_GROUP_KEY);
     }
 
     public void configureRecipes(RecipeExporter exporter) {
