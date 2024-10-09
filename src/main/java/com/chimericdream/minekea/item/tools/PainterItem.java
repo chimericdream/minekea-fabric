@@ -1,10 +1,10 @@
 package com.chimericdream.minekea.item.tools;
 
+import com.chimericdream.lib.inventories.ImplementedInventory;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry.BlockColor;
 import com.chimericdream.minekea.screen.item.BlockPainterScreenHandler;
-import com.chimericdream.minekea.util.ImplementedInventory;
 import com.chimericdream.minekea.util.MinekeaItem;
 import com.chimericdream.minekea.util.NbtHelpers;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;

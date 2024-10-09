@@ -45,15 +45,11 @@ import net.minecraft.world.WorldView;
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_ITEM;
 
 public class WarpedWartPlantBlock extends PlantBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
-    public static final MapCodec<WarpedWartPlantBlock> CODEC = createCodec(WarpedWartPlantBlock::new);
+    public static final MapCodec<WarpedWartPlantBlock> CODEC = createCodec(_unused -> new WarpedWartPlantBlock());
 
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "crops/warped_wart/block");
     public static final IntProperty AGE;
     private static final VoxelShape[] AGE_TO_SHAPE;
-
-    public WarpedWartPlantBlock(AbstractBlock.Settings settings) {
-        this();
-    }
 
     public WarpedWartPlantBlock() {
         super(AbstractBlock.Settings.copy(Blocks.NETHER_WART).mapColor(MapColor.BRIGHT_TEAL));
@@ -83,7 +79,6 @@ public class WarpedWartPlantBlock extends PlantBlock implements BlockDataGenerat
             state = state.with(AGE, i + 1);
             world.setBlockState(pos, state, 2);
         }
-
     }
 
     public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
@@ -113,9 +108,9 @@ public class WarpedWartPlantBlock extends PlantBlock implements BlockDataGenerat
 
         generator.addDrop(
             this,
-            (block) -> LootTable.builder()
+            block -> LootTable.builder()
                 .pool(
-                    (LootPool.Builder) generator.applyExplosionDecay(
+                    generator.applyExplosionDecay(
                         block,
                         LootPool.builder()
                             .rolls(ConstantLootNumberProvider.create(1.0F))

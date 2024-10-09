@@ -205,8 +205,8 @@ public class GenericCrate extends BlockWithEntity implements BlockDataGenerator,
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
@@ -228,7 +228,7 @@ public class GenericCrate extends BlockWithEntity implements BlockDataGenerator,
         }
 
         return switch (rotation) {
-            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch ((Axis) state.get(AXIS)) {
+            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch (state.get(AXIS)) {
                 case X -> (BlockState) state.with(AXIS, Axis.Z);
                 case Z -> (BlockState) state.with(AXIS, Axis.X);
                 default -> state;
@@ -421,7 +421,7 @@ public class GenericCrate extends BlockWithEntity implements BlockDataGenerator,
 
     @Nullable
     protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-        return (NamedScreenHandlerFactory) ((Optional) this.getBlockEntitySource(state, world, pos).apply(SCREEN_RETRIEVER)).orElse((Object) null);
+        return (NamedScreenHandlerFactory) ((Optional) this.getBlockEntitySource(state, world, pos).apply(SCREEN_RETRIEVER)).orElse(null);
     }
 
     @Override

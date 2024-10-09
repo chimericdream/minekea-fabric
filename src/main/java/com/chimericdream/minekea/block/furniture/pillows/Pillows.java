@@ -1,25 +1,10 @@
 package com.chimericdream.minekea.block.furniture.pillows;
 
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-
-import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class Pillows implements MinekeaBlockCategory {
     public static final PillowBlock WHITE_PILLOW;
@@ -39,7 +24,7 @@ public class Pillows implements MinekeaBlockCategory {
     public static final PillowBlock MAGENTA_PILLOW;
     public static final PillowBlock PINK_PILLOW;
 
-    public static final List<PillowBlock> PILLOWS = new LinkedList<>();
+    public static final List<Block> BLOCKS = new ArrayList<>();
 
     static {
         WHITE_PILLOW = new PillowBlock("white");
@@ -59,7 +44,7 @@ public class Pillows implements MinekeaBlockCategory {
         MAGENTA_PILLOW = new PillowBlock("magenta");
         PINK_PILLOW = new PillowBlock("pink");
 
-        PILLOWS.addAll(List.of(
+        BLOCKS.addAll(List.of(
             WHITE_PILLOW,
             LIGHT_GRAY_PILLOW,
             GRAY_PILLOW,
@@ -79,54 +64,7 @@ public class Pillows implements MinekeaBlockCategory {
         ));
     }
 
-    @Override
-    public void registerBlocks() {
-        for (PillowBlock block : PILLOWS) {
-            block.register();
-        }
-
-        Function<FabricItemGroupEntries, Void> registerPillows = (FabricItemGroupEntries itemGroup) -> {
-            PILLOWS.forEach(itemGroup::add);
-
-            return null;
-        };
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(registerPillows::apply);
-        ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(registerPillows::apply);
-    }
-
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        PILLOWS.forEach(pillow -> pillow.configureBlockTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        PILLOWS.forEach(pillow -> pillow.configureItemTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureRecipes(RecipeExporter exporter) {
-        PILLOWS.forEach(pillow -> pillow.configureRecipes(exporter));
-    }
-
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        PILLOWS.forEach(pillow -> pillow.configureBlockLootTables(registryLookup, generator));
-    }
-
-    @Override
-    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        PILLOWS.forEach(pillow -> pillow.configureTranslations(registryLookup, translationBuilder));
-    }
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        PILLOWS.forEach(pillow -> pillow.configureBlockStateModels(blockStateModelGenerator));
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        PILLOWS.forEach(pillow -> pillow.configureItemModels(itemModelGenerator));
+    public List<Block> getCategoryBlocks() {
+        return BLOCKS;
     }
 }

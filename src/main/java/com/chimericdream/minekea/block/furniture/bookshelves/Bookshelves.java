@@ -4,25 +4,16 @@ import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 public class Bookshelves implements MinekeaBlockCategory {
-    public static final Map<String, GenericBookshelf> BOOKSHELVES = new LinkedHashMap<>();
+    public static final Map<String, Block> BOOKSHELVES = new LinkedHashMap<>();
 
     static {
         BOOKSHELVES.put("acacia", new GenericBookshelf(new BlockConfig().material("acacia").materialName("Acacia").flammable().ingredient(Blocks.ACACIA_PLANKS)));
@@ -61,43 +52,7 @@ public class Bookshelves implements MinekeaBlockCategory {
         BOOKSHELVES.put("warped_nether_brick", new GenericBookshelf(new BlockConfig().material("warped_nether_brick").materialName("Warped Nether Brick").ingredient(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK).texture("default", WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/"))));
     }
 
-    @Override
-    public void registerBlocks() {
-        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.register());
-    }
-
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureBlockTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureItemTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureRecipes(RecipeExporter exporter) {
-        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureRecipes(exporter));
-    }
-
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureBlockLootTables(registryLookup, generator));
-    }
-
-    @Override
-    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureTranslations(registryLookup, translationBuilder));
-    }
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureBlockStateModels(blockStateModelGenerator));
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        BOOKSHELVES.forEach((key, bookshelf) -> bookshelf.configureItemModels(itemModelGenerator));
+    public List<Block> getCategoryBlocks() {
+        return BOOKSHELVES.values().stream().toList();
     }
 }

@@ -1,17 +1,16 @@
 package com.chimericdream.minekea.entities.blocks.furniture;
 
+import com.chimericdream.lib.inventories.ImplementedInventory;
 import com.chimericdream.minekea.MinekeaMod;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.furniture.armoires.Armoires;
 import com.chimericdream.minekea.block.furniture.armoires.GenericArmoireBlock;
-import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ArmorItem;
@@ -39,7 +38,7 @@ import java.util.List;
 public class ArmoireBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory {
     public static final Identifier ENTITY_ID = Identifier.of(ModInfo.MOD_ID, "entities/blocks/furniture/armoire");
 
-    private BlockState cachedBlockState;
+    private final BlockState cachedBlockState;
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(16, ItemStack.EMPTY);
     private final List<ArmorStandEntity> armorStandEntities = new ArrayList<>();
 
@@ -59,6 +58,10 @@ public class ArmoireBlockEntity extends BlockEntity implements ImplementedInvent
     }
 
     public void initializeArmorStands(BlockState armoireState) {
+        if (this.world == null) {
+            return;
+        }
+
         Triplet<Double, Double, Double> stand1Pos = getArmorStandPosition(0, armoireState);
         Triplet<Double, Double, Double> stand2Pos = getArmorStandPosition(1, armoireState);
         Triplet<Double, Double, Double> stand3Pos = getArmorStandPosition(2, armoireState);
@@ -274,7 +277,7 @@ public class ArmoireBlockEntity extends BlockEntity implements ImplementedInvent
 
         armorStandEntities.get(armorStandIndex).equipStack(itemSlot, inserted);
 
-        MinekeaMod.LOGGER.info(String.format("inserting into slot: %d, armor stand: %d", slot, armorStandIndex));
+        MinekeaMod.LOGGER.info("inserting into slot: {}, armor stand: {}", slot, armorStandIndex);
     }
 
     private void handleSuccessfulRemoval(int slot) {
@@ -296,9 +299,11 @@ public class ArmoireBlockEntity extends BlockEntity implements ImplementedInvent
 
     @Override
     public void markDirty() {
-        if (this.world != null) {
-            markDirtyInWorld(this.world, this.pos, this.getCachedState());
+        if (this.world == null) {
+            return;
         }
+
+        markDirtyInWorld(this.world, this.pos, this.getCachedState());
     }
 
     protected void markDirtyInWorld(World world, BlockPos pos, BlockState state) {
@@ -317,6 +322,10 @@ public class ArmoireBlockEntity extends BlockEntity implements ImplementedInvent
     }
 
     public void playSound(SoundEvent soundEvent) {
-        this.world.playSound((PlayerEntity) null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        if (this.world == null) {
+            return;
+        }
+
+        this.world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.BLOCKS, 1.0f, 1.0f);
     }
 }

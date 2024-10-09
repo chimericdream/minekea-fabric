@@ -78,7 +78,7 @@ public class MilkBucketItemMixin extends Item implements FluidModificationItem {
             || block instanceof FluidFillable && ((FluidFillable) block).canFillWithFluid(player, world, pos, state, com.chimericdream.minekea.fluid.Fluids.MILK);
 
         if (!preventBucketPlace) {
-            return hit != null && this.placeFluid(player, world, hit.getBlockPos().offset(hit.getSide()), (BlockHitResult) null);
+            return hit != null && this.placeFluid(player, world, hit.getBlockPos().offset(hit.getSide()), null);
         } else if (world.getDimension().ultrawarm()) {
             int i = pos.getX();
             int j = pos.getY();

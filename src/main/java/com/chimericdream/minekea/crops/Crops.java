@@ -4,7 +4,6 @@ import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -12,7 +11,6 @@ import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
@@ -36,9 +34,6 @@ public class Crops implements MinekeaBlockCategory {
     public void registerBlocks() {
         WARPED_WART_PLANT_BLOCK.register();
         WARPED_WART_ITEM.register();
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
-            .register((itemGroup) -> itemGroup.add(WARPED_WART_ITEM));
     }
 
     @Override

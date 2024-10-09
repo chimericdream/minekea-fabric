@@ -9,7 +9,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
@@ -64,8 +63,8 @@ public class HoneyCauldronBlock extends LeveledCauldronBlock {
                 player.incrementStat(Stats.USE_CAULDRON);
                 player.incrementStat(Stats.USED.getOrCreateStat(item));
                 world.setBlockState(pos, Fluids.HONEY_CAULDRON.getDefaultState());
-                world.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                world.emitGameEvent((Entity) null, GameEvent.FLUID_PLACE, pos);
+                world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -80,21 +79,21 @@ public class HoneyCauldronBlock extends LeveledCauldronBlock {
                 player.incrementStat(Stats.USE_CAULDRON);
                 player.incrementStat(Stats.USED.getOrCreateStat(item));
                 LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
-                world.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                world.emitGameEvent((Entity) null, GameEvent.FLUID_PICKUP, pos);
+                world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
             }
 
             return ItemActionResult.success(world.isClient);
         });
         BEHAVIORS.map().put(Items.HONEY_BOTTLE, (state, world, pos, player, hand, stack) -> {
-            if ((Integer) state.get(LeveledCauldronBlock.LEVEL) != 3) {
+            if (state.get(LeveledCauldronBlock.LEVEL) != 3) {
                 if (!world.isClient) {
                     player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
                     player.incrementStat(Stats.USE_CAULDRON);
                     player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
-                    world.setBlockState(pos, (BlockState) state.cycle(LeveledCauldronBlock.LEVEL));
-                    world.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    world.emitGameEvent((Entity) null, GameEvent.FLUID_PLACE, pos);
+                    world.setBlockState(pos, state.cycle(LeveledCauldronBlock.LEVEL));
+                    world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
                 }
 
                 return ItemActionResult.success(world.isClient);

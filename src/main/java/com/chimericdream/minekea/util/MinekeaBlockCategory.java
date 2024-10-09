@@ -28,8 +28,12 @@ public interface MinekeaBlockCategory {
 
     default void initializeClient() {
         getCategoryBlocks().forEach(block -> {
-            if (((ModConfigurable) block).getConfig().isTranslucent()) {
-                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+            try {
+                if (((ModConfigurable) block).getConfig().isTranslucent()) {
+                    BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+                }
+            } catch (ClassCastException e) {
+                // Not everything extends ModConfigurable
             }
         });
     }

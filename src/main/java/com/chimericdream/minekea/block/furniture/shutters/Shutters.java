@@ -2,29 +2,18 @@ package com.chimericdream.minekea.block.furniture.shutters;
 
 import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-
-import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class Shutters implements MinekeaBlockCategory {
-    public static final Map<String, ShutterBlock> SHUTTERS = new LinkedHashMap<>();
-    public static final Map<String, OpenShutterHalf> OPEN_SHUTTER_HALVES = new LinkedHashMap<>();
+    public static final Map<String, Block> SHUTTERS = new LinkedHashMap<>();
+    public static final Map<String, Block> OPEN_SHUTTER_HALVES = new LinkedHashMap<>();
 
     static {
         SHUTTERS.put("acacia", new ShutterBlock(BlockSetType.ACACIA, new BlockConfig().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).ingredient("log", Blocks.ACACIA_LOG).flammable()));
@@ -76,53 +65,12 @@ public class Shutters implements MinekeaBlockCategory {
         OPEN_SHUTTER_HALVES.put("stripped_warped", new OpenShutterHalf(BlockSetType.WARPED, new BlockConfig().material("stripped_warped").materialName("Stripped Warped").ingredient(Blocks.WARPED_PLANKS).ingredient("log", Blocks.STRIPPED_WARPED_STEM)));
     }
 
-    @Override
-    public void registerBlocks() {
-        SHUTTERS.forEach((key, shutter) -> shutter.register());
-        OPEN_SHUTTER_HALVES.forEach((key, shutter) -> shutter.register());
+    public List<Block> getCategoryBlocks() {
+        List<Block> blocks = new ArrayList<>();
 
-        ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> SHUTTERS.forEach((key, shutter) -> itemGroup.add(shutter)));
-    }
+        blocks.addAll(SHUTTERS.values());
+        blocks.addAll(OPEN_SHUTTER_HALVES.values());
 
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        SHUTTERS.forEach((key, shutter) -> shutter.configureBlockTags(registryLookup, getBuilder));
-        OPEN_SHUTTER_HALVES.forEach((key, shutter) -> shutter.configureBlockTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        SHUTTERS.forEach((key, shutter) -> shutter.configureItemTags(registryLookup, getBuilder));
-        OPEN_SHUTTER_HALVES.forEach((key, shutter) -> shutter.configureItemTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureRecipes(RecipeExporter exporter) {
-        SHUTTERS.forEach((key, shutter) -> shutter.configureRecipes(exporter));
-        OPEN_SHUTTER_HALVES.forEach((key, shutter) -> shutter.configureRecipes(exporter));
-    }
-
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        SHUTTERS.forEach((key, shutter) -> shutter.configureBlockLootTables(registryLookup, generator));
-        OPEN_SHUTTER_HALVES.forEach((key, shutter) -> shutter.configureBlockLootTables(registryLookup, generator));
-    }
-
-    @Override
-    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        SHUTTERS.forEach((key, shutter) -> shutter.configureTranslations(registryLookup, translationBuilder));
-        OPEN_SHUTTER_HALVES.forEach((key, shutter) -> shutter.configureTranslations(registryLookup, translationBuilder));
-    }
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        SHUTTERS.forEach((key, shutter) -> shutter.configureBlockStateModels(blockStateModelGenerator));
-        OPEN_SHUTTER_HALVES.forEach((key, shutter) -> shutter.configureBlockStateModels(blockStateModelGenerator));
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        SHUTTERS.forEach((key, shutter) -> shutter.configureItemModels(itemModelGenerator));
-        OPEN_SHUTTER_HALVES.forEach((key, shutter) -> shutter.configureItemModels(itemModelGenerator));
+        return blocks;
     }
 }

@@ -11,6 +11,7 @@ import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
@@ -55,6 +56,8 @@ import net.minecraft.world.WorldAccess;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+
+import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class GenericTable extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     public static final String TOOLTIP_KEY = "block.minekea.furniture.tables.tooltip";
@@ -170,8 +173,10 @@ public class GenericTable extends Block implements BlockDataGenerator, FabricBlo
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+
+        ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> itemGroup.add(this));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);

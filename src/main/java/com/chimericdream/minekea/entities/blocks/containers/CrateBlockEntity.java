@@ -1,10 +1,10 @@
 package com.chimericdream.minekea.entities.blocks.containers;
 
+import com.chimericdream.lib.inventories.ImplementedInventory;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.containers.crates.Crates;
 import com.chimericdream.minekea.block.containers.crates.GenericCrate;
 import com.chimericdream.minekea.screen.crate.CrateScreenHandler;
-import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -146,10 +146,18 @@ public class CrateBlockEntity extends BlockEntity implements NamedScreenHandlerF
     }
 
     void setOpen(BlockState state, boolean open) {
-        this.world.setBlockState(this.getPos(), (BlockState) state.with(GenericCrate.OPEN, open), 3);
+        if (this.world == null) {
+            return;
+        }
+
+        this.world.setBlockState(this.getPos(), state.with(GenericCrate.OPEN, open), 3);
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {
+        if (this.world == null) {
+            return;
+        }
+
         Direction.Axis axis = state.get(GenericCrate.AXIS);
 
         Vec3i vec3i;
@@ -165,7 +173,7 @@ public class CrateBlockEntity extends BlockEntity implements NamedScreenHandlerF
         double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;
         double f = (double) this.pos.getZ() + 0.5 + (double) vec3i.getZ() / 2.0;
 
-        this.world.playSound((PlayerEntity) null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.5F);
+        this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.5F);
     }
 
     protected void onViewerCountUpdate(World world, BlockPos pos, BlockState state, int oldViewerCount, int newViewerCount) {

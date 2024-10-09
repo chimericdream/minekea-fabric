@@ -106,7 +106,7 @@ public class GenericVerticalStairsBlock extends Block implements BlockDataGenera
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState()
+        return this.getDefaultState()
             .with(FACING, ctx.getPlayer() == null ? Direction.NORTH : ctx.getPlayer().getHorizontalFacing().getOpposite())
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
@@ -138,8 +138,8 @@ public class GenericVerticalStairsBlock extends Block implements BlockDataGenera
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);

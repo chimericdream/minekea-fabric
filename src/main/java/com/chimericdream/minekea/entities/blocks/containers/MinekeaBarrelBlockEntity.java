@@ -65,7 +65,6 @@ public class MinekeaBarrelBlockEntity extends LootableContainerBlockEntity {
         if (!this.writeLootTable(nbt)) {
             Inventories.writeNbt(nbt, this.inventory, registryLookup);
         }
-
     }
 
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
@@ -74,7 +73,6 @@ public class MinekeaBarrelBlockEntity extends LootableContainerBlockEntity {
         if (!this.readLootTable(nbt)) {
             Inventories.readNbt(nbt, this.inventory, registryLookup);
         }
-
     }
 
     public int size() {
@@ -101,32 +99,39 @@ public class MinekeaBarrelBlockEntity extends LootableContainerBlockEntity {
         if (!this.removed && !player.isSpectator()) {
             this.stateManager.openContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
         }
-
     }
 
     public void onClose(PlayerEntity player) {
         if (!this.removed && !player.isSpectator()) {
             this.stateManager.closeContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
         }
-
     }
 
     public void tick() {
         if (!this.removed) {
             this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
         }
-
     }
 
     void setOpen(BlockState state, boolean open) {
+        if (this.world == null) {
+            return;
+        }
+
         this.world.setBlockState(this.getPos(), state.with(GenericBarrel.OPEN, open), 3);
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {
+        if (this.world == null) {
+            return;
+        }
+
         Vec3i vec3i = state.get(GenericBarrel.FACING).getVector();
+
         double d = (double) this.pos.getX() + 0.5 + (double) vec3i.getX() / 2.0;
         double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;
         double f = (double) this.pos.getZ() + 0.5 + (double) vec3i.getZ() / 2.0;
+
         this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.9F);
     }
 }

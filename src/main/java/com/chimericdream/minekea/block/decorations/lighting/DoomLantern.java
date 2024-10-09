@@ -40,8 +40,8 @@ public class DoomLantern extends LanternBlock implements BlockDataGenerator, Fab
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
             .register(itemGroup -> itemGroup.add(this.asItem()));

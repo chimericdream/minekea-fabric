@@ -52,8 +52,6 @@ public class MilkFluid extends FlowableFluid {
         return 4;
     }
 
-    // Removed/made protected in 1.19?
-    // @Override
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
         if (!state.isStill() && !(Boolean) state.get(FALLING)) {
             if (random.nextInt(64) == 0) {
@@ -103,7 +101,7 @@ public class MilkFluid extends FlowableFluid {
 
     @Override
     protected BlockState toBlockState(FluidState state) {
-        return (BlockState) Fluids.MILK_SOURCE_BLOCK.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
+        return Fluids.MILK_SOURCE_BLOCK.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
     }
 
     @Override

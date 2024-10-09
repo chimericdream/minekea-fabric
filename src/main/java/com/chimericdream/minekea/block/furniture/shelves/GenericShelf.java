@@ -14,6 +14,7 @@ import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
@@ -65,6 +66,8 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
 import java.util.function.Function;
+
+import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class GenericShelf extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model SHELF_MODEL = new Model(
@@ -118,21 +121,23 @@ public class GenericShelf extends BlockWithEntity implements BlockDataGenerator,
 
     @Override
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
+
+        ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> itemGroup.add(this));
     }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState) state.with(WALL_SIDE, rotation.rotate((Direction) state.get(WALL_SIDE)));
+        return state.with(WALL_SIDE, rotation.rotate(state.get(WALL_SIDE)));
     }
 
     public BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.rotate(mirror.getRotation((Direction) state.get(WALL_SIDE)));
+        return state.rotate(mirror.getRotation(state.get(WALL_SIDE)));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -143,11 +148,11 @@ public class GenericShelf extends BlockWithEntity implements BlockDataGenerator,
         Direction lookDirection = ctx.getPlayerLookDirection();
 
         if (lookDirection == Direction.DOWN || lookDirection == Direction.UP) {
-            return (BlockState) this.getDefaultState().with(WALL_SIDE, Direction.NORTH)
+            return this.getDefaultState().with(WALL_SIDE, Direction.NORTH)
                 .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
         }
 
-        return (BlockState) this.getDefaultState().with(WALL_SIDE, lookDirection.getOpposite())
+        return this.getDefaultState().with(WALL_SIDE, lookDirection.getOpposite())
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 

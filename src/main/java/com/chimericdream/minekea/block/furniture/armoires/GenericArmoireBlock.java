@@ -480,7 +480,7 @@ public class GenericArmoireBlock extends BlockWithEntity implements BlockDataGen
 
             assert entity != null;
         } catch (Exception e) {
-            MinekeaMod.LOGGER.error(String.format("The armoire at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+            MinekeaMod.LOGGER.error("The armoire at {} had an invalid block entity.\nBlock Entity: {}", pos, world.getBlockEntity(pos));
 
             return ActionResult.FAIL;
         }
@@ -525,8 +525,8 @@ public class GenericArmoireBlock extends BlockWithEntity implements BlockDataGen
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
         if (this.config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);

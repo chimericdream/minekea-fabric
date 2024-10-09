@@ -3,14 +3,15 @@ package com.chimericdream.minekea.block.furniture.seating;
 import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
+import com.chimericdream.lib.entities.SimpleSeatEntity;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
-import com.chimericdream.minekea.entities.mounts.SeatEntity;
 import com.chimericdream.minekea.util.MinekeaTextures;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
@@ -60,6 +61,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
+
+import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
 public class GenericChair extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model CHAIR_MODEL = new Model(
@@ -116,13 +119,15 @@ public class GenericChair extends Block implements BlockDataGenerator, FabricBlo
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);
             FlammableBlockRegistry.getDefaultInstance().add(this, 30, 20);
         }
+
+        ItemGroupEvents.modifyEntriesEvent(FURNITURE_ITEM_GROUP_KEY).register(itemGroup -> itemGroup.add(this));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -164,15 +169,17 @@ public class GenericChair extends Block implements BlockDataGenerator, FabricBlo
             return ActionResult.SUCCESS;
         }
 
-        List<SeatEntity> seats = world.getEntitiesByClass(SeatEntity.class, new Box(pos), (Object) -> true);
+        List<SimpleSeatEntity> seats = world.getEntitiesByClass(SimpleSeatEntity.class, new Box(pos), (Object) -> true);
 
         if (seats.isEmpty() && player.isSneaking()) {
             world.setBlockState(pos, state.with(FACING, state.get(FACING).rotateYClockwise()));
 
             return ActionResult.SUCCESS;
-        } else if (seats.isEmpty()) {
-            SeatEntity seat = Seats.SEAT_ENTITY.create(world);
-            Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() + 1.65d, hit.getBlockPos().getZ() + 0.5d);
+        }
+
+        if (seats.isEmpty()) {
+            SimpleSeatEntity seat = Seats.SEAT_ENTITY.create(world);
+            Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() - 1.15d, hit.getBlockPos().getZ() + 0.5d);
 
             seat.updatePosition(seatPos.getX(), seatPos.getY(), seatPos.getZ());
             world.spawnEntity(seat);

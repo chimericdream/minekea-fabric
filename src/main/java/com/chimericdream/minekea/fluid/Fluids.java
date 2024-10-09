@@ -77,15 +77,9 @@ public class Fluids implements MinekeaBlockCategory {
     }
 
     @Override
-    public void initializeClient() {
-    }
-
-    @Override
     public void registerBlocks() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
-            .register((itemGroup) -> {
-                itemGroup.add(HONEY_BUCKET);
-            });
+            .register((itemGroup) -> itemGroup.add(HONEY_BUCKET));
     }
 
     @Override

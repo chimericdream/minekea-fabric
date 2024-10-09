@@ -7,7 +7,6 @@ import com.chimericdream.minekea.block.building.covers.Covers;
 import com.chimericdream.minekea.block.building.dyed.DyedBlocks;
 import com.chimericdream.minekea.block.furniture.displaycases.DisplayCases;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -49,7 +48,7 @@ public class MinekeaItemGroups {
 
     static {
         BEAMS = FabricItemGroup.builder()
-            .icon(() -> new ItemStack((Block) Beams.BLOCKS.getFirst()))
+            .icon(() -> new ItemStack(Beams.BLOCKS.getFirst()))
             .displayName(Text.translatable("item_group.minekea.blocks.building.beams"))
             .build();
 
@@ -59,7 +58,7 @@ public class MinekeaItemGroups {
             .build();
 
         DYED_BLOCKS = FabricItemGroup.builder()
-            .icon(() -> new ItemStack((Block) DyedBlocks.BLOCKS.getFirst()))
+            .icon(() -> new ItemStack(DyedBlocks.BLOCKS.getFirst()))
             .displayName(Text.translatable("item_group.minekea.blocks.building.dyed"))
             .build();
 
@@ -69,7 +68,7 @@ public class MinekeaItemGroups {
             .build();
 
         FURNITURE = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(DisplayCases.DISPLAY_CASES.getFirst()))
+            .icon(() -> new ItemStack(DisplayCases.BLOCKS.getFirst()))
             .displayName(Text.translatable("item_group.minekea.blocks.furniture"))
             .build();
     }

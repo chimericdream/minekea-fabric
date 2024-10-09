@@ -1,28 +1,24 @@
 package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.minekea.item.currency.NuggetBag;
-import com.chimericdream.minekea.tag.MinekeaItemTags;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
@@ -44,7 +40,7 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final DyeBlock RED_DYE_BLOCK;
     public static final DyeBlock BLACK_DYE_BLOCK;
 
-    public static final List<DyeBlock> DYE_BLOCKS;
+    public static final List<Block> DYE_BLOCKS;
 
     public static final GenericStorageBlock APPLE_STORAGE_BLOCK;
     public static final GenericStorageBlock BEETROOT_BLOCK;
@@ -74,8 +70,10 @@ public class StorageBlocks implements MinekeaBlockCategory {
     public static final GenericStorageBlock WALLPAPER_BLOCK;
     public static final GenericStorageBlock WHEAT_SEEDS_BLOCK;
 
-    public static final List<GenericStorageBlock> STORAGE_BLOCKS;
-    public static final List<GenericStorageBlock> BAGGED_BLOCKS;
+    public static final List<Block> STORAGE_BLOCKS;
+    public static final List<Block> BAGGED_BLOCKS;
+
+    public static final List<Block> ALL_BLOCKS = new ArrayList<>();
 
     public static final NuggetBag GOLD_NUGGET_BAG;
     public static final NuggetBag IRON_NUGGET_BAG;
@@ -199,6 +197,10 @@ public class StorageBlocks implements MinekeaBlockCategory {
             SUGAR_BLOCK,
             WHEAT_SEEDS_BLOCK
         );
+
+        ALL_BLOCKS.addAll(DYE_BLOCKS);
+        ALL_BLOCKS.addAll(STORAGE_BLOCKS);
+        ALL_BLOCKS.add(SET_OF_EGGS_BLOCK);
     }
 
     @Environment(EnvType.CLIENT)
@@ -211,84 +213,46 @@ public class StorageBlocks implements MinekeaBlockCategory {
         BlockRenderLayerMap.INSTANCE.putBlock(SUGAR_CANE_BLOCK, RenderLayer.getTranslucent());
     }
 
-    @Override
-    public void registerBlocks() {
-        DYE_BLOCKS.forEach(DyeBlock::register);
-        STORAGE_BLOCKS.forEach(GenericStorageBlock::register);
-        SET_OF_EGGS_BLOCK.register();
-        GOLD_NUGGET_BAG.register();
-        IRON_NUGGET_BAG.register();
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS)
-            .register(itemGroup -> DYE_BLOCKS.forEach(itemGroup::add));
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
-            .register(itemGroup -> {
-                STORAGE_BLOCKS.forEach(itemGroup::add);
-
-                itemGroup.add(SET_OF_EGGS_BLOCK);
-            });
+    public List<Block> getCategoryBlocks() {
+        return ALL_BLOCKS;
     }
 
     @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        DYE_BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
-        STORAGE_BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
-        SET_OF_EGGS_BLOCK.configureBlockTags(registryLookup, getBuilder);
+    public void registerBlocks() {
+        MinekeaBlockCategory.super.registerBlocks();
+
+        GOLD_NUGGET_BAG.register();
+        IRON_NUGGET_BAG.register();
     }
 
     @Override
     public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        DYE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
-        STORAGE_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
-        SET_OF_EGGS_BLOCK.configureItemTags(registryLookup, getBuilder);
+        MinekeaBlockCategory.super.configureItemTags(registryLookup, getBuilder);
+
         GOLD_NUGGET_BAG.configureItemTags(registryLookup, getBuilder);
         IRON_NUGGET_BAG.configureItemTags(registryLookup, getBuilder);
-
-        BAGGED_BLOCKS.forEach(
-            block -> getBuilder.apply(MinekeaItemTags.BAGGED_ITEMS)
-                .setReplace(false)
-                .add(block.asItem())
-        );
     }
 
     @Override
     public void configureRecipes(RecipeExporter exporter) {
-        DYE_BLOCKS.forEach(block -> block.configureRecipes(exporter));
-        STORAGE_BLOCKS.forEach(block -> block.configureRecipes(exporter));
-        SET_OF_EGGS_BLOCK.configureRecipes(exporter);
+        MinekeaBlockCategory.super.configureRecipes(exporter);
+
         GOLD_NUGGET_BAG.configureRecipes(exporter);
         IRON_NUGGET_BAG.configureRecipes(exporter);
     }
 
     @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        DYE_BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
-        STORAGE_BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
-        SET_OF_EGGS_BLOCK.configureBlockLootTables(registryLookup, generator);
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        DYE_BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
-        STORAGE_BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
-        SET_OF_EGGS_BLOCK.configureTranslations(registryLookup, translationBuilder);
+        MinekeaBlockCategory.super.configureTranslations(registryLookup, translationBuilder);
+
         GOLD_NUGGET_BAG.configureTranslations(registryLookup, translationBuilder);
         IRON_NUGGET_BAG.configureTranslations(registryLookup, translationBuilder);
     }
 
     @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        DYE_BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
-        STORAGE_BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
-        SET_OF_EGGS_BLOCK.configureBlockStateModels(blockStateModelGenerator);
-    }
-
-    @Override
     public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        DYE_BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
-        STORAGE_BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
-        SET_OF_EGGS_BLOCK.configureItemModels(itemModelGenerator);
+        MinekeaBlockCategory.super.configureItemModels(itemModelGenerator);
+
         GOLD_NUGGET_BAG.configureItemModels(itemModelGenerator);
         IRON_NUGGET_BAG.configureItemModels(itemModelGenerator);
     }

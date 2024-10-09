@@ -152,7 +152,7 @@ public class DisplayCaseBlockEntityRenderer<T extends DisplayCaseBlockEntity> im
             float f = 1.5F;
             int i = "deadmau5".equals(text.getString()) ? -10 : 0;
             matrices.push();
-            matrices.translate(0.5, (double) f, 0.5);
+            matrices.translate(0.5, f, 0.5);
             matrices.multiply(dispatcher.camera.getRotation());
             matrices.scale(-0.025F, -0.025F, 0.025F);
             Matrix4f matrix4f = matrices.peek().getPositionMatrix();

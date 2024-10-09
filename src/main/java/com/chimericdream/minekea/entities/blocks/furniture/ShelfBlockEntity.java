@@ -1,12 +1,11 @@
 package com.chimericdream.minekea.entities.blocks.furniture;
 
+import com.chimericdream.lib.inventories.ImplementedInventory;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.furniture.shelves.Shelves;
-import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
@@ -119,6 +118,10 @@ public class ShelfBlockEntity extends BlockEntity implements ImplementedInventor
     }
 
     public void playSound(SoundEvent soundEvent) {
-        this.world.playSound((PlayerEntity) null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        if (this.world == null) {
+            return;
+        }
+
+        this.world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.BLOCKS, 1.0f, 1.0f);
     }
 }

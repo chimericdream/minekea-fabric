@@ -1,13 +1,12 @@
 package com.chimericdream.minekea.entities.blocks.containers;
 
+import com.chimericdream.lib.inventories.ImplementedInventory;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.block.containers.ContainerBlocks;
 import com.chimericdream.minekea.tag.MinekeaItemTags;
-import com.chimericdream.minekea.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventories;
@@ -366,10 +365,12 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
         if (storedFluid.matchesType(Fluids.EMPTY)) {
             nbt.putString(FLUID_KEY, "NONE");
             nbt.putDouble(FLUID_AMT_KEY, 0.0);
-        } else {
-            nbt.putString(FLUID_KEY, Registries.FLUID.getId(storedFluid).toString());
-            nbt.putDouble(FLUID_AMT_KEY, fluidAmountInBuckets);
+
+            return;
         }
+
+        nbt.putString(FLUID_KEY, Registries.FLUID.getId(storedFluid).toString());
+        nbt.putDouble(FLUID_AMT_KEY, fluidAmountInBuckets);
     }
 
     public void writeMobNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
@@ -444,6 +445,10 @@ public class GlassJarBlockEntity extends BlockEntity implements ImplementedInven
     }
 
     public void playSound(SoundEvent soundEvent) {
-        this.world.playSound((PlayerEntity) null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        if (this.world == null) {
+            return;
+        }
+
+        this.world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.BLOCKS, 1.0f, 1.0f);
     }
 }

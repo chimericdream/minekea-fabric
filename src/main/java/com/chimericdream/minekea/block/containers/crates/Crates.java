@@ -11,31 +11,22 @@ import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.screen.ScreenHandlerType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 public class Crates implements MinekeaBlockCategory {
-    public static final List<GenericCrate> CRATES = new ArrayList<>();
+    public static final List<Block> CRATES = new ArrayList<>();
 
     public static BlockEntityType<CrateBlockEntity> CRATE_BLOCK_ENTITY;
     public static ScreenHandlerType<CrateScreenHandler> CRATE_SCREEN_HANDLER;
@@ -56,7 +47,7 @@ public class Crates implements MinekeaBlockCategory {
 
         List<GenericCrate> trapped = new ArrayList<>();
         CRATES.forEach(crate -> {
-            trapped.add(new TrappedCrate(crate.config, crate));
+            trapped.add(new TrappedCrate(((GenericCrate) crate).config, crate));
         });
         CRATES.addAll(trapped);
 
@@ -80,66 +71,29 @@ public class Crates implements MinekeaBlockCategory {
         HandledScreens.register(DOUBLE_CRATE_SCREEN_HANDLER, DoubleCrateScreen::new);
     }
 
-    @Override
-    public void registerBlocks() {
-        CRATES.forEach(GenericCrate::register);
+    public List<Block> getCategoryBlocks() {
+        return CRATES;
     }
 
     @Override
     public void registerBlockEntities() {
-        List<GenericCrate> crates = new ArrayList<>(CRATES);
-
         CRATE_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             CrateBlockEntity.ENTITY_ID,
-            FabricBlockEntityTypeBuilder.create(
+            BlockEntityType.Builder.create(
                 CrateBlockEntity::new,
-                crates.toArray(new Block[0])
+                CRATES.toArray(new Block[0])
             ).build(null)
         );
     }
 
     @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        CRATES.forEach(crate -> crate.configureBlockTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        CRATES.forEach(crate -> crate.configureItemTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureRecipes(RecipeExporter exporter) {
-        CRATES.forEach(crate -> crate.configureRecipes(exporter));
-    }
-
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        CRATES.forEach(crate -> crate.configureBlockLootTables(registryLookup, generator));
-    }
-
-    @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        CRATES.forEach(crate -> crate.configureTranslations(registryLookup, translationBuilder));
+        MinekeaBlockCategory.super.configureTranslations(registryLookup, translationBuilder);
+
         translationBuilder.add("minekea:screens/container/crate", "Crate");
         translationBuilder.add("minekea:screens/container/double_crate", "Large Crate");
         translationBuilder.add("minekea:screens/container/crate/trapped", "Trapped Crate");
         translationBuilder.add("minekea:screens/container/double_crate/trapped", "Trapped Large Crate");
-    }
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        CRATES.forEach(crate -> crate.configureBlockStateModels(blockStateModelGenerator));
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        CRATES.forEach(crate -> crate.configureItemModels(itemModelGenerator));
-    }
-
-    @Override
-    public void generateTextures() {
-        CRATES.forEach(GenericCrate::generateTextures);
     }
 }

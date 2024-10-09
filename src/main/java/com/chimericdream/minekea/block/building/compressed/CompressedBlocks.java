@@ -8,20 +8,11 @@ import com.chimericdream.minekea.block.building.general.CrimsonBasaltBricksBlock
 import com.chimericdream.minekea.block.building.general.MossyBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
-import com.chimericdream.minekea.item.MinekeaItemGroups;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import oshi.util.tuples.Quartet;
 import oshi.util.tuples.Quintet;
@@ -31,14 +22,13 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 import static com.chimericdream.minekea.block.building.compressed.GenericCompressedBlock.TOOLTIP_COUNT;
 import static com.chimericdream.minekea.block.building.compressed.GenericCompressedBlock.TOOLTIP_LEVEL;
 
 public class CompressedBlocks implements MinekeaBlockCategory {
-    public static final Map<String, List<GenericCompressedBlock>> BLOCK_MAP = new LinkedHashMap<>();
-    public static final List<GenericCompressedBlock> BLOCKS = new ArrayList<>();
+    public static final Map<String, List<Block>> BLOCK_MAP = new LinkedHashMap<>();
+    public static final List<Block> BLOCKS = new ArrayList<>();
 
     protected static final List<Triplet<String, String, Block>> BLOCKS_TO_COMPRESS = new ArrayList<>();
     protected static final List<Quintet<String, String, Block, String, String>> COLUMN_BLOCKS_TO_COMPRESS = new ArrayList<>();
@@ -172,7 +162,7 @@ public class CompressedBlocks implements MinekeaBlockCategory {
             String material = data.getB();
             Block ingredient = data.getC();
 
-            List<GenericCompressedBlock> compressedBlocks = new ArrayList<>();
+            List<Block> compressedBlocks = new ArrayList<>();
 
             for (int i = 1; i <= 9; i += 1) {
                 compressedBlocks.add(new GenericCompressedBlock(new BlockConfig().material(material).materialName(materialName).ingredient(ingredient), i));
@@ -207,7 +197,7 @@ public class CompressedBlocks implements MinekeaBlockCategory {
             String sideTextureSuffix = data.getD();
             String endTextureSuffix = data.getE();
 
-            List<GenericCompressedBlock> compressedBlocks = new ArrayList<>();
+            List<Block> compressedBlocks = new ArrayList<>();
 
             for (int i = 1; i <= 9; i += 1) {
                 compressedBlocks.add(new CompressedColumnBlock(new BlockConfig().material(material).materialName(materialName).ingredient(ingredient), i, sideTextureSuffix, endTextureSuffix));
@@ -230,7 +220,7 @@ public class CompressedBlocks implements MinekeaBlockCategory {
             Block ingredient = data.getC();
             Identifier baseBlockId = data.getD();
 
-            List<GenericCompressedBlock> compressedBlocks = new ArrayList<>();
+            List<Block> compressedBlocks = new ArrayList<>();
 
             for (int i = 1; i <= 9; i += 1) {
                 compressedBlocks.add(new CompressedMinekeaBlock(new BlockConfig().material(material).materialName(materialName).ingredient(ingredient), i, baseBlockId));
@@ -241,54 +231,15 @@ public class CompressedBlocks implements MinekeaBlockCategory {
         });
     }
 
-    @Override
-    public void registerBlocks() {
-        BLOCKS.forEach(GenericCompressedBlock::register);
-
-        ItemGroupEvents.modifyEntriesEvent(MinekeaItemGroups.COMPRESSED_BLOCK_ITEM_GROUP_KEY)
-            .register((itemGroup) -> BLOCKS.forEach(itemGroup::add));
-    }
-
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureRecipes(RecipeExporter exporter) {
-        BLOCKS.forEach(block -> block.configureRecipes(exporter));
-    }
-
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
+    public List<Block> getCategoryBlocks() {
+        return BLOCKS;
     }
 
     @Override
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
+        MinekeaBlockCategory.super.configureTranslations(registryLookup, translationBuilder);
 
         translationBuilder.add(TOOLTIP_LEVEL, "%dx Compressed");
         translationBuilder.add(TOOLTIP_COUNT, "(%s blocks)");
-    }
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
-    }
-
-    @Override
-    public void generateTextures() {
-        BLOCKS.forEach(GenericCompressedBlock::generateTextures);
     }
 }

@@ -3,17 +3,8 @@ package com.chimericdream.minekea.block.building.dyed;
 import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.DyeColor;
 import oshi.util.tuples.Triplet;
 
@@ -21,14 +12,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 public class DyedBlocks implements MinekeaBlockCategory {
-    public static final Map<String, DyedBlock> BLOCK_MAP = new LinkedHashMap<>();
-    public static final List<DyedBlock> BLOCKS = new ArrayList<>();
+    public static final Map<String, Block> BLOCK_MAP = new LinkedHashMap<>();
+    public static final List<Block> BLOCKS = new ArrayList<>();
 
-    public static final Map<String, DyedPillarBlock> PILLAR_BLOCK_MAP = new LinkedHashMap<>();
-    public static final List<DyedPillarBlock> PILLAR_BLOCKS = new ArrayList<>();
+    public static final Map<String, Block> PILLAR_BLOCK_MAP = new LinkedHashMap<>();
 
     protected static final List<Triplet<String, String, Block>> BLOCKS_TO_DYE = List.of(
         new Triplet<>("Bricks", "bricks", Blocks.BRICKS),
@@ -191,13 +180,16 @@ public class DyedBlocks implements MinekeaBlockCategory {
         });
 
         BLOCK_MAP.forEach((unused, block) -> BLOCKS.add(block));
-        PILLAR_BLOCK_MAP.forEach((unused, block) -> PILLAR_BLOCKS.add(block));
+        PILLAR_BLOCK_MAP.forEach((unused, block) -> BLOCKS.add(block));
+    }
+
+    public List<Block> getCategoryBlocks() {
+        return BLOCKS;
     }
 
     @Override
     public void registerBlocks() {
-        BLOCK_MAP.values().forEach(DyedBlock::register);
-        PILLAR_BLOCK_MAP.values().forEach(DyedPillarBlock::register);
+        MinekeaBlockCategory.super.registerBlocks();
 
         BLOCKS_TO_DYE.forEach(data -> {
             String textureKey = data.getB();
@@ -240,53 +232,5 @@ public class DyedBlocks implements MinekeaBlockCategory {
             ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "magenta"), textureKey, ColoredBlocksRegistry.BlockColor.MAGENTA);
             ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "pink"), textureKey, ColoredBlocksRegistry.BlockColor.PINK);
         });
-    }
-
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-        BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
-        PILLAR_BLOCKS.forEach(block -> block.configureBlockTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
-        BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
-        PILLAR_BLOCKS.forEach(block -> block.configureItemTags(registryLookup, getBuilder));
-    }
-
-    @Override
-    public void configureRecipes(RecipeExporter exporter) {
-        BLOCKS.forEach(block -> block.configureRecipes(exporter));
-        PILLAR_BLOCKS.forEach(block -> block.configureRecipes(exporter));
-    }
-
-    @Override
-    public void configureBlockLootTables(RegistryWrapper.WrapperLookup registryLookup, BlockLootTableGenerator generator) {
-        BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
-        PILLAR_BLOCKS.forEach(block -> block.configureBlockLootTables(registryLookup, generator));
-    }
-
-    @Override
-    public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
-        BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
-        PILLAR_BLOCKS.forEach(block -> block.configureTranslations(registryLookup, translationBuilder));
-    }
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
-        PILLAR_BLOCKS.forEach(block -> block.configureBlockStateModels(blockStateModelGenerator));
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-        BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
-        PILLAR_BLOCKS.forEach(block -> block.configureItemModels(itemModelGenerator));
-    }
-
-    @Override
-    public void generateTextures() {
-        BLOCKS.forEach(DyedBlock::generateTextures);
-        PILLAR_BLOCKS.forEach(DyedPillarBlock::generateTextures);
     }
 }

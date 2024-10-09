@@ -24,6 +24,7 @@ import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItem;
@@ -86,7 +87,14 @@ public class GenericCoverBlock extends CarpetBlock implements BlockDataGenerator
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayer().getHorizontalFacing().getOpposite())
+        PlayerEntity player = ctx.getPlayer();
+
+        Direction facing = Direction.NORTH;
+        if (player != null) {
+            facing = ctx.getPlayer().getHorizontalFacing().getOpposite();
+        }
+
+        return this.getDefaultState().with(FACING, facing)
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
@@ -105,8 +113,8 @@ public class GenericCoverBlock extends CarpetBlock implements BlockDataGenerator
     }
 
     public void register() {
-        Registry.register(Registries.BLOCK, BLOCK_ID, (Block) this);
-        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem((Block) this, new Item.Settings()));
+        Registry.register(Registries.BLOCK, BLOCK_ID, this);
+        Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
 
         if (config.isFlammable()) {
             FuelRegistry.INSTANCE.add(this, 300);

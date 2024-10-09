@@ -233,8 +233,15 @@ public class GlassJarBlock extends BlockWithEntity implements BlockDataGenerator
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        PlayerEntity player = ctx.getPlayer();
+        Direction facing = Direction.NORTH;
+
+        if (player != null) {
+            facing = player.getHorizontalFacing().getOpposite();
+        }
+
         return this.getDefaultState()
-            .with(FACING, ctx.getPlayer().getHorizontalFacing().getOpposite())
+            .with(FACING, facing)
             .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
@@ -250,7 +257,7 @@ public class GlassJarBlock extends BlockWithEntity implements BlockDataGenerator
             entity = (GlassJarBlockEntity) world.getBlockEntity(pos);
             assert entity != null;
         } catch (Exception e) {
-            MinekeaMod.LOGGER.error(String.format("The glass jar at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+            MinekeaMod.LOGGER.error("The glass jar at {} had an invalid block entity.\nBlock Entity: {}", pos, world.getBlockEntity(pos));
 
             return;
         }
@@ -307,7 +314,7 @@ public class GlassJarBlock extends BlockWithEntity implements BlockDataGenerator
             entity = (GlassJarBlockEntity) world.getBlockEntity(pos);
             assert entity != null;
         } catch (Exception e) {
-            MinekeaMod.LOGGER.error(String.format("The glass jar at %s had an invalid block entity.\nBlock Entity: %s", pos, world.getBlockEntity(pos)));
+            MinekeaMod.LOGGER.error("The glass jar at {} had an invalid block entity.\nBlock Entity: {}", pos, world.getBlockEntity(pos));
 
             return ActionResult.FAIL;
         }
