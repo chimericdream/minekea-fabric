@@ -141,18 +141,19 @@ public class GenericStool extends Block implements BlockDataGenerator, FabricBlo
 
         List<SimpleSeatEntity> seats = world.getEntitiesByClass(SimpleSeatEntity.class, new Box(pos), (Object) -> true);
 
-        if (seats.isEmpty()) {
-            SimpleSeatEntity seat = Seats.SEAT_ENTITY.create(world);
-            Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() - 1.25d, hit.getBlockPos().getZ() + 0.5d);
-
-            seat.updatePosition(seatPos.getX(), seatPos.getY(), seatPos.getZ());
-            world.spawnEntity(seat);
-            player.startRiding(seat);
-
-            return ActionResult.SUCCESS;
+        if (!seats.isEmpty()) {
+            return ActionResult.PASS;
         }
 
-        return ActionResult.PASS;
+        SimpleSeatEntity seat = Seats.SEAT_ENTITY.create(world);
+        // @TODO: The y-value will need to change to -1.25d when I switch from `FabricEntityTypeBuilder.create` to `EntityType.Builder.create` in `Seats.java`
+        Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() + 1.5d, hit.getBlockPos().getZ() + 0.5d);
+
+        seat.updatePosition(seatPos.getX(), seatPos.getY(), seatPos.getZ());
+        world.spawnEntity(seat);
+        player.startRiding(seat);
+
+        return ActionResult.SUCCESS;
     }
 
     @Override

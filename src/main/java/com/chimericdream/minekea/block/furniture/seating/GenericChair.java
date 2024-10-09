@@ -179,7 +179,8 @@ public class GenericChair extends Block implements BlockDataGenerator, FabricBlo
 
         if (seats.isEmpty()) {
             SimpleSeatEntity seat = Seats.SEAT_ENTITY.create(world);
-            Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() - 1.15d, hit.getBlockPos().getZ() + 0.5d);
+            // @TODO: The y-value will need to change to -1.15d when I switch from `FabricEntityTypeBuilder.create` to `EntityType.Builder.create` in `Seats.java`
+            Vec3d seatPos = new Vec3d(hit.getBlockPos().getX() + 0.5d, hit.getBlockPos().getY() + 1.65d, hit.getBlockPos().getZ() + 0.5d);
 
             seat.updatePosition(seatPos.getX(), seatPos.getY(), seatPos.getZ());
             world.spawnEntity(seat);

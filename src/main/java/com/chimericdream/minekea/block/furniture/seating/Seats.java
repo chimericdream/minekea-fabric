@@ -5,6 +5,7 @@ import com.chimericdream.lib.entities.SimpleSeatEntity;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -86,7 +87,13 @@ public class Seats implements MinekeaBlockCategory {
         SEAT_ENTITY = Registry.register(
             Registries.ENTITY_TYPE,
             SEAT_ENTITY_ID,
-            EntityType.Builder.create(SimpleSeatEntity::new, SpawnGroup.MISC).build(SEAT_ENTITY_ID.toString())
+            /*
+             * @TODO: change this to `EntityType.Builder.create` and update `GenericStool` and `GenericChair` afterward.
+             *        The reason this hasn't been done yet is that I apparently need to write a datafixer for
+             *        the entity type.
+             */
+            // EntityType.Builder.create(SimpleSeatEntity::new, SpawnGroup.MISC).build(SEAT_ENTITY_ID.toString())
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, SimpleSeatEntity::new).build()
         );
     }
 }
