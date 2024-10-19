@@ -96,7 +96,7 @@ public class GenericVerticalStairsBlock extends Block implements MinekeaBlock, W
     }
 
     public GenericVerticalStairsBlock(String materialName, String material, boolean isFlammable, Block ingredient, Tool miningTool) {
-        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient));
+        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient), miningTool);
     }
 
     public GenericVerticalStairsBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {

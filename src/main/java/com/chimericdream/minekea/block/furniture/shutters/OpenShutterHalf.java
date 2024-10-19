@@ -18,6 +18,7 @@ import net.minecraft.data.client.MultipartBlockStateSupplier;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.client.VariantSettings;
 import net.minecraft.data.client.When;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -50,6 +51,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
+
+import static com.chimericdream.minekea.block.furniture.shutters.Shutters.SHUTTERS;
 
 public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggable {
     protected static final Model LEFT_HALF_MODEL = new Model(
@@ -105,7 +108,7 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
     }
 
     public OpenShutterHalf(BlockSetType type, String materialName, Block plankIngredient, Block logIngredient, boolean isFlammable) {
-        super(AbstractBlock.Settings.copy(Blocks.BARRIER));
+        super(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS));
 
         this.setDefaultState(
             this.stateManager
@@ -132,7 +135,7 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
 
     @Override
     public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
-        return new ItemStack(Shutters.SHUTTERS.get(materialName));
+        return new ItemStack(SHUTTERS.get(materialName));
     }
 
     @Override
@@ -222,6 +225,18 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
         if (centerState.get(WATERLOGGED)) {
             world.scheduleFluidTick(centerPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
+
+        ItemEntity itemEntity = new ItemEntity(
+            world,
+            (double) pos.getX() + 0.5D,
+            (double) pos.getY() + 0.5D,
+            (double) pos.getZ() + 0.5D,
+            SHUTTERS.get(materialName).asItem().getDefaultStack()
+        );
+
+        itemEntity.setToDefaultPickupDelay();
+
+        world.spawnEntity(itemEntity);
 
         return super.onBreak(world, centerPos, centerState, player);
     }
