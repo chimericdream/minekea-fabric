@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.building.dyed;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -15,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.DyeColor;
+import oshi.util.tuples.Pair;
 import oshi.util.tuples.Quartet;
 import oshi.util.tuples.Triplet;
 
@@ -28,22 +30,22 @@ public class DyedBlocks implements MinekeaBlockCategory {
     public static final Map<String, MinekeaBlock> BLOCK_MAP = new LinkedHashMap<>();
     public static final List<MinekeaBlock> BLOCKS = new ArrayList<>();
 
-    protected static final List<Triplet<String, String, Block>> BLOCKS_TO_DYE = List.of(
-        new Triplet<>("Bricks", "bricks", Blocks.BRICKS),
-        new Triplet<>("Calcite", "calcite", Blocks.CALCITE),
-        new Triplet<>("Cobblestone", "cobblestone", Blocks.COBBLESTONE),
-        new Triplet<>("Dark Prismarine", "dark_prismarine", Blocks.DARK_PRISMARINE),
-        new Triplet<>("Mud Bricks", "mud_bricks", Blocks.MUD_BRICKS),
-        new Triplet<>("Oak Planks", "oak_planks", Blocks.OAK_PLANKS),
-        new Triplet<>("Prismarine", "prismarine", Blocks.PRISMARINE),
-        new Triplet<>("Prismarine Bricks", "prismarine_bricks", Blocks.PRISMARINE_BRICKS),
-        new Triplet<>("Smooth Stone", "smooth_stone", Blocks.SMOOTH_STONE),
-        new Triplet<>("Stone", "stone", Blocks.STONE),
-        new Triplet<>("Stone Bricks", "stone_bricks", Blocks.STONE_BRICKS)
+    protected static final List<Triplet<Pair<String, String>, Block, Tool>> BLOCKS_TO_DYE = List.of(
+        new Triplet<>(new Pair<>("Bricks", "bricks"), Blocks.BRICKS, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Calcite", "calcite"), Blocks.CALCITE, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Cobblestone", "cobblestone"), Blocks.COBBLESTONE, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Dark Prismarine", "dark_prismarine"), Blocks.DARK_PRISMARINE, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Mud Bricks", "mud_bricks"), Blocks.MUD_BRICKS, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Oak Planks", "oak_planks"), Blocks.OAK_PLANKS, Tool.AXE),
+        new Triplet<>(new Pair<>("Prismarine", "prismarine"), Blocks.PRISMARINE, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Prismarine Bricks", "prismarine_bricks"), Blocks.PRISMARINE_BRICKS, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Smooth Stone", "smooth_stone"), Blocks.SMOOTH_STONE, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Stone", "stone"), Blocks.STONE, Tool.PICKAXE),
+        new Triplet<>(new Pair<>("Stone Bricks", "stone_bricks"), Blocks.STONE_BRICKS, Tool.PICKAXE)
     );
 
-    protected static final List<Quartet<String, String, String, Block>> PILLAR_BLOCKS_TO_DYE = List.of(
-        new Quartet<>("Bone Block", "bone_block_top", "bone_block_side", Blocks.BONE_BLOCK)
+    protected static final List<Quartet<String, Pair<String, String>, Block, Tool>> PILLAR_BLOCKS_TO_DYE = List.of(
+        new Quartet<>("Bone Block", new Pair<>("bone_block_top", "bone_block_side"), Blocks.BONE_BLOCK, Tool.PICKAXE)
     );
 
     protected static final List<MinekeaBlock> WHITE_BLOCKS = new ArrayList<>();
@@ -65,26 +67,27 @@ public class DyedBlocks implements MinekeaBlockCategory {
 
     static {
         BLOCKS_TO_DYE.forEach(data -> {
-            String materialName = data.getA();
-            String textureKey = data.getB();
-            Block baseBlock = data.getC();
+            String materialName = data.getA().getA();
+            String textureKey = data.getA().getB();
+            Block baseBlock = data.getB();
+            Tool miningTool = data.getC();
 
-            DyedBlock whiteBlock = new DyedBlock(DyeColor.WHITE, materialName, textureKey, baseBlock);
-            DyedBlock lightGrayBlock = new DyedBlock(DyeColor.LIGHT_GRAY, materialName, textureKey, baseBlock);
-            DyedBlock grayBlock = new DyedBlock(DyeColor.GRAY, materialName, textureKey, baseBlock);
-            DyedBlock blackBlock = new DyedBlock(DyeColor.BLACK, materialName, textureKey, baseBlock);
-            DyedBlock brownBlock = new DyedBlock(DyeColor.BROWN, materialName, textureKey, baseBlock);
-            DyedBlock redBlock = new DyedBlock(DyeColor.RED, materialName, textureKey, baseBlock);
-            DyedBlock orangeBlock = new DyedBlock(DyeColor.ORANGE, materialName, textureKey, baseBlock);
-            DyedBlock yellowBlock = new DyedBlock(DyeColor.YELLOW, materialName, textureKey, baseBlock);
-            DyedBlock limeBlock = new DyedBlock(DyeColor.LIME, materialName, textureKey, baseBlock);
-            DyedBlock greenBlock = new DyedBlock(DyeColor.GREEN, materialName, textureKey, baseBlock);
-            DyedBlock cyanBlock = new DyedBlock(DyeColor.CYAN, materialName, textureKey, baseBlock);
-            DyedBlock lightBlueBlock = new DyedBlock(DyeColor.LIGHT_BLUE, materialName, textureKey, baseBlock);
-            DyedBlock blueBlock = new DyedBlock(DyeColor.BLUE, materialName, textureKey, baseBlock);
-            DyedBlock purpleBlock = new DyedBlock(DyeColor.PURPLE, materialName, textureKey, baseBlock);
-            DyedBlock magentaBlock = new DyedBlock(DyeColor.MAGENTA, materialName, textureKey, baseBlock);
-            DyedBlock pinkBlock = new DyedBlock(DyeColor.PINK, materialName, textureKey, baseBlock);
+            DyedBlock whiteBlock = new DyedBlock(DyeColor.WHITE, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock lightGrayBlock = new DyedBlock(DyeColor.LIGHT_GRAY, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock grayBlock = new DyedBlock(DyeColor.GRAY, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock blackBlock = new DyedBlock(DyeColor.BLACK, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock brownBlock = new DyedBlock(DyeColor.BROWN, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock redBlock = new DyedBlock(DyeColor.RED, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock orangeBlock = new DyedBlock(DyeColor.ORANGE, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock yellowBlock = new DyedBlock(DyeColor.YELLOW, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock limeBlock = new DyedBlock(DyeColor.LIME, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock greenBlock = new DyedBlock(DyeColor.GREEN, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock cyanBlock = new DyedBlock(DyeColor.CYAN, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock lightBlueBlock = new DyedBlock(DyeColor.LIGHT_BLUE, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock blueBlock = new DyedBlock(DyeColor.BLUE, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock purpleBlock = new DyedBlock(DyeColor.PURPLE, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock magentaBlock = new DyedBlock(DyeColor.MAGENTA, materialName, textureKey, baseBlock, miningTool);
+            DyedBlock pinkBlock = new DyedBlock(DyeColor.PINK, materialName, textureKey, baseBlock, miningTool);
 
             BLOCK_MAP.put(textureKey + "white", whiteBlock);
             BLOCK_MAP.put(textureKey + "light_gray", lightGrayBlock);
@@ -123,26 +126,27 @@ public class DyedBlocks implements MinekeaBlockCategory {
 
         PILLAR_BLOCKS_TO_DYE.forEach(data -> {
             String materialName = data.getA();
-            String endTextureKey = data.getB();
-            String sideTextureKey = data.getC();
-            Block baseBlock = data.getD();
+            String endTextureKey = data.getB().getA();
+            String sideTextureKey = data.getB().getB();
+            Block baseBlock = data.getC();
+            Tool miningTool = data.getD();
 
-            DyedPillarBlock whiteBlock = new DyedPillarBlock(DyeColor.WHITE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock lightGrayBlock = new DyedPillarBlock(DyeColor.LIGHT_GRAY, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock grayBlock = new DyedPillarBlock(DyeColor.GRAY, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock blackBlock = new DyedPillarBlock(DyeColor.BLACK, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock brownBlock = new DyedPillarBlock(DyeColor.BROWN, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock redBlock = new DyedPillarBlock(DyeColor.RED, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock orangeBlock = new DyedPillarBlock(DyeColor.ORANGE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock yellowBlock = new DyedPillarBlock(DyeColor.YELLOW, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock limeBlock = new DyedPillarBlock(DyeColor.LIME, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock greenBlock = new DyedPillarBlock(DyeColor.GREEN, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock cyanBlock = new DyedPillarBlock(DyeColor.CYAN, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock lightBlueBlock = new DyedPillarBlock(DyeColor.LIGHT_BLUE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock blueBlock = new DyedPillarBlock(DyeColor.BLUE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock purpleBlock = new DyedPillarBlock(DyeColor.PURPLE, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock magentaBlock = new DyedPillarBlock(DyeColor.MAGENTA, materialName, endTextureKey, sideTextureKey, baseBlock);
-            DyedPillarBlock pinkBlock = new DyedPillarBlock(DyeColor.PINK, materialName, endTextureKey, sideTextureKey, baseBlock);
+            DyedPillarBlock whiteBlock = new DyedPillarBlock(DyeColor.WHITE, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock lightGrayBlock = new DyedPillarBlock(DyeColor.LIGHT_GRAY, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock grayBlock = new DyedPillarBlock(DyeColor.GRAY, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock blackBlock = new DyedPillarBlock(DyeColor.BLACK, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock brownBlock = new DyedPillarBlock(DyeColor.BROWN, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock redBlock = new DyedPillarBlock(DyeColor.RED, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock orangeBlock = new DyedPillarBlock(DyeColor.ORANGE, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock yellowBlock = new DyedPillarBlock(DyeColor.YELLOW, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock limeBlock = new DyedPillarBlock(DyeColor.LIME, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock greenBlock = new DyedPillarBlock(DyeColor.GREEN, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock cyanBlock = new DyedPillarBlock(DyeColor.CYAN, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock lightBlueBlock = new DyedPillarBlock(DyeColor.LIGHT_BLUE, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock blueBlock = new DyedPillarBlock(DyeColor.BLUE, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock purpleBlock = new DyedPillarBlock(DyeColor.PURPLE, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock magentaBlock = new DyedPillarBlock(DyeColor.MAGENTA, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
+            DyedPillarBlock pinkBlock = new DyedPillarBlock(DyeColor.PINK, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
 
             BLOCK_MAP.put(endTextureKey + "white", whiteBlock);
             BLOCK_MAP.put(endTextureKey + "light_gray", lightGrayBlock);
@@ -187,7 +191,7 @@ public class DyedBlocks implements MinekeaBlockCategory {
         BLOCK_MAP.values().forEach(MinekeaBlock::register);
 
         BLOCKS_TO_DYE.forEach(data -> {
-            String textureKey = data.getB();
+            String textureKey = data.getA().getB();
 
             ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
             ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
@@ -208,7 +212,7 @@ public class DyedBlocks implements MinekeaBlockCategory {
         });
 
         PILLAR_BLOCKS_TO_DYE.forEach(data -> {
-            String textureKey = data.getB();
+            String textureKey = data.getB().getA();
 
             ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
             ColoredBlocksRegistry.addBlock((Block) BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);

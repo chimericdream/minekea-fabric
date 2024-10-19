@@ -5,8 +5,10 @@ import com.chimericdream.minekea.item.MinekeaItemGroups;
 import com.chimericdream.minekea.resource.ModelUtils;
 import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -35,6 +37,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -52,6 +55,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
+import java.util.function.Function;
+
 public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
     public static final EnumProperty<Direction.Axis> AXIS;
 
@@ -67,9 +72,14 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
     protected final String sideTextureKey;
     protected final DyeColor color;
     protected final Block baseBlock;
+    protected final Tool miningTool;
 
     public DyedPillarBlock(DyeColor color, String materialName, String endTextureKey, String sideTextureKey, Block baseBlock) {
         this(Settings.copy(baseBlock), color, materialName, endTextureKey, sideTextureKey, baseBlock);
+    }
+
+    public DyedPillarBlock(DyeColor color, String materialName, String endTextureKey, String sideTextureKey, Block baseBlock, Tool miningTool) {
+        this(Settings.copy(baseBlock), color, materialName, endTextureKey, sideTextureKey, baseBlock, miningTool);
     }
 
     public DyedPillarBlock(
@@ -80,6 +90,18 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
         String sideTextureKey,
         Block baseBlock
     ) {
+        this(settings, color, materialName, endTextureKey, sideTextureKey, baseBlock, Tool.PICKAXE);
+    }
+
+    public DyedPillarBlock(
+        Settings settings,
+        DyeColor color,
+        String materialName,
+        String endTextureKey,
+        String sideTextureKey,
+        Block baseBlock,
+        Tool miningTool
+    ) {
         super(settings.mapColor(color));
 
         this.color = color;
@@ -87,6 +109,7 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
         this.endTextureKey = endTextureKey;
         this.sideTextureKey = sideTextureKey;
         this.baseBlock = baseBlock;
+        this.miningTool = miningTool;
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/dyed/%s/%s", Registries.BLOCK.getId(baseBlock).getPath(), color));
 
@@ -139,6 +162,13 @@ public class DyedPillarBlock extends PillarBlock implements MinekeaBlock {
 
         ItemGroupEvents.modifyEntriesEvent(MinekeaItemGroups.DYED_BLOCK_ITEM_GROUP_KEY)
             .register((itemGroup) -> itemGroup.add(this));
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(this.miningTool.getMineableTag())
+            .setReplace(false)
+            .add(this);
     }
 
     @Override

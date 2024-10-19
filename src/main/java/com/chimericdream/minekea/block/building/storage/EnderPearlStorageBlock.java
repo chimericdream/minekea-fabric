@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 
@@ -20,6 +21,9 @@ public class EnderPearlStorageBlock extends GenericStorageBlock {
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(BlockTags.PICKAXE_MINEABLE)
+            .setReplace(false)
+            .add(this);
     }
 
     @Override

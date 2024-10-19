@@ -6,6 +6,7 @@ import com.chimericdream.minekea.resource.TextureUtils;
 import com.chimericdream.minekea.tag.CommonItemTags;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -111,52 +112,101 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
     public final boolean isTranslucent;
     public final Identifier sideTexture;
     public final Identifier endTexture;
+    public final Tool miningTool;
 
     public GenericBeamBlock(String material, String materialName, Block ingredient) {
         this(material, materialName, ingredient, false, false);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, Tool miningTool) {
+        this(material, materialName, ingredient, false, false, miningTool);
     }
 
     public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable) {
         this(material, materialName, ingredient, isFlammable, false);
     }
 
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, Tool miningTool) {
+        this(material, materialName, ingredient, isFlammable, false, miningTool);
+    }
+
     public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent) {
         this(material, materialName, ingredient, isFlammable, isTranslucent, TextureUtils.block(ingredient));
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Tool miningTool) {
+        this(material, materialName, ingredient, isFlammable, isTranslucent, TextureUtils.block(ingredient), miningTool);
     }
 
     public GenericBeamBlock(String material, String materialName, Block ingredient, Identifier texture) {
         this(material, materialName, ingredient, false, false, texture, texture);
     }
 
+    public GenericBeamBlock(String material, String materialName, Block ingredient, Identifier texture, Tool miningTool) {
+        this(material, materialName, ingredient, false, false, texture, texture, miningTool);
+    }
+
     public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, Identifier texture) {
         this(material, materialName, ingredient, isFlammable, false, texture, texture);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, Identifier texture, Tool miningTool) {
+        this(material, materialName, ingredient, isFlammable, false, texture, texture, miningTool);
     }
 
     public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier texture) {
         this(material, materialName, ingredient, isFlammable, isTranslucent, texture, texture);
     }
 
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier texture, Tool miningTool) {
+        this(material, materialName, ingredient, isFlammable, isTranslucent, texture, texture, miningTool);
+    }
+
     public GenericBeamBlock(String material, String materialName, Block ingredient, Identifier sideTexture, Identifier endTexture) {
         this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, false, false, sideTexture, endTexture);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, Identifier sideTexture, Identifier endTexture, Tool miningTool) {
+        this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, false, false, sideTexture, endTexture, miningTool);
     }
 
     public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, Identifier sideTexture, Identifier endTexture) {
         this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, isFlammable, false, sideTexture, endTexture);
     }
 
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, Identifier sideTexture, Identifier endTexture, Tool miningTool) {
+        this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, isFlammable, false, sideTexture, endTexture, miningTool);
+    }
+
     public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier sideTexture, Identifier endTexture) {
         this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, isFlammable, isTranslucent, sideTexture, endTexture);
+    }
+
+    public GenericBeamBlock(String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier sideTexture, Identifier endTexture, Tool miningTool) {
+        this(AbstractBlock.Settings.copy(ingredient), material, materialName, ingredient, isFlammable, isTranslucent, sideTexture, endTexture, miningTool);
     }
 
     public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, Identifier sideTexture, Identifier endTexture) {
         this(settings, material, materialName, ingredient, false, false, sideTexture, endTexture);
     }
 
+    public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, Identifier sideTexture, Identifier endTexture, Tool miningTool) {
+        this(settings, material, materialName, ingredient, false, false, sideTexture, endTexture, miningTool);
+    }
+
     public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, boolean isFlammable, Identifier sideTexture, Identifier endTexture) {
         this(settings, material, materialName, ingredient, isFlammable, false, sideTexture, endTexture);
     }
 
+    public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, boolean isFlammable, Identifier sideTexture, Identifier endTexture, Tool miningTool) {
+        this(settings, material, materialName, ingredient, isFlammable, false, sideTexture, endTexture, miningTool);
+    }
+
     public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier sideTexture, Identifier endTexture) {
+        this(settings, material, materialName, ingredient, isFlammable, isTranslucent, sideTexture, endTexture, Tool.PICKAXE);
+    }
+
+    public GenericBeamBlock(Settings settings, String material, String materialName, Block ingredient, boolean isFlammable, boolean isTranslucent, Identifier sideTexture, Identifier endTexture, Tool miningTool) {
         super(settings);
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/beams/" + material);
@@ -168,6 +218,7 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
         this.isTranslucent = isTranslucent;
         this.sideTexture = sideTexture;
         this.endTexture = endTexture;
+        this.miningTool = miningTool;
 
         this.setDefaultState(
             this.stateManager
@@ -385,6 +436,10 @@ public class GenericBeamBlock extends Block implements MinekeaBlock, Waterloggab
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(MinekeaBlockTags.BEAMS)
+            .setReplace(false)
+            .add(this);
+
+        getBuilder.apply(this.miningTool.getMineableTag())
             .setReplace(false)
             .add(this);
     }

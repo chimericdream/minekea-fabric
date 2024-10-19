@@ -5,14 +5,12 @@ import com.chimericdream.minekea.util.Colors;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
@@ -27,7 +25,6 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
@@ -37,7 +34,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.Optional;
-import java.util.function.Function;
 
 public class DyeBlock extends Block implements MinekeaBlock {
     private static final Model DYE_BLOCK_MODEL = new Model(
@@ -77,14 +73,6 @@ public class DyeBlock extends Block implements MinekeaBlock {
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
-    }
-
-    @Override
-    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
     }
 
     @Override
@@ -129,9 +117,5 @@ public class DyeBlock extends Block implements MinekeaBlock {
             textures,
             DYE_BLOCK_MODEL
         );
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
     }
 }

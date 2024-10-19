@@ -2,8 +2,10 @@ package com.chimericdream.minekea.block.building.slabs;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -29,7 +31,10 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+
+import java.util.function.Function;
 
 public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
     public final Identifier BLOCK_ID;
@@ -39,12 +44,21 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
     protected final boolean isFlammable;
     protected final Block ingredient;
     protected final Identifier textureId;
+    protected final Tool miningTool;
 
     public GenericSlabBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
         this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient));
     }
 
+    public GenericSlabBlock(String materialName, String material, boolean isFlammable, Block ingredient, Tool miningTool) {
+        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient), miningTool);
+    }
+
     public GenericSlabBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
+        this(materialName, material, isFlammable, ingredient, textureId, Tool.PICKAXE);
+    }
+
+    public GenericSlabBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId, Tool miningTool) {
         super(AbstractBlock.Settings.copy(ingredient));
 
         this.materialName = materialName;
@@ -52,6 +66,7 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
         this.isFlammable = isFlammable;
         this.ingredient = ingredient;
         this.textureId = textureId;
+        this.miningTool = miningTool;
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/slabs/%s", material));
     }
@@ -68,6 +83,13 @@ public class GenericSlabBlock extends SlabBlock implements MinekeaBlock {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
             .register((itemGroup) -> itemGroup.add(this));
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(this.miningTool.getMineableTag())
+            .setReplace(false)
+            .add(this);
     }
 
     @Override

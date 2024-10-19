@@ -3,8 +3,10 @@ package com.chimericdream.minekea.block.building.compressed;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -23,6 +25,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
@@ -35,6 +38,7 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 public class GenericCompressedBlock extends Block implements MinekeaBlock {
     public final Identifier BLOCK_ID;
@@ -49,6 +53,7 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
     protected final String textureKey;
     protected final Block baseBlock;
     protected final int compressionLevel;
+    protected final Tool miningTool;
 
     static {
         AXIS = Properties.AXIS;
@@ -58,12 +63,27 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
         this(AbstractBlock.Settings.copy(baseBlock), materialName, textureKey, baseBlock, compressionLevel);
     }
 
+    public GenericCompressedBlock(String materialName, String textureKey, Block baseBlock, int compressionLevel, Tool miningTool) {
+        this(AbstractBlock.Settings.copy(baseBlock), materialName, textureKey, baseBlock, compressionLevel, miningTool);
+    }
+
     public GenericCompressedBlock(
         AbstractBlock.Settings settings,
         String materialName,
         String textureKey,
         Block baseBlock,
         int compressionLevel
+    ) {
+        this(settings, materialName, textureKey, baseBlock, compressionLevel, Tool.PICKAXE);
+    }
+
+    public GenericCompressedBlock(
+        AbstractBlock.Settings settings,
+        String materialName,
+        String textureKey,
+        Block baseBlock,
+        int compressionLevel,
+        Tool miningTool
     ) {
         super(settings.strength(
             getHardness(compressionLevel, baseBlock.getHardness()),
@@ -74,6 +94,7 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
         this.textureKey = textureKey;
         this.baseBlock = baseBlock;
         this.compressionLevel = compressionLevel;
+        this.miningTool = miningTool;
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/compressed/%s/%dx", textureKey, compressionLevel));
 
@@ -119,6 +140,13 @@ public class GenericCompressedBlock extends Block implements MinekeaBlock {
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
         Registry.register(Registries.ITEM, BLOCK_ID, new BlockItem(this, new Item.Settings()));
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(this.miningTool.getMineableTag())
+            .setReplace(false)
+            .add(this);
     }
 
     @Override

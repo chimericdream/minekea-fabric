@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.building.walls;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -44,12 +45,21 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
     protected final boolean isFlammable;
     protected final Block ingredient;
     protected final Identifier textureId;
+    protected final Tool miningTool;
 
     public GenericWallBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
         this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient));
     }
 
+    public GenericWallBlock(String materialName, String material, boolean isFlammable, Block ingredient, Tool miningTool) {
+        this(materialName, material, isFlammable, ingredient, TextureMap.getId(ingredient), miningTool);
+    }
+
     public GenericWallBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
+        this(materialName, material, isFlammable, ingredient, textureId, Tool.PICKAXE);
+    }
+
+    public GenericWallBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId, Tool miningTool) {
         super(AbstractBlock.Settings.copy(ingredient));
 
         this.materialName = materialName;
@@ -57,6 +67,7 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
         this.isFlammable = isFlammable;
         this.ingredient = ingredient;
         this.textureId = textureId;
+        this.miningTool = miningTool;
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/walls/%s", material));
     }
@@ -78,6 +89,10 @@ public class GenericWallBlock extends WallBlock implements MinekeaBlock {
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(BlockTags.WALLS)
+            .setReplace(false)
+            .add(this);
+
+        getBuilder.apply(miningTool.getMineableTag())
             .setReplace(false)
             .add(this);
     }

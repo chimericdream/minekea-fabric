@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.building.compressed;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import com.chimericdream.minekea.resource.ModelUtils;
+import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.Models;
@@ -23,6 +24,10 @@ public class CompressedColumnBlock extends GenericCompressedBlock {
         this(Settings.copy(baseBlock), materialName, textureKey, baseBlock, compressionLevel, textureKeySide, textureKeyEnd);
     }
 
+    public CompressedColumnBlock(String materialName, String textureKey, Block baseBlock, int compressionLevel, String textureKeySide, String textureKeyEnd, Tool miningTool) {
+        this(Settings.copy(baseBlock), materialName, textureKey, baseBlock, compressionLevel, textureKeySide, textureKeyEnd, miningTool);
+    }
+
     public CompressedColumnBlock(
         Settings settings,
         String materialName,
@@ -32,7 +37,20 @@ public class CompressedColumnBlock extends GenericCompressedBlock {
         String textureKeySide,
         String textureKeyEnd
     ) {
-        super(settings, materialName, textureKey, baseBlock, compressionLevel);
+        this(settings, materialName, textureKey, baseBlock, compressionLevel, textureKeySide, textureKeyEnd, Tool.PICKAXE);
+    }
+
+    public CompressedColumnBlock(
+        Settings settings,
+        String materialName,
+        String textureKey,
+        Block baseBlock,
+        int compressionLevel,
+        String textureKeySide,
+        String textureKeyEnd,
+        Tool miningTool
+    ) {
+        super(settings, materialName, textureKey, baseBlock, compressionLevel, miningTool);
 
         this.textureKeySide = textureKeySide;
         this.textureKeyEnd = textureKeyEnd;

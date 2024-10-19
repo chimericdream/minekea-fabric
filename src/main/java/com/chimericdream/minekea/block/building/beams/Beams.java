@@ -10,6 +10,7 @@ import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.resource.TextureUtils;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Blocks;
 
@@ -139,26 +140,26 @@ public class Beams implements MinekeaBlockCategory {
         BLOCKS.add(new GenericBeamBlock("green_concrete", "Green Concrete", Blocks.GREEN_CONCRETE));
         BLOCKS.add(new GenericBeamBlock("red_concrete", "Red Concrete", Blocks.RED_CONCRETE));
         BLOCKS.add(new GenericBeamBlock("black_concrete", "Black Concrete", Blocks.BLACK_CONCRETE));
-        BLOCKS.add(new GenericBeamBlock("acacia", "Acacia", Blocks.ACACIA_PLANKS, true));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS), "acacia_log", "Acacia Log", Blocks.ACACIA_LOG, true, TextureUtils.block(Blocks.ACACIA_LOG), TextureUtils.block(Blocks.ACACIA_LOG, "_top")));
-        BLOCKS.add(new GenericBeamBlock("birch", "Birch", Blocks.BIRCH_PLANKS, true));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS), "birch_log", "Birch Log", Blocks.BIRCH_LOG, true, TextureUtils.block(Blocks.BIRCH_LOG), TextureUtils.block(Blocks.BIRCH_LOG, "_top")));
-        BLOCKS.add(new GenericBeamBlock("cherry", "Cherry", Blocks.CHERRY_PLANKS));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS), "cherry_log", "Cherry Log", Blocks.CHERRY_LOG, true, TextureUtils.block(Blocks.CHERRY_LOG), TextureUtils.block(Blocks.CHERRY_LOG, "_top")));
-        BLOCKS.add(new GenericBeamBlock("crimson", "Crimson", Blocks.CRIMSON_PLANKS));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS), "crimson_stem", "Crimson Stem", Blocks.CRIMSON_STEM, TextureUtils.block(Blocks.CRIMSON_STEM), TextureUtils.block(Blocks.CRIMSON_STEM, "_top")));
-        BLOCKS.add(new GenericBeamBlock("dark_oak", "Dark Oak", Blocks.DARK_OAK_PLANKS, true));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS), "dark_oak_log", "Dark Oak Log", Blocks.DARK_OAK_LOG, true, TextureUtils.block(Blocks.DARK_OAK_LOG), TextureUtils.block(Blocks.DARK_OAK_LOG, "_top")));
-        BLOCKS.add(new GenericBeamBlock("jungle", "Jungle", Blocks.JUNGLE_PLANKS, true));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS), "jungle_log", "Jungle Log", Blocks.JUNGLE_LOG, true, TextureUtils.block(Blocks.JUNGLE_LOG), TextureUtils.block(Blocks.JUNGLE_LOG, "_top")));
-        BLOCKS.add(new GenericBeamBlock("mangrove", "Mangrove", Blocks.MANGROVE_PLANKS, true));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS), "mangrove_log", "Mangrove Log", Blocks.MANGROVE_LOG, true, TextureUtils.block(Blocks.MANGROVE_LOG), TextureUtils.block(Blocks.MANGROVE_LOG, "_top")));
-        BLOCKS.add(new GenericBeamBlock("oak", "Oak", Blocks.OAK_PLANKS, true));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS), "oak_log", "Oak Log", Blocks.OAK_LOG, true, TextureUtils.block(Blocks.OAK_LOG), TextureUtils.block(Blocks.OAK_LOG, "_top")));
-        BLOCKS.add(new GenericBeamBlock("spruce", "Spruce", Blocks.SPRUCE_PLANKS, true));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS), "spruce_log", "Spruce Log", Blocks.SPRUCE_LOG, true, TextureUtils.block(Blocks.SPRUCE_LOG), TextureUtils.block(Blocks.SPRUCE_LOG, "_top")));
-        BLOCKS.add(new GenericBeamBlock("warped", "Warped", Blocks.WARPED_PLANKS));
-        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS), "warped_stem", "Warped Stem", Blocks.WARPED_STEM, TextureUtils.block(Blocks.WARPED_STEM), TextureUtils.block(Blocks.WARPED_STEM, "_top")));
+        BLOCKS.add(new GenericBeamBlock("acacia", "Acacia", Blocks.ACACIA_PLANKS, true, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS), "acacia_log", "Acacia Log", Blocks.ACACIA_LOG, true, TextureUtils.block(Blocks.ACACIA_LOG), TextureUtils.block(Blocks.ACACIA_LOG, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("birch", "Birch", Blocks.BIRCH_PLANKS, true, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS), "birch_log", "Birch Log", Blocks.BIRCH_LOG, true, TextureUtils.block(Blocks.BIRCH_LOG), TextureUtils.block(Blocks.BIRCH_LOG, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("cherry", "Cherry", Blocks.CHERRY_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS), "cherry_log", "Cherry Log", Blocks.CHERRY_LOG, true, TextureUtils.block(Blocks.CHERRY_LOG), TextureUtils.block(Blocks.CHERRY_LOG, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("crimson", "Crimson", Blocks.CRIMSON_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS), "crimson_stem", "Crimson Stem", Blocks.CRIMSON_STEM, TextureUtils.block(Blocks.CRIMSON_STEM), TextureUtils.block(Blocks.CRIMSON_STEM, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("dark_oak", "Dark Oak", Blocks.DARK_OAK_PLANKS, true, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS), "dark_oak_log", "Dark Oak Log", Blocks.DARK_OAK_LOG, true, TextureUtils.block(Blocks.DARK_OAK_LOG), TextureUtils.block(Blocks.DARK_OAK_LOG, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("jungle", "Jungle", Blocks.JUNGLE_PLANKS, true, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS), "jungle_log", "Jungle Log", Blocks.JUNGLE_LOG, true, TextureUtils.block(Blocks.JUNGLE_LOG), TextureUtils.block(Blocks.JUNGLE_LOG, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("mangrove", "Mangrove", Blocks.MANGROVE_PLANKS, true, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS), "mangrove_log", "Mangrove Log", Blocks.MANGROVE_LOG, true, TextureUtils.block(Blocks.MANGROVE_LOG), TextureUtils.block(Blocks.MANGROVE_LOG, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("oak", "Oak", Blocks.OAK_PLANKS, true, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS), "oak_log", "Oak Log", Blocks.OAK_LOG, true, TextureUtils.block(Blocks.OAK_LOG), TextureUtils.block(Blocks.OAK_LOG, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("spruce", "Spruce", Blocks.SPRUCE_PLANKS, true, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS), "spruce_log", "Spruce Log", Blocks.SPRUCE_LOG, true, TextureUtils.block(Blocks.SPRUCE_LOG), TextureUtils.block(Blocks.SPRUCE_LOG, "_top"), Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock("warped", "Warped", Blocks.WARPED_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericBeamBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS), "warped_stem", "Warped Stem", Blocks.WARPED_STEM, TextureUtils.block(Blocks.WARPED_STEM), TextureUtils.block(Blocks.WARPED_STEM, "_top"), Tool.AXE));
     }
 
     @Override

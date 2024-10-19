@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.building.compressed;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.data.TextureGenerator;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.Tool;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -18,6 +19,10 @@ public class CompressedMinekeaBlock extends GenericCompressedBlock {
         this(Settings.copy((Block) baseBlock), materialName, textureKey, baseBlock, compressionLevel, baseBlockId);
     }
 
+    public CompressedMinekeaBlock(String materialName, String textureKey, MinekeaBlock baseBlock, int compressionLevel, Identifier baseBlockId, Tool miningTool) {
+        this(Settings.copy((Block) baseBlock), materialName, textureKey, baseBlock, compressionLevel, baseBlockId, miningTool);
+    }
+
     public CompressedMinekeaBlock(
         Settings settings,
         String materialName,
@@ -26,7 +31,19 @@ public class CompressedMinekeaBlock extends GenericCompressedBlock {
         int compressionLevel,
         Identifier baseBlockId
     ) {
-        super(settings, materialName, textureKey, (Block) baseBlock, compressionLevel);
+        this(settings, materialName, textureKey, baseBlock, compressionLevel, baseBlockId, Tool.PICKAXE);
+    }
+
+    public CompressedMinekeaBlock(
+        Settings settings,
+        String materialName,
+        String textureKey,
+        MinekeaBlock baseBlock,
+        int compressionLevel,
+        Identifier baseBlockId,
+        Tool miningTool
+    ) {
+        super(settings, materialName, textureKey, (Block) baseBlock, compressionLevel, miningTool);
 
         this.baseBlockId = baseBlockId;
 

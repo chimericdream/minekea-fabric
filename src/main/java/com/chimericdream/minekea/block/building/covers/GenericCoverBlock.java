@@ -4,8 +4,10 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
 import com.chimericdream.minekea.resource.ModelUtils;
 import com.chimericdream.minekea.util.MinekeaBlock;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -30,6 +32,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -40,6 +43,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Waterloggable {
     // yowza
@@ -67,28 +71,53 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
     protected final Block ingredient;
     protected final Identifier endTextureId;
     protected final Identifier sideTextureId;
+    protected final Tool miningTool;
 
     public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient) {
         this(materialName, material, isFlammable, ingredient, ingredient, TextureMap.getId(ingredient), TextureMap.getId(ingredient));
+    }
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Tool miningTool) {
+        this(materialName, material, isFlammable, ingredient, ingredient, TextureMap.getId(ingredient), TextureMap.getId(ingredient), miningTool);
     }
 
     public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource) {
         this(materialName, material, isFlammable, ingredient, settingsSource, TextureMap.getId(ingredient), TextureMap.getId(ingredient));
     }
 
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Tool miningTool) {
+        this(materialName, material, isFlammable, ingredient, settingsSource, TextureMap.getId(ingredient), TextureMap.getId(ingredient), miningTool);
+    }
+
     public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId) {
         this(materialName, material, isFlammable, ingredient, ingredient, textureId, textureId);
+    }
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier textureId, Tool miningTool) {
+        this(materialName, material, isFlammable, ingredient, ingredient, textureId, textureId, miningTool);
     }
 
     public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Identifier textureId) {
         this(materialName, material, isFlammable, ingredient, settingsSource, textureId, textureId);
     }
 
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Identifier textureId, Tool miningTool) {
+        this(materialName, material, isFlammable, ingredient, settingsSource, textureId, textureId, miningTool);
+    }
+
     public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier endTextureId, Identifier sideTextureId) {
         this(materialName, material, isFlammable, ingredient, ingredient, endTextureId, sideTextureId);
     }
 
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Identifier endTextureId, Identifier sideTextureId, Tool miningTool) {
+        this(materialName, material, isFlammable, ingredient, ingredient, endTextureId, sideTextureId, miningTool);
+    }
+
     public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Identifier endTextureId, Identifier sideTextureId) {
+        this(materialName, material, isFlammable, ingredient, settingsSource, endTextureId, sideTextureId, Tool.PICKAXE);
+    }
+
+    public GenericCoverBlock(String materialName, String material, boolean isFlammable, Block ingredient, Block settingsSource, Identifier endTextureId, Identifier sideTextureId, Tool miningTool) {
         super(AbstractBlock.Settings.copy(ingredient));
 
         this.setDefaultState(
@@ -104,6 +133,7 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
         this.settingsSource = settingsSource;
         this.endTextureId = endTextureId;
         this.sideTextureId = sideTextureId;
+        this.miningTool = miningTool;
 
         BLOCK_ID = Identifier.of(ModInfo.MOD_ID, String.format("building/covers/%s", material));
     }
@@ -143,6 +173,13 @@ public class GenericCoverBlock extends CarpetBlock implements MinekeaBlock, Wate
 
         ItemGroupEvents.modifyEntriesEvent(MinekeaItemGroups.COVERS_ITEM_GROUP_KEY)
             .register((itemGroup) -> itemGroup.add(this));
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(this.miningTool.getMineableTag())
+            .setReplace(false)
+            .add(this);
     }
 
     @Override

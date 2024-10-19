@@ -3,6 +3,7 @@ package com.chimericdream.minekea.block.furniture.shutters;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaTextures;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
@@ -23,6 +24,9 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -45,6 +49,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 
 public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggable {
     protected static final Model LEFT_HALF_MODEL = new Model(
@@ -280,6 +285,11 @@ public class OpenShutterHalf extends Block implements MinekeaBlock, Waterloggabl
     @Override
     public void register() {
         Registry.register(Registries.BLOCK, BLOCK_ID, this);
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
     @Override

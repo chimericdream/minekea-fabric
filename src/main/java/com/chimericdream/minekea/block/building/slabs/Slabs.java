@@ -9,6 +9,7 @@ import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -38,17 +39,17 @@ public class Slabs implements MinekeaBlockCategory {
         SLABS.add(new GenericSlabBlock("Warped Basalt Brick", "warped_basalt_bricks", false, BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK, WarpedBasaltBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
         SLABS.add(new GenericSlabBlock("Warped Nether Brick", "warped_nether_bricks", false, BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK, WarpedNetherBricksBlock.BLOCK_ID.withPrefixedPath("block/")));
 
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Acacia", "acacia", false, Blocks.ACACIA_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Bamboo", "bamboo_planks", false, Blocks.BAMBOO_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Birch", "birch", false, Blocks.BIRCH_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cherry", "cherry", false, Blocks.CHERRY_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Crimson", "crimson", false, Blocks.CRIMSON_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Dark Oak", "dark_oak", false, Blocks.DARK_OAK_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Jungle", "jungle", false, Blocks.JUNGLE_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Mangrove", "mangrove", false, Blocks.MANGROVE_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Oak", "oak", false, Blocks.OAK_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Spruce", "spruce", false, Blocks.SPRUCE_PLANKS));
-        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Warped", "warped", false, Blocks.WARPED_PLANKS));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Acacia", "acacia", false, Blocks.ACACIA_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Bamboo", "bamboo_planks", false, Blocks.BAMBOO_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Birch", "birch", false, Blocks.BIRCH_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Cherry", "cherry", false, Blocks.CHERRY_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Crimson", "crimson", false, Blocks.CRIMSON_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Dark Oak", "dark_oak", false, Blocks.DARK_OAK_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Jungle", "jungle", false, Blocks.JUNGLE_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Mangrove", "mangrove", false, Blocks.MANGROVE_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Oak", "oak", false, Blocks.OAK_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Spruce", "spruce", false, Blocks.SPRUCE_PLANKS, Tool.AXE));
+        VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Warped", "warped", false, Blocks.WARPED_PLANKS, Tool.AXE));
 
         VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Andesite", "andesite", false, Blocks.ANDESITE));
         VERTICAL_SLABS.add(new GenericVerticalSlabBlock("Bamboo Mosaic", "bamboo_mosaic", false, Blocks.BAMBOO_MOSAIC));

@@ -9,6 +9,7 @@ import com.chimericdream.minekea.block.building.general.WarpedBasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.WarpedNetherBricksBlock;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
+import com.chimericdream.minekea.util.Tool;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -153,27 +154,27 @@ public class Covers implements MinekeaBlockCategory {
         BLOCKS.add(new GenericCoverBlock("Magenta Concrete", "magenta_concrete", false, Blocks.MAGENTA_CONCRETE));
         BLOCKS.add(new GenericCoverBlock("Pink Concrete", "pink_concrete", false, Blocks.PINK_CONCRETE));
 
-        BLOCKS.add(new GenericCoverBlock("Acacia", "acacia", true, Blocks.ACACIA_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Birch", "birch", true, Blocks.BIRCH_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Cherry", "cherry", false, Blocks.CHERRY_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Crimson", "crimson", false, Blocks.CRIMSON_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Dark Oak", "dark_oak", true, Blocks.DARK_OAK_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Jungle", "jungle", true, Blocks.JUNGLE_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Mangrove", "mangrove", true, Blocks.MANGROVE_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Oak", "oak", true, Blocks.OAK_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Spruce", "spruce", true, Blocks.SPRUCE_PLANKS));
-        BLOCKS.add(new GenericCoverBlock("Warped", "warped", false, Blocks.WARPED_PLANKS));
+        BLOCKS.add(new GenericCoverBlock("Acacia", "acacia", true, Blocks.ACACIA_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Birch", "birch", true, Blocks.BIRCH_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Cherry", "cherry", false, Blocks.CHERRY_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Crimson", "crimson", false, Blocks.CRIMSON_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Dark Oak", "dark_oak", true, Blocks.DARK_OAK_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Jungle", "jungle", true, Blocks.JUNGLE_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Mangrove", "mangrove", true, Blocks.MANGROVE_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Oak", "oak", true, Blocks.OAK_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Spruce", "spruce", true, Blocks.SPRUCE_PLANKS, Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Warped", "warped", false, Blocks.WARPED_PLANKS, Tool.AXE));
 
-        BLOCKS.add(new GenericCoverBlock("Acacia Log", "acacia_log", true, Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG, Registries.BLOCK.getId(Blocks.ACACIA_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.ACACIA_LOG).withPrefixedPath("block/")));
-        BLOCKS.add(new GenericCoverBlock("Birch Log", "birch_log", true, Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG, Registries.BLOCK.getId(Blocks.BIRCH_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.BIRCH_LOG).withPrefixedPath("block/")));
-        BLOCKS.add(new GenericCoverBlock("Cherry Log", "cherry_log", false, Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG, Registries.BLOCK.getId(Blocks.CHERRY_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.CHERRY_LOG).withPrefixedPath("block/")));
-        BLOCKS.add(new GenericCoverBlock("Crimson Stem", "crimson_stem", false, Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, Registries.BLOCK.getId(Blocks.CRIMSON_STEM).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.CRIMSON_STEM).withPrefixedPath("block/")));
-        BLOCKS.add(new GenericCoverBlock("Dark Oak Log", "dark_oak_log", true, Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_LOG, Registries.BLOCK.getId(Blocks.DARK_OAK_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.DARK_OAK_LOG).withPrefixedPath("block/")));
-        BLOCKS.add(new GenericCoverBlock("Jungle Log", "jungle_log", true, Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_LOG, Registries.BLOCK.getId(Blocks.JUNGLE_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.JUNGLE_LOG).withPrefixedPath("block/")));
-        BLOCKS.add(new GenericCoverBlock("Mangrove Log", "mangrove_log", true, Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG, Registries.BLOCK.getId(Blocks.MANGROVE_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.MANGROVE_LOG).withPrefixedPath("block/")));
+        BLOCKS.add(new GenericCoverBlock("Acacia Log", "acacia_log", true, Blocks.ACACIA_PLANKS, Blocks.ACACIA_LOG, Registries.BLOCK.getId(Blocks.ACACIA_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.ACACIA_LOG).withPrefixedPath("block/"), Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Birch Log", "birch_log", true, Blocks.BIRCH_PLANKS, Blocks.BIRCH_LOG, Registries.BLOCK.getId(Blocks.BIRCH_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.BIRCH_LOG).withPrefixedPath("block/"), Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Cherry Log", "cherry_log", false, Blocks.CHERRY_PLANKS, Blocks.CHERRY_LOG, Registries.BLOCK.getId(Blocks.CHERRY_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.CHERRY_LOG).withPrefixedPath("block/"), Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Crimson Stem", "crimson_stem", false, Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STEM, Registries.BLOCK.getId(Blocks.CRIMSON_STEM).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.CRIMSON_STEM).withPrefixedPath("block/"), Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Dark Oak Log", "dark_oak_log", true, Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_LOG, Registries.BLOCK.getId(Blocks.DARK_OAK_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.DARK_OAK_LOG).withPrefixedPath("block/"), Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Jungle Log", "jungle_log", true, Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_LOG, Registries.BLOCK.getId(Blocks.JUNGLE_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.JUNGLE_LOG).withPrefixedPath("block/"), Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Mangrove Log", "mangrove_log", true, Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_LOG, Registries.BLOCK.getId(Blocks.MANGROVE_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.MANGROVE_LOG).withPrefixedPath("block/"), Tool.AXE));
         BLOCKS.add(new GenericCoverBlock("Oak Log", "oak_log", true, Blocks.OAK_PLANKS, Blocks.OAK_LOG, Registries.BLOCK.getId(Blocks.OAK_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.OAK_LOG).withPrefixedPath("block/")));
-        BLOCKS.add(new GenericCoverBlock("Spruce Log", "spruce_log", true, Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG, Registries.BLOCK.getId(Blocks.SPRUCE_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.SPRUCE_LOG).withPrefixedPath("block/")));
-        BLOCKS.add(new GenericCoverBlock("Warped Stem", "warped_stem", false, Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, Registries.BLOCK.getId(Blocks.WARPED_STEM).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.WARPED_STEM).withPrefixedPath("block/")));
+        BLOCKS.add(new GenericCoverBlock("Spruce Log", "spruce_log", true, Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_LOG, Registries.BLOCK.getId(Blocks.SPRUCE_LOG).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.SPRUCE_LOG).withPrefixedPath("block/"), Tool.AXE));
+        BLOCKS.add(new GenericCoverBlock("Warped Stem", "warped_stem", false, Blocks.WARPED_PLANKS, Blocks.WARPED_STEM, Registries.BLOCK.getId(Blocks.WARPED_STEM).withPrefixedPath("block/").withSuffixedPath("_top"), Registries.BLOCK.getId(Blocks.WARPED_STEM).withPrefixedPath("block/"), Tool.AXE));
     }
 
     @Override

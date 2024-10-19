@@ -2,12 +2,15 @@ package com.chimericdream.minekea.block.decorations.misc;
 
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.resource.ModelUtils;
+import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import com.chimericdream.minekea.util.MinekeaBlock;
 import com.chimericdream.minekea.util.TextHelpers;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CakeBlock;
@@ -31,6 +34,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
@@ -39,6 +43,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class FakeCake extends CakeBlock implements MinekeaBlock {
     public final static String TOOLTIP_KEY = "block.minekea.decorations.misc.fake_cake.tooltip";
@@ -65,6 +70,11 @@ public class FakeCake extends CakeBlock implements MinekeaBlock {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
             .register(itemGroup -> itemGroup.add(this.asItem()));
+    }
+
+    @Override
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(MinekeaBlockTags.MINEABLE_SHEARS).setReplace(false).add(this);
     }
 
     @Override

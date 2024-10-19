@@ -12,8 +12,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -28,6 +26,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -95,10 +94,9 @@ public class SetOfEggsBlock extends Block implements MinekeaBlock, Waterloggable
 
     @Override
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
-    }
-
-    @Override
-    public void configureItemTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Item>, FabricTagProvider<Item>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(BlockTags.HOE_MINEABLE)
+            .setReplace(false)
+            .add(this);
     }
 
     @Override
@@ -129,22 +127,4 @@ public class SetOfEggsBlock extends Block implements MinekeaBlock, Waterloggable
     public void configureTranslations(RegistryWrapper.WrapperLookup registryLookup, FabricLanguageProvider.TranslationBuilder translationBuilder) {
         translationBuilder.add(this, "Set of Eggs");
     }
-
-    @Override
-    public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-    }
-
-    @Override
-    public void configureItemModels(ItemModelGenerator itemModelGenerator) {
-    }
-
-//    @Override
-//    public void setupResources() {
-//        Identifier MODEL_ID = Model.getBlockModelID(BLOCK_ID);
-//
-//        MinekeaResourcePack.RESOURCE_PACK.addBlockState(
-//            JState.state(JState.variant().put("", new JBlockModel(MODEL_ID))),
-//            BLOCK_ID
-//        );
-//    }
 }
