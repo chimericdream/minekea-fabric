@@ -26,6 +26,7 @@
     "minekea:storage/compressed/phantom_membrane",
     "minekea:storage/compressed/potato",
     "minekea:storage/compressed/pumpkin_seeds",
-    "minekea:storage/compressed/wheat_seeds"
+    "minekea:storage/compressed/wheat_seeds",
+    "minekea:storage/set_of_eggs"
   ]
 }
