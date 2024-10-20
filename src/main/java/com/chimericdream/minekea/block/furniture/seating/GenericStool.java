@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.furniture.seating;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.entities.SimpleSeatEntity;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
@@ -54,7 +53,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class GenericStool extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
+public class GenericStool extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model STOOL_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/seating/stool")),
         Optional.empty(),

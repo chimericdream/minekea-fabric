@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.building.general;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -26,7 +25,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class BasaltBricksBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class BasaltBricksBlock extends Block implements FabricBlockDataGenerator, RegisterableBlock {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/general/basalt_bricks");
 
     public BasaltBricksBlock() {

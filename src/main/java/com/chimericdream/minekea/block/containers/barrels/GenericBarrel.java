@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.containers.barrels;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -67,7 +66,7 @@ import java.awt.image.BufferedImage;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBarrel extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
+public class GenericBarrel extends BlockWithEntity implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     public static final MapCodec<GenericBarrel> CODEC = createCodec(GenericBarrel::new);
 
     public final Identifier BLOCK_ID;

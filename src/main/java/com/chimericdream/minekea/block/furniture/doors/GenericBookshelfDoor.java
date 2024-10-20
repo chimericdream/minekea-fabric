@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.furniture.doors;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -41,7 +40,7 @@ import net.minecraft.util.math.Direction;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBookshelfDoor extends DoorBlock implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
+public class GenericBookshelfDoor extends DoorBlock implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model ITEM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "item/furniture/doors/bookshelf")),
         Optional.empty(),

@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.building.general;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
@@ -32,7 +31,7 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.function.Function;
 
-public class WaxBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class WaxBlock extends Block implements FabricBlockDataGenerator, RegisterableBlock {
     public final Identifier BLOCK_ID;
 
     protected final String color;

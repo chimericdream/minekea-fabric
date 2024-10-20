@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.decorations.lighting;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -29,7 +28,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class AncientLantern extends LanternBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class AncientLantern extends LanternBlock implements FabricBlockDataGenerator, RegisterableBlock {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/lighting/ancient_lantern");
 
     public AncientLantern() {

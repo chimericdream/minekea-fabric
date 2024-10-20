@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.decorations.misc;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -46,7 +45,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.function.Function;
 
-public class FakeCake extends CakeBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class FakeCake extends CakeBlock implements FabricBlockDataGenerator, RegisterableBlock {
     public final static String TOOLTIP_KEY = "block.minekea.decorations.misc.fake_cake.tooltip";
     public final static Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/misc/fake_cake");
 

@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.building.dyed;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
@@ -55,7 +54,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class DyedBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
+public class DyedBlock extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     public static final EnumProperty<Direction.Axis> AXIS;
 
     static {

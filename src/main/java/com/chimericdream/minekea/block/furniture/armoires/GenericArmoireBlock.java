@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.furniture.armoires;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -71,7 +70,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class GenericArmoireBlock extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
+public class GenericArmoireBlock extends BlockWithEntity implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model BOTTOM_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/armoires/bottom")),
         Optional.empty(),

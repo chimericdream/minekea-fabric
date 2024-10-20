@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.building.framed;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -47,7 +46,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class FramedPlanksBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
+public class FramedPlanksBlock extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model CORE_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/framed_planks/core")),
         Optional.empty(),

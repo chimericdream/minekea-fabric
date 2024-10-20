@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.furniture.pillows;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
@@ -40,7 +39,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class PillowBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class PillowBlock extends Block implements FabricBlockDataGenerator, RegisterableBlock {
     public final Identifier BLOCK_ID;
     protected final String color;
 

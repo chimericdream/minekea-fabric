@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.furniture.tables;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -57,7 +56,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.item.MinekeaItemGroups.FURNITURE_ITEM_GROUP_KEY;
 
-public class GenericTable extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
+public class GenericTable extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     public static final String TOOLTIP_KEY = "block.minekea.furniture.tables.tooltip";
 
     protected static final Model CORE_MODEL = new Model(

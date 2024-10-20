@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.building.storage;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -43,7 +42,7 @@ import net.minecraft.world.WorldAccess;
 import java.util.function.Function;
 
 // @TODO: turn this into a slab-like block with top/bottom/full variations
-public class SetOfEggsBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock, Waterloggable {
+public class SetOfEggsBlock extends Block implements FabricBlockDataGenerator, RegisterableBlock, Waterloggable {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "storage/set_of_eggs");
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;

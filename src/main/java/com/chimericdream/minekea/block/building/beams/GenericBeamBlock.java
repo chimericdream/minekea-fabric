@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.building.beams;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -65,7 +64,7 @@ import net.minecraft.world.WorldAccess;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericBeamBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
+public class GenericBeamBlock extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model CONNECTED_NORTH_MODEL = makeModel("north");
     protected static final Model CONNECTED_SOUTH_MODEL = makeModel("south");
     protected static final Model CONNECTED_EAST_MODEL = makeModel("east");

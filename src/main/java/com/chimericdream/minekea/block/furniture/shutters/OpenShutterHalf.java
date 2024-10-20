@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.furniture.shutters;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.registries.FabricRegistryHelpers;
@@ -59,7 +58,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.block.furniture.shutters.Shutters.SHUTTERS;
 
-public class OpenShutterHalf extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
+public class OpenShutterHalf extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model LEFT_HALF_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/furniture/shutters/left_half")),
         Optional.empty(),

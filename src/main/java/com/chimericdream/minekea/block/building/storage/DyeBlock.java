@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.building.storage;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
@@ -37,7 +36,7 @@ import net.minecraft.world.World;
 
 import java.util.Optional;
 
-public class DyeBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class DyeBlock extends Block implements FabricBlockDataGenerator, RegisterableBlock {
     private static final Model DYE_BLOCK_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/storage/dye_block")),
         Optional.empty(),

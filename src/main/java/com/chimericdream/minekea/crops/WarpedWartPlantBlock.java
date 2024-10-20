@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.crops;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.registries.RegistryHelpers;
@@ -43,7 +42,7 @@ import net.minecraft.world.WorldView;
 
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_ITEM;
 
-public class WarpedWartPlantBlock extends PlantBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class WarpedWartPlantBlock extends PlantBlock implements FabricBlockDataGenerator, RegisterableBlock {
     public static final MapCodec<WarpedWartPlantBlock> CODEC = createCodec(_unused -> new WarpedWartPlantBlock());
 
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "crops/warped_wart/block");

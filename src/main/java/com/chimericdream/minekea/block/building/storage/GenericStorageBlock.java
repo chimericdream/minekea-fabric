@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.building.storage;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -65,7 +64,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-abstract public class GenericStorageBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
+abstract public class GenericStorageBlock extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model COMPRESSED_COLUMN_BLOCK_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/storage/compressed_column")),
         Optional.empty(),

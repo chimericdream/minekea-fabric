@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.containers;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -87,7 +86,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-public class GlassJarBlock extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock, Waterloggable {
+public class GlassJarBlock extends BlockWithEntity implements FabricBlockDataGenerator, RegisterableBlock, Waterloggable {
     public static final MapCodec<GlassJarBlock> CODEC = createCodec(GlassJarBlock::new);
 
     public static final Map<String, String> ALLOWED_ITEMS = new LinkedHashMap<>();

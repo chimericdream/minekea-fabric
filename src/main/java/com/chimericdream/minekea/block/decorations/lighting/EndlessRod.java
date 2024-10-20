@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.decorations.lighting;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -30,7 +29,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-public class EndlessRod extends RodBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class EndlessRod extends RodBlock implements FabricBlockDataGenerator, RegisterableBlock {
     public final static Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "decorations/lighting/endless_rod");
     public static final MapCodec<EndlessRod> CODEC = createCodec(EndlessRod::new);
 

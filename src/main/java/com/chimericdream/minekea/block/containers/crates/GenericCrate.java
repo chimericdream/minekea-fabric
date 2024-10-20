@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.containers.crates;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -73,7 +72,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericCrate extends BlockWithEntity implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
+public class GenericCrate extends BlockWithEntity implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     protected static final Model CRATE_MODEL = new Model(
         Optional.of(Identifier.of("minekea:block/containers/crate")),
         Optional.empty(),

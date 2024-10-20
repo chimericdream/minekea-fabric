@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.building.slabs;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -49,7 +48,7 @@ import net.minecraft.world.WorldAccess;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericVerticalSlabBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
+public class GenericVerticalSlabBlock extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     public static final Model VERTICAL_SLAB_MODEL = new Model(
         Optional.of(Identifier.of(ModInfo.MOD_ID, "block/building/slabs/vertical")),
         Optional.empty(),

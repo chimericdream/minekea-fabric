@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.block.building.general;
 
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -28,7 +27,7 @@ import java.util.function.Function;
 
 import static com.chimericdream.minekea.crops.Crops.WARPED_WART_ITEM;
 
-public class WarpedNetherBricksBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
+public class WarpedNetherBricksBlock extends Block implements FabricBlockDataGenerator, RegisterableBlock {
     public static final Identifier BLOCK_ID = Identifier.of(ModInfo.MOD_ID, "building/general/warped_nether_bricks");
 
     public WarpedNetherBricksBlock() {

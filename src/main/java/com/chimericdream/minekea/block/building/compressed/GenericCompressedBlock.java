@@ -1,7 +1,6 @@
 package com.chimericdream.minekea.block.building.compressed;
 
 import com.chimericdream.lib.blocks.BlockConfig;
-import com.chimericdream.lib.blocks.BlockDataGenerator;
 import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
@@ -45,7 +44,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GenericCompressedBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
+public class GenericCompressedBlock extends Block implements FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
     public final Identifier BLOCK_ID;
     public final BlockConfig config;
 
