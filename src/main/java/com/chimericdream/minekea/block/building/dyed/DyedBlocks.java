@@ -1,11 +1,13 @@
 package com.chimericdream.minekea.block.building.dyed;
 
 import com.chimericdream.lib.blocks.BlockConfig;
+import com.chimericdream.lib.util.Tool;
 import com.chimericdream.minekea.registry.ColoredBlocksRegistry;
 import com.chimericdream.minekea.util.MinekeaBlockCategory;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.DyeColor;
+import oshi.util.tuples.Pair;
 import oshi.util.tuples.Triplet;
 
 import java.util.ArrayList;
@@ -19,22 +21,22 @@ public class DyedBlocks implements MinekeaBlockCategory {
 
     public static final Map<String, Block> PILLAR_BLOCK_MAP = new LinkedHashMap<>();
 
-    protected static final List<Triplet<String, String, Block>> BLOCKS_TO_DYE = List.of(
-        new Triplet<>("Bricks", "bricks", Blocks.BRICKS),
-        new Triplet<>("Calcite", "calcite", Blocks.CALCITE),
-        new Triplet<>("Cobblestone", "cobblestone", Blocks.COBBLESTONE),
-        new Triplet<>("Dark Prismarine", "dark_prismarine", Blocks.DARK_PRISMARINE),
-        new Triplet<>("Mud Bricks", "mud_bricks", Blocks.MUD_BRICKS),
-        new Triplet<>("Oak Planks", "oak_planks", Blocks.OAK_PLANKS),
-        new Triplet<>("Prismarine", "prismarine", Blocks.PRISMARINE),
-        new Triplet<>("Prismarine Bricks", "prismarine_bricks", Blocks.PRISMARINE_BRICKS),
-        new Triplet<>("Smooth Stone", "smooth_stone", Blocks.SMOOTH_STONE),
-        new Triplet<>("Stone", "stone", Blocks.STONE),
-        new Triplet<>("Stone Bricks", "stone_bricks", Blocks.STONE_BRICKS)
+    protected static final List<Triplet<Pair<String, String>, Block, Tool>> BLOCKS_TO_DYE = List.of(
+        new Triplet<>(new Pair<>("Bricks", "bricks"), Blocks.BRICKS, null),
+        new Triplet<>(new Pair<>("Calcite", "calcite"), Blocks.CALCITE, null),
+        new Triplet<>(new Pair<>("Cobblestone", "cobblestone"), Blocks.COBBLESTONE, null),
+        new Triplet<>(new Pair<>("Dark Prismarine", "dark_prismarine"), Blocks.DARK_PRISMARINE, null),
+        new Triplet<>(new Pair<>("Mud Bricks", "mud_bricks"), Blocks.MUD_BRICKS, null),
+        new Triplet<>(new Pair<>("Oak Planks", "oak_planks"), Blocks.OAK_PLANKS, Tool.AXE),
+        new Triplet<>(new Pair<>("Prismarine", "prismarine"), Blocks.PRISMARINE, null),
+        new Triplet<>(new Pair<>("Prismarine Bricks", "prismarine_bricks"), Blocks.PRISMARINE_BRICKS, null),
+        new Triplet<>(new Pair<>("Smooth Stone", "smooth_stone"), Blocks.SMOOTH_STONE, null),
+        new Triplet<>(new Pair<>("Stone", "stone"), Blocks.STONE, null),
+        new Triplet<>(new Pair<>("Stone Bricks", "stone_bricks"), Blocks.STONE_BRICKS, null)
     );
 
-    protected static final List<Triplet<String, String, Block>> PILLAR_BLOCKS_TO_DYE = List.of(
-        new Triplet<>("Bone Block", "bone_block", Blocks.BONE_BLOCK)
+    protected static final List<Triplet<Pair<String, String>, Block, Tool>> PILLAR_BLOCKS_TO_DYE = List.of(
+        new Triplet<>(new Pair<>("Bone Block", "bone_block"), Blocks.BONE_BLOCK, null)
     );
 
     protected static final List<Block> WHITE_BLOCKS = new ArrayList<>();
@@ -56,14 +58,16 @@ public class DyedBlocks implements MinekeaBlockCategory {
 
     static {
         BLOCKS_TO_DYE.forEach(data -> {
-            String materialName = data.getA();
-            String material = data.getB();
-            Block baseBlock = data.getC();
+            String materialName = data.getA().getA();
+            String material = data.getA().getB();
+            Block baseBlock = data.getB();
+            Tool tool = data.getC();
 
             BlockConfig config = new BlockConfig()
                 .material(material)
                 .materialName(materialName)
-                .ingredient(baseBlock);
+                .ingredient(baseBlock)
+                .tool(tool);
 
             DyedBlock whiteBlock = new DyedBlock(config, DyeColor.WHITE);
             DyedBlock lightGrayBlock = new DyedBlock(config, DyeColor.LIGHT_GRAY);
@@ -118,14 +122,16 @@ public class DyedBlocks implements MinekeaBlockCategory {
         });
 
         PILLAR_BLOCKS_TO_DYE.forEach(data -> {
-            String materialName = data.getA();
-            String material = data.getB();
-            Block ingredient = data.getC();
+            String materialName = data.getA().getA();
+            String material = data.getA().getB();
+            Block ingredient = data.getB();
+            Tool tool = data.getC();
 
             BlockConfig config = new BlockConfig()
                 .materialName(materialName)
                 .material(material)
-                .ingredient(ingredient);
+                .ingredient(ingredient)
+                .tool(tool);
 
             DyedPillarBlock whiteBlock = new DyedPillarBlock(config, DyeColor.WHITE);
             DyedPillarBlock lightGrayBlock = new DyedPillarBlock(config, DyeColor.LIGHT_GRAY);
@@ -192,7 +198,7 @@ public class DyedBlocks implements MinekeaBlockCategory {
         MinekeaBlockCategory.super.registerBlocks();
 
         BLOCKS_TO_DYE.forEach(data -> {
-            String textureKey = data.getB();
+            String textureKey = data.getA().getB();
 
             ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
             ColoredBlocksRegistry.addBlock(BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);
@@ -213,7 +219,7 @@ public class DyedBlocks implements MinekeaBlockCategory {
         });
 
         PILLAR_BLOCKS_TO_DYE.forEach(data -> {
-            String textureKey = data.getB();
+            String textureKey = data.getA().getB();
 
             ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "white"), textureKey, ColoredBlocksRegistry.BlockColor.WHITE);
             ColoredBlocksRegistry.addBlock(PILLAR_BLOCK_MAP.get(textureKey + "light_gray"), textureKey, ColoredBlocksRegistry.BlockColor.LIGHT_GRAY);

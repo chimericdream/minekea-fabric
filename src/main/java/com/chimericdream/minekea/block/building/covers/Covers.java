@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.building.covers;
 
 import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.resource.TextureUtils;
+import com.chimericdream.lib.util.Tool;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
@@ -144,27 +145,27 @@ public class Covers implements MinekeaBlockCategory {
         BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("magenta_concrete").materialName("Magenta Concrete").ingredient(Blocks.MAGENTA_CONCRETE)));
         BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("pink_concrete").materialName("Pink Concrete").ingredient(Blocks.PINK_CONCRETE)));
 
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("acacia").materialName("Acacia").flammable().ingredient(Blocks.ACACIA_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("birch").materialName("Birch").flammable().ingredient(Blocks.BIRCH_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("dark_oak").materialName("Dark Oak").flammable().ingredient(Blocks.DARK_OAK_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("jungle").materialName("Jungle").flammable().ingredient(Blocks.JUNGLE_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("mangrove").materialName("Mangrove").flammable().ingredient(Blocks.MANGROVE_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("oak").materialName("Oak").flammable().ingredient(Blocks.OAK_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("spruce").materialName("Spruce").flammable().ingredient(Blocks.SPRUCE_PLANKS)));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("acacia").materialName("Acacia").flammable().ingredient(Blocks.ACACIA_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("birch").materialName("Birch").flammable().ingredient(Blocks.BIRCH_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("dark_oak").materialName("Dark Oak").flammable().ingredient(Blocks.DARK_OAK_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("jungle").materialName("Jungle").flammable().ingredient(Blocks.JUNGLE_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("mangrove").materialName("Mangrove").flammable().ingredient(Blocks.MANGROVE_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("oak").materialName("Oak").flammable().ingredient(Blocks.OAK_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("spruce").materialName("Spruce").flammable().ingredient(Blocks.SPRUCE_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).tool(Tool.AXE)));
 
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("acacia_log").materialName("Acacia Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)).ingredient(Blocks.ACACIA_LOG).texture(TextureUtils.block(Blocks.ACACIA_LOG, "_top")).texture("side", TextureUtils.block(Blocks.ACACIA_LOG))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("birch_log").materialName("Birch Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)).ingredient(Blocks.BIRCH_LOG).texture(TextureUtils.block(Blocks.BIRCH_LOG, "_top")).texture("side", TextureUtils.block(Blocks.BIRCH_LOG))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("cherry_log").materialName("Cherry Log").settings(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)).ingredient(Blocks.CHERRY_LOG).texture(TextureUtils.block(Blocks.CHERRY_LOG, "_top")).texture("side", TextureUtils.block(Blocks.CHERRY_LOG))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("crimson_stem").materialName("Crimson Stem").settings(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)).ingredient(Blocks.CRIMSON_STEM).texture(TextureUtils.block(Blocks.CRIMSON_STEM, "_top")).texture("side", TextureUtils.block(Blocks.CRIMSON_STEM))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("dark_oak_log").materialName("Dark Oak Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)).ingredient(Blocks.DARK_OAK_LOG).texture(TextureUtils.block(Blocks.DARK_OAK_LOG, "_top")).texture("side", TextureUtils.block(Blocks.DARK_OAK_LOG))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("jungle_log").materialName("Jungle Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)).ingredient(Blocks.JUNGLE_LOG).texture(TextureUtils.block(Blocks.JUNGLE_LOG, "_top")).texture("side", TextureUtils.block(Blocks.JUNGLE_LOG))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("mangrove_log").materialName("Mangrove Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)).ingredient(Blocks.MANGROVE_LOG).texture(TextureUtils.block(Blocks.MANGROVE_LOG, "_top")).texture("side", TextureUtils.block(Blocks.MANGROVE_LOG))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("oak_log").materialName("Oak Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)).ingredient(Blocks.OAK_LOG).texture(TextureUtils.block(Blocks.OAK_LOG, "_top")).texture("side", TextureUtils.block(Blocks.OAK_LOG))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("spruce_log").materialName("Spruce Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)).ingredient(Blocks.SPRUCE_LOG).texture(TextureUtils.block(Blocks.SPRUCE_LOG, "_top")).texture("side", TextureUtils.block(Blocks.SPRUCE_LOG))));
-        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("warped_stem").materialName("Warped Stem").settings(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)).ingredient(Blocks.WARPED_STEM).texture(TextureUtils.block(Blocks.WARPED_STEM, "_top")).texture("side", TextureUtils.block(Blocks.WARPED_STEM))));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("acacia_log").materialName("Acacia Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)).ingredient(Blocks.ACACIA_LOG).texture(TextureUtils.block(Blocks.ACACIA_LOG, "_top")).texture("side", TextureUtils.block(Blocks.ACACIA_LOG)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("birch_log").materialName("Birch Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)).ingredient(Blocks.BIRCH_LOG).texture(TextureUtils.block(Blocks.BIRCH_LOG, "_top")).texture("side", TextureUtils.block(Blocks.BIRCH_LOG)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("cherry_log").materialName("Cherry Log").settings(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)).ingredient(Blocks.CHERRY_LOG).texture(TextureUtils.block(Blocks.CHERRY_LOG, "_top")).texture("side", TextureUtils.block(Blocks.CHERRY_LOG)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("crimson_stem").materialName("Crimson Stem").settings(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)).ingredient(Blocks.CRIMSON_STEM).texture(TextureUtils.block(Blocks.CRIMSON_STEM, "_top")).texture("side", TextureUtils.block(Blocks.CRIMSON_STEM)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("dark_oak_log").materialName("Dark Oak Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)).ingredient(Blocks.DARK_OAK_LOG).texture(TextureUtils.block(Blocks.DARK_OAK_LOG, "_top")).texture("side", TextureUtils.block(Blocks.DARK_OAK_LOG)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("jungle_log").materialName("Jungle Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)).ingredient(Blocks.JUNGLE_LOG).texture(TextureUtils.block(Blocks.JUNGLE_LOG, "_top")).texture("side", TextureUtils.block(Blocks.JUNGLE_LOG)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("mangrove_log").materialName("Mangrove Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)).ingredient(Blocks.MANGROVE_LOG).texture(TextureUtils.block(Blocks.MANGROVE_LOG, "_top")).texture("side", TextureUtils.block(Blocks.MANGROVE_LOG)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("oak_log").materialName("Oak Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)).ingredient(Blocks.OAK_LOG).texture(TextureUtils.block(Blocks.OAK_LOG, "_top")).texture("side", TextureUtils.block(Blocks.OAK_LOG)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("spruce_log").materialName("Spruce Log").flammable().settings(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)).ingredient(Blocks.SPRUCE_LOG).texture(TextureUtils.block(Blocks.SPRUCE_LOG, "_top")).texture("side", TextureUtils.block(Blocks.SPRUCE_LOG)).tool(Tool.AXE)));
+        BLOCKS.add(new GenericCoverBlock(new BlockConfig().material("warped_stem").materialName("Warped Stem").settings(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)).ingredient(Blocks.WARPED_STEM).texture(TextureUtils.block(Blocks.WARPED_STEM, "_top")).texture("side", TextureUtils.block(Blocks.WARPED_STEM)).tool(Tool.AXE)));
     }
 
     public List<Block> getCategoryBlocks() {

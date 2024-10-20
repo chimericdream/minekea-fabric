@@ -7,12 +7,14 @@ import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
 import com.chimericdream.lib.fabric.registries.FabricRegistryHelpers;
 import com.chimericdream.lib.registries.RegistryHelpers;
-import com.chimericdream.lib.resource.ModelUtils;
 import com.chimericdream.lib.util.ModConfigurable;
+import com.chimericdream.lib.util.Tool;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
+import com.chimericdream.minekea.resource.ModelUtils;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CarpetBlock;
@@ -30,6 +32,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -40,6 +43,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public class GenericCoverBlock extends CarpetBlock implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     // yowza
@@ -115,6 +119,13 @@ public class GenericCoverBlock extends CarpetBlock implements BlockDataGenerator
         if (config.isFlammable()) {
             FabricRegistryHelpers.registerFlammableBlock(this);
         }
+    }
+
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        Tool tool = Optional.ofNullable(config.getTool()).orElse(Tool.PICKAXE);
+        getBuilder.apply(tool.getMineableTag())
+            .setReplace(false)
+            .add(this);
     }
 
     public void configureRecipes(RecipeExporter exporter) {

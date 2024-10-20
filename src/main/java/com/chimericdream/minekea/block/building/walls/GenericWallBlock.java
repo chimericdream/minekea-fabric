@@ -8,6 +8,7 @@ import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
 import com.chimericdream.lib.fabric.registries.FabricRegistryHelpers;
 import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.util.ModConfigurable;
+import com.chimericdream.lib.util.Tool;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -34,6 +35,7 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 public class GenericWallBlock extends WallBlock implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock {
@@ -64,7 +66,13 @@ public class GenericWallBlock extends WallBlock implements BlockDataGenerator, F
         getBuilder.apply(BlockTags.WALLS)
             .setReplace(false)
             .add(this);
+
+        Tool tool = Optional.ofNullable(config.getTool()).orElse(Tool.PICKAXE);
+        getBuilder.apply(tool.getMineableTag())
+            .setReplace(false)
+            .add(this);
     }
+
 
     public void configureRecipes(RecipeExporter exporter) {
         Block ingredient = config.getIngredient();

@@ -5,12 +5,15 @@ import com.chimericdream.lib.blocks.RegisterableBlock;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
 import com.chimericdream.lib.registries.RegistryHelpers;
-import com.chimericdream.lib.resource.ModelUtils;
+import com.chimericdream.lib.tags.CommonBlockTags;
 import com.chimericdream.lib.text.TextHelpers;
 import com.chimericdream.minekea.ModInfo;
+import com.chimericdream.minekea.resource.ModelUtils;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CakeBlock;
@@ -32,6 +35,7 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
@@ -40,6 +44,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class FakeCake extends CakeBlock implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock {
     public final static String TOOLTIP_KEY = "block.minekea.decorations.misc.fake_cake.tooltip";
@@ -62,6 +67,12 @@ public class FakeCake extends CakeBlock implements BlockDataGenerator, FabricBlo
     public void register() {
         RegistryHelpers.registerBlockWithItem(this, BLOCK_ID);
         FabricItemGroupEventHelpers.addBlockToItemGroup(this, ItemGroups.BUILDING_BLOCKS);
+    }
+
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(CommonBlockTags.SHEARS_MINEABLE)
+            .setReplace(false)
+            .add(this);
     }
 
     public void configureRecipes(RecipeExporter exporter) {

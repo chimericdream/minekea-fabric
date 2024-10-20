@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.building.beams;
 
 import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.resource.TextureUtils;
+import com.chimericdream.lib.util.Tool;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
@@ -140,26 +141,26 @@ public class Beams implements MinekeaBlockCategory {
         BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("green_concrete").materialName("Green Concrete").ingredient(Blocks.GREEN_CONCRETE)));
         BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("red_concrete").materialName("Red Concrete").ingredient(Blocks.RED_CONCRETE)));
         BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("black_concrete").materialName("Black Concrete").ingredient(Blocks.BLACK_CONCRETE)));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).flammable()));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)).material("acacia_log").materialName("Acacia Log").ingredient(Blocks.ACACIA_LOG).flammable().texture(TextureUtils.block(Blocks.ACACIA_LOG)).texture("end", TextureUtils.block(Blocks.ACACIA_LOG, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).flammable()));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)).material("birch_log").materialName("Birch Log").ingredient(Blocks.BIRCH_LOG).flammable().texture(TextureUtils.block(Blocks.BIRCH_LOG)).texture("end", TextureUtils.block(Blocks.BIRCH_LOG, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS)));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)).material("cherry_log").materialName("Cherry Log").ingredient(Blocks.CHERRY_LOG).flammable().texture(TextureUtils.block(Blocks.CHERRY_LOG)).texture("end", TextureUtils.block(Blocks.CHERRY_LOG, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS)));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)).material("crimson_stem").materialName("Crimson Stem").ingredient(Blocks.CRIMSON_STEM).texture(TextureUtils.block(Blocks.CRIMSON_STEM)).texture("end", TextureUtils.block(Blocks.CRIMSON_STEM, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).flammable()));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)).material("dark_oak_log").materialName("Dark Oak Log").ingredient(Blocks.DARK_OAK_LOG).flammable().texture(TextureUtils.block(Blocks.DARK_OAK_LOG)).texture("end", TextureUtils.block(Blocks.DARK_OAK_LOG, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).flammable()));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)).material("jungle_log").materialName("Jungle Log").ingredient(Blocks.JUNGLE_LOG).flammable().texture(TextureUtils.block(Blocks.JUNGLE_LOG)).texture("end", TextureUtils.block(Blocks.JUNGLE_LOG, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).flammable()));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)).material("mangrove_log").materialName("Mangrove Log").ingredient(Blocks.MANGROVE_LOG).flammable().texture(TextureUtils.block(Blocks.MANGROVE_LOG)).texture("end", TextureUtils.block(Blocks.MANGROVE_LOG, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).flammable()));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)).material("oak_log").materialName("Oak Log").ingredient(Blocks.OAK_LOG).flammable().texture(TextureUtils.block(Blocks.OAK_LOG)).texture("end", TextureUtils.block(Blocks.OAK_LOG, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).flammable()));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)).material("spruce_log").materialName("Spruce Log").ingredient(Blocks.SPRUCE_LOG).flammable().texture(TextureUtils.block(Blocks.SPRUCE_LOG)).texture("end", TextureUtils.block(Blocks.SPRUCE_LOG, "_top"))));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS)));
-        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)).material("warped_stem").materialName("Warped Stem").ingredient(Blocks.WARPED_STEM).texture(TextureUtils.block(Blocks.WARPED_STEM)).texture("end", TextureUtils.block(Blocks.WARPED_STEM, "_top"))));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).flammable().tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)).material("acacia_log").materialName("Acacia Log").ingredient(Blocks.ACACIA_LOG).flammable().texture(TextureUtils.block(Blocks.ACACIA_LOG)).texture("end", TextureUtils.block(Blocks.ACACIA_LOG, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).flammable().tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)).material("birch_log").materialName("Birch Log").ingredient(Blocks.BIRCH_LOG).flammable().texture(TextureUtils.block(Blocks.BIRCH_LOG)).texture("end", TextureUtils.block(Blocks.BIRCH_LOG, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)).material("cherry_log").materialName("Cherry Log").ingredient(Blocks.CHERRY_LOG).flammable().texture(TextureUtils.block(Blocks.CHERRY_LOG)).texture("end", TextureUtils.block(Blocks.CHERRY_LOG, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)).material("crimson_stem").materialName("Crimson Stem").ingredient(Blocks.CRIMSON_STEM).texture(TextureUtils.block(Blocks.CRIMSON_STEM)).texture("end", TextureUtils.block(Blocks.CRIMSON_STEM, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).flammable().tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)).material("dark_oak_log").materialName("Dark Oak Log").ingredient(Blocks.DARK_OAK_LOG).flammable().texture(TextureUtils.block(Blocks.DARK_OAK_LOG)).texture("end", TextureUtils.block(Blocks.DARK_OAK_LOG, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).flammable().tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)).material("jungle_log").materialName("Jungle Log").ingredient(Blocks.JUNGLE_LOG).flammable().texture(TextureUtils.block(Blocks.JUNGLE_LOG)).texture("end", TextureUtils.block(Blocks.JUNGLE_LOG, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).flammable().tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)).material("mangrove_log").materialName("Mangrove Log").ingredient(Blocks.MANGROVE_LOG).flammable().texture(TextureUtils.block(Blocks.MANGROVE_LOG)).texture("end", TextureUtils.block(Blocks.MANGROVE_LOG, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).flammable().tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)).material("oak_log").materialName("Oak Log").ingredient(Blocks.OAK_LOG).flammable().texture(TextureUtils.block(Blocks.OAK_LOG)).texture("end", TextureUtils.block(Blocks.OAK_LOG, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).flammable().tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)).material("spruce_log").materialName("Spruce Log").ingredient(Blocks.SPRUCE_LOG).flammable().texture(TextureUtils.block(Blocks.SPRUCE_LOG)).texture("end", TextureUtils.block(Blocks.SPRUCE_LOG, "_top")).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericBeamBlock(new BlockConfig().settings(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)).material("warped_stem").materialName("Warped Stem").ingredient(Blocks.WARPED_STEM).texture(TextureUtils.block(Blocks.WARPED_STEM)).texture("end", TextureUtils.block(Blocks.WARPED_STEM, "_top")).tool(Tool.AXE)));
     }
 
     @Override

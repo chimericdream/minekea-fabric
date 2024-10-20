@@ -1,6 +1,6 @@
 package com.chimericdream.minekea.mixin;
 
-import com.chimericdream.minekea.tag.MinekeaBlockTags;
+import com.chimericdream.lib.tags.CommonBlockTags;
 import net.minecraft.component.type.ToolComponent;
 import net.minecraft.item.ShearsItem;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +22,7 @@ public class ShearsItemMixin {
         ToolComponent original = cir.getReturnValue();
 
         List<ToolComponent.Rule> rules = new ArrayList<>(original.rules());
-        rules.add(ToolComponent.Rule.of(MinekeaBlockTags.MINEABLE_SHEARS, 5.0F));
+        rules.add(ToolComponent.Rule.of(CommonBlockTags.SHEARS_MINEABLE, 5.0F));
 
         cir.setReturnValue(new ToolComponent(rules, original.defaultMiningSpeed(), original.damagePerBlock()));
     }

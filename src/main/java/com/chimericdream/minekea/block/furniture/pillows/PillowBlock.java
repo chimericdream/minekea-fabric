@@ -6,6 +6,7 @@ import com.chimericdream.lib.colors.ColorHelpers;
 import com.chimericdream.lib.fabric.blocks.FabricBlockDataGenerator;
 import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
 import com.chimericdream.lib.registries.RegistryHelpers;
+import com.chimericdream.lib.tags.CommonBlockTags;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -79,7 +80,7 @@ public class PillowBlock extends Block implements BlockDataGenerator, FabricBloc
             .setReplace(false)
             .add(this);
 
-        getBuilder.apply(MinekeaBlockTags.MINEABLE_SHEARS)
+        getBuilder.apply(CommonBlockTags.SHEARS_MINEABLE)
             .setReplace(false)
             .add(this);
     }

@@ -9,6 +9,7 @@ import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.sound.MinekeaSoundGroup;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -26,6 +27,8 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -36,6 +39,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
+
+import java.util.function.Function;
 
 // @TODO: turn this into a slab-like block with top/bottom/full variations
 public class SetOfEggsBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, RegisterableBlock, Waterloggable {
@@ -84,6 +89,12 @@ public class SetOfEggsBlock extends Block implements BlockDataGenerator, FabricB
     public void register() {
         RegistryHelpers.registerBlockWithItem(this, BLOCK_ID);
         FabricItemGroupEventHelpers.addBlockToItemGroup(this, ItemGroups.BUILDING_BLOCKS);
+    }
+
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(BlockTags.HOE_MINEABLE)
+            .setReplace(false)
+            .add(this);
     }
 
     public void configureRecipes(RecipeExporter exporter) {

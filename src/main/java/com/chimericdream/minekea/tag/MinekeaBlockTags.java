@@ -12,6 +12,4 @@ public class MinekeaBlockTags {
     public static final TagKey<Block> FRAMED_PLANKS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "framed_planks"));
     public static final TagKey<Block> LANTERNS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "lanterns"));
     public static final TagKey<Block> PILLOWS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "pillows"));
-
-    public static final TagKey<Block> MINEABLE_SHEARS = TagKey.of(Registries.BLOCK.getKey(), Identifier.of(ModInfo.MOD_ID, "mineable/shears"));
 }

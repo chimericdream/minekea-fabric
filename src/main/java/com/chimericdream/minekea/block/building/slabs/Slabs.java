@@ -2,6 +2,7 @@ package com.chimericdream.minekea.block.building.slabs;
 
 import com.chimericdream.lib.blocks.BlockConfig;
 import com.chimericdream.lib.resource.TextureUtils;
+import com.chimericdream.lib.util.Tool;
 import com.chimericdream.minekea.block.building.BuildingBlocks;
 import com.chimericdream.minekea.block.building.general.BasaltBricksBlock;
 import com.chimericdream.minekea.block.building.general.CrackedBasaltBricksBlock;
@@ -27,20 +28,20 @@ public class Slabs implements MinekeaBlockCategory {
         BLOCKS.add(new GenericSlabBlock(new BlockConfig().material("warped_basalt_bricks").materialName("Warped Basalt Brick").ingredient(BuildingBlocks.WARPED_BASALT_BRICKS_BLOCK).texture(TextureUtils.block(WarpedBasaltBricksBlock.BLOCK_ID))));
         BLOCKS.add(new GenericSlabBlock(new BlockConfig().material("warped_nether_bricks").materialName("Warped Nether Brick").ingredient(BuildingBlocks.WARPED_NETHER_BRICKS_BLOCK).texture(TextureUtils.block(WarpedNetherBricksBlock.BLOCK_ID))));
 
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("bamboo_planks").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("acacia").materialName("Acacia").ingredient(Blocks.ACACIA_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("bamboo_planks").materialName("Bamboo").ingredient(Blocks.BAMBOO_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("birch").materialName("Birch").ingredient(Blocks.BIRCH_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("cherry").materialName("Cherry").ingredient(Blocks.CHERRY_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("crimson").materialName("Crimson").ingredient(Blocks.CRIMSON_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("dark_oak").materialName("Dark Oak").ingredient(Blocks.DARK_OAK_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("jungle").materialName("Jungle").ingredient(Blocks.JUNGLE_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("mangrove").materialName("Mangrove").ingredient(Blocks.MANGROVE_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("oak").materialName("Oak").ingredient(Blocks.OAK_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("spruce").materialName("Spruce").ingredient(Blocks.SPRUCE_PLANKS).tool(Tool.AXE)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("warped").materialName("Warped").ingredient(Blocks.WARPED_PLANKS).tool(Tool.AXE)));
 
         BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("andesite").materialName("Andesite").ingredient(Blocks.ANDESITE)));
-        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("bamboo_mosaic").materialName("Bamboo Mosaic").ingredient(Blocks.BAMBOO_MOSAIC)));
+        BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("bamboo_mosaic").materialName("Bamboo Mosaic").ingredient(Blocks.BAMBOO_MOSAIC).tool(Tool.AXE)));
         BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("blackstone").materialName("Blackstone").ingredient(Blocks.BLACKSTONE)));
         BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("bricks").materialName("Brick").ingredient(Blocks.BRICKS)));
         BLOCKS.add(new GenericVerticalSlabBlock(new BlockConfig().material("cobbled_deepslate").materialName("Cobbled Deepslate").ingredient(Blocks.COBBLED_DEEPSLATE)));

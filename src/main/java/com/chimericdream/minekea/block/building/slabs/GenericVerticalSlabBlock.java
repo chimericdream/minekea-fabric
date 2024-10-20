@@ -8,9 +8,11 @@ import com.chimericdream.lib.fabric.blocks.FabricItemGroupEventHelpers;
 import com.chimericdream.lib.fabric.registries.FabricRegistryHelpers;
 import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.util.ModConfigurable;
+import com.chimericdream.lib.util.Tool;
 import com.chimericdream.minekea.ModInfo;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -32,6 +34,7 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -44,6 +47,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public class GenericVerticalSlabBlock extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     public static final Model VERTICAL_SLAB_MODEL = new Model(
@@ -127,6 +131,13 @@ public class GenericVerticalSlabBlock extends Block implements BlockDataGenerato
         if (config.isFlammable()) {
             FabricRegistryHelpers.registerFlammableBlock(this);
         }
+    }
+
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        Tool tool = Optional.ofNullable(config.getTool()).orElse(Tool.PICKAXE);
+        getBuilder.apply(tool.getMineableTag())
+            .setReplace(false)
+            .add(this);
     }
 
     public void configureRecipes(RecipeExporter exporter) {

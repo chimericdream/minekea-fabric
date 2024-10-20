@@ -49,7 +49,8 @@ public class MinekeaDataGenerator implements DataGeneratorEntrypoint {
 //
 //        @Override
 //        public CompletableFuture<?> run(DataWriter writer) {
-////            dataGenerator
+
+    /// /            dataGenerator
 //            var generatedResources = dataGenerator.getOutput();
 //            var nonGeneratedResources = dataGenerator.getOutput().resolve("../../main/resources");
 //            ReloadableResourceManagerImpl manager = new ReloadableResourceManagerImpl(ResourceType.CLIENT_RESOURCES);

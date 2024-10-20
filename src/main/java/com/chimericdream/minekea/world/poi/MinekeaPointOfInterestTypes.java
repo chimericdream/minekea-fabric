@@ -1,6 +1,5 @@
 package com.chimericdream.minekea.world.poi;
 
-import com.chimericdream.lib.world.poi.PointOfInterestHelpers;
 import com.chimericdream.minekea.block.containers.barrels.Barrels;
 import net.minecraft.world.poi.PointOfInterestTypes;
 

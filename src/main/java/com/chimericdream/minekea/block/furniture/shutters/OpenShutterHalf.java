@@ -9,6 +9,7 @@ import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.util.ModConfigurable;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.util.MinekeaTextures;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
@@ -23,11 +24,15 @@ import net.minecraft.data.client.MultipartBlockStateSupplier;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.client.VariantSettings;
 import net.minecraft.data.client.When;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -50,6 +55,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+
+import static com.chimericdream.minekea.block.furniture.shutters.Shutters.SHUTTERS;
 
 public class OpenShutterHalf extends Block implements BlockDataGenerator, FabricBlockDataGenerator, ModConfigurable, RegisterableBlock, Waterloggable {
     protected static final Model LEFT_HALF_MODEL = new Model(
@@ -97,7 +105,7 @@ public class OpenShutterHalf extends Block implements BlockDataGenerator, Fabric
     }
 
     public OpenShutterHalf(BlockSetType type, BlockConfig config) {
-        super(AbstractBlock.Settings.copy(Blocks.BARRIER));
+        super(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS));
 
         this.setDefaultState(
             this.stateManager
@@ -210,6 +218,18 @@ public class OpenShutterHalf extends Block implements BlockDataGenerator, Fabric
             world.scheduleFluidTick(centerPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
+        ItemEntity itemEntity = new ItemEntity(
+            world,
+            (double) pos.getX() + 0.5D,
+            (double) pos.getY() + 0.5D,
+            (double) pos.getZ() + 0.5D,
+            SHUTTERS.get(config.getMaterial()).asItem().getDefaultStack()
+        );
+
+        itemEntity.setToDefaultPickupDelay();
+
+        world.spawnEntity(itemEntity);
+
         return super.onBreak(world, centerPos, centerState, player);
     }
 
@@ -275,6 +295,10 @@ public class OpenShutterHalf extends Block implements BlockDataGenerator, Fabric
         if (config.isFlammable()) {
             FabricRegistryHelpers.registerFlammableBlock(this);
         }
+    }
+
+    public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
+        getBuilder.apply(BlockTags.AXE_MINEABLE).setReplace(false).add(this);
     }
 
     public void configureBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {

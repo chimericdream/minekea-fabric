@@ -9,6 +9,7 @@ import com.chimericdream.lib.fabric.registries.FabricRegistryHelpers;
 import com.chimericdream.lib.registries.RegistryHelpers;
 import com.chimericdream.lib.tags.CommonItemTags;
 import com.chimericdream.lib.util.ModConfigurable;
+import com.chimericdream.lib.util.Tool;
 import com.chimericdream.minekea.ModInfo;
 import com.chimericdream.minekea.item.MinekeaItemGroups;
 import com.chimericdream.minekea.tag.MinekeaBlockTags;
@@ -319,6 +320,11 @@ public class GenericBeamBlock extends Block implements BlockDataGenerator, Fabri
 
     public void configureBlockTags(RegistryWrapper.WrapperLookup registryLookup, Function<TagKey<Block>, FabricTagProvider<Block>.FabricTagBuilder> getBuilder) {
         getBuilder.apply(MinekeaBlockTags.BEAMS)
+            .setReplace(false)
+            .add(this);
+
+        Tool tool = Optional.ofNullable(config.getTool()).orElse(Tool.PICKAXE);
+        getBuilder.apply(tool.getMineableTag())
             .setReplace(false)
             .add(this);
     }
